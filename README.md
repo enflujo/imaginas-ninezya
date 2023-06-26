@@ -1,4 +1,4 @@
-# Sitio principal del Laboratorio EnFlujo
+# Aplicaciones para tablero de Niñez YA
 
 ![Estilo Código](https://github.com/enflujo/imagina-ninezya/actions/workflows/estilo-codigo.yml/badge.svg)
 ![Despliegue](https://github.com/enflujo/imagina-ninezya/actions/workflows/despliegue.yml/badge.svg)
