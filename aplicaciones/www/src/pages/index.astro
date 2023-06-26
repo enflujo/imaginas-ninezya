@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Termometro from '../components/Termometro.astro';
+---
+
+<Layout title="Los 10 Yas!">
+  <main>
+    <h1 class="titulo">NiñezYA</h1>
+
+    <div class="contenido">
+      <div id="yas">
+        <Termometro titulo="1. Salud y Nutrición" valor={10} />
+        <Termometro titulo="2. Educación Inicial" valor={40} />
+        <Termometro titulo="3. Educación Preescolar, Básica y Media" valor={70} />
+        <Termometro titulo="4. Ambiente Sano" valor={90} />
+        <Termometro titulo="5. Juego" valor={5} />
+        <Termometro titulo="6. Participación" valor={15} />
+        <Termometro titulo="7. Fortalecimiento Familiar del Cuidado y la Crianza de la Niñez" valor={60} />
+        <Termometro titulo="8. Protección Frente a Cualquier Tipo de Violencia" valor={50} />
+        <Termometro
+          titulo="9. Adolescentes con Justicia Restaurativa y Pedagógica (Sistema de Responsabilidad Penal para Adolescentes - SRPA)"
+          valor={50}
+        />
+        <Termometro titulo="10. Cultura de Paz, Reconciliación y Convivencia" valor={50} />
+      </div>
+
+      <div id="introduccion">
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora facilis ratione minus voluptate sint quam
+          rem nisi et saepe! Omnis vitae earum quidem voluptatibus nostrum, sapiente odio molestias debitis! Illum!
+        </p>
+
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, sapiente? Sint incidunt fugiat esse earum odit
+          voluptatem magni consequuntur obcaecati, quae iure! Architecto qui eos quos voluptatem iste quidem veritatis!
+        </p>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style lang="scss">
+  h1 {
+    display: block;
+  }
+
+  main {
+    padding: 2em 4em;
+  }
+
+  .contenido {
+    display: flex;
+  }
+
+  #yas {
+    padding-right: 1em;
+    flex-basis: 50%;
+  }
+
+  #introduccion {
+    flex-basis: 50%;
+  }
+</style>

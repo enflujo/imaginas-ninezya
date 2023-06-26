@@ -1,0 +1,17 @@
+{
+  "name": "imagina-ninezya",
+  "private": true,
+  "workspaces": [
+    "aplicaciones/*"
+  ],
+  "scripts": {
+    "dev": "yarn workspace www dev",
+    "datos": "yarn workspace procesador dev",
+    "build": "yarn workspace www build",
+    "lint": "prettier --check .",
+    "lint:fix": "prettier --write --list-different ."
+  },
+  "devDependencies": {
+    "prettier": "^2.8.8"
+  }
+}

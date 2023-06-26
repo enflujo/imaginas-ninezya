@@ -1,0 +1,42 @@
+---
+export interface Props {
+  titulo: string;
+  valor: number;
+}
+
+const { titulo, valor } = Astro.props;
+---
+
+<div class="termometro">
+  <span class="estado" style={`width:${valor}%`}></span>
+  <span class="titulo">{titulo}</span>
+</div>
+
+<style lang="scss">
+  .termometro {
+    display: flex;
+    height: 30px;
+    background-color: rgb(192, 160, 160);
+    padding: 0.6em 1em 0.3em 1em;
+    margin-bottom: 1em;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+
+    .titulo {
+      padding-top: 0.2em;
+      color: white;
+      z-index: 2;
+    }
+
+    .estado {
+      position: absolute;
+      background-color: rgb(26, 201, 117);
+      display: block;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+  }
+</style>
