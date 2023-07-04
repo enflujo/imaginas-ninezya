@@ -1,6 +1,6 @@
 import { writeFileSync } from 'fs';
 import path from 'path';
-import { Agregado, NombreCodigo } from '../tipos';
+import { Agregado, NombreCodigo } from '@/tipos';
 
 /**
  * Revisa si el valor de un texto contiene un número.
@@ -18,7 +18,7 @@ export const esNumero = (valor: string): boolean => !isNaN(parseInt(valor));
  */
 export const guardarJSON = (json: object, nombre: string): void => {
   writeFileSync(
-    path.resolve(__dirname, `../../datos/exportados/${nombre}.json`),
+    path.resolve(__dirname, `../datos/procesados/${nombre}.json`),
     JSON.stringify(json, (_llave, valor) => (valor instanceof Set ? [...valor] : valor))
   );
 };

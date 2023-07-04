@@ -41,7 +41,8 @@ import Mapa from '@/components/Mapa.astro';
   import { indicador } from '@/utilidades/cerebro';
 
   const elementos = document.querySelectorAll('.termometro');
-  elementos.forEach((elemento) => {
+
+  elementos.forEach((elemento: HTMLDivElement) => {
     elemento.onmouseenter = () => {
       indicador.set(elemento.innerText);
     };
