@@ -1,11 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Termometro from '../components/Termometro.astro';
+import Mapa from '@/components/Mapa.astro';
 ---
 
 <Layout title="Los 10 Yas!">
   <main>
-    <h1 class="titulo">NiñezYA</h1>
+    <!-- <h1 class="titulo">NiñezYA</h1> -->
 
     <div class="contenido">
       <div id="yas">
@@ -16,12 +17,12 @@ import Termometro from '../components/Termometro.astro';
         <Termometro titulo="5. Juego" valor={5} />
         <Termometro titulo="6. Participación" valor={15} />
         <Termometro titulo="7. Fortalecimiento Familiar del Cuidado y la Crianza de la Niñez" valor={60} />
-        <Termometro titulo="8. Protección Frente a Cualquier Tipo de Violencia" valor={50} />
+        <Termometro titulo="8. Protección Frente a Cualquier Tipo de Violencia" valor={93} />
         <Termometro
           titulo="9. Adolescentes con Justicia Restaurativa y Pedagógica (Sistema de Responsabilidad Penal para Adolescentes - SRPA)"
           valor={50}
         />
-        <Termometro titulo="10. Cultura de Paz, Reconciliación y Convivencia" valor={50} />
+        <Termometro titulo="10. Cultura de Paz, Reconciliación y Convivencia" valor={37} />
       </div>
 
       <div id="introduccion">
@@ -30,16 +31,27 @@ import Termometro from '../components/Termometro.astro';
           rem nisi et saepe! Omnis vitae earum quidem voluptatibus nostrum, sapiente odio molestias debitis! Illum!
         </p>
 
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, sapiente? Sint incidunt fugiat esse earum odit
-          voluptatem magni consequuntur obcaecati, quae iure! Architecto qui eos quos voluptatem iste quidem veritatis!
-        </p>
+        <div id="contenedorMapa"><Mapa ancho={40} alto={60} /></div>
       </div>
     </div>
   </main>
 </Layout>
 
+<script>
+  import { indicador } from '@/utilidades/cerebro';
+
+  const elementos = document.querySelectorAll('.termometro');
+  elementos.forEach((elemento) => {
+    elemento.onmouseenter = () => {
+      indicador.set(elemento.innerText);
+    };
+  });
+</script>
+
 <style lang="scss">
+  #contenedorMapa {
+    position: relative;
+  }
   h1 {
     display: block;
   }

@@ -13,25 +13,28 @@ const { titulo, valor } = Astro.props;
 </div>
 
 <style lang="scss">
+  @import '../scss/estilos.scss';
   .termometro {
     display: flex;
     height: 30px;
-    background-color: rgb(192, 160, 160);
+    background-color: #ebb5ad;
     padding: 0.6em 1em 0.3em 1em;
     margin-bottom: 1em;
     font-weight: bold;
     position: relative;
     overflow: hidden;
+    font-size: 0.8em;
 
     .titulo {
-      padding-top: 0.2em;
-      color: white;
+      padding-top: 0.4em;
+      color: #631feb;
+      font-weight: 700;
       z-index: 2;
     }
 
     .estado {
       position: absolute;
-      background-color: rgb(26, 201, 117);
+      background-color: $verdeBrillante;
       display: block;
       height: 100%;
       top: 0;
