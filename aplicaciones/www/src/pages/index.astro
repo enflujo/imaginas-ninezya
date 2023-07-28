@@ -10,28 +10,63 @@ import Mapa from '@/components/Mapa.astro';
 
     <div class="contenido">
       <div id="yas">
-        <Termometro titulo="1. Salud y Nutrición" valor={10} />
-        <Termometro titulo="2. Educación Inicial" valor={40} />
-        <Termometro titulo="3. Educación Preescolar, Básica y Media" valor={70} />
-        <Termometro titulo="4. Ambiente Sano" valor={90} />
-        <Termometro titulo="5. Juego" valor={5} />
-        <Termometro titulo="6. Participación" valor={15} />
-        <Termometro titulo="7. Fortalecimiento Familiar del Cuidado y la Crianza de la Niñez" valor={60} />
-        <Termometro titulo="8. Protección Frente a Cualquier Tipo de Violencia" valor={93} />
+        <section>
+          <h2>1. Salud y Nutrición</h2>
+          <ul>
+            <li class="indicador" data-fuente="salud-1-1-mun.json">
+              Seguridad Alimentaria: Acceso real a agua potable.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>2. Educación Inicial</h2>
+        </section>
+        <section>
+          <h2>3. Educación Preescolar, Básica y Media</h2>
+        </section>
+        <section>
+          <h2>4. Ambiente Sano</h2>
+        </section>
+        <section>
+          <h2>5. Juego</h2>
+        </section>
+        <section>
+          <h2>6. Participación</h2>
+        </section>
+        <section>
+          <h2>7. Fortalecimiento Familiar del Cuidado y la Crianza de la Niñez</h2>
+        </section>
+        <section>
+          <h2>8. Protección Frente a Cualquier Tipo de Violencia</h2>
+        </section>
+        <section>
+          <h2>
+            9. Adolescentes con Justicia Restaurativa y Pedagógica (Sistema de Responsabilidad Penal para Adolescentes -
+            SRPA)
+          </h2>
+        </section>
+        <section>
+          <h2>10. Cultura de Paz, Reconciliación y Convivencia</h2>
+        </section>
+        <!-- <Termometro titulo="1. Salud y Nutrición" valor={100} />
+        
+        <Termometro titulo="2. Educación Inicial" valor={100} />
+        <Termometro titulo="3. Educación Preescolar, Básica y Media" valor={100} />
+        <Termometro titulo="4. Ambiente Sano" valor={100} />
+        <Termometro titulo="5. Juego" valor={100} />
+        <Termometro titulo="6. Participación" valor={100} />
+        <Termometro titulo="7. Fortalecimiento Familiar del Cuidado y la Crianza de la Niñez" valor={100} />
+        <Termometro titulo="8. Protección Frente a Cualquier Tipo de Violencia" valor={100} />
         <Termometro
           titulo="9. Adolescentes con Justicia Restaurativa y Pedagógica (Sistema de Responsabilidad Penal para Adolescentes - SRPA)"
-          valor={50}
+          valor={100}
         />
-        <Termometro titulo="10. Cultura de Paz, Reconciliación y Convivencia" valor={37} />
+        <Termometro titulo="10. Cultura de Paz, Reconciliación y Convivencia" valor={100} /> -->
       </div>
 
       <div id="introduccion">
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora facilis ratione minus voluptate sint quam
-          rem nisi et saepe! Omnis vitae earum quidem voluptatibus nostrum, sapiente odio molestias debitis! Illum!
-        </p>
-
-        <div id="contenedorMapa"><Mapa ancho={40} alto={60} /></div>
+        <div id="contenedorMapa"><Mapa ancho={60} alto={70} /></div>
       </div>
     </div>
   </main>
@@ -40,13 +75,21 @@ import Mapa from '@/components/Mapa.astro';
 <script>
   import { indicador } from '@/utilidades/cerebro';
 
-  const elementos = document.querySelectorAll('.termometro');
+  const indicadores = document.querySelectorAll<HTMLLIElement>('.indicador');
 
-  elementos.forEach((elemento: HTMLDivElement) => {
-    elemento.onmouseenter = () => {
-      indicador.set(elemento.innerText);
+  indicadores.forEach((elemento) => {
+    elemento.onclick = () => {
+      indicador.set(elemento.dataset.fuente);
     };
   });
+
+  // const elementos = document.querySelectorAll('.termometro');
+
+  // elementos.forEach((elemento: HTMLDivElement) => {
+  //   elemento.onmouseenter = () => {
+  //     indicador.set(elemento.innerText);
+  //   };
+  // });
 </script>
 
 <style lang="scss">
@@ -55,6 +98,11 @@ import Mapa from '@/components/Mapa.astro';
   }
   h1 {
     display: block;
+  }
+
+  h2 {
+    font-size: 1em;
+    width: 70%;
   }
 
   main {

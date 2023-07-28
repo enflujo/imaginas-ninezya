@@ -18,3 +18,11 @@ export const limpiarDepartamento = (
   else console.error(`No existe departamento con código ${codigo}`);
   return null;
 };
+
+export const limpiarMunicipio = (codigo: number) => {
+  const mun = municipios.datos.find((municipio) => municipio[3] === `${codigo}`.padStart(5, '0'));
+
+  if (mun) return mun;
+  else console.error(`No existe municipio con código ${codigo}`);
+  return null;
+};

@@ -5,12 +5,12 @@ import { getXlsxStream } from 'xlstream';
 
 export default async (
   nombre: string,
-  nombreTabla: string,
+  nombreArchivo: string,
   hoja: string,
   procesador: (datos: any) => void,
   fin: () => void
 ) => {
-  const ruta = path.resolve(__dirname, `../datos/fuentes/${nombreTabla}.xlsx`);
+  const ruta = path.resolve(__dirname, `../datos/fuentes/${nombreArchivo}.xlsx`);
   let numeroFila = 0;
   let total = 0;
   let barraActual: SingleBar;

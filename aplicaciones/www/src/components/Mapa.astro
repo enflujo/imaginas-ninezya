@@ -9,29 +9,42 @@ export interface Props {
 const { ancho, alto } = Astro.props;
 ---
 
-<svg class="mapa" data-proporciones={JSON.stringify({ ancho, alto })}></svg>
-<div id="informacion">
-  <p class="nombre"></p>
-  <p class="espdet"></p>
+<div id="contenedorMapa">
+  <div id="menuAños"></div>
+
+  <svg class="mapa" data-proporciones={JSON.stringify({ ancho, alto })}>
+    <defs>
+      <pattern id="sinInfo" patternUnits="userSpaceOnUse" width="3.5" height="3.5" patternTransform="rotate(45)">
+        <line x1="0" y="0" x2="0" y2="3.5" stroke="#46484A" stroke-width="1"></line>
+      </pattern>
+    </defs>
+
+    <g id="colombia"></g>
+  </svg>
+  <div id="informacion">
+    <p class="nombre"></p>
+    <p class="espdet"></p>
+  </div>
 </div>
 
 <script>
   import { crearLinea, escalaColores, escalaCoordenadas, extremosLugar } from '@enflujo/alquimia';
   import type { ExtremosCoordenadas } from '@/tipos';
   import type { FeatureCollection } from 'geojson';
-  import { aleatorioFraccion } from '@/utilidades/ayudas';
   import { indicador } from '@/utilidades/cerebro';
 
   const rutaMunicipios = 'https://enflujo.com/bodega/colombia/municipios.json';
   const mapa = document.querySelector('.mapa') as HTMLDivElement;
+  const colombia = document.getElementById('colombia');
   const informacion = document.getElementById('informacion');
   const infoMunucipio = informacion.querySelector('.nombre') as HTMLParagraphElement;
+  const menuAños = document.getElementById('menuAños') as HTMLDivElement;
 
   let municipios: FeatureCollection;
   let extremosGeo: ExtremosCoordenadas;
   const proporciones = JSON.parse(mapa.dataset.proporciones);
   const color = escalaColores(0, 100, '#e47d6d', '#00ff9b');
-  let zonas = [];
+  let zonas = {};
 
   async function inicio() {
     municipios = await fetch(rutaMunicipios).then((res) => res.json());
@@ -73,16 +86,16 @@ const { ancho, alto } = Astro.props;
     mapa.setAttribute('width', `${ancho}`);
     mapa.setAttribute('height', `${alto}`);
 
-    mapa.innerHTML = '';
-
+    colombia.innerHTML = '';
     municipios.features.forEach((municipio) => {
       if (municipio.geometry.type === 'Polygon' || municipio.geometry.type === 'MultiPolygon') {
         const linea = crearLinea(municipio.geometry, mapearCoordenadas, ancho, alto);
         const zona = document.createElementNS('http://www.w3.org/2000/svg', 'path');
 
-        zona.setAttribute('class', municipio.properties.pdet ? 'municipio pdet' : 'municipio');
+        zona.setAttribute('class', 'municipio');
         zona.setAttribute('d', linea);
-        zona.setAttribute('style', `fill: ${color(aleatorioFraccion(0, 100))}`);
+        zona.setAttribute('id', municipio.properties.codigo);
+        zona.setAttribute('style', 'fill: url(#sinInfo)');
         zona.onmousemove = (evento) => {
           const dims = mapa.getBoundingClientRect();
           const x = evento.clientX - dims.x;
@@ -90,19 +103,14 @@ const { ancho, alto } = Astro.props;
 
           infoMunucipio.innerText = `${municipio.properties.nombre}, (${municipio.properties.dep})`;
 
-          if (municipio.properties.pdet) {
-            informacion.classList.add('pdet');
-          } else {
-            informacion.classList.remove('pdet');
-          }
-
           Object.assign(informacion.style, {
             top: `${y}px`,
             left: `${x}px`,
           });
         };
-        zonas.push(zona);
-        mapa.appendChild(zona);
+
+        zonas[municipio.properties.codigo] = zona;
+        colombia.appendChild(zona);
       }
     });
 
@@ -115,34 +123,91 @@ const { ancho, alto } = Astro.props;
   }
 
   inicio();
+  let añoActivo;
 
-  indicador.subscribe(() => {
-    zonas.forEach((zona) => {
-      zona.style.fill = `${color(aleatorioFraccion(0, 100))}`;
+  indicador.subscribe(async (nombreArchivo) => {
+    if (!nombreArchivo) return;
+    const datosIndicador = await fetch(`/datos/${nombreArchivo}`).then((res) => res.json());
+    const años = Object.keys(datosIndicador);
+
+    menuAños.innerHTML = '';
+
+    años.forEach((año, i) => {
+      if (datosIndicador[año].length) {
+        const boton = document.createElement('span');
+        boton.className = 'botonAño';
+        boton.innerText = año;
+
+        boton.onclick = () => {
+          if (añoActivo) {
+            añoActivo.classList.remove('activo');
+          }
+
+          boton.classList.add('activo');
+          añoActivo = boton;
+          const datos = datosIndicador[año];
+
+          datos.forEach(([codigo, valor]) => {
+            if (zonas[codigo]) {
+              if (valor) {
+                zonas[codigo].setAttribute('style', `fill: ${color(valor)}`);
+              } else {
+                zonas[codigo].setAttribute('style', 'fill: url(#sinInfo)');
+              }
+            } else {
+              console.log(codigo);
+            }
+          });
+        };
+
+        menuAños.appendChild(boton);
+
+        if (i === años.length - 1) {
+          boton.click();
+        }
+      }
     });
   });
 
   window.onresize = escalar;
 </script>
 
-<style lang="scss">
-  #informacion {
-    position: absolute;
-    pointer-events: none;
-    opacity: 0;
-    max-width: 200px;
-    padding: 0.5em;
-    font-size: 0.8em;
-    font-weight: bold;
+<style lang="scss" is:global>
+  #contenedorMapa {
+    #informacion {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0;
+      max-width: 200px;
+      padding: 0.5em;
+      font-size: 0.8em;
+      font-weight: bold;
 
-    background-color: rgb(253, 253, 250);
-    color: black;
-    z-index: 9;
-    transition: opacity 0.42s ease-out;
-    transform: translate(-50%, -105%);
+      background-color: rgb(253, 253, 250);
+      color: black;
+      z-index: 9;
+      transition: opacity 0.42s ease-out;
+      transform: translate(-50%, -105%);
 
-    &.visible {
-      opacity: 1;
+      &.visible {
+        opacity: 1;
+      }
+    }
+
+    .botonAño {
+      margin-right: 0.3em;
+      border: 1px solid;
+      cursor: pointer;
+      padding: 0.2em;
+      transition: all 0.25s ease-in-out;
+
+      &:hover {
+        background-color: antiquewhite;
+      }
+
+      &.activo {
+        background-color: antiquewhite;
+      }
     }
   }
 </style>
