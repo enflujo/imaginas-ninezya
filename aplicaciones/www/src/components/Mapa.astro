@@ -127,17 +127,40 @@ const { ancho, alto } = Astro.props;
 
   indicador.subscribe(async (nombreArchivo) => {
     if (!nombreArchivo) return;
-    const datosIndicador = await fetch(`${import.meta.env.BASE_URL}/datos/${nombreArchivo}`).then((res) => res.json());
+    const datosIndicador = await fetch(`${import.meta.env.BASE_URL}/datos/${nombreArchivo}-mun.json`).then((res) =>
+      res.json()
+    );
     const años = Object.keys(datosIndicador);
+
+    // Lista de años que tienen datos
+    const añosConDatos = [];
+    // Para armar el menú de años: lista de años con y sin datos entre el primer y el último elemento de añosConDatos[]
+    const listaAños = [];
+
+    // Agregar cada año con datos a la lista añosConDatos
+    años.forEach((año) => {
+      if (datosIndicador[año].length) {
+        añosConDatos.push(año);
+      }
+    });
+
+    // Armar lista de años con y sin datos para el menú de años
+    for (let i = 0; i < añosConDatos.length + 2; i++) {
+      listaAños.push(+añosConDatos[0] + i);
+    }
 
     menuAños.innerHTML = '';
 
-    años.forEach((año, i) => {
-      if (datosIndicador[año].length) {
-        const boton = document.createElement('span');
-        boton.className = 'botonAño';
-        boton.innerText = año;
+    listaAños.forEach((año, i) => {
+      const boton = document.createElement('span');
+      boton.className = 'botonAño';
+      boton.innerText = año;
 
+      // Si no hay datos en ese año, le agrega la clase 'vacio'
+      if (!datosIndicador[año].length) {
+        boton.classList.add('vacio');
+      }
+      if (datosIndicador[año].length) {
         boton.onclick = () => {
           if (añoActivo) {
             añoActivo.classList.remove('activo');
@@ -160,12 +183,11 @@ const { ancho, alto } = Astro.props;
           });
         };
 
-        menuAños.appendChild(boton);
-
-        if (i === años.length - 1) {
+        if (i === listaAños.length - 1) {
           boton.click();
         }
       }
+      menuAños.appendChild(boton);
     });
   });
 
@@ -207,6 +229,12 @@ const { ancho, alto } = Astro.props;
 
       &.activo {
         background-color: antiquewhite;
+      }
+
+      &.vacio {
+        background-color: #969696;
+        color: antiquewhite;
+        pointer-events: none;
       }
     }
   }
