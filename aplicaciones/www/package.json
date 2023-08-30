@@ -11,10 +11,10 @@
   },
   "dependencies": {
     "@enflujo/alquimia": "^2.0.0",
-    "astro": "^2.7.3",
+    "astro": "^3.0.1",
     "nanostores": "^0.9.3"
   },
   "devDependencies": {
-    "sass": "^1.63.6"
+    "sass": "^1.66.1"
   }
 }
