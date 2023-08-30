@@ -127,7 +127,7 @@ const { ancho, alto } = Astro.props;
 
   indicador.subscribe(async (nombreArchivo) => {
     if (!nombreArchivo) return;
-    const datosIndicador = await fetch(`/datos/${nombreArchivo}`).then((res) => res.json());
+    const datosIndicador = await fetch(`${import.meta.env.BASE_URL}/datos/${nombreArchivo}`).then((res) => res.json());
     const años = Object.keys(datosIndicador);
 
     menuAños.innerHTML = '';
@@ -155,7 +155,7 @@ const { ancho, alto } = Astro.props;
                 zonas[codigo].setAttribute('style', 'fill: url(#sinInfo)');
               }
             } else {
-              console.log(codigo);
+              console.log('No existe lugar con codigo', codigo);
             }
           });
         };
