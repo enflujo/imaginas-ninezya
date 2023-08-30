@@ -8,11 +8,11 @@ import datos from '@/datosVisibles/indicadores';
       datos.yas.map((ya) => {
         return (
           <li class="ya">
-            {ya.nombre}
+            <p class="nombreYa">{ya.nombre}</p>
             <ul class="indicadores">
               {ya.indicadores.map((indicador) => {
                 return (
-                  <li>
+                  <li class="indicador">
                     <a>{indicador.nombre}</a>
                   </li>
                 );
@@ -27,10 +27,12 @@ import datos from '@/datosVisibles/indicadores';
 
 <script>
   const yas = document.querySelectorAll<HTMLElement>('.ya');
+  const nombresYa = document.querySelectorAll<HTMLElement>('.nombreYa');
 
   // Abrir sub menú de indicadores al hacer click en un 'ya'
   yas.forEach((elemento) => {
-    elemento.addEventListener('click', () => {
+    const nombreYa = elemento.querySelector<HTMLElement>('.nombreYa');
+    nombreYa.addEventListener('click', () => {
       abrirYa(elemento);
     });
   });
