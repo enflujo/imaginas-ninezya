@@ -1,9 +1,7 @@
-import type { Errata } from '@/tipos';
+import type { Departamento, Errata, Municipio } from '@/tipos';
 import { departamentos, municipios } from '@/utilidades/lugaresColombia';
 
-export const limpiarDepartamento = (
-  codigo: number
-): Errata | [codigo: string, nombre: string, lat: number, lon: number] => {
+export const limpiarDepartamento = (codigo: number): Departamento | Errata => {
   if (codigo === 0) {
     return ['00', 'Nacional', 0, 0];
   }
@@ -20,7 +18,7 @@ export const limpiarDepartamento = (
   return { error: true, mensaje: `No existe departamento con código ${codigo}` };
 };
 
-export const limpiarMunicipio = (codigo: number) => {
+export const limpiarMunicipio = (codigo: number): Municipio | Errata => {
   const mun = municipios.datos.find((municipio) => municipio[3] === `${codigo}`.padStart(5, '0'));
 
   if (mun) return mun;
