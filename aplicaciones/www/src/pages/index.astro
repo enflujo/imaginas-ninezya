@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Termometro from '../components/Termometro.astro';
 import Mapa from '@/components/Mapa.astro';
+import LineaTiempo from '@/components/LineaTiempo.astro';
 import Menu from '@/components/Menu.astro';
 ---
 
@@ -30,6 +31,7 @@ import Menu from '@/components/Menu.astro';
 
       <div id="introduccion">
         <div id="contenedorMapa"><Mapa ancho={60} alto={70} /></div>
+        <div id="contenedorLineaTiempo"><LineaTiempo /></div>
       </div>
     </div>
   </main>

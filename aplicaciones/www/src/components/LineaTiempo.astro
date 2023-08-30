@@ -1,0 +1,66 @@
+---
+import { indicador } from '@/utilidades/cerebro';
+
+export interface Props {
+  ancho?: number;
+}
+
+const { ancho } = Astro.props;
+
+const dimsVis = {
+  ancho: ancho,
+  alto: 250,
+  altoVis: 0,
+  marcoIz: 30,
+  marcoAbajo: 20,
+  margenIz: 10,
+  margenArriba: 15,
+  base: 0,
+  inicioX: 0,
+};
+dimsVis.altoVis = dimsVis.alto - dimsVis.marcoAbajo - dimsVis.margenArriba;
+dimsVis.base = dimsVis.alto - dimsVis.marcoAbajo;
+dimsVis.inicioX = dimsVis.marcoIz + dimsVis.margenIz;
+---
+
+<div id="contenedorLineaTiempo">
+  <section id="lineaDeTiempo">
+    <header>
+      <h3 id="nombreLugar"></h3>
+    </header>
+  </section>
+</div>
+
+<script>
+  import { convertirEscala } from '@enflujo/alquimia';
+  import { indicador } from '@/utilidades/cerebro';
+
+  const menuAños = document.getElementById('menuAños') as HTMLDivElement;
+  let zonas = {};
+
+  async function inicio() {
+    escalar();
+  }
+
+  function calcularPorcentaje(valor: number, porcentaje: number) {
+    return valor * (porcentaje / 100);
+  }
+
+  function escalar() {
+    let ancho = window.innerWidth;
+    let alto = window.innerHeight;
+  }
+
+  inicio();
+  let añoActivo;
+
+  indicador.subscribe(async (nombreArchivo) => {
+    if (!nombreArchivo) return;
+    const datosIndicador = await fetch(`${import.meta.env.BASE_URL}/datos/${nombreArchivo}-mun.json`).then((res) =>
+      res.json()
+    );
+    console.log(datosIndicador);
+  });
+
+  window.onresize = escalar;
+</script>
