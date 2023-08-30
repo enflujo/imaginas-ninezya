@@ -1,6 +1,4 @@
 ---
-import datos from '@/datos/indicadores';
-
 import Layout from '../layouts/Layout.astro';
 import Termometro from '../components/Termometro.astro';
 import Mapa from '@/components/Mapa.astro';
@@ -38,16 +36,6 @@ import Menu from '@/components/Menu.astro';
 </Layout>
 
 <script>
-  import { indicador } from '@/utilidades/cerebro';
-
-  const indicadores = document.querySelectorAll<HTMLLIElement>('.indicador');
-
-  indicadores.forEach((elemento) => {
-    elemento.onclick = () => {
-      indicador.set(elemento.dataset.fuente);
-    };
-  });
-
   // const elementos = document.querySelectorAll('.termometro');
 
   // elementos.forEach((elemento: HTMLDivElement) => {

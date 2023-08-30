@@ -12,7 +12,7 @@ import datos from '@/datosVisibles/indicadores';
             <ul class="indicadores">
               {ya.indicadores.map((indicador) => {
                 return (
-                  <li class="indicador">
+                  <li class="indicador" data-archivo={indicador.archivo}>
                     <a>{indicador.nombre}</a>
                   </li>
                 );
@@ -26,20 +26,27 @@ import datos from '@/datosVisibles/indicadores';
 </nav>
 
 <script>
+  import { indicador } from '@/utilidades/cerebro';
   const yas = document.querySelectorAll<HTMLElement>('.ya');
-  const nombresYa = document.querySelectorAll<HTMLElement>('.nombreYa');
+  const indicadores = document.querySelectorAll<HTMLLIElement>('.indicador');
 
+  // Enviar al cerebro el nombre del archivo de datos correspondiente al indicador
+  indicadores.forEach((elemento) => {
+    elemento.onclick = () => {
+      indicador.set(elemento.dataset.archivo);
+    };
+  });
   // Abrir sub menú de indicadores al hacer click en un 'ya'
-  yas.forEach((elemento) => {
-    const nombreYa = elemento.querySelector<HTMLElement>('.nombreYa');
+  yas.forEach((contenedorYa) => {
+    const nombreYa = contenedorYa.querySelector<HTMLElement>('.nombreYa');
     nombreYa.addEventListener('click', () => {
-      abrirYa(elemento);
+      abrirYa(contenedorYa);
     });
   });
 
-  function abrirYa(elemento: HTMLElement) {
-    const indicadores = elemento.querySelector<HTMLElement>('.indicadores');
-    indicadores.classList.toggle('abierto');
+  function abrirYa(contenedorYa: HTMLElement) {
+    const contenedor = contenedorYa.querySelector<HTMLElement>('.indicadores');
+    contenedor.classList.toggle('abierto');
   }
 </script>
 
