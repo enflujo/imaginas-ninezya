@@ -3,11 +3,11 @@ import type { Departamento, Errata } from '@/tipos';
 import { guardarJSON } from '@/utilidades/ayudas';
 import maquinaXlsx from '@/utilidades/maquinaXlsx';
 
-export type VariablesYa1_6 = {
+export type VariablesYa2_5 = {
   departamento: string;
   codmpio: number;
   ano: number;
-  desnutricion: number;
+  cobertura_bruta: number;
 };
 
 type Cobertura = {
@@ -17,11 +17,11 @@ const errata: { fila: number; error: string }[] = [];
 
 export default async () => {
   const respuesta: Cobertura = {};
-  await maquinaXlsx('1.6: salud - desnutrición aguda', 'YA1_1.6', 'Sheet1', procesador);
-  guardarJSON(respuesta, 'ya1-6-dep');
-  guardarJSON(errata, 'Errata YA1.6_dep');
+  await maquinaXlsx('2.5: educación inicial - desnutrición aguda', 'YA2_2.5', 'Sheet1', procesador);
+  guardarJSON(respuesta, 'ya2-5-dep');
+  guardarJSON(errata, 'Errata YA2.5_dep');
 
-  function procesador(fila: VariablesYa1_6, numeroFila: number) {
+  function procesador(fila: VariablesYa2_5, numeroFila: number) {
     const datos = limpiarDepartamento(fila.codmpio);
 
     if (datos.hasOwnProperty('error')) {
@@ -35,8 +35,8 @@ export default async () => {
       respuesta[año] = [];
     }
 
-    if (fila.desnutricion) {
-      respuesta[año].push([(datos as Departamento)[0], fila.desnutricion]);
+    if (fila.cobertura_bruta) {
+      respuesta[año].push([(datos as Departamento)[0], fila.cobertura_bruta]);
     }
   }
 };

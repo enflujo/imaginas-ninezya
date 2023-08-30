@@ -102,6 +102,7 @@ export type Municipio = [
   /** Código de la ciudad o municipio (incluyendo su departamento): ##### */
   codigoCompleto: string,
 ];
+
 export type ObjetoMunicipios = {
   llaves: string[];
   datos: Municipio[];

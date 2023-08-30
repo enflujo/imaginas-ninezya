@@ -1,6 +1,7 @@
 // Tasa de Cobertura Bruta
 
 import { limpiarDepartamento } from '@/limpieza/lugar';
+import type { Departamento, Errata } from '@/tipos';
 import { guardarJSON } from '@/utilidades/ayudas';
 import maquinaXlsx from '@/utilidades/maquinaXlsx';
 
@@ -46,25 +47,30 @@ type Cobertura = {
   [año: string]: [departamento: string, porcentaje: number][];
 };
 
-export default async () => {
-  maquinaXlsx('3.1: Edu - Cobertura', 'Estadisticas_Men', 'Sheet 1', procesador, fin);
-  const respuesta: Cobertura = {};
+const errata: { fila: number; error: string }[] = [];
 
-  function procesador(fila: VariablesSaberPlano) {
-    const departamentoLimpio = limpiarDepartamento(fila.CÓDIGO_DEPARTAMENTO);
-    if (!departamentoLimpio) return;
+export default async () => {
+  const respuesta: Cobertura = {};
+  await maquinaXlsx('3.1: Edu - Cobertura', 'Estadisticas_Men', 'Sheet 1', procesador);
+  guardarJSON(respuesta, 'ya3-1-dep');
+  guardarJSON(errata, 'Errata YA3.1_dep');
+
+  function procesador(fila: VariablesSaberPlano, numeroFila: number) {
+    const datos = limpiarDepartamento(fila.CÓDIGO_DEPARTAMENTO);
+
+    if (datos.hasOwnProperty('error')) {
+      errata.push({ fila: numeroFila, error: (datos as Errata).mensaje });
+      return;
+    }
+
     const año = fila.AÑO;
 
     if (!respuesta[año]) {
       respuesta[año] = [];
     }
 
-    respuesta[año].push([departamentoLimpio[0], fila.COBERTURA_BRUTA]);
-
-    // console.log(departamentoLimpio);
-  }
-
-  function fin() {
-    guardarJSON(respuesta, 'edu-3-1-dep');
+    if (fila.COBERTURA_BRUTA) {
+      respuesta[año].push([(datos as Departamento)[0], fila.COBERTURA_BRUTA]);
+    }
   }
 };

@@ -15,8 +15,10 @@ type Cobertura = {
 const errata: { fila: number; error: string }[] = [];
 
 export default async () => {
-  maquinaXlsx('1.1: salud - seguridad alimentaria', 'YA1_1.1', 'Sheet1', procesador, fin);
   const respuesta: Cobertura = {};
+  await maquinaXlsx('1.1: salud - seguridad alimentaria', 'YA1_1.1', 'Sheet1', procesador);
+  guardarJSON(respuesta, 'ya1-1-mun');
+  guardarJSON(errata, 'Errata YA1.1_mun');
 
   function procesador(fila: VariablesYa1_1, numeroFila: number) {
     const datos = limpiarMunicipio(fila.codmpio);
@@ -37,10 +39,5 @@ export default async () => {
     }
 
     // console.log(departamentoLimpio);
-  }
-
-  function fin() {
-    guardarJSON(respuesta, 'salud-1-1-mun');
-    guardarJSON(errata, 'Errata YA1_1.1_mun');
   }
 };
