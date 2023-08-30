@@ -10,7 +10,7 @@ export default async (
   procesador: (datos: any, numeroFila: number) => void,
   fin: () => void
 ) => {
-  const ruta = path.resolve(__dirname, `../datos/fuentes/${nombreArchivo}.xlsx`);
+  const ruta = path.resolve(__dirname, `../datos/${nombreArchivo}.xlsx`);
   let numeroFila = 0;
   let total = 0;
   let barraActual: SingleBar;

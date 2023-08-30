@@ -4,5 +4,7 @@ node_modules
 dist
 .DS_Store
 publico
-datos
-!datos/README.md
+aplicaciones/procesador/fuente/datos/*
+!aplicaciones/procesador/fuente/datos/README.md
+aplicaciones/www/estaticos/datos/*
+!aplicaciones/www/estaticos/datos/README.md
