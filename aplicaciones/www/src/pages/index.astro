@@ -1,7 +1,10 @@
 ---
+import datos from '@/datos/indicadores';
+
 import Layout from '../layouts/Layout.astro';
 import Termometro from '../components/Termometro.astro';
 import Mapa from '@/components/Mapa.astro';
+import Menu from '@/components/Menu.astro';
 ---
 
 <Layout title="Los 10 Yas!">
@@ -9,46 +12,8 @@ import Mapa from '@/components/Mapa.astro';
     <!-- <h1 class="titulo">NiñezYA</h1> -->
 
     <div class="contenido">
+      <Menu />
       <div id="yas">
-        <section>
-          <h2>1. Salud y Nutrición</h2>
-          <ul>
-            <li class="indicador" data-fuente="salud-1-1-mun.json">
-              Seguridad Alimentaria: Acceso real a agua potable.
-            </li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>2. Educación Inicial</h2>
-        </section>
-        <section>
-          <h2>3. Educación Preescolar, Básica y Media</h2>
-        </section>
-        <section>
-          <h2>4. Ambiente Sano</h2>
-        </section>
-        <section>
-          <h2>5. Juego</h2>
-        </section>
-        <section>
-          <h2>6. Participación</h2>
-        </section>
-        <section>
-          <h2>7. Fortalecimiento Familiar del Cuidado y la Crianza de la Niñez</h2>
-        </section>
-        <section>
-          <h2>8. Protección Frente a Cualquier Tipo de Violencia</h2>
-        </section>
-        <section>
-          <h2>
-            9. Adolescentes con Justicia Restaurativa y Pedagógica (Sistema de Responsabilidad Penal para Adolescentes -
-            SRPA)
-          </h2>
-        </section>
-        <section>
-          <h2>10. Cultura de Paz, Reconciliación y Convivencia</h2>
-        </section>
         <!-- <Termometro titulo="1. Salud y Nutrición" valor={100} />
         
         <Termometro titulo="2. Educación Inicial" valor={100} />

@@ -1,0 +1,62 @@
+---
+import datos from '@/datosVisibles/indicadores';
+---
+
+<nav id="menu">
+  <ol>
+    {
+      datos.yas.map((ya) => {
+        return (
+          <li class="ya">
+            <p class="nombreYa">{ya.nombre}</p>
+            <ul class="indicadores">
+              {ya.indicadores.map((indicador) => {
+                return (
+                  <li class="indicador">
+                    <a>{indicador.nombre}</a>
+                  </li>
+                );
+              })}
+            </ul>
+          </li>
+        );
+      })
+    }
+  </ol>
+</nav>
+
+<script>
+  const yas = document.querySelectorAll<HTMLElement>('.ya');
+  const nombresYa = document.querySelectorAll<HTMLElement>('.nombreYa');
+
+  // Abrir sub menú de indicadores al hacer click en un 'ya'
+  yas.forEach((elemento) => {
+    const nombreYa = elemento.querySelector<HTMLElement>('.nombreYa');
+    nombreYa.addEventListener('click', () => {
+      abrirYa(elemento);
+    });
+  });
+
+  function abrirYa(elemento: HTMLElement) {
+    const indicadores = elemento.querySelector<HTMLElement>('.indicadores');
+    indicadores.classList.toggle('abierto');
+  }
+</script>
+
+<style lang="scss">
+  #menu {
+    .ya {
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .indicadores {
+      font-weight: 300;
+      display: none;
+      list-style: disc;
+
+      &.abierto {
+        display: block;
+      }
+    }
+  }
+</style>
