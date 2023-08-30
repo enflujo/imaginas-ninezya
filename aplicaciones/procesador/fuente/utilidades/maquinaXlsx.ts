@@ -7,7 +7,7 @@ export default async (
   nombre: string,
   nombreArchivo: string,
   hoja: string,
-  procesador: (datos: any) => void,
+  procesador: (datos: any, numeroFila: number) => void,
   fin: () => void
 ) => {
   const ruta = path.resolve(__dirname, `../datos/fuentes/${nombreArchivo}.xlsx`);
@@ -35,7 +35,7 @@ export default async (
 
     // Contador para saber en que fila de Excel estamos, útil para buscar errores directo en el Excel.
     numeroFila++;
-    procesador(fila.formatted.obj);
+    procesador(fila.formatted.obj, numeroFila);
 
     barraActual.update(fila.processedSheetSize, { terminado: false });
   });
