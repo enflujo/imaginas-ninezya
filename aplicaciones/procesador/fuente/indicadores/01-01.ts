@@ -10,7 +10,7 @@ export type VariablesYa1_1 = {
 };
 
 type Respuesta = {
-  [año: string]: [municipio: string, porcentaje: number][];
+  [año: string]: [lugar: string, porcentaje: number][];
 };
 const errata: { fila: number; error: string }[] = [];
 
