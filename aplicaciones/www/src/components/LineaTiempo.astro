@@ -1,14 +1,11 @@
 ---
-import { indicador } from '@/utilidades/cerebro';
-
 export interface Props {
   ancho?: number;
+  alto?: number;
 }
 
-const { ancho } = Astro.props;
-
+const { alto } = Astro.props;
 const dimsVis = {
-  ancho: ancho,
   alto: 250,
   altoVis: 0,
   marcoIz: 30,
@@ -18,51 +15,16 @@ const dimsVis = {
   base: 0,
   inicioX: 0,
 };
-dimsVis.altoVis = dimsVis.alto - dimsVis.marcoAbajo - dimsVis.margenArriba;
-dimsVis.base = dimsVis.alto - dimsVis.marcoAbajo;
-dimsVis.inicioX = dimsVis.marcoIz + dimsVis.margenIz;
 
-const listaAños = [2005, 2006, 2007, 2008, 2009];
-
-indicador.subscribe(async (nombreArchivo) => {
-  if (!nombreArchivo) return;
-  const datosIndicador = await fetch(`${import.meta.env.BASE_URL}/datos/${nombreArchivo}-mun.json`).then((res) =>
-    res.json()
-  );
-  const años = Object.keys(datosIndicador);
-
-  // Lista de años que tienen datos
-  const añosConDatos = [];
-
-  // Agregar cada año con datos a la lista añosConDatos
-  años.forEach((año) => {
-    if (datosIndicador[año].length) {
-      añosConDatos.push(año);
-    }
-  });
-
-  // Armar lista de años con y sin datos para el menú de años
-  for (let i = 0; i < añosConDatos.length + 2; i++) {
-    //  listaAños.push(+añosConDatos[0] + i);
-  }
-});
-
-const pasoX = () => ((ancho - dimsVis.inicioX) / (listaAños.length - 1) - 1.1) | 0;
-
-const posicionX = (año: number) => {
-  const i = listaAños.findIndex((a) => a == año);
-  console.log(i);
-  return i * +pasoX + dimsVis.inicioX;
-};
 ---
 
-<section id="lineaDeTiempo" data-años={listaAños}>
+<section id="lineaDeTiempo">
   <header>
     <h2>Línea de tiempo</h2>
     <h3 id="nombreLugar">Colombia</h3>
   </header>
 
-  <svg width={ancho} height={dimsVis.alto}></svg>
+  <svg width="100%" height="100%" style={`height:${alto}vh`}>
   <!-- <defs>
       <linearGradient id="arriba" x1="50%" y1="0%" x2="50%" y2="100%">
         <stop offset="0%" style="stop-color: rgb(39, 247, 186); stop-opacity: 1"></stop>
@@ -81,17 +43,18 @@ const posicionX = (año: number) => {
     x1={dimsVis.marcoIz}
     y1="0"
     x2={dimsVis.marcoIz}
-    y2={dimsVis.alto}
-    shape-rendering="crispEdges"></line>
-  <line
-    class="lineaMarco"
-    x1={dimsVis.marcoIz}
-    y1={dimsVis.base}
-    x2={ancho}
-    y2={dimsVis.base}
+    y2="100%"
     shape-rendering="crispEdges"></line>
 
-  {
+  <line
+    class="lineaMarco lineaBase"
+    x1={dimsVis.marcoIz}
+    y1="100%"
+    x2="100%"
+    y2="100%"
+    shape-rendering="crispEdges"></line>
+
+  <!-- {
     listaAños.map((año, i) => {
       return <line class="marcaMarco" x1={posicionX(año)} y1={dimsVis.base} x2={i * 50} y2={dimsVis.base + 7} />;
     })
@@ -106,7 +69,7 @@ const posicionX = (año: number) => {
         </text>
       );
     })
-  }
+  } -->
 
   <!-- 
   <line
@@ -131,11 +94,11 @@ const posicionX = (año: number) => {
     {{ cortarAño ? añoRecortado(anno) : anno }}
   </text> -->
 
-  <text class="nombreEje" x="0" y={dimsVis.base + 14}>Año</text>
+  <text class="nombreEje lineaBase" x="0" y="100%">Año</text>
+</svg>
 </section>
 
 <script>
-  import { convertirEscala } from '@enflujo/alquimia';
   import { indicador } from '@/utilidades/cerebro';
 
   const lineaDeTiempo = document.getElementById('lineaDeTiempo');
@@ -158,76 +121,18 @@ const posicionX = (año: number) => {
 
   inicio();
 
-  let añoActivo;
 
   indicador.subscribe(async (nombreArchivo) => {
-    if (!nombreArchivo) return;
-    const datosIndicador = await fetch(`${import.meta.env.BASE_URL}/datos/${nombreArchivo}-mun.json`).then((res) =>
-      res.json()
-    );
-    const años = Object.keys(datosIndicador);
 
-    // Lista de años que tienen datos
-    const añosConDatos = [];
-    // Para armar el menú de años: lista de años con y sin datos entre el primer y el último elemento de añosConDatos[]
-    const listaAños = [];
-
-    // Agregar cada año con datos a la lista añosConDatos
-    años.forEach((año) => {
-      if (datosIndicador[año].length) {
-        añosConDatos.push(año);
-      }
-    });
-
-    // Armar lista de años con y sin datos para el menú de años
-    for (let i = 0; i < añosConDatos.length + 2; i++) {
-      listaAños.push(+añosConDatos[0] + i);
-    }
-
-    menuAños.innerHTML = '';
-
-    listaAños.forEach((año, i) => {
-      const boton = document.createElement('span');
-      boton.className = 'botonAño';
-      boton.innerText = año;
-
-      // Si no hay datos en ese año, le agrega la clase 'vacio'
-      if (!datosIndicador[año].length) {
-        boton.classList.add('vacio');
-      }
-      if (datosIndicador[año].length) {
-        boton.onclick = () => {
-          if (añoActivo) {
-            añoActivo.classList.remove('activo');
-          }
-
-          boton.classList.add('activo');
-          añoActivo = boton;
-          const datos = datosIndicador[año];
-
-          datos.forEach(([codigo, valor]) => {
-            if (zonas[codigo]) {
-              if (valor) {
-              } else {
-              }
-            } else {
-              // console.log('No existe lugar con codigo', codigo);
-            }
-          });
-        };
-
-        if (i === listaAños.length - 1) {
-          boton.click();
-        }
-      }
-      menuAños.appendChild(boton);
-    });
-  });
+});
 
   window.onresize = escalar;
 </script>
 
 <style lang="scss">
+  .lineaBase {
+    transform: translateY(-20px);
+  }
   #lineaDeTiempo {
     position: relative;
   }
