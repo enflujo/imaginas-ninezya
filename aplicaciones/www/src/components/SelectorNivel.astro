@@ -1,0 +1,37 @@
+---
+
+---
+
+<div id="selectorNivel">
+  <button class="botonSelector" data-nivel="nal">Nacional</button>
+  <button class="botonSelector" data-nivel="dep">Departamento</button>
+  <button class="botonSelector" data-nivel="mun">Municipio</button>
+</div>
+
+<script>
+  import { nivel } from '@/utilidades/cerebro';
+
+  const selectores = document.querySelectorAll<HTMLElement>('.botonSelector');
+
+  selectores.forEach((boton) => {
+    boton.addEventListener('click', () => {
+      nivel.set(boton.dataset.nivel);
+    });
+  });
+</script>
+
+<style lang="scss">
+  #selectorNivel {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 1em;
+  }
+  .botonSelector {
+    margin-right: 1em;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #ffff8a;
+    }
+  }
+</style>

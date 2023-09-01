@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Termometro from '../components/Termometro.astro';
 import Mapa from '@/components/Mapa.astro';
 import Menu from '@/components/Menu.astro';
+import SelectorNivel from '@/components/SelectorNivel.astro';
 ---
 
 <Layout title="Los 10 Yas!">
@@ -29,6 +30,7 @@ import Menu from '@/components/Menu.astro';
       </div>
 
       <div id="introduccion">
+        <SelectorNivel />
         <div id="contenedorMapa"><Mapa ancho={60} alto={70} /></div>
       </div>
     </div>
