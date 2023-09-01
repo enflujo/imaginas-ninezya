@@ -26,14 +26,14 @@ import datos from '@/datosVisibles/indicadores';
 </nav>
 
 <script>
-  import { indicador } from '@/utilidades/cerebro';
+  import { cargarDatos } from '@/utilidades/cerebro';
   const yas = document.querySelectorAll<HTMLElement>('.ya');
   const indicadores = document.querySelectorAll<HTMLLIElement>('.indicador');
 
   // Enviar al cerebro el nombre del archivo de datos correspondiente al indicador
   indicadores.forEach((elemento) => {
     elemento.onclick = () => {
-      indicador.set(elemento.dataset.archivo);
+      cargarDatos(elemento.dataset.archivo);
     };
   });
   // Abrir sub menú de indicadores al hacer click en un 'ya'
