@@ -21,19 +21,124 @@ const dimsVis = {
 dimsVis.altoVis = dimsVis.alto - dimsVis.marcoAbajo - dimsVis.margenArriba;
 dimsVis.base = dimsVis.alto - dimsVis.marcoAbajo;
 dimsVis.inicioX = dimsVis.marcoIz + dimsVis.margenIz;
+
+const listaAños = [2005, 2006, 2007, 2008, 2009];
+
+indicador.subscribe(async (nombreArchivo) => {
+  if (!nombreArchivo) return;
+  const datosIndicador = await fetch(`${import.meta.env.BASE_URL}/datos/${nombreArchivo}-mun.json`).then((res) =>
+    res.json()
+  );
+  const años = Object.keys(datosIndicador);
+
+  // Lista de años que tienen datos
+  const añosConDatos = [];
+
+  // Agregar cada año con datos a la lista añosConDatos
+  años.forEach((año) => {
+    if (datosIndicador[año].length) {
+      añosConDatos.push(año);
+    }
+  });
+
+  // Armar lista de años con y sin datos para el menú de años
+  for (let i = 0; i < añosConDatos.length + 2; i++) {
+    //  listaAños.push(+añosConDatos[0] + i);
+  }
+});
+
+const pasoX = () => ((ancho - dimsVis.inicioX) / (listaAños.length - 1) - 1.1) | 0;
+
+const posicionX = (año: number) => {
+  const i = listaAños.findIndex((a) => a == año);
+  console.log(i);
+  return i * +pasoX + dimsVis.inicioX;
+};
 ---
 
-<div id="contenedorLineaTiempo">
-  <section id="lineaDeTiempo">
-    <header>
-      <h3 id="nombreLugar"></h3>
-    </header>
-  </section>
-</div>
+<section id="lineaDeTiempo" data-años={listaAños}>
+  <header>
+    <h2>Línea de tiempo</h2>
+    <h3 id="nombreLugar">Colombia</h3>
+  </header>
+
+  <svg width={ancho} height={dimsVis.alto}></svg>
+  <!-- <defs>
+      <linearGradient id="arriba" x1="50%" y1="0%" x2="50%" y2="100%">
+        <stop offset="0%" style="stop-color: rgb(39, 247, 186); stop-opacity: 1"></stop>
+        <stop offset="100%" style="stop-color: rgb(39, 247, 186); stop-opacity: 1"></stop>
+      </linearGradient>
+
+      <linearGradient id="abajo" x1="50%" y1="0%" x2="50%" y2="100%">
+        <stop offset="0%" style="stop-color: rgb(39, 247, 186); stop-opacity: 1"></stop>
+        <stop offset="100%" style="stop-color: rgb(39, 247, 146); stop-opacity: 1"></stop>
+      </linearGradient>
+    </defs> -->
+
+  <!-- MARCO -->
+  <line
+    class="lineaMarco"
+    x1={dimsVis.marcoIz}
+    y1="0"
+    x2={dimsVis.marcoIz}
+    y2={dimsVis.alto}
+    shape-rendering="crispEdges"></line>
+  <line
+    class="lineaMarco"
+    x1={dimsVis.marcoIz}
+    y1={dimsVis.base}
+    x2={ancho}
+    y2={dimsVis.base}
+    shape-rendering="crispEdges"></line>
+
+  {
+    listaAños.map((año, i) => {
+      return <line class="marcaMarco" x1={posicionX(año)} y1={dimsVis.base} x2={i * 50} y2={dimsVis.base + 7} />;
+    })
+  }
+
+  {
+    listaAños.map((año, i) => {
+      return (
+        <text class="año textoEje" x={i * 50} y={dimsVis.base + 16}>
+          {' '}
+          {año}
+        </text>
+      );
+    })
+  }
+
+  <!-- 
+  <line
+    v-for="anno in cerebroDatos.años"
+    :key="`marca-${anno}`"
+    class="marcaMarco"
+    :x1="posicionX(anno)"
+    :y1="dimsVis.base"
+    :x2="posicionX(anno)"
+    :y2="dimsVis.base + 7"
+  />
+
+  <text
+    v-for="anno in cerebroDatos.años"
+    :key="`año-${anno}`"
+    class="año textoEje"
+    :class="anno === cerebroGlobales.año ? 'activo' : ''"
+    :x="posicionX(anno)"
+    :y="dimsVis.base + 16"
+    @click="cerebroGlobales.actualizarAño(anno)"
+  >
+    {{ cortarAño ? añoRecortado(anno) : anno }}
+  </text> -->
+
+  <text class="nombreEje" x="0" y={dimsVis.base + 14}>Año</text>
+</section>
 
 <script>
   import { convertirEscala } from '@enflujo/alquimia';
   import { indicador } from '@/utilidades/cerebro';
+
+  const lineaDeTiempo = document.getElementById('lineaDeTiempo');
 
   const menuAños = document.getElementById('menuAños') as HTMLDivElement;
   let zonas = {};
@@ -52,6 +157,7 @@ dimsVis.inicioX = dimsVis.marcoIz + dimsVis.margenIz;
   }
 
   inicio();
+
   let añoActivo;
 
   indicador.subscribe(async (nombreArchivo) => {
@@ -59,8 +165,167 @@ dimsVis.inicioX = dimsVis.marcoIz + dimsVis.margenIz;
     const datosIndicador = await fetch(`${import.meta.env.BASE_URL}/datos/${nombreArchivo}-mun.json`).then((res) =>
       res.json()
     );
-    console.log(datosIndicador);
+    const años = Object.keys(datosIndicador);
+
+    // Lista de años que tienen datos
+    const añosConDatos = [];
+    // Para armar el menú de años: lista de años con y sin datos entre el primer y el último elemento de añosConDatos[]
+    const listaAños = [];
+
+    // Agregar cada año con datos a la lista añosConDatos
+    años.forEach((año) => {
+      if (datosIndicador[año].length) {
+        añosConDatos.push(año);
+      }
+    });
+
+    // Armar lista de años con y sin datos para el menú de años
+    for (let i = 0; i < añosConDatos.length + 2; i++) {
+      listaAños.push(+añosConDatos[0] + i);
+    }
+
+    menuAños.innerHTML = '';
+
+    listaAños.forEach((año, i) => {
+      const boton = document.createElement('span');
+      boton.className = 'botonAño';
+      boton.innerText = año;
+
+      // Si no hay datos en ese año, le agrega la clase 'vacio'
+      if (!datosIndicador[año].length) {
+        boton.classList.add('vacio');
+      }
+      if (datosIndicador[año].length) {
+        boton.onclick = () => {
+          if (añoActivo) {
+            añoActivo.classList.remove('activo');
+          }
+
+          boton.classList.add('activo');
+          añoActivo = boton;
+          const datos = datosIndicador[año];
+
+          datos.forEach(([codigo, valor]) => {
+            if (zonas[codigo]) {
+              if (valor) {
+              } else {
+              }
+            } else {
+              // console.log('No existe lugar con codigo', codigo);
+            }
+          });
+        };
+
+        if (i === listaAños.length - 1) {
+          boton.click();
+        }
+      }
+      menuAños.appendChild(boton);
+    });
   });
 
   window.onresize = escalar;
 </script>
+
+<style lang="scss">
+  #lineaDeTiempo {
+    position: relative;
+  }
+
+  h3 {
+    margin: 0.3em 0;
+  }
+
+  #nombreLugar {
+    color: rgb(46, 46, 46);
+    text-transform: uppercase;
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+  }
+
+  #detalle {
+    color: rgb(46, 46, 46);
+    font-size: 0.9em;
+    width: fit-content;
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease-in-out;
+    padding: 2px;
+    background-color: white;
+    font-weight: bold;
+  }
+
+  svg {
+    display: block;
+
+    .lineaMarco {
+      stroke: rgb(46, 46, 46);
+      stroke-width: 3;
+    }
+
+    .marcaMarco {
+      stroke: rgb(46, 46, 46);
+      stroke-width: 2;
+    }
+
+    .lineaDivision {
+      stroke: rgb(46, 46, 46);
+      stroke-width: 1;
+      opacity: 0.6;
+    }
+
+    .año {
+      transform: translateX(-5px);
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.6;
+      }
+
+      &.activo {
+        opacity: 0.6;
+        cursor: default;
+      }
+    }
+
+    .añoActual {
+      stroke: rgb(46, 46, 46);
+      stroke-width: 4;
+      opacity: 0.6;
+    }
+
+    .umbral {
+      opacity: 0.6;
+    }
+
+    .nombreEje {
+      font-size: 14px;
+      fill: rgb(46, 46, 46);
+      font-weight: bold;
+    }
+
+    .textoEje {
+      font-size: 10px;
+      fill: rgb(46, 46, 46);
+      font-weight: bold;
+    }
+  }
+
+  #descripcionY {
+    color: rgb(46, 46, 46);
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  #descripcionMeta {
+    border: 2px solid #27f7ba;
+    background-color: white;
+    padding: 1em 1.5em;
+    color: #0042bf;
+    margin-top: 2em;
+    margin-left: 30px;
+  }
+</style>
