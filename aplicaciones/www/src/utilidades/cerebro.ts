@@ -6,7 +6,9 @@ export const datosIndicador = map<{ [año: string]: any }>();
 
 export async function cargarDatos(nombreArchivo: string) {
   const datos = await fetch(`${import.meta.env.BASE_URL}/datos/${nombreArchivo}-mun.json`).then((res) => res.json());
-  const años = Object.keys(datos).sort();
+  const años = Object.keys(datos)
+    .filter((año) => datos[año].length)
+    .sort();
   const min = +años[0];
   const max = +años[años.length - 1];
   const lista = [];
