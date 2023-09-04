@@ -1,0 +1,246 @@
+---
+export interface Props {
+  ancho?: number;
+  alto?: number;
+}
+
+const { alto } = Astro.props;
+const dimsVis = {
+  alto: 250,
+  altoVis: 0,
+  marcoIz: 30,
+  marcoAbajo: 20,
+  margenIz: 10,
+  margenArriba: 15,
+  base: 0,
+  inicioX: 0,
+};
+---
+
+<section id="lineaDeTiempo">
+  <!-- <header>
+    <h3 id="nombreLugar">Colombia</h3>
+  </header> -->
+
+  <svg id="grafica" width="100%" height="100%" style={`height:${alto}vh`}>
+    <!-- <defs>
+      <linearGradient id="arriba" x1="50%" y1="0%" x2="50%" y2="100%">
+        <stop offset="0%" style="stop-color: rgb(39, 247, 186); stop-opacity: 1"></stop>
+        <stop offset="100%" style="stop-color: rgb(39, 247, 186); stop-opacity: 1"></stop>
+      </linearGradient>
+
+      <linearGradient id="abajo" x1="50%" y1="0%" x2="50%" y2="100%">
+        <stop offset="0%" style="stop-color: rgb(39, 247, 186); stop-opacity: 1"></stop>
+        <stop offset="100%" style="stop-color: rgb(39, 247, 146); stop-opacity: 1"></stop>
+      </linearGradient>
+    </defs> -->
+
+    <!-- MARCO -->
+    <line class="lineaMarco" x1={dimsVis.marcoIz} y1="0" x2={dimsVis.marcoIz} y2="100%" shape-rendering="crispEdges"
+    ></line>
+
+    <line class="lineaMarco lineaBase" x1={dimsVis.marcoIz} y1="100%" x2="100%" y2="100%" shape-rendering="crispEdges"
+    ></line>
+
+    <!-- {
+    listaAños.map((año, i) => {
+      return <line class="marcaMarco" x1={posicionX(año)} y1={dimsVis.base} x2={i * 50} y2={dimsVis.base + 7} />;
+    })
+  }
+
+  {
+    listaAños.map((año, i) => {
+      return (
+        <text class="año textoEje" x={i * 50} y={dimsVis.base + 16}>
+          {' '}
+          {año}
+        </text>
+      );
+    })
+  } -->
+
+    <!-- 
+  <line
+    v-for="anno in cerebroDatos.años"
+    :key="`marca-${anno}`"
+    class="marcaMarco"
+    :x1="posicionX(anno)"
+    :y1="dimsVis.base"
+    :x2="posicionX(anno)"
+    :y2="dimsVis.base + 7"
+  />
+
+  <text
+    v-for="anno in cerebroDatos.años"
+    :key="`año-${anno}`"
+    class="año textoEje"
+    :class="anno === cerebroGlobales.año ? 'activo' : ''"
+    :x="posicionX(anno)"
+    :y="dimsVis.base + 16"
+    @click="cerebroGlobales.actualizarAño(anno)"
+  >
+    {{ cortarAño ? añoRecortado(anno) : anno }}
+  </text> -->
+
+    <text class="nombreEje lineaBase" x="0" y="100%">Año</text>
+  </svg>
+</section>
+
+<script>
+  import { listaAños } from '@/utilidades/cerebro';
+  import { convertirEscala } from '@enflujo/alquimia';
+  const svg = document.getElementById('grafica') as HTMLElement & SVGElement;
+
+  // const posicionY = (valor) =>
+  // convertirEscala(valor, 0, cerebroDatos.valorMax || 100, dimsVis.base, dimsVis.margenArriba);
+
+  const lineaDeTiempo = document.getElementById('lineaDeTiempo');
+
+  const menuAños = document.getElementById('menuAños') as HTMLDivElement;
+  let zonas = {};
+
+  function calcularPorcentaje(valor: number, porcentaje: number) {
+    return valor * (porcentaje / 100);
+  }
+
+  function escalar() {
+    let ancho = window.innerWidth;
+    let alto = window.innerHeight;
+  }
+
+  listaAños.subscribe((lista) => {
+    const posX = (valor: number) => convertirEscala(valor, +lista[0].año, +lista[lista.length - 1].año, 5, 95);
+    const grupoAños = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    grupoAños.setAttribute('class', 'marcasAños');
+    lista.forEach(({ año }) => {
+      const marcaAño = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      const texto = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      const x = posX(+año);
+
+      marcaAño.setAttribute('class', 'marcaMarco');
+      marcaAño.setAttribute('x1', `${x}%`);
+      marcaAño.setAttribute('y1', `0`);
+      marcaAño.setAttribute('x2', `${x}%`);
+      marcaAño.setAttribute('y2', `5`);
+
+      texto.setAttribute('class', 'año textoEje');
+      texto.setAttribute('x', `${x}%`);
+      texto.setAttribute('y', `15`);
+      texto.innerHTML = `${año}`;
+
+      grupoAños.appendChild(marcaAño);
+      grupoAños.appendChild(texto);
+    });
+    svg.appendChild(grupoAños);
+  });
+</script>
+
+<style lang="scss" is:global>
+  .lineaBase {
+    transform: translateY(-20px);
+  }
+  #lineaDeTiempo {
+    position: relative;
+    margin-top: 2em;
+  }
+
+  h3 {
+    margin: 0.3em 0;
+  }
+
+  #nombreLugar {
+    color: rgb(46, 46, 46);
+    text-transform: uppercase;
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+  }
+
+  #detalle {
+    color: rgb(46, 46, 46);
+    font-size: 0.9em;
+    width: fit-content;
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease-in-out;
+    padding: 2px;
+    background-color: white;
+    font-weight: bold;
+  }
+
+  svg {
+    display: block;
+
+    .marcasAños {
+      transform: translate(10px, calc(100% - 20px));
+    }
+    .lineaMarco {
+      stroke: rgb(46, 46, 46);
+      stroke-width: 3;
+    }
+
+    .marcaMarco {
+      stroke: rgb(46, 46, 46);
+      stroke-width: 2;
+    }
+
+    .lineaDivision {
+      stroke: rgb(46, 46, 46);
+      stroke-width: 1;
+      opacity: 0.6;
+    }
+
+    .año {
+      transform: translateX(-5px);
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.6;
+      }
+
+      &.activo {
+        opacity: 0.6;
+        cursor: default;
+      }
+    }
+
+    .añoActual {
+      stroke: rgb(46, 46, 46);
+      stroke-width: 4;
+      opacity: 0.6;
+    }
+
+    .umbral {
+      opacity: 0.6;
+    }
+
+    .nombreEje {
+      font-size: 14px;
+      fill: rgb(46, 46, 46);
+      font-weight: bold;
+    }
+
+    .textoEje {
+      font-size: 10px;
+      fill: rgb(46, 46, 46);
+      font-weight: bold;
+    }
+  }
+
+  #descripcionY {
+    color: rgb(46, 46, 46);
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  #descripcionMeta {
+    border: 2px solid #27f7ba;
+    background-color: white;
+    padding: 1em 1.5em;
+    color: #0042bf;
+    margin-top: 2em;
+    margin-left: 30px;
+  }
+</style>

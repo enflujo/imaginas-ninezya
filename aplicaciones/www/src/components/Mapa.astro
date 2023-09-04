@@ -31,35 +31,30 @@ const { ancho, alto } = Astro.props;
   import { crearLinea, escalaColores, escalaCoordenadas, extremosLugar } from '@enflujo/alquimia';
   import type { ExtremosCoordenadas } from '@/tipos';
   import type { FeatureCollection } from 'geojson';
-  import { datosIndicador, listaAños } from '@/utilidades/cerebro';
+  import { datosColombia, datosIndicador, listaAños, nivel } from '@/utilidades/cerebro';
+  import type { IMapearCoordenadas } from '@enflujo/alquimia/libreria/modulos/tipos';
 
-  const rutaMunicipios = 'https://enflujo.com/bodega/colombia/municipios.json';
   const mapa = document.querySelector('.mapa') as HTMLDivElement;
   const colombia = document.getElementById('colombia');
   const informacion = document.getElementById('informacion');
   const infoMunucipio = informacion.querySelector('.nombre') as HTMLParagraphElement;
   const menuAños = document.getElementById('menuAños') as HTMLDivElement;
-
-  let municipios: FeatureCollection;
+  let mapearCoordenadas: IMapearCoordenadas;
   let extremosGeo: ExtremosCoordenadas;
   const proporciones = JSON.parse(mapa.dataset.proporciones);
-  const color = escalaColores(0, 100, '#e47d6d', '#00ff9b');
+  const color = escalaColores(0, 100, '#DE2E56', '#94FF1A');
   let zonas = {};
+  let ancho = window.innerWidth;
+  let alto = window.innerHeight;
 
-  async function inicio() {
-    municipios = await fetch(rutaMunicipios).then((res) => res.json());
-    extremosGeo = extremosLugar(municipios);
-    escalar();
-  }
+  async function inicio() {}
 
   function calcularPorcentaje(valor: number, porcentaje: number) {
     return valor * (porcentaje / 100);
   }
 
   function escalar() {
-    let ancho = window.innerWidth;
-    let alto = window.innerHeight;
-    const mapearCoordenadas = escalaCoordenadas(
+    mapearCoordenadas = escalaCoordenadas(
       extremosGeo.latitudMin,
       extremosGeo.latitudMax,
       extremosGeo.longitudMin,
@@ -86,34 +81,6 @@ const { ancho, alto } = Astro.props;
     mapa.setAttribute('width', `${ancho}`);
     mapa.setAttribute('height', `${alto}`);
 
-    colombia.innerHTML = '';
-    municipios.features.forEach((municipio) => {
-      if (municipio.geometry.type === 'Polygon' || municipio.geometry.type === 'MultiPolygon') {
-        const linea = crearLinea(municipio.geometry, mapearCoordenadas, ancho, alto);
-        const zona = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-
-        zona.setAttribute('class', 'municipio');
-        zona.setAttribute('d', linea);
-        zona.setAttribute('id', municipio.properties.codigo);
-        zona.setAttribute('style', 'fill: url(#sinInfo)');
-        zona.onmousemove = (evento) => {
-          const dims = mapa.getBoundingClientRect();
-          const x = evento.clientX - dims.x;
-          const y = evento.clientY - dims.y;
-
-          infoMunucipio.innerText = `${municipio.properties.nombre}, (${municipio.properties.dep})`;
-
-          Object.assign(informacion.style, {
-            top: `${y}px`,
-            left: `${x}px`,
-          });
-        };
-
-        zonas[municipio.properties.codigo] = zona;
-        colombia.appendChild(zona);
-      }
-    });
-
     mapa.onmouseenter = () => {
       informacion.classList.add('visible');
     };
@@ -126,10 +93,38 @@ const { ancho, alto } = Astro.props;
   let añoActivo: HTMLSpanElement;
   // const datos = datos
 
+  datosIndicador.subscribe(async () => {
+    const nuevoNivel = nivel.get();
+
+    if (nuevoNivel === 'mun') {
+      const municipios = datosColombia.value['mun'];
+      if (!municipios) return;
+      extremosGeo = extremosLugar(municipios);
+      escalar();
+
+      colombia.innerHTML = '';
+      crearMapa(municipios, 'municipios');
+      if (!añoActivo) return;
+      pintarMapa(añoActivo.innerText);
+    } else if (nuevoNivel === 'dep') {
+      const departamentos = datosColombia.value['dep'];
+
+      if (!departamentos) return;
+      extremosGeo = extremosLugar(departamentos);
+      escalar();
+
+      colombia.innerHTML = '';
+      crearMapa(departamentos, 'departamentos');
+      if (!añoActivo) return;
+      pintarMapa(añoActivo.innerText);
+    }
+  });
+
   listaAños.subscribe((lista) => {
+    if (!lista.length) return;
     menuAños.innerHTML = '';
 
-    lista.forEach(({año, conDatos}, i) => {
+    lista.forEach(({ año, conDatos }, i) => {
       const boton = document.createElement('span');
       boton.className = 'botonAño';
       boton.innerText = año;
@@ -145,20 +140,7 @@ const { ancho, alto } = Astro.props;
 
           boton.classList.add('activo');
           añoActivo = boton;
-          const datos = datosIndicador.get()[año];
-          if (!datos) return;
-
-          datos.forEach(([codigo, valor]) => {
-            if (zonas[codigo]) {
-              if (valor) {
-                zonas[codigo].setAttribute('style', `fill: ${color(valor)}`);
-              } else {
-                zonas[codigo].setAttribute('style', 'fill: url(#sinInfo)');
-              }
-            } else {
-              console.log('No existe lugar con codigo', codigo);
-            }
-          });
+          pintarMapa(año);
         };
 
         if (i === lista.length - 1) {
@@ -167,13 +149,60 @@ const { ancho, alto } = Astro.props;
       }
       menuAños.appendChild(boton);
     });
-  })
+  });
+
+  function pintarMapa(año: string) {
+    const datos = datosIndicador.get()[año];
+    if (!datos) return;
+
+    datos.forEach(([codigo, valor]) => {
+      if (zonas[codigo]) {
+        if (valor) {
+          zonas[codigo].setAttribute('style', `fill: ${color(valor)}`);
+        } else {
+          zonas[codigo].setAttribute('style', 'fill: url(#sinInfo)');
+        }
+      } else {
+        console.log('No existe lugar con codigo', codigo);
+      }
+    });
+  }
+
+  function crearMapa(datos: FeatureCollection, clase: string) {
+    datos.features.forEach((lugar) => {
+      if (lugar.geometry.type === 'Polygon' || lugar.geometry.type === 'MultiPolygon') {
+        const linea = crearLinea(lugar.geometry, mapearCoordenadas, ancho, alto);
+        const zona = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+
+        zona.setAttribute('class', `${clase}`);
+        zona.setAttribute('d', linea);
+        zona.setAttribute('id', lugar.properties.codigo);
+        zona.setAttribute('style', 'fill: url(#sinInfo)');
+        zona.onmousemove = (evento) => {
+          const dims = mapa.getBoundingClientRect();
+          const x = evento.clientX - dims.x;
+          const y = evento.clientY - dims.y;
+
+          infoMunucipio.innerText = `${lugar.properties.nombre}, (${lugar.properties.dep})`;
+
+          Object.assign(informacion.style, {
+            top: `${y}px`,
+            left: `${x}px`,
+          });
+        };
+
+        zonas[lugar.properties.codigo] = zona;
+        colombia.appendChild(zona);
+      }
+    });
+  }
 
   window.onresize = escalar;
 </script>
 
 <style lang="scss" is:global>
   #contenedorMapa {
+    margin-top: 1em;
     #informacion {
       position: absolute;
       pointer-events: none;
