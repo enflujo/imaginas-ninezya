@@ -54,43 +54,19 @@ const datos = {
     },
     {
       nombre: 'Ambiente sano',
-      indicadores: [
-        { nombre: '', archivo: 'ya4-1', mun: false, dep: false },
-        { nombre: '', archivo: 'ya4-2', mun: false, dep: false },
-        { nombre: '', archivo: 'ya4-3', mun: false, dep: false },
-        { nombre: '', archivo: 'ya4-4', mun: false, dep: false },
-        { nombre: '', archivo: 'ya4-5', mun: false, dep: false },
-      ],
+      indicadores: [],
     },
     {
       nombre: 'Juego',
-      indicadores: [
-        { nombre: '', archivo: 'ya5-1', mun: false, dep: false },
-        { nombre: '', archivo: 'ya5-2', mun: false, dep: false },
-        { nombre: '', archivo: 'ya5-3', mun: false, dep: false },
-        { nombre: '', archivo: 'ya5-4', mun: false, dep: false },
-        { nombre: '', archivo: 'ya5-5', mun: false, dep: false },
-      ],
+      indicadores: [],
     },
     {
       nombre: 'Participación',
-      indicadores: [
-        { nombre: '', archivo: 'ya6-1', mun: false, dep: false },
-        { nombre: '', archivo: 'ya6-2', mun: false, dep: false },
-        { nombre: '', archivo: 'ya6-3', mun: false, dep: false },
-        { nombre: '', archivo: 'ya6-4', mun: false, dep: false },
-        { nombre: '', archivo: 'ya6-5', mun: false, dep: false },
-      ],
+      indicadores: [],
     },
     {
       nombre: 'Fortalecimiento Familiar del cuidado y la crianza de la niñez',
-      indicadores: [
-        { nombre: '', archivo: 'ya7-1', mun: false, dep: false },
-        { nombre: '', archivo: 'ya7-2', mun: false, dep: false },
-        { nombre: '', archivo: 'ya7-3', mun: false, dep: false },
-        { nombre: '', archivo: 'ya7-4', mun: false, dep: false },
-        { nombre: '', archivo: 'ya7-5', mun: false, dep: false },
-      ],
+      indicadores: [],
     },
     {
       nombre: 'Protección frente a cualquier tipo de violencia',
