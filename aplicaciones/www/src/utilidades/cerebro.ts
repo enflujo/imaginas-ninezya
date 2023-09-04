@@ -1,11 +1,44 @@
 import { atom, map } from 'nanostores';
+import type { FeatureCollection } from 'geojson';
 
 export const indicador = atom<string | null>(null);
+export const archivoActual = atom<string | null>(null);
 export const listaAños = map<{ año: string; conDatos: boolean }[]>([]);
 export const datosIndicador = map<{ [año: string]: any }>();
+export const nivel = atom<string>('dep');
+export const lugares: string[] = [];
+export const datosColombia = map<{ dep?: FeatureCollection; mun?: FeatureCollection }>({});
 
-export async function cargarDatos(nombreArchivo: string) {
-  const datos = await fetch(`${import.meta.env.BASE_URL}/datos/${nombreArchivo}-mun.json`).then((res) => res.json());
+export async function cargarDatos() {
+  const nivelActual = nivel.value;
+
+  if (!datosColombia.value[nivelActual]) {
+    if (nivelActual === 'dep') {
+      const datos = await fetch('https://enflujo.com/bodega/colombia/departamentos.json').then((res) => res.json());
+      datosColombia.setKey('dep', datos);
+    } else if (nivelActual === 'mun') {
+      const datos = await fetch('https://enflujo.com/bodega/colombia/municipios.json').then((res) => res.json());
+      datosColombia.setKey('mun', datos);
+    }
+  }
+
+  const datos = await fetch(`${import.meta.env.BASE_URL}/datos/${archivoActual.value}-${nivel.value}.json`).then(
+    (res) => res.json()
+  );
+
+  datosIndicador.set(datos);
+}
+
+export function agregarLugar(codigo: string) {
+  if (lugares.includes(codigo)) return;
+  lugares.push(codigo);
+}
+
+export function crearListaAños() {
+  const datos = datosIndicador.value;
+
+  if (!datos) return;
+
   const años = Object.keys(datos)
     .filter((año) => datos[año].length)
     .sort();
@@ -14,9 +47,9 @@ export async function cargarDatos(nombreArchivo: string) {
   const lista = [];
 
   for (let a = min; a < max; a++) {
-    lista.push({ año: a, conDatos: !!datos[a].length });
+    const conDatos = datos[a] && datos[a].length;
+    lista.push({ año: a, conDatos });
   }
 
-  datosIndicador.set(datos);
   listaAños.set(lista);
 }
