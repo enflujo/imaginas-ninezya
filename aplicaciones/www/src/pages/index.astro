@@ -3,34 +3,33 @@ import Layout from '../layouts/Layout.astro';
 import Mapa from '@/components/Mapa.astro';
 import LineaTiempo from '@/components/LineaTiempo.astro';
 import Menu from '@/components/Menu.astro';
+import SelectorNivel from '@/components/SelectorNivel.astro';
 ---
 
 <Layout title="Los 10 Yas!">
   <main>
     <!-- <h1 class="titulo">NiñezYA</h1> -->
+    <Menu />
+    <!-- <Termometro titulo="1. Salud y Nutrición" valor={100} />
+      
+      <Termometro titulo="2. Educación Inicial" valor={100} />
+      <Termometro titulo="3. Educación Preescolar, Básica y Media" valor={100} />
+      <Termometro titulo="4. Ambiente Sano" valor={100} />
+      <Termometro titulo="5. Juego" valor={100} />
+      <Termometro titulo="6. Participación" valor={100} />
+      <Termometro titulo="7. Fortalecimiento Familiar del Cuidado y la Crianza de la Niñez" valor={100} />
+      <Termometro titulo="8. Protección Frente a Cualquier Tipo de Violencia" valor={100} />
+      <Termometro
+        titulo="9. Adolescentes con Justicia Restaurativa y Pedagógica (Sistema de Responsabilidad Penal para Adolescentes - SRPA)"
+        valor={100}
+      />
+      <Termometro titulo="10. Cultura de Paz, Reconciliación y Convivencia" valor={100} /> -->
 
-    <div class="contenido">
-      <Menu />
-        <!-- <Termometro titulo="1. Salud y Nutrición" valor={100} />
-        
-        <Termometro titulo="2. Educación Inicial" valor={100} />
-        <Termometro titulo="3. Educación Preescolar, Básica y Media" valor={100} />
-        <Termometro titulo="4. Ambiente Sano" valor={100} />
-        <Termometro titulo="5. Juego" valor={100} />
-        <Termometro titulo="6. Participación" valor={100} />
-        <Termometro titulo="7. Fortalecimiento Familiar del Cuidado y la Crianza de la Niñez" valor={100} />
-        <Termometro titulo="8. Protección Frente a Cualquier Tipo de Violencia" valor={100} />
-        <Termometro
-          titulo="9. Adolescentes con Justicia Restaurativa y Pedagógica (Sistema de Responsabilidad Penal para Adolescentes - SRPA)"
-          valor={100}
-        />
-        <Termometro titulo="10. Cultura de Paz, Reconciliación y Convivencia" valor={100} /> -->
-
-
-      <div id="introduccion">
-        <div id="contenedorMapa"><Mapa ancho={60} alto={50} /></div>
-        <div id="contenedorLineaTiempo"><LineaTiempo alto={40} /></div>
-      </div>
+    <div id="introduccion">
+      <SelectorNivel />
+      <div id="contenedorLineaTiempo"><LineaTiempo alto={25} /></div>
+      <div id="contenedorMapa"><Mapa ancho={60} alto={60} /></div>
+      <div id="contenedorComparativo"></div>
     </div>
   </main>
 </Layout>
@@ -46,12 +45,6 @@ import Menu from '@/components/Menu.astro';
 </script>
 
 <style lang="scss">
-  @import '@/scss/estilos.scss';
-
-  main {
-    font-family: var(--fuente);
-  }
-
   #contenedorMapa {
     position: relative;
   }
@@ -65,14 +58,10 @@ import Menu from '@/components/Menu.astro';
   }
 
   main {
-    padding: 2em;
-  }
-
-  .contenido {
     display: flex;
   }
 
   #introduccion {
-    flex-basis: 50%;
+    flex-basis: 33%;
   }
 </style>

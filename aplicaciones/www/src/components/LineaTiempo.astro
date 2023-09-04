@@ -15,17 +15,15 @@ const dimsVis = {
   base: 0,
   inicioX: 0,
 };
-
 ---
 
 <section id="lineaDeTiempo">
-  <header>
-    <h2>Línea de tiempo</h2>
+  <!-- <header>
     <h3 id="nombreLugar">Colombia</h3>
-  </header>
+  </header> -->
 
-  <svg width="100%" height="100%" style={`height:${alto}vh`}>
-  <!-- <defs>
+  <svg id="grafica" width="100%" height="100%" style={`height:${alto}vh`}>
+    <!-- <defs>
       <linearGradient id="arriba" x1="50%" y1="0%" x2="50%" y2="100%">
         <stop offset="0%" style="stop-color: rgb(39, 247, 186); stop-opacity: 1"></stop>
         <stop offset="100%" style="stop-color: rgb(39, 247, 186); stop-opacity: 1"></stop>
@@ -37,24 +35,14 @@ const dimsVis = {
       </linearGradient>
     </defs> -->
 
-  <!-- MARCO -->
-  <line
-    class="lineaMarco"
-    x1={dimsVis.marcoIz}
-    y1="0"
-    x2={dimsVis.marcoIz}
-    y2="100%"
-    shape-rendering="crispEdges"></line>
+    <!-- MARCO -->
+    <line class="lineaMarco" x1={dimsVis.marcoIz} y1="0" x2={dimsVis.marcoIz} y2="100%" shape-rendering="crispEdges"
+    ></line>
 
-  <line
-    class="lineaMarco lineaBase"
-    x1={dimsVis.marcoIz}
-    y1="100%"
-    x2="100%"
-    y2="100%"
-    shape-rendering="crispEdges"></line>
+    <line class="lineaMarco lineaBase" x1={dimsVis.marcoIz} y1="100%" x2="100%" y2="100%" shape-rendering="crispEdges"
+    ></line>
 
-  <!-- {
+    <!-- {
     listaAños.map((año, i) => {
       return <line class="marcaMarco" x1={posicionX(año)} y1={dimsVis.base} x2={i * 50} y2={dimsVis.base + 7} />;
     })
@@ -71,7 +59,7 @@ const dimsVis = {
     })
   } -->
 
-  <!-- 
+    <!-- 
   <line
     v-for="anno in cerebroDatos.años"
     :key="`marca-${anno}`"
@@ -94,21 +82,22 @@ const dimsVis = {
     {{ cortarAño ? añoRecortado(anno) : anno }}
   </text> -->
 
-  <text class="nombreEje lineaBase" x="0" y="100%">Año</text>
-</svg>
+    <text class="nombreEje lineaBase" x="0" y="100%">Año</text>
+  </svg>
 </section>
 
 <script>
-  import { indicador } from '@/utilidades/cerebro';
+  import { listaAños } from '@/utilidades/cerebro';
+  import { convertirEscala } from '@enflujo/alquimia';
+  const svg = document.getElementById('grafica') as HTMLElement & SVGElement;
+
+  // const posicionY = (valor) =>
+  // convertirEscala(valor, 0, cerebroDatos.valorMax || 100, dimsVis.base, dimsVis.margenArriba);
 
   const lineaDeTiempo = document.getElementById('lineaDeTiempo');
 
   const menuAños = document.getElementById('menuAños') as HTMLDivElement;
   let zonas = {};
-
-  async function inicio() {
-    escalar();
-  }
 
   function calcularPorcentaje(valor: number, porcentaje: number) {
     return valor * (porcentaje / 100);
@@ -119,22 +108,40 @@ const dimsVis = {
     let alto = window.innerHeight;
   }
 
-  inicio();
+  listaAños.subscribe((lista) => {
+    const posX = (valor: number) => convertirEscala(valor, +lista[0].año, +lista[lista.length - 1].año, 5, 95);
+    const grupoAños = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    grupoAños.setAttribute('class', 'marcasAños');
+    lista.forEach(({ año }) => {
+      const marcaAño = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      const texto = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      const x = posX(+año);
 
+      marcaAño.setAttribute('class', 'marcaMarco');
+      marcaAño.setAttribute('x1', `${x}%`);
+      marcaAño.setAttribute('y1', `0`);
+      marcaAño.setAttribute('x2', `${x}%`);
+      marcaAño.setAttribute('y2', `5`);
 
-  indicador.subscribe(async (nombreArchivo) => {
+      texto.setAttribute('class', 'año textoEje');
+      texto.setAttribute('x', `${x}%`);
+      texto.setAttribute('y', `15`);
+      texto.innerHTML = `${año}`;
 
-});
-
-  window.onresize = escalar;
+      grupoAños.appendChild(marcaAño);
+      grupoAños.appendChild(texto);
+    });
+    svg.appendChild(grupoAños);
+  });
 </script>
 
-<style lang="scss">
+<style lang="scss" is:global>
   .lineaBase {
     transform: translateY(-20px);
   }
   #lineaDeTiempo {
     position: relative;
+    margin-top: 2em;
   }
 
   h3 {
@@ -165,6 +172,9 @@ const dimsVis = {
   svg {
     display: block;
 
+    .marcasAños {
+      transform: translate(10px, calc(100% - 20px));
+    }
     .lineaMarco {
       stroke: rgb(46, 46, 46);
       stroke-width: 3;
