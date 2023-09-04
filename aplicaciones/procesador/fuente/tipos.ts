@@ -75,7 +75,7 @@ export type DatosAño = [
   etnia: string,
   codigoRegimen: string,
   codigoSexo: string,
-  caracterizacion: string
+  caracterizacion: string,
 ];
 
 export type NombreCodigo = {
@@ -100,7 +100,7 @@ export type Municipio = [
   /** Código del departamento al que pertenece la ciudad o municipio: ## */
   codigoDepartamento: string,
   /** Código de la ciudad o municipio (incluyendo su departamento): ##### */
-  codigoCompleto: string
+  codigoCompleto: string,
 ];
 
 export type ObjetoMunicipios = {
