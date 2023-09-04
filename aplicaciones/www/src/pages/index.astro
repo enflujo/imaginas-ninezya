@@ -11,7 +11,6 @@ import Menu from '@/components/Menu.astro';
 
     <div class="contenido">
       <Menu />
-      <div id="yas">
         <!-- <Termometro titulo="1. Salud y Nutrición" valor={100} />
         
         <Termometro titulo="2. Educación Inicial" valor={100} />
@@ -26,7 +25,7 @@ import Menu from '@/components/Menu.astro';
           valor={100}
         />
         <Termometro titulo="10. Cultura de Paz, Reconciliación y Convivencia" valor={100} /> -->
-      </div>
+
 
       <div id="introduccion">
         <div id="contenedorMapa"><Mapa ancho={60} alto={70} /></div>
@@ -65,16 +64,11 @@ import Menu from '@/components/Menu.astro';
   }
 
   main {
-    padding: 2em 4em;
+    padding: 2em;
   }
 
   .contenido {
     display: flex;
-  }
-
-  #yas {
-    padding-right: 1em;
-    flex-basis: 50%;
   }
 
   #introduccion {
