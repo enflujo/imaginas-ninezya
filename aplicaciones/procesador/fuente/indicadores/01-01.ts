@@ -1,5 +1,5 @@
 import { limpiarDepartamento, limpiarMunicipio } from '@/limpieza/lugar';
-import type { Departamento, Errata, Municipio } from '@/tipos';
+import type { Departamento, Errata, Municipio, RespuestaPorcentaje } from '@/tipos';
 import { guardarJSON } from '@/utilidades/ayudas';
 import maquinaXlsx from '@/utilidades/maquinaXlsx';
 
@@ -9,14 +9,11 @@ export type VariablesYa1_1 = {
   tacued: number;
 };
 
-type Respuesta = {
-  [año: string]: [lugar: string, porcentaje: number][];
-};
 const errata: { fila: number; error: string }[] = [];
 
 export default async () => {
-  const datosMunicipios: Respuesta = {};
-  const datosDepartamentos: Respuesta = {};
+  const datosMunicipios: RespuestaPorcentaje = {};
+  const datosDepartamentos: RespuestaPorcentaje = {};
 
   await maquinaXlsx('1.1: salud - seguridad alimentaria', 'YA1_1.1', 'Sheet1', procesador);
   guardarJSON(datosMunicipios, 'ya1-1-mun');

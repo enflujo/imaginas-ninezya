@@ -175,3 +175,7 @@ export type DatosPorAño = {
 };
 
 export type Errata = { error: boolean; mensaje: string };
+
+export type RespuestaPorcentaje = {
+  [año: string]: [lugar: string, porcentaje: number][];
+};

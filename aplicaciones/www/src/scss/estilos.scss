@@ -1,2 +1,42 @@
 @import './constantes';
 @import './normalizar';
+
+@font-face {
+  font-family: 'RecVar';
+  font-style: oblique 0deg 15deg;
+  font-weight: 300 1000;
+  font-display: swap;
+  src: url('../../estaticos/fuentes/Recursive_VF_1.085.woff2') format('woff2');
+  unicode-range: U+00C0-00FF;
+}
+
+:root {
+  // Fuentes
+  --fuente: 'RecVar', sans-serif;
+
+  // Colores NiñezYa Logo
+  --azulNinezYa: #00f5d4;
+  --aguaMarinaNinezYa: #32b6ff;
+  --uvaNinezYa: #7600db;
+
+  // Color blanco
+  --blancoMarfil: #f5fbef;
+
+  // Color negro
+  --negroCasi: #080705;
+
+  // Colores claros sobre oscuro
+  --verdeIntenso: #94ff1a;
+  --verdeLimon: #e0ff20;
+  --amarilloChichi: #ffff89;
+  --amarilloValencia: #fed730;
+  --rosaBarbie: #f15bb5;
+
+  // Colores oscuros sobre claro
+  --escarlataBebe: #de2e56;
+  --fucsiaEsmalte: #af067d;
+  --uvaProfunda: #881375;
+  --azulViejo: #011f4e;
+  --verdeMuertoPorDentro: #003e40;
+  --amarilloChichi: #ffff89;
+}
