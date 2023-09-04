@@ -10,8 +10,5 @@
     "build": "yarn workspace www build",
     "lint": "prettier --check .",
     "lint:fix": "prettier --write --list-different ."
-  },
-  "devDependencies": {
-    "prettier": "^3.0.3"
   }
 }
