@@ -53,6 +53,18 @@ const { ancho, alto } = Astro.props;
     return valor * (porcentaje / 100);
   }
 
+  /* Función para definir las proporciones iniciales del mapa. 
+  La saqué de escalar() para que no se hiciera más pequeño cada vez que se dibuja el mapa.*/
+  function definirPoporciones() {
+    if (proporciones.ancho && proporciones.ancho <= 100) {
+      ancho = calcularPorcentaje(ancho, proporciones.ancho);
+    }
+
+    if (proporciones.alto && proporciones.alto <= 100) {
+      alto = calcularPorcentaje(alto, proporciones.alto);
+    }
+  }
+
   function escalar() {
     mapearCoordenadas = escalaCoordenadas(
       extremosGeo.latitudMin,
@@ -62,14 +74,6 @@ const { ancho, alto } = Astro.props;
     );
     const coordenadasAncho = extremosGeo.longitudMax - extremosGeo.longitudMin;
     const coordenadasAlto = extremosGeo.latitudMax - extremosGeo.latitudMin;
-
-    if (proporciones.ancho && proporciones.ancho <= 100) {
-      ancho = calcularPorcentaje(ancho, proporciones.ancho);
-    }
-
-    if (proporciones.alto && proporciones.alto <= 100) {
-      alto = calcularPorcentaje(alto, proporciones.alto);
-    }
 
     // Revisa las proporciones del mapa para que no se deforme
     if (coordenadasAncho > coordenadasAlto) {
@@ -197,6 +201,7 @@ const { ancho, alto } = Astro.props;
     });
   }
 
+  definirPoporciones();
   window.onresize = escalar;
 </script>
 
