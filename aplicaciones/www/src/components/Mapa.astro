@@ -183,7 +183,11 @@ const { ancho, alto } = Astro.props;
           const x = evento.clientX - dims.x;
           const y = evento.clientY - dims.y;
 
-          infoMunucipio.innerText = `${lugar.properties.nombre}, (${lugar.properties.dep})`;
+          if (lugar.properties.dep) {
+            infoMunucipio.innerText = `${lugar.properties.nombre}, (${lugar.properties.dep})`;
+          } else {
+            infoMunucipio.innerText = `${lugar.properties.nombre}`;
+          }
 
           Object.assign(informacion.style, {
             top: `${y}px`,
