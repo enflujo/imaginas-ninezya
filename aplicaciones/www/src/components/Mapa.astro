@@ -44,10 +44,30 @@ const { ancho, alto } = Astro.props;
   const proporciones = JSON.parse(mapa.dataset.proporciones);
   const color = escalaColores(0, 100, '#DE2E56', '#94FF1A');
   let zonas = {};
-  let ancho = window.innerWidth;
-  let alto = window.innerHeight;
+  let ancho = 0;
+  let alto = 0;
+  let coordenadasAncho = 0;
+  let coordenadasAlto = 0;
+  let datosParaPintar: FeatureCollection; // Esto puede ser departamentos o municipios
 
-  async function inicio() {}
+  mapa.onmouseenter = () => {
+    informacion.classList.add('visible');
+  };
+  mapa.onmouseleave = () => {
+    informacion.classList.remove('visible');
+  };
+
+  function extremos() {
+    mapearCoordenadas = escalaCoordenadas(
+      extremosGeo.latitudMin,
+      extremosGeo.latitudMax,
+      extremosGeo.longitudMin,
+      extremosGeo.longitudMax
+    );
+
+    coordenadasAncho = extremosGeo.longitudMax - extremosGeo.longitudMin;
+    coordenadasAlto = extremosGeo.latitudMax - extremosGeo.latitudMin;
+  }
 
   function calcularPorcentaje(valor: number, porcentaje: number) {
     return valor * (porcentaje / 100);
@@ -57,23 +77,16 @@ const { ancho, alto } = Astro.props;
   La saqué de escalar() para que no se hiciera más pequeño cada vez que se dibuja el mapa.*/
   function definirPoporciones() {
     if (proporciones.ancho && proporciones.ancho <= 100) {
-      ancho = calcularPorcentaje(ancho, proporciones.ancho);
+      ancho = calcularPorcentaje(window.innerWidth, proporciones.ancho);
     }
 
     if (proporciones.alto && proporciones.alto <= 100) {
-      alto = calcularPorcentaje(alto, proporciones.alto);
+      alto = calcularPorcentaje(window.innerHeight, proporciones.alto);
     }
   }
 
   function escalar() {
-    mapearCoordenadas = escalaCoordenadas(
-      extremosGeo.latitudMin,
-      extremosGeo.latitudMax,
-      extremosGeo.longitudMin,
-      extremosGeo.longitudMax
-    );
-    const coordenadasAncho = extremosGeo.longitudMax - extremosGeo.longitudMin;
-    const coordenadasAlto = extremosGeo.latitudMax - extremosGeo.latitudMin;
+    definirPoporciones();
 
     // Revisa las proporciones del mapa para que no se deforme
     if (coordenadasAncho > coordenadasAlto) {
@@ -85,15 +98,17 @@ const { ancho, alto } = Astro.props;
     mapa.setAttribute('width', `${ancho}`);
     mapa.setAttribute('height', `${alto}`);
 
-    mapa.onmouseenter = () => {
-      informacion.classList.add('visible');
-    };
-    mapa.onmouseleave = () => {
-      informacion.classList.remove('visible');
-    };
+    if (!datosParaPintar) return;
+
+    datosParaPintar.features.forEach((lugar) => {
+      if (lugar.geometry.type === 'Polygon' || lugar.geometry.type === 'MultiPolygon') {
+        const linea = crearLinea(lugar.geometry, mapearCoordenadas, ancho, alto);
+        const zona = zonas[lugar.properties.codigo];
+        zona.setAttribute('d', linea);
+      }
+    });
   }
 
-  inicio();
   let añoActivo: HTMLSpanElement;
   // const datos = datos
 
@@ -104,10 +119,14 @@ const { ancho, alto } = Astro.props;
       const municipios = datosColombia.value['mun'];
       if (!municipios) return;
       extremosGeo = extremosLugar(municipios);
+
+      extremos();
       escalar();
 
       colombia.innerHTML = '';
-      crearMapa(municipios, 'municipios');
+      datosParaPintar = municipios;
+
+      crearMapa('municipios');
       if (!añoActivo) return;
       pintarMapa(añoActivo.innerText);
     } else if (nuevoNivel === 'dep') {
@@ -115,10 +134,12 @@ const { ancho, alto } = Astro.props;
 
       if (!departamentos) return;
       extremosGeo = extremosLugar(departamentos);
+      extremos();
       escalar();
 
       colombia.innerHTML = '';
-      crearMapa(departamentos, 'departamentos');
+      datosParaPintar = departamentos;
+      crearMapa('departamentos');
       if (!añoActivo) return;
       pintarMapa(añoActivo.innerText);
     }
@@ -172,8 +193,8 @@ const { ancho, alto } = Astro.props;
     });
   }
 
-  function crearMapa(datos: FeatureCollection, clase: string) {
-    datos.features.forEach((lugar) => {
+  function crearMapa(clase: string) {
+    datosParaPintar.features.forEach((lugar) => {
       if (lugar.geometry.type === 'Polygon' || lugar.geometry.type === 'MultiPolygon') {
         const linea = crearLinea(lugar.geometry, mapearCoordenadas, ancho, alto);
         const zona = document.createElementNS('http://www.w3.org/2000/svg', 'path');
@@ -187,8 +208,8 @@ const { ancho, alto } = Astro.props;
           const x = evento.clientX - dims.x;
           const y = evento.clientY - dims.y;
 
-          if (lugar.properties.dep) {
-            infoMunucipio.innerText = `${lugar.properties.nombre}, (${lugar.properties.dep})`;
+          if (nivel.get() === 'mun') {
+            infoMunucipio.innerText = `${lugar.properties.nombre} (${lugar.properties.dep})`;
           } else {
             infoMunucipio.innerText = `${lugar.properties.nombre}`;
           }
@@ -206,7 +227,7 @@ const { ancho, alto } = Astro.props;
   }
 
   definirPoporciones();
-  window.onresize = escalar;
+  window.addEventListener('resize', escalar);
 </script>
 
 <style lang="scss" is:global>
