@@ -31,7 +31,14 @@ const { ancho, alto } = Astro.props;
   import { crearLinea, escalaColores, escalaCoordenadas, extremosLugar } from '@enflujo/alquimia';
   import type { ExtremosCoordenadas } from '@/tipos';
   import type { FeatureCollection } from 'geojson';
-  import { datosColombia, datosIndicador, listaAños, nivel } from '@/utilidades/cerebro';
+  import {
+    datosColombia,
+    datosIndicador,
+    listaAños,
+    nivel,
+    deptoSeleccionado,
+    añoSeleccionado,
+  } from '@/utilidades/cerebro';
   import type { IMapearCoordenadas } from '@enflujo/alquimia/libreria/modulos/tipos';
 
   const mapa = document.querySelector('.mapa') as HTMLDivElement;
@@ -165,6 +172,8 @@ const { ancho, alto } = Astro.props;
 
           boton.classList.add('activo');
           añoActivo = boton;
+          añoSeleccionado.set(añoActivo.innerText);
+
           pintarMapa(año);
         };
 
@@ -212,6 +221,11 @@ const { ancho, alto } = Astro.props;
             infoMunucipio.innerText = `${lugar.properties.nombre} (${lugar.properties.dep})`;
           } else {
             infoMunucipio.innerText = `${lugar.properties.nombre}`;
+
+            // Asignar nombre del departamento como deptoSeleccionado al hacer click
+            zona.onclick = () => {
+              deptoSeleccionado.set(lugar.properties.nombre);
+            };
           }
 
           Object.assign(informacion.style, {

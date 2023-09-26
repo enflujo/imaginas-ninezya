@@ -1,0 +1,178 @@
+---
+export interface Props {
+  // Porcentaje que no debe superar a lo ancho (1-100)
+  ancho?: number;
+  // Porcentaje que no debe superar a lo alto (1-100)
+  alto?: number;
+}
+
+const { ancho, alto } = Astro.props;
+---
+
+<div id="contenedorMapaDetalle">
+  <div id="menuAños"></div>
+  <h2 id="titulo"></h2>
+  <svg class="mapaDetalle" data-proporciones={JSON.stringify({ ancho, alto })}>
+    <defs>
+      <pattern id="sinInfo" patternUnits="userSpaceOnUse" width="3.5" height="3.5" patternTransform="rotate(45)">
+        <line x1="0" y="0" x2="0" y2="3.5" stroke="#46484A" stroke-width="1"></line>
+      </pattern>
+    </defs>
+
+    <g id="departamento"></g>
+  </svg>
+  <div id="infoDetalle">
+    <p class="nombre"></p>
+    <p class="espdet"></p>
+  </div>
+</div>
+
+<script>
+  import { crearLinea, escalaColores, escalaCoordenadas, extremosLugar } from '@enflujo/alquimia';
+  import type { ExtremosCoordenadas } from '@/tipos';
+  import type { FeatureCollection } from 'geojson';
+  import {
+    datosMunicipios,
+    listaAños,
+    nivel,
+    deptoSeleccionado,
+    añoSeleccionado,
+    datosIndicadorMun,
+  } from '@/utilidades/cerebro';
+  import type { IMapearCoordenadas } from '@enflujo/alquimia/libreria/modulos/tipos';
+
+  const mapaDetalle = document.querySelector('.mapaDetalle') as HTMLDivElement;
+  const departamento = document.getElementById('departamento');
+  const infoDetalle = document.getElementById('infoDetalle');
+  const infoMunucipio = infoDetalle.querySelector('.nombre') as HTMLParagraphElement;
+  const titulo = document.getElementById('titulo');
+  const menuAños = document.getElementById('menuAños') as HTMLDivElement;
+
+  let mapearCoordenadas: IMapearCoordenadas;
+  let extremosGeo: ExtremosCoordenadas;
+  const proporciones = JSON.parse(mapaDetalle.dataset.proporciones);
+  const color = escalaColores(0, 100, '#DE2E56', '#94FF1A');
+  let zonas = {};
+  let ancho = window.innerWidth;
+  let alto = window.innerHeight;
+
+  async function inicio() {}
+
+  function calcularPorcentaje(valor: number, porcentaje: number) {
+    return valor * (porcentaje / 100);
+  }
+
+  /* Función para definir las proporciones iniciales del mapa. 
+  La saqué de escalar() para que no se hiciera más pequeño cada vez que se dibuja el mapa.*/
+  function definirPoporciones() {
+    if (proporciones.ancho && proporciones.ancho <= 100) {
+      ancho = calcularPorcentaje(ancho, proporciones.ancho);
+    }
+
+    if (proporciones.alto && proporciones.alto <= 100) {
+      alto = calcularPorcentaje(alto, proporciones.alto);
+    }
+  }
+
+  function escalar() {
+    mapearCoordenadas = escalaCoordenadas(
+      extremosGeo.latitudMin,
+      extremosGeo.latitudMax,
+      extremosGeo.longitudMin,
+      extremosGeo.longitudMax
+    );
+    const coordenadasAncho = extremosGeo.longitudMax - extremosGeo.longitudMin;
+    const coordenadasAlto = extremosGeo.latitudMax - extremosGeo.latitudMin;
+
+    // Revisa las proporciones del mapa para que no se deforme
+    if (coordenadasAncho > coordenadasAlto) {
+      alto = (ancho * (coordenadasAlto / coordenadasAncho)) | 0;
+    } else {
+      ancho = (alto * (coordenadasAncho / coordenadasAlto)) | 0;
+    }
+
+    mapaDetalle.setAttribute('width', `${ancho}`);
+    mapaDetalle.setAttribute('height', `${alto}`);
+
+    mapaDetalle.onmouseenter = () => {
+      infoMunucipio.classList.add('visible');
+    };
+    mapaDetalle.onmouseleave = () => {
+      infoMunucipio.classList.remove('visible');
+    };
+  }
+
+  inicio();
+
+  const nombreDepto = deptoSeleccionado.get();
+  let municipios = datosMunicipios.get();
+  console.log(municipios);
+
+  deptoSeleccionado.subscribe(async () => {
+    const datosMun = datosMunicipios.value.features.filter((mun) => mun.properties.dep === nombreDepto);
+
+    titulo.innerText = nombreDepto;
+  });
+
+  datosIndicadorMun.subscribe(async () => {
+    municipios = datosMunicipios.get();
+    if (!municipios) return;
+    extremosGeo = extremosLugar(municipios);
+    escalar();
+
+    departamento.innerHTML = '';
+    crearMapa(municipios, 'municipios');
+    if (!añoSeleccionado.value) return;
+    pintarMapa(añoSeleccionado.value);
+  });
+
+  function pintarMapa(año: string) {
+    const datos = datosMunicipios.get()[año];
+    console.log(datos);
+    if (!datos) return;
+
+    datos.forEach(([codigo, valor]) => {
+      if (zonas[codigo]) {
+        if (valor) {
+          zonas[codigo].setAttribute('style', `fill: ${color(valor)}`);
+        } else {
+          zonas[codigo].setAttribute('style', 'fill: url(#sinInfo)');
+        }
+      } else {
+        console.log('No existe lugar con codigo', codigo);
+      }
+    });
+  }
+
+  function crearMapa(datos: FeatureCollection, clase: string) {
+    datos.features.forEach((lugar) => {
+      if (lugar.geometry.type === 'Polygon' || lugar.geometry.type === 'MultiPolygon') {
+        const linea = crearLinea(lugar.geometry, mapearCoordenadas, ancho, alto);
+        const zona = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+
+        zona.setAttribute('class', `${clase}`);
+        zona.setAttribute('d', linea);
+        zona.setAttribute('id', lugar.properties.codigo);
+        zona.setAttribute('style', 'fill: url(#sinInfo)');
+        zona.onmousemove = (evento) => {
+          const dims = mapaDetalle.getBoundingClientRect();
+          const x = evento.clientX - dims.x;
+          const y = evento.clientY - dims.y;
+
+          infoMunucipio.innerText = `${lugar.properties.nombre}, (${lugar.properties.dep})`;
+
+          Object.assign(infoDetalle.style, {
+            top: `${y}px`,
+            left: `${x}px`,
+          });
+        };
+
+        zonas[lugar.properties.codigo] = zona;
+        departamento.appendChild(zona);
+      }
+    });
+  }
+
+  definirPoporciones();
+  window.onresize = escalar;
+</script>
