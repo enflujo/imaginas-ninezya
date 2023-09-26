@@ -23,7 +23,6 @@ const { ancho, alto } = Astro.props;
   </svg>
   <div id="infoDetalle">
     <p class="nombre"></p>
-    <p class="espdet"></p>
   </div>
 </div>
 
@@ -182,8 +181,8 @@ const { ancho, alto } = Astro.props;
         zonaDetalle.setAttribute('style', 'fill: url(#sinInfo)');
         zonaDetalle.onmousemove = (evento) => {
           const dims = mapaDetalle.getBoundingClientRect();
-          const x = evento.clientX - dims.x;
-          const y = evento.clientY - dims.y;
+          const x = evento.clientX;
+          const y = evento.clientY - 20;
 
           infoMunucipio.innerText = `${lugar.properties.nombre}`;
 
@@ -207,5 +206,26 @@ const { ancho, alto } = Astro.props;
   #contenedorMapaDetalle {
     width: 30vw;
     margin-left: 3em;
+
+    #infoDetalle {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0;
+      max-width: 200px;
+      padding: 0.5em;
+      font-size: 0.8em;
+      font-weight: bold;
+      width: fit-content;
+
+      background-color: rgb(253, 253, 250);
+      color: black;
+      z-index: 9;
+      transition: opacity 0.42s ease-out;
+      transform: translate(-50%, -105%);
+
+      &.visible {
+        opacity: 1;
+      }
+    }
   }
 </style>
