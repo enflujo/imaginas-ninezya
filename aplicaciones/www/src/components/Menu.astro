@@ -5,12 +5,14 @@ import Encabezado from './Encabezado.astro';
 
 <nav id="menu">
   <Encabezado />
-  <ol>
+  <ul>
     {
-      datos.yas.map((ya) => {
+      datos.yas.map((ya, i) => {
         return (
-          <li class="ya">
-            <p class="nombreYa titulos">{ya.nombre}</p>
+          <li class="ya" data-imagen={ya.imagen}>
+            <p class="nombreYa titulos">
+              {i + 1}. {ya.nombre}
+            </p>
             <ul class="indicadores subtitulos">
               {ya.indicadores.map((indicador) => {
                 return (
@@ -24,7 +26,7 @@ import Encabezado from './Encabezado.astro';
         );
       })
     }
-  </ol>
+  </ul>
 </nav>
 
 <script>
@@ -43,6 +45,7 @@ import Encabezado from './Encabezado.astro';
   // Abrir sub menú de indicadores al hacer click en un 'ya'
   yas.forEach((contenedorYa) => {
     const nombreYa = contenedorYa.querySelector<HTMLElement>('.nombreYa');
+    contenedorYa.style.listStyleImage = `url("/../estaticos/iconos/${contenedorYa.dataset.imagen}.svg")`;
     nombreYa.addEventListener('click', () => {
       abrirYa(contenedorYa);
     });
@@ -50,7 +53,9 @@ import Encabezado from './Encabezado.astro';
 
   function abrirYa(contenedorYa: HTMLElement) {
     const contenedor = contenedorYa.querySelector<HTMLElement>('.indicadores');
+    const nombreYa = contenedorYa.querySelector<HTMLElement>('.nombreYa');
     contenedor.classList.toggle('abierto');
+    nombreYa.classList.toggle('ungido');
   }
 </script>
 
@@ -63,6 +68,8 @@ import Encabezado from './Encabezado.astro';
     font-family: var(--fuente);
     color: var(--fucsiaEsmalte);
     background-color: var(--moradoPandito);
+    height: fit-content;
+    min-height: 100vh;
 
     .ya {
       font-variation-settings:
@@ -73,8 +80,26 @@ import Encabezado from './Encabezado.astro';
         'CRSV' 1;
       color: var(--fucsiaEsmalte);
       cursor: pointer;
+      // list-style-image: url('/../estaticos/iconos/manzana.svg');
+      // margin: 1em 0 0 1em;
     }
 
+    .nombreYa {
+      &.ungido {
+        background-color: var(--moradoProfundo);
+        color: var(--moradoPandito);
+        padding: 1em;
+      }
+
+      &:hover {
+        font-variation-settings:
+          'MONO' 0,
+          'CASL' 0,
+          'wght' 900,
+          'slnt' 0,
+          'CRSV' 0;
+      }
+    }
     .indicadores {
       padding: 0 3em 0 0;
       display: none;
@@ -102,6 +127,12 @@ import Encabezado from './Encabezado.astro';
       margin-bottom: 0.75em;
 
       &:hover {
+        font-variation-settings:
+          'MONO' 0,
+          'CASL' 0,
+          'wght' 700,
+          'slnt' 0,
+          'CRSV' 0;
       }
 
       &::before {
