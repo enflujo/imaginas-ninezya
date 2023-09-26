@@ -22,7 +22,7 @@ export async function cargarDatos() {
     }
   }
 
-  const datos = await fetch(`${import.meta.env.BASE_URL}/datos/${archivoActual.value}-${nivel.value}.json`).then(
+  const datos = await fetch(`https://enflujo.com/bodega/ninezya/${archivoActual.value}-${nivel.value}.json`).then(
     (res) => res.json()
   );
 
