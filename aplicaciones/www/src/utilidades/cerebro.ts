@@ -26,6 +26,8 @@ export async function cargarDatos() {
     }
   }
 
+  const datosMapaMun = await fetch('https://enflujo.com/bodega/colombia/municipios.json').then((res) => res.json());
+
   const datos = await fetch(`https://enflujo.com/bodega/ninezya/${archivoActual.value}-${nivel.value}.json`).then(
     (res) => res.json()
   );
@@ -36,6 +38,7 @@ export async function cargarDatos() {
 
   datosIndicadorMun.set(datosIndicadorMunicipio);
   datosIndicador.set(datos);
+  datosMunicipios.set(datosMapaMun);
 }
 
 export function agregarLugar(codigo: string) {
