@@ -10,8 +10,8 @@ import Encabezado from './Encabezado.astro';
       datos.yas.map((ya) => {
         return (
           <li class="ya">
-            <p class="nombreYa">{ya.nombre}</p>
-            <ul class="indicadores">
+            <p class="nombreYa titulos">{ya.nombre}</p>
+            <ul class="indicadores subtitulos">
               {ya.indicadores.map((indicador) => {
                 return (
                   <li class="indicador" data-archivo={indicador.archivo}>
@@ -55,21 +55,41 @@ import Encabezado from './Encabezado.astro';
 </script>
 
 <style lang="scss">
+  @import '@/scss/estilos';
+
   #menu {
-    width: 30vw;
-    padding-right: 1em;
+    width: 18vw;
+    padding: 0 3em 0 1.5em;
     font-family: var(--fuente);
+    color: var(--fucsiaEsmalte);
+    background-color: var(--moradoPandito);
+
     .ya {
-      font-weight: 700;
+      font-variation-settings:
+        'MONO' 0,
+        'CASL' 0,
+        'wght' 700,
+        'slnt' 0,
+        'CRSV' 1;
+      color: var(--fucsiaEsmalte);
       cursor: pointer;
     }
 
     .indicadores {
-      font-weight: 300;
+      padding: 0 3em 0 0;
       display: none;
       list-style: none;
       margin: 0;
-      padding: 0;
+
+      font-variation-settings:
+        'MONO' 0,
+        'CASL' 0,
+        'wght' 335,
+        'slnt' 0,
+        'CRSV' 0;
+      color: var(--azulViejo);
+      margin-bottom: 1.4em;
+      line-height: 1.2em;
 
       &.abierto {
         display: block;
@@ -79,19 +99,19 @@ import Encabezado from './Encabezado.astro';
     .indicador {
       position: relative;
       font-size: 0.9em;
-      margin-bottom: 0.3em;
+      margin-bottom: 0.75em;
 
       &:hover {
       }
 
       &::before {
         content: '';
-        width: 0.3em;
-        height: 0.3em;
-        top: 0.25em;
-        left: -0.8em;
+        width: 0em;
+        height: 0em;
+        top: 0.4em;
+        left: -1em;
         display: inline-block;
-        border: 2px solid var(--uvaNinezYa);
+        border: 2px solid var(--fucsiaEsmalte);
         position: absolute;
         border-radius: 50%;
       }
