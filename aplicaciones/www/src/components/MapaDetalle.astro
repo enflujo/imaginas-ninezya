@@ -73,15 +73,14 @@ const { ancho, alto } = Astro.props;
     return valor * (porcentaje / 100);
   }
 
-  /* Función para definir las proporciones iniciales del mapa. 
-  La saqué de escalar() para que no se hiciera más pequeño cada vez que se dibuja el mapa.*/
+  /* Función para definir las proporciones iniciales del mapa. */
   function definirPoporciones() {
     if (proporciones.ancho && proporciones.ancho <= 100) {
-      ancho = calcularPorcentaje(window.innerWidth, proporciones.ancho);
+      ancho = calcularPorcentaje(window.innerWidth * 0.5, proporciones.ancho);
     }
 
     if (proporciones.alto && proporciones.alto <= 100) {
-      alto = calcularPorcentaje(window.innerHeight, proporciones.alto);
+      alto = calcularPorcentaje(window.innerHeight * 0.5, proporciones.alto);
     }
   }
 
@@ -207,5 +206,6 @@ const { ancho, alto } = Astro.props;
 <style lang="scss">
   #contenedorMapaDetalle {
     width: 30vw;
+    margin-left: 3em;
   }
 </style>
