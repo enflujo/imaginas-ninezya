@@ -109,8 +109,6 @@ const { ancho, alto } = Astro.props;
   }
 
   let nombreDepto: string;
-  // Falta el tipo pero no sé cuás es :()
-  let municipios;
   let municipiosFiltrados: FeatureCollection;
 
   deptoSeleccionado.subscribe(async () => {
@@ -125,15 +123,7 @@ const { ancho, alto } = Astro.props;
 
       extremos();
       crearMapa(municipiosFiltrados, 'municipios');
-      pintarMapa(añoSeleccionado.get());
-    }
-  });
-
-  datosMunicipios.subscribe(async () => {
-    departamento.innerHTML = '';
-    if (datosMunicipios.value.features) {
-      filtrarMunicipios();
-      crearMapa(municipiosFiltrados, 'municipios');
+      escalar();
       pintarMapa(añoSeleccionado.get());
     }
   });
@@ -142,13 +132,8 @@ const { ancho, alto } = Astro.props;
     pintarMapa(añoSeleccionado.get());
   });
 
-  // datosIndicadorMun.subscribe(async () => {
-  //   crearMapa(municipiosFiltrados, 'municipios');
-  //   pintarMapa(añoSeleccionado.get());
-  // });
-
   function filtrarMunicipios() {
-    municipios = datosMunicipios.value.features.filter((mun) => mun.properties.dep === nombreDepto);
+    let municipios = datosMunicipios.value.features.filter((mun) => mun.properties.dep === nombreDepto);
 
     municipiosFiltrados = {
       type: 'FeatureCollection',
@@ -187,7 +172,6 @@ const { ancho, alto } = Astro.props;
         zonaDetalle.setAttribute('id', lugar.properties.codigo);
         zonaDetalle.setAttribute('style', 'fill: url(#sinInfo)');
         zonaDetalle.onmousemove = (evento) => {
-          const dims = mapaDetalle.getBoundingClientRect();
           const x = evento.clientX;
           const y = evento.clientY - 20;
 
