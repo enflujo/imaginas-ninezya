@@ -98,6 +98,14 @@ const { ancho, alto } = Astro.props;
 
     if (!municipiosFiltrados) return;
     filtrarMunicipios();
+
+    municipiosFiltrados.features.forEach((lugar) => {
+      if (lugar.geometry.type === 'Polygon' || lugar.geometry.type === 'MultiPolygon') {
+        const linea = crearLinea(lugar.geometry, mapearCoordenadas, ancho, alto);
+        const zona = zonas[lugar.properties.codigo];
+        zona.setAttribute('d', linea);
+      }
+    });
   }
 
   let nombreDepto: string;
@@ -116,7 +124,6 @@ const { ancho, alto } = Astro.props;
       extremosGeo = extremosLugar(municipiosFiltrados);
 
       extremos();
-      escalar();
       crearMapa(municipiosFiltrados, 'municipios');
       pintarMapa(añoSeleccionado.get());
     }
@@ -162,7 +169,7 @@ const { ancho, alto } = Astro.props;
           zonas[codigo].setAttribute('style', 'fill: url(#sinInfo)');
         }
       } else {
-        //console.log('No existe lugar con codigo', codigo);
+        console.log('No existe lugar con codigo', codigo);
       }
     });
   }
