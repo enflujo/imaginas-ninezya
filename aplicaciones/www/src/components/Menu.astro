@@ -9,11 +9,11 @@ import Encabezado from './Encabezado.astro';
     {
       datos.yas.map((ya, i) => {
         return (
-          <li class="ya" data-imagen={ya.imagen}>
-            <p class="nombreYa titulos">
+          <li class={`ya ${ya.imagen}`}>
+            <p class="nombreYa">
               {i + 1}. {ya.nombre}
             </p>
-            <ul class="indicadores subtitulos">
+            <ul class="indicadores">
               {ya.indicadores.map((indicador) => {
                 return (
                   <li class="indicador" data-archivo={indicador.archivo}>
@@ -30,13 +30,14 @@ import Encabezado from './Encabezado.astro';
 </nav>
 
 <script>
-  import { archivoActual, cargarDatos, crearListaAños } from '@/utilidades/cerebro';
+  import { archivoActual, cargarDatos, crearListaAños, indicador } from '@/utilidades/cerebro';
   const yas = document.querySelectorAll<HTMLElement>('.ya');
   const indicadores = document.querySelectorAll<HTMLLIElement>('.indicador');
 
   // Enviar al cerebro el nombre del archivo de datos correspondiente al indicador
   indicadores.forEach((elemento) => {
     elemento.onclick = async () => {
+      elemento.classList.toggle('seleccionado');
       archivoActual.set(elemento.dataset.archivo);
       await cargarDatos();
       crearListaAños();
@@ -45,7 +46,6 @@ import Encabezado from './Encabezado.astro';
   // Abrir sub menú de indicadores al hacer click en un 'ya'
   yas.forEach((contenedorYa) => {
     const nombreYa = contenedorYa.querySelector<HTMLElement>('.nombreYa');
-    contenedorYa.style.listStyleImage = `url("/../estaticos/iconos/${contenedorYa.dataset.imagen}.svg")`;
     nombreYa.addEventListener('click', () => {
       abrirYa(contenedorYa);
     });
@@ -80,15 +80,65 @@ import Encabezado from './Encabezado.astro';
         'CRSV' 1;
       color: var(--fucsiaEsmalte);
       cursor: pointer;
-      // list-style-image: url('/../estaticos/iconos/manzana.svg');
-      // margin: 1em 0 0 1em;
+      position: relative;
+      list-style: none;
+
+      // &.ungido {
+      //   &.manzana {
+      //     &:before {
+      //       content: '';
+      //       background-image: url('/especiales/ninezya/iconos/manzanaClara.svg');
+      //       background-repeat: no-repeat;
+      //       width: 1.2em;
+      //       height: 1.2em;
+      //       display: inline-block;
+      //       position: absolute;
+      //       top: 0.9em;
+      //     }
+      //   }
+      // }
+
+      &.manzana {
+        &:before {
+          content: '';
+          background-image: url('/especiales/ninezya/iconos/manzana.svg');
+          background-repeat: no-repeat;
+          width: 1.2em;
+          height: 1.2em;
+          display: inline-block;
+          position: absolute;
+          top: 0.9em;
+        }
+      }
+
+      &.pera {
+        &:before {
+          content: '';
+          background-image: url('/especiales/ninezya/iconos/manzanaClara.svg');
+          background-repeat: no-repeat;
+          width: 1.2em;
+          height: 1.2em;
+          display: inline-block;
+          position: absolute;
+          top: 0.9em;
+        }
+      }
     }
 
     .nombreYa {
+      padding: 1em 4em 1em 4em;
+      margin: 0 -3em 0em -2em;
       &.ungido {
         background-color: var(--moradoProfundo);
         color: var(--moradoPandito);
-        padding: 1em;
+        padding: 1em 4em 1em 4em;
+        margin: 0 -3em 1em -2em;
+        font-variation-settings:
+          'MONO' 0,
+          'CASL' 1,
+          'wght' 700,
+          'slnt' 0,
+          'CRSV' 0;
       }
 
       &:hover {
@@ -101,7 +151,6 @@ import Encabezado from './Encabezado.astro';
       }
     }
     .indicadores {
-      padding: 0 3em 0 0;
       display: none;
       list-style: none;
       margin: 0;
@@ -113,7 +162,7 @@ import Encabezado from './Encabezado.astro';
         'slnt' 0,
         'CRSV' 0;
       color: var(--azulViejo);
-      margin-bottom: 1.4em;
+      margin-bottom: 0.8em;
       line-height: 1.2em;
 
       &.abierto {
@@ -124,8 +173,22 @@ import Encabezado from './Encabezado.astro';
     .indicador {
       position: relative;
       font-size: 0.9em;
-      margin-bottom: 0.75em;
+      margin: 0 -0.3em 0em -2em;
+      padding: 0.4em 5em 0.4em 4em;
+      line-height: 1.2em;
 
+      &.seleccionado {
+        background-color: var(--aguaMarinaNinezYa);
+        color: var(--azulViejo);
+        margin: 0 -0.3em 0em -2em;
+        padding: 0.4em 5em 0.4em 4em;
+        font-variation-settings:
+          'MONO' 0,
+          'CASL' 0,
+          'wght' 700,
+          'slnt' 0,
+          'CRSV' 0;
+      }
       &:hover {
         font-variation-settings:
           'MONO' 0,
@@ -139,8 +202,8 @@ import Encabezado from './Encabezado.astro';
         content: '';
         width: 0em;
         height: 0em;
-        top: 0.4em;
-        left: -1em;
+        top: 1em;
+        left: 2.5em;
         display: inline-block;
         border: 2px solid var(--fucsiaEsmalte);
         position: absolute;

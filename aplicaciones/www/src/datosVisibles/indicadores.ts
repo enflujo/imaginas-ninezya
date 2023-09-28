@@ -15,7 +15,7 @@ const datos = {
     },
     {
       nombre: 'Educación inicial',
-      imagen: 'manzana',
+      imagen: 'pera',
       indicadores: [
         { nombre: 'Tasa de violencia en menores de 5 años', archivo: 'ya2-1', mun: false, dep: false },
         {
