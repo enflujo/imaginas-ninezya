@@ -5,7 +5,7 @@ import Encabezado from './Encabezado.astro';
 
 <nav id="menu">
   <Encabezado />
-  <ul>
+  <ol>
     {
       datos.yas.map((ya, i) => {
         return (
@@ -26,7 +26,7 @@ import Encabezado from './Encabezado.astro';
         );
       })
     }
-  </ul>
+  </ol>
 </nav>
 
 <script>
@@ -70,14 +70,14 @@ import Encabezado from './Encabezado.astro';
     background-color: var(--moradoPandito);
     height: fit-content;
     min-height: 100vh;
+    font-variation-settings:
+      'MONO' 0,
+      'CASL' 0,
+      'wght' 700,
+      'slnt' 0,
+      'CRSV' 1;
 
     .ya {
-      font-variation-settings:
-        'MONO' 0,
-        'CASL' 0,
-        'wght' 700,
-        'slnt' 0,
-        'CRSV' 1;
       color: var(--fucsiaEsmalte);
       cursor: pointer;
       position: relative;
