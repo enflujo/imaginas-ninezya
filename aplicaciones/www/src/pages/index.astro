@@ -4,6 +4,7 @@ import Mapa from '@/components/Mapa.astro';
 import LineaTiempo from '@/components/LineaTiempo.astro';
 import Menu from '@/components/Menu.astro';
 import SelectorNivel from '@/components/SelectorNivel.astro';
+import MapaDetalle from '@/components/MapaDetalle.astro';
 ---
 
 <Layout title="Los 10 Yas!">
@@ -27,9 +28,10 @@ import SelectorNivel from '@/components/SelectorNivel.astro';
 
     <div id="introduccion">
       <SelectorNivel />
-      <div id="contenedorMapa"><Mapa ancho={33} alto={60} /></div>
+      <div id="contenedorMapa"><Mapa ancho={30} alto={60} /></div>
       <div id="contenedorLineaTiempo"><LineaTiempo alto={25} /></div>
     </div>
+    <div id="contenedorComparativo"><MapaDetalle ancho={30} alto={60} /></div>
   </main>
 </Layout>
 
