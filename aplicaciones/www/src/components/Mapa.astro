@@ -211,6 +211,7 @@ const { ancho, alto } = Astro.props;
         zona.setAttribute('d', linea);
         zona.setAttribute('id', lugar.properties.codigo);
         zona.setAttribute('style', 'fill: url(#sinInfo)');
+
         zona.onmousemove = (evento) => {
           const dims = mapa.getBoundingClientRect();
           const x = evento.clientX - dims.x;
@@ -226,6 +227,12 @@ const { ancho, alto } = Astro.props;
               deptoSeleccionado.set(lugar.properties.nombre);
             };
           }
+
+          // Asignar nombre del departamento como deptoSeleccionado al hacer click
+          zona.onclick = () => {
+            deptoSeleccionado.set(lugar.properties.nombre);
+            zona.classList.toggle('seleccionada');
+          };
 
           Object.assign(informacion.style, {
             top: `${y}px`,
@@ -246,6 +253,8 @@ const { ancho, alto } = Astro.props;
 <style lang="scss" is:global>
   #contenedorMapa {
     margin-top: 1em;
+    stroke: var(--moradoProfundo);
+    stroke-opacity: 0.5;
     #informacion {
       position: absolute;
       pointer-events: none;
@@ -286,6 +295,15 @@ const { ancho, alto } = Astro.props;
         color: antiquewhite;
         pointer-events: none;
       }
+    }
+
+    .municipios {
+    }
+
+    .seleccionada {
+      stroke: var(--escarlataBebe);
+      stroke-opacity: 1;
+      stroke-width: 2px;
     }
   }
 </style>
