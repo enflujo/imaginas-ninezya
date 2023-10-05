@@ -3,14 +3,16 @@ import datos from '@/datosVisibles/indicadores';
 import Encabezado from './Encabezado.astro';
 ---
 
-<nav id="menu" class="columna">
+<nav id="menu">
   <Encabezado />
   <ol>
     {
-      datos.yas.map((ya) => {
+      datos.yas.map((ya, i) => {
         return (
-          <li class="ya">
-            <p class="nombreYa">{ya.nombre}</p>
+          <li class={`ya ${ya.imagen}`}>
+            <p class="nombreYa">
+              {i + 1}. {ya.nombre}
+            </p>
             <ul class="indicadores">
               {ya.indicadores.map((indicador) => {
                 return (
@@ -35,6 +37,7 @@ import Encabezado from './Encabezado.astro';
   // Enviar al cerebro el nombre del archivo de datos correspondiente al indicador
   indicadores.forEach((elemento) => {
     elemento.onclick = async () => {
+      elemento.classList.toggle('seleccionado');
       archivoActual.set(elemento.dataset.archivo);
       await cargarDatos();
       crearListaAños();
@@ -44,54 +47,159 @@ import Encabezado from './Encabezado.astro';
   yas.forEach((contenedorYa) => {
     const nombreYa = contenedorYa.querySelector<HTMLElement>('.nombreYa');
     nombreYa.addEventListener('click', () => {
-      abrirYa(contenedorYa);
+      const contenedorIndicador = contenedorYa.querySelector<HTMLElement>('.indicadores');
+      const nombreYa = contenedorYa.querySelector<HTMLElement>('.nombreYa');
+      contenedorYa.classList.toggle('abierto');
+      nombreYa.classList.toggle('ungido');
     });
   });
-
-  function abrirYa(contenedorYa: HTMLElement) {
-    const contenedor = contenedorYa.querySelector<HTMLElement>('.indicadores');
-    contenedor.classList.toggle('abierto');
-  }
 </script>
 
 <style lang="scss">
+  @import '@/scss/estilos';
   #menu {
-    width: 30vw;
-    padding-right: 1em;
+    width: 18vw;
+    padding: 0 3em 0 1.5em;
     font-family: var(--fuente);
+    color: var(--fucsiaEsmalte);
+    background-color: var(--moradoPandito);
+    height: fit-content;
+    min-height: 100vh;
+    font-variation-settings:
+      'MONO' 0,
+      'CASL' 0,
+      'wght' 700,
+      'slnt' 0,
+      'CRSV' 1;
+
     .ya {
-      font-weight: 700;
+      color: var(--fucsiaEsmalte);
       cursor: pointer;
+      position: relative;
+      list-style: none;
+
+      &:before {
+        content: '';
+        background-repeat: no-repeat;
+        width: 1.2em;
+        height: 1.2em;
+        background-size: 35px;
+        display: inline-block;
+        position: absolute;
+      }
+
+      &.manzana {
+        &:before {
+          background-image: url('/especiales/ninezya/iconos/manzana.svg');
+          top: 0.9em;
+        }
+      }
+
+      &.pera {
+        &:before {
+          // content: '';
+          // background-image: url('/especiales/ninezya/iconos/manzana.svg');
+          // background-repeat: no-repeat;
+          // background-size: 35px;
+          // width: 1.2em;
+          // height: 1.2em;
+          // display: inline-block;
+          // position: absolute;
+          // top: 0.9em;
+        }
+      }
+
+      &.abierto {
+        .indicadores {
+          display: block;
+        }
+
+        &.manzana {
+          &:before {
+            background-position-x: -16px;
+          }
+        }
+      }
+    }
+
+    .nombreYa {
+      padding: 1em 4em 1em 4em;
+      margin: 0 -3em 0em -2em;
+      &.ungido {
+        background-color: var(--moradoProfundo);
+        color: var(--moradoPandito);
+        padding: 1em 4em 1em 4em;
+        margin: 0 -3em 1em -2em;
+        font-variation-settings:
+          'MONO' 0,
+          'CASL' 1,
+          'wght' 700,
+          'slnt' 0,
+          'CRSV' 0;
+      }
+
+      &:hover {
+        font-variation-settings:
+          'MONO' 0,
+          'CASL' 1,
+          'wght' 700,
+          'slnt' 0,
+          'CRSV' 0;
+      }
     }
 
     .indicadores {
-      font-weight: 300;
       display: none;
       list-style: none;
       margin: 0;
-      padding: 0;
-
-      &.abierto {
-        display: block;
-      }
+      font-variation-settings:
+        'MONO' 0,
+        'CASL' 0,
+        'wght' 335,
+        'slnt' 0,
+        'CRSV' 0;
+      color: var(--azulViejo);
+      margin-bottom: 0.8em;
+      line-height: 1.2em;
     }
 
     .indicador {
       position: relative;
       font-size: 0.9em;
-      margin-bottom: 0.3em;
+      margin: 0 -0.3em 0em -2em;
+      padding: 0.4em 5em 0.4em 4em;
+      line-height: 1.2em;
+
+      &.seleccionado {
+        background-color: var(--aguaMarinaNinezYa);
+        color: var(--azulViejo);
+        margin: 0 -0.3em 0em -2em;
+        padding: 0.4em 5em 0.4em 4em;
+        font-variation-settings:
+          'MONO' 0,
+          'CASL' 0,
+          'wght' 700,
+          'slnt' 0,
+          'CRSV' 0;
+      }
 
       &:hover {
+        font-variation-settings:
+          'MONO' 0,
+          'CASL' 0,
+          'wght' 700,
+          'slnt' 0,
+          'CRSV' 0;
       }
 
       &::before {
         content: '';
-        width: 0.3em;
-        height: 0.3em;
-        top: 0.25em;
-        left: -0.8em;
+        width: 0em;
+        height: 0em;
+        top: 1em;
+        left: 2.5em;
         display: inline-block;
-        border: 2px solid var(--uvaNinezYa);
+        border: 2px solid var(--fucsiaEsmalte);
         position: absolute;
         border-radius: 50%;
       }
