@@ -3,7 +3,7 @@ import type { FeatureCollection } from 'geojson';
 
 export const indicador = atom<string | null>(null);
 export const archivoActual = atom<string | null>(null);
-export const listaAños = map<{ año: string; conDatos: boolean }[]>([]);
+export const listaAños = atom<{ año: string; conDatos: boolean }[]>([]);
 export const datosIndicador = map<{ [año: string]: any }>();
 export const datosIndicadorMun = map<{ [año: string]: any }>();
 export const nivel = atom<string>('dep');
@@ -12,6 +12,7 @@ export const añoSeleccionado = atom<string | null>(null);
 export const lugares: string[] = [];
 export const datosColombia = map<{ dep?: FeatureCollection; mun?: FeatureCollection }>({});
 export const datosMunicipios = atom<FeatureCollection | null>(null);
+export const lugaresSeleccionados = atom<{ nombre: string; codigo: string }[]>([]);
 
 export async function cargarDatos() {
   const nivelActual = nivel.value;
