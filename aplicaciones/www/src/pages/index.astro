@@ -1,51 +1,91 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Mapa from '@/components/Mapa.astro';
-import LineaTiempo from '@/components/LineaTiempo.astro';
-import Menu from '@/components/Menu.astro';
-import SelectorNivel from '@/components/SelectorNivel.astro';
-import MapaDetalle from '@/components/MapaDetalle.astro';
+import Plantilla from '../plantillas/Principal.astro';
+import Mapa from '@/componentes/Mapa.astro';
+import LineaTiempo from '@/componentes/LineaTiempo.astro';
+import Menu from '@/componentes/Menu.astro';
+import SelectorNivel from '@/componentes/SelectorNivel.astro';
 ---
 
-<Layout title="Los 10 Yas!">
+<Plantilla titulo="Los 10 Yas!">
   <main>
-    <!-- <h1 class="titulo">NiñezYA</h1> -->
     <Menu />
-    <!-- <Termometro titulo="1. Salud y Nutrición" valor={100} />
-      
-      <Termometro titulo="2. Educación Inicial" valor={100} />
-      <Termometro titulo="3. Educación Preescolar, Básica y Media" valor={100} />
-      <Termometro titulo="4. Ambiente Sano" valor={100} />
-      <Termometro titulo="5. Juego" valor={100} />
-      <Termometro titulo="6. Participación" valor={100} />
-      <Termometro titulo="7. Fortalecimiento Familiar del Cuidado y la Crianza de la Niñez" valor={100} />
-      <Termometro titulo="8. Protección Frente a Cualquier Tipo de Violencia" valor={100} />
-      <Termometro
-        titulo="9. Adolescentes con Justicia Restaurativa y Pedagógica (Sistema de Responsabilidad Penal para Adolescentes - SRPA)"
-        valor={100}
-      />
-      <Termometro titulo="10. Cultura de Paz, Reconciliación y Convivencia" valor={100} /> -->
 
-    <div id="introduccion">
+    <div id="visualizaciones" class="columna">
       <SelectorNivel />
       <div id="contenedorLineaTiempo"><LineaTiempo alto={25} /></div>
       <div id="contenedorMapa"><Mapa ancho={30} alto={60} /></div>
     </div>
-    <div id="contenedorComparativo"><MapaDetalle ancho={30} alto={60} /></div>
+
+    <div id="comparativo" class="columna"></div>
+
+    <div id="informacion">
+      <p class="nombre"></p>
+    </div>
   </main>
-</Layout>
+</Plantilla>
 
 <script>
-  // const elementos = document.querySelectorAll('.termometro');
+  import MapaDetalle from '@/componentes/MapaDetalle';
+  import { añoSeleccionado, lugaresSeleccionados } from '@/utilidades/cerebro';
+  const comparativo = document.getElementById('comparativo');
 
-  // elementos.forEach((elemento: HTMLDivElement) => {
-  //   elemento.onmouseenter = () => {
-  //     indicador.set(elemento.innerText);
-  //   };
-  // });
+  añoSeleccionado.subscribe(async () => {
+    const existentes = comparativo.querySelectorAll<MapaDetalle>('enflujo-mapita');
+
+    if (existentes && existentes.length) {
+      existentes.forEach((mapita) => {
+        mapita.pintarMapa();
+      });
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    const existentes = comparativo.querySelectorAll<MapaDetalle>('enflujo-mapita');
+    if (existentes && existentes.length) {
+      existentes.forEach((mapita) => {
+        mapita.escalar();
+      });
+    }
+  });
+
+  lugaresSeleccionados.subscribe((lista) => {
+    const existentes = comparativo.querySelectorAll<MapaDetalle>('enflujo-mapita');
+
+    if (lista.length) {
+      lista.forEach(({ nombre, codigo }) => {
+        let existeLugarEnDOM = false;
+
+        existentes.forEach((mapita) => {
+          if (mapita.id === `${codigo}`) {
+            existeLugarEnDOM = true;
+          }
+
+          // Borrar si no está en la lista
+          if (!lista.find((lugar) => lugar.codigo === mapita.id)) {
+            comparativo.removeChild(mapita);
+          }
+        });
+
+        if (!existeLugarEnDOM) {
+          const mapita = document.createElement('enflujo-mapita') as MapaDetalle;
+          mapita.className = 'mapita';
+          mapita.id = `${codigo}`;
+          mapita.dataset.departamento = nombre;
+          mapita.agregarTitulo(nombre);
+
+          mapita.crearMapa();
+          mapita.escalar();
+          mapita.pintarMapa();
+          comparativo.appendChild(mapita);
+        }
+      });
+    } else {
+      comparativo.innerHTML = '';
+    }
+  });
 </script>
 
-<style lang="scss">
+<style lang="scss" is:global>
   #contenedorMapa {
     position: relative;
   }
@@ -60,9 +100,50 @@ import MapaDetalle from '@/components/MapaDetalle.astro';
 
   main {
     display: flex;
+
+    .columna {
+      flex-basis: 33.33%;
+    }
   }
 
-  #introduccion {
-    flex-basis: 33%;
+  #informacion {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+    max-width: 200px;
+    padding: 0.5em;
+    font-size: 0.8em;
+    font-weight: bold;
+
+    background-color: rgb(253, 253, 250);
+    color: black;
+    z-index: 9;
+    transition: opacity 0.42s ease-out;
+    transform: translate(-50%, -105%);
+
+    &.visible {
+      opacity: 1;
+    }
+  }
+
+  #comparativo {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: flex-start;
+  }
+
+  .mapita {
+    stroke: var(--moradoProfundo);
+    stroke-opacity: 0.5;
+  }
+
+  .contenedorMapita {
+    border: 2px solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 </style>

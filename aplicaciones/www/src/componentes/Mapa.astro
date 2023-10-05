@@ -21,9 +21,6 @@ const { ancho, alto } = Astro.props;
 
     <g id="colombia"></g>
   </svg>
-  <div id="informacion">
-    <p class="nombre"></p>
-  </div>
 </div>
 
 <script>
@@ -37,6 +34,7 @@ const { ancho, alto } = Astro.props;
     nivel,
     deptoSeleccionado,
     añoSeleccionado,
+    lugaresSeleccionados,
   } from '@/utilidades/cerebro';
   import type { IMapearCoordenadas } from '@enflujo/alquimia/libreria/modulos/tipos';
 
@@ -211,21 +209,33 @@ const { ancho, alto } = Astro.props;
         zona.setAttribute('d', linea);
         zona.setAttribute('id', lugar.properties.codigo);
         zona.setAttribute('style', 'fill: url(#sinInfo)');
+
         zona.onmousemove = (evento) => {
-          const dims = mapa.getBoundingClientRect();
-          const x = evento.clientX - dims.x;
-          const y = evento.clientY - dims.y;
+          const x = evento.clientX;
+          const y = evento.clientY - 30;
 
           if (nivel.get() === 'mun') {
             infoMunucipio.innerText = `${lugar.properties.nombre} (${lugar.properties.dep})`;
           } else {
             infoMunucipio.innerText = `${lugar.properties.nombre}`;
-
-            // Asignar nombre del departamento como deptoSeleccionado al hacer click
-            zona.onclick = () => {
-              deptoSeleccionado.set(lugar.properties.nombre);
-            };
           }
+
+          // Asignar nombre del departamento a la lista de lugares seleccionados
+          zona.onclick = () => {
+            const { nombre, codigo } = lugar.properties;
+            deptoSeleccionado.set(nombre);
+            zona.classList.toggle('seleccionada');
+            const lugares = [...lugaresSeleccionados.get()]; // es necesario clonar el array acá para que al final de las operaciones que siguen a continuación, el store se encargue de hacer llamado a todos los que estén usando `listen()`.
+            const posicionLugar = lugares.findIndex(({ nombre: nombreAgregado }) => nombreAgregado === nombre);
+
+            if (posicionLugar < 0) {
+              lugares.push({ nombre, codigo });
+            } else {
+              lugares.splice(posicionLugar, 1);
+            }
+
+            lugaresSeleccionados.set(lugares); // Cambiar valores en el store, todos los que esten con listen() van a recibir estos nuevos valores.
+          };
 
           Object.assign(informacion.style, {
             top: `${y}px`,
@@ -246,25 +256,8 @@ const { ancho, alto } = Astro.props;
 <style lang="scss" is:global>
   #contenedorMapa {
     margin-top: 1em;
-    #informacion {
-      position: absolute;
-      pointer-events: none;
-      opacity: 0;
-      max-width: 200px;
-      padding: 0.5em;
-      font-size: 0.8em;
-      font-weight: bold;
-
-      background-color: rgb(253, 253, 250);
-      color: black;
-      z-index: 9;
-      transition: opacity 0.42s ease-out;
-      transform: translate(-50%, -105%);
-
-      &.visible {
-        opacity: 1;
-      }
-    }
+    stroke: var(--moradoProfundo);
+    stroke-opacity: 0.5;
 
     .botonAño {
       margin-right: 0.3em;
@@ -286,6 +279,15 @@ const { ancho, alto } = Astro.props;
         color: antiquewhite;
         pointer-events: none;
       }
+    }
+
+    .municipios {
+    }
+
+    .seleccionada {
+      stroke: var(--escarlataBebe);
+      stroke-opacity: 1;
+      stroke-width: 2px;
     }
   }
 </style>
