@@ -5,12 +5,11 @@ import ya2_5 from '@/indicadores/02-05';
 import ya3_1 from '@/indicadores/03-01';
 
 async function inicio() {
-  // await edu1();
-  // await ya1_1();
+  await ya1_1();
   // await ya1_4();
   // await ya1_6();
   // await ya2_5();
-  await ya3_1();
+  // await ya3_1();
 }
 
 inicio();
