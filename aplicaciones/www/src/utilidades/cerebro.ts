@@ -59,7 +59,7 @@ export function crearListaAños() {
   const max = +años[años.length - 1];
   const lista = [];
 
-  for (let a = min; a < max; a++) {
+  for (let a = min; a <= max; a++) {
     const conDatos = datos[a] && datos[a].length;
     lista.push({ año: a, conDatos });
   }
