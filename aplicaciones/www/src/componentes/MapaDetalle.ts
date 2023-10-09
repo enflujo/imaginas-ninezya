@@ -13,7 +13,7 @@ export default class MapaDetalle extends HTMLElement {
   extremosGeo: ExtremosCoordenadas;
   coordenadasAncho: number;
   coordenadasAlto: number;
-  formas: { [codigo: string]: SVGPathElement };
+  formas: { [codigo: string]: { svg: SVGPathElement; valor: number } };
   ancho: number;
   alto: number;
   contenedor: HTMLDivElement;
@@ -94,11 +94,14 @@ export default class MapaDetalle extends HTMLElement {
         const formaMunicipio = document.createElementNS('http://www.w3.org/2000/svg', 'path');
         formaMunicipio.setAttribute('id', lugar.properties.codigo);
         formaMunicipio.setAttribute('style', 'fill: url(#sinInfo)');
+        formaMunicipio.setAttribute('shape-rendering', 'geometricPrecision');
+        // shape-rendering="geometricPrecision"
         formaMunicipio.onmousemove = (evento) => {
           const x = evento.pageX;
           const y = evento.pageY - 30;
+          const valor = this.formas[lugar.properties.codigo].valor;
 
-          informacion.innerText = `${lugar.properties.nombre}`;
+          informacion.innerText = `${lugar.properties.nombre} (${valor ? valor + '%' : 'Sin datos'})`;
 
           Object.assign(informacion.style, {
             top: `${y}px`,
@@ -106,7 +109,7 @@ export default class MapaDetalle extends HTMLElement {
           });
         };
 
-        this.formas[lugar.properties.codigo] = formaMunicipio;
+        this.formas[lugar.properties.codigo] = { svg: formaMunicipio, valor: null };
         this.formaDep.appendChild(formaMunicipio);
       }
     });
@@ -144,7 +147,7 @@ export default class MapaDetalle extends HTMLElement {
       if (lugar.geometry.type === 'Polygon' || lugar.geometry.type === 'MultiPolygon') {
         const linea = crearLinea(lugar.geometry, this.mapearCoordenadas, ancho, alto);
         const forma = this.formas[lugar.properties.codigo];
-        forma.setAttribute('d', linea);
+        forma.svg.setAttribute('d', linea);
       }
     });
   }
@@ -159,11 +162,14 @@ export default class MapaDetalle extends HTMLElement {
 
         if (dep === this.id) {
           const forma = this.formas[codigoMun];
+
           if (forma) {
             if (valor) {
-              forma.setAttribute('style', `fill: ${color(+valor)}`);
+              forma.svg.setAttribute('style', `fill: ${color(+valor)}`);
+              forma.valor = +valor;
             } else {
-              forma.setAttribute('style', 'fill: url(#sinInfo)');
+              forma.svg.setAttribute('style', 'fill: url(#sinInfo)');
+              forma.valor = null;
             }
           } else {
             console.log('No existe lugar con codigo', codigoMun);

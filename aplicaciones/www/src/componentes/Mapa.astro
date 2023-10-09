@@ -214,6 +214,7 @@ const { ancho, alto } = Astro.props;
         zona.setAttribute('d', linea);
         zona.setAttribute('id', lugar.properties.codigo);
         zona.setAttribute('style', 'fill: url(#sinInfo)');
+        zona.setAttribute('shape-rendering', 'geometricPrecision');
 
         zona.onmousemove = (evento) => {
           const x = evento.clientX;
