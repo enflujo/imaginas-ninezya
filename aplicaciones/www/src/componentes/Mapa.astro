@@ -186,6 +186,11 @@ const { ancho, alto } = Astro.props;
     const datos = datosIndicador.get()[año];
     if (!datos) return;
 
+    // Reiniciar todos sin datos antes de pintar de nuevo
+    for (const codigo in zonas) {
+      zonas[codigo].setAttribute('style', 'fill: url(#sinInfo)');
+    }
+
     datos.forEach(([codigo, valor]) => {
       if (zonas[codigo]) {
         if (valor) {
