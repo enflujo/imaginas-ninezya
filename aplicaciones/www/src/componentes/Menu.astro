@@ -34,21 +34,34 @@ import Encabezado from './Encabezado.astro';
   const yas = document.querySelectorAll<HTMLElement>('.ya');
   const indicadores = document.querySelectorAll<HTMLLIElement>('.indicador');
 
-  // Enviar al cerebro el nombre del archivo de datos correspondiente al indicador
+  async function cargarIndicador(elemento: HTMLLIElement) {
+    elemento.classList.add('seleccionado');
+    // Enviar al cerebro el nombre del archivo de datos correspondiente al indicador
+    archivoActual.set(elemento.dataset.archivo);
+    await cargarDatos();
+    crearListaAños();
+  }
+
   indicadores.forEach((elemento) => {
     elemento.onclick = async () => {
-      elemento.classList.toggle('seleccionado');
-      archivoActual.set(elemento.dataset.archivo);
-      await cargarDatos();
-      crearListaAños();
+      const seleccionado = document.querySelector('.seleccionado');
+
+      if (seleccionado) {
+        if (!seleccionado.isEqualNode(elemento)) {
+          seleccionado.classList.remove('seleccionado');
+          await cargarIndicador(elemento);
+        }
+      } else {
+        await cargarIndicador(elemento);
+      }
     };
   });
-  // Abrir sub menú de indicadores al hacer click en un 'ya'
+
+  // Abrir sub menú de indicadores al hacer clic en un 'ya'
   yas.forEach((contenedorYa) => {
     const nombreYa = contenedorYa.querySelector<HTMLElement>('.nombreYa');
+
     nombreYa.addEventListener('click', () => {
-      const contenedorIndicador = contenedorYa.querySelector<HTMLElement>('.indicadores');
-      const nombreYa = contenedorYa.querySelector<HTMLElement>('.nombreYa');
       contenedorYa.classList.toggle('abierto');
       nombreYa.classList.toggle('ungido');
     });
