@@ -3,7 +3,7 @@
 ---
 
 <div id="selectorNivel">
-  <button class="botonSelector" data-nivel="nal">Nacional</button>
+  <!-- <button class="botonSelector" data-nivel="nal">Nacional</button> -->
   <button class="botonSelector" data-nivel="dep">Departamento</button>
   <button class="botonSelector" data-nivel="mun">Municipio</button>
 </div>
@@ -12,11 +12,20 @@
   import { cargarDatos, nivel } from '@/utilidades/cerebro';
 
   const selectores = document.querySelectorAll<HTMLElement>('.botonSelector');
-
+  let seleccionado: HTMLElement;
   selectores.forEach((boton) => {
+    if (boton.dataset.nivel === 'dep') {
+      boton.classList.add('activo');
+      seleccionado = boton;
+    }
     boton.addEventListener('click', () => {
       const nuevoNivel = boton.dataset.nivel;
+
       if (nivel.value === nuevoNivel) return;
+
+      if (seleccionado) seleccionado.classList.remove('activo');
+      boton.classList.add('activo');
+      seleccionado = boton;
       nivel.set(nuevoNivel);
       cargarDatos();
     });
@@ -27,14 +36,23 @@
   #selectorNivel {
     display: flex;
     justify-content: flex-start;
+    flex-direction: column;
+    width: fit-content;
     margin-bottom: 1em;
+    margin: 1em;
   }
   .botonSelector {
     margin-right: 1em;
+    border: 1px solid var(--moradoProfundo);
+    color: var(--moradoProfundo);
 
     &:hover {
       cursor: pointer;
       background-color: #ffff8a;
+    }
+    &.activo {
+      background-color: var(--moradoProfundo);
+      color: white;
     }
   }
 </style>
