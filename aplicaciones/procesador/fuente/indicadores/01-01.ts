@@ -16,13 +16,15 @@ const datosDepartamentos: RespuestaPorcentaje = {};
 const datosNacionales: RespuestaNacional = {};
 
 export default async () => {
-  await maquinaXlsx('1.1: salud - seguridad alimentaria', 'YA1_1.1', 'Sheet1', procesarMunicipios);
+  await maquinaXlsx('1.1: salud - acueducto', 'YA1_1.1', 'Sheet1', procesarMunicipios);
   procesarDepartamentos();
   procesarNacional();
-  guardarJSON(datosMunicipios, 'ya1-1-mun');
-  guardarJSON(datosDepartamentos, 'ya1-1-dep');
-  guardarJSON(datosNacionales, 'ya1-1-nal');
-  guardarJSON(errata, 'Errata YA1.1_mun');
+
+  const nombre = 'ya1-1';
+  guardarJSON(datosMunicipios, `${nombre}-mun`);
+  guardarJSON(datosDepartamentos, `${nombre}-dep`);
+  guardarJSON(datosNacionales, `${nombre}-nal`);
+  guardarJSON(errata, `Errata ${nombre}`);
 };
 
 function procesarMunicipios(fila: VariablesYa1_1, numeroFila: number) {
@@ -84,7 +86,7 @@ function procesarDepartamentos() {
     });
 
     for (const codDep in deps) {
-      const yaExiste = datosDepartamentos[año].find(([codigo]) => codigo === codDep);
+      const yaExiste = datosDepartamentos[año] && datosDepartamentos[año].find(([codigo]) => codigo === codDep);
 
       if (yaExiste) {
         // Ya existen datos departamentales, no hacer nada.
