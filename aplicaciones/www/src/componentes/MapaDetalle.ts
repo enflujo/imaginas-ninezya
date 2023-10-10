@@ -101,7 +101,7 @@ export default class MapaDetalle extends HTMLElement {
           const y = evento.pageY - 30;
           const valor = this.formas[lugar.properties.codigo].valor;
 
-          informacion.innerText = `${lugar.properties.nombre} (${valor ? valor + '%' : 'Sin datos'})`;
+          informacion.innerText = `${lugar.properties.nombre}: ${valor ? valor + '%' : 'Sin datos'}`;
 
           Object.assign(informacion.style, {
             top: `${y}px`,
