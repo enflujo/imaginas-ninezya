@@ -33,6 +33,10 @@ export async function cargarDatos() {
     (res) => res.json()
   );
 
+  // const datos = await fetch(`${import.meta.env.BASE_URL}/datos/${archivoActual.value}-${nivel.value}.json`).then(
+  //   (res) => res.json()
+  // );
+
   const datosIndicadorMunicipio = await fetch(
     `https://enflujo.com/bodega/ninezya/${archivoActual.value}-mun.json`
   ).then((res) => res.json());
