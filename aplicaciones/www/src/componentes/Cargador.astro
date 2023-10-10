@@ -1,0 +1,60 @@
+<div id="cargador">
+  <svg x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+    <rect fill="#fff" stroke="none" x="0" y="50" width="2" height="4">
+      <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.1"></animate>
+    </rect>
+    <rect fill="#fff" stroke="none" x="3" y="50" width="2" height="4">
+      <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.2"></animate>
+    </rect>
+    <rect fill="#fff" stroke="none" x="6" y="50" width="2" height="4">
+      <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.3"></animate>
+    </rect>
+    <rect fill="#fff" stroke="none" x="9" y="50" width="2" height="4">
+      <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.4"></animate>
+    </rect>
+    <rect fill="#fff" stroke="none" x="12" y="50" width="2" height="4">
+      <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.5"></animate>
+    </rect>
+    <rect fill="#fff" stroke="none" x="15" y="50" width="2" height="4">
+      <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.6"></animate>
+    </rect>
+    <rect fill="#fff" stroke="none" x="18" y="50" width="2" height="4">
+      <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.7"></animate>
+    </rect>
+    <rect fill="#fff" stroke="none" x="21" y="50" width="2" height="4">
+      <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.8"></animate>
+    </rect>
+    <rect fill="#fff" stroke="none" x="24" y="50" width="2" height="4">
+      <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.9"></animate>
+    </rect>
+    <rect fill="#fff" stroke="none" x="27" y="50" width="2" height="4">
+      <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="1.0"></animate>
+    </rect>
+  </svg>
+</div>
+
+<style lang="scss">
+  #cargador {
+    position: fixed;
+    z-index: 999999999999999999;
+    background-color: color-mix(in srgb, var(--uvaNinezYa) 50%, #ffffff96);
+    color: white;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+
+    &.visible {
+      display: block;
+    }
+  }
+
+  svg {
+    width: 200px;
+    position: fixed;
+    left: 50%;
+    top: 50vh;
+    transform: translate(-50%, -50%);
+  }
+</style>

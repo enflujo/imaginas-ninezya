@@ -1,5 +1,6 @@
 import { atom, map } from 'nanostores';
 import type { FeatureCollection } from 'geojson';
+import { esperar } from '@enflujo/alquimia';
 
 export const indicador = atom<string | null>(null);
 export const archivoActual = atom<string | null>(null);
@@ -13,9 +14,15 @@ export const lugares: string[] = [];
 export const datosColombia = map<{ dep?: FeatureCollection; mun?: FeatureCollection }>({});
 export const datosMunicipios = atom<FeatureCollection | null>(null);
 export const lugaresSeleccionados = atom<{ nombre: string; codigo: string }[]>([]);
+const cargador = document.getElementById('cargador');
 
 export async function cargarDatos() {
   const nivelActual = nivel.value;
+  let cargando = true;
+
+  setTimeout(() => {
+    if (cargando) cargador.classList.add('visible');
+  }, 150);
 
   if (!datosColombia.value[nivelActual]) {
     if (nivelActual === 'dep') {
@@ -44,6 +51,9 @@ export async function cargarDatos() {
   datosIndicadorMun.set(datosIndicadorMunicipio);
   datosIndicador.set(datos);
   datosMunicipios.set(datosMapaMun);
+
+  cargando = false;
+  cargador.classList.remove('visible');
 }
 
 export function agregarLugar(codigo: string) {
