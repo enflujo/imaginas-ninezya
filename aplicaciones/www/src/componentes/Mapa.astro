@@ -10,17 +10,23 @@ const { ancho, alto } = Astro.props;
 ---
 
 <div id="contenedorMapa">
-  <div id="menuAños"></div>
+  <div>
+    <nav id="menuAños">
+      <span id="añoElegido"> </span>
+      <ul id="añosOcultos"></ul>
+    </nav>
+  </div>
+  <div>
+    <svg class="mapa" data-proporciones={JSON.stringify({ ancho, alto })}>
+      <defs>
+        <pattern id="sinInfo" patternUnits="userSpaceOnUse" width="3.5" height="3.5" patternTransform="rotate(45)">
+          <line x1="0" y="0" x2="0" y2="3.5" stroke="#46484A" stroke-width="1"></line>
+        </pattern>
+      </defs>
 
-  <svg class="mapa" data-proporciones={JSON.stringify({ ancho, alto })}>
-    <defs>
-      <pattern id="sinInfo" patternUnits="userSpaceOnUse" width="3.5" height="3.5" patternTransform="rotate(45)">
-        <line x1="0" y="0" x2="0" y2="3.5" stroke="#46484A" stroke-width="1"></line>
-      </pattern>
-    </defs>
-
-    <g id="colombia"></g>
-  </svg>
+      <g id="colombia"></g>
+    </svg>
+  </div>
 </div>
 
 <script>
@@ -41,8 +47,10 @@ const { ancho, alto } = Astro.props;
   const mapa = document.querySelector('.mapa') as HTMLDivElement;
   const colombia = document.getElementById('colombia');
   const informacion = document.getElementById('informacion');
-  const infoMunucipio = informacion.querySelector('.nombre') as HTMLParagraphElement;
-  const menuAños = document.getElementById('menuAños') as HTMLDivElement;
+  const menuAños = document.getElementById('menuAños') as HTMLElement;
+  const añoElegido = document.getElementById('añoElegido');
+  const añosOcultos = document.getElementById('añosOcultos');
+
   let mapearCoordenadas: IMapearCoordenadas;
   let extremosGeo: ExtremosCoordenadas;
   const proporciones = JSON.parse(mapa.dataset.proporciones);
@@ -108,12 +116,13 @@ const { ancho, alto } = Astro.props;
       if (lugar.geometry.type === 'Polygon' || lugar.geometry.type === 'MultiPolygon') {
         const linea = crearLinea(lugar.geometry, mapearCoordenadas, ancho, alto);
         const zona = zonas[lugar.properties.codigo];
-        zona.setAttribute('d', linea);
+        zona.svg.setAttribute('d', linea);
       }
     });
   }
 
   let añoActivo: HTMLSpanElement;
+
   // const datos = datos
 
   datosIndicador.subscribe(async () => {
@@ -151,7 +160,8 @@ const { ancho, alto } = Astro.props;
 
   listaAños.subscribe((lista) => {
     if (!lista.length) return;
-    menuAños.innerHTML = '';
+    añosOcultos.innerHTML = '';
+    menuAños.style.display = 'flex';
 
     lista.forEach(({ año, conDatos }, i) => {
       const boton = document.createElement('span');
@@ -169,6 +179,7 @@ const { ancho, alto } = Astro.props;
 
           boton.classList.add('activo');
           añoActivo = boton;
+          añoElegido.innerText = `${añoActivo.innerText} ▾`;
           añoSeleccionado.set(añoActivo.innerText);
 
           pintarMapa(año);
@@ -178,8 +189,13 @@ const { ancho, alto } = Astro.props;
           boton.click();
         }
       }
-      menuAños.appendChild(boton);
+      añosOcultos.appendChild(boton);
     });
+  });
+
+  // Mostrar menu de años
+  añoElegido.addEventListener('click', () => {
+    añosOcultos.classList.toggle('abierto');
   });
 
   function pintarMapa(año: string) {
@@ -188,15 +204,18 @@ const { ancho, alto } = Astro.props;
 
     // Reiniciar todos sin datos antes de pintar de nuevo
     for (const codigo in zonas) {
-      zonas[codigo].setAttribute('style', 'fill: url(#sinInfo)');
+      zonas[codigo].svg.setAttribute('style', 'fill: url(#sinInfo)');
     }
 
     datos.forEach(([codigo, valor]) => {
-      if (zonas[codigo]) {
+      const zona = zonas[codigo];
+      if (zona) {
         if (valor) {
-          zonas[codigo].setAttribute('style', `fill: ${color(valor)}`);
+          zona.svg.setAttribute('style', `fill: ${color(valor)}`);
+          zona.valor = +valor;
         } else {
-          zonas[codigo].setAttribute('style', 'fill: url(#sinInfo)');
+          zona.svg.setAttribute('style', 'fill: url(#sinInfo)');
+          zona.valor = null;
         }
       } else {
         console.log('No existe lugar con codigo', codigo);
@@ -216,14 +235,18 @@ const { ancho, alto } = Astro.props;
         zona.setAttribute('style', 'fill: url(#sinInfo)');
         zona.setAttribute('shape-rendering', 'geometricPrecision');
 
-        zona.onmousemove = (evento) => {
+        zona.onmouseenter = (evento) => {
           const x = evento.clientX;
           const y = evento.clientY - 30;
+          const valor = zonas[lugar.properties.codigo].valor;
 
           if (nivel.get() === 'mun') {
-            infoMunucipio.innerText = `${lugar.properties.nombre} (${lugar.properties.dep})`;
+            informacion.innerText = `${lugar.properties.nombre} (${lugar.properties.dep}): ${
+              valor ? valor + '%' : 'Sin datos'
+            }`;
           } else {
-            infoMunucipio.innerText = `${lugar.properties.nombre}`;
+            informacion.innerText = `${lugar.properties.nombre}: ${valor ? valor + '%' : 'Sin datos'}`;
+            zona.classList.add('departamento');
           }
 
           // Asignar nombre del departamento a la lista de lugares seleccionados
@@ -249,7 +272,9 @@ const { ancho, alto } = Astro.props;
           });
         };
 
-        zonas[lugar.properties.codigo] = zona;
+        zona.onmouseleave = () => {};
+
+        zonas[lugar.properties.codigo] = { svg: zona, valor: null };
         colombia.appendChild(zona);
       }
     });
@@ -264,6 +289,40 @@ const { ancho, alto } = Astro.props;
     margin-top: 1em;
     stroke: var(--moradoProfundo);
     stroke-opacity: 0.5;
+
+    #menuAños {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      width: 90px;
+      cursor: pointer;
+      display: none;
+      text-align: center;
+      font-size: 0.9em;
+      width: fit-content;
+      color: var(--moradoProfundo);
+      margin: 1em;
+
+      #añoElegido {
+        border: 1px solid var(--moradoProfundo);
+        padding: 0.2em 0.5em;
+        border-radius: 5px;
+      }
+
+      #añosOcultos {
+        display: none;
+        position: absolute;
+        top: 2em;
+        width: 100%;
+        z-index: 2;
+        background-color: var(--blancoMarfil);
+
+        &.abierto {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+    }
 
     .botonAño {
       margin-right: 0.3em;
@@ -288,6 +347,10 @@ const { ancho, alto } = Astro.props;
     }
 
     .municipios {
+    }
+
+    .departamento {
+      cursor: pointer;
     }
 
     .seleccionada {
