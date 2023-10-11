@@ -55,11 +55,20 @@ const datos = {
       nombre: 'Ambiente sano',
       imagen: 'ya4',
       indicadores: [
-        { nombre: 'Tasa de mortalidad por Enfermedad Diarreica Aguda (EDA) en menores de 5 años', archivo: 'ya4-1', mun: false, dep: false },
-        { nombre: 'Tasa de mortalidad por Infección Respiratoria Aguda (IRA) en menores de 5 años', archivo: 'ya4-2', mun: false, dep: false },
+        {
+          nombre: 'Tasa de mortalidad por Enfermedad Diarreica Aguda (EDA) en menores de 5 años',
+          archivo: 'ya4-1',
+          mun: false,
+          dep: false,
+        },
+        {
+          nombre: 'Tasa de mortalidad por Infección Respiratoria Aguda (IRA) en menores de 5 años',
+          archivo: 'ya4-2',
+          mun: false,
+          dep: false,
+        },
         { nombre: 'Porcentaje real de acceso a agua potable', archivo: 'ya4-3', mun: false, dep: false },
         { nombre: 'Calidad de aire', archivo: 'ya4-4', mun: false, dep: false },
-        
       ],
     },
     {
@@ -117,7 +126,7 @@ const datos = {
           archivo: 'ya8-3',
           mun: false,
           dep: false,
-        }
+        },
       ],
     },
     {
