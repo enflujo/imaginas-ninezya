@@ -2,7 +2,7 @@ const datos = {
   yas: [
     {
       nombre: 'Salud y nutrición',
-      imagen: 'manzana',
+      imagen: 'ya1',
       indicadores: [
         { nombre: 'Seguridad alimentaria (Acceso real a agua potable)', archivo: 'ya1-1', mun: true, dep: false },
         { nombre: 'Lactancia', archivo: 'ya1-2', mun: false, dep: false },
@@ -15,7 +15,7 @@ const datos = {
     },
     {
       nombre: 'Educación inicial',
-      imagen: 'pera',
+      imagen: 'ya2',
       indicadores: [
         { nombre: 'Tasa de violencia en menores de 5 años', archivo: 'ya2-1', mun: false, dep: false },
         {
@@ -42,7 +42,7 @@ const datos = {
     },
     {
       nombre: 'Educación preescolar, básica y media',
-      imagen: 'manzana',
+      imagen: 'ya3',
       indicadores: [
         { nombre: 'Tasa de cobertura Bruta', archivo: 'ya3-1', mun: false, dep: false },
         { nombre: 'Resultados Pruebas Saber 11 matemáticas', archivo: 'ya3-2', mun: false, dep: false },
@@ -57,27 +57,27 @@ const datos = {
     },
     {
       nombre: 'Ambiente sano',
-      imagen: 'manzana',
+      imagen: 'ya4',
       indicadores: [],
     },
     {
       nombre: 'Juego',
-      imagen: 'manzana',
+      imagen: 'ya5',
       indicadores: [],
     },
     {
       nombre: 'Participación',
-      imagen: 'manzana',
+      imagen: 'ya6',
       indicadores: [],
     },
     {
       nombre: 'Fortalecimiento Familiar del cuidado y la crianza de la niñez',
-      imagen: 'manzana',
+      imagen: 'ya7',
       indicadores: [],
     },
     {
       nombre: 'Protección frente a cualquier tipo de violencia',
-      imagen: 'manzana',
+      imagen: 'ya8',
       indicadores: [
         {
           nombre: 'Proporción de jóvenes que declaran haber experimentado violencia física en los últimos 12 meses',
@@ -116,7 +116,7 @@ const datos = {
     {
       nombre:
         'Adolescentes con justicia restaurativa y pedagógica (sistema de responsabilidad penal para adolescentes - SRPA)',
-      imagen: 'manzana',
+      imagen: 'ya9',
       indicadores: [
         {
           nombre: 'Porcentaje de adolescentes que ingresan más de una vez al SRPA por presunta comisión de un delito',
@@ -154,7 +154,7 @@ const datos = {
     },
     {
       nombre: 'Cultura de paz, reconciliación y convivencia',
-      imagen: 'manzana',
+      imagen: 'ya10',
       indicadores: [
         {
           nombre: 'Porcentaje de Niños y niñas que fueron reclutados por algún grupo al margen de la ley',
