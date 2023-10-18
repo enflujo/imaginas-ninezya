@@ -4,6 +4,7 @@ import Mapa from '@/componentes/Mapa.astro';
 import LineaTiempo from '@/componentes/LineaTiempo.astro';
 import Menu from '@/componentes/Menu.astro';
 import SelectorNivel from '@/componentes/SelectorNivel.astro';
+import MenuAnios from '@/componentes/MenuAnios.astro';
 ---
 
 <Plantilla titulo="Los 10 Yas!">
@@ -11,8 +12,20 @@ import SelectorNivel from '@/componentes/SelectorNivel.astro';
     <Menu />
 
     <div id="visualizaciones" class="columna">
-      <SelectorNivel />
-      <Mapa ancho={30} alto={45} />
+      <section id="superior">
+        <div id="cabecera">
+          <div id="indicadorSeleccionado">
+            <h2 id="nombreYa"></h2>
+            <h2 id="nombreIndicador"></h2>
+          </div>
+
+          <MenuAnios />
+
+          <SelectorNivel />
+        </div>
+        <Mapa ancho={30} alto={45} />
+      </section>
+
       <LineaTiempo alto={25} />
     </div>
 
@@ -26,8 +39,20 @@ import SelectorNivel from '@/componentes/SelectorNivel.astro';
 
 <script>
   import MapaDetalle from '@/componentes/MapaDetalle';
-  import { añoSeleccionado, lugaresSeleccionados } from '@/utilidades/cerebro';
+  import { añoSeleccionado, lugaresSeleccionados, indicadorSeleccionado, yaSeleccionado } from '@/utilidades/cerebro';
   const comparativo = document.getElementById('comparativo');
+  const nombreIndicador = document.getElementById('nombreIndicador');
+  const nombreYa = document.getElementById('nombreYa');
+  const cabecera = document.getElementById('cabecera');
+
+  // Mostrar nombre del indicador seleccionado
+  indicadorSeleccionado.subscribe(async () => {
+    if (indicadorSeleccionado.value) {
+      nombreYa.innerText = `${yaSeleccionado.value}`;
+      nombreIndicador.innerText = `${indicadorSeleccionado.value}`;
+      cabecera.style.display = 'flex';
+    }
+  });
 
   añoSeleccionado.subscribe(async () => {
     const existentes = comparativo.querySelectorAll<MapaDetalle>('enflujo-mapita');
@@ -88,6 +113,35 @@ import SelectorNivel from '@/componentes/SelectorNivel.astro';
 </script>
 
 <style lang="scss" is:global>
+  #cabecera {
+    display: none;
+    flex-direction: column;
+  }
+  #indicadorSeleccionado {
+    margin-right: 1em;
+    color: var(--moradoProfundo);
+    flex-direction: column;
+    width: 14vw;
+    font-size: 1em;
+    min-width: 250px;
+    width: 15vw;
+    margin: 1em;
+
+    #nombreYa {
+      background-color: var(--moradoProfundo);
+      color: white;
+      padding: 0.3em;
+      margin: 0;
+      border: 1px solid var(--moradoProfundo);
+    }
+
+    #nombreIndicador {
+      padding: 0.3em;
+      margin: 0;
+      border: 1px solid var(--moradoProfundo);
+    }
+  }
+
   #contenedorMapa {
     position: relative;
   }
