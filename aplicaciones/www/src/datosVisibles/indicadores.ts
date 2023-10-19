@@ -4,12 +4,12 @@ const datos = {
       nombre: 'Salud y nutrición',
       imagen: 'ya1',
       indicadores: [
-        { nombre: 'Seguridad alimentaria (Acceso real a agua potable)', archivo: 'ya1-1', mun: true, dep: false },
-        { nombre: 'Lactancia', archivo: 'ya1-2', mun: false, dep: false },
-        { nombre: 'Nacidos vivos', archivo: 'ya1-3', mun: false, dep: false },
-        { nombre: 'Control prenatal', archivo: 'ya1-4', mun: false, dep: true },
-        { nombre: 'Crecimiento y desarrollo', archivo: 'ya1-5', mun: false, dep: false },
-        { nombre: 'Desnutrición aguda y crónica', archivo: 'ya1-6', mun: false, dep: true },
+        { nombre: 'Cobertura de acueducto', archivo: 'ya1-1', mun: true, dep: false },
+        { nombre: 'Cobertura alcantarillado', archivo: 'ya1-2', mun: false, dep: false },
+        { nombre: 'Mortalidad menores de 5 años (Cualquier condición)', archivo: 'ya1-3', mun: false, dep: false },
+        { nombre: 'Control prenatal', archivo: 'ya1-4', mun: false, dep: false },
+        { nombre: 'Desnutrición aguda y crónica', archivo: 'ya1-5', mun: false, dep: true },
+        { nombre: 'Por definir', archivo: 'ya1-6', mun: false, dep: false },
         { nombre: 'Bajo peso al nacer', archivo: 'ya1-7', mun: false, dep: false },
       ],
     },
@@ -19,37 +19,33 @@ const datos = {
       indicadores: [
         { nombre: 'Tasa de violencia en menores de 5 años', archivo: 'ya2-1', mun: false, dep: false },
         {
-          nombre: 'Número de niños y niñas menores de 1 año con registro civil',
+          nombre:
+            'Niños y niñas menores de 5 años por sitio o persona con quien permanecen la mayor parte del tiempo entre semana',
           archivo: 'ya2-2',
           mun: false,
           dep: false,
         },
         {
-          nombre:
-            'Niños y niñas menores de 5 años por sitio o persona con quien permanecen la mayor parte del tiempo entre semana',
+          nombre: 'Niños y niñas menores de 5 años por tipo de establecimiento al que asisten',
           archivo: 'ya2-3',
           mun: false,
           dep: false,
         },
-        {
-          nombre: 'Niños y niñas menores de 5 años por tipo de establecimiento al que asisten',
-          archivo: 'ya2-4',
-          mun: false,
-          dep: false,
-        },
-        { nombre: 'Cobertura bruta Transición', archivo: 'ya2-5', mun: false, dep: true },
+        { nombre: 'Cobertura bruta Transición', archivo: 'ya2-4', mun: false, dep: true },
       ],
     },
     {
       nombre: 'Educación preescolar, básica y media',
       imagen: 'ya3',
       indicadores: [
-        { nombre: 'Tasa de cobertura Bruta', archivo: 'ya3-1', mun: false, dep: false },
+        { nombre: 'Tasa de cobertura bruta media', archivo: 'ya3-1', mun: false, dep: false },
         { nombre: 'Resultados Pruebas Saber 11 matemáticas', archivo: 'ya3-2', mun: false, dep: false },
-        { nombre: 'Tasa de deserción Intra-anual sector oficial total', archivo: 'ya3-3', mun: false, dep: false },
+        { nombre: 'Resultados Pruebas Saber 11 español', archivo: 'ya3-3', mun: false, dep: false },
+        { nombre: 'Tasa de deserción', archivo: 'ya3-4', mun: false, dep: false },
+        { nombre: 'Tasa de repitencia', archivo: 'ya3-5', mun: false, dep: false },
         {
-          nombre: 'Porcentaje de estudiantes estudiando en condición de extra-edad',
-          archivo: 'ya3-4',
+          nombre: 'Tasa de cobertura bruta Primaria',
+          archivo: 'ya3-6',
           mun: false,
           dep: false,
         },
@@ -58,22 +54,55 @@ const datos = {
     {
       nombre: 'Ambiente sano',
       imagen: 'ya4',
-      indicadores: [],
+      indicadores: [
+        {
+          nombre: 'Tasa de mortalidad por Enfermedad Diarreica Aguda (EDA) en menores de 5 años',
+          archivo: 'ya4-1',
+          mun: false,
+          dep: false,
+        },
+        {
+          nombre: 'Tasa de mortalidad por Infección Respiratoria Aguda (IRA) en menores de 5 años',
+          archivo: 'ya4-2',
+          mun: false,
+          dep: false,
+        },
+        { nombre: 'Porcentaje real de acceso a agua potable', archivo: 'ya4-3', mun: false, dep: false },
+        { nombre: 'Calidad de aire', archivo: 'ya4-4', mun: false, dep: false },
+      ],
     },
     {
       nombre: 'Juego',
       imagen: 'ya5',
-      indicadores: [],
+      indicadores: [
+        { nombre: 'Por definir 1', archivo: 'ya5-1', mun: false, dep: false },
+        { nombre: 'Por definir 2', archivo: 'ya5-2', mun: false, dep: false },
+        { nombre: 'Por definir 3', archivo: 'ya5-3', mun: false, dep: false },
+        { nombre: 'Por definir 4', archivo: 'ya5-4', mun: false, dep: false },
+        { nombre: 'Por definir 5', archivo: 'ya5-5', mun: false, dep: false },
+      ],
     },
     {
       nombre: 'Participación',
       imagen: 'ya6',
-      indicadores: [],
+      indicadores: [
+        { nombre: 'Por definir 1', archivo: 'ya6-1', mun: false, dep: false },
+        { nombre: 'Por definir 2', archivo: 'ya6-2', mun: false, dep: false },
+        { nombre: 'Por definir 3', archivo: 'ya6-3', mun: false, dep: false },
+        { nombre: 'Por definir 4', archivo: 'ya6-4', mun: false, dep: false },
+        { nombre: 'Por definir 5', archivo: 'ya6-5', mun: false, dep: false },
+      ],
     },
     {
       nombre: 'Fortalecimiento Familiar del cuidado y la crianza de la niñez',
       imagen: 'ya7',
-      indicadores: [],
+      indicadores: [
+        { nombre: 'Por definir 1', archivo: 'ya7-1', mun: false, dep: false },
+        { nombre: 'Por definir 2', archivo: 'ya7-2', mun: false, dep: false },
+        { nombre: 'Por definir 3', archivo: 'ya7-3', mun: false, dep: false },
+        { nombre: 'Por definir 4', archivo: 'ya7-4', mun: false, dep: false },
+        { nombre: 'Por definir 5', archivo: 'ya7-5', mun: false, dep: false },
+      ],
     },
     {
       nombre: 'Protección frente a cualquier tipo de violencia',
@@ -95,19 +124,6 @@ const datos = {
         {
           nombre: 'Número de menores de edad que participaron en la comisión de un delito',
           archivo: 'ya8-3',
-          mun: false,
-          dep: false,
-        },
-        {
-          nombre:
-            'Porcentaje de niños entre 0 y 59 meses de edad cuya talla al nacer es 2 desviaciones por debajo de su talla ideal',
-          archivo: 'ya8-4',
-          mun: false,
-          dep: false,
-        },
-        {
-          nombre: 'Proporción de niños alimentado exclusivamente con leche materna hasta los seis meses',
-          archivo: 'ya8-5',
           mun: false,
           dep: false,
         },
@@ -157,14 +173,14 @@ const datos = {
       imagen: 'ya10',
       indicadores: [
         {
-          nombre: 'Porcentaje de Niños y niñas que fueron reclutados por algún grupo al margen de la ley',
+          nombre: 'Vinculación de Niños, Niñas y Adolescentes a actividades relacionadas con grupos',
           archivo: 'ya10-1',
           mun: false,
           dep: false,
         },
         { nombre: 'Ataque a escuelas por grupos al margen de la ley', archivo: 'ya10-2', mun: false, dep: false },
         {
-          nombre: 'Número de delitos contra la libertad y la integridad sexual en desarrollo del conflicto armado',
+          nombre: 'Delitos contra la libertad y la integridad sexual en el desarrollo del conflicto',
           archivo: 'ya10-3',
           mun: false,
           dep: false,
