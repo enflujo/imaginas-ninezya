@@ -17,6 +17,7 @@
     menuAños.style.display = 'flex';
 
     lista.forEach(({ año, conDatos }, i) => {
+      console.log(lista[i]);
       const boton = document.createElement('span');
       boton.className = 'botonAño';
       boton.innerText = año;
@@ -50,7 +51,7 @@
   });
 </script>
 
-<style lang="scss">
+<style lang="scss" is:global>
   #menuAños {
     display: flex;
     flex-direction: column;
@@ -81,6 +82,7 @@
       &.abierto {
         display: flex;
         flex-direction: column;
+        color: 'red';
       }
     }
 
@@ -92,11 +94,11 @@
       transition: all 0.25s ease-in-out;
 
       &:hover {
-        background-color: antiquewhite;
+        background-color: var(--amarilloChichi);
       }
 
       &.activo {
-        background-color: antiquewhite;
+        background-color: var(--moradoPandito);
       }
 
       &.vacio {
