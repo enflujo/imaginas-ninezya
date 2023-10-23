@@ -78,7 +78,13 @@ const datos: DatosYa[] = [
         mun: false,
         dep: false,
       },
-      { nombre: 'Resultados Pruebas Saber 11 español', ruta: 'saber11-espanol', archivo: 'ya3-3', mun: false, dep: false },
+      {
+        nombre: 'Resultados Pruebas Saber 11 español',
+        ruta: 'saber11-espanol',
+        archivo: 'ya3-3',
+        mun: false,
+        dep: false,
+      },
       { nombre: 'Tasa de deserción', ruta: 'desercion', archivo: 'ya3-4', mun: false, dep: false },
       { nombre: 'Tasa de repitencia', ruta: 'repitencia', archivo: 'ya3-5', mun: false, dep: false },
       {
