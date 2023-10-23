@@ -5,6 +5,7 @@ export interface Props {
 
 const { titulo } = Astro.props;
 import Cargador from '@/componentes/Cargador.astro';
+import Menu from '@/componentes/Menu.astro';
 ---
 
 <!doctype html>
@@ -16,26 +17,17 @@ import Cargador from '@/componentes/Cargador.astro';
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{titulo}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700;900&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <slot />
+    <main>
+      <Menu />
+      <slot />
+    </main>
+
     <Cargador />
   </body>
 </html>
+
 <style is:global>
   @import '@/scss/estilos.scss';
-  html {
-    font-family: var(--fuente);
-    font-variation-settings:
-      'MONO' 0,
-      'CASL' 0,
-      'wght' 600,
-      'slnt' 0,
-      'CRSV' 0.5;
-    color: var(--negroCasi);
-    background-color: var(--blancoMarfil);
-  }
 </style>

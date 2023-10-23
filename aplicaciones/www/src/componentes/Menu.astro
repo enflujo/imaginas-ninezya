@@ -1,23 +1,29 @@
 ---
 import datos from '@/datosVisibles/indicadores';
 import Encabezado from './Encabezado.astro';
+const { ya, indicador } = Astro.params;
 ---
 
 <nav id="menu">
   <Encabezado />
   <ol>
     {
-      datos.yas.map((ya, i) => {
+      datos.map((ya, i) => {
         return (
           <li class={`ya ${ya.imagen}`}>
             <p class="nombreYa">
               {i + 1}. {ya.nombre}
             </p>
             <ul class="indicadores">
-              {ya.indicadores.map((indicador) => {
+              {ya.indicadores.map((datosIndicador) => {
                 return (
-                  <li class="indicador" data-archivo={indicador.archivo}>
-                    <a>{indicador.nombre}</a>
+                  <li
+                    class={`indicador${datosIndicador.ruta === indicador ? ' seleccionado' : ''}`}
+                    data-archivo={datosIndicador.archivo}
+                  >
+                    <a href={`${import.meta.env.BASE_URL}/${ya.ruta}/${datosIndicador.ruta}`}>
+                      {datosIndicador.nombre}
+                    </a>
                   </li>
                 );
               })}
@@ -30,40 +36,8 @@ import Encabezado from './Encabezado.astro';
 </nav>
 
 <script>
-  import {
-    archivoActual,
-    cargarDatos,
-    crearListaAños,
-    indicadorSeleccionado,
-    yaSeleccionado,
-  } from '@/utilidades/cerebro';
+  import { yaSeleccionado } from '@/utilidades/cerebro';
   const yas = document.querySelectorAll<HTMLElement>('.ya');
-  const indicadores = document.querySelectorAll<HTMLLIElement>('.indicador');
-
-  async function cargarIndicador(elemento: HTMLLIElement) {
-    // Enviar al cerebro el nombre del indicador seleccionado
-    indicadorSeleccionado.set(`${elemento.innerText}`);
-
-    // Enviar al cerebro el nombre del archivo de datos correspondiente al indicador
-    archivoActual.set(elemento.dataset.archivo);
-    await cargarDatos();
-    crearListaAños();
-  }
-
-  indicadores.forEach((elemento) => {
-    elemento.onclick = async () => {
-      const seleccionado = document.querySelector('.seleccionado');
-
-      if (seleccionado) {
-        if (!seleccionado.isEqualNode(elemento)) {
-          seleccionado.classList.remove('seleccionado');
-          await cargarIndicador(elemento);
-        }
-      } else {
-        await cargarIndicador(elemento);
-      }
-    };
-  });
 
   // Abrir sub menú de indicadores al hacer clic en un 'ya'
   yas.forEach((contenedorYa) => {

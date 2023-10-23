@@ -183,3 +183,16 @@ export type RespuestaPorcentaje = {
 export type RespuestaNacional = {
   [año: string]: number;
 };
+
+export interface BaseSingular {
+  codmpio: number;
+  anno: number;
+}
+
+export interface VariablesYa1_1 extends BaseSingular {
+  tacued: number;
+}
+
+export interface VariablesYa1_2 extends BaseSingular {
+  talcan: number;
+}

@@ -1,0 +1,118 @@
+---
+import datos from '@/datosVisibles/indicadores';
+import Plantilla from '@/plantillas/Principal.astro';
+import MenuAnios from '@/componentes/MenuAnios.astro';
+import SelectorNivel from '@/componentes/SelectorNivel.astro';
+import Mapa from '@/componentes/Mapa.astro';
+import LineaTiempo from '@/componentes/LineaTiempo.astro';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (() => {
+  return datos
+    .map((ya) => {
+      return ya.indicadores.map((indicador) => {
+        return { params: { ya: ya.ruta, indicador: indicador.ruta } };
+      });
+    })
+    .flat();
+}) satisfies GetStaticPaths;
+
+const { ya, indicador } = Astro.params;
+const datosYa = datos.find((instancia) => instancia.ruta === ya);
+const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta === indicador);
+---
+
+<Plantilla titulo={datosIndicador.nombre}>
+  <div id="visualizaciones" class="columna" data-archivo={datosIndicador.archivo}>
+    <section id="superior">
+      <div id="cabecera">
+        <div id="indicadorSeleccionado">
+          <h2 id="nombreYa">{datosYa.nombre}</h2>
+          <h3 id="nombreIndicador">{datosIndicador.nombre}</h3>
+        </div>
+
+        <MenuAnios />
+
+        <SelectorNivel />
+      </div>
+      <Mapa ancho={30} alto={45} />
+    </section>
+
+    <LineaTiempo alto={25} />
+  </div>
+
+  <div id="comparativo" class="columna"></div>
+
+  <div id="informacion">
+    <p class="nombre"></p>
+  </div>
+</Plantilla>
+
+<script>
+  import MapaDetalle from '@/componentes/MapaDetalle';
+  import { añoSeleccionado, lugaresSeleccionados, cargarIndicador } from '@/utilidades/cerebro';
+  const comparativo = document.getElementById('comparativo');
+
+  async function inicio() {
+    await cargarIndicador();
+  }
+
+  inicio().catch(console.error);
+
+  añoSeleccionado.subscribe(async () => {
+    const existentes = comparativo.querySelectorAll<MapaDetalle>('enflujo-mapita');
+
+    if (existentes && existentes.length) {
+      existentes.forEach((mapita) => {
+        mapita.pintarMapa();
+      });
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    const existentes = comparativo.querySelectorAll<MapaDetalle>('enflujo-mapita');
+    if (existentes && existentes.length) {
+      existentes.forEach((mapita) => {
+        mapita.escalar();
+      });
+    }
+  });
+
+  lugaresSeleccionados.subscribe((lista) => {
+    const existentes = comparativo.querySelectorAll<MapaDetalle>('enflujo-mapita');
+
+    if (lista.length) {
+      lista.forEach(({ nombre, codigo }) => {
+        let existeLugarEnDOM = false;
+
+        existentes.forEach((mapita) => {
+          if (mapita.id === `${codigo}`) {
+            existeLugarEnDOM = true;
+          }
+
+          // Borrar si no está en la lista
+          if (!lista.find((lugar) => lugar.codigo === mapita.id)) {
+            if (comparativo.contains(mapita)) {
+              comparativo.removeChild(mapita);
+            }
+          }
+        });
+
+        if (!existeLugarEnDOM) {
+          const mapita = document.createElement('enflujo-mapita') as MapaDetalle;
+          mapita.className = 'mapita';
+          mapita.id = `${codigo}`;
+          mapita.dataset.departamento = nombre;
+          mapita.agregarTitulo(nombre);
+
+          mapita.crearMapa();
+          mapita.escalar();
+          mapita.pintarMapa();
+          comparativo.appendChild(mapita);
+        }
+      });
+    } else {
+      comparativo.innerHTML = '';
+    }
+  });
+</script>
