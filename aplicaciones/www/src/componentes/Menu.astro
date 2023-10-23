@@ -10,8 +10,8 @@ const { ya, indicador } = Astro.params;
     {
       datos.map((datosYa, i) => {
         return (
-          <li class={`ya ${datosYa.imagen} ${datosYa.ruta === ya ? ' abierto' : ''}`}>
-            <p class="nombreYa">
+          <li class={`ya ${datosYa.imagen}${datosYa.ruta === ya ? ' abierto' : ''}`}>
+            <p class={`nombreYa${datosYa.ruta === ya ? ' ungido' : ''}`}>
               {i + 1}. {datosYa.nombre}
             </p>
             <ul class="indicadores">
