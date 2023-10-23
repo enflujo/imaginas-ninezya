@@ -1,11 +1,9 @@
 import { atom, map } from 'nanostores';
 import type { FeatureCollection } from 'geojson';
-import { esperar } from '@enflujo/alquimia';
 
 export const indicador = atom<string | null>(null);
 export const indicadorSeleccionado = atom<string | null>(null);
 export const yaSeleccionado = atom<string | null>(null);
-export const archivoActual = atom<string | null>(null);
 export const listaAños = atom<{ año: string; conDatos: boolean }[]>([]);
 export const datosIndicador = map<{ [año: string]: any }>();
 export const datosIndicadorMun = map<{ [año: string]: any }>();
@@ -19,6 +17,7 @@ export const lugaresSeleccionados = atom<{ nombre: string; codigo: string }[]>([
 const cargador = document.getElementById('cargador');
 
 export async function cargarDatos() {
+  const archivoActual = document.getElementById('visualizaciones').dataset.archivo;
   const nivelActual = nivel.value;
   let cargando = true;
 
@@ -38,17 +37,17 @@ export async function cargarDatos() {
 
   const datosMapaMun = await fetch('https://enflujo.com/bodega/colombia/municipios.json').then((res) => res.json());
 
-  const datos = await fetch(`https://enflujo.com/bodega/ninezya/${archivoActual.value}-${nivel.value}.json`).then(
-    (res) => res.json()
+  const datos = await fetch(`https://enflujo.com/bodega/ninezya/${archivoActual}-${nivel.value}.json`).then((res) =>
+    res.json()
   );
 
   // const datos = await fetch(`${import.meta.env.BASE_URL}/datos/${archivoActual.value}-${nivel.value}.json`).then(
   //   (res) => res.json()
   // );
 
-  const datosIndicadorMunicipio = await fetch(
-    `https://enflujo.com/bodega/ninezya/${archivoActual.value}-mun.json`
-  ).then((res) => res.json());
+  const datosIndicadorMunicipio = await fetch(`https://enflujo.com/bodega/ninezya/${archivoActual}-mun.json`).then(
+    (res) => res.json()
+  );
 
   datosIndicadorMun.set(datosIndicadorMunicipio);
   datosIndicador.set(datos);
@@ -81,4 +80,9 @@ export function crearListaAños() {
   }
 
   listaAños.set(lista);
+}
+
+export async function cargarIndicador() {
+  await cargarDatos();
+  crearListaAños();
 }

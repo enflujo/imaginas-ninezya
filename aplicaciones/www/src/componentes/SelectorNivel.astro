@@ -3,7 +3,6 @@
 ---
 
 <div id="selectorNivel">
-  <!-- <button class="botonSelector" data-nivel="nal">Nacional</button> -->
   <button class="botonSelector" data-nivel="dep">Departamento</button>
   <button class="botonSelector" data-nivel="mun">Municipio</button>
 </div>
@@ -13,11 +12,13 @@
 
   const selectores = document.querySelectorAll<HTMLElement>('.botonSelector');
   let seleccionado: HTMLElement;
+
   selectores.forEach((boton) => {
     if (boton.dataset.nivel === 'dep') {
       boton.classList.add('activo');
       seleccionado = boton;
     }
+
     boton.addEventListener('click', () => {
       const nuevoNivel = boton.dataset.nivel;
 
