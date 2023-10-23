@@ -8,20 +8,20 @@ const { ya, indicador } = Astro.params;
   <Encabezado />
   <ol>
     {
-      datos.map((ya, i) => {
+      datos.map((datosYa, i) => {
         return (
-          <li class={`ya ${ya.imagen}`}>
+          <li class={`ya ${datosYa.imagen} ${datosYa.ruta === ya ? ' abierto' : ''}`}>
             <p class="nombreYa">
-              {i + 1}. {ya.nombre}
+              {i + 1}. {datosYa.nombre}
             </p>
             <ul class="indicadores">
-              {ya.indicadores.map((datosIndicador) => {
+              {datosYa.indicadores.map((datosIndicador) => {
                 return (
                   <li
                     class={`indicador${datosIndicador.ruta === indicador ? ' seleccionado' : ''}`}
                     data-archivo={datosIndicador.archivo}
                   >
-                    <a href={`${import.meta.env.BASE_URL}/${ya.ruta}/${datosIndicador.ruta}`}>
+                    <a href={`${import.meta.env.BASE_URL}/${datosYa.ruta}/${datosIndicador.ruta}`}>
                       {datosIndicador.nombre}
                     </a>
                   </li>
@@ -278,13 +278,17 @@ const { ya, indicador } = Astro.params;
           'CRSV' 0;
       }
 
-      &:hover {
-        font-variation-settings:
-          'MONO' 0,
-          'CASL' 0,
-          'wght' 700,
-          'slnt' 0,
-          'CRSV' 0;
+      a {
+        text-decoration: none;
+        color: var(--negroCasi);
+        &:hover {
+          font-variation-settings:
+            'MONO' 0,
+            'CASL' 0,
+            'wght' 700,
+            'slnt' 0,
+            'CRSV' 0;
+        }
       }
 
       &::before {
