@@ -3,6 +3,8 @@ import type { FeatureCollection } from 'geojson';
 import { esperar } from '@enflujo/alquimia';
 
 export const indicador = atom<string | null>(null);
+export const indicadorSeleccionado = atom<string | null>(null);
+export const yaSeleccionado = atom<string | null>(null);
 export const archivoActual = atom<string | null>(null);
 export const listaAños = atom<{ año: string; conDatos: boolean }[]>([]);
 export const datosIndicador = map<{ [año: string]: any }>();

@@ -30,12 +30,20 @@ import Encabezado from './Encabezado.astro';
 </nav>
 
 <script>
-  import { archivoActual, cargarDatos, crearListaAños } from '@/utilidades/cerebro';
+  import {
+    archivoActual,
+    cargarDatos,
+    crearListaAños,
+    indicadorSeleccionado,
+    yaSeleccionado,
+  } from '@/utilidades/cerebro';
   const yas = document.querySelectorAll<HTMLElement>('.ya');
   const indicadores = document.querySelectorAll<HTMLLIElement>('.indicador');
 
   async function cargarIndicador(elemento: HTMLLIElement) {
-    elemento.classList.add('seleccionado');
+    // Enviar al cerebro el nombre del indicador seleccionado
+    indicadorSeleccionado.set(`${elemento.innerText}`);
+
     // Enviar al cerebro el nombre del archivo de datos correspondiente al indicador
     archivoActual.set(elemento.dataset.archivo);
     await cargarDatos();
@@ -64,6 +72,7 @@ import Encabezado from './Encabezado.astro';
     nombreYa.addEventListener('click', () => {
       contenedorYa.classList.toggle('abierto');
       nombreYa.classList.toggle('ungido');
+      yaSeleccionado.set(`${nombreYa.innerText}`);
     });
   });
 </script>
