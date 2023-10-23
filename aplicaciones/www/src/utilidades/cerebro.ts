@@ -16,7 +16,8 @@ export const datosMunicipios = atom<FeatureCollection | null>(null);
 export const lugaresSeleccionados = atom<{ nombre: string; codigo: string }[]>([]);
 const cargador = document.getElementById('cargador');
 
-export async function cargarDatos(archivoActual: string) {
+export async function cargarDatos() {
+  const archivoActual = document.getElementById('visualizaciones').dataset.archivo;
   const nivelActual = nivel.value;
   let cargando = true;
 
@@ -82,7 +83,6 @@ export function crearListaAños() {
 }
 
 export async function cargarIndicador() {
-  const nombreArchivo = document.getElementById('visualizaciones').dataset.archivo;
-  await cargarDatos(nombreArchivo);
+  await cargarDatos();
   crearListaAños();
 }

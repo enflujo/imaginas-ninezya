@@ -45,7 +45,7 @@ const { ancho, alto } = Astro.props;
   let extremosGeo: ExtremosCoordenadas;
   const proporciones = JSON.parse(mapa.dataset.proporciones);
   const color = escalaColores(0, 100, '#DE2E56', '#94FF1A');
-  let zonas = {};
+  const zonas = {};
   let ancho = 0;
   let alto = 0;
   let coordenadasAncho = 0;
@@ -55,6 +55,7 @@ const { ancho, alto } = Astro.props;
   mapa.onmouseenter = () => {
     informacion.classList.add('visible');
   };
+
   mapa.onmouseleave = () => {
     informacion.classList.remove('visible');
   };
