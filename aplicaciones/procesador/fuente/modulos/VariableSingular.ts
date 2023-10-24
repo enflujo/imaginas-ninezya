@@ -7,8 +7,6 @@ import type {
   RespuestaPorcentaje,
   VariableValorSingular,
   VariablesSingulares,
-  VariablesYa1_1,
-  VariablesYa1_2,
 } from '@/tipos';
 import { guardarJSON, redondearDecimal } from '@/utilidades/ayudas';
 import maquinaXlsx from '@/utilidades/maquinaXlsx';
@@ -43,6 +41,10 @@ export default class {
     const municipio = limpiarMunicipio(+fila.codmpio);
     const valor = fila[this.nombreVariableValor];
 
+    if (valor && isNaN(valor)) {
+      this.errata.push({ fila: numeroFila, error: `el valor no es un número: ${valor}` });
+      return;
+    }
     // Si no existe el municipio
     if (municipio.hasOwnProperty('error') && valor) {
       // El código de datos nacionales es 1001 entonces lo podemos comparar directo.
