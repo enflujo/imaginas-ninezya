@@ -7,6 +7,7 @@ export const yaSeleccionado = atom<string | null>(null);
 export const listaAños = atom<{ año: string; conDatos: boolean }[]>([]);
 export const datosIndicador = map<{ [año: string]: any }>();
 export const datosIndicadorMun = map<{ [año: string]: any }>();
+export const datosIndicadorNal = map<{ datos: { [año: string]: any }; ascendente: boolean }>();
 export const nivel = atom<string>('dep');
 export const deptoSeleccionado = atom<string | null>(null);
 export const añoSeleccionado = atom<string | null>(null);
@@ -40,19 +41,21 @@ export async function cargarDatos() {
   const datos = await fetch(`https://enflujo.com/bodega/ninezya/${archivoActual}-${nivel.value}.json`).then((res) =>
     res.json()
   );
-
+  await fetch(`https://enflujo.com/bodega/ninezya/${archivoActual}-nal.json`).then(async (res) => {
+    const datos = await res.json();
+    datosIndicadorNal.set(datos);
+  });
   // const datos = await fetch(`${import.meta.env.BASE_URL}/datos/${archivoActual.value}-${nivel.value}.json`).then(
   //   (res) => res.json()
   // );
 
-  const datosIndicadorMunicipio = await fetch(`https://enflujo.com/bodega/ninezya/${archivoActual}-mun.json`).then(
-    (res) => res.json()
-  );
+  await fetch(`https://enflujo.com/bodega/ninezya/${archivoActual}-mun.json`).then(async (res) => {
+    const datos = await res.json();
+    datosIndicadorMun.set(datos);
+  });
 
-  datosIndicadorMun.set(datosIndicadorMunicipio);
   datosIndicador.set(datos);
   datosMunicipios.set(datosMapaMun);
-
   cargando = false;
   cargador.classList.remove('visible');
 }
