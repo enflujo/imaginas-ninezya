@@ -1,0 +1,98 @@
+---
+import datos from '@/datosVisibles/indicadores';
+const { ya, indicador } = Astro.params;
+const datosYa = datos.find((instancia) => instancia.ruta === ya);
+const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta === indicador);
+---
+
+<div id="fichaTecnica">
+  <h2 id="ya" class="tituloSeccion">{datosYa.nombre}</h2>
+  <h3 id="nombre">{datosIndicador.nombre}</h3>
+  <div class="seccion"><h4 class="titulo">DEFINICIÓN</h4><p class="texto">Lorem ipsum lorem ipsum</p></div>
+  <div class="tituloSeccion">SUGERENCIAS METODOLÓGICAS</div>
+  <section id="inferior">
+    <div class="seccion">
+      <h4 class="titulo">METODOLOGÍA DE CÁLCULO</h4><p class="texto">Lorem ipsum lorem ipsum</p>
+    </div>
+    <div class="seccion"><h4 class="titulo">UNIDAD DE MEDIDA</h4><p class="texto">Lorem ipsum lorem ipsum</p></div>
+    <div class="seccion">
+      <h4 class="titulo">NIVEL DE DESAGREGACIÓN</h4><p class="texto">Lorem ipsum lorem ipsum</p>
+    </div>
+    <div class="seccion"><h4 class="titulo">CÓMO SE INTERPRETA</h4><p class="texto">Lorem ipsum lorem ipsum</p></div>
+  </section>
+</div>
+
+<style lang="scss">
+  #fichaTecnica {
+    width: 20vw;
+    min-width: 300px;
+    display: none;
+    flex-direction: column;
+    border: solid 2px var(--azulViejo);
+    border-radius: 15px;
+    color: var(--azulViejo);
+    background-color: var(--blancoMarfil);
+    text-align: center;
+    position: absolute;
+    z-index: 9;
+    left: 23vw;
+    top: 19vh;
+
+    .tituloSeccion {
+      background-color: var(--azulViejo);
+      color: var(--blancoMarfil);
+      width: auto;
+      padding: 0.3em;
+      margin: 0;
+      font-size: 1em;
+    }
+
+    #ya {
+      border-radius: 10px 10px 0 0;
+    }
+
+    #nombre {
+      border-bottom: solid 2px var(--azulViejo);
+      font-size: 1em;
+      margin: 0;
+      padding: 0.3em;
+    }
+
+    #inferior {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .seccion {
+      display: flex;
+      align-items: center;
+      margin: 0;
+      border-bottom: solid 2px var(--azulViejo);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .titulo {
+        width: 35%;
+        font-size: 0.8em;
+        text-align: left;
+        border-right: solid 2px var(--azulViejo);
+        width: 35%;
+        min-width: 115px;
+        margin: 0;
+        padding: 1em;
+      }
+
+      .texto {
+        font-size: 0.8em;
+        padding-left: 1em;
+        margin: 0;
+      }
+    }
+
+    &.abierta {
+      display: flex;
+    }
+  }
+</style>

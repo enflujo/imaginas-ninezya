@@ -6,6 +6,7 @@ import SelectorNivel from '@/componentes/SelectorNivel.astro';
 import Mapa from '@/componentes/Mapa.astro';
 import LineaTiempo from '@/componentes/LineaTiempo.astro';
 import type { GetStaticPaths } from 'astro';
+import FichaTecnica from '@/componentes/FichaTecnica.astro';
 
 export const getStaticPaths = (() => {
   return datos
@@ -29,7 +30,11 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
         <div id="indicadorSeleccionado">
           <h2 id="nombreYa">{datosYa.nombre}</h2>
           <h3 id="nombreIndicador">{datosIndicador.nombre}</h3>
+          <span id="abrirFicha" onclick="
+          abrirFicha()
+          ">?</span>
         </div>
+        <FichaTecnica />
 
         <MenuAnios />
 
@@ -52,6 +57,16 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
   import MapaDetalle from '@/componentes/MapaDetalle';
   import { añoSeleccionado, lugaresSeleccionados, cargarIndicador } from '@/utilidades/cerebro';
   const comparativo = document.getElementById('comparativo');
+  const botonFicha = document.getElementById('abrirFicha');
+  const fichaTecnica = document.getElementById('fichaTecnica');
+
+  console.log(fichaTecnica);
+
+  botonFicha.addEventListener('click', abrirFicha);
+
+  function abrirFicha() {
+    fichaTecnica.classList.toggle('abierta');
+  }
 
   async function inicio() {
     await cargarIndicador();
