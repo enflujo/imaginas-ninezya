@@ -181,7 +181,8 @@ export type RespuestaPorcentaje = {
 };
 
 export type RespuestaNacional = {
-  [año: string]: number;
+  ascendente: boolean;
+  datos: { [año: string]: number };
 };
 
 export interface BaseSingular {

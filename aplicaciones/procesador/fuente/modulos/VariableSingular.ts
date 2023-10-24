@@ -19,8 +19,8 @@ export default class {
   errata: { fila: number; error: string }[];
   nombreVariableValor: VariableValorSingular;
 
-  constructor(nombreVariable: VariableValorSingular) {
-    this.datosNacionales = {};
+  constructor(nombreVariable: VariableValorSingular, ascendente: boolean) {
+    this.datosNacionales = { ascendente, datos: {} };
     this.errata = [];
     this.datosMunicipios = {};
     this.datosDepartamentos = {};
@@ -49,7 +49,7 @@ export default class {
     if (municipio.hasOwnProperty('error') && valor) {
       // El código de datos nacionales es 1001 entonces lo podemos comparar directo.
       if (fila.codmpio == 1001) {
-        this.datosNacionales[fila.anno] = valor;
+        this.datosNacionales.datos[fila.anno] = valor;
         return;
       }
       // Si termina en 00 y no lo encontró antes significa que es el dato del departamento.
@@ -127,14 +127,14 @@ export default class {
 
   procesarNacional() {
     for (const año in this.datosDepartamentos) {
-      if (this.datosNacionales[año]) {
+      if (this.datosNacionales.datos[año]) {
         // Ya existen datos a nivel nacional para este año
       } else {
         // No hay datos nacionales, sacarlos a partir de los datos departamentales.
         const datosAño = this.datosDepartamentos[año];
         const suma = datosAño.reduce((depAnterior, valorActual) => ['', depAnterior[1] + valorActual[1]], ['', 0]);
 
-        this.datosNacionales[año] = redondearDecimal(suma[1] / datosAño.length, 1, 2);
+        this.datosNacionales.datos[año] = redondearDecimal(suma[1] / datosAño.length, 1, 2);
       }
     }
   }
