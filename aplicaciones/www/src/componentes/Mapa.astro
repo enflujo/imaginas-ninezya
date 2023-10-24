@@ -30,6 +30,7 @@ const { ancho, alto } = Astro.props;
   import {
     datosColombia,
     datosIndicador,
+    datosIndicadorNal,
     nivel,
     deptoSeleccionado,
     añoSeleccionado,
@@ -44,12 +45,21 @@ const { ancho, alto } = Astro.props;
   let mapearCoordenadas: IMapearCoordenadas;
   let extremosGeo: ExtremosCoordenadas;
   const proporciones = JSON.parse(mapa.dataset.proporciones);
-  const color = escalaColores(0, 100, '#DE2E56', '#94FF1A');
+  const definirColor = (ascendente: boolean) => {
+    if (ascendente) {
+      return escalaColores(0, 100, '#DE2E56', '#94FF1A');
+    } else {
+      return escalaColores(0, 100, '#94FF1A', '#DE2E56');
+    }
+  };
+
   const zonas = {};
   let ancho = 0;
   let alto = 0;
   let coordenadasAncho = 0;
   let coordenadasAlto = 0;
+  let color: (valor: number) => string;
+
   let datosParaPintar: FeatureCollection; // Esto puede ser departamentos o municipios
 
   mapa.onmouseenter = () => {
@@ -147,6 +157,11 @@ const { ancho, alto } = Astro.props;
 
   añoSeleccionado.subscribe(() => {
     pintarMapa(añoSeleccionado.value);
+  });
+
+  // Definir la dirección de la escala de color cuando cambien los datos nacionales
+  datosIndicadorNal.subscribe(({ ascendente }) => {
+    color = definirColor(ascendente);
   });
 
   function pintarMapa(año: string) {
