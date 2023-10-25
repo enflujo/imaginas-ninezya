@@ -7,6 +7,6 @@ export default defineConfig({
   site: 'https://imagina.uniandes.edu.co',
   base: '/especiales/ninezya',
   build: {
-    assets: 'recursos',
+    assets: 'estaticos',
   },
 });
