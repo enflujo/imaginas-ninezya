@@ -8,19 +8,41 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
 <div id="fichaTecnica">
   <h2 id="ya" class="tituloSeccion">{datosYa.nombre}</h2>
   <h3 id="nombre">{datosIndicador.nombre}</h3>
-  <div class="seccion"><h4 class="titulo">DEFINICIÓN</h4><p class="texto">Lorem ipsum lorem ipsum</p></div>
-  <div class="tituloSeccion">SUGERENCIAS METODOLÓGICAS</div>
+  <div class="seccion"><h4 class="titulo">DEFINICIÓN</h4><p class="texto">{datosIndicador.definicion}</p></div>
+  <div class="tituloSeccion">INFORMACIÓN TÉCNICA</div>
   <section id="inferior">
+    <div class="seccion"><h4 class="titulo">UNIDAD DE MEDIDA</h4><p class="texto">{datosIndicador.unidad}</p></div>
     <div class="seccion">
-      <h4 class="titulo">METODOLOGÍA DE CÁLCULO</h4><p class="texto">Lorem ipsum lorem ipsum</p>
+      <h4 class="titulo">METODOLOGÍA DE CÁLCULO</h4><p class="texto">{datosIndicador.metodologia}</p>
     </div>
-    <div class="seccion"><h4 class="titulo">UNIDAD DE MEDIDA</h4><p class="texto">Lorem ipsum lorem ipsum</p></div>
     <div class="seccion">
-      <h4 class="titulo">NIVEL DE DESAGREGACIÓN</h4><p class="texto">Lorem ipsum lorem ipsum</p>
+      <h4 class="titulo">FUENTE DEL NUMERADOR</h4><p class="texto">{datosIndicador.fuente_numerador}</p>
     </div>
-    <div class="seccion"><h4 class="titulo">CÓMO SE INTERPRETA</h4><p class="texto">Lorem ipsum lorem ipsum</p></div>
+    <div class="seccion">
+      <h4 class="titulo">FUENTE DEL DENOMINADOR</h4><p class="texto">{datosIndicador.fuente_denominador}</p>
+    </div>
+    <div class="seccion">
+      <h4 class="titulo">NIVEL DE DESAGREGACIÓN</h4><p class="texto">{datosIndicador.desagregacion}</p>
+    </div>
+    <div class="seccion">
+      <h4 class="titulo">CÓMO SE INTERPRETA</h4><p class="texto">{datosIndicador.interpretacion}</p>
+    </div>
   </section>
 </div>
+
+<script>
+  const ficha = document.getElementById('fichaTecnica');
+  const abrirFicha = document.getElementById('abrirFicha');
+
+  // Cerrar ficha al hacer click afuera
+  document.body.onclick = (evento) => {
+    if (evento.target === abrirFicha) return;
+
+    if (!(ficha === evento.target || ficha.contains(evento.target as Node))) {
+      ficha.classList.remove('abierta');
+    }
+  };
+</script>
 
 <style lang="scss">
   #fichaTecnica {
@@ -74,20 +96,24 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
       }
 
       .titulo {
-        width: 35%;
+        width: 0;
         font-size: 0.8em;
         text-align: left;
-        border-right: solid 2px var(--azulViejo);
-        width: 35%;
         min-width: 115px;
         margin: 0;
-        padding: 1em;
+        padding: 0.8em;
       }
 
       .texto {
         font-size: 0.8em;
-        padding-left: 1em;
+        padding: 0.8em;
         margin: 0;
+        text-align: left;
+        border-left: solid 2px var(--azulViejo);
+        border-left: solid 2px var(--azulViejo);
+        display: flex;
+        align-items: center;
+        min-height: 2.3em;
       }
     }
 
