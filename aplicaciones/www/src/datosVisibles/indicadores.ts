@@ -39,7 +39,8 @@ const datos: DatosYa[] = [
         fuente_numerador: 'Sistema Único de Información de Servicios Públicos - SUI',
         fuente_denominador: 'Sistema Único de Información de Servicios Públicos - SUI',
         desagregacion: 'Municipal',
-        interpretacion: 'Conjunto de sistemas de irrigación que permite transportar agua en forma de flujo continuo desde un lugar en el que es accesible en la naturaleza hasta un punto de consumo. Esta variable no está directamente asociada a la provisión de agua potable.',
+        interpretacion:
+          'Conjunto de sistemas de irrigación que permite transportar agua en forma de flujo continuo desde un lugar en el que es accesible en la naturaleza hasta un punto de consumo. Esta variable no está directamente asociada a la provisión de agua potable.',
       },
       {
         nombre: 'Cobertura alcantarillado',
@@ -53,7 +54,8 @@ const datos: DatosYa[] = [
         fuente_numerador: 'Sistema Único de Información de Servicios Públicos - SUI',
         fuente_denominador: 'Sistema Único de Información de Servicios Públicos - SUI',
         desagregacion: 'Municipal',
-        interpretacion: 'Es el conjunto de conductos de subterráneos llamados alcantarillas, que transportan el agua residual o pluvial. Aguas residuales son las aguas gastas por la comunidad.',
+        interpretacion:
+          'Es el conjunto de conductos de subterráneos llamados alcantarillas, que transportan el agua residual o pluvial. Aguas residuales son las aguas gastas por la comunidad.',
       },
       {
         nombre: 'Mortalidad menores de 5 años (Cualquier condición)',
@@ -62,7 +64,8 @@ const datos: DatosYa[] = [
         mun: true,
         dep: true,
         definicion: 'Indica el número de muertes por cualquier tipo de causa en menores de 5 años.',
-        metodologia: 'Número de muertes de menores de 5 años  por cualquier tipo de causa / Número total de menpres de 5 años.',
+        metodologia:
+          'Número de muertes de menores de 5 años  por cualquier tipo de causa / Número total de menpres de 5 años.',
         unidad: 'Por 100.000 menores de 5 años.',
         fuente_numerador: 'CUBO INDICADORES EEVV',
         fuente_denominador: 'CUBO INDICADORES EEVV',
