@@ -8,9 +8,9 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
 <div id="contenedorInfoAdicional">
   <div id="fichaTecnica">
     <h2 id="ya" class="tituloSeccion">{datosYa.nombre}</h2>
-    <h3 id="nombre">{datosIndicador.nombre}</h3>
+    <p id="nombre">{datosIndicador.nombre}</p>
     <div class="seccion"><h4 class="titulo">Definición</h4><p class="texto">{datosIndicador.definicion}</p></div>
-    <div class="tituloSeccion">INFORMACIÓN TÉCNICA</div>
+    <h3 class="tituloSeccion">Información técnica</h3>
     <section id="inferior">
       <div class="seccion"><h4 class="titulo">Unidad de medida</h4><p class="texto">{datosIndicador.unidad}</p></div>
       <div class="seccion">
@@ -100,6 +100,7 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
 
       #ya {
         border-radius: 10px 10px 0 0;
+        font-size: 1.1em;
       }
 
       #nombre {
