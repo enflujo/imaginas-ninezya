@@ -58,14 +58,12 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
   import { añoSeleccionado, lugaresSeleccionados, cargarIndicador } from '@/utilidades/cerebro';
   const comparativo = document.getElementById('comparativo');
   const botonFicha = document.getElementById('abrirFicha');
-  const fichaTecnica = document.getElementById('fichaTecnica');
-
-  console.log(fichaTecnica);
+  const infoAdicional = document.getElementById('contenedorInfoAdicional');
 
   botonFicha.addEventListener('click', abrirFicha);
 
   function abrirFicha() {
-    fichaTecnica.classList.toggle('abierta');
+    infoAdicional.classList.toggle('abierta');
   }
 
   async function inicio() {
