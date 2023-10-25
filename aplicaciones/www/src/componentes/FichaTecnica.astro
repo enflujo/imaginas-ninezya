@@ -50,15 +50,15 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
 </div>
 
 <script>
-  const ficha = document.getElementById('fichaTecnica');
+  const infoAdicional = document.getElementById('contenedorInfoAdicional');
   const abrirFicha = document.getElementById('abrirFicha');
 
   // Cerrar ficha al hacer click afuera
   document.body.onclick = (evento) => {
     if (evento.target === abrirFicha) return;
 
-    if (!(ficha === evento.target || ficha.contains(evento.target as Node))) {
-      ficha.classList.remove('abierta');
+    if (!(infoAdicional === evento.target || infoAdicional.contains(evento.target as Node))) {
+      infoAdicional.classList.remove('abierta');
     }
   };
 </script>
