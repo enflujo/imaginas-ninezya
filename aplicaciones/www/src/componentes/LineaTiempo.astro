@@ -18,12 +18,11 @@ const dimsVis = {
 ---
 
 <section id="lineaDeTiempo">
-  <!-- PORHAER: Reemplazar nombre por lugar seleccionado -->
+  <!-- POR HACER: Reemplazar nombre por lugar seleccionado -->
   <header>
     <h3 id="nombreLugar">Colombia</h3>
   </header>
 
-  <!-- <svg id="grafica" width="100%" height="100%" viewBox="0 0 100 100"> -->
   <svg id="grafica" width="100%" height="100%" style={`height:${alto}vh`}>
     <!-- <defs>
       <linearGradient id="arriba" x1="50%" y1="0%" x2="50%" y2="100%">
@@ -44,98 +43,41 @@ const dimsVis = {
     <line class="lineaMarco lineaBase" x1={dimsVis.marcoIz} y1="100%" x2="100%" y2="100%" shape-rendering="crispEdges"
     ></line>
 
-    <!-- {
-    listaAños.map((año, i) => {
-      return <line class="marcaMarco" x1={posicionX(año)} y1={dimsVis.base} x2={i * 50} y2={dimsVis.base + 7} />;
-    })
-  }
-
-  {
-    listaAños.map((año, i) => {
-      return (
-        <text class="año textoEje" x={i * 50} y={dimsVis.base + 16}>
-          {' '}
-          {año}
-        </text>
-      );
-    })
-  } -->
-
-    <!-- 
-  <line
-    v-for="anno in cerebroDatos.años"
-    :key="`marca-${anno}`"
-    class="marcaMarco"
-    :x1="posicionX(anno)"
-    :y1="dimsVis.base"
-    :x2="posicionX(anno)"
-    :y2="dimsVis.base + 7"
-  />
-
-  <text
-    v-for="anno in cerebroDatos.años"
-    :key="`año-${anno}`"
-    class="año textoEje"    console.log(datosIndicadorNal.value);
-    :class="anno === cerebroGlobales.año ? 'activo' : ''"
-    :x="posicionX(anno)"
-    :y="dimsVis.base + 16"
-    @click="cerebroGlobales.actualizarAño(anno)"
-  >
-    {{ cortarAño ? añoRecortado(anno) : anno }}
-  </text> -->
-
-    <!-- <line class="linea" id="lineaNacional" shape-rendering="crispEdges"></line> -->
-
     <text class="nombreEje lineaBase" x="0" y="100%">Año</text>
   </svg>
 </section>
 
 <script>
+  import { porcentajeAPixeles } from '@/utilidades/ayudas';
   import { listaAños, datosIndicadorNal } from '@/utilidades/cerebro';
   import { convertirEscala } from '@enflujo/alquimia';
 
   const svg = document.getElementById('grafica') as HTMLElement & SVGElement;
+  const informacion = document.getElementById('informacion');
   const dimsSvg = svg.getBoundingClientRect();
 
   const dimsVis = {
     alto: dimsSvg.height,
     altoVis: 0,
     marcoIz: 30,
-    marcoAbajo: 20,
+    marcoAbajo: 25,
     margenIz: 10,
     margenArriba: 15,
     base: 0,
     inicioX: 0,
   };
 
-  // const posicionY = (valor) => convertirEscala(valor, 0, cerebroDatos.valorMax || 100, dimsVis.base, dimsVis.margenArriba);
-
-  const posicionY = (valor: number) => convertirEscala(valor, 0, 100, 0, 100);
-
-  // PORHACER: Cómo calcular?!!!!!!
-  const posicionX = (valor: number) => convertirEscala(valor, 0, 11, 0, dimsSvg.width - 10);
-
-  console.log(listaAños.value.length);
+  const cantidadDivisiones = 5;
+  const posicionY = (valor: number) =>
+    convertirEscala(valor, 100, 0, dimsVis.margenArriba, dimsVis.alto - dimsVis.marcoAbajo);
 
   const lineaDeTiempo = document.getElementById('lineaDeTiempo');
 
-  const menuAños = document.getElementById('menuAños') as HTMLDivElement;
-  let zonas = {};
-
-  // lineaNacional.setAttribute('x1', `${0 + dimsVis.marcoIz}`);
-  // lineaNacional.setAttribute('y1', `${dimsVis.alto - 130}`);
-  // lineaNacional.setAttribute('x2', `100%`);
-  // lineaNacional.setAttribute('y2', `0%`);
-
   function construirLinea(puntos) {
     let linea = '';
-    let añoInicial = 2005;
-    let paso = 0;
 
-    puntos.forEach((punto, i) => {
-      // const x = valorX;
-      // // POR HACER! acá toca cambiar los valores cuando no es porcentaje
-      // const y = datos.value.datos.año;
+    puntos.forEach((punto: { x: number; y: number }, i: number) => {
+      // // POR HACER! cambiar los valores cuando no es porcentaje
 
       if (i === 0) {
         linea += `M${punto.x} ${punto.y}`;
@@ -149,25 +91,9 @@ const dimsVis = {
           linea += ` L${punto.x} ${punto.y}`;
         }
       }
-
-      // if (i === 0) {
-      //   linea += `M${punto.x} ${punto.y}`;
-      //   // paso = instancia.anno - añoInicial;
-      //   // añoInicial += paso;
-      // } else {
-      //   if (punto.y) {
-      //     linea += ` L${punto.x} ${punto.y}`;
-      //   } else {
-      //     linea += ` M${punto.x} ${punto.y}`;
-      //   }
-      // }
     });
 
     return linea;
-  }
-
-  function calcularPorcentaje(valor: number, porcentaje: number) {
-    return valor * (porcentaje / 100);
   }
 
   function escalar() {
@@ -179,16 +105,29 @@ const dimsVis = {
   let ultimoY = 0;
 
   listaAños.subscribe((lista) => {
-    const posX = (valor: number) => convertirEscala(valor, +lista[0].año, +lista[lista.length - 1].año, 5, 95);
-    const grupoAños = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    const x1Porcentaje = 5;
+    const x1Pixeles = porcentajeAPixeles(x1Porcentaje, dimsSvg.width);
+    const x2Porcentaje = 95;
+    const x2Pixeles = porcentajeAPixeles(x2Porcentaje, dimsSvg.width);
+    const posX = (valor: number) =>
+      convertirEscala(valor, +lista[0].año, +lista[lista.length - 1].año, x1Porcentaje, x2Porcentaje);
+
+    const posicionX = (valor: number) =>
+      convertirEscala(valor, +lista[0].año, +lista[lista.length - 1].año, x1Pixeles, x2Pixeles);
+
     const grupoLinea = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    const grupoEjeY = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    const grupoAños = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    const linea = document.createElementNS('http://www.w3.org/2000/svg', 'path');
 
     grupoAños.setAttribute('class', 'marcasAños');
+    grupoEjeY.setAttribute('class', 'ejeY');
     grupoLinea.setAttribute('class', 'lineaTiempo');
-    const linea = document.createElementNS('http://www.w3.org/2000/svg', 'path');
 
     lista.forEach(({ año }, i) => {
       const marcaAño = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      const marcaEjeY = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      const textoEjeY = document.createElementNS('http://www.w3.org/2000/svg', 'text');
       const punto = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
       const texto = document.createElementNS('http://www.w3.org/2000/svg', 'text');
       const x = posX(+año);
@@ -204,51 +143,69 @@ const dimsVis = {
       texto.setAttribute('y', `15`);
       texto.innerHTML = `${año}`;
 
+      if (i <= cantidadDivisiones) {
+        const textoEje = (100 / cantidadDivisiones) * i;
+        const y = posicionY(textoEje);
+        marcaEjeY.setAttribute('class', 'marcaMarco');
+        marcaEjeY.setAttribute('x1', `${dimsVis.marcoIz}px`);
+        marcaEjeY.setAttribute('y1', `${y}px`);
+        marcaEjeY.setAttribute('x2', `${dimsVis.marcoIz - 5}px`);
+        marcaEjeY.setAttribute('y2', `${y}px`);
+
+        textoEjeY.setAttribute('class', 'textoEje textoEjeY');
+        textoEjeY.setAttribute('x', `${dimsVis.marcoIz}`);
+        textoEjeY.setAttribute('y', `${y}px`);
+
+        textoEjeY.innerHTML = `${textoEje}`;
+        grupoEjeY.appendChild(marcaEjeY);
+        grupoEjeY.appendChild(textoEjeY);
+      }
+
       grupoAños.appendChild(marcaAño);
       grupoAños.appendChild(texto);
 
+      const posPunto = { x: `${posicionX(+año)}`, y: null };
+
       if (datosIndicadorNal.value.datos[año]) {
         puntos.push({
-          x: `${posicionX(i)}`,
-          y: `${datosIndicadorNal.value.datos[año]}`,
+          x: `${posicionX(+año)}`,
+          y: `${posicionY(datosIndicadorNal.value.datos[año])}`,
         });
       } else {
         puntos.push({
-          x: `${posicionX(i)}`,
+          x: `${posicionX(+año)}`,
           y: null,
         });
       }
-      console.log(puntos);
 
       punto.setAttribute('class', 'punto');
 
+      punto.onmouseenter = (evento) => {
+        const x = evento.pageX;
+        const y = evento.pageY - 30;
+        informacion.innerText = `${datosIndicadorNal.value.datos[año]}%`;
+        informacion.classList.add('visible');
+
+        Object.assign(informacion.style, {
+          top: `${y}px`,
+          left: `${x}px`,
+        });
+      };
+
+      punto.onmouseleave = () => {
+        informacion.classList.remove('visible');
+      };
+
       if (datosIndicadorNal.value.datos[año]) {
         punto.setAttribute('r', `1px`);
-        punto.setAttribute('cx', `${posicionX(i)}`);
-        punto.setAttribute('cy', `${datosIndicadorNal.value.datos[año]}`);
+        punto.setAttribute('cx', `${puntos[i].x}`);
+        punto.setAttribute('cy', `${puntos[i].y}`);
         grupoLinea.appendChild(punto);
       }
 
-      let añoInicial = 2005;
-      let paso = 0;
-
       if (datosIndicadorNal.value.datos[año]) {
-        ultimoY = datosIndicadorNal.value.datos[año];
+        ultimoY = posicionY(datosIndicadorNal.value.datos[año]);
       }
-
-      añoInicial += 1;
-
-      //  return puntosLinea;
-
-      // if (i > 0) {
-      //   if (datosIndicadorNal.value.datos[año]) {
-      //     linea.setAttribute('x1', `${puntos[i - 1].x}%`);
-      //     linea.setAttribute('y1', `${puntos[i - 1].y}%`);
-      //     linea.setAttribute('x2', `${puntos[i].x}%`);
-      //     linea.setAttribute('y2', `${puntos[i].y}%`);
-      //   }
-      // } else {
-      // }
     });
 
     puntos.forEach((punto, i) => {
@@ -266,40 +223,13 @@ const dimsVis = {
       }
     });
 
-    // for (let i = 0; i <= puntos.length; i++) {
-    //   if (i === 0) {
-    //     console.log('uno');
-    //     puntosLinea += `M${puntos[0].x} ${puntos[0].y}`;
-    //   } else {
-    //     console.log(i, puntos[i].x, puntos[i].y);
-    //     if (puntos[i].y !== 0) {
-    //       puntosLinea += ` L${puntos[i].x} ${puntos[i].y}`;
-    //     } else {
-    //       if (i < listaAños.value.length) {
-    //         puntosLinea += `M${puntos[i].x} ${puntos[i].y}`;
-    //       }
-    //     }
-    //   }
+    let lineaDePuntos = construirLinea(puntos);
 
-    // if (datosIndicadorNal.value.datos[año]) {
-    //   puntosLinea += ` L${puntos[i].x} ${datosIndicadorNal.value.datos[año]}`;
-
-    //   // paso = instancia.anno - añoInicial;
-    //   añoInicial += paso;
-    //   // } else {
-    //   //   puntosLinea += ` L${x} ${datosIndicadorNal.value.datos[año]}`;
-    //   // }
-    // } else {
-    //   puntosLinea += `M${puntos[i].x} 0`;
-    // }
-    //}
-
-    let puntosLineaPrueba = construirLinea(puntos);
-
-    // linea.setAttribute('d', `${puntosLinea}`);
-    linea.setAttribute('d', `${puntosLineaPrueba}`);
+    linea.setAttribute('d', `${lineaDePuntos}`);
     grupoLinea.appendChild(linea);
+
     svg.appendChild(grupoAños);
+    svg.appendChild(grupoEjeY);
     svg.appendChild(grupoLinea);
   });
 </script>
@@ -311,7 +241,7 @@ const dimsVis = {
 
   #lineaDeTiempo {
     position: relative;
-    margin-top: 2em;
+    margin: 2em;
   }
 
   h3 {
@@ -345,6 +275,7 @@ const dimsVis = {
     .marcasAños {
       transform: translate(10px, calc(100% - 20px));
     }
+
     .lineaMarco {
       stroke: rgb(46, 46, 46);
       stroke-width: 3;
@@ -389,6 +320,7 @@ const dimsVis = {
       font-size: 14px;
       fill: rgb(46, 46, 46);
       font-weight: bold;
+      transform: translateY(-5px);
     }
 
     .textoEje {
@@ -400,12 +332,18 @@ const dimsVis = {
     .lineaTiempo {
       stroke: var(--rosaBarbie);
       stroke-width: 2px;
-      transform: translateX(38px);
       fill: none;
+      transform: translateX(10px);
     }
     .punto {
       stroke: rgb(46, 46, 46);
       stroke-width: 5px;
+      z-index: 9;
+      cursor: pointer;
+    }
+
+    .textoEjeY {
+      transform: translate(-25px, 5px);
     }
   }
 
