@@ -2,6 +2,7 @@ import { limpiarDepartamento, limpiarMunicipio } from '@/limpieza/lugar';
 import type {
   Departamento,
   Errata,
+  EstructurasMatematicas,
   Municipio,
   RespuestaNacional,
   RespuestaPorcentaje,
@@ -19,8 +20,8 @@ export default class {
   errata: { fila: number; error: string }[];
   nombreVariableValor: VariableValorSingular;
 
-  constructor(nombreVariable: VariableValorSingular, ascendente: boolean) {
-    this.datosNacionales = { ascendente, datos: {} };
+  constructor(nombreVariable: VariableValorSingular, ascendente: boolean, estructura: EstructurasMatematicas) {
+    this.datosNacionales = { ascendente, estructura, datos: {} };
     this.errata = [];
     this.datosMunicipios = {};
     this.datosDepartamentos = {};
