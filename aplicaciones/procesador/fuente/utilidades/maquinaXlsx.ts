@@ -11,7 +11,7 @@ export default async (
 ): Promise<void> => {
   return new Promise(async (resolver, rechazar) => {
     const ruta = path.resolve(__dirname, `../datos/${nombreArchivo}.xlsx`);
-    let numeroFila = 0;
+    let numeroFila = 1;
     let total = 0;
     let barraActual: SingleBar;
 
@@ -23,7 +23,7 @@ export default async (
     });
 
     flujo.on('data', (fila) => {
-      if (numeroFila === 0) {
+      if (numeroFila === 1) {
         total = fila.totalSheetSize;
         barraActual = barraProceso();
 
