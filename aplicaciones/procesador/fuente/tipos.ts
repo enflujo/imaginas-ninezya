@@ -182,6 +182,7 @@ export type RespuestaPorcentaje = {
 
 export type RespuestaNacional = {
   ascendente: boolean;
+  estructura: EstructurasMatematicas;
   datos: { [año: string]: number };
 };
 
@@ -213,3 +214,5 @@ export interface VariablesYa1_8 extends BaseSingular {
 export type VariableValorSingular = 'tacued' | 'talcan' | 'mortalidad_menores_5' | 'controles_prenatales' | 'bajo_peso';
 
 export type VariablesSingulares = VariablesYa1_1 & VariablesYa1_2 & VariablesYa1_3 & VariablesYa1_5 & VariablesYa1_8;
+
+export type EstructurasMatematicas = 'porcentaje';
