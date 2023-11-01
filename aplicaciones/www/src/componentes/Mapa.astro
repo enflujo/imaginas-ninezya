@@ -59,7 +59,7 @@ const { ancho, alto } = Astro.props;
   let coordenadasAncho = 0;
   let coordenadasAlto = 0;
   let color: (valor: number) => string;
-
+  let municipiosAgregados = {}; // Objeto para guardar las listas de municipios seleccionados de cada departamento en el nivel 'mun'
   let datosParaPintar: FeatureCollection; // Esto puede ser departamentos o municipios
 
   mapa.onmouseenter = () => {
@@ -217,16 +217,53 @@ const { ancho, alto } = Astro.props;
 
           // Asignar nombre del departamento a la lista de lugares seleccionados
           zona.onclick = () => {
-            const { nombre, codigo } = lugar.properties;
-            deptoSeleccionado.set(nombre);
+            let nombre = '';
+            let codigo = '';
+            let codigoMun = '';
+
+            if (nivel.get() === 'mun') {
+              deptoSeleccionado.set(lugar.properties.dep);
+              nombre = lugar.properties.dep;
+              codigo = lugar.properties.codigo.substring(0, 2);
+              codigoMun = lugar.properties.codigo;
+
+              // Si no existe la lista de municipios del departamento al que pertenece el municipio, la crea
+              if (!municipiosAgregados[codigo]) {
+                municipiosAgregados[codigo] = [];
+              }
+
+              // Busca la posición del municipio en la lista del departamento
+              const posicionMun = municipiosAgregados[codigo].findIndex(
+                ({ codigo: codigoAgregado }) => codigoAgregado === codigoMun
+              );
+
+              // Agrega o quita el municipio a/de la lista del departamento
+              if (!municipiosAgregados[codigo].includes(lugar.properties.codigo)) {
+                municipiosAgregados[codigo].push(lugar.properties.codigo);
+              } else {
+                municipiosAgregados[codigo].splice(posicionMun, 1);
+              }
+            } else {
+              nombre = lugar.properties.nombre;
+              codigo = lugar.properties.codigo;
+              deptoSeleccionado.set(nombre);
+            }
+
             zona.classList.toggle('seleccionada');
             const lugares = [...lugaresSeleccionados.get()]; // es necesario clonar el array acá para que al final de las operaciones que siguen a continuación, el store se encargue de hacer llamado a todos los que estén usando `listen()`.
             const posicionLugar = lugares.findIndex(({ nombre: nombreAgregado }) => nombreAgregado === nombre);
 
-            if (posicionLugar < 0) {
+            if (posicionLugar < 0 && !lugares.includes({ nombre, codigo })) {
               lugares.push({ nombre, codigo });
             } else {
-              lugares.splice(posicionLugar, 1);
+              if (nivel.get() === 'mun') {
+                // Si la lista de municipios del departamento se vacía, borra el mapa del departamento
+                if (municipiosAgregados[codigo].length === 0) {
+                  lugares.splice(posicionLugar, 1);
+                }
+              } else {
+                lugares.splice(posicionLugar, 1);
+              }
             }
 
             lugaresSeleccionados.set(lugares); // Cambiar valores en el store, todos los que esten con listen() van a recibir estos nuevos valores.

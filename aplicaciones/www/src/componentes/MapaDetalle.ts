@@ -1,9 +1,10 @@
 import type { ExtremosCoordenadas } from '@/tipos';
 import { calcularPorcentaje, color } from '@/utilidades/ayudas';
-import { añoSeleccionado, datosIndicadorMun, datosMunicipios } from '@/utilidades/cerebro';
+import { añoSeleccionado, datosIndicadorMun, datosMunicipios, nivel } from '@/utilidades/cerebro';
 import { crearLinea, escalaCoordenadas, extremosLugar } from '@enflujo/alquimia';
 import type { IMapearCoordenadas } from '@enflujo/alquimia/libreria/modulos/tipos';
 import type { Feature, Geometry } from 'geojson';
+import { deptoSeleccionado } from '../utilidades/cerebro';
 
 export default class MapaDetalle extends HTMLElement {
   svg: SVGElement;
@@ -17,6 +18,7 @@ export default class MapaDetalle extends HTMLElement {
   ancho: number;
   alto: number;
   contenedor: HTMLDivElement;
+  nivel: string;
 
   constructor() {
     super();
@@ -78,7 +80,7 @@ export default class MapaDetalle extends HTMLElement {
 
     this.municipios = datosMunicipios
       .get()
-      .features.filter((lugar) => lugar.properties.dep === this.dataset.departamento);
+      .features.filter((lugar) => lugar.properties.dep === deptoSeleccionado.value);
 
     this.extremosGeo = extremosLugar({
       type: 'FeatureCollection',
