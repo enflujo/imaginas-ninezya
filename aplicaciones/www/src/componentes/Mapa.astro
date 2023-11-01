@@ -70,6 +70,15 @@ const { ancho, alto } = Astro.props;
     informacion.classList.remove('visible');
   };
 
+  mapa.onmousemove = (evento) => {
+    const x = evento.clientX;
+    const y = evento.clientY - 30;
+    Object.assign(informacion.style, {
+      top: `${y}px`,
+      left: `${x}px`,
+    });
+  };
+
   function extremos() {
     mapearCoordenadas = escalaCoordenadas(
       extremosGeo.latitudMin,
@@ -201,9 +210,7 @@ const { ancho, alto } = Astro.props;
         zona.setAttribute('style', 'fill: url(#sinInfo)');
         zona.setAttribute('shape-rendering', 'geometricPrecision');
 
-        zona.onmouseenter = (evento) => {
-          const x = evento.clientX;
-          const y = evento.clientY - 30;
+        zona.onmouseenter = () => {
           const valor = zonas[lugar.properties.codigo].valor;
 
           if (nivel.get() === 'mun') {
@@ -214,31 +221,24 @@ const { ancho, alto } = Astro.props;
             informacion.innerText = `${lugar.properties.nombre}: ${valor ? valor + '%' : 'Sin datos'}`;
             zona.classList.add('departamento');
           }
-
-          // Asignar nombre del departamento a la lista de lugares seleccionados
-          zona.onclick = () => {
-            const { nombre, codigo } = lugar.properties;
-            deptoSeleccionado.set(nombre);
-            zona.classList.toggle('seleccionada');
-            const lugares = [...lugaresSeleccionados.get()]; // es necesario clonar el array acá para que al final de las operaciones que siguen a continuación, el store se encargue de hacer llamado a todos los que estén usando `listen()`.
-            const posicionLugar = lugares.findIndex(({ nombre: nombreAgregado }) => nombreAgregado === nombre);
-
-            if (posicionLugar < 0) {
-              lugares.push({ nombre, codigo });
-            } else {
-              lugares.splice(posicionLugar, 1);
-            }
-
-            lugaresSeleccionados.set(lugares); // Cambiar valores en el store, todos los que esten con listen() van a recibir estos nuevos valores.
-          };
-
-          Object.assign(informacion.style, {
-            top: `${y}px`,
-            left: `${x}px`,
-          });
         };
 
-        zona.onmouseleave = () => {};
+        // Asignar nombre del departamento a la lista de lugares seleccionados
+        zona.onclick = () => {
+          const { nombre, codigo } = lugar.properties;
+          deptoSeleccionado.set(nombre);
+          zona.classList.toggle('seleccionada');
+          const lugares = [...lugaresSeleccionados.get()]; // es necesario clonar el array acá para que al final de las operaciones que siguen a continuación, el store se encargue de hacer llamado a todos los que estén usando `listen()`.
+          const posicionLugar = lugares.findIndex(({ nombre: nombreAgregado }) => nombreAgregado === nombre);
+
+          if (posicionLugar < 0) {
+            lugares.push({ nombre, codigo });
+          } else {
+            lugares.splice(posicionLugar, 1);
+          }
+
+          lugaresSeleccionados.set(lugares); // Cambiar valores en el store, todos los que esten con listen() van a recibir estos nuevos valores.
+        };
 
         zonas[lugar.properties.codigo] = { svg: zona, valor: null };
         colombia.appendChild(zona);
