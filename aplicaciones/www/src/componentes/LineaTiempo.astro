@@ -18,9 +18,10 @@ const dimsVis = {
 ---
 
 <section id="lineaDeTiempo">
-  <!-- <header>
+  <!-- POR HACER: Reemplazar nombre por lugar seleccionado -->
+  <header>
     <h3 id="nombreLugar">Colombia</h3>
-  </header> -->
+  </header>
 
   <svg id="grafica" width="100%" height="100%" style={`height:${alto}vh`}>
     <!-- <defs>
@@ -42,78 +43,92 @@ const dimsVis = {
     <line class="lineaMarco lineaBase" x1={dimsVis.marcoIz} y1="100%" x2="100%" y2="100%" shape-rendering="crispEdges"
     ></line>
 
-    <!-- {
-    listaAños.map((año, i) => {
-      return <line class="marcaMarco" x1={posicionX(año)} y1={dimsVis.base} x2={i * 50} y2={dimsVis.base + 7} />;
-    })
-  }
-
-  {
-    listaAños.map((año, i) => {
-      return (
-        <text class="año textoEje" x={i * 50} y={dimsVis.base + 16}>
-          {' '}
-          {año}
-        </text>
-      );
-    })
-  } -->
-
-    <!-- 
-  <line
-    v-for="anno in cerebroDatos.años"
-    :key="`marca-${anno}`"
-    class="marcaMarco"
-    :x1="posicionX(anno)"
-    :y1="dimsVis.base"
-    :x2="posicionX(anno)"
-    :y2="dimsVis.base + 7"
-  />
-
-  <text
-    v-for="anno in cerebroDatos.años"
-    :key="`año-${anno}`"
-    class="año textoEje"
-    :class="anno === cerebroGlobales.año ? 'activo' : ''"
-    :x="posicionX(anno)"
-    :y="dimsVis.base + 16"
-    @click="cerebroGlobales.actualizarAño(anno)"
-  >
-    {{ cortarAño ? añoRecortado(anno) : anno }}
-  </text> -->
-
     <text class="nombreEje lineaBase" x="0" y="100%">Año</text>
   </svg>
 </section>
 
 <script>
-  import { listaAños } from '@/utilidades/cerebro';
+  import { porcentajeAPixeles } from '@/utilidades/ayudas';
+  import { listaAños, datosIndicadorNal } from '@/utilidades/cerebro';
   import { convertirEscala } from '@enflujo/alquimia';
-  const svg = document.getElementById('grafica') as HTMLElement & SVGElement;
 
-  // const posicionY = (valor) =>
-  // convertirEscala(valor, 0, cerebroDatos.valorMax || 100, dimsVis.base, dimsVis.margenArriba);
+  const svg = document.getElementById('grafica') as HTMLElement & SVGElement;
+  const informacion = document.getElementById('informacion');
+  const dimsSvg = svg.getBoundingClientRect();
+
+  const dimsVis = {
+    alto: dimsSvg.height,
+    altoVis: 0,
+    marcoIz: 30,
+    marcoAbajo: 25,
+    margenIz: 10,
+    margenArriba: 15,
+    base: 0,
+    inicioX: 0,
+  };
+
+  const cantidadDivisiones = 5;
+  const posicionY = (valor: number) =>
+    convertirEscala(valor, 100, 0, dimsVis.margenArriba, dimsVis.alto - dimsVis.marcoAbajo);
 
   const lineaDeTiempo = document.getElementById('lineaDeTiempo');
 
-  const menuAños = document.getElementById('menuAños') as HTMLDivElement;
-  let zonas = {};
+  function construirLinea(puntos) {
+    let linea = '';
 
-  function calcularPorcentaje(valor: number, porcentaje: number) {
-    return valor * (porcentaje / 100);
+    puntos.forEach((punto: { x: number; y: number }, i: number) => {
+      // // POR HACER! cambiar los valores cuando no es porcentaje
+
+      if (i === 0) {
+        linea += `M${punto.x} ${punto.y}`;
+      } else {
+        if (!punto.y) {
+          if (puntos[i + 1].y) {
+            ultimoY = puntos[i + 1].y;
+          }
+          linea += `M${puntos[i + 1].x} ${ultimoY} `;
+        } else {
+          linea += ` L${punto.x} ${punto.y}`;
+        }
+      }
+    });
+
+    return linea;
   }
 
   function escalar() {
     let ancho = window.innerWidth;
     let alto = window.innerHeight;
   }
+  let puntos = [];
+  let puntosLinea = '';
+  let ultimoY = 0;
 
   listaAños.subscribe((lista) => {
-    const posX = (valor: number) => convertirEscala(valor, +lista[0].año, +lista[lista.length - 1].año, 5, 95);
+    const x1Porcentaje = 5;
+    const x1Pixeles = porcentajeAPixeles(x1Porcentaje, dimsSvg.width);
+    const x2Porcentaje = 95;
+    const x2Pixeles = porcentajeAPixeles(x2Porcentaje, dimsSvg.width);
+    const posX = (valor: number) =>
+      convertirEscala(valor, +lista[0].año, +lista[lista.length - 1].año, x1Porcentaje, x2Porcentaje);
+
+    const posicionX = (valor: number) =>
+      convertirEscala(valor, +lista[0].año, +lista[lista.length - 1].año, x1Pixeles, x2Pixeles);
+
+    const grupoLinea = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    const grupoEjeY = document.createElementNS('http://www.w3.org/2000/svg', 'g');
     const grupoAños = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    const linea = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+
     grupoAños.setAttribute('class', 'marcasAños');
-    lista.forEach(({ año }) => {
+    grupoEjeY.setAttribute('class', 'ejeY');
+    grupoLinea.setAttribute('class', 'lineaTiempo');
+
+    lista.forEach(({ año }, i) => {
       const marcaAño = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      const marcaEjeY = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      const textoEjeY = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      const punto = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
       const texto = document.createElementNS('http://www.w3.org/2000/svg', 'text');
       const x = posX(+año);
 
@@ -128,20 +143,105 @@ const dimsVis = {
       texto.setAttribute('y', `15`);
       texto.innerHTML = `${año}`;
 
+      if (i <= cantidadDivisiones) {
+        const textoEje = (100 / cantidadDivisiones) * i;
+        const y = posicionY(textoEje);
+        marcaEjeY.setAttribute('class', 'marcaMarco');
+        marcaEjeY.setAttribute('x1', `${dimsVis.marcoIz}px`);
+        marcaEjeY.setAttribute('y1', `${y}px`);
+        marcaEjeY.setAttribute('x2', `${dimsVis.marcoIz - 5}px`);
+        marcaEjeY.setAttribute('y2', `${y}px`);
+
+        textoEjeY.setAttribute('class', 'textoEje textoEjeY');
+        textoEjeY.setAttribute('x', `${dimsVis.marcoIz}`);
+        textoEjeY.setAttribute('y', `${y}px`);
+
+        textoEjeY.innerHTML = `${textoEje}`;
+        grupoEjeY.appendChild(marcaEjeY);
+        grupoEjeY.appendChild(textoEjeY);
+      }
+
       grupoAños.appendChild(marcaAño);
       grupoAños.appendChild(texto);
+
+      const posPunto = { x: `${posicionX(+año)}`, y: null };
+
+      if (datosIndicadorNal.value.datos[año]) {
+        puntos.push({
+          x: `${posicionX(+año)}`,
+          y: `${posicionY(datosIndicadorNal.value.datos[año])}`,
+        });
+      } else {
+        puntos.push({
+          x: `${posicionX(+año)}`,
+          y: null,
+        });
+      }
+
+      punto.setAttribute('class', 'punto');
+
+      punto.onmouseenter = (evento) => {
+        const x = evento.pageX;
+        const y = evento.pageY - 30;
+        informacion.innerText = `${datosIndicadorNal.value.datos[año]}%`;
+        informacion.classList.add('visible');
+
+        Object.assign(informacion.style, {
+          top: `${y}px`,
+          left: `${x}px`,
+        });
+      };
+
+      punto.onmouseleave = () => {
+        informacion.classList.remove('visible');
+      };
+
+      if (datosIndicadorNal.value.datos[año]) {
+        punto.setAttribute('r', `1px`);
+        punto.setAttribute('cx', `${puntos[i].x}`);
+        punto.setAttribute('cy', `${puntos[i].y}`);
+        grupoLinea.appendChild(punto);
+      }
+
+      if (datosIndicadorNal.value.datos[año]) {
+        ultimoY = posicionY(datosIndicadorNal.value.datos[año]);
+      }
     });
+
+    puntos.forEach((punto, i) => {
+      if (i === 0) {
+        puntosLinea += `M${punto.x} ${punto.y}`;
+      } else {
+        if (!punto.y) {
+          if (puntos[i + 1].y) {
+            ultimoY = puntos[i + 1].y;
+          }
+          puntosLinea += `M${puntos[i + 1].x} ${ultimoY} `;
+        } else {
+          puntosLinea += ` L${punto.x} ${punto.y}`;
+        }
+      }
+    });
+
+    let lineaDePuntos = construirLinea(puntos);
+
+    linea.setAttribute('d', `${lineaDePuntos}`);
+    grupoLinea.appendChild(linea);
+
     svg.appendChild(grupoAños);
+    svg.appendChild(grupoEjeY);
+    svg.appendChild(grupoLinea);
   });
 </script>
 
 <style lang="scss" is:global>
   .lineaBase {
-    transform: translateY(-20px);
+    transform: translateY(-25px);
   }
+
   #lineaDeTiempo {
     position: relative;
-    margin-top: 2em;
+    margin: 2em;
   }
 
   h3 {
@@ -173,8 +273,9 @@ const dimsVis = {
     display: block;
 
     .marcasAños {
-      transform: translate(10px, calc(100% - 20px));
+      transform: translate(10px, calc(100% - 25px));
     }
+
     .lineaMarco {
       stroke: rgb(46, 46, 46);
       stroke-width: 3;
@@ -216,15 +317,33 @@ const dimsVis = {
     }
 
     .nombreEje {
-      font-size: 14px;
+      font-size: 0.7em;
       fill: rgb(46, 46, 46);
       font-weight: bold;
+      transform: translateY(-5px);
     }
 
     .textoEje {
       font-size: 10px;
       fill: rgb(46, 46, 46);
       font-weight: bold;
+    }
+
+    .lineaTiempo {
+      stroke: var(--rosaBarbie);
+      stroke-width: 2px;
+      fill: none;
+      transform: translateX(10px);
+    }
+    .punto {
+      stroke: rgb(46, 46, 46);
+      stroke-width: 5px;
+      z-index: 9;
+      cursor: pointer;
+    }
+
+    .textoEjeY {
+      transform: translate(-25px, 5px);
     }
   }
 

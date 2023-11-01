@@ -7,3 +7,5 @@ export function calcularPorcentaje(valor: number, porcentaje: number) {
 }
 
 export const color = escalaColores(0, 100, '#DE2E56', '#94FF1A');
+
+export const porcentajeAPixeles = (porcentaje: number, total: number) => (porcentaje / 100) * total;
