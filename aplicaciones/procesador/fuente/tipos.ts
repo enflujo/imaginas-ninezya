@@ -200,7 +200,7 @@ export interface VariablesYa1_2 extends BaseSingular {
 }
 
 export interface VariablesYa1_3 extends BaseSingular {
-  mortalidad_menores_5: number;
+  tasa_mortalidad_infantil: number;
 }
 
 export interface VariablesYa1_5 extends BaseSingular {
@@ -211,7 +211,12 @@ export interface VariablesYa1_8 extends BaseSingular {
   bajo_peso: number;
 }
 
-export type VariableValorSingular = 'tacued' | 'talcan' | 'mortalidad_menores_5' | 'controles_prenatales' | 'bajo_peso';
+export type VariableValorSingular =
+  | 'tacued'
+  | 'talcan'
+  | 'tasa_mortalidad_infantil'
+  | 'controles_prenatales'
+  | 'bajo_peso';
 
 export type VariablesSingulares = VariablesYa1_1 & VariablesYa1_2 & VariablesYa1_3 & VariablesYa1_5 & VariablesYa1_8;
 
