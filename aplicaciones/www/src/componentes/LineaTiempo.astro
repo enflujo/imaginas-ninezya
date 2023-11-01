@@ -15,6 +15,10 @@ const dimsVis = {
   base: 0,
   inicioX: 0,
 };
+
+const numeroDivisiones = 5;
+const divisiones = [...Array(numeroDivisiones + 1)].map((_, i) => i).filter((i) => !!i);
+const pasoYDivision = 100 / numeroDivisiones;
 ---
 
 <section id="lineaDeTiempo">
@@ -40,7 +44,20 @@ const dimsVis = {
     <line class="lineaMarco" x1={dimsVis.marcoIz} y1="0" x2={dimsVis.marcoIz} y2="100%" shape-rendering="crispEdges"
     ></line>
 
-    <line class="lineaMarco lineaBase" x1={dimsVis.marcoIz} y1="100%" x2="100%" y2="100%" shape-rendering="crispEdges"
+    {
+      divisiones.map((i) => (
+        <line
+          class="lineaCuadricula"
+          x1={`${dimsVis.marcoIz}px`}
+          y1={`${i * pasoYDivision}%`}
+          x2="100%"
+          y2={`${i * pasoYDivision}%`}
+          shape-rendering="crispEdges"
+        />
+      ))
+    }
+
+    <line class="lineaMarco lineaBase" x1={dimsVis.marcoIz} y1="98%" x2="100%" y2="98%" shape-rendering="crispEdges"
     ></line>
 
     <text class="nombreEje lineaBase" x="0" y="100%">Año</text>
@@ -164,8 +181,6 @@ const dimsVis = {
       grupoAños.appendChild(marcaAño);
       grupoAños.appendChild(texto);
 
-      const posPunto = { x: `${posicionX(+año)}`, y: null };
-
       if (datosIndicadorNal.value.datos[año]) {
         puntos.push({
           x: `${posicionX(+año)}`,
@@ -235,131 +250,136 @@ const dimsVis = {
 </script>
 
 <style lang="scss" is:global>
-  .lineaBase {
-    transform: translateY(-25px);
-  }
-
   #lineaDeTiempo {
     position: relative;
     margin: 2em;
-  }
 
-  h3 {
-    margin: 0.3em 0;
-  }
-
-  #nombreLugar {
-    color: rgb(46, 46, 46);
-    text-transform: uppercase;
-    font-size: 25px;
-    font-weight: 700;
-    letter-spacing: -0.4px;
-  }
-
-  #detalle {
-    color: rgb(46, 46, 46);
-    font-size: 0.9em;
-    width: fit-content;
-    position: fixed;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.25s ease-in-out;
-    padding: 2px;
-    background-color: white;
-    font-weight: bold;
-  }
-
-  svg {
-    display: block;
-
-    .marcasAños {
-      transform: translate(10px, calc(100% - 25px));
+    .lineaBase {
+      transform: translateY(-25px);
     }
 
-    .lineaMarco {
-      stroke: rgb(46, 46, 46);
-      stroke-width: 3;
+    h3 {
+      margin: 0.3em 0;
     }
 
-    .marcaMarco {
-      stroke: rgb(46, 46, 46);
-      stroke-width: 2;
+    #nombreLugar {
+      color: rgb(46, 46, 46);
+      text-transform: uppercase;
+      font-size: 25px;
+      font-weight: 700;
+      letter-spacing: -0.4px;
     }
 
-    .lineaDivision {
-      stroke: rgb(46, 46, 46);
-      stroke-width: 1;
-      opacity: 0.6;
-    }
-
-    .año {
-      transform: translateX(-5px);
-      cursor: pointer;
-
-      &:hover {
-        opacity: 0.6;
-      }
-
-      &.activo {
-        opacity: 0.6;
-        cursor: default;
-      }
-    }
-
-    .añoActual {
-      stroke: rgb(46, 46, 46);
-      stroke-width: 4;
-      opacity: 0.6;
-    }
-
-    .umbral {
-      opacity: 0.6;
-    }
-
-    .nombreEje {
-      font-size: 0.7em;
-      fill: rgb(46, 46, 46);
-      font-weight: bold;
-      transform: translateY(-5px);
-    }
-
-    .textoEje {
-      font-size: 10px;
-      fill: rgb(46, 46, 46);
+    #detalle {
+      color: rgb(46, 46, 46);
+      font-size: 0.9em;
+      width: fit-content;
+      position: fixed;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease-in-out;
+      padding: 2px;
+      background-color: white;
       font-weight: bold;
     }
 
-    .lineaTiempo {
-      stroke: var(--rosaBarbie);
-      stroke-width: 2px;
-      fill: none;
-      transform: translateX(10px);
-    }
-    .punto {
-      stroke: rgb(46, 46, 46);
-      stroke-width: 5px;
-      z-index: 9;
-      cursor: pointer;
+    svg {
+      display: block;
+
+      .marcasAños {
+        transform: translate(10px, calc(100% - 25px));
+      }
+
+      .lineaMarco {
+        stroke: rgb(46, 46, 46);
+        stroke-width: 3;
+      }
+
+      .lineaCuadricula {
+        stroke: rgb(195, 194, 194);
+        stroke-width: 0.5;
+      }
+
+      .marcaMarco {
+        stroke: rgb(46, 46, 46);
+        stroke-width: 2;
+      }
+
+      .lineaDivision {
+        stroke: rgb(46, 46, 46);
+        stroke-width: 1;
+        opacity: 0.6;
+      }
+
+      .año {
+        transform: translateX(-5px);
+        cursor: pointer;
+
+        &:hover {
+          opacity: 0.6;
+        }
+
+        &.activo {
+          opacity: 0.6;
+          cursor: default;
+        }
+      }
+
+      .añoActual {
+        stroke: rgb(46, 46, 46);
+        stroke-width: 4;
+        opacity: 0.6;
+      }
+
+      .umbral {
+        opacity: 0.6;
+      }
+
+      .nombreEje {
+        font-size: 0.7em;
+        fill: rgb(46, 46, 46);
+        font-weight: bold;
+        transform: translateY(-5px);
+      }
+
+      .textoEje {
+        font-size: 10px;
+        fill: rgb(46, 46, 46);
+        font-weight: bold;
+      }
+
+      .lineaTiempo {
+        stroke: var(--rosaBarbie);
+        stroke-width: 2px;
+        fill: none;
+        transform: translateX(10px);
+      }
+      .punto {
+        stroke: rgb(46, 46, 46);
+        stroke-width: 5px;
+        z-index: 9;
+        cursor: pointer;
+      }
+
+      .textoEjeY {
+        transform: translate(-25px, 5px);
+      }
     }
 
-    .textoEjeY {
-      transform: translate(-25px, 5px);
+    #descripcionY {
+      color: rgb(46, 46, 46);
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 20px;
     }
-  }
 
-  #descripcionY {
-    color: rgb(46, 46, 46);
-    font-size: 13px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-
-  #descripcionMeta {
-    border: 2px solid #27f7ba;
-    background-color: white;
-    padding: 1em 1.5em;
-    color: #0042bf;
-    margin-top: 2em;
-    margin-left: 30px;
+    #descripcionMeta {
+      border: 2px solid #27f7ba;
+      background-color: white;
+      padding: 1em 1.5em;
+      color: #0042bf;
+      margin-top: 2em;
+      margin-left: 30px;
+    }
   }
 </style>
