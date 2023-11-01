@@ -18,3 +18,16 @@ export const limpiarMunicipio = (codigo: number): Municipio | Errata => {
   if (mun) return mun;
   return { error: true, mensaje: `No existe municipio con código ${codigo}` };
 };
+
+export const extraerPartesLugar = (valor: string) => {
+  const partes = valor.split('-').map((parte) => parte.trim());
+  const mun = municipios.datos.find((municipio) => municipio[3] === partes[0]);
+
+  if (mun) {
+    return mun;
+  } else if (partes.length === 3 && partes[2] === 'No definido') {
+    return { error: true, mensaje: `Lugar indefinido` };
+  } else {
+    return { error: true, mensaje: `No existe municipio con ${JSON.stringify(valor)}` };
+  }
+};
