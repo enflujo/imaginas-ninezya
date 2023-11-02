@@ -36,7 +36,6 @@ const { ya, indicador } = Astro.params;
 </nav>
 
 <script>
-  import { yaSeleccionado } from '@/utilidades/cerebro';
   const yas = document.querySelectorAll<HTMLElement>('.ya');
 
   // Abrir sub menú de indicadores al hacer clic en un 'ya'
@@ -46,7 +45,6 @@ const { ya, indicador } = Astro.params;
     nombreYa.addEventListener('click', () => {
       contenedorYa.classList.toggle('abierto');
       nombreYa.classList.toggle('ungido');
-      yaSeleccionado.set(`${nombreYa.innerText}`);
     });
   });
 </script>
