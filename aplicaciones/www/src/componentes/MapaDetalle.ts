@@ -1,6 +1,6 @@
 import type { ExtremosCoordenadas } from '@/tipos';
 import { calcularPorcentaje, color } from '@/utilidades/ayudas';
-import { añoSeleccionado, datosIndicadorMun, datosMunicipios, nivel } from '@/utilidades/cerebro';
+import { añoSeleccionado, datosIndicadorMun, datosMapaMunicipio } from '@/utilidades/cerebro';
 import { crearLinea, escalaCoordenadas, extremosLugar } from '@enflujo/alquimia';
 import type { IMapearCoordenadas } from '@enflujo/alquimia/libreria/modulos/tipos';
 import type { Feature, Geometry } from 'geojson';
@@ -45,7 +45,7 @@ export default class MapaDetalle extends HTMLElement {
     this.coordenadasAlto = latitudMax - latitudMin;
   }
 
-  crearMapa() {
+  async crearMapa() {
     this.contenedor = document.createElement('div');
     this.svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
@@ -78,9 +78,8 @@ export default class MapaDetalle extends HTMLElement {
 
     this.appendChild(this.contenedor);
 
-    this.municipios = datosMunicipios
-      .get()
-      .features.filter((lugar) => lugar.properties.dep === deptoSeleccionado.value);
+    const datosMunicipios = await datosMapaMunicipio();
+    this.municipios = datosMunicipios.features.filter((lugar) => lugar.properties.dep === deptoSeleccionado.value);
 
     this.extremosGeo = extremosLugar({
       type: 'FeatureCollection',
@@ -97,7 +96,7 @@ export default class MapaDetalle extends HTMLElement {
         formaMunicipio.setAttribute('id', lugar.properties.codigo);
         formaMunicipio.setAttribute('style', 'fill: url(#sinInfo)');
         formaMunicipio.setAttribute('shape-rendering', 'geometricPrecision');
-        // shape-rendering="geometricPrecision"
+
         formaMunicipio.onmousemove = (evento) => {
           const x = evento.pageX;
           const y = evento.pageY - 30;
@@ -154,10 +153,9 @@ export default class MapaDetalle extends HTMLElement {
     });
   }
 
-  pintarMapa() {
+  async pintarMapa() {
     const año = añoSeleccionado.get();
-    const datos: [codigo: string] = datosIndicadorMun.get()[año];
-
+    const datos: [codigo: string, valor: number][] = datosIndicadorMun.get()[año];
     if (datos && datos.length) {
       datos.forEach(([codigoMun, valor]) => {
         const dep = codigoMun.substring(0, 2);

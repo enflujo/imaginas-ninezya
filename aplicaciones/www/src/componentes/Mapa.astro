@@ -29,8 +29,8 @@ const { ancho, alto } = Astro.props;
   import type { FeatureCollection } from 'geojson';
   import {
     datosColombia,
-    datosIndicador,
-    datosIndicadorNal,
+    datosDep,
+    datosNal,
     nivel,
     deptoSeleccionado,
     añoSeleccionado,
@@ -131,11 +131,11 @@ const { ancho, alto } = Astro.props;
     });
   }
 
-  datosIndicador.subscribe(async () => {
+  datosDep.subscribe(async () => {
     const nuevoNivel = nivel.get();
 
     if (nuevoNivel === 'mun') {
-      const municipios = datosColombia.value['mun'];
+      const municipios = datosColombia.value.mun;
       if (!municipios) return;
       extremosGeo = extremosLugar(municipios);
 
@@ -169,12 +169,12 @@ const { ancho, alto } = Astro.props;
   });
 
   // Definir la dirección de la escala de color cuando cambien los datos nacionales
-  datosIndicadorNal.subscribe(({ ascendente }) => {
+  datosNal.subscribe(({ ascendente }) => {
     color = definirColor(ascendente);
   });
 
   function pintarMapa(año: string) {
-    const datos = datosIndicador.get()[año];
+    const datos = datosDep.get()[año];
     if (!datos) return;
 
     // Reiniciar todos sin datos antes de pintar de nuevo

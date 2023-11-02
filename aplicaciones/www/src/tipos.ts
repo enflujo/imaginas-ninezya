@@ -27,3 +27,8 @@ export interface ExtremosCoordenadas {
   longitudMin: number;
   longitudMax: number;
 }
+
+export type TiposEstructura = 'porcentaje';
+
+export type DatosIndicador = { [año: string]: [codigo: string, valor: number][] };
+export type DatosIndicadorNal = { ascendente: boolean; estructura: TiposEstructura; datos: { [año: string]: number } };
