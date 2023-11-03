@@ -15,7 +15,7 @@ const { alto } = Astro.props;
   </header>
 
   <svg id="grafica" width="100%" height="100%" style={`height:${alto}vh`}>
-    <!-- <defs>
+    <defs>
       <linearGradient id="arriba" x1="50%" y1="0%" x2="50%" y2="100%">
         <stop offset="0%" style="stop-color: rgb(39, 247, 186); stop-opacity: 1"></stop>
         <stop offset="100%" style="stop-color: rgb(39, 247, 186); stop-opacity: 1"></stop>
@@ -25,24 +25,24 @@ const { alto } = Astro.props;
         <stop offset="0%" style="stop-color: rgb(39, 247, 186); stop-opacity: 1"></stop>
         <stop offset="100%" style="stop-color: rgb(39, 247, 146); stop-opacity: 1"></stop>
       </linearGradient>
-    </defs> -->
+    </defs>
 
-    <!-- MARCO -->
     <g id="ejeY">
       <line
         id="bordeEjeY"
         class="lineaMarco"
         x1={dims.marcoIz}
-        y1="0"
+        y1={dims.margenArriba - 1}
         x2={dims.marcoIz}
         y2="0"
         shape-rendering="crispEdges"></line>
     </g>
 
     <g id="ejeX"></g>
-    <g id="lineaTiempo"></g>
+    <g id="lineasTiempo"></g>
 
-    <text class="nombreEje lineaBase" x="0" y="100%">Año</text>
+    <text id="nombreEjeX" class="nombreEje" x="0" y="100%">Año</text>
+    <text id="nombreEjeY" class="nombreEje" x="0" y="7px"></text>
   </svg>
 </section>
 
@@ -51,15 +51,17 @@ const { alto } = Astro.props;
   import { listaAños, datosNal } from '@/utilidades/cerebro';
   import { dimsLineaTiempo as dimsVis } from '@/utilidades/constantes';
   import { convertirEscala } from '@enflujo/alquimia';
+  import Linea from '@/componentes/Linea';
 
   const svg = document.querySelector<SVGElement>('#grafica');
+  const contenedorLineas = svg.querySelector<SVGGElement>('#lineasTiempo');
   const contenedorEjeX = document.querySelector<SVGGElement>('#ejeX');
   const contenedorEjeY = document.querySelector<SVGGElement>('#ejeY');
   const bordeEjeY = document.querySelector<SVGLineElement>('#bordeEjeY');
-  const grupoLinea = document.querySelector<SVGGElement>('#lineaTiempo');
-  const informacion = document.getElementById('informacion');
+  const nombreEjeY = svg.querySelector<SVGTextElement>('#nombreEjeY');
+  const lineas: Linea[] = [];
 
-  const proporciones = { porcentaje: { x1: 5, x2: 95 }, pixeles: { x1: 0, x2: 0 } };
+  const proporciones = { porcentaje: { x1: 2, x2: 95 }, pixeles: { x1: 0, x2: 0 } };
   const años = { primero: 0, ultimo: 0 };
   let valorMax = 100;
   let cantidadDivisiones = 5;
@@ -67,38 +69,52 @@ const { alto } = Astro.props;
   escalar();
 
   const posicionX = (valor: number) =>
-    convertirEscala(valor, años.primero, años.ultimo, proporciones.pixeles.x1, proporciones.pixeles.x2);
+    convertirEscala(
+      valor,
+      años.primero,
+      años.ultimo,
+      dimsVis.marcoIz + proporciones.pixeles.x1,
+      proporciones.pixeles.x2
+    );
   const posicionY = (valor: number) => convertirEscala(valor, 100, 0, dimsVis.margenArriba, dimsVis.altoVis);
 
   window.addEventListener('resize', escalar);
 
-  // function construirLinea(puntos) {
-  //   let linea = '';
+  datosNal.subscribe((datosNacionales) => {
+    if (!datosNacionales.estructura) return;
 
-  //   puntos.forEach((punto: { x: number; y: number }, i: number) => {
-  //     if (i === 0) {
-  //       linea += `M${punto.x} ${punto.y}`;
-  //     } else {
-  //       if (!punto.y) {
-  //         if (puntos[i + 1].y) {
-  //           ultimoY = puntos[i + 1].y;
-  //         }
-  //         linea += `M${puntos[i + 1].x} ${ultimoY} `;
-  //       } else {
-  //         linea += ` L${punto.x} ${punto.y}`;
-  //       }
-  //     }
-  //   });
+    if (datosNacionales.estructura === 'porcentaje') {
+      valorMax = 100;
+      cantidadDivisiones = 5;
+      nombreEjeY.innerHTML = 'Porcentaje';
+    }
 
-  //   return linea;
-  // }
+    crearEjeY();
+  });
+
+  listaAños.subscribe((lista) => {
+    if (!lista.length) return;
+
+    const { año: primerAño } = lista[0];
+    const { año: ultimoAño } = lista[lista.length - 1];
+    años.primero = +primerAño;
+    años.ultimo = +ultimoAño;
+
+    crearEjeX();
+  });
 
   function actualizarMarcaY(grupo: SVGElement, y: number) {
     grupo.setAttribute('style', `transform: translate(${dimsVis.marcoIz - 5}px, ${y}px)`);
   }
 
+  function actualizarMarcaX(grupo: SVGElement, x: number) {
+    grupo.setAttribute('style', `transform: translate(${x}px, 0px`);
+  }
+
   function escalar() {
-    const marcasY = document.querySelectorAll<SVGGElement>('.marcaEjeY');
+    const marcasY = contenedorEjeY.querySelectorAll<SVGGElement>('.marcaEjeY');
+    const marcasX = contenedorEjeX.querySelectorAll<SVGGElement>('.marcaEjeX');
+
     const dimsSvg = svg.getBoundingClientRect();
     const { x1, x2 } = proporciones.porcentaje;
     proporciones.pixeles.x1 = porcentajeAPixeles(x1, dimsSvg.width);
@@ -106,6 +122,7 @@ const { alto } = Astro.props;
 
     dimsVis.altoVis = (dimsSvg.height - dimsVis.marcoAbajo) | 0;
     bordeEjeY.setAttribute('y2', `${dimsVis.altoVis}`);
+
     contenedorEjeX.setAttribute('style', `transform: translateY(${dimsVis.altoVis}px)`);
 
     if (marcasY) {
@@ -113,6 +130,18 @@ const { alto } = Astro.props;
         actualizarMarcaY(marca, posicionY((100 / cantidadDivisiones) * i));
       });
     }
+
+    if (marcasX) {
+      const años = listaAños.value;
+
+      marcasX.forEach((marca, i) => {
+        actualizarMarcaX(marca, posicionX(+años[i].año) | 0);
+      });
+    }
+
+    lineas.forEach((linea) => {
+      linea.actualizar(posicionX, posicionY);
+    });
   }
 
   function crearEjeY() {
@@ -126,15 +155,18 @@ const { alto } = Astro.props;
 
       grupo.setAttribute('class', 'marcaEjeY');
       actualizarMarcaY(grupo, y);
+
       marca.setAttribute('class', 'marcaMarco');
       marca.setAttribute('x1', '0');
       marca.setAttribute('y1', '0');
       marca.setAttribute('x2', '5px');
       marca.setAttribute('y2', '0');
+
       texto.setAttribute('class', 'textoEje textoEjeY');
       texto.setAttribute('x', '-20');
       texto.setAttribute('y', '3');
       texto.innerHTML = `${textoEje}`;
+
       referencia.setAttribute('class', i === 0 ? 'lineaMarco lineaBase' : 'lineaY');
       referencia.setAttribute('x1', '0');
       referencia.setAttribute('x2', '100%');
@@ -146,156 +178,37 @@ const { alto } = Astro.props;
     }
   }
 
-  function crearEjeX(lista: { año: string; conDatos: boolean }[]) {}
+  function crearEjeX() {
+    const lista = listaAños.value;
+    const lineaNacional = new Linea(contenedorLineas, 'Colombia', lista);
+    lineaNacional.agregar().actualizar(posicionX, posicionY);
+    lineas.push(lineaNacional);
 
-  function crearLinea(datos: { [año: string]: number }) {
-    let i = 0;
-
-    // for (const año in datos) {
-
-    //   const valor = datos[año];
-    //   const x = posicionX(+año);
-    //   const y = posicionX(valor);
-
-    //   punto.onmouseenter = (evento) => {
-    //     const x = evento.pageX;
-    //     const y = evento.pageY - 30;
-    //     informacion.innerText = `${datosNal.value.datos[año]}%`;
-    //     informacion.classList.add('visible');
-
-    //     Object.assign(informacion.style, {
-    //       top: `${y}px`,
-    //       left: `${x}px`,
-    //     });
-    //   };
-
-    //   punto.onmouseleave = () => {
-    //     informacion.classList.remove('visible');
-    //   };
-
-    //   if (valor) {
-    //     punto.setAttribute('r', '1px');
-    //     punto.setAttribute('cx', `${x}`);
-    //     punto.setAttribute('cy', `${y}`);
-    //     grupoLinea.appendChild(punto);
-    //   }
-
-    //   if (i === 0 || !punto.y) {
-    //     puntosLinea += `M${x} ${y}`;
-    //   } else {
-    //     puntosLinea += ` L${x} ${y}`;
-    //   }
-
-    //   i++;
-    // }
-  }
-
-  datosNal.subscribe((datosNacionales) => {
-    if (!datosNacionales.estructura) return;
-
-    if (datosNacionales.estructura === 'porcentaje') {
-      valorMax = 100;
-      cantidadDivisiones = 5;
-    }
-
-    crearEjeY();
-    // crearLinea(datosNacionales.datos);
-  });
-
-  listaAños.subscribe((lista) => {
-    if (!lista.length) return;
-
-    const { año: primerAño } = lista[0];
-    const { año: ultimoAño } = lista[lista.length - 1];
-    const { x1, x2 } = proporciones.porcentaje;
-    const posX = (valor: number) => convertirEscala(valor, +primerAño, +ultimoAño, x1, x2);
-
-    años.primero = +primerAño;
-    años.ultimo = +ultimoAño;
-
-    const linea = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    grupoLinea.appendChild(linea);
-
-    const { altoVis } = dimsVis;
-    let puntosLinea = '';
-
-    lista.forEach(({ año, conDatos }, i) => {
-      const marcaAño = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    lista.forEach(({ año }) => {
+      const grupo = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      const marca = document.createElementNS('http://www.w3.org/2000/svg', 'line');
       const texto = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-      const x = posX(+año);
-      const anteriorConDatos = i > 0 ? lista[i - 1].conDatos : false;
+      const x = posicionX(+año) | 0;
 
-      marcaAño.setAttribute('class', 'marcaMarco');
-      marcaAño.setAttribute('x1', `${x}%`);
-      marcaAño.setAttribute('y1', '0');
-      marcaAño.setAttribute('x2', `${x}%`);
-      marcaAño.setAttribute('y2', '5');
+      grupo.setAttribute('class', 'marcaEjeX');
+      actualizarMarcaX(grupo, x);
+
+      marca.setAttribute('class', 'marcaMarco');
+      marca.setAttribute('x1', '0');
+      marca.setAttribute('y1', '0');
+      marca.setAttribute('x2', '0');
+      marca.setAttribute('y2', '5');
 
       texto.setAttribute('class', 'año textoEje');
-      texto.setAttribute('x', `${x}%`);
+      texto.setAttribute('x', '0');
       texto.setAttribute('y', '15');
       texto.innerHTML = `${año}`;
 
-      contenedorEjeX.appendChild(marcaAño);
-      contenedorEjeX.appendChild(texto);
-
-      /**
-       * Casos en los que movemos el punto:
-       * 1. Es indice 0, apenas comienza a pintar la línea.
-       * 2. No tiene datos este punto.
-       * 3. El punto anterior no tenía datos, eso quiere decir que movemos el inicio de la línea a este punto con datos.
-       */
-      if (i === 0 || !conDatos || !anteriorConDatos) {
-        puntosLinea += `M${posicionX(+año) | 0} ${altoVis}`;
-      } else {
-        puntosLinea += ` L${posicionX(+año) | 0} ${altoVis}`;
-      }
-
-      if (conDatos) {
-        const punto = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        punto.setAttribute('class', 'punto');
-        punto.setAttribute('r', '1px');
-        punto.setAttribute('cx', `${x}%`);
-        punto.setAttribute('cy', `${altoVis}`);
-        grupoLinea.appendChild(punto);
-      }
-
-      // if (conDatos) {
-      //   puntos.push({
-      //     x: `${posicionX(+año)}`,
-      //     y: `${posicionY(datosNal.value.datos[año])}`,
-      //   });
-      // } else {
-      //   puntos.push({
-      //     x: `${posicionX(+año)}`,
-      //     y: null,
-      //   });
-      // }
-
-      // if (datosNal.value.datos[año]) {
-      //
-      //   punto.setAttribute('cx', `${puntos[i].x}`);
-      //   punto.setAttribute('cy', `${puntos[i].y}`);
-      //   grupoLinea.appendChild(punto);
-      // }
-
-      // if (datosNal.value.datos[año]) {
-      //   ultimoY = posicionY(datosNal.value.datos[año]);
-      // }
+      grupo.appendChild(marca);
+      grupo.appendChild(texto);
+      contenedorEjeX.appendChild(grupo);
     });
-
-    linea.setAttribute('d', `${puntosLinea}`);
-
-    // puntos.forEach((punto, i) => {
-    //   if (i === 0 || !punto.y) {
-    //     puntosLinea += `M${punto.x} ${punto.y}`;
-    //   } else {
-    //     puntosLinea += ` L${punto.x} ${punto.y}`;
-    //   }
-    // });
-
-    // let lineaDePuntos = construirLinea(puntos);
-  });
+  }
 </script>
 
 <style lang="scss" is:global>
@@ -380,7 +293,10 @@ const { alto } = Astro.props;
         font-size: 0.6em;
         fill: rgb(46, 46, 46);
         font-weight: bold;
-        transform: translateY(-5px);
+      }
+
+      #nombreEjeX {
+        transform: translate(10px, -5px);
       }
 
       .textoEje {
@@ -389,7 +305,7 @@ const { alto } = Astro.props;
         font-weight: bold;
       }
 
-      #lineaTiempo {
+      #lineasTiempo {
         stroke: var(--rosaBarbie);
         stroke-width: 2px;
         fill: none;

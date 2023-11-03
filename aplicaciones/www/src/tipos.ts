@@ -31,4 +31,6 @@ export interface ExtremosCoordenadas {
 export type TiposEstructura = 'porcentaje';
 
 export type DatosIndicador = { [año: string]: [codigo: string, valor: number][] };
-export type DatosIndicadorNal = { ascendente: boolean; estructura: TiposEstructura; datos: { [año: string]: number } };
+export type DatosPorAño = { [año: string]: number };
+export type DatosPorAñoOrdenado = { año: string; valor: number | null }[];
+export type DatosIndicadorNal = { ascendente: boolean; estructura: TiposEstructura; datos: DatosPorAño };

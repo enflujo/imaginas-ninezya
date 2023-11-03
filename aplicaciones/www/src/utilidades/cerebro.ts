@@ -1,8 +1,8 @@
 import { atom, map } from 'nanostores';
 import type { FeatureCollection } from 'geojson';
-import type { DatosIndicador, DatosIndicadorNal } from '@/tipos';
+import type { DatosIndicador, DatosIndicadorNal, DatosPorAñoOrdenado } from '@/tipos';
 
-export const listaAños = atom<{ año: string; conDatos: boolean }[]>([]);
+export const listaAños = atom<DatosPorAñoOrdenado>([]);
 export const datosDep = map<DatosIndicador>();
 export const datosIndicadorMun = map<DatosIndicador>();
 export const datosNal = map<DatosIndicadorNal>();
@@ -33,7 +33,6 @@ export async function datosMapaMunicipio() {
   if (datosColombia.value.mun) return datosColombia.value.mun;
   temporizadorCargador();
   const respuesta = await pedirDatos<FeatureCollection>('https://enflujo.com/bodega/colombia/municipios.json');
-  console.log(respuesta);
   datosColombia.setKey('mun', respuesta);
   cargando = false;
   return respuesta;
@@ -79,10 +78,11 @@ export function crearListaAños() {
     .sort();
   const min = +años[0];
   const max = +años[años.length - 1];
-  const lista = [];
+  const lista: DatosPorAñoOrdenado = [];
 
   for (let año = min; año <= max; año++) {
-    lista.push({ año, conDatos: !!datos[año] });
+    const valor = datos[año];
+    lista.push({ año: `${año}`, valor: valor ? valor : null });
   }
 
   listaAños.set(lista);
