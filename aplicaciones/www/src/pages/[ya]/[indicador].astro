@@ -25,32 +25,23 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
 
 <Plantilla titulo={datosIndicador.nombre}>
   <div id="visualizaciones" class="columna" data-archivo={datosIndicador.archivo}>
-    <section id="superior">
-      <div id="cabecera">
-        <div id="indicadorSeleccionado">
-          <h2 id="nombreYa">{datosYa.nombre}</h2>
-          <h3 id="nombreIndicador">{datosIndicador.nombre}</h3>
-          <span id="abrirFicha" onclick="
-          abrirFicha()
-          ">?</span>
-        </div>
-        <FichaTecnica />
-
-        <MenuAnios />
-
-        <SelectorNivel />
+    <div id="filtros">
+      <div id="indicadorSeleccionado">
+        <h2 id="nombreYa">{datosYa.nombre}</h2>
+        <h3 id="nombreIndicador">{datosIndicador.nombre}</h3>
+        <span id="abrirFicha">?</span>
       </div>
-      <Mapa ancho={30} alto={45} />
-    </section>
+      <FichaTecnica />
+      <MenuAnios />
+      <SelectorNivel />
+    </div>
+    <Mapa ancho={30} alto={45} />
 
     <LineaTiempo alto={25} />
   </div>
 
   <div id="comparativo" class="columna"></div>
-
-  <div id="informacion">
-    <p class="nombre"></p>
-  </div>
+  <div id="informacion"></div>
 </Plantilla>
 
 <script>
@@ -60,11 +51,9 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
   const botonFicha = document.getElementById('abrirFicha');
   const infoAdicional = document.getElementById('contenedorInfoAdicional');
 
-  botonFicha.addEventListener('click', abrirFicha);
-
-  function abrirFicha() {
+  botonFicha.addEventListener('click', () => {
     infoAdicional.classList.toggle('abierta');
-  }
+  });
 
   async function inicio() {
     await cargarIndicador();
@@ -84,6 +73,7 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
 
   window.addEventListener('resize', () => {
     const existentes = comparativo.querySelectorAll<MapaDetalle>('enflujo-mapita');
+
     if (existentes && existentes.length) {
       existentes.forEach((mapita) => {
         mapita.escalar();
@@ -91,11 +81,12 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
     }
   });
 
-  lugaresSeleccionados.subscribe((lista) => {
+  lugaresSeleccionados.subscribe(async (lista) => {
     const existentes = comparativo.querySelectorAll<MapaDetalle>('enflujo-mapita');
 
     if (lista.length) {
-      lista.forEach(({ nombre, codigo }) => {
+      for (const mapa of lista) {
+        const { nombre, codigo } = mapa;
         let existeLugarEnDOM = false;
 
         existentes.forEach((mapita) => {
@@ -118,14 +109,60 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
           mapita.dataset.departamento = nombre;
           mapita.agregarTitulo(nombre);
 
-          mapita.crearMapa();
+          await mapita.crearMapa();
           mapita.escalar();
           mapita.pintarMapa();
           comparativo.appendChild(mapita);
         }
-      });
+      }
     } else {
       comparativo.innerHTML = '';
     }
   });
 </script>
+
+<style lang="scss">
+  #indicadorSeleccionado {
+    color: var(--moradoProfundo);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-size: 1em;
+    min-width: 250px;
+    width: 15vw;
+    margin: 1em;
+
+    #nombreYa {
+      flex-basis: 100%;
+      background-color: var(--moradoProfundo);
+      color: white;
+      padding: 0.3em;
+      margin: 0;
+      border: 1px solid var(--moradoProfundo);
+    }
+
+    #nombreIndicador {
+      flex-basis: 100%;
+      padding: 0.3em;
+      margin: 0;
+      border: 1px solid var(--moradoProfundo);
+    }
+
+    #abrirFicha {
+      display: block;
+      position: relative;
+      left: 96%;
+      bottom: 10px;
+      background-color: var(--blancoMarfil);
+      border-radius: 50%;
+      padding: 0.3em;
+      width: 1em;
+      height: 1em;
+      text-align: center;
+      font-size: 0.8em;
+      border: solid 1px var(--azulViejo);
+      color: var(--azulViejo);
+      cursor: pointer;
+    }
+  }
+</style>

@@ -16,13 +16,13 @@
     añosOcultos.innerHTML = '';
     menuAños.style.display = 'flex';
 
-    lista.forEach(({ año, conDatos }, i) => {
+    lista.forEach(({ año, valor }, i) => {
       const boton = document.createElement('span');
       boton.className = 'botonAño';
       boton.innerText = año;
 
       // Si no hay datos en ese año, le agrega la clase 'vacio'
-      if (!conDatos) {
+      if (!valor) {
         boton.classList.add('vacio');
       } else {
         boton.onclick = () => {

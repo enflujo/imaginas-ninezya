@@ -1,61 +1,65 @@
 import { atom, map } from 'nanostores';
 import type { FeatureCollection } from 'geojson';
+import type { DatosIndicador, DatosIndicadorNal, DatosPorAñoOrdenado } from '@/tipos';
 
-export const indicador = atom<string | null>(null);
-export const indicadorSeleccionado = atom<string | null>(null);
-export const yaSeleccionado = atom<string | null>(null);
-export const listaAños = atom<{ año: string; conDatos: boolean }[]>([]);
-export const datosIndicador = map<{ [año: string]: any }>();
-export const datosIndicadorMun = map<{ [año: string]: any }>();
-export const datosIndicadorNal = map<{ datos: { [año: string]: any }; ascendente: boolean }>();
+export const listaAños = atom<DatosPorAñoOrdenado>([]);
+export const datosDep = map<DatosIndicador>();
+export const datosIndicadorMun = map<DatosIndicador>();
+export const datosNal = map<DatosIndicadorNal>();
 export const nivel = atom<string>('dep');
 export const deptoSeleccionado = atom<string | null>(null);
 export const añoSeleccionado = atom<string | null>(null);
 export const lugares: string[] = [];
 export const datosColombia = map<{ dep?: FeatureCollection; mun?: FeatureCollection }>({});
-export const datosMunicipios = atom<FeatureCollection | null>(null);
 export const lugaresSeleccionados = atom<{ nombre: string; codigo: string }[]>([]);
+
 const cargador = document.getElementById('cargador');
+let cargando = true;
 
-export async function cargarDatos() {
-  const archivoActual = document.getElementById('visualizaciones').dataset.archivo;
-  const nivelActual = nivel.value;
-  let cargando = true;
+function pedirDatos<Respuesta>(url: string, config: RequestInit = {}): Promise<Respuesta> {
+  return fetch(url, config)
+    .then((res) => res.json())
+    .then((datos) => datos as Respuesta);
+}
 
+// Darle un tiempo antes de mostrar cargador. De esta manera si carga rápido los datos no se ve un brinco.
+function temporizadorCargador() {
   setTimeout(() => {
     if (cargando) cargador.classList.add('visible');
   }, 150);
+}
 
-  if (!datosColombia.value[nivelActual]) {
-    if (nivelActual === 'dep') {
-      const datos = await fetch('https://enflujo.com/bodega/colombia/departamentos.json').then((res) => res.json());
-      datosColombia.setKey('dep', datos);
-    } else if (nivelActual === 'mun') {
-      const datos = await fetch('https://enflujo.com/bodega/colombia/municipios.json').then((res) => res.json());
-      datosColombia.setKey('mun', datos);
-    }
-  }
+export async function datosMapaMunicipio() {
+  if (datosColombia.value.mun) return datosColombia.value.mun;
+  temporizadorCargador();
+  const respuesta = await pedirDatos<FeatureCollection>('https://enflujo.com/bodega/colombia/municipios.json');
+  datosColombia.setKey('mun', respuesta);
+  cargando = false;
+  return respuesta;
+}
 
-  const datosMapaMun = await fetch('https://enflujo.com/bodega/colombia/municipios.json').then((res) => res.json());
+export async function cargarDatos() {
+  const archivoActual = document.getElementById('visualizaciones').dataset.archivo;
 
-  const datos = await fetch(`https://enflujo.com/bodega/ninezya/${archivoActual}-${nivel.value}.json`).then((res) =>
-    res.json()
-  );
-  await fetch(`https://enflujo.com/bodega/ninezya/${archivoActual}-nal.json`).then(async (res) => {
-    const datos = await res.json();
-    datosIndicadorNal.set(datos);
+  // Cargar datos departamentos
+  await fetch('https://enflujo.com/bodega/colombia/departamentos.json').then(async (res) => {
+    datosColombia.setKey('dep', await res.json());
   });
-  // const datos = await fetch(`${import.meta.env.BASE_URL}/datos/${archivoActual.value}-${nivel.value}.json`).then(
-  //   (res) => res.json()
-  // );
+
+  // Cargar datos indicador
+  await fetch(`https://enflujo.com/bodega/ninezya/${archivoActual}-dep.json`).then(async (res) => {
+    datosDep.set(await res.json());
+  });
 
   await fetch(`https://enflujo.com/bodega/ninezya/${archivoActual}-mun.json`).then(async (res) => {
-    const datos = await res.json();
-    datosIndicadorMun.set(datos);
+    datosIndicadorMun.set(await res.json());
   });
 
-  datosIndicador.set(datos);
-  datosMunicipios.set(datosMapaMun);
+  // Cargar datos indicador nacionales para linea de tiempo
+  await fetch(`https://enflujo.com/bodega/ninezya/${archivoActual}-nal.json`).then(async (res) => {
+    datosNal.set(await res.json());
+  });
+
   cargando = false;
   cargador.classList.remove('visible');
 }
@@ -66,20 +70,19 @@ export function agregarLugar(codigo: string) {
 }
 
 export function crearListaAños() {
-  const datos = datosIndicador.value;
-
+  const { datos } = datosNal.value;
   if (!datos) return;
 
   const años = Object.keys(datos)
-    .filter((año) => datos[año].length)
+    .filter((año) => datos[año])
     .sort();
   const min = +años[0];
   const max = +años[años.length - 1];
-  const lista = [];
+  const lista: DatosPorAñoOrdenado = [];
 
-  for (let a = min; a <= max; a++) {
-    const conDatos = datos[a] && datos[a].length;
-    lista.push({ año: a, conDatos });
+  for (let año = min; año <= max; año++) {
+    const valor = datos[año];
+    lista.push({ año: `${año}`, valor: valor ? valor : null });
   }
 
   listaAños.set(lista);
