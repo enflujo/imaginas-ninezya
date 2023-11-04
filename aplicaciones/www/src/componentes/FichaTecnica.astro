@@ -54,13 +54,13 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
   const abrirFicha = document.getElementById('abrirFicha');
 
   // Cerrar ficha al hacer click afuera
-  document.body.onclick = (evento) => {
+  document.body.addEventListener('click', (evento) => {
     if (evento.target === abrirFicha) return;
 
     if (!(infoAdicional === evento.target || infoAdicional.contains(evento.target as Node))) {
       infoAdicional.classList.remove('abierta');
     }
-  };
+  });
 </script>
 
 <style lang="scss">
@@ -71,17 +71,14 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
     background-color: var(--blancoMarfil);
 
     #fichaTecnica {
-      width: 20vw;
+      width: 40vw;
       min-width: 300px;
-      flex-direction: column;
       border: solid 2px var(--azulViejo);
       border-radius: 15px;
       color: var(--azulViejo);
       background-color: var(--blancoMarfil);
       text-align: center;
       z-index: 9;
-      left: 23vw;
-      top: 19vh;
       font-variation-settings:
         'MONO' 0,
         'CASL' 0,

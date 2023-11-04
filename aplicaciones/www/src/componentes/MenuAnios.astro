@@ -50,13 +50,13 @@
   });
 
   // Cerrar menú de años al hacer click por fuera
-  document.body.onclick = (evento) => {
+  document.body.addEventListener('click', (evento) => {
     if (evento.target === añoElegido) return;
 
     if (!(menuAños === evento.target || menuAños.contains(evento.target as Node))) {
       añosOcultos.classList.remove('abierto');
     }
-  };
+  });
 </script>
 
 <style lang="scss" is:global>
@@ -71,7 +71,6 @@
     font-size: 0.9em;
     width: fit-content;
     color: var(--moradoProfundo);
-    margin: 1em;
 
     #añoElegido {
       border: 1px solid var(--moradoProfundo);
