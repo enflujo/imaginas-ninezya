@@ -25,17 +25,20 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
 
 <Plantilla titulo={datosIndicador.nombre}>
   <div id="visualizaciones" class="columna" data-archivo={datosIndicador.archivo}>
-    <div id="filtros">
-      <div id="indicadorSeleccionado">
-        <h2 id="nombreYa">{datosYa.nombre}</h2>
-        <h3 id="nombreIndicador">{datosIndicador.nombre}</h3>
-        <span id="abrirFicha">?</span>
+    <div id="secionSuperior">
+      <div id="filtros">
+        <div id="indicadorSeleccionado">
+          <h2 id="nombreYa">{datosYa.nombre}</h2>
+          <h3 id="nombreIndicador">{datosIndicador.nombre}</h3>
+          <span id="abrirFicha">?</span>
+        </div>
+        <FichaTecnica />
+        <SelectorNivel />
+        <MenuAnios />
       </div>
-      <FichaTecnica />
-      <MenuAnios />
-      <SelectorNivel />
+
+      <Mapa ancho={30} alto={45} />
     </div>
-    <Mapa ancho={30} alto={45} />
 
     <LineaTiempo alto={25} />
   </div>
@@ -122,6 +125,10 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
 </script>
 
 <style lang="scss">
+  #secionSuperior {
+    display: flex;
+  }
+
   #indicadorSeleccionado {
     color: var(--moradoProfundo);
     display: flex;
@@ -130,7 +137,6 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
     font-size: 1em;
     min-width: 250px;
     width: 15vw;
-    margin: 1em;
 
     #nombreYa {
       flex-basis: 100%;
