@@ -62,7 +62,6 @@ export const escalaColores = (valorMin: number, valorMax: number, color1: string
   const colorMax = hexARGB(color3);
   const valorMed = (valorMin + valorMax) / 2;
 
-  
   const [rMin, gMin, bMin] = colorMin ? colorMin : [255, 255, 255];
   const [rMed, gMed, bMed] = colorMed ? colorMed : [127, 127, 127];
   const [rMax, gMax, bMax] = colorMax ? colorMax : [0, 0, 0];
@@ -73,23 +72,19 @@ export const escalaColores = (valorMin: number, valorMax: number, color1: string
     let r: number;
     let g: number;
     let b: number;
-    if(valor <= valorMed) {
+    if (valor <= valorMed) {
       r = convertirEscala(valor, valorMin, valorMed, rMin, rMed);
       g = convertirEscala(valor, valorMin, valorMed, gMin, gMed);
       b = convertirEscala(valor, valorMin, valorMed, bMin, bMed);
-    }
-    else {
+    } else {
       r = convertirEscala(valor, valorMed, valorMax, rMed, rMax);
       g = convertirEscala(valor, valorMed, valorMax, gMed, gMax);
       b = convertirEscala(valor, valorMed, valorMax, bMed, bMax);
     }
-    
+
     return `rgb(${r},${g},${b})`;
   };
 };
-
-
-
 
 export const aleatorioFraccion = (min: number, max: number) => Math.random() * (max - min) + min;
 
