@@ -24,7 +24,9 @@ const { ancho, alto } = Astro.props;
 </div>
 
 <script>
-  import { crearLinea, escalaColores, escalaCoordenadas, extremosLugar } from '@enflujo/alquimia';
+  import { escalaColores } from '@/utilidades/ayudas';
+
+  import { crearLinea, escalaCoordenadas, extremosLugar } from '@enflujo/alquimia';
   import type { ExtremosCoordenadas } from '@/tipos';
   import type { FeatureCollection } from 'geojson';
   import {
@@ -47,9 +49,9 @@ const { ancho, alto } = Astro.props;
   const proporciones = JSON.parse(mapa.dataset.proporciones);
   const definirColor = (ascendente: boolean) => {
     if (ascendente) {
-      return escalaColores(0, 100, '#DE2E56', '#94FF1A');
+      return escalaColores(0, 100, '#ff0000', 'ffffff', '#00ff00');
     } else {
-      return escalaColores(0, 100, '#94FF1A', '#DE2E56');
+      return escalaColores(0, 100, '#00ff00', 'ffffff', '#ff0000');
     }
   };
 
