@@ -30,7 +30,9 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
         <div id="indicadorSeleccionado">
           <h2 id="nombreYa">{datosYa.nombre}</h2>
           <h3 id="nombreIndicador">{datosIndicador.nombre}</h3>
+
           <span id="abrirFicha">?</span>
+          <p id="descripcionIndicador">{datosIndicador.definicion}</p>
         </div>
         <FichaTecnica />
         <SelectorNivel />
