@@ -236,7 +236,7 @@ const { alto } = Astro.props;
 
       for (const año in datos) {
         const datosLugar = datos[año].find(([codigo]) => codigo === lugar.codigo);
-        departamentoPorAño.push({ año, valor: datosLugar[1] });
+        departamentoPorAño.push({ año, valor: datosLugar ? datosLugar[1] : null });
       }
 
       const existeLinea = lineas.find((linea) => linea.nombre === lugar.nombre);
