@@ -3,32 +3,30 @@
 ---
 
 <div id="selectorNivel">
-  <button class="botonSelector" data-nivel="dep">Departamento</button>
+  <button class="botonSelector activo" data-nivel="dep">Departamento</button>
   <button class="botonSelector" data-nivel="mun">Municipio</button>
 </div>
 
 <script>
-  import { cargarDatos, nivel } from '@/utilidades/cerebro';
+  import { nivel } from '@/utilidades/cerebro';
 
-  const selectores = document.querySelectorAll<HTMLElement>('.botonSelector');
+  const selectores = document.querySelectorAll<HTMLButtonElement>('.botonSelector');
   let seleccionado: HTMLElement;
 
   selectores.forEach((boton) => {
-    if (boton.dataset.nivel === 'dep') {
-      boton.classList.add('activo');
+    const valorNivel = boton.dataset.nivel;
+
+    if (boton.classList.contains('activo')) {
       seleccionado = boton;
     }
 
     boton.addEventListener('click', () => {
-      const nuevoNivel = boton.dataset.nivel;
-
-      if (nivel.value === nuevoNivel) return;
-
+      if (nivel.value === valorNivel) return;
       if (seleccionado) seleccionado.classList.remove('activo');
+
       boton.classList.add('activo');
       seleccionado = boton;
-      nivel.set(nuevoNivel);
-      cargarDatos();
+      nivel.set(valorNivel);
     });
   });
 </script>

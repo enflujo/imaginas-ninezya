@@ -10,24 +10,21 @@ const { ancho, alto } = Astro.props;
 ---
 
 <div id="contenedorMapa">
-  <div>
-    <svg class="mapa" data-proporciones={JSON.stringify({ ancho, alto })}>
-      <defs>
-        <pattern id="sinInfo" patternUnits="userSpaceOnUse" width="3.5" height="3.5" patternTransform="rotate(45)">
-          <line x1="0" y="0" x2="0" y2="3.5" stroke="#46484A" stroke-width="1"></line>
-        </pattern>
-      </defs>
+  <svg class="mapa" data-proporciones={JSON.stringify({ ancho, alto })}>
+    <defs>
+      <pattern id="sinInfo" patternUnits="userSpaceOnUse" width="3.5" height="3.5" patternTransform="rotate(45)">
+        <line x1="0" y="0" x2="0" y2="3.5" stroke="#46484A" stroke-width="1"></line>
+      </pattern>
+    </defs>
 
-      <g id="colombia"></g>
-    </svg>
-  </div>
+    <g id="colombia"></g>
+  </svg>
 </div>
 
 <script>
-  import { escalaColores } from '@/utilidades/ayudas';
-
+  import { calcularPorcentaje, escalaColores } from '@/utilidades/ayudas';
   import { crearLinea, escalaCoordenadas, extremosLugar } from '@enflujo/alquimia';
-  import type { ExtremosCoordenadas } from '@/tipos';
+  import type { DatosAño, ExtremosCoordenadas } from '@/tipos';
   import type { FeatureCollection } from 'geojson';
   import {
     datosColombia,
@@ -37,6 +34,9 @@ const { ancho, alto } = Astro.props;
     deptoSeleccionado,
     añoSeleccionado,
     lugaresSeleccionados,
+    datosMapaMunicipio,
+    datosIndicadorDep,
+    datosIndicadorMunicipio,
   } from '@/utilidades/cerebro';
   import type { IMapearCoordenadas } from '@enflujo/alquimia/libreria/modulos/tipos';
 
@@ -93,10 +93,6 @@ const { ancho, alto } = Astro.props;
     coordenadasAlto = extremosGeo.latitudMax - extremosGeo.latitudMin;
   }
 
-  function calcularPorcentaje(valor: number, porcentaje: number) {
-    return valor * (porcentaje / 100);
-  }
-
   /* Función para definir las proporciones iniciales del mapa. 
   La saqué de escalar() para que no se hiciera más pequeño cada vez que se dibuja el mapa.*/
   function definirPoporciones() {
@@ -133,14 +129,13 @@ const { ancho, alto } = Astro.props;
     });
   }
 
-  datosDep.subscribe(async () => {
-    const nuevoNivel = nivel.get();
+  nivel.subscribe(async (nuevoNivel) => {
+    if (!nuevoNivel) return;
 
     if (nuevoNivel === 'mun') {
-      const municipios = datosColombia.value.mun;
+      const municipios = await datosMapaMunicipio();
       if (!municipios) return;
       extremosGeo = extremosLugar(municipios);
-
       extremos();
       escalar();
 
@@ -166,8 +161,9 @@ const { ancho, alto } = Astro.props;
     }
   });
 
-  añoSeleccionado.subscribe(() => {
-    pintarMapa(añoSeleccionado.value);
+  añoSeleccionado.subscribe((año) => {
+    if (!año || !datosParaPintar) return;
+    pintarMapa(año);
   });
 
   // Definir la dirección de la escala de color cuando cambien los datos nacionales
@@ -175,8 +171,14 @@ const { ancho, alto } = Astro.props;
     color = definirColor(ascendente);
   });
 
-  function pintarMapa(año: string) {
-    const datos = datosDep.get()[año];
+  async function pintarMapa(año: string) {
+    const nivelActual = nivel.value;
+
+    const datos =
+      nivelActual === 'dep'
+        ? ((await datosIndicadorDep(año)) as DatosAño)
+        : ((await datosIndicadorMunicipio(año)) as DatosAño);
+
     if (!datos) return;
 
     // Reiniciar todos sin datos antes de pintar de nuevo
@@ -211,6 +213,9 @@ const { ancho, alto } = Astro.props;
         zona.setAttribute('id', lugar.properties.codigo);
         zona.setAttribute('style', 'fill: url(#sinInfo)');
         zona.setAttribute('shape-rendering', 'geometricPrecision');
+
+        zonas[lugar.properties.codigo] = { svg: zona, valor: null };
+        colombia.appendChild(zona);
 
         zona.onmouseenter = () => {
           const valor = zonas[lugar.properties.codigo].valor;
@@ -278,9 +283,6 @@ const { ancho, alto } = Astro.props;
 
           lugaresSeleccionados.set(lugares); // Cambiar valores en el store, todos los que esten con listen() van a recibir estos nuevos valores.
         };
-
-        zonas[lugar.properties.codigo] = { svg: zona, valor: null };
-        colombia.appendChild(zona);
       }
     });
   }

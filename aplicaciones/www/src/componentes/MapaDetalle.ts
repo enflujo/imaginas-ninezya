@@ -1,10 +1,10 @@
-import type { ExtremosCoordenadas } from '@/tipos';
+import type { DatosAño, ExtremosCoordenadas } from '@/tipos';
 import { calcularPorcentaje, color } from '@/utilidades/ayudas';
-import { añoSeleccionado, datosIndicadorMun, datosMapaMunicipio } from '@/utilidades/cerebro';
+import { añoSeleccionado, datosMapaMunicipio, datosIndicadorMunicipio } from '@/utilidades/cerebro';
 import { crearLinea, escalaCoordenadas, extremosLugar } from '@enflujo/alquimia';
 import type { IMapearCoordenadas } from '@enflujo/alquimia/libreria/modulos/tipos';
 import type { Feature, Geometry } from 'geojson';
-import { deptoSeleccionado } from '../utilidades/cerebro';
+import { deptoSeleccionado } from '@/utilidades/cerebro';
 
 export default class MapaDetalle extends HTMLElement {
   svg: SVGElement;
@@ -155,7 +155,8 @@ export default class MapaDetalle extends HTMLElement {
 
   async pintarMapa() {
     const año = añoSeleccionado.get();
-    const datos: [codigo: string, valor: number][] = datosIndicadorMun.get()[año];
+    const datos = (await datosIndicadorMunicipio(año)) as DatosAño;
+
     if (datos && datos.length) {
       datos.forEach(([codigoMun, valor]) => {
         const dep = codigoMun.substring(0, 2);
