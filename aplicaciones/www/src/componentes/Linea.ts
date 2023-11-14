@@ -10,12 +10,14 @@ export default class Linea {
   grupo: SVGGElement;
   linea: SVGPathElement;
   punto: SVGCircleElement;
+  activo: boolean;
 
   constructor(contenedor: SVGGElement, nombre: string, datos: DatosPorAñoOrdenado) {
     this.contenedor = contenedor;
     this.nombre = nombre;
     this.datos = datos;
     this.puntos = [];
+    this.activo = false;
 
     this.grupo = document.createElementNS('http://www.w3.org/2000/svg', 'g');
     this.linea = document.createElementNS('http://www.w3.org/2000/svg', 'path');
@@ -91,10 +93,13 @@ export default class Linea {
 
   agregar() {
     this.contenedor.appendChild(this.grupo);
+    this.activo = true;
     return this;
   }
 
   eliminar() {
+    if (this.nombre === 'Colombia' || !this.activo) return; // Nunca eliminar la línea nacional o si ya se eliminó el elemento del DOM.
     this.contenedor.removeChild(this.grupo);
+    this.activo = false;
   }
 }

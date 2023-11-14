@@ -48,10 +48,11 @@ const { alto } = Astro.props;
 
 <script>
   import { porcentajeAPixeles } from '@/utilidades/ayudas';
-  import { listaAños, datosNal } from '@/utilidades/cerebro';
+  import { listaAños, datosNal, lugaresSeleccionados, datosIndicadorDep } from '@/utilidades/cerebro';
   import { dimsLineaTiempo as dimsVis } from '@/utilidades/constantes';
   import { convertirEscala } from '@enflujo/alquimia';
   import Linea from '@/componentes/Linea';
+  import type { DatosIndicador, DatosPorAñoOrdenado } from '@/tipos';
 
   const svg = document.querySelector<SVGElement>('#grafica');
   const contenedorLineas = svg.querySelector<SVGGElement>('#lineasTiempo');
@@ -209,6 +210,46 @@ const { alto } = Astro.props;
       contenedorEjeX.appendChild(grupo);
     });
   }
+
+  lugaresSeleccionados.subscribe(async (lugares) => {
+    if (!lugares.length) {
+      lineas.forEach((linea) => {
+        linea.eliminar();
+      });
+
+      return;
+    }
+
+    lineas.forEach((linea) => {
+      const estaEnLista = lugares.find((lugar) => lugar.nombre === linea.nombre);
+
+      if (!estaEnLista) {
+        linea.eliminar();
+      }
+    });
+
+    // Lugares seleccionados es una lista de departamentos. Si cambiara a que se vean municipios, toca cambiar esto:
+    const datos = (await datosIndicadorDep()) as DatosIndicador;
+
+    lugares.forEach((lugar) => {
+      const departamentoPorAño: DatosPorAñoOrdenado = [];
+
+      for (const año in datos) {
+        const datosLugar = datos[año].find(([codigo]) => codigo === lugar.codigo);
+        departamentoPorAño.push({ año, valor: datosLugar[1] });
+      }
+
+      const existeLinea = lineas.find((linea) => linea.nombre === lugar.nombre);
+
+      if (existeLinea) {
+        existeLinea.agregar();
+      } else {
+        const linea = new Linea(contenedorLineas, lugar.nombre, departamentoPorAño);
+        linea.agregar().actualizar(posicionX, posicionY);
+        lineas.push(linea);
+      }
+    });
+  });
 </script>
 
 <style lang="scss" is:global>
