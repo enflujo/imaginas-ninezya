@@ -5,7 +5,7 @@ export default defineConfig({
   compressHTML: true,
   outDir: './publico',
   site: 'https://imagina.uniandes.edu.co',
-  base: '/especiales/ninezya',
+  base: '/especiales/siya',
   build: {
     assets: 'estaticos',
   },
