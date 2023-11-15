@@ -35,6 +35,8 @@
   --moradoProfundo: #760287;
   --moradoPandito: #faf2fc;
   --amarilloChichi: #ffff89;
+
+  // Medidas
 }
 
 html {
@@ -60,6 +62,7 @@ h2 {
 
 main {
   display: flex;
+  margin-top: $altoMenuSuperior;
 
   .columna {
     flex-basis: 41%;
@@ -67,17 +70,18 @@ main {
   }
 
   .inicio {
-    padding: 1em;
+    display: flex;
     text-align: center;
-    width: 70%;
+    width: 100%;
+    height: calc(100vh - $altoMenuSuperior);
     background-color: var(--moradoProfundo);
     color: var(--blancoMarfil);
     font-variation-settings:
       'MONO' 0,
       'CASL' 0,
-      'wght' 800,
+      'wght' 1000,
       'slnt' 0,
-      'CRSV' 0.5;
+      'CRSV' 0;
 
     h1 {
       font-size: 3em;
@@ -87,7 +91,44 @@ main {
       font-size: 1.5em;
       width: 100%;
     }
+
+    h3 {
+      font-size: 1.1em;
+      font-weight: bold;
+
+      font-variation-settings:
+        'MONO' 0,
+        'CASL' 0,
+        'wght' 700,
+        'slnt' 0,
+        'CRSV' 0;
+    }
+    .texto {
+      text-align: left;
+      margin: 3em 35%;
+      font-size: 0.9em;
+      max-width: 40%;
+      font-variation-settings:
+        'MONO' 0,
+        'CASL' 0,
+        'wght' 433,
+        'slnt' 0,
+        'CRSV' 0;
+    }
+
+    .seccion {
+      width: 62%;
+    }
+
+    img {
+      width: 17%;
+      height: 70%;
+    }
   }
+}
+
+.contenido {
+  margin-left: 18vw;
 }
 
 #cabecera {
