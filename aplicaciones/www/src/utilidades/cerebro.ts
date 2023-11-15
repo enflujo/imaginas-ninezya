@@ -1,6 +1,7 @@
 import { atom, map } from 'nanostores';
 import type { FeatureCollection } from 'geojson';
 import type { DatosIndicador, DatosIndicadorNal, DatosPorAñoOrdenado } from '@/tipos';
+import { pedirDatos } from './ayudas';
 
 export const listaAños = atom<DatosPorAñoOrdenado>([]);
 export const datosDep = map<DatosIndicador>(null);
@@ -14,62 +15,69 @@ export const datosColombia = map<{ dep?: FeatureCollection; mun?: FeatureCollect
 export const lugaresSeleccionados = atom<{ nombre: string; codigo: string }[]>([]);
 
 const cargador = document.getElementById('cargador');
-let cargando = true;
 let nombreArchivo = '';
-
-async function pedirDatos<Respuesta>(url: string, config: RequestInit = {}): Promise<Respuesta> {
-  const res = await fetch(url, config);
-  const datos = await res.json();
-  return datos as Respuesta;
-}
-
-// Darle un tiempo antes de mostrar cargador. De esta manera si carga rápido los datos no se ve un brinco.
-function temporizadorCargador() {
-  setTimeout(() => {
-    if (cargando) cargador.classList.add('visible');
-  }, 150);
-}
 
 export async function datosMapaMunicipio() {
   if (datosColombia.value.mun) return datosColombia.value.mun;
-  cargando = true;
-  temporizadorCargador();
+  let cargando = true;
+
+  setTimeout(() => {
+    if (cargando) cargador.classList.add('visible');
+  }, 150);
+
   const respuesta = await pedirDatos<FeatureCollection>('https://enflujo.com/bodega/colombia/municipios.json');
   datosColombia.setKey('mun', respuesta);
   cargando = false;
+  cargador.classList.remove('visible');
   return respuesta;
 }
 
 export async function datosIndicadorMunicipio(año?: string) {
   if (datosMun.value) return año ? datosMun.value[año] : datosMun.value;
-  temporizadorCargador();
+  let cargando = true;
+
+  setTimeout(() => {
+    if (cargando) cargador.classList.add('visible');
+  }, 150);
+
   const respuesta = await pedirDatos<DatosIndicador>(`https://enflujo.com/bodega/ninezya/${nombreArchivo}-mun.json`);
   datosMun.set(respuesta);
   cargando = false;
+  cargador.classList.remove('visible');
   return año ? respuesta[año] : respuesta;
 }
 
 export async function datosIndicadorDep(año?: string) {
   if (datosDep.value) return año ? datosDep.value[año] : datosDep.value;
-  temporizadorCargador();
+  let cargando = true;
+
+  setTimeout(() => {
+    if (cargando) cargador.classList.add('visible');
+  }, 150);
+
   const respuesta = await pedirDatos<DatosIndicador>(`https://enflujo.com/bodega/ninezya/${nombreArchivo}-dep.json`);
   datosDep.set(respuesta);
   cargando = false;
+  cargador.classList.remove('visible');
   return año ? respuesta[año] : respuesta;
 }
 
 export async function cargarDatos() {
   nombreArchivo = document.getElementById('visualizaciones').dataset.archivo;
 
+  let cargando = true;
+
+  setTimeout(() => {
+    if (cargando) cargador.classList.add('visible');
+  }, 150);
+
   // Cargar datos departamentos
-  await fetch('https://enflujo.com/bodega/colombia/departamentos.json').then(async (res) => {
-    datosColombia.setKey('dep', await res.json());
-  });
+  const deps = await pedirDatos<FeatureCollection>('https://enflujo.com/bodega/colombia/departamentos.json');
+  datosColombia.setKey('dep', deps);
 
   // Cargar datos indicador nacionales para linea de tiempo
-  await fetch(`https://enflujo.com/bodega/ninezya/${nombreArchivo}-nal.json`).then(async (res) => {
-    datosNal.set(await res.json());
-  });
+  const nal = await pedirDatos<DatosIndicadorNal>(`https://enflujo.com/bodega/ninezya/${nombreArchivo}-nal.json`);
+  datosNal.set(await nal);
 
   cargando = false;
   cargador.classList.remove('visible');

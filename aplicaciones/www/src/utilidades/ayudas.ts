@@ -95,3 +95,9 @@ export function calcularPorcentaje(valor: number, porcentaje: number) {
 export const color = escalaColores(0, 100, '#ff0000', 'ffffff', '#00ff00');
 
 export const porcentajeAPixeles = (porcentaje: number, total: number) => (porcentaje / 100) * total;
+
+export async function pedirDatos<Respuesta>(url: string, config: RequestInit = {}): Promise<Respuesta> {
+  const res = await fetch(url, config);
+  const datos = await res.json();
+  return datos as Respuesta;
+}
