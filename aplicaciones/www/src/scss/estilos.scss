@@ -60,6 +60,7 @@ h2 {
 
 main {
   display: flex;
+  margin-top: 10vh;
 
   .columna {
     flex-basis: 41%;
@@ -88,6 +89,9 @@ main {
       width: 100%;
     }
   }
+}
+
+.contenido {
 }
 
 #cabecera {
