@@ -19,6 +19,12 @@ async function inicio() {
 
   // const ya18 = new VariableSingular('bajo_peso', false, 'porcentaje');
   // await ya18.procesar('1.8: bajo peso', 'YA1_1.8', 'Sheet1', 'ya1-8');
+
+  /**
+   * YA 2
+   */
+  const ya25 = new VariableSingular('cobertura_bruta_transicion', true, 'porcentaje');
+  await ya25.procesar('2.5: cobertura transicion', 'YA2_2.5', 'Sheet1', 'ya2-5');
 }
 
 inicio();

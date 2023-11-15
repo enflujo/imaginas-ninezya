@@ -211,13 +211,23 @@ export interface VariablesYa1_8 extends BaseSingular {
   bajo_peso: number;
 }
 
+export interface VariablesYa2_5 extends BaseSingular {
+  cobertura_bruta_transicion: number;
+}
+
 export type VariableValorSingular =
   | 'tacued'
   | 'talcan'
   | 'tasa_mortalidad_infantil'
   | 'controles_prenatales'
-  | 'bajo_peso';
+  | 'bajo_peso'
+  | 'cobertura_bruta_transicion';
 
-export type VariablesSingulares = VariablesYa1_1 & VariablesYa1_2 & VariablesYa1_3 & VariablesYa1_5 & VariablesYa1_8;
+export type VariablesSingulares = VariablesYa1_1 &
+  VariablesYa1_2 &
+  VariablesYa1_3 &
+  VariablesYa1_5 &
+  VariablesYa1_8 &
+  VariablesYa2_5;
 
 export type EstructurasMatematicas = 'porcentaje';

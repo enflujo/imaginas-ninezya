@@ -58,8 +58,8 @@ export default class {
 
   async procesar(nombreReferencia: string, nombreArchivo: string, hoja: string, nombreParaArchivo: string) {
     await maquinaXlsx(nombreReferencia, nombreArchivo, hoja, this.preprocesar);
-    guardarJSON(this.datosNum, 'prueba-num');
-    guardarJSON(this.datosDen, 'prueba-den');
+    // guardarJSON(this.datosNum, 'prueba-num');
+    // guardarJSON(this.datosDen, 'prueba-den');
     this.procesarMunicipios();
     this.procesarDepartamentos();
     this.procesarNacional();

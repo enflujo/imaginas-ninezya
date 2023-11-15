@@ -167,7 +167,7 @@ const datos: DatosYa[] = [
       {
         nombre: 'Cobertura bruta Transición',
         ruta: 'cobertura-transicion',
-        archivo: 'ya2-4',
+        archivo: 'ya2-5',
         mun: false,
         dep: true,
         definicion: '',
