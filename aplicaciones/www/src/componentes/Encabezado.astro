@@ -6,20 +6,23 @@
   </div>
 
   <ul id="menuSuperior">
-    <li class="elementoMenu"><a>Sobre el tablero</a></li>
+    <li class="elementoMenu"><a href="./">Inicio</a></li>
     <li class="elementoMenu"><a href="./creditos">Créditos</a></li>
     <li class="elementoMenu"><a href="./datos">Datos</a></li>
   </ul>
 
   <style lang="scss">
+    @import '@/scss/constantes';
+
     nav {
       display: flex;
       justify-content: space-around;
     }
     #encabezado {
-      height: 10vh;
+      height: $altoMenuSuperior;
       width: 100%;
-      background-color: white;
+      background-color: var(--moradoProfundo);
+      color: white;
       top: 0;
       z-index: 10;
       position: fixed;
@@ -41,7 +44,20 @@
       display: flex;
       list-style-type: none;
       width: 90%;
-      justify-content: flex-end;
+      justify-content: flex-start;
+
+      a {
+        color: white;
+        text-decoration: none;
+      }
+
+      a:visited {
+        color: white;
+      }
+
+      a:hover {
+        color: var(--aguaMarinaNinezYa);
+      }
     }
 
     .elementoMenu {

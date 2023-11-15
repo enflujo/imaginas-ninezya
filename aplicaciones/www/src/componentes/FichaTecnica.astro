@@ -116,6 +116,7 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
         display: flex;
         align-items: center;
         margin: 0;
+        align-items: stretch;
         border-bottom: solid 2px var(--azulViejo);
 
         &:last-child {
@@ -126,10 +127,11 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
           width: 0;
           font-size: 0.8em;
           text-align: left;
-          min-width: 115px;
+          flex-basis: 20%;
           margin: 0;
           padding: 0.8em;
           text-transform: uppercase;
+          border-right: solid 2px var(--azulViejo);
         }
 
         .texto {
@@ -137,7 +139,7 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
           padding: 0.8em;
           margin: 0;
           text-align: left;
-          border-left: solid 2px var(--azulViejo);
+          flex-basis: 80%;
           display: flex;
           align-items: center;
           min-height: 2.3em;

@@ -1,12 +1,31 @@
 ---
+import Mapa from '@/componentes/Mapa.astro';
 import Plantilla from '../plantillas/Principal.astro';
 ---
 
 <Plantilla titulo="SIYA">
   <div class="inicio">
-    <h1>SIYA</h1>
-    <h2 class="subtitulo">Sistema de Indicadores de los YA</h2>
-    <p>Texto general de inicio sobre el tablero</p>
+    <div class="seccion">
+      <h1>SIYA</h1>
+      <h2 class="subtitulo">Sistema de Indicadores de los YA</h2>
+      <div class="texto">
+        <h3>¿Cómo está la niñez en Colombia?</h3>
+        <p>
+          Este tablero busca responder a esa pregunda usando datos para mapear el estado de los <strong>10 YA</strong> y
+          su implementación a nivel nacional, departamental y municial.
+        </p>
+        <p>
+          El estado de cada <strong>YA</strong> se construye cruzando indicadores que han sido recogidos de fuentes
+          abiertas como el DANE, el Ministerio de Salud, el Ministerio de Educación, entre otras.
+        </p>
+
+        <p>
+          Explora en la línea de tiempo cómo ha cambiado cada indicador y descubre qué podemos hacer por la niñez en
+          Colombia.
+        </p>
+      </div>
+    </div>
+    <img id="mapa" src="../../estaticos/imagenes/mapa.svg" alt="mapa de Colombia" />
   </div>
 </Plantilla>
 

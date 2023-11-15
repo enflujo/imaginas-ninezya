@@ -52,12 +52,13 @@ const { ya, indicador } = Astro.params;
   @import '@/scss/estilos';
   #menu {
     width: 18vw;
-    padding: 0 3em 0 1.5em;
+    padding: 1em 3em 3em 1.5em;
     font-family: var(--fuente);
     color: var(--fucsiaEsmalte);
     background-color: var(--moradoPandito);
-    height: fit-content;
-    min-height: 100vh;
+    height: calc(100vh - $altoMenuSuperior);
+    overflow: auto;
+    position: fixed;
     font-variation-settings:
       'MONO' 0,
       'CASL' 0,
