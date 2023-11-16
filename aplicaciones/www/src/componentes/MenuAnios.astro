@@ -65,7 +65,6 @@
     flex-direction: column;
     position: relative;
     width: 90px;
-    cursor: pointer;
     display: none;
     text-align: center;
     font-size: 0.9em;
@@ -73,6 +72,7 @@
     color: var(--moradoProfundo);
 
     #añoElegido {
+      cursor: pointer;
       border: 1px solid var(--moradoProfundo);
       padding: 0.2em 0.5em;
       border-radius: 5px;
@@ -89,7 +89,6 @@
       &.abierto {
         display: flex;
         flex-direction: column;
-        color: 'red';
       }
     }
 
@@ -105,13 +104,14 @@
       }
 
       &.activo {
+        cursor: initial;
         background-color: var(--moradoPandito);
       }
 
       &.vacio {
+        cursor: not-allowed;
         background-color: #969696;
         color: antiquewhite;
-        pointer-events: none;
       }
     }
   }
