@@ -20,8 +20,13 @@ export default class {
   errata: { fila: number; error: string }[];
   nombreVariableValor: VariableValorSingular;
 
-  constructor(nombreVariable: VariableValorSingular, ascendente: boolean, estructura: EstructurasMatematicas) {
-    this.datosNacionales = { ascendente, estructura, datos: {} };
+  constructor(
+    nombreVariable: VariableValorSingular,
+    ascendente: boolean,
+    estructura: EstructurasMatematicas,
+    unidadMedida = 100
+  ) {
+    this.datosNacionales = { ascendente, estructura, unidadMedida, datos: {} };
     this.errata = [];
     this.datosMunicipios = {};
     this.datosDepartamentos = {};

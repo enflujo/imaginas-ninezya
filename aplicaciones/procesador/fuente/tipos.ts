@@ -180,54 +180,45 @@ export type RespuestaPorcentaje = {
   [año: string]: [lugar: string, porcentaje: number][];
 };
 
+export type RespuestaNumDen = {
+  [año: string]: [lugar: string, numerador: number, denominador: number][];
+};
+
+export type RespuestaNumDenNal = {
+  [año: string]: [numerador: number, denominador: number];
+};
+
 export type RespuestaNacional = {
   ascendente: boolean;
   estructura: EstructurasMatematicas;
+  unidadMedida: number;
   datos: { [año: string]: number };
 };
 
-export interface BaseSingular {
-  codmpio: number;
-  anno: number;
-}
-
-export interface VariablesYa1_1 extends BaseSingular {
-  tacued: number;
-}
-
-export interface VariablesYa1_2 extends BaseSingular {
-  talcan: number;
-}
-
-export interface VariablesYa1_3 extends BaseSingular {
-  tasa_mortalidad_infantil: number;
-}
-
-export interface VariablesYa1_5 extends BaseSingular {
-  controles_prenatales: number;
-}
-
-export interface VariablesYa1_8 extends BaseSingular {
-  bajo_peso: number;
-}
-
-export interface VariablesYa2_5 extends BaseSingular {
-  cobertura_bruta_transicion: number;
-}
-
 export type VariableValorSingular =
+  | 'codmpio'
+  | 'anno'
   | 'tacued'
   | 'talcan'
   | 'tasa_mortalidad_infantil'
   | 'controles_prenatales'
   | 'bajo_peso'
-  | 'cobertura_bruta_transicion';
+  | 'cobertura_bruta_transicion'
+  | 'cobertura_bruta_media'
+  | 'lectura'
+  | 'tasa_desercion'
+  | 'concentracion';
 
-export type VariablesSingulares = VariablesYa1_1 &
-  VariablesYa1_2 &
-  VariablesYa1_3 &
-  VariablesYa1_5 &
-  VariablesYa1_8 &
-  VariablesYa2_5;
+export type VariablesSingulares = {
+  [llave in VariableValorSingular]: number;
+};
 
-export type EstructurasMatematicas = 'porcentaje';
+export type EstructurasMatematicas = 'porcentaje' | 'tasa' | 'escala';
+
+export type VariablesNumDen = {
+  anno: string;
+  departamento: string;
+  municipio: string;
+  numerador: number;
+  denominador: number;
+};

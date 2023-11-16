@@ -42,7 +42,7 @@ export default class {
   datosDen: DatosLugar[];
 
   constructor(ascendente: boolean, estructura: EstructurasMatematicas) {
-    this.datosNacionales = { ascendente, estructura, datos: {} };
+    this.datosNacionales = { ascendente, estructura, unidadMedida: 100, datos: {} };
     this.datosNum = [];
     this.datosDen = [];
     this.errata = [];
