@@ -202,12 +202,15 @@ const { ancho, alto } = Astro.props;
   }
 
   function crearMapa(clase: string) {
+    const lugaresActuales = lugaresSeleccionados.value;
+
     datosParaPintar.features.forEach((lugar) => {
       if (lugar.geometry.type === 'Polygon' || lugar.geometry.type === 'MultiPolygon') {
         const linea = crearLinea(lugar.geometry, mapearCoordenadas, ancho, alto);
         const zona = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        const estaSeleccionada = lugaresActuales.find((obj) => obj.codigo === lugar.properties.codigo);
 
-        zona.setAttribute('class', `${clase}`);
+        zona.setAttribute('class', `${clase}${estaSeleccionada ? ' seleccionada' : ''}`);
         zona.setAttribute('d', linea);
         zona.setAttribute('id', lugar.properties.codigo);
         zona.setAttribute('style', 'fill: url(#sinInfo)');
@@ -264,6 +267,7 @@ const { ancho, alto } = Astro.props;
           }
 
           zona.classList.toggle('seleccionada');
+
           const lugares = [...lugaresSeleccionados.get()]; // es necesario clonar el array acá para que al final de las operaciones que siguen a continuación, el store se encargue de hacer llamado a todos los que estén usando `listen()`.
           const posicionLugar = lugares.findIndex(({ nombre: nombreAgregado }) => nombreAgregado === nombre);
 
