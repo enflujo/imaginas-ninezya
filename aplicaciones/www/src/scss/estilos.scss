@@ -74,6 +74,8 @@ main {
     text-align: center;
     width: 100%;
     height: calc(100vh - $altoMenuSuperior);
+    overflow: auto;
+    position: fixed;
     background-color: var(--moradoProfundo);
     color: var(--blancoMarfil);
     font-variation-settings:
@@ -84,11 +86,12 @@ main {
       'CRSV' 0;
 
     h1 {
-      font-size: 3em;
+      font-size: 5em;
+      margin-top: 10vh;
     }
 
     h2 {
-      font-size: 1.5em;
+      font-size: 2em;
       width: 100%;
     }
 
@@ -105,9 +108,10 @@ main {
     }
     .texto {
       text-align: left;
-      margin: 3em 35%;
+      margin: 3em 0% 0 28.5%;
       font-size: 0.9em;
-      max-width: 40%;
+      line-height: 1.3em;
+      max-width: 44%;
       font-variation-settings:
         'MONO' 0,
         'CASL' 0,
@@ -117,7 +121,7 @@ main {
     }
 
     .seccion {
-      width: 62%;
+      width: 55%;
     }
 
     img {
@@ -129,6 +133,14 @@ main {
 
 .contenido {
   margin-left: 18vw;
+}
+
+#mapa {
+  position: fixed;
+  overflow: auto;
+  margin-top: 5em;
+  margin-right: 8em;
+  padding-right: -4em;
 }
 
 #cabecera {
