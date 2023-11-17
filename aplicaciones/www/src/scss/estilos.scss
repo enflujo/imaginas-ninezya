@@ -7,7 +7,7 @@
   --fuente: 'Recursive', 'Courier New', monospace;
 
   // Colores NiñezYa Logo
-  --aguaMarinaNinezYa: #00f5d4;
+  --aguaMarinaNinezYa: #a3ede3;
   --azulNinezYa: #32b6ff;
   --uvaNinezYa: #7600db;
 
@@ -34,7 +34,6 @@
   // Fondos
   --moradoProfundo: #760287;
   --moradoPandito: #faf2fc;
-  --amarilloChichi: #ffff89;
 
   // Medidas
 }
@@ -58,6 +57,11 @@ h1 {
 h2 {
   font-size: 1em;
   width: 70%;
+}
+
+::selection {
+  background-color: var(--amarilloChichi);
+  color: var(--negroCasi);
 }
 
 main {
