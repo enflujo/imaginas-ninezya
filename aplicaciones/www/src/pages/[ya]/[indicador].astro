@@ -7,6 +7,7 @@ import Mapa from '@/componentes/Mapa.astro';
 import LineaTiempo from '@/componentes/LineaTiempo.astro';
 import type { GetStaticPaths } from 'astro';
 import FichaTecnica from '@/componentes/FichaTecnica.astro';
+import Buscador from '@/componentes/Buscador.astro';
 
 export const getStaticPaths = (() => {
   return datos
@@ -34,6 +35,7 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
           <span id="abrirFicha">?</span>
           <p id="descripcionIndicador">{datosIndicador.definicion}</p>
         </div>
+        <Buscador />
         <FichaTecnica />
         <SelectorNivel />
         <MenuAnios />

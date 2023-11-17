@@ -1,0 +1,135 @@
+---
+
+---
+
+<div id="contenedorBuscador">
+  <input
+    id="buscador"
+    type="search"
+    @input="buscar(nombreLugar)"
+    name="nombreLugar"
+    placeholder="Búsqueda por lugar"
+    list="sugerencias"
+  />
+
+  <datalist id="sugerencias"></datalist>
+</div>
+
+<script>
+  import { nivel } from '@/utilidades/cerebro';
+  import { departamentos, municipios } from '@/utilidades/datosBuscador';
+  import fuzzysort from 'fuzzysort';
+  const buscador = document.getElementById('buscador') as HTMLInputElement;
+  const sugerencias = document.getElementById('sugerencias') as HTMLDataListElement;
+  let opciones: HTMLOptionElement[];
+  let fuenteBusqueda: { nombre: string; codigo: string }[];
+
+  const opcoinesDep = departamentos.map((dep) => {
+    const opcion = document.createElement('option');
+    opcion.value = dep.nombre;
+    opcion.dataset.codigo = dep.codigo;
+    opcion.onclick = () => {
+      console.log(opcion);
+    };
+    return opcion;
+  });
+
+  const opcionesMun = municipios.map((mun) => {
+    const opcion = document.createElement('option');
+    opcion.value = `${mun.nombre}`;
+    opcion.dataset.codigo = mun.codigo;
+    return opcion;
+  });
+
+  buscador.oninput = buscar;
+
+  buscador.onchange = () => {
+    if (!buscador.value) return;
+    const lugar = fuenteBusqueda.find((lugar) => lugar.nombre === buscador.value);
+    // buscar en el mapa que este pintado actualmente, como es dinámico no se puede definir globalmente.
+    const zona = document.getElementById(lugar.codigo);
+    if (zona) {
+      zona.dispatchEvent(new Event('click'));
+    }
+  };
+
+  function buscar() {
+    const texto = buscador.value.trim();
+
+    if (!texto || !texto.length) {
+      llenarBaseLista();
+      return;
+    }
+
+    const busqueda = fuzzysort.go(texto, fuenteBusqueda, { key: 'nombre' });
+
+    sugerencias.innerHTML = '';
+
+    if (busqueda.total > 0) {
+      busqueda.forEach((lugar) => {
+        const opcion = opciones.find((opcion) => opcion.value === lugar.obj.nombre);
+        if (opcion) sugerencias.appendChild(opcion);
+      });
+    }
+  }
+
+  nivel.subscribe((nivelActual) => {
+    if (!nivelActual) return;
+
+    if (nivelActual === 'dep') {
+      opciones = opcoinesDep;
+      fuenteBusqueda = departamentos;
+    } else {
+      opciones = opcionesMun;
+      fuenteBusqueda = municipios;
+    }
+
+    llenarBaseLista();
+  });
+
+  function llenarBaseLista() {
+    sugerencias.innerHTML = '';
+    opciones.forEach((opcion) => sugerencias.appendChild(opcion));
+  }
+</script>
+
+<style lang="scss">
+  #buscador {
+    // margin: 3em 0em 0.5em 1em;
+    margin-bottom: 0.7em;
+    border: var(--uvaNinezYa) solid 1px;
+    width: fit-content;
+    font-size: 0.85em;
+    // font-family: $fuenteTexto;
+    // color: $colorOscuro;
+    // font-weight: $fuentePesoNegrita;
+    text-transform: capitalize;
+    outline: none;
+    padding: 0.5em;
+
+    &::placeholder {
+      /* Chrome, Firefox, Opera, Safari 10.1+ */
+      // color: lighten($colorOscuro, 10%);
+      opacity: 0.8; /* Firefox */
+      // font-weight: $fuentePesoNegrita;
+    }
+  }
+
+  // .lugarLista {
+  //   padding: 0.5em 1em 0.5em 0.5em;
+
+  //   &:hover {
+  //     cursor: pointer;
+  //     background-color: rgba($colorVerdeResaltado, 0.9);
+  //   }
+  // }
+
+  // #sugerencias {
+  //   display: block;
+  //   position: absolute;
+  //   background-color: rgba($colorBlanco, 0.9);
+  //   z-index: 9;
+  //   margin: 0 0 0 0.8em;
+  //   max-width: 400px;
+  // }
+</style>
