@@ -205,9 +205,11 @@ export type VariableValorSingular =
   | 'bajo_peso'
   | 'cobertura_bruta_transicion'
   | 'cobertura_bruta_media'
+  | 'matematicas'
   | 'lectura'
   | 'tasa_desercion'
-  | 'concentracion';
+  | 'concentracion'
+  | 'repitencia';
 
 export type VariablesSingulares = {
   [llave in VariableValorSingular]: number;

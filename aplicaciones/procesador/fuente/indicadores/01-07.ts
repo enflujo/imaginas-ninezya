@@ -66,7 +66,7 @@ export default class {
     guardarJSON(this.datosMunicipios, `${nombreParaArchivo}-mun`);
     guardarJSON(this.datosDepartamentos, `${nombreParaArchivo}-dep`);
     guardarJSON(this.datosNacionales, `${nombreParaArchivo}-nal`);
-    guardarJSON(this.errata, `Errata ${nombreParaArchivo}`);
+    if (this.errata.length) guardarJSON(this.errata, `Errata ${nombreParaArchivo}`);
   }
 
   procesarFila(fila: Variables, numeroFila: number, datosLugar: DatosLugar, tipo: 'num' | 'den') {
