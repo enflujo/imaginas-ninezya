@@ -34,8 +34,6 @@
   // Fondos
   --moradoProfundo: #760287;
   --moradoPandito: #faf2fc;
-
-  // Medidas
 }
 
 html {
@@ -119,8 +117,8 @@ main {
   stroke: var(--moradoProfundo);
   stroke-opacity: 0.5;
   border: 2px solid;
-  padding: 0 .3em;
-  margin: .3em;
+  padding: 0 0.3em;
+  margin: 0.3em;
 
   .encabezadoMapita {
     display: flex;
@@ -134,7 +132,7 @@ main {
 
   .cerrarMapita {
     cursor: pointer;
-    padding: .3em;
+    padding: 0.3em;
 
     &:hover {
       background-color: var(--escarlataBebe);
