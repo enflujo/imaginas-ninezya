@@ -54,9 +54,9 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
 <script>
   import MapaDetalle from '@/componentes/MapaDetalle';
   import { añoSeleccionado, lugaresSeleccionados, cargarIndicador } from '@/utilidades/cerebro';
-  const comparativo = document.getElementById('comparativo');
-  const botonFicha = document.getElementById('abrirFicha');
-  const infoAdicional = document.getElementById('contenedorInfoAdicional');
+  const comparativo = document.getElementById('comparativo') as HTMLDivElement;
+  const botonFicha = document.getElementById('abrirFicha') as HTMLSpanElement;
+  const infoAdicional = document.getElementById('contenedorInfoAdicional') as HTMLDivElement;
 
   botonFicha.addEventListener('click', () => {
     infoAdicional.classList.toggle('abierta');

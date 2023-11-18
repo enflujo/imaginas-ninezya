@@ -1,6 +1,12 @@
 import type { DatosAño, ExtremosCoordenadas } from '@/tipos';
 import { calcularPorcentaje } from '@/utilidades/ayudas';
-import { añoSeleccionado, datosMapaMunicipio, datosIndicadorMunicipio, color } from '@/utilidades/cerebro';
+import {
+  añoSeleccionado,
+  datosMapaMunicipio,
+  datosIndicadorMunicipio,
+  color,
+  lugaresSeleccionados,
+} from '@/utilidades/cerebro';
 import { crearLinea, escalaCoordenadas, extremosLugar } from '@enflujo/alquimia';
 import type { IMapearCoordenadas } from '@enflujo/alquimia/libreria/modulos/tipos';
 import type { Feature, Geometry } from 'geojson';
@@ -32,9 +38,32 @@ export default class MapaDetalle extends HTMLElement {
   }
 
   agregarTitulo(nombre: string) {
+    const contenedor = document.createElement('div');
     const titulo = document.createElement('h2');
+    const cerrar = document.createElement('span');
+
+    contenedor.className = 'encabezadoMapita';
     titulo.innerText = nombre;
-    this.appendChild(titulo);
+    cerrar.className = 'cerrarMapita';
+    cerrar.innerText = 'X';
+
+    cerrar.onclick = () => {
+      const lugares = lugaresSeleccionados.get();
+      const posicion = lugares.findIndex((lugar) => lugar.nombre === nombre);
+      const { codigo } = lugares[posicion];
+
+      lugares.splice(posicion, 1);
+
+      lugaresSeleccionados.set([...lugares]);
+      const zona = document.getElementById(codigo);
+      document.getElementById('seleccionados').removeChild(zona);
+      document.getElementById('colombia').appendChild(zona);
+      zona.classList.remove('seleccionada');
+    };
+
+    contenedor.appendChild(titulo);
+    contenedor.appendChild(cerrar);
+    this.appendChild(contenedor);
   }
 
   extremos() {

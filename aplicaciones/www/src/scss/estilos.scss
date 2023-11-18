@@ -175,6 +175,22 @@ main {
 .mapita {
   stroke: var(--moradoProfundo);
   stroke-opacity: 0.5;
+
+  .encabezadoMapita {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .cerrarMapita {
+    cursor: pointer;
+    padding: .3em;
+    
+    &:hover {
+      background-color: var(--escarlataBebe);
+      color: white;
+    }
+  }
 }
 
 .contenedorMapita {
