@@ -1,24 +1,18 @@
 ---
 export interface Props {
-  titulo: string;
+  titulo?: string;
 }
 
 const { titulo } = Astro.props;
 import Cargador from '@/componentes/Cargador.astro';
 import Menu from '@/componentes/Menu.astro';
 import Encabezado from '@/componentes/Encabezado.astro';
+import Cabeza from './Cabeza.astro';
 ---
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{titulo}</title>
-  </head>
+  <Cabeza titulo={titulo} />
   <body>
     <Encabezado />
     <Menu />
@@ -27,9 +21,8 @@ import Encabezado from '@/componentes/Encabezado.astro';
     </main>
 
     <Cargador />
+    <style lang="scss" is:global>
+      @import '@/scss/estilos.scss';
+    </style>
   </body>
 </html>
-
-<style is:global>
-  @import '@/scss/estilos.scss';
-</style>

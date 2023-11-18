@@ -1,0 +1,9 @@
+{
+  "name": "Sistema de Indicadores de los YA",
+  "short_name": "SIYA",
+  "start_url": "/especiales/siya/",
+  "icons": [
+    { "src": "/especiales/siya/icono_192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/especiales/siya/icono_512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

@@ -1,9 +1,8 @@
 ---
-import Mapa from '@/componentes/Mapa.astro';
 import Plantilla from '../plantillas/Principal.astro';
 ---
 
-<Plantilla titulo="SIYA">
+<Plantilla>
   <div class="inicio">
     <section>
       <h1>SIYA</h1>
@@ -55,7 +54,7 @@ import Plantilla from '../plantillas/Principal.astro';
       </div>
     </section>
 
-    <img src="/especiales/siya/estaticos/imagenes/mapa.svg" alt="mapa de Colombia" />
+    <img src={`${import.meta.env.BASE_URL}/imagenes/mapa.svg`} alt="mapa de Colombia" />
   </div>
 </Plantilla>
 
