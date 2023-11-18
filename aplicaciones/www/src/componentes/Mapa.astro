@@ -18,6 +18,7 @@ const { ancho, alto } = Astro.props;
     </defs>
 
     <g id="colombia"></g>
+    <g id="seleccionados"></g>
   </svg>
 </div>
 
@@ -40,7 +41,8 @@ const { ancho, alto } = Astro.props;
   import type { IMapearCoordenadas } from '@enflujo/alquimia/libreria/modulos/tipos';
 
   const mapa = document.querySelector('.mapa') as HTMLDivElement;
-  const colombia = document.getElementById('colombia');
+  const colombia = document.getElementById('colombia') as HTMLElement & SVGGElement;
+  const seleccionados = document.getElementById('seleccionados') as HTMLElement & SVGGElement;
   const informacion = document.getElementById('informacion');
 
   let mapearCoordenadas: IMapearCoordenadas;
@@ -266,7 +268,15 @@ const { ancho, alto } = Astro.props;
             deptoSeleccionado.set(nombre);
           }
 
-          zona.classList.toggle('seleccionada');
+          if (zona.classList.contains('seleccionada')) {
+            zona.classList.remove('seleccionada');
+            seleccionados.removeChild(zona);
+            colombia.appendChild(zona);
+          } else {
+            zona.classList.add('seleccionada');
+            colombia.removeChild(zona);
+            seleccionados.appendChild(zona);
+          }
 
           const lugares = [...lugaresSeleccionados.get()]; // es necesario clonar el array acá para que al final de las operaciones que siguen a continuación, el store se encargue de hacer llamado a todos los que estén usando `listen()`.
           const posicionLugar = lugares.findIndex(({ nombre: nombreAgregado }) => nombreAgregado === nombre);
@@ -307,7 +317,7 @@ const { ancho, alto } = Astro.props;
     .seleccionada {
       stroke: var(--escarlataBebe);
       stroke-opacity: 1;
-      stroke-width: 2px;
+      stroke-width: 2.5px;
     }
   }
 </style>
