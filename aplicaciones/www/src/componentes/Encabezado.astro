@@ -1,78 +1,82 @@
+---
+
+---
+
 <nav id="encabezado">
   <div id="logo">
-    <a href={`${import.meta.env.BASE_URL}/`}
-      ><img src={`${import.meta.env.BASE_URL}/logo.png`} alt="Logo Niñez Ya." /></a
-    >
+    <a href={`${import.meta.env.BASE_URL}/`}>
+      <img src={`${import.meta.env.BASE_URL}/logo.png`} alt="Logo Niñez Ya." />
+    </a>
   </div>
 
   <ul id="menuSuperior">
-    <li class="elementoMenu"><a href="./">Inicio</a></li>
-    <li class="elementoMenu"><a href="./creditos">Créditos</a></li>
-    <li class="elementoMenu"><a href="./datos">Datos</a></li>
+    <li class="elementoMenu"><a href={`${import.meta.env.BASE_URL}/`}>Inicio</a></li>
+    <li class="elementoMenu"><a href={`${import.meta.env.BASE_URL}/creditos`}>Créditos</a></li>
+    <li class="elementoMenu"><a href={`${import.meta.env.BASE_URL}/datos`}>Datos</a></li>
   </ul>
-
-  <style lang="scss">
-    @import '@/scss/constantes';
-
-    nav {
-      display: flex;
-      justify-content: space-around;
-    }
-    #encabezado {
-      height: $altoMenuSuperior;
-      width: 100%;
-      background-color: var(--moradoProfundo);
-      color: white;
-      top: 0;
-      z-index: 10;
-      position: fixed;
-      display: inline-flex;
-      align-items: center;
-      justify-content: flex-start;
-    }
-    #logo {
-      width: 70px;
-      margin: 1em 1em 1em 1.5em;
-
-      img {
-        width: 100%;
-        height: auto;
-      }
-    }
-
-    #menuSuperior {
-      display: flex;
-      list-style-type: none;
-      width: 90%;
-      justify-content: flex-start;
-
-      a {
-        color: white;
-        text-decoration: none;
-      }
-
-      a:visited {
-        color: white;
-      }
-
-      a:hover {
-        color: var(--aguaMarinaNinezYa);
-      }
-    }
-
-    .elementoMenu {
-      font-size: 1em;
-      margin-left: 3em;
-      cursor: pointer;
-
-      &:hover {
-        color: var(--uvaNinezYa);
-      }
-    }
-
-    ul {
-      display: flex;
-      margin: 8px 0 0 5px;
-    }
-  </style>
 </nav>
+
+<style lang="scss">
+  @import '@/scss/constantes';
+
+  nav {
+    display: flex;
+    justify-content: space-around;
+  }
+  #encabezado {
+    height: $altoMenuSuperior;
+    width: 100%;
+    background-color: var(--moradoProfundo);
+    color: white;
+    top: 0;
+    z-index: 10;
+    position: fixed;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  #logo {
+    width: 70px;
+    margin: 1em 1em 1em 1.5em;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  #menuSuperior {
+    display: flex;
+    list-style-type: none;
+    width: 90%;
+    justify-content: flex-start;
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
+    a:visited {
+      color: white;
+    }
+
+    a:hover {
+      color: var(--aguaMarinaNinezYa);
+    }
+  }
+
+  .elementoMenu {
+    font-size: 1em;
+    margin-left: 3em;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--uvaNinezYa);
+    }
+  }
+
+  ul {
+    display: flex;
+    margin: 8px 0 0 5px;
+  }
+</style>
