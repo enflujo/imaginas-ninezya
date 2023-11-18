@@ -72,63 +72,6 @@ main {
     flex-basis: 50%;
     padding: 1em;
   }
-
-  .inicio {
-    display: flex;
-    text-align: center;
-    width: 100%;
-    height: calc(100vh - $altoMenuSuperior);
-    background-color: var(--moradoProfundo);
-    color: var(--blancoMarfil);
-    font-variation-settings:
-      'MONO' 0,
-      'CASL' 0,
-      'wght' 1000,
-      'slnt' 0,
-      'CRSV' 0;
-
-    h1 {
-      font-size: 3em;
-    }
-
-    h2 {
-      font-size: 1.5em;
-      width: 100%;
-    }
-
-    h3 {
-      font-size: 1.1em;
-      font-weight: bold;
-
-      font-variation-settings:
-        'MONO' 0,
-        'CASL' 0,
-        'wght' 700,
-        'slnt' 0,
-        'CRSV' 0;
-    }
-    .texto {
-      text-align: left;
-      margin: 3em 35%;
-      font-size: 0.9em;
-      max-width: 40%;
-      font-variation-settings:
-        'MONO' 0,
-        'CASL' 0,
-        'wght' 433,
-        'slnt' 0,
-        'CRSV' 0;
-    }
-
-    .seccion {
-      width: 62%;
-    }
-
-    img {
-      width: 17%;
-      height: 70%;
-    }
-  }
 }
 
 .contenido {
@@ -205,4 +148,13 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.negrita {
+  font-variation-settings:
+    'MONO' 1,
+    'CASL' 0,
+    'wght' 800,
+    'slnt' 0,
+    'CRSV' 0;
 }

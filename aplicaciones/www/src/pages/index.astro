@@ -5,28 +5,126 @@ import Plantilla from '../plantillas/Principal.astro';
 
 <Plantilla titulo="SIYA">
   <div class="inicio">
-    <div class="seccion">
+    <section>
       <h1>SIYA</h1>
       <h2 class="subtitulo">Sistema de Indicadores de los YA</h2>
+
       <div class="texto">
         <h3>¿Cómo está la niñez en Colombia?</h3>
         <p>
-          Este tablero busca responder a esa pregunda usando datos para mapear el estado de los <strong>10 YA</strong> y
-          su implementación a nivel nacional, departamental y municial.
+          La coalición <span class="negrita">NiñezYA</span> -que reúne a más de 200 organizaciones no gubernamentales-
+          tiene la misión de contribuir con el cumplimiento de los derechos de la niñez, como lo señala la Constitución
+          de Colombia, la Convención sobre los Derechos del Niño y los desarrollos legislativos vigentes. Para cumplir
+          con su propósito, el <span class="negrita">Sistema de Indicadores de los YA (SIYA)</span> dispone de datos que
+          permiten hacerle seguimiento al estado y avance de los diez asuntos impostergables para el bienestar de esta
+          población.
         </p>
         <p>
-          El estado de cada <strong>YA</strong> se construye cruzando indicadores que han sido recogidos de fuentes
-          abiertas como el DANE, el Ministerio de Salud, el Ministerio de Educación, entre otras.
+          El <span class="negrita">SIYA</span> tiene como objetivo central entregar indicadores relevantes, actualizados
+          y de alta calidad a quienes tienen el poder y la responsabilidad de lograr el desarrollo pleno de niñas, niños
+          y adolescentes: sociedad civil, funcionarios públicos, candidatos, mandatarios, legisladores, entre otros.
+        </p>
+        <p>
+          Colombia tiene datos sobre cómo se están garantizando estos derechos. Sin embargo, estos datos provienen de
+          diferentes fuentes y se producen para cumplir diferentes objetivos, lo cual conduce a que la información no
+          esté consolidada, depurada y procesada para garantizar su relevancia, oportunidad y calidad. El <span
+            class="negrita">SIYA</span
+          > los integra. Esta herramienta dispone de datos oficiales existentes en el país y produce cifras accesibles
+          para que los usen quienes trabajamos por el bienestar de los más de 15 millones de niñas, niños y jóvenes
+          menores de 18 años.
         </p>
 
-        <p>
-          Explora en la línea de tiempo cómo ha cambiado cada indicador y descubre qué podemos hacer por la niñez en
-          Colombia.
-        </p>
+        <h3>Nuestros objetivos son:</h3>
+
+        <ol>
+          <li>
+            Compilar, depurar y hacer seguimiento: a los indicadores más relevantes de los 10 <span class="negrita"
+              >YA</span
+            > que dan cuenta de la garantía de los derechos de la niñez.
+          </li>
+          <li>
+            Evidenciar los vacíos en la información sobre: el estado de los derechos de la niñez y proponer soluciones
+            para mejorar los sistemas de seguimiento.
+          </li>
+          <li>
+            Producir alertas y recomendaciones al país: Concretamente a tomadores de decisiones, organizaciones y
+            personas que tienen en sus manos la posibilidad de contribuir con el desarrollo y bienestar de niñas, niños
+            y adolescentes.
+          </li>
+        </ol>
       </div>
-    </div>
-    <img id="mapa" src="../../estaticos/imagenes/mapa.svg" alt="mapa de Colombia" />
+    </section>
+
+    <img src="/especiales/siya/estaticos/imagenes/mapa.svg" alt="mapa de Colombia" />
   </div>
 </Plantilla>
 
-<style lang="scss"></style>
+<style lang="scss">
+  @import '@/scss/constantes';
+
+  h1 {
+    font-size: 5em;
+    margin: 1em 0 0 0;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 2em;
+    width: 100%;
+    text-align: center;
+  }
+
+  h3 {
+    font-size: 1.3em;
+    font-variation-settings:
+      'MONO' 0,
+      'CASL' 0,
+      'wght' 800,
+      'slnt' 0,
+      'CRSV' 0;
+  }
+  h4 {
+    margin-top: 2em;
+  }
+
+  li {
+    padding-bottom: 1em;
+  }
+
+  .inicio {
+    background-color: var(--moradoProfundo);
+    color: var(--blancoMarfil);
+    padding-bottom: 20vh;
+    line-height: 1.4;
+
+    font-variation-settings:
+      'MONO' 0,
+      'CASL' 0,
+      'wght' 1000,
+      'slnt' 0,
+      'CRSV' 0;
+
+    .texto {
+      padding: 0 8em 0 9em;
+      text-align: left;
+      font-variation-settings:
+        'MONO' 0,
+        'CASL' 0,
+        'wght' 433,
+        'slnt' 0,
+        'CRSV' 0;
+    }
+  }
+
+  section {
+    width: 62%;
+  }
+
+  img {
+    position: fixed;
+    top: 8em;
+    right: 10%;
+    width: 17%;
+    height: 70%;
+  }
+</style>
