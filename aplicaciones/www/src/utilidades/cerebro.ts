@@ -1,7 +1,8 @@
 import { atom, map } from 'nanostores';
 import type { FeatureCollection } from 'geojson';
-import type { DatosIndicador, DatosIndicadorNal, DatosPorAñoOrdenado } from '@/tipos';
-import { pedirDatos } from './ayudas';
+import type { DatosIndicador, DatosIndicadorNal, DatosPorAñoOrdenado, FuncionColor } from '@/tipos';
+import { escalaColores, pedirDatos } from './ayudas';
+import { colorNegativo, colorNeutro, colorPositivo } from './constantes';
 
 export const listaAños = atom<DatosPorAñoOrdenado>([]);
 export const datosDep = map<DatosIndicador>(null);
@@ -13,6 +14,7 @@ export const añoSeleccionado = atom<string | null>(null);
 export const lugares: string[] = [];
 export const datosColombia = map<{ dep?: FeatureCollection; mun?: FeatureCollection }>({});
 export const lugaresSeleccionados = atom<{ nombre: string; codigo: string }[]>([]);
+export let color: FuncionColor;
 
 const cargador = document.getElementById('cargador');
 let nombreArchivo = '';
@@ -77,7 +79,8 @@ export async function cargarDatos() {
 
   // Cargar datos indicador nacionales para linea de tiempo
   const nal = await pedirDatos<DatosIndicadorNal>(`https://enflujo.com/bodega/ninezya/${nombreArchivo}-nal.json`);
-  datosNal.set(await nal);
+  color = definirColor(nal.ascendente);
+  datosNal.set(nal);
 
   cargando = false;
   cargador.classList.remove('visible');
@@ -112,3 +115,11 @@ export async function cargarIndicador() {
   nivel.set('dep');
   crearListaAños();
 }
+
+const definirColor = (ascendente: boolean) => {
+  if (ascendente) {
+    return escalaColores(0, 100, colorNegativo, colorNeutro, colorPositivo);
+  } else {
+    return escalaColores(0, 100, colorPositivo, colorNeutro, colorNegativo);
+  }
+};

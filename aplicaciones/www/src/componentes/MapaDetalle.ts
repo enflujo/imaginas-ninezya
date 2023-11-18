@@ -1,6 +1,6 @@
 import type { DatosAño, ExtremosCoordenadas } from '@/tipos';
-import { calcularPorcentaje, color } from '@/utilidades/ayudas';
-import { añoSeleccionado, datosMapaMunicipio, datosIndicadorMunicipio } from '@/utilidades/cerebro';
+import { calcularPorcentaje } from '@/utilidades/ayudas';
+import { añoSeleccionado, datosMapaMunicipio, datosIndicadorMunicipio, color } from '@/utilidades/cerebro';
 import { crearLinea, escalaCoordenadas, extremosLugar } from '@enflujo/alquimia';
 import type { IMapearCoordenadas } from '@enflujo/alquimia/libreria/modulos/tipos';
 import type { Feature, Geometry } from 'geojson';

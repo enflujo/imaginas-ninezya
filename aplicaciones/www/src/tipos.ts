@@ -34,3 +34,4 @@ export type DatosIndicador = { [año: string]: DatosAño };
 export type DatosPorAño = { [año: string]: number };
 export type DatosPorAñoOrdenado = { año: string; valor: number | null }[];
 export type DatosIndicadorNal = { ascendente: boolean; estructura: TiposEstructura; datos: DatosPorAño };
+export type FuncionColor = (valor: number) => string;
