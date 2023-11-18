@@ -8,7 +8,7 @@
     type="search"
     @input="buscar(nombreLugar)"
     name="nombreLugar"
-    placeholder="Búsqueda por lugar"
+    placeholder="Buscar Departamento"
     list="sugerencias"
   />
 
@@ -77,9 +77,11 @@
     if (!nivelActual) return;
 
     if (nivelActual === 'dep') {
+      buscador.placeholder = 'Buscar Departamento';
       opciones = opcoinesDep;
       fuenteBusqueda = departamentos;
     } else {
+      buscador.placeholder = 'Buscar Municipio';
       opciones = opcionesMun;
       fuenteBusqueda = municipios;
     }
