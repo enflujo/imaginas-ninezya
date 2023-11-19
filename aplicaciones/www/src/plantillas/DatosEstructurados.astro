@@ -1,0 +1,55 @@
+---
+import { descripcionGeneral, nombrePagina } from '@/utilidades/constantes';
+import type { AboutPage, Graph, Organization, WebApplication } from 'schema-dts';
+interface Props {
+  pagina: AboutPage;
+}
+
+const OrgEnFlujo: Organization = {
+  '@type': 'Organization',
+  '@id': 'https://enflujo.com/#identidad',
+  name: 'Laboratorio EnFlujo',
+  description: 'Laboratorio de creación e investigación sobre el presente digital. Universidad de los Andes.',
+  url: 'https://enflujo.com',
+  foundingDate: '2020',
+  // logo: '',
+};
+
+const OrgNiñezYa: Organization = {
+  '@type': 'Organization',
+  '@id': 'https://ninezya.org/#identidad',
+  name: 'NiñezYA',
+  legalName: 'NiñezYA - Sociedad Civil por la Niñez y la Adolescencia',
+  url: 'https://ninezya.org/',
+  foundingDate: '2017',
+  logo: 'https://imagina.uniandes.edu.co/especiales/siya/logo.png',
+};
+
+const Aplicacion: WebApplication = {
+  '@type': 'WebApplication',
+  applicationCategory: 'Tablero de Control',
+  author: {
+    '@id': 'https://enflujo.com/#identidad',
+  },
+  copyrightYear: '2023',
+  dateModified: new Date().toISOString(),
+  datePublished: new Date('11/22/2023').toISOString(),
+  description: descripcionGeneral,
+  inLanguage: 'es-CO',
+  name: nombrePagina,
+  operatingSystem: 'Web Browser',
+  url: 'https://imagina.uniandes.edu.co/especiales/siya',
+  publisher: {
+    '@id': 'https://ninezya.org/#identidad',
+  },
+};
+
+const { pagina } = Astro.props;
+
+const datos: Graph = {
+  '@context': 'https://schema.org',
+  '@graph': [OrgNiñezYa, OrgEnFlujo, pagina, Aplicacion],
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(datos)} />

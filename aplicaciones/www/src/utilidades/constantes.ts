@@ -12,3 +12,6 @@ export const dimsLineaTiempo = {
 export const colorPositivo = '#4ca658';
 export const colorNeutro = '#fcfdbf';
 export const colorNegativo = '#de4968';
+export const nombrePagina = 'Sistema de Indicadores de los YA (SIYA)';
+export const descripcionGeneral =
+  'El Sistema de Indicadores de los YA (SIYA) dispone de datos que permiten hacerle seguimiento al estado y avance de los diez asuntos impostergables para el bienestar de la niñez.';

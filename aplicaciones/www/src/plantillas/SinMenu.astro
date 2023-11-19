@@ -1,9 +1,4 @@
 ---
-export interface Props {
-  titulo: string;
-}
-
-const { titulo } = Astro.props;
 import Cargador from '@/componentes/Cargador.astro';
 import Encabezado from '@/componentes/Encabezado.astro';
 import Cabeza from './Cabeza.astro';
@@ -11,7 +6,10 @@ import Cabeza from './Cabeza.astro';
 
 <!doctype html>
 <html lang="en">
-  <Cabeza titulo={titulo} />
+  <head>
+    <Cabeza {...Astro.props} />
+    <slot name="cabeza" />
+  </head>
   <body>
     <Encabezado />
     <main class="contenidoSinMenu">
@@ -19,7 +17,8 @@ import Cabeza from './Cabeza.astro';
     </main>
 
     <Cargador />
-  </body><style lang="scss" is:global>
-    @import '@/scss/estilos.scss';
-  </style>
+    <style lang="scss" is:global>
+      @import '@/scss/estilos.scss';
+    </style>
+  </body>
 </html>

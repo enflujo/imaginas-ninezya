@@ -1,8 +1,23 @@
 ---
-import Plantilla from '../plantillas/Principal.astro';
+import DatosEstructurados from '@/plantillas/DatosEstructurados.astro';
+import Plantilla from '@/plantillas/Principal.astro';
+import { descripcionGeneral, nombrePagina } from '@/utilidades/constantes';
+import type { AboutPage } from 'schema-dts';
+
+const datosPagina: AboutPage = {
+  '@type': 'AboutPage',
+  url: 'https://imagina.uniandes.edu.co/especiales/siya',
+  name: nombrePagina,
+  inLanguage: 'es-CO',
+  description: descripcionGeneral,
+  // fechaPublicacion: new Date('11-19-2023'),
+  // fechaActualizacion: new Date(),
+  // tags: ['indicadores', 'niñez', 'colombia', 'tablero-control', 'derechos', 'jovenes'],
+};
 ---
 
 <Plantilla>
+  <DatosEstructurados slot="cabeza" pagina={datosPagina} />
   <div class="inicio">
     <section>
       <h1>SIYA</h1>
