@@ -24,7 +24,7 @@ const datosYa = datos.find((instancia) => instancia.ruta === ya);
 const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta === indicador);
 ---
 
-<Plantilla titulo={datosIndicador.nombre}>
+<Plantilla titulo={datosIndicador.nombre} conMenu={true}>
   <div id="visualizaciones" class="columna" data-archivo={datosIndicador.archivo}>
     <div id="secionSuperior">
       <div id="filtros">

@@ -13,6 +13,6 @@ const { ya } = Astro.params;
 const datosYa = datos.find((instancia) => instancia.ruta === ya);
 ---
 
-<Plantilla titulo={datosYa.nombre}>
+<Plantilla titulo={datosYa.nombre} conMenu={true}>
   <h1>{datosYa.nombre}</h1>
 </Plantilla>
