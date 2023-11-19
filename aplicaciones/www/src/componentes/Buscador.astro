@@ -28,9 +28,6 @@
     const opcion = document.createElement('option');
     opcion.value = dep.nombre;
     opcion.dataset.codigo = dep.codigo;
-    opcion.onclick = () => {
-      console.log(opcion);
-    };
     return opcion;
   });
 
@@ -46,11 +43,14 @@
   buscador.onchange = () => {
     if (!buscador.value) return;
     const lugar = fuenteBusqueda.find((lugar) => lugar.nombre === buscador.value);
-    // buscar en el mapa que este pintado actualmente, como es dinámico no se puede definir globalmente.
+    // buscar en el mapa que este pintado actualmente, como es dinámico, no se puede definir globalmente.
     const zona = document.getElementById(lugar.codigo);
     if (zona) {
       zona.dispatchEvent(new Event('click'));
     }
+
+    buscador.value = '';
+    llenarBaseLista();
   };
 
   function buscar() {
