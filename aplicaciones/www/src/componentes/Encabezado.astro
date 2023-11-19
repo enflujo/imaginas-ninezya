@@ -3,17 +3,17 @@
 ---
 
 <nav id="encabezado">
-  <div id="logo">
-    <a href={`${import.meta.env.BASE_URL}/`}>
-      <img src={`${import.meta.env.BASE_URL}/logo.png`} alt="Logo Niñez Ya." />
-    </a>
-  </div>
+  <a id="logo" href={`${import.meta.env.BASE_URL}/`}>
+    <img src={`${import.meta.env.BASE_URL}/logo.png`} alt="Logo Niñez Ya." />
+  </a>
 
   <ul id="menuSuperior">
     <li class="elementoMenu"><a href={`${import.meta.env.BASE_URL}/`}>Inicio</a></li>
     <li class="elementoMenu"><a href={`${import.meta.env.BASE_URL}/creditos`}>Créditos</a></li>
     <li class="elementoMenu"><a href={`${import.meta.env.BASE_URL}/datos`}>Datos</a></li>
   </ul>
+
+  <h1 id="nombreProyecto">Sistema de Indicadores de los YA (SIYA)</h1>
 </nav>
 
 <style lang="scss">
@@ -36,19 +36,18 @@
     justify-content: flex-start;
   }
   #logo {
-    width: 70px;
-    margin: 1em 1em 1em 1.5em;
+    height: $altoMenuSuperior - 10;
+    margin: 0 1em 0 1.5em;
 
     img {
-      width: 100%;
-      height: auto;
+      width: auto;
+      height: 100%;
     }
   }
 
   #menuSuperior {
     display: flex;
     list-style-type: none;
-    width: 90%;
     justify-content: flex-start;
 
     a {
@@ -66,8 +65,8 @@
   }
 
   .elementoMenu {
-    font-size: 1em;
-    margin-left: 3em;
+    font-size: 0.95em;
+    margin-right: 3em;
     cursor: pointer;
 
     &:hover {
@@ -75,8 +74,9 @@
     }
   }
 
-  ul {
-    display: flex;
-    margin: 8px 0 0 5px;
+  #nombreProyecto {
+    font-size: 0.85em;
+    margin-left: auto;
+    margin-right: 10px;
   }
 </style>
