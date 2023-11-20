@@ -1,9 +1,18 @@
 ---
 import { descripcionGeneral, nombrePagina } from '@/utilidades/constantes';
-import type { AboutPage, Graph, Organization, WebApplication } from 'schema-dts';
+import type { AboutPage, Graph, Organization, Person, WebApplication } from 'schema-dts';
 interface Props {
   pagina: AboutPage;
 }
+
+const PersonaJC: Person = {
+  '@type': 'Person',
+  '@id': 'https://juancgonzalez.com/#identidad',
+  name: 'Juan Camilo González',
+  // image:
+  sameAs: [],
+  nationality: 'Colombian',
+};
 
 const OrgEnFlujo: Organization = {
   '@type': 'Organization',
@@ -12,6 +21,16 @@ const OrgEnFlujo: Organization = {
   description: 'Laboratorio de creación e investigación sobre el presente digital. Universidad de los Andes.',
   url: 'https://enflujo.com',
   foundingDate: '2020',
+  foundingLocation: 'Bogotá, Colombia',
+  founder: {
+    '@id': 'https://juancgonzalez.com/#identidad',
+  },
+  sameAs: [
+    'https://www.instagram.com/labenflujo/',
+    'https://github.com/enflujo',
+    'https://twitter.com/labenflujo',
+    'https://www.facebook.com/labenflujo',
+  ],
   // logo: '',
 };
 
@@ -48,7 +67,7 @@ const { pagina } = Astro.props;
 
 const datos: Graph = {
   '@context': 'https://schema.org',
-  '@graph': [OrgNiñezYa, OrgEnFlujo, pagina, Aplicacion],
+  '@graph': [OrgNiñezYa, OrgEnFlujo, PersonaJC, pagina, Aplicacion],
 };
 ---
 
