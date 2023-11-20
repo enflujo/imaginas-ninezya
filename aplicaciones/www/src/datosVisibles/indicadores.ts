@@ -33,7 +33,8 @@ const datos: DatosYa[] = [
         archivo: 'ya1-1',
         mun: true,
         dep: true,
-        definicion: 'Cobertura total de acueducto.',
+        definicion:
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus suscipit laudantium perferendis rerum voluptates fuga iusto facilis voluptas mollitia numquam unde optio est commodi accusantium aliquid ad veritatis, nam eius.',
         metodologia: 'Se desconoce, metodología propia del SUI.',
         unidad: 'Tasa (Es un cálculo potencial)',
         fuente_numerador: 'Sistema Único de Información de Servicios Públicos - SUI',
@@ -48,7 +49,8 @@ const datos: DatosYa[] = [
         archivo: 'ya1-2',
         mun: true,
         dep: true,
-        definicion: 'Cobertura total de alcantarillado.',
+        definicion:
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus suscipit laudantium perferendis rerum voluptates fuga iusto facilis voluptas mollitia numquam unde optio est commodi accusantium aliquid ad veritatis, nam eius.',
         metodologia: 'Se desconoce, metodología propia del SUI.',
         unidad: 'Tasa (Es un cálculo potencial)',
         fuente_numerador: 'Sistema Único de Información de Servicios Públicos - SUI',
