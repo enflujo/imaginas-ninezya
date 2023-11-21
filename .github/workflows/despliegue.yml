@@ -32,3 +32,4 @@ jobs:
           password: ${{ secrets.CLAVE_IMAGINA }}
           localDir: 'aplicaciones/www/publico'
           remoteDir: '/srv/www/wordpress/especiales/siya/'
+          removeExtraFilesOnServer: true
