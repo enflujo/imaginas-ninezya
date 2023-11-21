@@ -3,7 +3,193 @@ import Plantilla from '@/plantillas/Principal.astro';
 ---
 
 <Plantilla titulo="___" descripcion="___" conMenu={false} imagen={{ ruta: '___.webp', alt: '___' }}>
-  <h1>Créditos</h1>
+  <div id="tituloPagina">
+    <h1>Créditos</h1>
+
+    <div id="creditos">
+      <div class="textoCreditos">
+        <p>
+          El <span class="negrita">SIYA</span> tiene como objetivo central entregar indicadores relevantes, actualizados
+          y de alta calidad a quienes tienen el poder y la responsabilidad de lograr el desarrollo pleno de niñas, niños
+          y adolescentes: sociedad civil, funcionarios públicos, candidatos, mandatarios, legisladores, entre otros.
+        </p>
+      </div>
+
+      <h3><div class="rol">Organiza:</div></h3>
+
+      <div>
+        <a class="logoNinezYa" href="https://ninezya.org/" target="_blank">
+          <img src={`${import.meta.env.BASE_URL}/imagenes/logoNinezYa.webp`} alt="Logo NiñezYA" /></a
+        >
+      </div>
+
+      <h3><div class="rol">Impulsa:</div></h3>
+
+      <a href="" target="_blank">
+        <img src={`${import.meta.env.BASE_URL}/imagenes/Nacional_horizontal.webp`} alt="Junta directiva nacional" /></a
+      >
+
+      <a href="" target="_blank">
+        <img
+          src={`${import.meta.env.BASE_URL}/imagenes/Antioquia_horizontal.webp`}
+          alt="Junta directiva Antioquia"
+        /></a
+      >
+
+      <h3><div class="rol">Coordina:</div></h3>
+
+      <a href="https://imagina.uniandes.edu.co/" target="_blank">
+        <img class="logoImagina" src={`${import.meta.env.BASE_URL}/imagenes/Imagina.webp`} alt="Logo IMAGINA" /></a
+      >
+
+      <h3><div class="rol">Desarrola:</div></h3>
+
+      <a href="https://enflujo.com" target="_blank">
+        <img class="logoEnFlujo" src={`${import.meta.env.BASE_URL}/imagenes/logo_enflujo.svg`} alt="Logo EnFlujo" /></a
+      >
+
+      <div class="voceros">
+        <h3><div class="rol" style="margin-bottom:-1.5em">Voceros consultados por cada YA:</div></h3>
+        <ol>
+          <li class="negrita">Salud-Nutrición:</li>
+          <p class="textoCreditos">Carolina Turriago y María Juliana Ortiz Soto (Fundación Éxito)</p>
+
+          <li class="negrita">Salud mental:</li>
+          <p class="textoCreditos">
+            Norma Constanza Sánchez y Lina María Gonzalez Ballesteros (Fundación Saldarriaga Concha)
+          </p>
+
+          <li class="negrita">Educación inicial:</li>
+          <p class="textoCreditos">Cristian Franco (Río, Juego y Aprendo) | Juan David Ayala (aeioTU).</p>
+
+          <li class="negrita">Educación preescolar, básica y media:</li>
+          <p class="textoCreditos">
+            Diego Sánchez y María Alejandra Muñoz Pabón (Fundación Empresarios por la Educación) | Mónica Varona
+            (Fundación Barco)
+          </p>
+
+          <li class="negrita">Ambiente sano:</li>
+          <p class="textoCreditos">Natalia Ucros y Katherin Alfonso (Fondo Acción)</p>
+
+          <li class="negrita">Juego:</li>
+          <p class="textoCreditos">Irma Salazar y Jhaned Arango (Juego y Niñez)</p>
+
+          <li class="negrita">Participación:</li>
+          <p class="textoCreditos">
+            Diana Carmona (NiñezYA Antioquia) | Jhaned Biviana Arango Puerta (Corporación Juego y Niñez)
+          </p>
+
+          <li class="negrita">Fortalecimiento inicial para el cuidado y la crianza:</li>
+          <p class="textoCreditos">
+            Sara Lara y Felipe Cortés (World Vision-WV/Save The Children) | Margarita Martinez (Fundación PLAN)
+          </p>
+
+          <li class="negrita">Adolescentes en conflicto con la ley con justicia restaurativa y pedagógica:</li>
+          <p class="textoCreditos">Arturo Harker (Imagina) | Camila Cuellar (Consultora Independiente)</p>
+
+          <li class="negrita">Cultura de paz, reconciliación y convivencia:</li>
+          <p class="textoCreditos" style="margin-bottom: 30vh">
+            Felipe Cortés (Save the Children / Plan) | Margarita Martínez (Plan)
+          </p>
+        </ol>
+      </div>
+    </div>
+  </div>
 </Plantilla>
 
-<style lang="scss"></style>
+<style lang="scss">
+  #tituloPagina {
+    padding: 2em 0 1em 0;
+    max-width: 60vw;
+    font-size: 1em;
+    font-family: var(--fuente);
+  }
+
+  #creditos {
+    max-width: 60vw;
+    padding: 2em 0 1em 0;
+    margin: 0vw 10vw 0vw 10vw;
+    font-size: 1em;
+    font-family: var(--fuente);
+    color: var(--azulViejo);
+    font-variation-settings:
+      'MONO' 0,
+      'CASL' 0,
+      'wght' 700,
+      'slnt' 0,
+      'CRSV' 1;
+
+    .textoCreditos {
+      font-variation-settings:
+        'MONO' 0,
+        'CASL' 0,
+        'wght' 400,
+        'slnt' 0,
+        'CRSV' 0;
+    }
+  }
+
+  h1 {
+    font-size: 2.2em;
+    color: var(--moradoProfundo);
+    font-variation-settings:
+      'MONO' 0,
+      'CASL' 0,
+      'wght' 700,
+      'slnt' 0,
+      'CRSV' 0;
+  }
+  h2 {
+  }
+  li {
+    font-variation-settings:
+      'MONO' 1,
+      'CASL' 0,
+      'wght' 500,
+      'slnt' 0,
+      'CRSV' 0;
+  }
+
+  .negrita {
+    font-variation-settings:
+      'MONO' 1,
+      'CASL' 0,
+      'wght' 800,
+      'slnt' 0,
+      'CRSV' 0;
+  }
+
+  .voceros {
+    line-height: 1em;
+    .textoCreditos {
+      padding-bottom: 0.3em;
+    }
+  }
+  .rol {
+    padding-top: 5em;
+    padding-bottom: 2em;
+    color: var(--moradoProfundo);
+  }
+
+  img {
+    max-width: 50vw;
+    max-height: 400px;
+  }
+  .logoEnFlujo {
+    margin: -8em -5em -8em 0em;
+    margin-left: 5vw;
+  }
+
+  .logoImagina {
+    max-width: 500px;
+    margin-left: 10vw;
+    mix-blend-mode: multiply;
+  }
+
+  .logoNinezYa {
+    max-width: 500px;
+    margin-left: 2em;
+    mix-blend-mode: multiply;
+    margin-left: 10vw;
+  }
+</style>
