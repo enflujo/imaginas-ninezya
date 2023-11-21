@@ -56,7 +56,14 @@ export const hexARGB = (valor: string): number[] | null => {
  * @param color3 Color final de la escala en hexadecimal.
  * @returns
  */
-export const escalaColores = (valorMin: number, valorMax: number, color1: string, color2: string, color3: string) => {
+export const escalaColores = (
+  valorMin: number,
+  valorMax: number,
+  umbral: number,
+  color1: string,
+  color2: string,
+  color3: string
+) => {
   const colorMin = hexARGB(color1);
   const colorMed = hexARGB(color2);
   const colorMax = hexARGB(color3);
@@ -72,14 +79,14 @@ export const escalaColores = (valorMin: number, valorMax: number, color1: string
     let r: number;
     let g: number;
     let b: number;
-    if (valor <= valorMed) {
-      r = convertirEscala(valor, valorMin, valorMed, rMin, rMed);
-      g = convertirEscala(valor, valorMin, valorMed, gMin, gMed);
-      b = convertirEscala(valor, valorMin, valorMed, bMin, bMed);
+    if (valor <= umbral) {
+      r = convertirEscala(valor, valorMin, umbral, rMin, rMed);
+      g = convertirEscala(valor, valorMin, umbral, gMin, gMed);
+      b = convertirEscala(valor, valorMin, umbral, bMin, bMed);
     } else {
-      r = convertirEscala(valor, valorMed, valorMax, rMed, rMax);
-      g = convertirEscala(valor, valorMed, valorMax, gMed, gMax);
-      b = convertirEscala(valor, valorMed, valorMax, bMed, bMax);
+      r = convertirEscala(valor, umbral, valorMax, rMed, rMax);
+      g = convertirEscala(valor, umbral, valorMax, gMed, gMax);
+      b = convertirEscala(valor, umbral, valorMax, bMed, bMax);
     }
 
     return `rgb(${r},${g},${b})`;

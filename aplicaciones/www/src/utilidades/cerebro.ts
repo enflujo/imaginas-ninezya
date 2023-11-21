@@ -16,6 +16,7 @@ export const datosColombia = map<{ dep?: FeatureCollection; mun?: FeatureCollect
 export const lugaresSeleccionados = atom<{ nombre: string; codigo: string }[]>([]);
 export let color: FuncionColor;
 export let valorMax: number = 0;
+export let umbral = 0;
 
 const cargador = document.getElementById('cargador');
 let nombreArchivo = '';
@@ -66,7 +67,9 @@ export async function datosIndicadorDep(año?: string) {
 }
 
 export async function cargarDatos() {
-  nombreArchivo = document.getElementById('visualizaciones').dataset.archivo;
+  const datosArchivo = document.getElementById('visualizaciones').dataset;
+  nombreArchivo = datosArchivo.archivo;
+  umbral = datosArchivo.umbral ? +datosArchivo.umbral : umbral;
 
   let cargando = true;
 
@@ -80,8 +83,17 @@ export async function cargarDatos() {
 
   // Cargar datos indicador nacionales para linea de tiempo
   const nal = await pedirDatos<DatosIndicadorNal>(`https://enflujo.com/bodega/ninezya/${nombreArchivo}-nal.json`);
-  const base = nal.unidadMedida === 100000 ? 10000 : 100;
-  valorMax = nal.max > nal.unidadMedida ? Math.ceil(nal.max / base) * base : nal.unidadMedida;
+
+  if (nal.unidadMedida > 100) {
+    valorMax = nombreArchivo === 'ya1-7' ? 15000 : 10000;
+  } else {
+    if (nombreArchivo === 'ya2-8') {
+      valorMax = 50;
+    } else {
+      valorMax = nal.max > nal.unidadMedida ? Math.ceil(nal.max / 100) * 100 : nal.unidadMedida;
+    }
+  }
+
   color = definirColor(nal.ascendente);
 
   datosNal.set(nal);
@@ -122,8 +134,8 @@ export async function cargarIndicador() {
 
 const definirColor = (ascendente: boolean) => {
   if (ascendente) {
-    return escalaColores(0, valorMax, colorNegativo, colorNeutro, colorPositivo);
+    return escalaColores(0, valorMax, umbral, colorNegativo, colorNeutro, colorPositivo);
   } else {
-    return escalaColores(0, valorMax, colorPositivo, colorNeutro, colorNegativo);
+    return escalaColores(0, valorMax, umbral, colorPositivo, colorNeutro, colorNegativo);
   }
 };

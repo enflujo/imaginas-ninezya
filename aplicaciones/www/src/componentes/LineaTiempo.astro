@@ -48,8 +48,8 @@ const { alto } = Astro.props;
 
 <script>
   import { porcentajeAPixeles } from '@/utilidades/ayudas';
-  import { listaAños, datosNal, lugaresSeleccionados, datosIndicadorDep, valorMax } from '@/utilidades/cerebro';
-  import { dimsLineaTiempo as dimsVis } from '@/utilidades/constantes';
+  import { listaAños, datosNal, lugaresSeleccionados, datosIndicadorDep, valorMax, umbral } from '@/utilidades/cerebro';
+  import { colorPositivo, dimsLineaTiempo as dimsVis } from '@/utilidades/constantes';
   import { convertirEscala } from '@enflujo/alquimia';
   import Linea from '@/componentes/Linea';
   import type { DatosIndicador, DatosPorAñoOrdenado } from '@/tipos';
@@ -145,6 +145,21 @@ const { alto } = Astro.props;
   }
 
   function crearEjeY() {
+    if (umbral) {
+      const areaUmbral = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+
+      const alto = datosNal.value.ascendente ? posicionY(umbral) : posicionY(0) - posicionY(umbral);
+      const y = datosNal.value.ascendente ? posicionY(valorMax) : posicionY(umbral);
+
+      areaUmbral.setAttribute('class', 'umbral');
+      areaUmbral.setAttribute('x', `${dimsVis.marcoIz}px`);
+      areaUmbral.setAttribute('fill', colorPositivo);
+      areaUmbral.setAttribute('y', `${y}`);
+      areaUmbral.setAttribute('width', '100%');
+      areaUmbral.setAttribute('height', `${alto}`);
+      contenedorEjeY.appendChild(areaUmbral);
+    }
+
     for (let i = 0; i <= cantidadDivisiones; i++) {
       const grupo = document.createElementNS('http://www.w3.org/2000/svg', 'g');
       const marca = document.createElementNS('http://www.w3.org/2000/svg', 'line');
