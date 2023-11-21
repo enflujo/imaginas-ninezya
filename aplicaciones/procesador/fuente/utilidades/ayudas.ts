@@ -36,12 +36,14 @@ export const guardarJSON = (json: object, nombre: string): void => {
  * @returns {number} Número con decimales reducidos.
  */
 export const redondearDecimal = (num: number, minimo: number, maximo: number): number =>
-  Number(
-    new Intl.NumberFormat('en-US', {
-      minimumFractionDigits: minimo,
-      maximumFractionDigits: maximo,
-    }).format(num)
-  );
+  +(Math.round(+(num + 'e+2')) + 'e-2');
+// Number(
+//   new Intl.NumberFormat('en-US', {
+//     maximumSignificantDigits: 3,
+//     minimumFractionDigits: minimo,
+//     maximumFractionDigits: maximo,
+//   }).format(num)
+// );
 
 export const extraerNombreCodigo = (texto: string): NombreCodigo => {
   if (texto) {

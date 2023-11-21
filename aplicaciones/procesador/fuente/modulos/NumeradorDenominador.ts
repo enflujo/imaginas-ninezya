@@ -24,7 +24,7 @@ export default class {
   unidadMedida: number;
 
   constructor(ascendente: boolean, estructura: EstructurasMatematicas, unidadMedida: number) {
-    this.datosNacionales = { ascendente, estructura, unidadMedida, datos: {} };
+    this.datosNacionales = { ascendente, estructura, unidadMedida, datos: {}, max: 0, min: Infinity };
     this.errata = [];
     this.datosMunicipios = {};
     this.datosDepartamentos = {};
@@ -38,23 +38,27 @@ export default class {
     await maquinaXlsx(nombreReferencia, nombreArchivo, hoja, this.procesarMunicipios);
 
     for (const año in this.preDatosMunicipios) {
-      this.datosMunicipios[año] = this.preDatosMunicipios[año].map((d) => [
-        d[0],
-        redondearDecimal((d[1] / d[2]) * this.unidadMedida, 1, 2),
-      ]);
+      this.datosMunicipios[año] = this.preDatosMunicipios[año].map((d) => {
+        const valor = redondearDecimal((d[1] / d[2]) * this.unidadMedida, 1, 2);
+        this.revisarMinMax(valor);
+        return [d[0], valor];
+      });
     }
 
     for (const año in this.preDatosDepartamentos) {
-      this.datosDepartamentos[año] = this.preDatosDepartamentos[año].map((d) => [
-        d[0],
-        redondearDecimal((d[1] / d[2]) * this.unidadMedida, 1, 2),
-      ]);
+      this.datosDepartamentos[año] = this.preDatosDepartamentos[año].map((d) => {
+        const valor = redondearDecimal((d[1] / d[2]) * this.unidadMedida, 1, 2);
+        this.revisarMinMax(valor);
+        return [d[0], valor];
+      });
     }
     this.procesarDepartamentos();
 
     for (const año in this.preDatosNacionales) {
       const [num, den] = this.preDatosNacionales[año];
-      this.datosNacionales.datos[año] = redondearDecimal((num / den) * this.unidadMedida, 1, 2);
+      const valor = redondearDecimal((num / den) * this.unidadMedida, 1, 2);
+      this.revisarMinMax(valor);
+      this.datosNacionales.datos[año] = valor;
     }
 
     guardarJSON(this.datosMunicipios, `${nombreParaArchivo}-mun`);
@@ -179,6 +183,16 @@ export default class {
           }
         }
       }
+    }
+  }
+
+  revisarMinMax(valor: number) {
+    if (this.datosNacionales.max < valor) {
+      this.datosNacionales.max = valor;
+    }
+
+    if (this.datosNacionales.min > valor) {
+      this.datosNacionales.min = valor;
     }
   }
 }

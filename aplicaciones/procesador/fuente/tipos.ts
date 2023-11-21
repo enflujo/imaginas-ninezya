@@ -193,6 +193,8 @@ export type RespuestaNacional = {
   estructura: EstructurasMatematicas;
   unidadMedida: number;
   datos: { [año: string]: number };
+  max: number;
+  min: number;
 };
 
 export type VariableValorSingular =
@@ -209,7 +211,8 @@ export type VariableValorSingular =
   | 'lectura'
   | 'tasa_desercion'
   | 'concentracion'
-  | 'repitencia';
+  | 'repitencia'
+  | 'desnutricion';
 
 export type VariablesSingulares = {
   [llave in VariableValorSingular]: number;

@@ -48,7 +48,7 @@ const { alto } = Astro.props;
 
 <script>
   import { porcentajeAPixeles } from '@/utilidades/ayudas';
-  import { listaAños, datosNal, lugaresSeleccionados, datosIndicadorDep } from '@/utilidades/cerebro';
+  import { listaAños, datosNal, lugaresSeleccionados, datosIndicadorDep, valorMax } from '@/utilidades/cerebro';
   import { dimsLineaTiempo as dimsVis } from '@/utilidades/constantes';
   import { convertirEscala } from '@enflujo/alquimia';
   import Linea from '@/componentes/Linea';
@@ -64,7 +64,6 @@ const { alto } = Astro.props;
 
   const proporciones = { porcentaje: { x1: 2, x2: 95 }, pixeles: { x1: 0, x2: 0 } };
   const años = { primero: 0, ultimo: 0 };
-  let valorMax = 100;
   let cantidadDivisiones = 5;
 
   escalar();
@@ -77,7 +76,8 @@ const { alto } = Astro.props;
       dimsVis.marcoIz + proporciones.pixeles.x1,
       proporciones.pixeles.x2
     );
-  const posicionY = (valor: number) => convertirEscala(valor, 100, 0, dimsVis.margenArriba, dimsVis.altoVis);
+
+  const posicionY = (valor: number) => convertirEscala(valor, valorMax, 0, dimsVis.margenArriba, dimsVis.altoVis);
 
   window.addEventListener('resize', escalar);
 
@@ -85,7 +85,6 @@ const { alto } = Astro.props;
     if (!datosNacionales.estructura) return;
 
     if (datosNacionales.estructura === 'porcentaje') {
-      valorMax = 100;
       cantidadDivisiones = 5;
       nombreEjeY.innerHTML = 'Porcentaje';
     }
@@ -128,7 +127,7 @@ const { alto } = Astro.props;
 
     if (marcasY) {
       marcasY.forEach((marca, i) => {
-        actualizarMarcaY(marca, posicionY((100 / cantidadDivisiones) * i));
+        actualizarMarcaY(marca, posicionY((valorMax / cantidadDivisiones) * i));
       });
     }
 
@@ -166,7 +165,7 @@ const { alto } = Astro.props;
       texto.setAttribute('class', 'textoEje textoEjeY');
       texto.setAttribute('x', '-20');
       texto.setAttribute('y', '3');
-      texto.innerHTML = `${textoEje}`;
+      texto.innerHTML = `${Intl.NumberFormat('en', { notation: 'compact' }).format(textoEje)}`;
 
       referencia.setAttribute('class', i === 0 ? 'lineaMarco lineaBase' : 'lineaY');
       referencia.setAttribute('x1', '0');

@@ -26,7 +26,7 @@ export default class {
     estructura: EstructurasMatematicas,
     unidadMedida = 100
   ) {
-    this.datosNacionales = { ascendente, estructura, unidadMedida, datos: {} };
+    this.datosNacionales = { ascendente, estructura, unidadMedida, datos: {}, max: 0, min: Infinity };
     this.errata = [];
     this.datosMunicipios = {};
     this.datosDepartamentos = {};
@@ -37,6 +37,7 @@ export default class {
     await maquinaXlsx(nombreReferencia, nombreArchivo, hoja, this.procesarMunicipios);
     this.procesarDepartamentos();
     this.procesarNacional();
+
     guardarJSON(this.datosMunicipios, `${nombreParaArchivo}-mun`);
     guardarJSON(this.datosDepartamentos, `${nombreParaArchivo}-dep`);
     guardarJSON(this.datosNacionales, `${nombreParaArchivo}-nal`);
@@ -52,6 +53,9 @@ export default class {
       this.errata.push({ fila: numeroFila, error: `el valor no es un número: ${valor}` });
       return;
     }
+
+    this.revisarMinMax(valor);
+
     // Si no existe el municipio
     if (municipio.hasOwnProperty('error') && valor) {
       // El código de datos nacionales es 1001 entonces lo podemos comparar directo.
@@ -124,7 +128,7 @@ export default class {
             }
             const suma = deps[codDep].reduce((valorAnterior, valorActual) => valorAnterior + valorActual, 0);
             const porcentaje = redondearDecimal(suma / deps[codDep].length, 1, 2);
-
+            this.revisarMinMax(porcentaje);
             this.datosDepartamentos[año].push([(departamento as Departamento)[0], porcentaje]);
           }
         }
@@ -140,9 +144,20 @@ export default class {
         // No hay datos nacionales, sacarlos a partir de los datos departamentales.
         const datosAño = this.datosDepartamentos[año];
         const suma = datosAño.reduce((depAnterior, valorActual) => ['', depAnterior[1] + valorActual[1]], ['', 0]);
-
-        this.datosNacionales.datos[año] = redondearDecimal(suma[1] / datosAño.length, 1, 2);
+        const porcentaje = redondearDecimal(suma[1] / datosAño.length, 1, 2);
+        this.revisarMinMax(porcentaje);
+        this.datosNacionales.datos[año] = porcentaje;
       }
+    }
+  }
+
+  revisarMinMax(valor: number) {
+    if (this.datosNacionales.max < valor) {
+      this.datosNacionales.max = valor;
+    }
+
+    if (this.datosNacionales.min > valor) {
+      this.datosNacionales.min = valor;
     }
   }
 }
