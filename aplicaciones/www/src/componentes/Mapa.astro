@@ -14,7 +14,7 @@ const { ancho, alto } = Astro.props;
   <svg class="mapa" data-proporciones={JSON.stringify({ ancho, alto })}>
     <defs>
       <pattern id="sinInfo" patternUnits="userSpaceOnUse" width="3.5" height="3.5" patternTransform="rotate(45)">
-        <line x1="0" y="0" x2="0" y2="3.5" stroke="#46484A" stroke-width="1"></line>
+        <line x1="0" y1="0" x2="0" y2="3.5" stroke="#46484A" stroke-width="1"></line>
       </pattern>
     </defs>
 
@@ -142,6 +142,7 @@ const { ancho, alto } = Astro.props;
       escalar();
 
       colombia.innerHTML = '';
+      seleccionados.innerHTML = '';
       datosParaPintar = municipios;
 
       crearMapa('municipios');
@@ -156,6 +157,7 @@ const { ancho, alto } = Astro.props;
       escalar();
 
       colombia.innerHTML = '';
+      seleccionados.innerHTML = '';
       datosParaPintar = departamentos;
       crearMapa('departamentos');
       if (!añoSeleccionado.value) return;
