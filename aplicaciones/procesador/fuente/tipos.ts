@@ -212,13 +212,14 @@ export type VariableValorSingular =
   | 'tasa_desercion'
   | 'concentracion'
   | 'repitencia'
-  | 'desnutricion';
+  | 'desnutricion'
+  | 'o_acto_terror';
 
 export type VariablesSingulares = {
   [llave in VariableValorSingular]: number;
 };
 
-export type EstructurasMatematicas = 'porcentaje' | 'tasa' | 'escala';
+export type EstructurasMatematicas = 'porcentaje' | 'tasa' | 'escala' | 'conteo';
 
 export type VariablesNumDen = {
   anno: string;
