@@ -26,7 +26,11 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
         <h4 class="titulo">Nivel de desagregación</h4><p class="texto">{datosIndicador.desagregacion}</p>
       </div>
       <div class="seccion">
-        <h4 class="titulo">Cómo se interpreta</h4><p class="texto">{datosIndicador.interpretacion}</p>
+        <h4 class="titulo">Contexto</h4><p class="texto">{datosIndicador.contexto}</p>
+      </div>
+      <div class="seccion">
+        <h4 class="titulo">Cómo se interpreta</h4>
+        <p class="texto">{datosIndicador.interpretacion}</p>
       </div>
     </section>
   </div>
@@ -143,6 +147,8 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
           display: flex;
           align-items: center;
           min-height: 2.3em;
+          text-wrap: wrap;
+          overflow-wrap: anywhere;
         }
       }
     }
