@@ -9,6 +9,7 @@ import type { GetStaticPaths } from 'astro';
 import FichaTecnica from '@/componentes/FichaTecnica.astro';
 import Buscador from '@/componentes/Buscador.astro';
 import DescripcionYa from '@/componentes/DescripcionYa.astro';
+import PropuestaIndicador from '@/componentes/PropuestaIndicador.astro';
 
 export const getStaticPaths = (() => {
   return datos
@@ -35,30 +36,43 @@ const archivosYa = datosYa.indicadores.map((indicador) => indicador.archivo);
     archivos={archivosYa}
   />
 
-  <div id="visualizaciones" class="columna" data-archivo={datosIndicador.archivo} data-umbral={datosIndicador.umbral}>
-    <div id="secionSuperior">
-      <div id="filtros">
-        <div id="indicadorSeleccionado">
-          <h2 id="nombreYa">{datosYa.nombre}</h2>
-          <h3 id="nombreIndicador">{datosIndicador.nombre}</h3>
+  <div id="contenedor" data-haydatos=`${datosIndicador.hay_datos}`>
+    <p>{datosIndicador.hay_datos}</p>
+    <div id="conDatos">
+      <div
+        id="visualizaciones"
+        class="columna"
+        data-archivo={datosIndicador.archivo}
+        data-umbral={datosIndicador.umbral}
+      >
+        <div id="secionSuperior">
+          <div id="filtros">
+            <div id="indicadorSeleccionado">
+              <h2 id="nombreYa">{datosYa.nombre}</h2>
+              <h3 id="nombreIndicador">{datosIndicador.nombre}</h3>
 
-          <span id="abrirFicha">?</span>
-          <p id="descripcionIndicador">{datosIndicador.explicacion}</p>
+              <span id="abrirFicha">?</span>
+              <p id="descripcionIndicador">{datosIndicador.explicacion}</p>
+            </div>
+            <Buscador />
+            <FichaTecnica />
+            <SelectorNivel />
+            <MenuAnios />
+          </div>
+          <div id="mapa"><Mapa ancho={30} alto={45} /></div>
         </div>
-        <Buscador />
-        <FichaTecnica />
-        <SelectorNivel />
-        <MenuAnios />
+
+        <LineaTiempo alto={25} />
       </div>
 
-      <Mapa ancho={30} alto={45} />
+      <div id="comparativo" class="columna"></div>
+      <div id="informacion"></div>
     </div>
-
-    <LineaTiempo alto={25} />
   </div>
 
-  <div id="comparativo" class="columna"></div>
-  <div id="informacion"></div>
+  <div id="sinDatos">
+    <PropuestaIndicador />
+  </div>
 </Plantilla>
 
 <script>
@@ -67,6 +81,14 @@ const archivosYa = datosYa.indicadores.map((indicador) => indicador.archivo);
   const comparativo = document.getElementById('comparativo') as HTMLDivElement;
   const botonFicha = document.getElementById('abrirFicha') as HTMLSpanElement;
   const infoAdicional = document.getElementById('contenedorInfoAdicional') as HTMLDivElement;
+  const contenedorGeneral = document.getElementById('contenedor');
+  const conDatos = document.getElementById('conDatos');
+  const sinDatos = document.getElementById('sinDatos');
+  if (contenedorGeneral.dataset.haydatos === 'true') {
+  } else {
+    conDatos.classList.add('oculto');
+    sinDatos.classList.add('visible');
+  }
 
   botonFicha.addEventListener('click', () => {
     infoAdicional.classList.toggle('abierta');
@@ -198,6 +220,19 @@ const archivosYa = datosYa.indicadores.map((indicador) => indicador.archivo);
       border: solid 1px var(--azulViejo);
       color: var(--azulViejo);
       cursor: pointer;
+    }
+  }
+  #conDatos {
+    &.oculto {
+      display: none;
+    }
+  }
+
+  #sinDatos {
+    display: none;
+
+    &.visible {
+      display: block;
     }
   }
 </style>

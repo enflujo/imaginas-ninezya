@@ -5,7 +5,7 @@ const datosYa = datos.find((instancia) => instancia.ruta === ya);
 const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta === indicador);
 ---
 
-<div id="contenedorInfoAdicional">
+<div id="contenedorInfoAdicional" data-hayDatos=`${datosIndicador.hay_datos}`>
   <div id="fichaTecnica">
     <h2 id="ya" class="tituloSeccion">{datosYa.nombre}</h2>
     <p id="nombre">{datosIndicador.nombre}</p>
@@ -33,23 +33,6 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
         <p class="texto">{datosIndicador.interpretacion}</p>
       </div>
     </section>
-  </div>
-
-  <div id="contenedorSugerencias">
-    <div id="aviso">
-      No hay información suficiente para reconstruir este indicador. Aquí hay algunas sugerencias de cómo podría
-      trabajarse.
-    </div>
-    <div class="sugerencia">
-      <h4 class="titulo">Responsables de medición</h4><p class="texto">
-        Ej. DANE (Departamento Administrativo Nacional de Estadística)
-      </p>
-    </div>
-    <div class="sugerencia">
-      <h4 class="titulo">A quién le compete</h4><p class="texto">
-        Ej. ICBF (Instituto Colombiano de Bienestar Familiar)
-      </p>
-    </div>
   </div>
 </div>
 
@@ -149,40 +132,6 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
           min-height: 2.3em;
           text-wrap: wrap;
           overflow-wrap: anywhere;
-        }
-      }
-    }
-
-    #contenedorSugerencias {
-      // PORHACER: Mostrar solo si el indicador no tiene datos - falta
-      display: none;
-      width: 30%;
-      font-size: 0.9em;
-      flex-direction: column;
-      justify-content: space-between;
-
-      #aviso {
-        color: yellow;
-        background-color: var(--uvaProfunda);
-        padding: 3em;
-        border: solid 2px yellow;
-        border-radius: 10px;
-      }
-
-      .sugerencia {
-        .titulo {
-          background-color: var(--uvaProfunda);
-          color: var(--blancoMarfil);
-          padding: 2em 2em 1.5em 2em;
-          border-radius: 10px 10px 0 0;
-          margin-bottom: 0;
-        }
-        .texto {
-          background-color: var(--blancoMarfil);
-          color: var(--azulViejo);
-          border: solid 2px var(--uvaProfunda);
-          margin: 0;
-          padding: 2em 2em 1.5em 2em;
         }
       }
     }
