@@ -108,6 +108,10 @@ main {
 
 .contenido {
   margin-left: 18vw;
+
+  &.sinMenu {
+    margin-left: 0;
+  }
 }
 
 #cabecera {

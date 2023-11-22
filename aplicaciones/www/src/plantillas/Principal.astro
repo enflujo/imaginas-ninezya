@@ -63,7 +63,7 @@ const altImg = imagen ? imagen.alt : nombrePagina;
   <body>
     <Encabezado />
     {conMenu && <Menu />}
-    <main class="contenido">
+    <main class={`contenido${!conMenu ? ' sinMenu' : ''}`}>
       <slot />
     </main>
 
