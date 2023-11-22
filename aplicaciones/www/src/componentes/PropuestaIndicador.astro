@@ -17,55 +17,49 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
         <h4 class="titulo">Metodología de cálculo</h4><p class="texto">{datosIndicador.metodologia}</p>
       </div>
       <div class="seccion">
-        <h4 class="titulo">Fuente del numerador</h4><p class="texto">{datosIndicador.fuente_numerador}</p>
-      </div>
-      <div class="seccion">
-        <h4 class="titulo">Fuente del denominador</h4><p class="texto">{datosIndicador.fuente_denominador}</p>
-      </div>
-      <div class="seccion">
-        <h4 class="titulo">Nivel de desagregación</h4><p class="texto">{datosIndicador.desagregacion}</p>
-      </div>
-      <div class="seccion">
-        <h4 class="titulo">Contexto</h4><p class="texto">{datosIndicador.contexto}</p>
-      </div>
-      <div class="seccion">
         <h4 class="titulo">Cómo se interpreta</h4>
         <p class="texto">{datosIndicador.interpretacion}</p>
       </div>
     </section>
   </div>
+
+  <div id="contenedorSugerencias">
+    <div id="aviso">
+      No hay información suficiente para reconstruir este indicador. Aquí hay algunas sugerencias de cómo podría
+      trabajarse.
+    </div>
+    <div class="sugerencia">
+      <h4 class="titulo">Responsables de medición</h4><p class="texto">
+        Ej. DANE (Departamento Administrativo Nacional de Estadística)
+      </p>
+    </div>
+    <div class="sugerencia">
+      <h4 class="titulo">A quién le compete</h4><p class="texto">
+        Ej. ICBF (Instituto Colombiano de Bienestar Familiar)
+      </p>
+    </div>
+  </div>
 </div>
-
-<script>
-  const infoAdicional = document.getElementById('contenedorInfoAdicional');
-  const abrirFicha = document.getElementById('abrirFicha');
-
-  // Cerrar ficha al hacer click afuera
-  document.body.addEventListener('click', (evento) => {
-    if (evento.target === abrirFicha) return;
-
-    if (!(infoAdicional === evento.target || infoAdicional.contains(evento.target as Node))) {
-      infoAdicional.classList.remove('abierta');
-    }
-  });
-</script>
 
 <style lang="scss">
   #contenedorInfoAdicional {
-    display: none;
+    display: flex;
     position: absolute;
     justify-content: space-around;
+    align-items: center;
     background-color: var(--blancoMarfil);
+    margin: 2em;
 
     #fichaTecnica {
       width: 40vw;
+      height: fit-content;
       min-width: 300px;
       border: solid 2px var(--azulViejo);
       border-radius: 15px;
       color: var(--azulViejo);
       background-color: var(--blancoMarfil);
       text-align: center;
-      z-index: 9;
+      z-index: 5;
       font-variation-settings:
         'MONO' 0,
         'CASL' 0,
@@ -136,8 +130,46 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
       }
     }
 
-    &.abierta {
+    #contenedorSugerencias {
       display: flex;
+      width: 40%;
+      font-size: 0.9em;
+      flex-direction: column;
+      justify-content: space-between;
+
+      #aviso {
+        color: yellow;
+        background-color: var(--uvaProfunda);
+        padding: 3em;
+        border: solid 2px yellow;
+        border-radius: 10px;
+      }
+
+      .sugerencia {
+        .titulo {
+          background-color: var(--uvaProfunda);
+          color: var(--blancoMarfil);
+          padding: 2em 2em 1.5em 2em;
+          border-radius: 10px 10px 0 0;
+          margin-bottom: 0;
+        }
+        .texto {
+          background-color: var(--blancoMarfil);
+          color: var(--azulViejo);
+          border: solid 2px var(--uvaProfunda);
+          margin: 0;
+          padding: 2em 2em 1.5em 2em;
+        }
+      }
+    }
+
+    &.sinDatos {
+      background-color: aliceblue;
+      height: 100vh;
+      position: absolute;
+      top: 10vh;
+      left: 19vw;
+      z-index: 9;
     }
   }
 </style>
