@@ -183,14 +183,20 @@ const datos: DatosYa[] = [
         mun: false,
         dep: false,
         explicacion: 'Indica la proporción de estudiantes que asisten a instituciones públicas oficiales.',
-        definicion: 'Proporción de estudiantes en el sector oficial, con respecto al total de estudiantes en el mismo periodo y lugar.',
-        metodologia: 'Se desconoce, metodología propia del Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE).',
+        definicion:
+          'Proporción de estudiantes en el sector oficial, con respecto al total de estudiantes en el mismo periodo y lugar.',
+        metodologia:
+          'Se desconoce, metodología propia del Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE).',
         unidad: 'Porcentaje',
-        fuente_numerador: 'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE',
-        fuente_denominador: 'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE',
+        fuente_numerador:
+          'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE',
+        fuente_denominador:
+          'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE',
         desagregacion: 'Municipal',
-        contexto: 'No hay un consenso sobre la proporción de estudiantes que deberían asistir a una institución educativa oficial o no oficial, ya que esto depende del contexto del sistema educativo y de la capacidad institucional de cada país.',
-        interpretacion: 'Un valor de 97% indica que 97 de cada 100 estudiantes asisten a un establecimiento educativo oficial en un momento y territorio específicos. Más Información: https://www.dane.gov.co/files/investigaciones/boletines/educacion/formulario-C600-EDUC-2022.pdf',
+        contexto:
+          'No hay un consenso sobre la proporción de estudiantes que deberían asistir a una institución educativa oficial o no oficial, ya que esto depende del contexto del sistema educativo y de la capacidad institucional de cada país.',
+        interpretacion:
+          'Un valor de 97% indica que 97 de cada 100 estudiantes asisten a un establecimiento educativo oficial en un momento y territorio específicos. Más Información: https://www.dane.gov.co/files/investigaciones/boletines/educacion/formulario-C600-EDUC-2022.pdf',
       },
       {
         nombre: 'Cobertura bruta Transición',
@@ -247,15 +253,22 @@ const datos: DatosYa[] = [
         hay_datos: true,
         mun: false,
         dep: false,
-        explicacion: 'Indica la proporción de estudiantes que cursan primaria y asisten a instituciones públicas oficiales.',
-        definicion: 'La tasa de cobertura bruta mide la relación porcentual entre el número total de estudiantes matriculados, sobre el total de la población en edad teórica para cursar el nivel educativo.',
-        metodologia: 'Número total de estudiantes matriculados que tienen entre 6 y 10 años de edad y asisten a instituciones oficiales / Total de la población entre 6 y 10 años de edad en el mismo periodo y territorio.',
+        explicacion:
+          'Indica la proporción de estudiantes que cursan primaria y asisten a instituciones públicas oficiales.',
+        definicion:
+          'La tasa de cobertura bruta mide la relación porcentual entre el número total de estudiantes matriculados, sobre el total de la población en edad teórica para cursar el nivel educativo.',
+        metodologia:
+          'Número total de estudiantes matriculados que tienen entre 6 y 10 años de edad y asisten a instituciones oficiales / Total de la población entre 6 y 10 años de edad en el mismo periodo y territorio.',
         unidad: 'Porcentaje',
-        fuente_numerador: 'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE.',
-        fuente_denominador: 'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE.',
+        fuente_numerador:
+          'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE.',
+        fuente_denominador:
+          'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE.',
         desagregacion: 'Municipal',
-        contexto: 'Las tasas de cobertura permiten medir la capacidad del sistema educativo para atender la demanda. No hay un consenso sobre la proporción de estudiantes que deberían asistir a una institución educativa oficial o no oficial, ya que esto depende del contexto del sistema educativo y de la capacidad institucional de cada país.',
-        interpretacion: 'Un valor de 65% indica que 65 de cada 100 estudiantes que cursan primaria asisten a un establecimiento educativo oficial en un momento y territorio específicos. Más Información: https://www.dane.gov.co/files/investigaciones/boletines/educacion/formulario-C600-EDUC-2022.pdf',
+        contexto:
+          'Las tasas de cobertura permiten medir la capacidad del sistema educativo para atender la demanda. No hay un consenso sobre la proporción de estudiantes que deberían asistir a una institución educativa oficial o no oficial, ya que esto depende del contexto del sistema educativo y de la capacidad institucional de cada país.',
+        interpretacion:
+          'Un valor de 65% indica que 65 de cada 100 estudiantes que cursan primaria asisten a un establecimiento educativo oficial en un momento y territorio específicos. Más Información: https://www.dane.gov.co/files/investigaciones/boletines/educacion/formulario-C600-EDUC-2022.pdf',
       },
       {
         nombre: 'Hostigamiento a la población civil',
@@ -265,14 +278,19 @@ const datos: DatosYa[] = [
         mun: false,
         dep: false,
         explicacion: 'Indica el número total de actos terroristas.',
-        definicion: 'Este indicar presenta un conteo del número de actos terroristas, hostigamientos, combates y enfrentamientos en un mismo periodo y territorio en particular.',
-        metodologia: 'Total = Suma(Número de Actos Terroritas, Atentados, Combates, Enfretamientos, Declaraciones de Hostigamientos).',
+        definicion:
+          'Este indicar presenta un conteo del número de actos terroristas, hostigamientos, combates y enfrentamientos en un mismo periodo y territorio en particular.',
+        metodologia:
+          'Total = Suma(Número de Actos Terroritas, Atentados, Combates, Enfretamientos, Declaraciones de Hostigamientos).',
         unidad: '',
-        fuente_numerador: 'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE)  con base en el Registro Único de Víctimas.',
+        fuente_numerador:
+          'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE)  con base en el Registro Único de Víctimas.',
         fuente_denominador: 'No aplica',
         desagregacion: 'Municipal',
-        contexto: 'Sánchez et al., (2005) han estudiando los efectos del conflicto armado en el desarrollo social colombiano, los autores muestran como los actos terroristas están relacionados con un bajo desempeño en el aula y por consiguiente en el constructo de herramientas que alimentan la formación de capital humano.',
-        interpretacion: 'Un valor de 20 índica que en un mismo periodo y territorio en particular se presentaron 20 ataques armados a la población civil* El indicador no pondera un peso en particular en función de la categoría que integran el agregado de "Ataques Armados".',
+        contexto:
+          'Sánchez et al., (2005) han estudiando los efectos del conflicto armado en el desarrollo social colombiano, los autores muestran como los actos terroristas están relacionados con un bajo desempeño en el aula y por consiguiente en el constructo de herramientas que alimentan la formación de capital humano.',
+        interpretacion:
+          'Un valor de 20 índica que en un mismo periodo y territorio en particular se presentaron 20 ataques armados a la población civil* El indicador no pondera un peso en particular en función de la categoría que integran el agregado de "Ataques Armados".',
       },
       {
         nombre: 'Número de incidentes con artefactos explosivos',
@@ -282,14 +300,18 @@ const datos: DatosYa[] = [
         mun: false,
         dep: false,
         explicacion: 'Indica el número total de ocurrencias con artefactos explosivos.',
-        definicion: 'Este indicar presenta un conteo del número de ocurrencias terroristas con artefactos explosivos en un mismo periodo y territorio en particular. * Contemplar Población Civil y personal de la Fuerza Pública',
+        definicion:
+          'Este indicar presenta un conteo del número de ocurrencias terroristas con artefactos explosivos en un mismo periodo y territorio en particular. * Contemplar Población Civil y personal de la Fuerza Pública',
         metodologia: 'Total = Suma(Artefactos Explosivos, Munición, Minas Antipersonales).',
         unidad: 'Conteo',
-        fuente_numerador: 'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE)  con base en el Registro Único de Víctimas.',
+        fuente_numerador:
+          'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE)  con base en el Registro Único de Víctimas.',
         fuente_denominador: 'No aplica',
         desagregacion: 'Municipal',
-        contexto: 'Arias et al., (214) han estudiando los efectos del conflicto armado en el desarrollo económico y social en Colombia, de acuerdo con los autores el conflicto armad ha tenido efectos devastadores en el sistema educativo del país. Las instituciones educativas, tanto oficiales como no oficiales, han enfrentado numerosos desafíos debido a la violencia y la inestabilidad asociadas con el conflicto. Muchas escuelas han sido afectadas directamente, ya sea por actos de violencia que las han dejado inoperables o por la desaparición de recursos esenciales. Además, el desplazamiento forzado de comunidades enteras ha tenido un impacto directo en la tasa de matricula y la asistencia escolar, ya que muchos niños y jóvenes se han visto obligados a abandonar sus hogares y, en consecuencia, sus estudios. Este entorno de conflicto también ha llevado a la pérdida de maestros capacitados, ya sea porque han sido desplazados o han abandonado sus roles por motivos de seguridad.',
-        interpretacion: 'Un valor de 15 índica que en un mismo periodo y territorio en particular se presentaron 15 ocurrencias con anterfactos explosivos* El no pondera un peso en particular en función de la categoría que integran el agregado de "Artefactos Explosivos".',
+        contexto:
+          'Arias et al., (214) han estudiando los efectos del conflicto armado en el desarrollo económico y social en Colombia, de acuerdo con los autores el conflicto armad ha tenido efectos devastadores en el sistema educativo del país. Las instituciones educativas, tanto oficiales como no oficiales, han enfrentado numerosos desafíos debido a la violencia y la inestabilidad asociadas con el conflicto. Muchas escuelas han sido afectadas directamente, ya sea por actos de violencia que las han dejado inoperables o por la desaparición de recursos esenciales. Además, el desplazamiento forzado de comunidades enteras ha tenido un impacto directo en la tasa de matricula y la asistencia escolar, ya que muchos niños y jóvenes se han visto obligados a abandonar sus hogares y, en consecuencia, sus estudios. Este entorno de conflicto también ha llevado a la pérdida de maestros capacitados, ya sea porque han sido desplazados o han abandonado sus roles por motivos de seguridad.',
+        interpretacion:
+          'Un valor de 15 índica que en un mismo periodo y territorio en particular se presentaron 15 ocurrencias con anterfactos explosivos* El no pondera un peso en particular en función de la categoría que integran el agregado de "Artefactos Explosivos".',
       },
     ],
   },
@@ -310,7 +332,8 @@ const datos: DatosYa[] = [
         dep: false,
         explicacion: 'Indica la cobertura bruta de estudiantes que cursan educación media.',
         definicion: 'Indica la cobertura bruta de estudiantes que cursan educación media.',
-        metodologia: 'Número total de estudiantes matriculados y tienen entre 15 y 16 años de edad / Total de la población que tiene entre 15 y 16 años de edad en el mismo periodo y territorio. * 100.',
+        metodologia:
+          'Número total de estudiantes matriculados y tienen entre 15 y 16 años de edad / Total de la población que tiene entre 15 y 16 años de edad en el mismo periodo y territorio. * 100.',
         unidad: 'Porcentaje',
         fuente_numerador:
           'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE.',
@@ -318,7 +341,8 @@ const datos: DatosYa[] = [
           'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE.',
         desagregacion: 'Municipal',
         contexto: 'Las tasas de cobertura permiten medir la capacidad del sistema educativo para atender la demanda.',
-        interpretacion: 'Un valor de 50 indica que en promedio  de cada 100 estudiantes en edad teórica para cursar educación media, asisten a un establecimiento educativo en un momento y territorio específicos. Más Información: https://ods.dnp.gov.co/es/objetivos/educacion-de-calidad',
+        interpretacion:
+          'Un valor de 50 indica que en promedio  de cada 100 estudiantes en edad teórica para cursar educación media, asisten a un establecimiento educativo en un momento y territorio específicos. Más Información: https://ods.dnp.gov.co/es/objetivos/educacion-de-calidad',
       },
       {
         nombre: 'Resultados Pruebas Saber 11 matemáticas',
@@ -328,15 +352,19 @@ const datos: DatosYa[] = [
         umbral: 71,
         mun: false,
         dep: false,
-        explicacion: 'Indica, en promedio, en qué categoría se encuentra el desempeño en matemáticas de los estudiantes que presentaron el Saber 11.',
+        explicacion:
+          'Indica, en promedio, en qué categoría se encuentra el desempeño en matemáticas de los estudiantes que presentaron el Saber 11.',
         definicion: 'Mide el desempeño en promedio en el área de Matemáticas en las Prueba Saber 11.',
-        metodologia: 'Número Total de Evaluados en Cada Nivel de Desempeño en Matemáticas / Total de Evaludos en Matemáticas * 100 ***Los resultados individuales de la prueba Saber 11 (total y por área del conocimiento) son normalizados con una media de 50 y desviación de 10, tal como lo realiza el ICFES.',
+        metodologia:
+          'Número Total de Evaluados en Cada Nivel de Desempeño en Matemáticas / Total de Evaludos en Matemáticas * 100 ***Los resultados individuales de la prueba Saber 11 (total y por área del conocimiento) son normalizados con una media de 50 y desviación de 10, tal como lo realiza el ICFES.',
         unidad: 'Porcentaje',
         fuente_numerador: 'DataIcfes',
         fuente_denominador: 'DataIcfes',
         desagregacion: 'Municipal',
-        contexto: 'En Colombia, la valoración de la preparación académica de los estudiantes que completan la educación básica y media se realiza a través del examen de estado Saber 11. Este examen, obligatorio para el acceso a la educación superior, evalúa las competencias de los estudiantes de undécimo grado y bachilleres. Las Instituciones de Educación Superior requieren que los aspirantes hayan presentado el examen como parte de los requisitos de admisión, independientemente del puntaje obtenido. El gobierno colombiano administra pruebas en áreas clave como Matemáticas, Lectura crítica, Ciencias naturales, Sociales y ciudadanas, e Inglés para evaluar el desempeño académico de los estudiantes.', 
-        interpretacion: ' Los resultados de las pruebas se expresan en una escala de 0 a 100 puntos. El ICFES ha definido cuatro niveles de desempeño para las pruebas de Matemáticas: 1,2,3, y 4. Donde 1: Se limita a identificar las tareas demandadas. 2: Está en capacidad de diferenciar los procedimientos posibles para realizar las tareas requeridas. 3: Analiza procedimientos para desarrollar de la mejor manera la tarea solicitadaMás Información. 4:Está preparado para deducir y combinar procedimientos para realizar las tareas solicitadas. Los Rangos son los siguientes 1 (0 - 35)  2 (36 – 50) 3 (51 -70) 4 (71 - 100) Más Información: https://www.r4v.info/sites/default/files/2022-06/An%C3%A1lisis%20de%20brechas%20resultados%20escolares%20Pruebas%20Saber%2011%20-2020_compressed.pdf',
+        contexto:
+          'En Colombia, la valoración de la preparación académica de los estudiantes que completan la educación básica y media se realiza a través del examen de estado Saber 11. Este examen, obligatorio para el acceso a la educación superior, evalúa las competencias de los estudiantes de undécimo grado y bachilleres. Las Instituciones de Educación Superior requieren que los aspirantes hayan presentado el examen como parte de los requisitos de admisión, independientemente del puntaje obtenido. El gobierno colombiano administra pruebas en áreas clave como Matemáticas, Lectura crítica, Ciencias naturales, Sociales y ciudadanas, e Inglés para evaluar el desempeño académico de los estudiantes.',
+        interpretacion:
+          ' Los resultados de las pruebas se expresan en una escala de 0 a 100 puntos. El ICFES ha definido cuatro niveles de desempeño para las pruebas de Matemáticas: 1,2,3, y 4. Donde 1: Se limita a identificar las tareas demandadas. 2: Está en capacidad de diferenciar los procedimientos posibles para realizar las tareas requeridas. 3: Analiza procedimientos para desarrollar de la mejor manera la tarea solicitadaMás Información. 4:Está preparado para deducir y combinar procedimientos para realizar las tareas solicitadas. Los Rangos son los siguientes 1 (0 - 35)  2 (36 – 50) 3 (51 -70) 4 (71 - 100) Más Información: https://www.r4v.info/sites/default/files/2022-06/An%C3%A1lisis%20de%20brechas%20resultados%20escolares%20Pruebas%20Saber%2011%20-2020_compressed.pdf',
       },
       {
         nombre: 'Resultados Pruebas Saber 11 español',
@@ -348,13 +376,16 @@ const datos: DatosYa[] = [
         dep: false,
         explicacion: '',
         definicion: 'Mide el desempeño en promedio en el área de Lectura en la Prueba Saber 11.',
-        metodologia: 'Número Total de Evaluados en Cada Nivel de Desempeño en Lectura / Total de Evaludos en Lectura * 100 ***Los resultados individuales de la prueba Saber 11 (total y por área del conocimiento) son normalizados con una media de 50 y desviación de 10, tal como lo realiza el ICFES.',
+        metodologia:
+          'Número Total de Evaluados en Cada Nivel de Desempeño en Lectura / Total de Evaludos en Lectura * 100 ***Los resultados individuales de la prueba Saber 11 (total y por área del conocimiento) son normalizados con una media de 50 y desviación de 10, tal como lo realiza el ICFES.',
         unidad: 'Porcentaje',
         fuente_numerador: 'DataIcfes',
         fuente_denominador: 'DataIcfes',
         desagregacion: 'Municipal',
-        contexto: 'En Colombia, la valoración de la preparación académica de los estudiantes que completan la educación básica y media se realiza a través del examen de estado Saber 11. Este examen, obligatorio para el acceso a la educación superior, evalúa las competencias de los estudiantes de undécimo grado y bachilleres. Las Instituciones de Educación Superior requieren que los aspirantes hayan presentado el examen como parte de los requisitos de admisión, independientemente del puntaje obtenido. El gobierno colombiano administra pruebas en áreas clave como Matemáticas, Lectura crítica, Ciencias naturales, Sociales y ciudadanas, e Inglés para evaluar el desempeño académico de los estudiantes.',
-        interpretacion: ' Los resultados de las pruebas se expresan en una escala de 0 a 100 puntos. El ICFES ha definido cuatro niveles de desempeño para las pruebas de Español: 1,2,3, y 4. Donde 1: Se limita a identificar las tareas demandadas. 2: Está en capacidad de diferenciar los procedimientos posibles para realizar las tareas requeridas. 3: Analiza procedimientos para desarrollar de la mejor manera la tarea solicitadaMás Información. 4:Está preparado para deducir y combinar procedimientos para realizar las tareas solicitadas. Los Rangos son los siguientes 1 (0 - 35)  2 (36 – 50) 3 (51 -70) 4 (71 - 100) Más Información: https://www.r4v.info/sites/default/files/2022-06/An%C3%A1lisis%20de%20brechas%20resultados%20escolares%20Pruebas%20Saber%2011%20-2020_compressed.pdf',
+        contexto:
+          'En Colombia, la valoración de la preparación académica de los estudiantes que completan la educación básica y media se realiza a través del examen de estado Saber 11. Este examen, obligatorio para el acceso a la educación superior, evalúa las competencias de los estudiantes de undécimo grado y bachilleres. Las Instituciones de Educación Superior requieren que los aspirantes hayan presentado el examen como parte de los requisitos de admisión, independientemente del puntaje obtenido. El gobierno colombiano administra pruebas en áreas clave como Matemáticas, Lectura crítica, Ciencias naturales, Sociales y ciudadanas, e Inglés para evaluar el desempeño académico de los estudiantes.',
+        interpretacion:
+          ' Los resultados de las pruebas se expresan en una escala de 0 a 100 puntos. El ICFES ha definido cuatro niveles de desempeño para las pruebas de Español: 1,2,3, y 4. Donde 1: Se limita a identificar las tareas demandadas. 2: Está en capacidad de diferenciar los procedimientos posibles para realizar las tareas requeridas. 3: Analiza procedimientos para desarrollar de la mejor manera la tarea solicitadaMás Información. 4:Está preparado para deducir y combinar procedimientos para realizar las tareas solicitadas. Los Rangos son los siguientes 1 (0 - 35)  2 (36 – 50) 3 (51 -70) 4 (71 - 100) Más Información: https://www.r4v.info/sites/default/files/2022-06/An%C3%A1lisis%20de%20brechas%20resultados%20escolares%20Pruebas%20Saber%2011%20-2020_compressed.pdf',
       },
       {
         nombre: 'Tasa de deserción',
@@ -365,13 +396,16 @@ const datos: DatosYa[] = [
         dep: false,
         explicacion: 'Indica, en promedio, el número de estudiantes que abandonan el sistema educativo.',
         definicion: 'Porcentaje de estudiantes que abandonan el sistema educativo antes de finalizar el año lectivo.',
-        metodologia: 'Número Total de estudiantes que abandoraron el sistema educativo antes de finalizar el año lectivo / Total de estudiantes en el mismo periodo y territorio. *** La tasa de deserción intraanual solo tiene en cuenta a los alumnos que abandonan la escuela durante el año escolar, ésta se complementa con la tasa de deserción interanual que calcula aquellos que desertan al terminar el año escolar. (MEN, 2013, p. 72).',
+        metodologia:
+          'Número Total de estudiantes que abandoraron el sistema educativo antes de finalizar el año lectivo / Total de estudiantes en el mismo periodo y territorio. *** La tasa de deserción intraanual solo tiene en cuenta a los alumnos que abandonan la escuela durante el año escolar, ésta se complementa con la tasa de deserción interanual que calcula aquellos que desertan al terminar el año escolar. (MEN, 2013, p. 72).',
         unidad: 'Porcentaje',
         fuente_numerador: 'DataIcfes',
         fuente_denominador: 'DataIcfes',
         desagregacion: 'Municipal',
-        contexto: 'La deserción escolar tiene un gran impacto en el desarrollo integral, y la formación del capital humano, comunmente se asocia co factores clave como el género, las habilidades,  lascondiciones familiares, la calidad educativa y contexto. En respuesta, el Gobierno nacional, a través del Plan Nacional de Desarrollo 2018-2022, buscaba promover la permanencia en el sistema educativo mediante el fortalecimiento de trayectorias educativas completas, considerando aspectos como el bienestar, el reconocimiento de las características individuales, la alimentación escolar y  los ambientes de aprendizaje.',
-        interpretacion: ' Un valor de 5% indica que 5 de cada 100 estudiantes abandonaron el sistema educativo antes de finalizar el año lectivo en un territorio y momentos específicos. Más Información: https://www.mineducacion.gov.co/1780/articles-363488_recurso_34.pdf',
+        contexto:
+          'La deserción escolar tiene un gran impacto en el desarrollo integral, y la formación del capital humano, comunmente se asocia co factores clave como el género, las habilidades,  lascondiciones familiares, la calidad educativa y contexto. En respuesta, el Gobierno nacional, a través del Plan Nacional de Desarrollo 2018-2022, buscaba promover la permanencia en el sistema educativo mediante el fortalecimiento de trayectorias educativas completas, considerando aspectos como el bienestar, el reconocimiento de las características individuales, la alimentación escolar y  los ambientes de aprendizaje.',
+        interpretacion:
+          ' Un valor de 5% indica que 5 de cada 100 estudiantes abandonaron el sistema educativo antes de finalizar el año lectivo en un territorio y momentos específicos. Más Información: https://www.mineducacion.gov.co/1780/articles-363488_recurso_34.pdf',
       },
       {
         nombre: 'Tasa de repitencia',
@@ -381,15 +415,20 @@ const datos: DatosYa[] = [
         umbral: 2.7,
         mun: false,
         dep: false,
-        explicacion: 'Indica, en promedio, el número de estudiantes que vuelven a cursar el mismo grado académico al no ser promovidos al siguiente.',
-        definicion: 'Porcentaje de estudiantes que vuelven a cursar el grado cuando no han sido promovidos al siguiente.',
-        metodologia: 'Número Total de estudiantes que vuelven a cursar el grado cuando no han sido promovidos al siguiente / Total de estudiantes en el mismo periodo y territorio. * 100.',
+        explicacion:
+          'Indica, en promedio, el número de estudiantes que vuelven a cursar el mismo grado académico al no ser promovidos al siguiente.',
+        definicion:
+          'Porcentaje de estudiantes que vuelven a cursar el grado cuando no han sido promovidos al siguiente.',
+        metodologia:
+          'Número Total de estudiantes que vuelven a cursar el grado cuando no han sido promovidos al siguiente / Total de estudiantes en el mismo periodo y territorio. * 100.',
         unidad: 'Porcentaje',
         fuente_numerador: 'Observatorio de Trayectorias Educativas| Ministerio de Educación.',
         fuente_denominador: 'Observatorio de Trayectorias Educativas| Ministerio de Educación.',
         desagregacion: 'Municipal',
-        contexto: 'La repitencia se da cuando el estudiante, que no es promovido al grado siguiente, hace nuevamente el grado que estaba cursando o cuando ha dejado de estudiar durante un tiempo y regresa a la institución educativa con el fin de ponerse al día y repasar áreas que no recuerda u obtuvieron una evaluación muy baja, y voluntariamente decide hacer nuevamente el último grado cursado.',
-        interpretacion: ' Un valor de 3% indica que 3 de cada 100 estudiantes vuelven a cursar el grado cuando no han sido promovidos al siguiente antes de finalizar el año lectivo en un territorio y momentos específicos. Más Información: https://lee.javeriana.edu.co/documents/5581483/7093554/INFORME-5-LEE-JAVERIANA-REPITENCIA-ESCOLAR-ANTES-DE-PANDEMIA.pdf',
+        contexto:
+          'La repitencia se da cuando el estudiante, que no es promovido al grado siguiente, hace nuevamente el grado que estaba cursando o cuando ha dejado de estudiar durante un tiempo y regresa a la institución educativa con el fin de ponerse al día y repasar áreas que no recuerda u obtuvieron una evaluación muy baja, y voluntariamente decide hacer nuevamente el último grado cursado.',
+        interpretacion:
+          ' Un valor de 3% indica que 3 de cada 100 estudiantes vuelven a cursar el grado cuando no han sido promovidos al siguiente antes de finalizar el año lectivo en un territorio y momentos específicos. Más Información: https://lee.javeriana.edu.co/documents/5581483/7093554/INFORME-5-LEE-JAVERIANA-REPITENCIA-ESCOLAR-ANTES-DE-PANDEMIA.pdf',
       },
       {
         nombre: 'Tasa de cobertura bruta Primaria',
@@ -401,13 +440,17 @@ const datos: DatosYa[] = [
         dep: false,
         explicacion: 'Indica la cobertura bruta de estudiantes que cursan educación media',
         definicion: 'Indica la cobertura bruta de estudiantes que cursan educación primaria.',
-        metodologia: 'Número total de estudiantes matriculados y tienen entre 6 y 10 años de edad / Total de la población que tiene entre 6 y 10 años de edad en el mismo periodo y territorio. * 100.',
+        metodologia:
+          'Número total de estudiantes matriculados y tienen entre 6 y 10 años de edad / Total de la población que tiene entre 6 y 10 años de edad en el mismo periodo y territorio. * 100.',
         unidad: 'Porcentaje',
-        fuente_numerador: 'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE.',
-        fuente_denominador: 'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE.',
+        fuente_numerador:
+          'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE.',
+        fuente_denominador:
+          'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE.',
         desagregacion: 'Municipal',
         contexto: 'Las tasas de cobertura permiten medir la capacidad del sistema educativo para atender la demanda.',
-        interpretacion: 'Un valor de 40 indica que en promedio 40 de cada 100 estudiantes en edad teórica para cursar educación primaria asisten a un establecimiento educativo en un momento y territorio específicos. Más Información: https://ods.dnp.gov.co/es/objetivos/educacion-de-calidad',
+        interpretacion:
+          'Un valor de 40 indica que en promedio 40 de cada 100 estudiantes en edad teórica para cursar educación primaria asisten a un establecimiento educativo en un momento y territorio específicos. Más Información: https://ods.dnp.gov.co/es/objetivos/educacion-de-calidad',
       },
     ],
   },
@@ -426,14 +469,17 @@ const datos: DatosYa[] = [
         mun: false,
         dep: false,
         explicacion: 'Indica el número de defunciones en menores de 5 años por endermedad diarreica aguda.',
-        definicion: 'Indica el número de defunciones en niños menores de 5 años por enfermedad diarreica aguda con respecto a la población de niños menores de 5 años.',
+        definicion:
+          'Indica el número de defunciones en niños menores de 5 años por enfermedad diarreica aguda con respecto a la población de niños menores de 5 años.',
         metodologia: 'Número de muertes por EDA en menores de 5 años / Número total de menores de 5 años.',
         unidad: 'Por 100.000 menores de 5 años.',
         fuente_numerador: 'CUBO INDICADORES EEVV',
         fuente_denominador: 'CUBO INDICADORES EEVV',
         desagregacion: 'Municipal',
-        contexto: '"La mortalidad por enfermedades diarreicas es la segunda causa de muerte a nivel mundial en los niños y niñas, y es una causa de mortalidad prevenible. Durante 2019 ocurrieron más de 319.000 defunciones en niños y niñas por esta causa en el mundo. Las condiciones de vida, saneamiento básico y el acceso al agua potable son claves para evitar la propagación de estas enfermedades muchas veces transmitidas por el agua o alimentos contaminados. La desnutrición y la inmunosupresión también aumentan el riesgo de padecer enfermedades diarreicas. La lactancia materna exclusiva, el acceso al agua potable, adecuado lavado de manos, vacunación contra rotavirus son algunas de las formas de prevención.',
-        interpretacion: 'Un valor de 11 indica que ocurrieron 11 muertes por diarrea por cada 100.000 niños menores de 5 años en un momento y territorio determinados. Más Información: https://www.who.int/es/news-room/fact-sheets/detail/diarrhoeal-disease',
+        contexto:
+          '"La mortalidad por enfermedades diarreicas es la segunda causa de muerte a nivel mundial en los niños y niñas, y es una causa de mortalidad prevenible. Durante 2019 ocurrieron más de 319.000 defunciones en niños y niñas por esta causa en el mundo. Las condiciones de vida, saneamiento básico y el acceso al agua potable son claves para evitar la propagación de estas enfermedades muchas veces transmitidas por el agua o alimentos contaminados. La desnutrición y la inmunosupresión también aumentan el riesgo de padecer enfermedades diarreicas. La lactancia materna exclusiva, el acceso al agua potable, adecuado lavado de manos, vacunación contra rotavirus son algunas de las formas de prevención.',
+        interpretacion:
+          'Un valor de 11 indica que ocurrieron 11 muertes por diarrea por cada 100.000 niños menores de 5 años en un momento y territorio determinados. Más Información: https://www.who.int/es/news-room/fact-sheets/detail/diarrhoeal-disease',
       },
       {
         nombre: 'Tasa de mortalidad por Infección Respiratoria Aguda (IRA) en menores de 5 años',
@@ -442,15 +488,19 @@ const datos: DatosYa[] = [
         hay_datos: true,
         mun: false,
         dep: false,
-        explicacion: 'Indica el número de defunciones en menores de 5 años por endermedad infección respiratoria aguda.',
-        definicion: 'Indica el número de defunciones en niños menores de 5 años por infecciones respiratorias agudas con respecto a la población de niños menores de 5 años en un momento y territorio determinado.',
+        explicacion:
+          'Indica el número de defunciones en menores de 5 años por endermedad infección respiratoria aguda.',
+        definicion:
+          'Indica el número de defunciones en niños menores de 5 años por infecciones respiratorias agudas con respecto a la población de niños menores de 5 años en un momento y territorio determinado.',
         metodologia: 'Número de muertes por IRA en menores de 5 años / Número total de menores de 5 años.',
         unidad: 'Por 100.000 menores de 5 años.',
         fuente_numerador: 'CUBO INDICADORES EEVV',
         fuente_denominador: 'CUBO INDICADORES EEVV',
         desagregacion: 'Municipal',
-        contexto: 'Las infecciones respiratorias agudas son causa de muerte en niños y niñas menores de 5 años alrededor del mundo, especialmente en aquellas regiones apartadas y con limitado acceso a educación, saneamiento y servicios de salud de calidad. Las infecciones del tracto respiratorio (alto y bajo) son causadas por diferentes microorganismos, pudiendo causar desde resfriados comunes hasta neumonías que pueden comprometer la vida. Una adecuada nutrición, contar con el esquema de vacunación completo y conocer los signos de alarma de una infección respiratoria, son elementos básicos para evitar la mortalidad por esta causa, que en la mayoría de los casos es completamente prevenible.',
-        interpretacion: 'Un valor de 3 indica que murieron 3 niños por infección respiratoria aguda por cada 100.000 niños menores de 5 años en un momento y territorio dados. Más Información: https://www.minsalud.gov.co/CC/Campanas/plegable-ira.pdf',
+        contexto:
+          'Las infecciones respiratorias agudas son causa de muerte en niños y niñas menores de 5 años alrededor del mundo, especialmente en aquellas regiones apartadas y con limitado acceso a educación, saneamiento y servicios de salud de calidad. Las infecciones del tracto respiratorio (alto y bajo) son causadas por diferentes microorganismos, pudiendo causar desde resfriados comunes hasta neumonías que pueden comprometer la vida. Una adecuada nutrición, contar con el esquema de vacunación completo y conocer los signos de alarma de una infección respiratoria, son elementos básicos para evitar la mortalidad por esta causa, que en la mayoría de los casos es completamente prevenible.',
+        interpretacion:
+          'Un valor de 3 indica que murieron 3 niños por infección respiratoria aguda por cada 100.000 niños menores de 5 años en un momento y territorio dados. Más Información: https://www.minsalud.gov.co/CC/Campanas/plegable-ira.pdf',
       },
       {
         nombre: 'Porcentaje real de acceso a agua potable',
@@ -466,8 +516,10 @@ const datos: DatosYa[] = [
         fuente_numerador: 'Sistema Único de Información de Servicios Públicos - SUI',
         fuente_denominador: 'Sistema Único de Información de Servicios Públicos - SUI',
         desagregacion: 'Municipal',
-        contexto: 'La pandemia de la COVID-19 ha resaltado la  importancia del saneamiento, la higiene y el acceso a agua potable para prevenir y controlar enfermedades. La Organización Mundial de la Salud destaca que el lavado de manos es una medida altamente efectiva para reducir la propagación de patógenos A pesar de esto, Colombia aún carece de una cobertura universal de agua potable y saneamiento.',
-        interpretacion: 'Un valor de 70% significa que existen 70 familias que cuentan con acceso real a agua potable por cada 100 familias en un territorio y momento específicos. Más información sobre la importancia del acceso a agua potable: https://www.un.org/sustainabledevelopment/es/water-and-sanitation/#:~:text=Alcanzar%20la%20cobertura%20universal%20para,y%20tres%20para%20la%20higiene.',
+        contexto:
+          'La pandemia de la COVID-19 ha resaltado la  importancia del saneamiento, la higiene y el acceso a agua potable para prevenir y controlar enfermedades. La Organización Mundial de la Salud destaca que el lavado de manos es una medida altamente efectiva para reducir la propagación de patógenos A pesar de esto, Colombia aún carece de una cobertura universal de agua potable y saneamiento.',
+        interpretacion:
+          'Un valor de 70% significa que existen 70 familias que cuentan con acceso real a agua potable por cada 100 familias en un territorio y momento específicos. Más información sobre la importancia del acceso a agua potable: https://www.un.org/sustainabledevelopment/es/water-and-sanitation/#:~:text=Alcanzar%20la%20cobertura%20universal%20para,y%20tres%20para%20la%20higiene.',
       },
       {
         nombre: 'Calidad de aire',
