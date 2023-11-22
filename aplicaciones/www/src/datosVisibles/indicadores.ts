@@ -398,7 +398,7 @@ const datos: DatosYa[] = [
         definicion: 'Porcentaje de estudiantes que abandonan el sistema educativo antes de finalizar el año lectivo.',
         metodologia:
           'Número Total de estudiantes que abandoraron el sistema educativo antes de finalizar el año lectivo / Total de estudiantes en el mismo periodo y territorio. *** La tasa de deserción intraanual solo tiene en cuenta a los alumnos que abandonan la escuela durante el año escolar, ésta se complementa con la tasa de deserción interanual que calcula aquellos que desertan al terminar el año escolar. (MEN, 2013, p. 72).',
-        unidad: 'Tasa',
+        unidad: 'Porcentaje',
         fuente_numerador: 'DataIcfes',
         fuente_denominador: 'DataIcfes',
         desagregacion: 'Municipal',
