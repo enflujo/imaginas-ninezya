@@ -12,8 +12,9 @@ export default class Linea {
   punto: SVGCircleElement;
   activo: boolean;
   color: string;
+  estructura?: string;
 
-  constructor(contenedor: SVGGElement, nombre: string, datos: DatosPorAñoOrdenado, color: string) {
+  constructor(contenedor: SVGGElement, nombre: string, datos: DatosPorAñoOrdenado, color: string, estructura: string) {
     this.contenedor = contenedor;
     this.nombre = nombre;
     this.datos = datos;
@@ -43,7 +44,7 @@ export default class Linea {
         punto.onmouseenter = (evento) => {
           const x = evento.pageX;
           const y = evento.pageY - 30;
-          informacion.innerText = `${valor}%`;
+          informacion.innerText = `${valor} ${estructura === 'porcentaje' ? '%' : ''}`;
           informacion.classList.add('visible');
 
           Object.assign(informacion.style, {

@@ -111,7 +111,7 @@ const datos: DatosYa[] = [
         definicion: 'Proporción de nacidos vivos con 4 o más controles prenatales.',
         metodologia:
           'Número de nacidos vivos cuyas gestantes asistieron a 4 o más controles prenatales / Total de nacidos vivos.',
-        unidad: 'Por 100 (%)',
+        unidad: 'Porcentaje',
         fuente_numerador: 'CUBO INDICADORES EEVV',
         fuente_denominador: 'CUBO INDICADORES EEVV',
         desagregacion: 'Municipal',
@@ -133,7 +133,7 @@ const datos: DatosYa[] = [
           'Proporción de niños menores de 5 años padecen de desnutrición aguda en un momento y territorio determinado.',
         metodologia:
           'Número de niños menores de 5 años que sufren de desnutrición aguda en un periodo y territorio específicos /  Número de nacidos vivos menores de 5 años en el mismo periodo y territorio.',
-        unidad: 'Por 100 (%)',
+        unidad: 'Porcentaje',
         fuente_numerador: 'SIVIGILA',
         fuente_denominador: 'CUBO INDICADORES EEVV',
         desagregacion: 'Municipal',
@@ -155,7 +155,7 @@ const datos: DatosYa[] = [
           'Indica la proporción de nacidos vivos a término (37 semanas o más) que nacieron con peso inferior a 2.499 gramos en un momento y territorio específicos, con respecto al total de nacidos vivos en el mismo periodo y lugar.',
         metodologia:
           'Se desconoce, metodología propia del Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE).',
-        unidad: 'Por 100 (%)',
+        unidad: 'Porcentaje',
         fuente_numerador:
           'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE',
         fuente_denominador:
@@ -212,7 +212,7 @@ const datos: DatosYa[] = [
           ' La tasa de cobertura bruta mide la relación porcentual entre el número total de estudiantes matriculados (independientemente de la edad que tengan) sobre el total de la población en edad teórica para cursar el nivel educativo, que para el caso de educación preescolar corresponde al rango entre 3 y 5 años de edad.',
         metodologia:
           'La tasa de cobertura bruta mide la relación porcentual entre el número total de estudiantes matriculados (independientemente de la edad que tengan) sobre el total de la población en edad teórica para cursar el nivel educativo, que para el caso de educación preescolar corresponde al rango entre 3 y 5 años de edad.',
-        unidad: 'Por 100 (%)',
+        unidad: 'Porcentaje',
         fuente_numerador:
           'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE.',
         fuente_denominador:
@@ -235,7 +235,7 @@ const datos: DatosYa[] = [
         definicion:
           ' La tasa de cobertura bruta mide la relación porcentual entre el número total de estudiantes matriculados (independientemente de la edad que tengan) sobre el total de la población en edad teórica para cursar el nivel educativo, que para el caso de educación preescolar corresponde al rango entre 3 y 5 años de edad.',
         metodologia: 'Ministerio de Educación Nacional (MEN) - SIMAT.',
-        unidad: 'Por 100 (%)',
+        unidad: 'Porcentaje',
         fuente_numerador:
           'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE.',
         fuente_denominador:
@@ -334,7 +334,7 @@ const datos: DatosYa[] = [
         definicion: 'Indica la cobertura bruta de estudiantes que cursan educación media.',
         metodologia:
           'Número total de estudiantes matriculados y tienen entre 15 y 16 años de edad / Total de la población que tiene entre 15 y 16 años de edad en el mismo periodo y territorio. * 100.',
-        unidad: 'Porcentaje',
+        unidad: 'Tasa',
         fuente_numerador:
           'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE.',
         fuente_denominador:
@@ -398,7 +398,7 @@ const datos: DatosYa[] = [
         definicion: 'Porcentaje de estudiantes que abandonan el sistema educativo antes de finalizar el año lectivo.',
         metodologia:
           'Número Total de estudiantes que abandoraron el sistema educativo antes de finalizar el año lectivo / Total de estudiantes en el mismo periodo y territorio. *** La tasa de deserción intraanual solo tiene en cuenta a los alumnos que abandonan la escuela durante el año escolar, ésta se complementa con la tasa de deserción interanual que calcula aquellos que desertan al terminar el año escolar. (MEN, 2013, p. 72).',
-        unidad: 'Porcentaje',
+        unidad: 'Tasa',
         fuente_numerador: 'DataIcfes',
         fuente_denominador: 'DataIcfes',
         desagregacion: 'Municipal',
