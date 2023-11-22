@@ -281,7 +281,7 @@ const datos: DatosYa[] = [
         definicion:
           'Este indicar presenta un conteo del número de actos terroristas, hostigamientos, combates y enfrentamientos en un mismo periodo y territorio en particular.',
         metodologia:
-          'Total = Suma(Número de Actos Terroritas, Atentados, Combates, Enfretamientos, Declaraciones de Hostigamientos).',
+          'Total = Suma(Número de Actos Terroristas, Atentados, Combates, Enfrentamientos, Declaraciones de Hostigamientos).',
         unidad: '',
         fuente_numerador:
           'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE)  con base en el Registro Único de Víctimas.',
@@ -311,7 +311,7 @@ const datos: DatosYa[] = [
         contexto:
           'Arias et al., (214) han estudiando los efectos del conflicto armado en el desarrollo económico y social en Colombia, de acuerdo con los autores el conflicto armad ha tenido efectos devastadores en el sistema educativo del país. Las instituciones educativas, tanto oficiales como no oficiales, han enfrentado numerosos desafíos debido a la violencia y la inestabilidad asociadas con el conflicto. Muchas escuelas han sido afectadas directamente, ya sea por actos de violencia que las han dejado inoperables o por la desaparición de recursos esenciales. Además, el desplazamiento forzado de comunidades enteras ha tenido un impacto directo en la tasa de matricula y la asistencia escolar, ya que muchos niños y jóvenes se han visto obligados a abandonar sus hogares y, en consecuencia, sus estudios. Este entorno de conflicto también ha llevado a la pérdida de maestros capacitados, ya sea porque han sido desplazados o han abandonado sus roles por motivos de seguridad.',
         interpretacion:
-          'Un valor de 15 índica que en un mismo periodo y territorio en particular se presentaron 15 ocurrencias con anterfactos explosivos* El no pondera un peso en particular en función de la categoría que integran el agregado de "Artefactos Explosivos".',
+          'Un valor de 15 índica que en un mismo periodo y territorio en particular se presentaron 15 ocurrencias con artefactos explosivos* El no pondera un peso en particular en función de la categoría que integran el agregado de "Artefactos Explosivos".',
       },
     ],
   },
@@ -356,7 +356,7 @@ const datos: DatosYa[] = [
           'Indica, en promedio, en qué categoría se encuentra el desempeño en matemáticas de los estudiantes que presentaron el Saber 11.',
         definicion: 'Mide el desempeño en promedio en el área de Matemáticas en las Prueba Saber 11.',
         metodologia:
-          'Número Total de Evaluados en Cada Nivel de Desempeño en Matemáticas / Total de Evaludos en Matemáticas * 100 ***Los resultados individuales de la prueba Saber 11 (total y por área del conocimiento) son normalizados con una media de 50 y desviación de 10, tal como lo realiza el ICFES.',
+          'Número Total de Evaluados en Cada Nivel de Desempeño en Matemáticas / Total de Evaluados en Matemáticas * 100 ***Los resultados individuales de la prueba Saber 11 (total y por área del conocimiento) son normalizados con una media de 50 y desviación de 10, tal como lo realiza el ICFES.',
         unidad: 'Porcentaje',
         fuente_numerador: 'DataIcfes',
         fuente_denominador: 'DataIcfes',
@@ -377,7 +377,7 @@ const datos: DatosYa[] = [
         explicacion: '',
         definicion: 'Mide el desempeño en promedio en el área de Lectura en la Prueba Saber 11.',
         metodologia:
-          'Número Total de Evaluados en Cada Nivel de Desempeño en Lectura / Total de Evaludos en Lectura * 100 ***Los resultados individuales de la prueba Saber 11 (total y por área del conocimiento) son normalizados con una media de 50 y desviación de 10, tal como lo realiza el ICFES.',
+          'Número Total de Evaluados en Cada Nivel de Desempeño en Lectura / Total de Evaluados en Lectura * 100 ***Los resultados individuales de la prueba Saber 11 (total y por área del conocimiento) son normalizados con una media de 50 y desviación de 10, tal como lo realiza el ICFES.',
         unidad: 'Porcentaje',
         fuente_numerador: 'DataIcfes',
         fuente_denominador: 'DataIcfes',
@@ -397,13 +397,13 @@ const datos: DatosYa[] = [
         explicacion: 'Indica, en promedio, el número de estudiantes que abandonan el sistema educativo.',
         definicion: 'Porcentaje de estudiantes que abandonan el sistema educativo antes de finalizar el año lectivo.',
         metodologia:
-          'Número Total de estudiantes que abandoraron el sistema educativo antes de finalizar el año lectivo / Total de estudiantes en el mismo periodo y territorio. *** La tasa de deserción intraanual solo tiene en cuenta a los alumnos que abandonan la escuela durante el año escolar, ésta se complementa con la tasa de deserción interanual que calcula aquellos que desertan al terminar el año escolar. (MEN, 2013, p. 72).',
+          'Número Total de estudiantes que abandonaron el sistema educativo antes de finalizar el año lectivo / Total de estudiantes en el mismo periodo y territorio. *** La tasa de deserción intraanual solo tiene en cuenta a los alumnos que abandonan la escuela durante el año escolar, ésta se complementa con la tasa de deserción interanual que calcula aquellos que desertan al terminar el año escolar. (MEN, 2013, p. 72).',
         unidad: 'Porcentaje',
         fuente_numerador: 'DataIcfes',
         fuente_denominador: 'DataIcfes',
         desagregacion: 'Municipal',
         contexto:
-          'La deserción escolar tiene un gran impacto en el desarrollo integral, y la formación del capital humano, comunmente se asocia co factores clave como el género, las habilidades,  lascondiciones familiares, la calidad educativa y contexto. En respuesta, el Gobierno nacional, a través del Plan Nacional de Desarrollo 2018-2022, buscaba promover la permanencia en el sistema educativo mediante el fortalecimiento de trayectorias educativas completas, considerando aspectos como el bienestar, el reconocimiento de las características individuales, la alimentación escolar y  los ambientes de aprendizaje.',
+          'La deserción escolar tiene un gran impacto en el desarrollo integral, y la formación del capital humano, comúnmente se asocia co factores clave como el género, las habilidades,  lascondiciones familiares, la calidad educativa y contexto. En respuesta, el Gobierno nacional, a través del Plan Nacional de Desarrollo 2018-2022, buscaba promover la permanencia en el sistema educativo mediante el fortalecimiento de trayectorias educativas completas, considerando aspectos como el bienestar, el reconocimiento de las características individuales, la alimentación escolar y  los ambientes de aprendizaje.',
         interpretacion:
           ' Un valor de 5% indica que 5 de cada 100 estudiantes abandonaron el sistema educativo antes de finalizar el año lectivo en un territorio y momentos específicos. Más Información: https://www.mineducacion.gov.co/1780/articles-363488_recurso_34.pdf',
       },
@@ -468,7 +468,7 @@ const datos: DatosYa[] = [
         hay_datos: true,
         mun: false,
         dep: false,
-        explicacion: 'Indica el número de defunciones en menores de 5 años por endermedad diarreica aguda.',
+        explicacion: 'Indica el número de defunciones en menores de 5 años por enfermedad diarreica aguda.',
         definicion:
           'Indica el número de defunciones en niños menores de 5 años por enfermedad diarreica aguda con respecto a la población de niños menores de 5 años.',
         metodologia: 'Número de muertes por EDA en menores de 5 años / Número total de menores de 5 años.',
@@ -489,7 +489,7 @@ const datos: DatosYa[] = [
         mun: false,
         dep: false,
         explicacion:
-          'Indica el número de defunciones en menores de 5 años por endermedad infección respiratoria aguda.',
+          'Indica el número de defunciones en menores de 5 años por enfermedad infección respiratoria aguda.',
         definicion:
           'Indica el número de defunciones en niños menores de 5 años por infecciones respiratorias agudas con respecto a la población de niños menores de 5 años en un momento y territorio determinado.',
         metodologia: 'Número de muertes por IRA en menores de 5 años / Número total de menores de 5 años.',
@@ -563,11 +563,11 @@ const datos: DatosYa[] = [
         desagregacion: 'Municipal',
         contexto: '',
         interpretacion:
-          'La dificultad funcional para niños de 2 a 5 años se establece a partir de una encuesta dirigida a padres y cuidadores, dentro de las opciones de respuesta a la pregunta podemos identificar dos "Mucha dificultad" o "No puede realizar la actividad" (UNICEF, Aargentina 2020).',
+          'La dificultad funcional para niños de 2 a 5 años se establece a partir de una encuesta dirigida a padres y cuidadores, dentro de las opciones de respuesta a la pregunta podemos identificar dos "Mucha dificultad" o "No puede realizar la actividad" (UNICEF, Argentina 2020).',
         responsable:
           'Gran Encuesta Integrada de Hogares - GEIH del Departamento Administrativo Nacional de Estadísticas - DANE.',
         compete_a:
-          'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secreatrías de Educación.',
+          'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secretarías de Educación.',
       },
       {
         nombre:
@@ -581,16 +581,16 @@ const datos: DatosYa[] = [
         definicion:
           'Porcentaje de niños y niñas de 2-5 años que no asisten a un establecimiento educativo, guardería, jardín infantil o preescolar.',
         metodologia:
-          'Número de niños y niñas de 2-5 años que no asisten a un establecimiento educativo, jardin infantil o preescolar.',
+          'Número de niños y niñas de 2-5 años que no asisten a un establecimiento educativo, jardín infantil o preescolar.',
         unidad: 'Porcentaje | Tasa',
         desagregacion: 'Municipal',
         contexto: '',
         interpretacion:
-          'De acuerdo con el MEN, los objetivos explicitos en términos de asistencia escolar en el plan nacional de desarrollo es de tener una tasa de asistencia del 100%.',
+          'De acuerdo con el MEN, los objetivos explícitos en términos de asistencia escolar en el plan nacional de desarrollo es de tener una tasa de asistencia del 100%.',
         responsable:
           'Gran Encuesta Integrada de Hogares - GEIH del Departamento Administrativo Nacional de Estadísticas - DANE.',
         compete_a:
-          'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secreatrías de Educación.',
+          'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secretarías de Educación.',
       },
       {
         nombre: 'Niños y niñas de 2-5 años que con frecuencia patean, muerden o golpean a otros niños/as o adultos.',
@@ -612,7 +612,7 @@ const datos: DatosYa[] = [
         responsable:
           'Gran Encuesta Integrada de Hogares - GEIH del Departamento Administrativo Nacional de Estadísticas - DANE.',
         compete_a:
-          'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secreatrías de Educación.',
+          'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secretarías de Educación.',
       },
       {
         nombre: 'Niños y niñas de 2-5 años que con frecuencia cuentan en su hogar con adulto que lee junto a él',
@@ -629,11 +629,11 @@ const datos: DatosYa[] = [
         desagregacion: 'Municipal',
         contexto: '',
         interpretacion:
-          'Se debe formular la siguiente pregunta dentro de la Encuesta de Calidad de Vida - ECV del Departamento Administrativo Nacional de Estadísticas – DANE. ¿Con qué frecuencia realiza actitividades de lectura con el menor de 5 años que reside en su hogar| Opciones de respuesta: 1 Todos los días. 2 Al menos una vez a la semana pero no cada día. 3 Al menos una vez al mes, pero no cada semana 4 Al menos una vez al mes, pero no todos los meses.',
+          'Se debe formular la siguiente pregunta dentro de la Encuesta de Calidad de Vida - ECV del Departamento Administrativo Nacional de Estadísticas - DANE. ¿Con qué frecuencia realiza actividades de lectura con el menor de 5 años que reside en su hogar| Opciones de respuesta: 1 Todos los días. 2 Al menos una vez a la semana pero no cada día. 3 Al menos una vez al mes, pero no cada semana 4 Al menos una vez al mes, pero no todos los meses.',
         responsable:
-          'Encuersta de Calidad de Vida - ECV del Departamento Administrativo Nacional de Estadísticas - DANE.',
+          'Encuesta de Calidad de Vida - ECV del Departamento Administrativo Nacional de Estadísticas - DANE.',
         compete_a:
-          'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secreatrías de Educación.',
+          'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secretarías de Educación.',
       },
       {
         nombre: 'Niños y niñas de 2-5 años que con frecuencia juegan con un adulto responsable',
@@ -651,9 +651,9 @@ const datos: DatosYa[] = [
         interpretacion:
           'Se debe formular la siguiente pregunta dentro de la Encuesta de Calidad de Vida - ECV del Departamento Administrativo Nacional de Estadísticas - DANE. ¿Con qué frecuencia juega con el menor de 5 años que reside en su hogar| Opciones de respuesta: 1 Todos los días. 2 Al menos una vez a la semana pero no cada día. 3 Al menos una vez al mes, pero no cada semana 4 Al menos una vez al mes, pero no todos los meses.',
         responsable:
-          'Encuersta de Calidad de Vida - ECV del Departamento Administrativo Nacional de Estadísticas - DANE. ',
+          'Encuesta de Calidad de Vida - ECV del Departamento Administrativo Nacional de Estadísticas - DANE. ',
         compete_a:
-          'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secreatrías de Educación.',
+          'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secretarías de Educación.',
       },
     ],
   },
@@ -882,11 +882,11 @@ const datos: DatosYa[] = [
         mun: false,
         dep: false,
         explicacion:
-          'Indica el número de procesos realizados de reestablecimientos de rechos por consumo de sustancias psicoactivas.',
+          'Indica el número de procesos realizados de reestablecimientos de hechos por consumo de sustancias psicoactivas.',
         definicion:
           'Este indicador indica el número de reestablecimientos de derechos realizados por el ICBF relacionados con el consumo de sustancias psicoactivas.',
         metodologia:
-          'Número de Procesos Administrativos de Reestablecimientos de Derechos por el Consumo de Sustancias Psicoactivas en el mismo periodo y terriorio.',
+          'Número de Procesos Administrativos de Reestablecimientos de Derechos por el Consumo de Sustancias Psicoactivas en el mismo periodo y territorio.',
         unidad: 'Conteo',
         fuente_numerador: 'ICBF',
         fuente_denominador: 'ICBF',
@@ -908,8 +908,8 @@ const datos: DatosYa[] = [
         metodologia:
           'Número de delitos en los que participaron menores de edad / Número total de delitos en el mismo periodo y territorio.',
         unidad: 'Porcentaje',
-        fuente_numerador: 'Policia Nacional',
-        fuente_denominador: 'Policia Nacional',
+        fuente_numerador: 'Policía Nacional',
+        fuente_denominador: 'Policía Nacional',
         desagregacion: 'Municipal',
         contexto: 'No aplica.',
         interpretacion:
