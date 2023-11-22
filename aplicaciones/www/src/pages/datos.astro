@@ -53,8 +53,6 @@ import Plantilla from '@/plantillas/Principal.astro';
                           />
                         </a>
                       </p>
-
-                      <FichaTecnica rutaYa={ya.ruta} rutaIndicador={indicador.ruta} />
                     </div>
                   );
                 })}
@@ -66,7 +64,7 @@ import Plantilla from '@/plantillas/Principal.astro';
     </div>
   </section>
 </Plantilla>
-
+<!-- <FichaTecnica rutaYa={ya.ruta} rutaIndicador={indicador.ruta} /> -->
 <script>
   const selector = document.getElementById('selector') as HTMLFormElement;
   const opciones = document.getElementById('opciones') as HTMLSelectElement;
