@@ -1,5 +1,6 @@
 ---
 import datos from '@/datosVisibles/indicadores';
+import { urlsAEnlacesHTML } from '@enflujo/alquimia';
 const { ya, indicador } = Astro.params;
 const datosYa = datos.find((instancia) => instancia.ruta === ya);
 const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta === indicador);
@@ -26,19 +27,28 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
         <h4 class="titulo">Nivel de desagregación</h4><p class="texto">{datosIndicador.desagregacion}</p>
       </div>
       <div class="seccion">
-        <h4 class="titulo">Contexto</h4><p class="texto">{datosIndicador.contexto}</p>
+        <h4 class="titulo">Contexto</h4><p class="texto" id="textoContexto" data-contexto=`${datosIndicador.contexto}`>
+          {datosIndicador.contexto}
+        </p>
       </div>
       <div class="seccion">
         <h4 class="titulo">Cómo se interpreta</h4>
-        <p class="texto">{datosIndicador.interpretacion}</p>
+        <p class="texto" id="textoInterpretacion" data-interpretacion=`${datosIndicador.interpretacion}`></p>
       </div>
     </section>
   </div>
 </div>
 
 <script>
+  import { urlsAEnlacesHTML } from '@enflujo/alquimia';
+
   const infoAdicional = document.getElementById('contenedorInfoAdicional');
   const abrirFicha = document.getElementById('abrirFicha');
+  const textoContexto = document.getElementById('textoContexto');
+  const textoInterpretacion = document.getElementById('textoInterpretacion');
+
+  textoInterpretacion.innerHTML = `${urlsAEnlacesHTML(textoInterpretacion.dataset.interpretacion)}`;
+  textoContexto.innerHTML = `${urlsAEnlacesHTML(textoContexto.dataset.contexto)}`;
 
   // Cerrar ficha al hacer click afuera
   document.body.addEventListener('click', (evento) => {
@@ -128,10 +138,11 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
           text-align: left;
           flex-basis: 80%;
           display: flex;
-          align-items: center;
           min-height: 2.3em;
           text-wrap: wrap;
           overflow-wrap: anywhere;
+          flex-direction: column;
+          justify-content: center;
         }
       }
     }
