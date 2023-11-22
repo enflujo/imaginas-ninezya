@@ -1,6 +1,7 @@
 interface DatosComunes {
   nombre: string;
   ruta: string;
+  definicion: string;
 }
 
 interface DatosIndicador extends DatosComunes {
@@ -8,7 +9,6 @@ interface DatosIndicador extends DatosComunes {
   mun: boolean;
   dep: boolean;
   explicacion: string;
-  definicion: string;
   metodologia: string;
   unidad: string;
   fuente_numerador: string;
@@ -29,6 +29,8 @@ const datos: DatosYa[] = [
     nombre: 'Salud y nutrición',
     ruta: 'salud-nutricion',
     imagen: 'ya1',
+    definicion:
+      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam reprehenderit autem illum optio repudiandae enim consectetur alias facere praesentium maiores repellendus, soluta asperiores itaque sit omnis quasi sed in provident.',
     indicadores: [
       {
         nombre: 'Cobertura de acueducto',
@@ -160,6 +162,8 @@ const datos: DatosYa[] = [
     nombre: 'Educación inicial',
     imagen: 'ya2',
     ruta: 'educacion-inicial',
+    definicion:
+      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam reprehenderit autem illum optio repudiandae enim consectetur alias facere praesentium maiores repellendus, soluta asperiores itaque sit omnis quasi sed in provident.',
     indicadores: [
       {
         nombre: 'Niños y niñas menores de 5 años por tipo de establecimiento al que asisten',
@@ -183,6 +187,7 @@ const datos: DatosYa[] = [
         archivo: 'ya2-5',
         mun: false,
         dep: true,
+        umbral: 85.9,
         explicacion:
           'Indica la proporción de estudiantes que cursan preescolar y asisten a instituciones públicas oficiales.',
         definicion:
@@ -276,16 +281,19 @@ const datos: DatosYa[] = [
     nombre: 'Educación preescolar, básica y media',
     imagen: 'ya3',
     ruta: 'educacion-preescolar-a-media',
+    definicion:
+      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam reprehenderit autem illum optio repudiandae enim consectetur alias facere praesentium maiores repellendus, soluta asperiores itaque sit omnis quasi sed in provident.',
     indicadores: [
       {
         nombre: 'Tasa de cobertura bruta media',
         ruta: 'cobertura-media',
         archivo: 'ya3-1',
+        umbral: 83.6,
         mun: false,
         dep: false,
         explicacion: '',
         definicion: '',
-        metodologia: 'Ministerio de Educación Nacional (MEN) – SIMAT.',
+        metodologia: 'Ministerio de Educación Nacional (MEN) - SIMAT.',
         unidad: 'Por 100 (%)',
         fuente_numerador:
           'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE.',
@@ -383,6 +391,8 @@ const datos: DatosYa[] = [
     nombre: 'Ambiente sano',
     imagen: 'ya4',
     ruta: 'ambiente-sano',
+    definicion:
+      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam reprehenderit autem illum optio repudiandae enim consectetur alias facere praesentium maiores repellendus, soluta asperiores itaque sit omnis quasi sed in provident.',
     indicadores: [
       {
         nombre: 'Tasa de mortalidad por Enfermedad Diarreica Aguda (EDA) en menores de 5 años',
@@ -454,6 +464,8 @@ const datos: DatosYa[] = [
     nombre: 'Juego',
     imagen: 'ya5',
     ruta: 'juego',
+    definicion:
+      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam reprehenderit autem illum optio repudiandae enim consectetur alias facere praesentium maiores repellendus, soluta asperiores itaque sit omnis quasi sed in provident.',
     indicadores: [
       {
         nombre: 'Por definir 1',
@@ -541,6 +553,8 @@ const datos: DatosYa[] = [
     nombre: 'Participación',
     imagen: 'ya6',
     ruta: 'participacion',
+    definicion:
+      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam reprehenderit autem illum optio repudiandae enim consectetur alias facere praesentium maiores repellendus, soluta asperiores itaque sit omnis quasi sed in provident.',
     indicadores: [
       {
         nombre: 'Por definir 1',
@@ -628,6 +642,8 @@ const datos: DatosYa[] = [
     nombre: 'Fortalecimiento Familiar del cuidado y la crianza de la niñez',
     imagen: 'ya7',
     ruta: 'fortalecimiento-familiar',
+    definicion:
+      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam reprehenderit autem illum optio repudiandae enim consectetur alias facere praesentium maiores repellendus, soluta asperiores itaque sit omnis quasi sed in provident.',
     indicadores: [
       {
         nombre: 'Por definir 1',
@@ -715,6 +731,8 @@ const datos: DatosYa[] = [
     nombre: 'Protección frente a cualquier tipo de violencia',
     imagen: 'ya8',
     ruta: 'proteccion-violencia',
+    definicion:
+      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam reprehenderit autem illum optio repudiandae enim consectetur alias facere praesentium maiores repellendus, soluta asperiores itaque sit omnis quasi sed in provident.',
     indicadores: [
       {
         nombre: 'Proporción de jóvenes que declaran haber experimentado violencia física en los últimos 12 meses',
@@ -772,6 +790,8 @@ const datos: DatosYa[] = [
       'Adolescentes con justicia restaurativa y pedagógica (sistema de responsabilidad penal para adolescentes - SRPA)',
     imagen: 'ya9',
     ruta: 'adolescentes-srpa',
+    definicion:
+      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam reprehenderit autem illum optio repudiandae enim consectetur alias facere praesentium maiores repellendus, soluta asperiores itaque sit omnis quasi sed in provident.',
     indicadores: [
       {
         nombre: 'Porcentaje de adolescentes que ingresan más de una vez al SRPA por presunta comisión de un delito',
@@ -861,6 +881,8 @@ const datos: DatosYa[] = [
     nombre: 'Cultura de paz, reconciliación y convivencia',
     imagen: 'ya10',
     ruta: 'paz-reconciliacion',
+    definicion:
+      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam reprehenderit autem illum optio repudiandae enim consectetur alias facere praesentium maiores repellendus, soluta asperiores itaque sit omnis quasi sed in provident.',
     indicadores: [
       {
         nombre: 'Vinculación de Niños, Niñas y Adolescentes a actividades relacionadas con grupos',

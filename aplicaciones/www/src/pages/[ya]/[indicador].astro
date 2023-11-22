@@ -8,6 +8,7 @@ import LineaTiempo from '@/componentes/LineaTiempo.astro';
 import type { GetStaticPaths } from 'astro';
 import FichaTecnica from '@/componentes/FichaTecnica.astro';
 import Buscador from '@/componentes/Buscador.astro';
+import DescripcionYa from '@/componentes/DescripcionYa.astro';
 
 export const getStaticPaths = (() => {
   return datos
@@ -20,11 +21,20 @@ export const getStaticPaths = (() => {
 }) satisfies GetStaticPaths;
 
 const { ya, indicador } = Astro.params;
-const datosYa = datos.find((instancia) => instancia.ruta === ya);
+const posYa = datos.findIndex((instancia) => instancia.ruta === ya);
+const datosYa = datos[posYa];
 const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta === indicador);
+const archivosYa = datosYa.indicadores.map((indicador) => indicador.archivo);
 ---
 
 <Plantilla titulo={datosIndicador.nombre} conMenu={true}>
+  <DescripcionYa
+    titulo={`${posYa + 1}. ${datosYa.nombre}`}
+    definicion={datosYa.definicion}
+    img={datosYa.imagen}
+    archivos={archivosYa}
+  />
+
   <div id="visualizaciones" class="columna" data-archivo={datosIndicador.archivo} data-umbral={datosIndicador.umbral}>
     <div id="secionSuperior">
       <div id="filtros">

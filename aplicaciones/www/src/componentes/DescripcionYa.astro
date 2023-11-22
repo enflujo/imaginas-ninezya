@@ -1,0 +1,87 @@
+---
+interface Props {
+  titulo: string;
+  definicion: string;
+  img: string;
+  archivos: string[];
+}
+const { img, titulo, definicion } = Astro.props;
+---
+
+<div id="descripcionYa">
+  <div class="cerrarDescripcion">X</div>
+  <div id="iconoYa" style={`background-image:url(${import.meta.env.BASE_URL}/iconos/${img}.svg)`}></div>
+
+  <section class="definicion">
+    <h2>{titulo}</h2>
+    <p>{definicion}</p>
+  </section>
+</div>
+
+<script>
+  const contenedor = document.getElementById('descripcionYa');
+  const cerrar = document.querySelector<HTMLDivElement>('.cerrarDescripcion');
+  cerrar.onclick = () => {
+    contenedor.style.right = '-50%';
+  };
+</script>
+
+<style lang="scss">
+  @import '@/scss/constantes';
+
+  #descripcionYa {
+    position: fixed;
+    top: $altoMenuSuperior;
+    width: 41vw;
+    height: calc(100vh - $altoMenuSuperior);
+    background-color: var(--moradoProfundo);
+    color: var(--blancoMarfil);
+    z-index: 8;
+    right: 0;
+    transition: all 0.25s ease-in-out;
+  }
+
+  #iconoYa {
+    background-repeat: no-repeat;
+    width: 150px;
+    height: 150px;
+    background-size: 200%;
+    background-position: 100%;
+    margin: 1em auto;
+  }
+
+  h2 {
+    text-align: center;
+    width: 100%;
+    font-size: 1.3em;
+  }
+
+  .definicion {
+    width: 80%;
+    margin: 0 auto;
+
+    p {
+      font-size: 0.8em;
+      font-variation-settings:
+        'MONO' 0,
+        'CASL' 0,
+        'wght' 433,
+        'slnt' 0,
+        'CRSV' 0;
+    }
+  }
+
+  .cerrarDescripcion {
+    cursor: pointer;
+    display: inline-block;
+    transition: transform 0.2s ease-out;
+    padding: 0.5em;
+    font-size: 1.2em;
+    position: absolute;
+    right: 15px;
+
+    &:hover {
+      transform: rotate(180deg);
+    }
+  }
+</style>
