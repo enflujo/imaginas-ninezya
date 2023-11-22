@@ -75,10 +75,12 @@ const { img, titulo, definicion, archivos, hayDatos } = Astro.props;
   };
 
   async function crearLinea(elemento: HTMLDivElement, nombreArchivo: string, umbral?: string) {
+    const svg = elemento.querySelector('svg');
+    if (!svg) return;
+
     const respuesta = await pedirDatos<DatosIndicadorNal>(
       `https://enflujo.com/bodega/ninezya/${nombreArchivo}-nal.json`
     );
-    const svg = elemento.querySelector('svg');
 
     if (respuesta) {
       const ordenados: DatosPorAñoOrdenado = [];
