@@ -213,7 +213,8 @@ export type VariableValorSingular =
   | 'concentracion'
   | 'repitencia'
   | 'desnutricion'
-  | 'o_acto_terror';
+  | 'o_acto_terror'
+  | 'o_minas_anti';
 
 export type VariablesSingulares = {
   [llave in VariableValorSingular]: number;

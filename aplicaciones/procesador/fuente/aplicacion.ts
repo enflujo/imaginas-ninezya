@@ -5,35 +5,35 @@ import { departamentos, municipios } from './utilidades/lugaresColombia';
 import { guardarJSON } from './utilidades/ayudas';
 
 async function inicio() {
-  const deps = departamentos.datos.map((lugar) => {
-    return { nombre: lugar[1], codigo: lugar[0] };
-  });
-  guardarJSON(deps, 'buscador-deps');
+  // const deps = departamentos.datos.map((lugar) => {
+  //   return { nombre: lugar[1], codigo: lugar[0] };
+  // });
+  // guardarJSON(deps, 'buscador-deps');
 
-  const muns = municipios.datos.map((lugar): { nombre: string; codigo: string; dep?: string } => {
-    const departamento = departamentos.datos.find((dep) => dep[0] === lugar[2]);
-    if (!departamento) {
-      console.log(lugar);
-      throw new Error('no hay departamento');
-    }
+  // const muns = municipios.datos.map((lugar): { nombre: string; codigo: string; dep?: string } => {
+  //   const departamento = departamentos.datos.find((dep) => dep[0] === lugar[2]);
+  //   if (!departamento) {
+  //     console.log(lugar);
+  //     throw new Error('no hay departamento');
+  //   }
 
-    return { nombre: `${lugar[1]} (${departamento[1]})`, codigo: lugar[3], dep: departamento[1] };
-  });
+  //   return { nombre: `${lugar[1]} (${departamento[1]})`, codigo: lugar[3], dep: departamento[1] };
+  // });
 
-  muns.sort((a, b) => {
-    if (a.dep && b.dep) {
-      if (a.dep > b.dep) return 1;
-      if (a.dep < b.dep) return -1;
-    }
+  // muns.sort((a, b) => {
+  //   if (a.dep && b.dep) {
+  //     if (a.dep > b.dep) return 1;
+  //     if (a.dep < b.dep) return -1;
+  //   }
 
-    return 0;
-  });
+  //   return 0;
+  // });
 
-  muns.forEach((mun) => {
-    delete mun.dep;
-  });
+  // muns.forEach((mun) => {
+  //   delete mun.dep;
+  // });
 
-  guardarJSON(muns, 'buscador-muns');
+  // guardarJSON(muns, 'buscador-muns');
 
   // const ya11 = new VariableSingular('tacued', true, 'porcentaje');
   // await ya11.procesar('1.1: salud - acueducto', 'YA1_1.1', 'Sheet1', 'ya1-1');
@@ -50,8 +50,10 @@ async function inicio() {
 
   // const ya25 = new VariableSingular('cobertura_bruta_transicion', true, 'porcentaje');
   // await ya25.procesar('2.5: cobertura transicion', 'YA2_2.5', 'Sheet1', 'ya2-5');
-  const ya28 = new VariableSingular('o_acto_terror', false, 'conteo');
-  await ya28.procesar('2.8: hostigamiento', 'YA2_2.8', 'Sheet1', 'ya2-8');
+  // const ya28 = new VariableSingular('o_acto_terror', false, 'conteo');
+  // await ya28.procesar('2.8: hostigamiento', 'YA2_2.8', 'Sheet1', 'ya2-8');
+  const ya29 = new VariableSingular('o_minas_anti', false, 'conteo');
+  await ya29.procesar('2.9: explosivos', 'YA2_2.9', 'Sheet1', 'ya2-9');
 
   // const ya31 = new VariableSingular('cobertura_bruta_media', true, 'porcentaje');
   // await ya31.procesar('3.1: cobertura media', 'YA3_3.1', 'Sheet1', 'ya3-1');
