@@ -38,7 +38,7 @@ import Plantilla from '@/plantillas/Principal.astro';
         {
           datos.map((ya, i) => {
             return (
-              <div id={ya.ruta} class={`ya${i === 0 ? ' visible' : ''}`}>
+              <div id={ya.ruta} class={`contenedorYa${i === 0 ? ' visible' : ''}`}>
                 {ya.indicadores.map((indicador) => {
                   return (
                     <div class="indicador">
@@ -159,7 +159,7 @@ import Plantilla from '@/plantillas/Principal.astro';
     justify-content: space-between;
   }
 
-  .ya {
+  .contenedorYa {
     display: none;
 
     &.visible {
