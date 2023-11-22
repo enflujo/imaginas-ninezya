@@ -35,9 +35,8 @@ const archivosYa = datosYa.indicadores.map((indicador) => indicador.archivo);
     img={datosYa.imagen}
     archivos={archivosYa}
   />
-
-  <div id="contenedor" data-haydatos=`${datosIndicador.hay_datos}`>
-    <div id="conDatos">
+  {
+    datosIndicador.hay_datos && (
       <div
         id="visualizaciones"
         class="columna"
@@ -67,11 +66,10 @@ const archivosYa = datosYa.indicadores.map((indicador) => indicador.archivo);
       <div id="comparativo" class="columna"></div>
       <div id="informacion"></div>
     </div>
-  </div>
+    )
+  }
 
-  <div id="sinDatos">
-    <PropuestaIndicador />
-  </div>
+  {!datosIndicador.hay_datos && <PropuestaIndicador />}
 </Plantilla>
 
 <script>
@@ -80,17 +78,6 @@ const archivosYa = datosYa.indicadores.map((indicador) => indicador.archivo);
   const comparativo = document.getElementById('comparativo') as HTMLDivElement;
   const botonFicha = document.getElementById('abrirFicha') as HTMLSpanElement;
   const infoAdicional = document.getElementById('contenedorInfoAdicional') as HTMLDivElement;
-  const contenedorGeneral = document.getElementById('contenedor');
-  const conDatos = document.getElementById('conDatos');
-  const sinDatos = document.getElementById('sinDatos');
-  const descripcionYa = document.getElementById('descripcionYa');
-
-  // Cambiar vista según si hay datos del indicador o no
-  if (contenedorGeneral.dataset.haydatos === 'false') {
-    conDatos.classList.add('oculto');
-    sinDatos.classList.add('visible');
-    descripcionYa.style.opacity = '0.95';
-  }
 
   botonFicha.addEventListener('click', () => {
     infoAdicional.classList.toggle('abierta');
@@ -222,19 +209,6 @@ const archivosYa = datosYa.indicadores.map((indicador) => indicador.archivo);
       border: solid 1px var(--azulViejo);
       color: var(--azulViejo);
       cursor: pointer;
-    }
-  }
-  #conDatos {
-    &.oculto {
-      display: none;
-    }
-  }
-
-  #sinDatos {
-    display: none;
-
-    &.visible {
-      display: block;
     }
   }
 </style>
