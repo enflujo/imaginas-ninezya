@@ -4,8 +4,9 @@ interface Props {
   definicion: string;
   img: string;
   archivos: { titulo: string; archivo: string; umbral?: number; ruta: string }[];
+  hayDatos: boolean;
 }
-const { img, titulo, definicion, archivos } = Astro.props;
+const { img, titulo, definicion, archivos, hayDatos } = Astro.props;
 ---
 
 <div id="descripcionYa">
@@ -29,7 +30,7 @@ const { img, titulo, definicion, archivos } = Astro.props;
             data-umbral={obj.umbral}
           >
             <h3>{obj.titulo}</h3>
-            <svg class="visDescripcion" style="width:100%; height:100px" />
+            {hayDatos && <svg class="visDescripcion" style="width:100%; height:100px" />}
           </a>
         );
       })
