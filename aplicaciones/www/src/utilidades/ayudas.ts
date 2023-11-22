@@ -67,7 +67,6 @@ export const escalaColores = (
   const colorMin = hexARGB(color1);
   const colorMed = hexARGB(color2);
   const colorMax = hexARGB(color3);
-  const valorMed = (valorMin + valorMax) / 2;
 
   const [rMin, gMin, bMin] = colorMin ? colorMin : [255, 255, 255];
   const [rMed, gMed, bMed] = colorMed ? colorMed : [127, 127, 127];
@@ -83,6 +82,10 @@ export const escalaColores = (
       r = convertirEscala(valor, valorMin, umbral, rMin, rMed);
       g = convertirEscala(valor, valorMin, umbral, gMin, gMed);
       b = convertirEscala(valor, valorMin, umbral, bMin, bMed);
+    } else if (valor > valorMax) {
+      r = convertirEscala(valorMax, umbral, valorMax, rMed, rMax);
+      g = convertirEscala(valorMax, umbral, valorMax, gMed, gMax);
+      b = convertirEscala(valorMax, umbral, valorMax, bMed, bMax);
     } else {
       r = convertirEscala(valor, umbral, valorMax, rMed, rMax);
       g = convertirEscala(valor, umbral, valorMax, gMed, gMax);

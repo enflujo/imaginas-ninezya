@@ -15,7 +15,8 @@ export const lugares: string[] = [];
 export const datosColombia = map<{ dep?: FeatureCollection; mun?: FeatureCollection }>({});
 export const lugaresSeleccionados = atom<{ nombre: string; codigo: string }[]>([]);
 export let color: FuncionColor;
-export let valorMax: number = 0;
+export let valorMaxY = 0;
+export let valorMaxColor = 0;
 export let umbral = 0;
 
 const cargador = document.getElementById('cargador');
@@ -81,22 +82,29 @@ export async function cargarDatos() {
   const deps = await pedirDatos<FeatureCollection>('https://enflujo.com/bodega/colombia/departamentos.json');
   datosColombia.setKey('dep', deps);
 
-  // Cargar datos indicador nacionales para linea de tiempo
-  const nal = await pedirDatos<DatosIndicadorNal>(`https://enflujo.com/bodega/ninezya/${nombreArchivo}-nal.json`);
+  try {
+    // Cargar datos indicador nacionales para linea de tiempo
+    const nal = await pedirDatos<DatosIndicadorNal>(`https://enflujo.com/bodega/ninezya/${nombreArchivo}-nal.json`);
 
-  if (nal.unidadMedida > 100) {
-    valorMax = nombreArchivo === 'ya1-7' ? 15000 : 10000;
-  } else {
-    if (nombreArchivo === 'ya2-8') {
-      valorMax = 50;
+    if (nal.unidadMedida > 100) {
+      valorMaxY = nombreArchivo === 'ya1-7' ? 15000 : 10000;
+      valorMaxColor = nombreArchivo === 'ya1-7' ? 15000 : 10000;
     } else {
-      valorMax = nal.max > nal.unidadMedida ? Math.ceil(nal.max / 100) * 100 : nal.unidadMedida;
+      if (nombreArchivo === 'ya2-8') {
+        valorMaxY = 50;
+        valorMaxColor = 50;
+      } else {
+        valorMaxY = nal.max > nal.unidadMedida ? Math.ceil(nal.max / 100) * 100 : nal.unidadMedida;
+        valorMaxColor = 100;
+      }
     }
+
+    color = definirColor(nal.ascendente);
+
+    datosNal.set(nal);
+  } catch (error) {
+    cargando = false;
   }
-
-  color = definirColor(nal.ascendente);
-
-  datosNal.set(nal);
 
   cargando = false;
   cargador.classList.remove('visible');
@@ -134,8 +142,8 @@ export async function cargarIndicador() {
 
 const definirColor = (ascendente: boolean) => {
   if (ascendente) {
-    return escalaColores(0, valorMax, umbral, colorNegativo, colorNeutro, colorPositivo);
+    return escalaColores(0, valorMaxColor, umbral, colorNegativo, colorNeutro, colorPositivo);
   } else {
-    return escalaColores(0, valorMax, umbral, colorPositivo, colorNeutro, colorNegativo);
+    return escalaColores(0, valorMaxColor, umbral, colorPositivo, colorNeutro, colorNegativo);
   }
 };

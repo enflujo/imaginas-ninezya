@@ -48,7 +48,14 @@ const { alto } = Astro.props;
 
 <script>
   import { porcentajeAPixeles } from '@/utilidades/ayudas';
-  import { listaAños, datosNal, lugaresSeleccionados, datosIndicadorDep, valorMax, umbral } from '@/utilidades/cerebro';
+  import {
+    listaAños,
+    datosNal,
+    lugaresSeleccionados,
+    datosIndicadorDep,
+    valorMaxY,
+    umbral,
+  } from '@/utilidades/cerebro';
   import { colorPositivo, dimsLineaTiempo as dimsVis } from '@/utilidades/constantes';
   import { convertirEscala } from '@enflujo/alquimia';
   import Linea from '@/componentes/Linea';
@@ -77,7 +84,7 @@ const { alto } = Astro.props;
       proporciones.pixeles.x2
     );
 
-  const posicionY = (valor: number) => convertirEscala(valor, valorMax, 0, dimsVis.margenArriba, dimsVis.altoVis);
+  const posicionY = (valor: number) => convertirEscala(valor, valorMaxY, 0, dimsVis.margenArriba, dimsVis.altoVis);
 
   window.addEventListener('resize', escalar);
 
@@ -127,7 +134,7 @@ const { alto } = Astro.props;
 
     if (marcasY) {
       marcasY.forEach((marca, i) => {
-        actualizarMarcaY(marca, posicionY((valorMax / cantidadDivisiones) * i));
+        actualizarMarcaY(marca, posicionY((valorMaxY / cantidadDivisiones) * i));
       });
     }
 
@@ -149,7 +156,7 @@ const { alto } = Astro.props;
       const areaUmbral = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
 
       const alto = datosNal.value.ascendente ? posicionY(umbral) : posicionY(0) - posicionY(umbral);
-      const y = datosNal.value.ascendente ? posicionY(valorMax) : posicionY(umbral);
+      const y = datosNal.value.ascendente ? posicionY(valorMaxY) : posicionY(umbral);
 
       areaUmbral.setAttribute('class', 'umbral');
       areaUmbral.setAttribute('x', `${dimsVis.marcoIz}px`);
@@ -165,7 +172,7 @@ const { alto } = Astro.props;
       const marca = document.createElementNS('http://www.w3.org/2000/svg', 'line');
       const texto = document.createElementNS('http://www.w3.org/2000/svg', 'text');
       const referencia = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-      const textoEje = (valorMax / cantidadDivisiones) * i;
+      const textoEje = (valorMaxY / cantidadDivisiones) * i;
       const y = posicionY(textoEje);
 
       grupo.setAttribute('class', 'marcaEjeY');
