@@ -622,14 +622,18 @@ const datos: DatosYa[] = [
         mun: false,
         dep: false,
         explicacion: '',
-        definicion: 'Número de niños y niñas de 2-5 años que con frecuencia cuentan en su hogar con adulto que lee junto a él o ella libros de cuentos o historias / Número total de niños y niñas de 2-5 años.',
+        definicion:
+          'Número de niños y niñas de 2-5 años que con frecuencia cuentan en su hogar con adulto que lee junto a él o ella libros de cuentos o historias / Número total de niños y niñas de 2-5 años.',
         metodologia: '',
         unidad: 'Porcentaje | Tasa',
         desagregacion: 'Municipal',
         contexto: '',
-        interpretacion: 'Se debe formular la siguiente pregunta dentro de la Encuesta de Calidad de Vida - ECV del Departamento Administrativo Nacional de Estadísticas – DANE. ¿Con qué frecuencia realiza actitividades de lectura con el menor de 5 años que reside en su hogar| Opciones de respuesta: 1 Todos los días. 2 Al menos una vez a la semana pero no cada día. 3 Al menos una vez al mes, pero no cada semana 4 Al menos una vez al mes, pero no todos los meses.',
-        responsable: 'Encuersta de Calidad de Vida - ECV del Departamento Administrativo Nacional de Estadísticas - DANE.',
-        compete_a: 'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secreatrías de Educación.',
+        interpretacion:
+          'Se debe formular la siguiente pregunta dentro de la Encuesta de Calidad de Vida - ECV del Departamento Administrativo Nacional de Estadísticas – DANE. ¿Con qué frecuencia realiza actitividades de lectura con el menor de 5 años que reside en su hogar| Opciones de respuesta: 1 Todos los días. 2 Al menos una vez a la semana pero no cada día. 3 Al menos una vez al mes, pero no cada semana 4 Al menos una vez al mes, pero no todos los meses.',
+        responsable:
+          'Encuersta de Calidad de Vida - ECV del Departamento Administrativo Nacional de Estadísticas - DANE.',
+        compete_a:
+          'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secreatrías de Educación.',
       },
       {
         nombre: 'Niños y niñas de 2-5 años que con frecuencia juegan con un adulto responsable',
@@ -644,9 +648,12 @@ const datos: DatosYa[] = [
         unidad: '',
         desagregacion: 'Municipal',
         contexto: '',
-        interpretacion: 'Se debe formular la siguiente pregunta dentro de la Encuesta de Calidad de Vida - ECV del Departamento Administrativo Nacional de Estadísticas - DANE. ¿Con qué frecuencia juega con el menor de 5 años que reside en su hogar| Opciones de respuesta: 1 Todos los días. 2 Al menos una vez a la semana pero no cada día. 3 Al menos una vez al mes, pero no cada semana 4 Al menos una vez al mes, pero no todos los meses.',
-        responsable: 'Encuersta de Calidad de Vida - ECV del Departamento Administrativo Nacional de Estadísticas - DANE. ',
-        compete_a: 'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secreatrías de Educación.',
+        interpretacion:
+          'Se debe formular la siguiente pregunta dentro de la Encuesta de Calidad de Vida - ECV del Departamento Administrativo Nacional de Estadísticas - DANE. ¿Con qué frecuencia juega con el menor de 5 años que reside en su hogar| Opciones de respuesta: 1 Todos los días. 2 Al menos una vez a la semana pero no cada día. 3 Al menos una vez al mes, pero no cada semana 4 Al menos una vez al mes, pero no todos los meses.',
+        responsable:
+          'Encuersta de Calidad de Vida - ECV del Departamento Administrativo Nacional de Estadísticas - DANE. ',
+        compete_a:
+          'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secreatrías de Educación.',
       },
     ],
   },
@@ -852,15 +859,19 @@ const datos: DatosYa[] = [
         hay_datos: true,
         mun: false,
         dep: false,
-        explicacion: 'Indica la proporción de jóvenes que declaran haber experimentado violencia física en los últimos 12 meses.',
+        explicacion:
+          'Indica la proporción de jóvenes que declaran haber experimentado violencia física en los últimos 12 meses.',
         definicion: 'Proporción de jóvenes que declaran haber experimentado violencia física en los últimos 12 meses.',
-        metodologia: 'Número de jóvenes que han declarado haber experimentado violencia física / Número total de jóvenes en el mismo periodo y territorio *100.',
+        metodologia:
+          'Número de jóvenes que han declarado haber experimentado violencia física / Número total de jóvenes en el mismo periodo y territorio *100.',
         unidad: 'Tasa x 100,000',
         fuente_numerador: 'ICBF',
         fuente_denominador: 'ICBF',
         desagregacion: 'Municipal',
-        contexto: 'Las diversas manifestaciones de violencia se erigen como una problemática de salud pública por múltiples razones: en primer lugar, a causa de las severas repercusiones en el bienestar físico y emocional de las víctimas, así como en sus familias y la sociedad en su conjunto, conllevando a la pérdida de años de vida saludable. En segundo término, su alcance se manifiesta en la extensa cantidad de población afectada, especialmente niñas, niños, adolescentes, jóvenes y mujeres. Esto pone de manifiesto que la violencia de género no es simplemente un tema psicológico confinado al ámbito privado, sino un problema social y de interés público que exige una acción coordinada por parte del Estado, respaldada por un marco normativo nacional integral. En tercer lugar, estas violencias son prevenibles, ya que sus raíces se hallan en aspectos culturales y sociales, no en factores biológicos o hereditarios. En consecuencia, abordar este fenómeno requiere un enfoque holístico que combine la sensibilización, la educación y la promoción de cambios estructurales para erradicar sus fundamentos culturales arraigados.',
-        interpretacion: 'Un valor de 19% indica que 19 de cada 100 jóvenes han reportado el haber experimentado violencia física en un momento y territorio específicos.  Más Información: https://www.icbf.gov.co/system/files/boletin_violencias_nna_dic21.pdf',
+        contexto:
+          'Las diversas manifestaciones de violencia se erigen como una problemática de salud pública por múltiples razones: en primer lugar, a causa de las severas repercusiones en el bienestar físico y emocional de las víctimas, así como en sus familias y la sociedad en su conjunto, conllevando a la pérdida de años de vida saludable. En segundo término, su alcance se manifiesta en la extensa cantidad de población afectada, especialmente niñas, niños, adolescentes, jóvenes y mujeres. Esto pone de manifiesto que la violencia de género no es simplemente un tema psicológico confinado al ámbito privado, sino un problema social y de interés público que exige una acción coordinada por parte del Estado, respaldada por un marco normativo nacional integral. En tercer lugar, estas violencias son prevenibles, ya que sus raíces se hallan en aspectos culturales y sociales, no en factores biológicos o hereditarios. En consecuencia, abordar este fenómeno requiere un enfoque holístico que combine la sensibilización, la educación y la promoción de cambios estructurales para erradicar sus fundamentos culturales arraigados.',
+        interpretacion:
+          'Un valor de 19% indica que 19 de cada 100 jóvenes han reportado el haber experimentado violencia física en un momento y territorio específicos.  Más Información: https://www.icbf.gov.co/system/files/boletin_violencias_nna_dic21.pdf',
       },
       {
         nombre:
@@ -870,15 +881,20 @@ const datos: DatosYa[] = [
         hay_datos: true,
         mun: false,
         dep: false,
-        explicacion: 'Indica el número de procesos realizados de reestablecimientos de rechos por consumo de sustancias psicoactivas.',
-        definicion: 'Este indicador indica el número de reestablecimientos de derechos realizados por el ICBF relacionados con el consumo de sustancias psicoactivas.',
-        metodologia: 'Número de Procesos Administrativos de Reestablecimientos de Derechos por el Consumo de Sustancias Psicoactivas en el mismo periodo y terriorio.',
+        explicacion:
+          'Indica el número de procesos realizados de reestablecimientos de rechos por consumo de sustancias psicoactivas.',
+        definicion:
+          'Este indicador indica el número de reestablecimientos de derechos realizados por el ICBF relacionados con el consumo de sustancias psicoactivas.',
+        metodologia:
+          'Número de Procesos Administrativos de Reestablecimientos de Derechos por el Consumo de Sustancias Psicoactivas en el mismo periodo y terriorio.',
         unidad: 'Conteo',
         fuente_numerador: 'ICBF',
         fuente_denominador: 'ICBF',
         desagregacion: 'Municipal',
-        contexto: 'El uso de sustancias psicoactivas (SPA) se está distanciando de las metas de políticas antidrogas, según el Informe Mundial de Drogas de 2012 de la UNODC. Entre 2010 y 2019, el consumo de drogas aumentó en un 22%, alcanzando a aproximadamente 275 millones de personas en todo el mundo en el último año. Sin embargo, solo el 10% de estos usuarios experimentaron trastornos por consumo de drogas, lo que sugiere un distanciamiento de los objetivos prohibicionistas de un mundo libre de drogas.',
-        interpretacion: 'Un valor de 10 indica que el ICBF reestableció el derecho de 10 jóvenes por consumo de sustancias  Más Información: https://www.icbf.gov.co/programas-y-estrategias/proteccion/consumo-sustancias-psicoactivas',
+        contexto:
+          'El uso de sustancias psicoactivas (SPA) se está distanciando de las metas de políticas antidrogas, según el Informe Mundial de Drogas de 2012 de la UNODC. Entre 2010 y 2019, el consumo de drogas aumentó en un 22%, alcanzando a aproximadamente 275 millones de personas en todo el mundo en el último año. Sin embargo, solo el 10% de estos usuarios experimentaron trastornos por consumo de drogas, lo que sugiere un distanciamiento de los objetivos prohibicionistas de un mundo libre de drogas.',
+        interpretacion:
+          'Un valor de 10 indica que el ICBF reestableció el derecho de 10 jóvenes por consumo de sustancias  Más Información: https://www.icbf.gov.co/programas-y-estrategias/proteccion/consumo-sustancias-psicoactivas',
       },
       {
         nombre: 'Número de menores de edad que participaron en la comisión de un delito',
@@ -889,13 +905,15 @@ const datos: DatosYa[] = [
         dep: false,
         explicacion: 'Indica la proporción de delitos en los que participaron menores de edad.',
         definicion: 'Indica la proporción de delitos en los que participaron menores de edad.',
-        metodologia: 'Número de delitos en los que participaron menores de edad / Número total de delitos en el mismo periodo y territorio.',
+        metodologia:
+          'Número de delitos en los que participaron menores de edad / Número total de delitos en el mismo periodo y territorio.',
         unidad: 'Porcentaje',
         fuente_numerador: 'Policia Nacional',
         fuente_denominador: 'Policia Nacional',
         desagregacion: 'Municipal',
         contexto: 'No aplica.',
-        interpretacion: 'Un valor de 10 indica que el ICBF reestableció el derecho de 10 jóvenes por consumo de sustancias  Más Información: https://www.corteidh.or.cr/tablas/r25958.pdf',
+        interpretacion:
+          'Un valor de 10 indica que el ICBF reestableció el derecho de 10 jóvenes por consumo de sustancias  Más Información: https://www.corteidh.or.cr/tablas/r25958.pdf',
       },
     ],
   },
@@ -915,14 +933,17 @@ const datos: DatosYa[] = [
         mun: false,
         dep: false,
         explicacion: 'Indica el número de adolescentes que ingresaron al SRPA más de una vez.',
-        definicion: 'Indica el número de adolescentes que ingresan más de una vez al SRPA por la presunta comisión de un delito.',
-        metodologia: 'Número total del adolescentes que ingresan más de una vez al SRPA / Total de adolescentes en el mismo periodo y territorio * 100,000 adolescentes.',
+        definicion:
+          'Indica el número de adolescentes que ingresan más de una vez al SRPA por la presunta comisión de un delito.',
+        metodologia:
+          'Número total del adolescentes que ingresan más de una vez al SRPA / Total de adolescentes en el mismo periodo y territorio * 100,000 adolescentes.',
         unidad: 'Por 100.000 adolescentes',
         fuente_numerador: 'ICBF',
         fuente_denominador: 'ICBF',
         desagregacion: 'Municipal',
         contexto: 'No aplica.',
-        interpretacion: 'Una razón de 3 significa que hubo 3 adolescentes que ingresaron más de una vez  por cada 100.000 adolescentes en un momento y territorio determinados.',
+        interpretacion:
+          'Una razón de 3 significa que hubo 3 adolescentes que ingresaron más de una vez  por cada 100.000 adolescentes en un momento y territorio determinados.',
       },
       {
         nombre: 'Tiempo promedio que dura un adolescente o jóven en medida de internamiento preventivo',
@@ -932,7 +953,8 @@ const datos: DatosYa[] = [
         mun: false,
         dep: false,
         explicacion: 'Indica el tiempo promedio que pasa un adolescente con medida de internamiento preventivo.',
-        definicion: 'Indica el tiempo promedio que pasa un adolescente con medida de internamiento preventivo hasta que se resuelve su situación.',
+        definicion:
+          'Indica el tiempo promedio que pasa un adolescente con medida de internamiento preventivo hasta que se resuelve su situación.',
         metodologia: 'Se desconoce.',
         unidad: 'Se desconoce.',
         fuente_numerador: 'ICBF',
@@ -950,13 +972,15 @@ const datos: DatosYa[] = [
         dep: false,
         explicacion: 'Indica el número de adolescentes que ingresaron al SRPA.',
         definicion: 'Indica el número de adolescentes que terminaron en programas de Justicias Restaurativa del País.',
-        metodologia: 'Número de adolescentes que terminaron en  Programas de Justicia Restaurativa del país / Número total de  adolescentes en el mismo periodo y territorio * 100.000 adolescentes.',
+        metodologia:
+          'Número de adolescentes que terminaron en  Programas de Justicia Restaurativa del país / Número total de  adolescentes en el mismo periodo y territorio * 100.000 adolescentes.',
         unidad: 'Por 100.000 adolescentes',
         fuente_numerador: 'ICBF',
         fuente_denominador: 'ICBF',
         desagregacion: 'Municipal',
         contexto: 'No aplica.',
-        interpretacion: 'Una razón de 5 significa que hubo 5 adolescentes que terminaron en un programa de SRPA por cada 100.000 adolescentes en un momento y territorio determinados.',
+        interpretacion:
+          'Una razón de 5 significa que hubo 5 adolescentes que terminaron en un programa de SRPA por cada 100.000 adolescentes en un momento y territorio determinados.',
       },
       {
         nombre:
@@ -966,15 +990,19 @@ const datos: DatosYa[] = [
         hay_datos: true,
         mun: false,
         dep: false,
-        explicacion: 'Indica la proporción de adolescentes que cuentan con una medida de aseguramiento y tienen acceso al sistema educativo.',
-        definicion: 'Indica la proporción de adolescentes que se encuentran en Centros de Internamiento Preventivo y tienen acceso al sistema educativo.',
-        metodologia: 'Número de adolescentes que se encuentran en Centros de Internamiento Preventivo y tienen acceso al sistema educativo / Número total de adolescentes en Centros de Internamiento Preventivo en el mismo periodo y territorio.',
+        explicacion:
+          'Indica la proporción de adolescentes que cuentan con una medida de aseguramiento y tienen acceso al sistema educativo.',
+        definicion:
+          'Indica la proporción de adolescentes que se encuentran en Centros de Internamiento Preventivo y tienen acceso al sistema educativo.',
+        metodologia:
+          'Número de adolescentes que se encuentran en Centros de Internamiento Preventivo y tienen acceso al sistema educativo / Número total de adolescentes en Centros de Internamiento Preventivo en el mismo periodo y territorio.',
         unidad: 'Porcentaje',
         fuente_numerador: 'ICBF',
         fuente_denominador: 'ICBF',
         desagregacion: 'Municipal',
         contexto: 'No aplica.',
-        interpretacion: 'Un valor de 40% indica que 40 de cada 100 adolescentes con medida de reclusión tienen acceso al sistema educativo en un momento y territorio determinados.',
+        interpretacion:
+          'Un valor de 40% indica que 40 de cada 100 adolescentes con medida de reclusión tienen acceso al sistema educativo en un momento y territorio determinados.',
       },
       {
         nombre:
@@ -984,15 +1012,19 @@ const datos: DatosYa[] = [
         hay_datos: true,
         mun: false,
         dep: false,
-        explicacion: 'Indica la proporción de adolescentes que cuentan con una medida de aseguramiento y tienen una vinculación laboral.',
-        definicion: 'Indica la proporción de adolescentes que se encuentran en Centros de Internamiento Preventivo y tienen acceso a programas de trabajo por medio del proyecto sueños.',
-        metodologia: 'Número de adolescentes que se encuentran en Centros de Internamiento Preventivo y tienen acceso al proyecto sueños / Número total de adolescentes en Centros de Internamiento Preventivo en el mismo periodo y territorio.',
+        explicacion:
+          'Indica la proporción de adolescentes que cuentan con una medida de aseguramiento y tienen una vinculación laboral.',
+        definicion:
+          'Indica la proporción de adolescentes que se encuentran en Centros de Internamiento Preventivo y tienen acceso a programas de trabajo por medio del proyecto sueños.',
+        metodologia:
+          'Número de adolescentes que se encuentran en Centros de Internamiento Preventivo y tienen acceso al proyecto sueños / Número total de adolescentes en Centros de Internamiento Preventivo en el mismo periodo y territorio.',
         unidad: 'Porcentaje',
         fuente_numerador: 'ICBF',
         fuente_denominador: 'ICBF',
         desagregacion: 'Municipal',
         contexto: 'No aplica.',
-        interpretacion: 'Un valor de 50% indica que 50 de cada 100 adolescentes con medida de reclusión tienen acceso al programa sueños en un momento y territorio determinados.',
+        interpretacion:
+          'Un valor de 50% indica que 50 de cada 100 adolescentes con medida de reclusión tienen acceso al programa sueños en un momento y territorio determinados.',
       },
     ],
   },
@@ -1012,7 +1044,8 @@ const datos: DatosYa[] = [
         dep: false,
         umbral: 0,
         explicacion: 'Por definir',
-        definicion: 'Indica el número de menores de edad que fueron víctimas de un delito en contra de su libertad e integridad sexual.',
+        definicion:
+          'Indica el número de menores de edad que fueron víctimas de un delito en contra de su libertad e integridad sexual.',
         metodologia: 'Número de menores de edad que fueron reclutados por una estructural criminal.',
         unidad: 'Conteo',
         fuente_numerador: 'Panel CEDE - Registro Único de Víctimas',
@@ -1036,8 +1069,10 @@ const datos: DatosYa[] = [
         fuente_numerador: 'Panel CEDE - Registro Único de Víctimas',
         fuente_denominador: 'Panel CEDE - Registro Único de Víctimas',
         desagregacion: 'Municipal',
-        contexto: 'Arias et al., (214) han estudiando los efectos del conflicto armado en el desarrollo económico y social en Colombia, de acuerdo con los autores el conflicto armad ha tenido efectos devastadores en el sistema educativo del país. Las instituciones educativas, tanto oficiales como no oficiales, han enfrentado numerosos desafíos debido a la violencia y la inestabilidad asociadas con el conflicto. Muchas escuelas han sido afectadas directamente, ya sea por actos de violencia que las han dejado inoperables o por la desaparición de recursos esenciales. Además, el desplazamiento forzado de comunidades enteras ha tenido un impacto directo en la tasa de matricula y la asistencia escolar, ya que muchos niños y jóvenes se han visto obligados a abandonar sus hogares y, en consecuencia, sus estudios. Este entorno de conflicto también ha llevado a la pérdida de maestros capacitados, ya sea porque han sido desplazados o han abandonado sus roles por motivos de seguridad.',
-        interpretacion: 'Un valor de 10 indica que 10 menores fueron reclutados a una estructura criminal en un momento y territorio determinados.',
+        contexto:
+          'Arias et al., (214) han estudiando los efectos del conflicto armado en el desarrollo económico y social en Colombia, de acuerdo con los autores el conflicto armad ha tenido efectos devastadores en el sistema educativo del país. Las instituciones educativas, tanto oficiales como no oficiales, han enfrentado numerosos desafíos debido a la violencia y la inestabilidad asociadas con el conflicto. Muchas escuelas han sido afectadas directamente, ya sea por actos de violencia que las han dejado inoperables o por la desaparición de recursos esenciales. Además, el desplazamiento forzado de comunidades enteras ha tenido un impacto directo en la tasa de matricula y la asistencia escolar, ya que muchos niños y jóvenes se han visto obligados a abandonar sus hogares y, en consecuencia, sus estudios. Este entorno de conflicto también ha llevado a la pérdida de maestros capacitados, ya sea porque han sido desplazados o han abandonado sus roles por motivos de seguridad.',
+        interpretacion:
+          'Un valor de 10 indica que 10 menores fueron reclutados a una estructura criminal en un momento y territorio determinados.',
       },
       {
         nombre: 'Delitos contra la libertad y la integridad sexual en el desarrollo del conflicto',
