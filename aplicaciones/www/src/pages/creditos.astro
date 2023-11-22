@@ -3,8 +3,8 @@ import Plantilla from '@/plantillas/Principal.astro';
 ---
 
 <Plantilla titulo="___" descripcion="___" conMenu={false} imagen={{ ruta: '___.webp', alt: '___' }}>
-  <div id="tituloPagina">
-    <h1>Créditos</h1>
+  <section>
+    <h1 id="tituloPagina">Créditos</h1>
 
     <div id="creditos">
       <div class="textoCreditos">
@@ -15,7 +15,7 @@ import Plantilla from '@/plantillas/Principal.astro';
         </p>
       </div>
 
-      <h3><div class="rol">Organiza:</div></h3>
+      <h2 class="rol">Organiza:</h2>
 
       <div>
         <a class="logoNinezYa" href="https://ninezya.org/" target="_blank">
@@ -23,7 +23,7 @@ import Plantilla from '@/plantillas/Principal.astro';
         >
       </div>
 
-      <h3><div class="rol">Impulsa:</div></h3>
+      <h2 class="rol">Impulsa:</h2>
 
       <a href="" target="_blank">
         <img src={`${import.meta.env.BASE_URL}/imagenes/Nacional_horizontal.webp`} alt="Junta directiva nacional" /></a
@@ -36,79 +36,108 @@ import Plantilla from '@/plantillas/Principal.astro';
         /></a
       >
 
-      <h3><div class="rol">Coordina:</div></h3>
+      <h2 class="rol">Coordina:</h2>
 
       <a href="https://imagina.uniandes.edu.co/" target="_blank">
-        <img class="logoImagina" src={`${import.meta.env.BASE_URL}/imagenes/Imagina.webp`} alt="Logo IMAGINA" /></a
+        <img
+          class="logoImagina"
+          src={`${import.meta.env.BASE_URL}/imagenes/Imagina.webp`}
+          alt="Logo Centro IMAGINA"
+        /></a
       >
 
-      <h3><div class="rol">Desarrola:</div></h3>
+      <h2 class="rol">Desarrolla:</h2>
 
       <a href="https://enflujo.com" target="_blank">
-        <img class="logoEnFlujo" src={`${import.meta.env.BASE_URL}/imagenes/logo_enflujo.svg`} alt="Logo EnFlujo" /></a
+        <img
+          class="logoEnFlujo"
+          src={`${import.meta.env.BASE_URL}/imagenes/logo_enflujo.svg`}
+          alt="Logo Laboratorio EnFlujo"
+        /></a
       >
 
       <div class="voceros">
-        <h3><div class="rol" style="margin-bottom:-1.5em">Voceros consultados por cada YA:</div></h3>
+        <h2 class="rol">Voceros consultados por cada YA:</h2>
         <ol>
-          <li class="negrita">Salud-Nutrición:</li>
-          <p class="textoCreditos">Carolina Turriago y María Juliana Ortiz Soto (Fundación Éxito)</p>
+          <li>
+            <p class="negrita">Salud-Nutrición:</p>
+            <p class="textoCreditos">Carolina Turriago y María Juliana Ortiz Soto (Fundación Éxito)</p>
+          </li>
 
-          <li class="negrita">Salud mental:</li>
-          <p class="textoCreditos">
-            Norma Constanza Sánchez y Lina María Gonzalez Ballesteros (Fundación Saldarriaga Concha)
-          </p>
+          <li>
+            <p class="negrita">Salud mental:</p>
+            <p class="textoCreditos">
+              Norma Constanza Sánchez y Lina María Gonzalez Ballesteros (Fundación Saldarriaga Concha)
+            </p>
+          </li>
 
-          <li class="negrita">Educación inicial:</li>
-          <p class="textoCreditos">Cristian Franco (Río, Juego y Aprendo) | Juan David Ayala (aeioTU).</p>
+          <li>
+            <p class="negrita">Educación inicial:</p>
+            <p class="textoCreditos">Cristian Franco (Río, Juego y Aprendo) | Juan David Ayala (aeioTU).</p>
+          </li>
 
-          <li class="negrita">Educación preescolar, básica y media:</li>
-          <p class="textoCreditos">
-            Diego Sánchez y María Alejandra Muñoz Pabón (Fundación Empresarios por la Educación) | Mónica Varona
-            (Fundación Barco)
-          </p>
+          <li>
+            <p class="negrita">Educación preescolar, básica y media:</p>
+            <p class="textoCreditos">
+              Diego Sánchez y María Alejandra Muñoz Pabón (Fundación Empresarios por la Educación) | Mónica Varona
+              (Fundación Barco)
+            </p>
+          </li>
 
-          <li class="negrita">Ambiente sano:</li>
-          <p class="textoCreditos">Natalia Ucros y Katherin Alfonso (Fondo Acción)</p>
+          <li>
+            <p class="negrita">Ambiente sano:</p>
+            <p class="textoCreditos">Natalia Ucros y Katherin Alfonso (Fondo Acción)</p>
+          </li>
 
-          <li class="negrita">Juego:</li>
-          <p class="textoCreditos">Irma Salazar y Jhaned Arango (Juego y Niñez)</p>
+          <li>
+            <p class="negrita">Juego:</p>
+            <p class="textoCreditos">Irma Salazar y Jhaned Arango (Juego y Niñez)</p>
+          </li>
 
-          <li class="negrita">Participación:</li>
-          <p class="textoCreditos">
-            Diana Carmona (NiñezYA Antioquia) | Jhaned Biviana Arango Puerta (Corporación Juego y Niñez)
-          </p>
+          <li>
+            <p class="negrita">Participación:</p>
+            <p class="textoCreditos">
+              Diana Carmona (NiñezYA Antioquia) | Jhaned Biviana Arango Puerta (Corporación Juego y Niñez)
+            </p>
+          </li>
 
-          <li class="negrita">Fortalecimiento inicial para el cuidado y la crianza:</li>
-          <p class="textoCreditos">
-            Sara Lara y Felipe Cortés (World Vision-WV/Save The Children) | Margarita Martinez (Fundación PLAN)
-          </p>
+          <li>
+            <p class="negrita">Fortalecimiento inicial para el cuidado y la crianza:</p>
+            <p class="textoCreditos">
+              Sara Lara y Felipe Cortés (World Vision-WV/Save The Children) | Margarita Martinez (Fundación PLAN)
+            </p>
+          </li>
 
-          <li class="negrita">Adolescentes en conflicto con la ley con justicia restaurativa y pedagógica:</li>
-          <p class="textoCreditos">Arturo Harker (Imagina) | Camila Cuellar (Consultora Independiente)</p>
+          <li>
+            <p class="negrita">Adolescentes en conflicto con la ley con justicia restaurativa y pedagógica:</p>
+            <p class="textoCreditos">Arturo Harker (Imagina) | Camila Cuellar (Consultora Independiente)</p>
+          </li>
 
-          <li class="negrita">Cultura de paz, reconciliación y convivencia:</li>
-          <p class="textoCreditos" style="margin-bottom: 30vh">
-            Felipe Cortés (Save the Children / Plan) | Margarita Martínez (Plan)
-          </p>
+          <li>
+            <p class="negrita">Cultura de paz, reconciliación y convivencia:</p>
+            <p class="textoCreditos" style="margin-bottom: 30vh">
+              Felipe Cortés (Save the Children / Plan) | Margarita Martínez (Plan)
+            </p>
+          </li>
         </ol>
       </div>
     </div>
-  </div>
+  </section>
 </Plantilla>
 
 <style lang="scss">
+  section {
+    width: 60vw;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
   #tituloPagina {
     padding: 2em 0 1em 0;
-    max-width: 60vw;
-    font-size: 1em;
     font-family: var(--fuente);
   }
 
   #creditos {
-    max-width: 60vw;
-    padding: 2em 0 1em 0;
-    margin: 0vw 10vw 0vw 10vw;
+    // padding: 2em 0 1em 0;
     font-size: 1em;
     font-family: var(--fuente);
     color: var(--azulViejo);
@@ -139,22 +168,12 @@ import Plantilla from '@/plantillas/Principal.astro';
       'slnt' 0,
       'CRSV' 0;
   }
-  h2 {
-  }
+
   li {
     font-variation-settings:
       'MONO' 1,
       'CASL' 0,
       'wght' 500,
-      'slnt' 0,
-      'CRSV' 0;
-  }
-
-  .negrita {
-    font-variation-settings:
-      'MONO' 1,
-      'CASL' 0,
-      'wght' 800,
       'slnt' 0,
       'CRSV' 0;
   }
@@ -169,6 +188,7 @@ import Plantilla from '@/plantillas/Principal.astro';
     padding-top: 5em;
     padding-bottom: 2em;
     color: var(--moradoProfundo);
+    font-size: 1.2em;
   }
 
   img {
