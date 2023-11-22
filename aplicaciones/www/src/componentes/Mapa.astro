@@ -26,13 +26,13 @@ const { ancho, alto } = Astro.props;
     style={`background: linear-gradient(90deg, ${colorNegativo} 0%, ${colorNeutro} 50%, ${colorPositivo} 100%);`}
   >
     <span class="marcaLeyenda alerta">Alerta</span>
-    <span class="marcaLeyenda umbral">Umbral</span>
+    <span class="marcaLeyenda umbral">Meta</span>
     <span class="marcaLeyenda positivo">Positivo</span>
   </div>
 </div>
 
 <script>
-  import { calcularPorcentaje } from '@/utilidades/ayudas';
+  import { calcularPorcentaje, obtenerVariableCSS } from '@/utilidades/ayudas';
   import { crearLinea, escalaCoordenadas, extremosLugar } from '@enflujo/alquimia';
   import type { DatosAño, ExtremosCoordenadas } from '@/tipos';
   import type { FeatureCollection } from 'geojson';
@@ -65,6 +65,7 @@ const { ancho, alto } = Astro.props;
   let coordenadasAlto = 0;
   let municipiosAgregados = {}; // Objeto para guardar las listas de municipios seleccionados de cada departamento en el nivel 'mun'
   let datosParaPintar: FeatureCollection; // Esto puede ser departamentos o municipios
+  let iColor = 0;
 
   mapa.onmouseenter = () => {
     informacion.classList.add('visible');
@@ -278,9 +279,13 @@ const { ancho, alto } = Astro.props;
 
           const lugares = [...lugaresSeleccionados.get()]; // es necesario clonar el array acá para que al final de las operaciones que siguen a continuación, el store se encargue de hacer llamado a todos los que estén usando `listen()`.
           const posicionLugar = lugares.findIndex(({ nombre: nombreAgregado }) => nombreAgregado === nombre);
+          const colorLugar = obtenerVariableCSS(`--color${iColor}`);
 
-          if (posicionLugar < 0 && !lugares.includes({ nombre, codigo })) {
-            lugares.push({ nombre, codigo });
+          zona.setAttribute('stroke', colorLugar);
+
+          if (posicionLugar < 0 && !lugares.includes({ nombre, codigo, color: colorLugar })) {
+            lugares.push({ nombre, codigo, color: colorLugar });
+            iColor = (iColor + 1) % 32;
           } else {
             if (nivel.get() === 'mun') {
               // Si la lista de municipios del departamento se vacía, borra el mapa del departamento
@@ -292,7 +297,7 @@ const { ancho, alto } = Astro.props;
             }
           }
 
-          lugaresSeleccionados.set(lugares); // Cambiar valores en el store, todos los que esten con listen() van a recibir estos nuevos valores.
+          lugaresSeleccionados.set(lugares); // Cambiar valores en el store, todos los que estén con listen() van a recibir estos nuevos valores.
         };
       }
     });
@@ -314,7 +319,6 @@ const { ancho, alto } = Astro.props;
     }
 
     .seleccionada {
-      stroke: var(--escarlataBebe);
       stroke-opacity: 1;
       stroke-width: 2px;
     }

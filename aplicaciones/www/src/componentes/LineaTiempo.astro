@@ -47,7 +47,7 @@ const { alto } = Astro.props;
 </section>
 
 <script>
-  import { porcentajeAPixeles } from '@/utilidades/ayudas';
+  import { obtenerVariableCSS, porcentajeAPixeles } from '@/utilidades/ayudas';
   import {
     listaAños,
     datosNal,
@@ -202,7 +202,7 @@ const { alto } = Astro.props;
 
   function crearEjeX() {
     const lista = listaAños.value;
-    const lineaNacional = new Linea(contenedorLineas, 'Colombia', lista);
+    const lineaNacional = new Linea(contenedorLineas, 'Colombia', lista, obtenerVariableCSS('--fucsiaEsmalte'));
     lineaNacional.agregar().actualizar(posicionX, posicionY);
     lineas.push(lineaNacional);
 
@@ -265,7 +265,7 @@ const { alto } = Astro.props;
       if (existeLinea) {
         existeLinea.agregar();
       } else {
-        const linea = new Linea(contenedorLineas, lugar.nombre, departamentoPorAño);
+        const linea = new Linea(contenedorLineas, lugar.nombre, departamentoPorAño, lugar.color);
         linea.agregar().actualizar(posicionX, posicionY);
         lineas.push(linea);
       }
@@ -368,7 +368,7 @@ const { alto } = Astro.props;
       }
 
       #lineasTiempo {
-        stroke: var(--rosaBarbie);
+        stroke: var(--fucsiaEsmalte);
         stroke-width: 2px;
         fill: none;
       }

@@ -109,3 +109,7 @@ export async function pedirDatos<Respuesta>(url: string, config: RequestInit = {
   const datos = await res.json();
   return datos as Respuesta;
 }
+
+export function obtenerVariableCSS(nombre: string) {
+  return window.getComputedStyle(document.documentElement).getPropertyValue(nombre);
+}

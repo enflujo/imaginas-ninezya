@@ -11,8 +11,9 @@ export default class Linea {
   linea: SVGPathElement;
   punto: SVGCircleElement;
   activo: boolean;
+  color: string;
 
-  constructor(contenedor: SVGGElement, nombre: string, datos: DatosPorAñoOrdenado) {
+  constructor(contenedor: SVGGElement, nombre: string, datos: DatosPorAñoOrdenado, color: string) {
     this.contenedor = contenedor;
     this.nombre = nombre;
     this.datos = datos;
@@ -24,6 +25,7 @@ export default class Linea {
 
     this.grupo.setAttribute('class', 'lineaTiempo');
     this.linea.setAttribute('class', 'linea');
+    this.linea.setAttribute('stroke', color);
 
     this.grupo.appendChild(this.linea);
 

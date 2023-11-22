@@ -11,9 +11,8 @@ export const datosNal = map<DatosIndicadorNal>();
 export const nivel = atom<string>(null);
 export const deptoSeleccionado = atom<string | null>(null);
 export const añoSeleccionado = atom<string | null>(null);
-export const lugares: string[] = [];
 export const datosColombia = map<{ dep?: FeatureCollection; mun?: FeatureCollection }>({});
-export const lugaresSeleccionados = atom<{ nombre: string; codigo: string }[]>([]);
+export const lugaresSeleccionados = atom<{ nombre: string; codigo: string; color: string }[]>([]);
 export let color: FuncionColor;
 export let valorMaxY = 0;
 export let valorMaxColor = 0;
@@ -108,11 +107,6 @@ export async function cargarDatos() {
 
   cargando = false;
   cargador.classList.remove('visible');
-}
-
-export function agregarLugar(codigo: string) {
-  if (lugares.includes(codigo)) return;
-  lugares.push(codigo);
 }
 
 export function crearListaAños() {

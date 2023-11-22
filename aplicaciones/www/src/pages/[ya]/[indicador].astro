@@ -123,7 +123,7 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
 
     if (lista.length) {
       for (const mapa of lista) {
-        const { nombre, codigo } = mapa;
+        const { nombre, codigo, color } = mapa;
         let existeLugarEnDOM = false;
 
         existentes.forEach((mapita) => {
@@ -144,9 +144,11 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
           mapita.className = 'mapita';
           mapita.id = `${codigo}`;
           mapita.dataset.departamento = nombre;
+          
           mapita.agregarTitulo(nombre);
-
+          
           await mapita.crearMapa();
+          mapita.definirColor(color);
           mapita.escalar();
           mapita.pintarMapa();
           comparativo.appendChild(mapita);

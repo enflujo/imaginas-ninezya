@@ -208,6 +208,10 @@ export default class MapaDetalle extends HTMLElement {
       });
     }
   }
+
+  definirColor(color: string) {
+    this.style.borderColor = color;
+  }
 }
 
 customElements.define('enflujo-mapita', MapaDetalle);
