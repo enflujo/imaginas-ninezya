@@ -1,0 +1,175 @@
+---
+import datos from '@/datosVisibles/indicadores';
+const { ya, indicador } = Astro.params;
+const datosYa = datos.find((instancia) => instancia.ruta === ya);
+const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta === indicador);
+---
+
+<div id="contenedorInfoAdicional" data-hayDatos=`${datosIndicador.hay_datos}`>
+  <div id="fichaTecnica">
+    <h2 id="ya" class="tituloSeccion">{datosYa.nombre}</h2>
+    <p id="nombre">{datosIndicador.nombre}</p>
+    <div class="seccion"><h4 class="titulo">Definición</h4><p class="texto">{datosIndicador.definicion}</p></div>
+    <h3 class="tituloSeccion">Información técnica</h3>
+    <section id="inferior">
+      <div class="seccion"><h4 class="titulo">Unidad de medida</h4><p class="texto">{datosIndicador.unidad}</p></div>
+      <div class="seccion">
+        <h4 class="titulo">Metodología de cálculo</h4><p class="texto">{datosIndicador.metodologia}</p>
+      </div>
+      <div class="seccion">
+        <h4 class="titulo">Cómo se interpreta</h4>
+        <p class="texto">{datosIndicador.interpretacion}</p>
+      </div>
+    </section>
+  </div>
+
+  <div id="contenedorSugerencias">
+    <div id="aviso">
+      No hay información suficiente para reconstruir este indicador. Aquí hay algunas sugerencias de cómo podría
+      trabajarse.
+    </div>
+    <div class="sugerencia">
+      <h4 class="titulo">Responsables de medición</h4><p class="texto">
+        Ej. DANE (Departamento Administrativo Nacional de Estadística)
+      </p>
+    </div>
+    <div class="sugerencia">
+      <h4 class="titulo">A quién le compete</h4><p class="texto">
+        Ej. ICBF (Instituto Colombiano de Bienestar Familiar)
+      </p>
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  #contenedorInfoAdicional {
+    display: flex;
+    position: absolute;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--blancoMarfil);
+    margin: 2em;
+
+    #fichaTecnica {
+      width: 40vw;
+      height: fit-content;
+      min-width: 300px;
+      border: solid 2px var(--azulViejo);
+      border-radius: 15px;
+      color: var(--azulViejo);
+      background-color: var(--blancoMarfil);
+      text-align: center;
+      z-index: 5;
+      font-variation-settings:
+        'MONO' 0,
+        'CASL' 0,
+        'wght' 700,
+        'slnt' 0,
+        'CRSV' 0;
+
+      .tituloSeccion {
+        background-color: var(--azulViejo);
+        color: var(--blancoMarfil);
+        width: auto;
+        padding: 0.3em;
+        margin: 0;
+        font-size: 1em;
+      }
+
+      #ya {
+        border-radius: 10px 10px 0 0;
+        font-size: 1.1em;
+      }
+
+      #nombre {
+        border-bottom: solid 2px var(--azulViejo);
+        font-size: 1em;
+        margin: 0;
+        padding: 0.3em;
+      }
+
+      #inferior {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .seccion {
+        display: flex;
+        align-items: center;
+        margin: 0;
+        align-items: stretch;
+        border-bottom: solid 2px var(--azulViejo);
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        .titulo {
+          width: 0;
+          font-size: 0.8em;
+          text-align: left;
+          flex-basis: 20%;
+          margin: 0;
+          padding: 0.8em;
+          text-transform: uppercase;
+          border-right: solid 2px var(--azulViejo);
+        }
+
+        .texto {
+          font-size: 0.8em;
+          padding: 0.8em;
+          margin: 0;
+          text-align: left;
+          flex-basis: 80%;
+          display: flex;
+          align-items: center;
+          min-height: 2.3em;
+          text-wrap: wrap;
+          overflow-wrap: anywhere;
+        }
+      }
+    }
+
+    #contenedorSugerencias {
+      display: flex;
+      width: 40%;
+      font-size: 0.9em;
+      flex-direction: column;
+      justify-content: space-between;
+
+      #aviso {
+        color: yellow;
+        background-color: var(--uvaProfunda);
+        padding: 3em;
+        border: solid 2px yellow;
+        border-radius: 10px;
+      }
+
+      .sugerencia {
+        .titulo {
+          background-color: var(--uvaProfunda);
+          color: var(--blancoMarfil);
+          padding: 2em 2em 1.5em 2em;
+          border-radius: 10px 10px 0 0;
+          margin-bottom: 0;
+        }
+        .texto {
+          background-color: var(--blancoMarfil);
+          color: var(--azulViejo);
+          border: solid 2px var(--uvaProfunda);
+          margin: 0;
+          padding: 2em 2em 1.5em 2em;
+        }
+      }
+    }
+
+    &.sinDatos {
+      background-color: aliceblue;
+      height: 100vh;
+      position: absolute;
+      top: 10vh;
+      left: 19vw;
+      z-index: 9;
+    }
+  }
+</style>

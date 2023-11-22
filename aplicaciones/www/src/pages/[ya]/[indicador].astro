@@ -84,10 +84,13 @@ const archivosYa = datosYa.indicadores.map((indicador) => indicador.archivo);
   const contenedorGeneral = document.getElementById('contenedor');
   const conDatos = document.getElementById('conDatos');
   const sinDatos = document.getElementById('sinDatos');
-  if (contenedorGeneral.dataset.haydatos === 'true') {
-  } else {
+  const descripcionYa = document.getElementById('descripcionYa');
+
+  // Cambiar vista según si hay datos del indicador o no
+  if (contenedorGeneral.dataset.haydatos === 'false') {
     conDatos.classList.add('oculto');
     sinDatos.classList.add('visible');
+    descripcionYa.style.opacity = '0.95';
   }
 
   botonFicha.addEventListener('click', () => {
