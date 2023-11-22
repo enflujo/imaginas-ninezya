@@ -24,7 +24,16 @@ const { ya, indicador } = Astro.params;
 const posYa = datos.findIndex((instancia) => instancia.ruta === ya);
 const datosYa = datos[posYa];
 const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta === indicador);
-const archivosYa = datosYa.indicadores.map((indicador) => indicador.archivo);
+const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: string }[] = datosYa.indicadores.map(
+  (indicador) => {
+    return {
+      titulo: indicador.nombre,
+      archivo: indicador.archivo,
+      umbral: indicador.umbral,
+      ruta: `${import.meta.env.BASE_URL}/${datosYa.ruta}/${indicador.ruta}`,
+    };
+  }
+);
 ---
 
 <Plantilla titulo={datosIndicador.nombre} conMenu={true}>
