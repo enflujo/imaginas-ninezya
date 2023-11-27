@@ -15,19 +15,19 @@ import Plantilla from '@/plantillas/Principal.astro';
         </p>
       </div>
 
-      <h2 class="rol">Organiza:</h2>
-
       <div>
         <a class="logoNinezYa" href="https://ninezya.org/" target="_blank">
           <img src={`${import.meta.env.BASE_URL}/imagenes/logoNinezYa.webp`} alt="Logo NiñezYA" /></a
         >
       </div>
 
-      <h2 class="rol">Impulsa:</h2>
+      <h3 class="rol">Comité Directivo Nacional 2023</h3>
 
       <a href="" target="_blank">
         <img src={`${import.meta.env.BASE_URL}/imagenes/Nacional_horizontal.webp`} alt="Junta directiva nacional" /></a
       >
+
+      <h3 class="rol">Comité Coordinador Antioquia 2023</h3>
 
       <a href="" target="_blank">
         <img
@@ -36,7 +36,9 @@ import Plantilla from '@/plantillas/Principal.astro';
         /></a
       >
 
-      <h2 class="rol">Coordina:</h2>
+      <!-- <h2 class="rol">Coordina:</h2> -->
+
+      <h2 class="rol">Desarrolla:</h2>
 
       <a href="https://imagina.uniandes.edu.co/" target="_blank">
         <img
@@ -46,18 +48,16 @@ import Plantilla from '@/plantillas/Principal.astro';
         /></a
       >
 
-      <h2 class="rol">Desarrolla:</h2>
-
       <a href="https://enflujo.com" target="_blank">
         <img
           class="logoEnFlujo"
-          src={`${import.meta.env.BASE_URL}/imagenes/logo_enflujo.svg`}
+          src={`${import.meta.env.BASE_URL}/imagenes/enflujo_andes.svg`}
           alt="Logo Laboratorio EnFlujo"
         /></a
       >
 
       <div class="voceros">
-        <h2 class="rol">Voceros consultados por cada YA:</h2>
+        <h2 class="rol">Definición indicadores por cada YA</h2>
         <ol>
           <li>
             <p class="negrita">Salud-Nutrición:</p>
@@ -115,17 +115,61 @@ import Plantilla from '@/plantillas/Principal.astro';
 
           <li>
             <p class="negrita">Cultura de paz, reconciliación y convivencia:</p>
-            <p class="textoCreditos" style="margin-bottom: 30vh">
+            <p class="textoCreditos" style="margin-bottom:12vh">
               Felipe Cortés (Save the Children / Plan) | Margarita Martínez (Plan)
             </p>
           </li>
         </ol>
       </div>
+      <p class="textoReconocimiento">
+        El <span class="negrita">SIYA</span> fue construido con la asesoría técnica de un equipo de profesionales de
+        diferentes organizaciones que conforman <span class="negrita">NiñezYA</span>:
+      </p>
+      <ul>
+        <li>
+          <p class="negrita">Fundación Éxito</p>
+          <p class="textoCreditos">José Villegas</p>
+        </li>
+        <li>
+          <p class="negrita">Imagina-Uniandes</p>
+          <p class="textoCreditos">Arturo Harker</p>
+          <p class="textoCreditos">Daniel Mendivelso</p>
+          <p class="textoCreditos">Juliana Gutiérrez</p>
+        </li>
+        <li>
+          <p class="negrita">Jerez&Sandoval-Medios y RS</p>
+          <p class="textoCreditos">Ángela Constanza Jerez</p>
+          <p class="textoCreditos">Diana Jerez</p>
+          <p class="textoCreditos">Ninfa Sandoval</p>
+        </li>
+        <li>
+          <p class="negrita">Laboratorio EnFlujo</p>
+          <p class="textoCreditos">Juan Camilo González</p>
+          <p class="textoCreditos">Antonia Bustamante</p>
+          <p class="textoCreditos">Julián Camilo García Castro</p>
+        </li>
+        <li>
+          <p class="negrita">Save The Children</p>
+          <p class="textoCreditos">Felipe Cortés</p>
+        </li>
+        <li>
+          <p class="negrita">United Way</p>
+          <p class="textoCreditos">Alejandra Vargas</p>
+        </li>
+        <li>
+          <p class="negrita">World Vision</p>
+          <p class="textoCreditos" style="margin-bottom:30vh">Sara Lara</p>
+        </li>
+      </ul>
+
+      <div></div>
     </div>
   </section>
 </Plantilla>
 
 <style lang="scss">
+  @import '@/scss/constantes';
+
   section {
     width: 60vw;
     max-width: 1300px;
@@ -137,7 +181,6 @@ import Plantilla from '@/plantillas/Principal.astro';
   }
 
   #creditos {
-    // padding: 2em 0 1em 0;
     font-size: 1em;
     font-family: var(--fuente);
     color: var(--azulViejo);
@@ -153,6 +196,36 @@ import Plantilla from '@/plantillas/Principal.astro';
         'MONO' 0,
         'CASL' 0,
         'wght' 400,
+        'slnt' 0,
+        'CRSV' 0;
+    }
+
+    .textoReconocimiento {
+      color: var(--moradoProfundo);
+      font-size: 1.1em;
+      font-variation-settings:
+        'MONO' 0,
+        'CASL' 0,
+        'wght' 400,
+        'slnt' 0,
+        'CRSV' 0;
+    }
+
+    ul {
+      margin-top: 2em;
+      .textoCreditos {
+        margin-top: -0.5em;
+      }
+    }
+
+    h3 {
+      font-size: 1em;
+      margin-bottom: -2em;
+      color: var(--moradoProfundo);
+      font-variation-settings:
+        'MONO' 0,
+        'CASL' 0,
+        'wght' 700,
         'slnt' 0,
         'CRSV' 0;
     }
@@ -192,24 +265,48 @@ import Plantilla from '@/plantillas/Principal.astro';
   }
 
   img {
-    max-width: 50vw;
-    max-height: 400px;
+    max-width: 60vw;
+    display: block;
+    max-height: 420px;
+    margin-top: 3em;
+    margin-left: 2vw;
   }
   .logoEnFlujo {
-    margin: -8em -5em -8em 0em;
+    display: block;
     margin-left: 5vw;
   }
 
   .logoImagina {
-    max-width: 500px;
-    margin-left: 10vw;
+    display: block;
+    margin-left: 3vw;
     mix-blend-mode: multiply;
   }
 
   .logoNinezYa {
-    max-width: 500px;
-    margin-left: 2em;
-    mix-blend-mode: multiply;
     margin-left: 10vw;
+    margin-right: 10vw;
+  }
+
+  @media screen and (min-width: $corte2) {
+    .logoNinezYa {
+      display: block;
+      margin-left: 6vw;
+      margin-right: 10vw;
+    }
+  }
+
+  @media screen and (min-width: $corte3) {
+    .logoNinezYa {
+      display: block;
+      margin-left: 8vw;
+      margin-right: 10vw;
+    }
+  }
+  @media screen and (min-width: $corte4) {
+    .logoNinezYa {
+      display: block;
+      margin-left: 12vw;
+      margin-right: 10vw;
+    }
   }
 </style>
