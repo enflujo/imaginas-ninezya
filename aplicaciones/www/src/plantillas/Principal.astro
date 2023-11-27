@@ -18,7 +18,7 @@ const urlPagina = new URL(pathname, Astro.site);
 const cola = 'SIYA';
 const tituloSEO = titulo ? `${titulo} | ${cola}` : cola;
 const descripcionSEO = descripcion || descripcionGeneral;
-const rutaImg = imagen ? new URL(`imagenes/${imagen.ruta}`, urlBase) : new URL('imagenes/siya.webp', urlBase);
+const rutaImg = imagen ? new URL(`imagenes/${imagen.ruta}`, urlBase) : new URL('imagenes/SEO_general.webp', urlBase);
 const altImg = imagen ? imagen.alt : nombrePagina;
 ---
 
