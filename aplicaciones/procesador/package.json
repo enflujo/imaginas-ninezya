@@ -5,7 +5,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": " nodemon ./fuente/aplicacion.ts"
+    "dev": " nodemon ./fuente/aplicacion.ts",
+    "pesos": "nodemon ./fuente/datosDescarga.ts"
   },
   "devDependencies": {
     "@types/cli-color": "^2.0.6",
@@ -29,7 +30,8 @@
     "ignore": [
       "./datos/*"
     ],
-    "exec": "node -r tsconfig-paths/register -r ts-node/register ./fuente/aplicacion.ts",
+    "exec": "node -r tsconfig-paths/register -r ts-node/register ./fuente/aplicacion.ts && node -r tsconfig-paths/register -r ts-node/register ./fuente/datosDescarga.ts",
+
     "ext": "ts, js"
   }
 }

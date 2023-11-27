@@ -52,8 +52,8 @@ async function inicio() {
   // await ya25.procesar('2.5: cobertura transicion', 'YA2_2.5', 'Sheet1', 'ya2-5');
   // const ya28 = new VariableSingular('o_acto_terror', false, 'conteo');
   // await ya28.procesar('2.8: hostigamiento', 'YA2_2.8', 'Sheet1', 'ya2-8');
-  const ya29 = new VariableSingular('o_minas_anti', false, 'conteo');
-  await ya29.procesar('2.9: explosivos', 'YA2_2.9', 'Sheet1', 'ya2-9');
+  //const ya29 = new VariableSingular('o_minas_anti', false, 'conteo');
+  //await ya29.procesar('2.9: explosivos', 'YA2_2.9', 'Sheet1', 'ya2-9');
 
   // const ya31 = new VariableSingular('cobertura_bruta_media', true, 'porcentaje');
   // await ya31.procesar('3.1: cobertura media', 'YA3_3.1', 'Sheet1', 'ya3-1');

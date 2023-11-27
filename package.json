@@ -10,7 +10,8 @@
     "build": "yarn workspace www build",
     "lint": "prettier --check .",
     "lint:fix": "prettier --write --list-different .",
-    "preview": "yarn workspace www preview"
+    "preview": "yarn workspace www preview",
+    "pesos": "yarn workspace procesador pesos"
   },
   "devDependencies": {
     "prettier": "^3.1.0"
