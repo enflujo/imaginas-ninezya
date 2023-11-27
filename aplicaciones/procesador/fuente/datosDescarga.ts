@@ -3,7 +3,7 @@ import { parse, resolve } from 'path';
 import { guardarJSON } from './utilidades/ayudas';
 const ruta = resolve(__dirname, './datos');
 type PesosXLSX = {
-  [nombre: string]: {peso: string, nombre: string};
+  [nombre: string]: { peso: string; nombre: string };
 };
 const datos: PesosXLSX = {};
 
@@ -16,14 +16,16 @@ function pesoArchivo(peso: number) {
 }
 
 async function calcularPesos() {
-  const archivos = await readdir(ruta).then((nombres) => nombres.filter((nombre) => nombre.endsWith('.xlsx') && nombre.includes('YA')));
+  const archivos = await readdir(ruta).then((nombres) =>
+    nombres.filter((nombre) => nombre.endsWith('.xlsx') && nombre.includes('YA'))
+  );
   for (const nombre of archivos) {
     const { size } = await stat(resolve(ruta, nombre));
     const peso = pesoArchivo(size);
     const pos = parse(nombre).name.indexOf('_') + 1;
     const nombreArchivo = ('ya' + parse(nombre).name.slice(pos, parse(nombre).name.length)).replace('.', '-');
 
-    datos[nombreArchivo] = {peso, nombre: parse(nombre).name};
+    datos[nombreArchivo] = { peso, nombre: parse(nombre).name };
   }
 
   guardarJSON(datos, 'pesosArchivos');

@@ -9,32 +9,25 @@ async function inicio() {
   //   return { nombre: lugar[1], codigo: lugar[0] };
   // });
   // guardarJSON(deps, 'buscador-deps');
-
   // const muns = municipios.datos.map((lugar): { nombre: string; codigo: string; dep?: string } => {
   //   const departamento = departamentos.datos.find((dep) => dep[0] === lugar[2]);
   //   if (!departamento) {
   //     console.log(lugar);
   //     throw new Error('no hay departamento');
   //   }
-
   //   return { nombre: `${lugar[1]} (${departamento[1]})`, codigo: lugar[3], dep: departamento[1] };
   // });
-
   // muns.sort((a, b) => {
   //   if (a.dep && b.dep) {
   //     if (a.dep > b.dep) return 1;
   //     if (a.dep < b.dep) return -1;
   //   }
-
   //   return 0;
   // });
-
   // muns.forEach((mun) => {
   //   delete mun.dep;
   // });
-
   // guardarJSON(muns, 'buscador-muns');
-
   // const ya11 = new VariableSingular('tacued', true, 'porcentaje');
   // await ya11.procesar('1.1: salud - acueducto', 'YA1_1.1', 'Sheet1', 'ya1-1');
   // const ya12 = new VariableSingular('talcan', true, 'porcentaje');
@@ -47,14 +40,12 @@ async function inicio() {
   // await ya17.procesar('1.7: desnutricion', 'YA1_1.7', 'Sheet1', 'ya1-7');
   // const ya18 = new VariableSingular('bajo_peso', false, 'porcentaje');
   // await ya18.procesar('1.8: bajo peso', 'YA1_1.8', 'Sheet1', 'ya1-8');
-
   // const ya25 = new VariableSingular('cobertura_bruta_transicion', true, 'porcentaje');
   // await ya25.procesar('2.5: cobertura transicion', 'YA2_2.5', 'Sheet1', 'ya2-5');
   // const ya28 = new VariableSingular('o_acto_terror', false, 'conteo');
   // await ya28.procesar('2.8: hostigamiento', 'YA2_2.8', 'Sheet1', 'ya2-8');
   //const ya29 = new VariableSingular('o_minas_anti', false, 'conteo');
   //await ya29.procesar('2.9: explosivos', 'YA2_2.9', 'Sheet1', 'ya2-9');
-
   // const ya31 = new VariableSingular('cobertura_bruta_media', true, 'porcentaje');
   // await ya31.procesar('3.1: cobertura media', 'YA3_3.1', 'Sheet1', 'ya3-1');
   // const ya32 = new VariableSingular('matematicas', true, 'porcentaje');
@@ -65,7 +56,6 @@ async function inicio() {
   // await ya34.procesar('3.4: deserción', 'YA3_3.4', 'Sheet1', 'ya3-4');
   // const ya35 = new VariableSingular('repitencia', false, 'porcentaje');
   // await ya35.procesar('3.5: repitencia', 'YA3_3.5', 'Sheet1', 'ya3-5');
-
   // const ya41 = new NumeradorDenominador(false, 'tasa', 100000);
   // await ya41.procesar('4.1: mortalidad EDA', 'YA4_4.1', 'datos', 'ya4-1');
   // const ya42 = new NumeradorDenominador(false, 'tasa', 100000);
