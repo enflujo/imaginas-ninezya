@@ -2,6 +2,7 @@
 import FichaTecnica from '@/componentes/FichaTecnica.astro';
 import datos from '@/datosVisibles/indicadores';
 import Plantilla from '@/plantillas/Principal.astro';
+import pesos from '@/datosVisibles/pesosArchivos.json';
 ---
 
 <Plantilla
@@ -18,47 +19,49 @@ import Plantilla from '@/plantillas/Principal.astro';
         <p>
           Aquí se encuentran los datos en bruto para descarga directa. A través del menú selecciona el <span
             class="negrita">YA</span
-          > del cual quieres obtener datos. Los datos están disponibles en <span class="negrita">.xlsx</span> o
-          <span class="negrita">.zip</span>
+          > del cual quieres obtener datos. Los datos están disponibles en <span class="negrita">.xlsx</span>.
         </p>
       </div>
 
       <form id="selector">
         <label for="opciones">Selecciona un YA</label>
         <select id="opciones" name="opciones">
-          {
-            datos.map((ya, i) => {
-              return <option value={ya.ruta}>{`${i + 1}. ${ya.nombre}`}</option>;
-            })
-          }
+          {datos.map((ya, i) => ya.hay_datos && <option value={ya.ruta}>{`${i + 1}. ${ya.nombre}`}</option>)}
         </select>
       </form>
 
       <div id="indicadores">
         {
-          datos.map((ya, i) => {
-            return (
-              <div id={ya.ruta} class={`contenedorYa${i === 0 ? ' visible' : ''}`}>
-                {ya.indicadores.map((indicador) => {
-                  return (
-                    <div class="indicador">
-                      <p class="columna enlace">
-                        <a href="">
-                          <span class="nombre">{indicador.nombre}</span>
-                          <span class="peso">(4,81MB)</span>
-                          <img
-                            class="iconoDescarga"
-                            src={`${import.meta.env.BASE_URL}/imagenes/icono-descarga.svg`}
-                            alt="Icono Descarga"
-                          />
-                        </a>
-                      </p>
-                    </div>
-                  );
-                })}
-              </div>
-            );
-          })
+          datos.map(
+            (ya, i) =>
+              ya.hay_datos && (
+                <div id={ya.ruta} class={`contenedorYa${i === 0 ? ' visible' : ''}`}>
+                  {ya.indicadores.map((indicador) => {
+                    return (
+                      <div class="indicador">
+                        <p class="columna enlace">
+                          {pesos[indicador.archivo] && (
+                            <a
+                              href={`${import.meta.env.BASE_URL}/estaticos/datos/${
+                                pesos[indicador.archivo].nombre
+                              }.xlsx`}
+                            >
+                              <span class="nombre">{indicador.nombre}</span>
+                              <span class="peso">({pesos[indicador.archivo].peso})</span>
+                              <img
+                                class="iconoDescarga"
+                                src={`${import.meta.env.BASE_URL}/imagenes/icono-descarga.svg`}
+                                alt="Icono Descarga"
+                              />
+                            </a>
+                          )}
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
+              )
+          )
         }
       </div>
     </div>
@@ -77,7 +80,6 @@ import Plantilla from '@/plantillas/Principal.astro';
       visible.classList.remove('visible');
       contenedorYa.classList.add('visible');
     }
-    console.log();
   };
 </script>
 

@@ -2,11 +2,11 @@ interface DatosComunes {
   nombre: string;
   ruta: string;
   definicion: string;
+  hay_datos: boolean;
 }
 
 interface DatosIndicador extends DatosComunes {
   archivo?: string;
-  hay_datos: boolean;
   mun?: boolean;
   dep?: boolean;
   explicacion?: string;
@@ -35,6 +35,7 @@ const datos: DatosYa[] = [
     imagen: 'ya1',
     definicion:
       'De acuerdo con la Organización Mundial de la Salud (OMS) en 2014, se define la salud como un estado de completo bienestar físico, mental y social, y no simplemente como la ausencia de afecciones o enfermedades. En este contexto, se destaca la importancia del desarrollo saludable de los niños, ya que la capacidad de vivir en armonía es fundamental para su desarrollo integral. Este enfoque integral reconoce la interconexión entre la salud física y mental, así como la importancia del entorno social en el bienestar general.',
+    hay_datos: true,
     indicadores: [
       {
         nombre: 'Cobertura de acueducto',
@@ -174,6 +175,7 @@ const datos: DatosYa[] = [
     ruta: 'educacion-inicial',
     definicion:
       'Es esencial garantizar el desarrollo integral de los niños en la primera infancia, con un enfoque destacado en la educación inicial según la Política de Estado de Cero a Siempre en Colombia. A pesar de avances legislativos, la disparidad persiste, ya que, de más de 4 millones de niños menores de 6 años, solo 1.2 millones tienen acceso a la educación inicial dentro de la atención integral. Obstáculos como la falta de instituciones cercanas, cupos limitados y requisitos de ingreso no cumplidos, especialmente en zonas rurales como la Orinoquía y la Amazonía, plantean desafíos. Superar estas barreras y aumentar la cobertura, especialmente en entornos rurales, es esencial para cumplir con la Política de Estado de Cero a Siempre, incluyendo la implementación efectiva de la ruta integral de atenciones.',
+    hay_datos: true,
     indicadores: [
       {
         nombre: 'Niños y niñas menores de 5 años por tipo de establecimiento al que asisten',
@@ -321,6 +323,7 @@ const datos: DatosYa[] = [
     ruta: 'educacion-preescolar-a-media',
     definicion:
       'Es crucial garantizar una educación de calidad en Colombia, superando barreras de inequidad desde el preescolar hasta la media. La presencia en la escuela no garantiza plenamente el derecho a la educación, y las inequidades arraigadas relacionadas con factores geográficos, socioeconómicos, étnicos y de género deben abordarse con enfoques multidimensionales. Atender a la infraestructura escolar y la formación docente es esencial para establecer un sistema educativo que promueva la igualdad, la transformación y la inclusión en todas las etapas.',
+    hay_datos: true,
     indicadores: [
       {
         nombre: 'Cobertura bruta media',
@@ -460,6 +463,7 @@ const datos: DatosYa[] = [
     ruta: 'ambiente-sano',
     definicion:
       'Es crucial reconocer el derecho de la niñez a un entorno saludable y propicio para su desarrollo. La falta de integración entre desarrollo económico y protección ambiental ha provocado una crisis, según el Informe sobre el Desarrollo Humano 2021 de las Naciones Unidas. Save The Children advierte sobre el doble riesgo de cambio climático para los niños nacidos en Colombia en 2020. La concentración urbana presenta desafíos ambientales, según el Banco Interamericano de Desarrollo. La sostenibilidad de las ciudades colombianas implica abordar la pobreza, mejorar servicios básicos, resolver desempleo, reducir emisiones y fomentar áreas verdes para el bienestar de la población infantil y adolescente.',
+    hay_datos: true,
     indicadores: [
       {
         nombre: 'Tasa de mortalidad por Enfermedad Diarreica Aguda (EDA) en menores de 5 años',
@@ -530,6 +534,7 @@ const datos: DatosYa[] = [
     ruta: 'juego',
     definicion:
       'Es esencial reconocer que la niñez tiene el derecho de jugar, un derecho consagrado en normativas internacionales y nacionales. El juego no solo es una actividad recreativa; es crucial para el desarrollo integral de los niños, contribuyendo a habilidades socioemocionales y competencias ciudadanas. Para garantizar este derecho, se deben proporcionar espacios seguros y accesibles, independientemente de la condición social o económica de los niños, incluyendo comunidades rurales, indígenas, afrodescendientes, rom y personas con discapacidad. Aunque el juego está respaldado por diversas políticas y leyes, el desafío radica en materializar este reconocimiento en la realidad cotidiana.',
+    hay_datos: false,
     indicadores: [
       {
         nombre: 'Niños y niñas de 2-5 años con dificultad funcional en el juego',
@@ -646,6 +651,7 @@ const datos: DatosYa[] = [
     ruta: 'participacion',
     definicion:
       'Es vital reconocer el derecho de la niñez a participar y ser escuchada en decisiones que les afectan, respaldado por normativas como la Declaración Universal de Derechos Humanos. Niñas, niños y adolescentes tienen igualdad de posibilidades y derechos que los adultos para participar y ser escuchados, según diversas normativas. Este derecho no es solo un gesto de buena voluntad, sino el reconocimiento de su capacidad de agencia y formación ciudadana. Sin embargo, la baja priorización y falta de recursos en algunas regiones obstaculizan la efectividad de este derecho, según el Plan Nacional de Desarrollo 2018-2022.',
+    hay_datos: false,
     indicadores: [
       {
         nombre: 'Por definir 1',
@@ -740,6 +746,7 @@ const datos: DatosYa[] = [
     ruta: 'fortalecimiento-familiar',
     definicion:
       'Es crucial fortalecer a las familias para proteger y cuidar a la niñez, asegurando vínculos emocionales y cumpliendo normativas como la Declaración Universal de Derechos Humanos. La asistencia a las familias, respaldada por la Convención sobre los Derechos del Niño y la Constitución Nacional, es esencial para la crianza. El Plan Nacional de Desarrollo (2018-2022) destaca la importancia de las familias como garantes de la protección de los niños, requiriendo oportunidades y capacidades para enfrentar su entorno y asegurar el bienestar de todos sus miembros. La familia desempeña un papel crucial en la socialización y protección integral de la niñez.',
+    hay_datos: false,
     indicadores: [
       {
         nombre: 'Por definir 1',
@@ -834,6 +841,7 @@ const datos: DatosYa[] = [
     ruta: 'proteccion-violencia',
     definicion:
       'Es esencial erradicar la violencia contra la niñez para lograr la prosperidad universal, como lo establece la Agenda 2030 de Naciones Unidas. El Objetivo de Desarrollo Sostenible (ODS) 16 enfatiza la necesidad de sociedades pacíficas. La meta global 16.2 busca poner fin a diversas formas de violencia contra los niños. La Organización Mundial de la Salud define la violencia como el uso deliberado de la fuerza, con impactos significativos en el desarrollo infantil. En Colombia, la presencia alarmante de violencia destaca la urgencia de abordar este problema, ya que afecta el bienestar físico, emocional y psicológico de la niñez, con consecuencias a largo plazo.',
+    hay_datos: true,
     indicadores: [
       {
         nombre: 'Proporción de jóvenes que declaran haber experimentado violencia física en los últimos 12 meses',
@@ -907,6 +915,7 @@ const datos: DatosYa[] = [
     ruta: 'adolescentes-srpa',
     definicion:
       'Es crucial adoptar un enfoque pedagógico y restaurativo en el Sistema de Responsabilidad Penal para Adolescentes (SRPA) en Colombia. Aunque establecido para responder a estándares internacionales y a la Convención sobre los Derechos del Niño, es necesario garantizar un sistema que promueva la verdad, la justicia y el restablecimiento efectivo de los derechos de los adolescentes. El SRPA debe evolucionar para alinearse con principios pedagógicos y restaurativos, cumpliendo con el Estado social de derecho establecido en la Constitución Política de 1991.',
+    hay_datos: false,
     indicadores: [
       {
         nombre: 'Porcentaje de adolescentes que ingresan más de una vez al SRPA por presunta comisión de un delito',
@@ -1017,6 +1026,7 @@ const datos: DatosYa[] = [
     ruta: 'paz-reconciliacion',
     definicion:
       'Es crucial que los 15.4 millones de menores en Colombia participen en la construcción de una cultura de paz tras el conflicto armado. Reconociendo sus experiencias y dándoles voz activa en el diseño de acciones para la reconciliación, la niñez desempeña un papel esencial. Los gobiernos locales, especialmente en los 170 municipios afectados por el conflicto, deben proporcionarles espacio, priorizando la restitución de derechos y el interés superior de la niñez según normativas nacionales e internacionales.',
+    hay_datos: true,
     indicadores: [
       {
         nombre: 'Delitos contra la libertad y la integridad sexual en el desarrollo del conflicto',
@@ -1038,26 +1048,6 @@ const datos: DatosYa[] = [
         interpretacion: 'Por definir',
       },
       {
-        nombre: 'Vinculación de Menores de Edad a Estructuras Criminales',
-        ruta: 'vinculacion-criminal',
-        archivo: 'ya10-2',
-        hay_datos: true,
-        mun: false,
-        dep: false,
-        umbral: 0,
-        explicacion: 'Indica el número de menores de edad que fueron reclutados por una estructura criminal.',
-        definicion: 'Indica el número de menores de edad que fueron reclutados por una estrucutra criminal.',
-        metodologia: 'Número de menores de edad que fueron reclutados por una estructural criminal.',
-        unidad: 'Conteo',
-        fuente_numerador: 'Panel CEDE - Registro Único de Víctimas',
-        fuente_denominador: 'Panel CEDE - Registro Único de Víctimas',
-        desagregacion: 'Municipal',
-        contexto:
-          'Arias et al., (214) han estudiando los efectos del conflicto armado en el desarrollo económico y social en Colombia, de acuerdo con los autores el conflicto armad ha tenido efectos devastadores en el sistema educativo del país. Las instituciones educativas, tanto oficiales como no oficiales, han enfrentado numerosos desafíos debido a la violencia y la inestabilidad asociadas con el conflicto. Muchas escuelas han sido afectadas directamente, ya sea por actos de violencia que las han dejado inoperables o por la desaparición de recursos esenciales. Además, el desplazamiento forzado de comunidades enteras ha tenido un impacto directo en la tasa de matricula y la asistencia escolar, ya que muchos niños y jóvenes se han visto obligados a abandonar sus hogares y, en consecuencia, sus estudios. Este entorno de conflicto también ha llevado a la pérdida de maestros capacitados, ya sea porque han sido desplazados o han abandonado sus roles por motivos de seguridad.',
-        interpretacion:
-          'Un valor de 10 indica que 10 menores fueron reclutados a una estructura criminal en un momento y territorio determinados.',
-      },
-      {
         nombre: 'Delitos contra la libertad y la integridad sexual en el desarrollo del conflicto',
         ruta: 'delitos-libertad-sexual',
         archivo: 'ya10-3',
@@ -1073,23 +1063,6 @@ const datos: DatosYa[] = [
         desagregacion: 'Municipal',
         contexto: 'Por definirPor definir',
         interpretacion: 'Por definirPor definir',
-      },
-      {
-        nombre: 'Bajo logro educativo (porcentaje de niños que se encuentran cursando en extra edad)',
-        ruta: 'bajo-logro',
-        archivo: 'ya10-4',
-        hay_datos: true,
-        mun: false,
-        dep: false,
-        explicacion: 'Por definir',
-        definicion: 'Por definir',
-        metodologia: 'Por definir',
-        unidad: 'Por definir',
-        fuente_numerador: 'Por definir',
-        fuente_denominador: 'Por definir',
-        desagregacion: 'Municipal',
-        contexto: 'Por definir',
-        interpretacion: 'Por definir',
       },
       {
         nombre: 'Maltrato Físico (número de ataques a menores de edad por parte de un cuidador, familiar o padre)',
