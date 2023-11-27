@@ -9,7 +9,6 @@ const { alto } = Astro.props;
 ---
 
 <section id="lineaDeTiempo">
-  <!-- POR HACER: Reemplazar nombre por lugar seleccionado -->
   <header>
     <h3 id="nombreLugar">Colombia</h3>
   </header>
@@ -68,6 +67,7 @@ const { alto } = Astro.props;
   const bordeEjeY = document.querySelector<SVGLineElement>('#bordeEjeY');
   const nombreEjeY = svg.querySelector<SVGTextElement>('#nombreEjeY');
   const lineas: Linea[] = [];
+  const visualizaciones = document.getElementById('visualizaciones');
 
   const proporciones = { porcentaje: { x1: 2, x2: 95 }, pixeles: { x1: 0, x2: 0 } };
   const años = { primero: 0, ultimo: 0 };
@@ -96,8 +96,8 @@ const { alto } = Astro.props;
     if (estructura === 'porcentaje') {
       cantidadDivisiones = 5;
     }
-    nombreEjeY.innerHTML = `${estructura.charAt(0).toUpperCase() + estructura.slice(1)}`;
 
+    nombreEjeY.innerHTML = `${visualizaciones.dataset.unidad}`;
     crearEjeY();
   });
 
@@ -209,7 +209,7 @@ const { alto } = Astro.props;
       'Colombia',
       lista,
       obtenerVariableCSS('--fucsiaEsmalte'),
-      estructura
+      visualizaciones.dataset.unidad
     );
     lineaNacional.agregar().actualizar(posicionX, posicionY);
     lineas.push(lineaNacional);
