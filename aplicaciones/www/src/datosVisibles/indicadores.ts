@@ -89,8 +89,8 @@ const datos: DatosYa[] = [
         explicacion: 'Indica el número de defunciones ocurridas en niños menores de 5 años por cada 1000 nacidos.',
         definicion: 'Indica el número de muertes por cualquier tipo de causa en menores de 5 años.',
         metodologia:
-          'Número de muertes de menores de 5 años  por cualquier tipo de causa / Número total de menores de 5 años.',
-        unidad: 'Por 100.000 menores de 5 años.',
+          'Número de muertes de menores de 5 años por cualquier tipo de causa / Número total de menores de 5 años.',
+        unidad: 'Por 100.000 nacimientos',
         fuente_numerador: 'CUBO INDICADORES EEVV',
         fuente_denominador: 'CUBO INDICADORES EEVV',
         desagregacion: 'Municipal',
@@ -282,7 +282,7 @@ const datos: DatosYa[] = [
           'Este indicar presenta un conteo del número de actos terroristas, hostigamientos, combates y enfrentamientos en un mismo periodo y territorio en particular.',
         metodologia:
           'Total = Suma(Número de Actos Terroristas, Atentados, Combates, Enfrentamientos, Declaraciones de Hostigamientos).',
-        unidad: '',
+        unidad: 'Conteo',
         fuente_numerador:
           'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE)  con base en el Registro Único de Víctimas.',
         fuente_denominador: 'No aplica',
@@ -323,7 +323,7 @@ const datos: DatosYa[] = [
       'Es crucial garantizar una educación de calidad en Colombia, superando barreras de inequidad desde el preescolar hasta la media. La presencia en la escuela no garantiza plenamente el derecho a la educación, y las inequidades arraigadas relacionadas con factores geográficos, socioeconómicos, étnicos y de género deben abordarse con enfoques multidimensionales. Atender a la infraestructura escolar y la formación docente es esencial para establecer un sistema educativo que promueva la igualdad, la transformación y la inclusión en todas las etapas.',
     indicadores: [
       {
-        nombre: 'Tasa de cobertura bruta media',
+        nombre: 'Cobertura bruta media',
         ruta: 'cobertura-media',
         archivo: 'ya3-1',
         hay_datos: true,
@@ -334,7 +334,7 @@ const datos: DatosYa[] = [
         definicion: 'Indica la cobertura bruta de estudiantes que cursan educación media.',
         metodologia:
           'Número total de estudiantes matriculados y tienen entre 15 y 16 años de edad / Total de la población que tiene entre 15 y 16 años de edad en el mismo periodo y territorio. * 100.',
-        unidad: 'Tasa',
+        unidad: 'Porcentaje',
         fuente_numerador:
           'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE.',
         fuente_denominador:
@@ -342,7 +342,7 @@ const datos: DatosYa[] = [
         desagregacion: 'Municipal',
         contexto: 'Las tasas de cobertura permiten medir la capacidad del sistema educativo para atender la demanda.',
         interpretacion:
-          'Un valor de 50 indica que en promedio  de cada 100 estudiantes en edad teórica para cursar educación media, asisten a un establecimiento educativo en un momento y territorio específicos. Más Información: https://ods.dnp.gov.co/es/objetivos/educacion-de-calidad',
+          'Un valor de 50 indica que en promedio de cada 100 estudiantes en edad teórica para cursar educación media, asisten a un establecimiento educativo en un momento y territorio específicos. Más Información: https://ods.dnp.gov.co/es/objetivos/educacion-de-calidad',
       },
       {
         nombre: 'Resultados Pruebas Saber 11 matemáticas',
@@ -472,7 +472,7 @@ const datos: DatosYa[] = [
         definicion:
           'Indica el número de defunciones en niños menores de 5 años por enfermedad diarreica aguda con respecto a la población de niños menores de 5 años.',
         metodologia: 'Número de muertes por EDA en menores de 5 años / Número total de menores de 5 años.',
-        unidad: 'Por 100.000 menores de 5 años.',
+        unidad: 'Por 100.000 menores de 5 años',
         fuente_numerador: 'CUBO INDICADORES EEVV',
         fuente_denominador: 'CUBO INDICADORES EEVV',
         desagregacion: 'Municipal',
@@ -493,7 +493,7 @@ const datos: DatosYa[] = [
         definicion:
           'Indica el número de defunciones en niños menores de 5 años por infecciones respiratorias agudas con respecto a la población de niños menores de 5 años en un momento y territorio determinado.',
         metodologia: 'Número de muertes por IRA en menores de 5 años / Número total de menores de 5 años.',
-        unidad: 'Por 100.000 menores de 5 años.',
+        unidad: 'Por 100.000 menores de 5 años',
         fuente_numerador: 'CUBO INDICADORES EEVV',
         fuente_denominador: 'CUBO INDICADORES EEVV',
         desagregacion: 'Municipal',
@@ -513,7 +513,7 @@ const datos: DatosYa[] = [
         explicacion: 'Indica el acceso potencial a agua potable para el consumo humano.',
         definicion: 'Cobertura Total de Acueducto',
         metodologia: 'Se desconoce, metodología propia del SUI.',
-        unidad: 'Tasa (Es un cálculo Potencial)',
+        unidad: 'Tasa (Es un cálculo potencial)',
         fuente_numerador: 'Sistema Único de Información de Servicios Públicos - SUI',
         fuente_denominador: 'Sistema Único de Información de Servicios Públicos - SUI',
         desagregacion: 'Municipal',
@@ -521,23 +521,6 @@ const datos: DatosYa[] = [
           'La pandemia de la COVID-19 ha resaltado la  importancia del saneamiento, la higiene y el acceso a agua potable para prevenir y controlar enfermedades. La Organización Mundial de la Salud destaca que el lavado de manos es una medida altamente efectiva para reducir la propagación de patógenos A pesar de esto, Colombia aún carece de una cobertura universal de agua potable y saneamiento.',
         interpretacion:
           'Un valor de 70% significa que existen 70 familias que cuentan con acceso real a agua potable por cada 100 familias en un territorio y momento específicos. Más información sobre la importancia del acceso a agua potable: https://www.un.org/sustainabledevelopment/es/water-and-sanitation/#:~:text=Alcanzar%20la%20cobertura%20universal%20para,y%20tres%20para%20la%20higiene.',
-      },
-      {
-        nombre: 'Calidad de aire',
-        ruta: 'calidad-aire',
-        archivo: 'ya4-4',
-        hay_datos: true,
-        mun: false,
-        dep: false,
-        explicacion: '',
-        definicion: 'Indica la calidad del aire a partir del nivel de concentraciones de material particulado.',
-        metodologia: 'Se desconoce, metodología propia del IDEAM.',
-        unidad: '',
-        fuente_numerador: '',
-        fuente_denominador: '',
-        desagregacion: 'Municipal',
-        contexto: '',
-        interpretacion: '',
       },
     ],
   },
@@ -864,7 +847,7 @@ const datos: DatosYa[] = [
         definicion: 'Proporción de jóvenes que declaran haber experimentado violencia física en los últimos 12 meses.',
         metodologia:
           'Número de jóvenes que han declarado haber experimentado violencia física / Número total de jóvenes en el mismo periodo y territorio *100.',
-        unidad: 'Tasa x 100,000',
+        unidad: 'Tasa x 100.000',
         fuente_numerador: 'ICBF',
         fuente_denominador: 'ICBF',
         desagregacion: 'Municipal',
@@ -956,7 +939,7 @@ const datos: DatosYa[] = [
         definicion:
           'Indica el tiempo promedio que pasa un adolescente con medida de internamiento preventivo hasta que se resuelve su situación.',
         metodologia: 'Se desconoce.',
-        unidad: 'Se desconoce.',
+        unidad: 'Se desconoce',
         fuente_numerador: 'ICBF',
         fuente_denominador: 'ICBF',
         desagregacion: 'Municipal',
