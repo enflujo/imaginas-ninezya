@@ -1,2 +1,3 @@
 publico
 aplicaciones/www/estaticos/**/*
+aplicaciones/www/src/datosVisibles/pesosArchivos.json
