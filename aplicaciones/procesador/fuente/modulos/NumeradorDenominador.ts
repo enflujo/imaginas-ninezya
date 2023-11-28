@@ -40,6 +40,7 @@ export default class {
     for (const año in this.preDatosMunicipios) {
       this.datosMunicipios[año] = this.preDatosMunicipios[año].map((d) => {
         const valor = redondearDecimal((d[1] / d[2]) * this.unidadMedida, 1, 2);
+
         this.revisarMinMax(valor);
         return [d[0], valor];
       });
@@ -49,10 +50,13 @@ export default class {
       this.datosDepartamentos[año] = this.preDatosDepartamentos[año].map((d) => {
         const valor = redondearDecimal((d[1] / d[2]) * this.unidadMedida, 1, 2);
         this.revisarMinMax(valor);
+        if (d[0] === '05') {
+          console.log(año, valor, d[1], d[2]);
+        }
         return [d[0], valor];
       });
     }
-    this.procesarDepartamentos();
+    // this.procesarDepartamentos();
 
     for (const año in this.preDatosNacionales) {
       const [num, den] = this.preDatosNacionales[año];
@@ -87,8 +91,16 @@ export default class {
     const valorNum = numerador | 0;
     const valorDen = denominador | 0;
 
+    // if (!municipio.hasOwnProperty('error') && (municipio as Municipio)[3] === '17001') {
+    //   console.log('a', numeroFila, año, valorNum, valorDen);
+    // }
+
     if (!this.preDatosNacionales[año]) {
       this.preDatosNacionales[año] = [0, 0];
+    }
+
+    if (!this.preDatosDepartamentos[año]) {
+      this.preDatosDepartamentos[año] = [];
     }
 
     // Si no existe el municipio
@@ -103,6 +115,7 @@ export default class {
           this.preDatosNacionales[año][0] += valorNum;
           this.preDatosNacionales[año][1] += valorDen;
         }
+        return;
       } else {
         // Agregar datos a departamento
         const departamento = limpiarDepartamento(+partesDep[0]);
@@ -110,10 +123,6 @@ export default class {
         if (departamento.hasOwnProperty('error')) {
           this.errata.push({ fila: numeroFila, error: (departamento as Errata).mensaje });
           return;
-        }
-
-        if (!this.preDatosDepartamentos[año]) {
-          this.preDatosDepartamentos[año] = [];
         }
 
         const codDep = (departamento as Departamento)[0];
@@ -127,7 +136,25 @@ export default class {
         }
       }
 
+      // No pasó ninguna prueba, registrar en errata para revisar el caso.
+      // this.errata.push({ fila: numeroFila, error: (municipio as Errata).mensaje });
       return;
+    } else {
+      const partesDep = fila.departamento.split('-');
+      const departamento = limpiarDepartamento(+partesDep[0]);
+      if (departamento.hasOwnProperty('error')) {
+        this.errata.push({ fila: numeroFila, error: (departamento as Errata).mensaje });
+      }
+
+      const codDep = (departamento as Departamento)[0];
+      const elemento = this.preDatosDepartamentos[año].find((d) => d[0] === codDep);
+
+      if (elemento) {
+        elemento[1] += valorNum;
+        elemento[2] += valorDen;
+      } else {
+        this.preDatosDepartamentos[año].push([(departamento as Departamento)[0], valorNum, valorDen]);
+      }
     }
 
     this.preDatosNacionales[año][0] += valorNum;
@@ -146,6 +173,11 @@ export default class {
     } else {
       this.preDatosMunicipios[año].push([(municipio as Municipio)[3], valorNum, valorDen]);
     }
+
+    // if (codMun === '17001') {
+    //   console.log('b', numeroFila, año, valorNum, valorDen);
+    //   console.log('---');
+    // }
   };
 
   procesarDepartamentos() {
@@ -166,12 +198,22 @@ export default class {
           this.datosDepartamentos[año] && this.datosDepartamentos[año].find(([codigo]) => codigo === codDep);
 
         const departamento = limpiarDepartamento(+codDep);
+
         if (departamento.hasOwnProperty('error')) {
           this.errata.push({ fila: Infinity, error: (departamento as Errata).mensaje });
         } else {
           if (!this.datosDepartamentos[año]) {
             this.datosDepartamentos[año] = [];
           }
+
+          if (this.preDatosDepartamentos[año]) {
+            const tieneDatosPre = this.preDatosDepartamentos[año].find((dep) => dep[0] === codDep);
+
+            if (tieneDatosPre) {
+              console.log(año, tieneDatosPre, deps[codDep]);
+            }
+          }
+
           const suma = deps[codDep].reduce((valorAnterior, valorActual) => valorAnterior + valorActual, 0);
           const porcentaje = redondearDecimal(suma / deps[codDep].length, 1, 2);
 

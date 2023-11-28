@@ -86,8 +86,16 @@ export async function cargarDatos() {
     const nal = await pedirDatos<DatosIndicadorNal>(`https://enflujo.com/bodega/ninezya/${nombreArchivo}-nal.json`);
 
     if (nal.unidadMedida > 100) {
-      valorMaxY = nombreArchivo === 'ya1-7' ? 15000 : 10000;
-      valorMaxColor = nombreArchivo === 'ya1-7' ? 15000 : 10000;
+      if (nombreArchivo === 'ya1-7') {
+        valorMaxY = 15000;
+        valorMaxColor = 15000;
+      } else if (nombreArchivo === 'ya4-2') {
+        valorMaxY = 200;
+        valorMaxColor = 100;
+      } else {
+        valorMaxY = Math.min(Math.ceil(nal.max / 100) * 100, 10000);
+        valorMaxColor = 10000;
+      }
     } else {
       if (nombreArchivo === 'ya2-8') {
         valorMaxY = 50;
