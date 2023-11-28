@@ -6,5 +6,3 @@ dist
 publico
 aplicaciones/procesador/fuente/datos/*
 !aplicaciones/procesador/fuente/datos/README.md
-aplicaciones/www/estaticos/datos/*
-!aplicaciones/www/estaticos/datos/README.md
