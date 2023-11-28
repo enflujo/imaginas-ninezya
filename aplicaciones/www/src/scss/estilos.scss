@@ -107,7 +107,7 @@ main {
 }
 
 .contenido {
-  margin-left: 18vw;
+  margin-left: 50px;
 
   &.sinMenu {
     margin-left: 0;
@@ -193,4 +193,23 @@ main {
     'wght' 800,
     'slnt' 0,
     'CRSV' 0;
+}
+
+@media screen and (min-width: $corte2) {
+  .contenido {
+    margin-left: 50px;
+    &.sinMenu {
+      margin-left: 0;
+    }
+  }
+}
+
+@media screen and (min-width: $corte3) {
+  .contenido {
+    margin-left: 18vw;
+
+    &.sinMenu {
+      margin-left: 0;
+    }
+  }
 }

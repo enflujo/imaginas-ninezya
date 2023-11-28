@@ -7,7 +7,7 @@ import Plantilla from '@/plantillas/Principal.astro';
     <h1 id="tituloPagina">Créditos</h1>
 
     <div id="creditos">
-      <div class="textoCreditos">
+      <div class="textoIntro">
         <p>
           El <span class="negrita">SIYA</span> tiene como objetivo central entregar indicadores relevantes, actualizados
           y de alta calidad a quienes tienen el poder y la responsabilidad de lograr el desarrollo pleno de niñas, niños
@@ -350,6 +350,7 @@ import Plantilla from '@/plantillas/Principal.astro';
 
   .filaLogos {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
   }
   .logoCreditos {
@@ -357,7 +358,7 @@ import Plantilla from '@/plantillas/Principal.astro';
     border: 2px solid rgb(234, 234, 234);
 
     img {
-      height: 95px;
+      height: 60px;
       width: auto;
       margin: 0;
     }
@@ -373,6 +374,17 @@ import Plantilla from '@/plantillas/Principal.astro';
       'wght' 700,
       'slnt' 0,
       'CRSV' 1;
+    margin-left: -20px;
+    margin-right: -30px;
+
+    .textoIntro {
+      font-variation-settings:
+        'MONO' 0,
+        'CASL' 0,
+        'wght' 400,
+        'slnt' 0,
+        'CRSV' 0;
+    }
 
     .textoCreditos {
       font-variation-settings:
@@ -386,6 +398,7 @@ import Plantilla from '@/plantillas/Principal.astro';
     .textoReconocimiento {
       color: var(--moradoProfundo);
       font-size: 1.1em;
+      line-height: 1.3em;
       font-variation-settings:
         'MONO' 0,
         'CASL' 0,
@@ -403,7 +416,6 @@ import Plantilla from '@/plantillas/Principal.astro';
 
     h3 {
       font-size: 1em;
-      margin-bottom: -2em;
       color: var(--moradoProfundo);
       font-variation-settings:
         'MONO' 0,
@@ -445,6 +457,7 @@ import Plantilla from '@/plantillas/Principal.astro';
     padding-bottom: 2em;
     color: var(--moradoProfundo);
     font-size: 1.2em;
+    line-height: 1.2em;
   }
 
   img {
@@ -466,15 +479,36 @@ import Plantilla from '@/plantillas/Principal.astro';
   }
 
   .logoNinezYa {
-    margin-left: 10vw;
-    margin-right: 10vw;
+    display: block;
+    margin-left: 4vw;
+  }
+
+  @media screen and (min-width: $corte1) {
+    img {
+      height: 90px;
+    }
   }
 
   @media screen and (min-width: $corte2) {
+    #creditos {
+      margin-left: 0px;
+      margin-right: 0px;
+    }
     .logoNinezYa {
       display: block;
-      margin-left: 6vw;
+      margin-left: 4vw;
       margin-right: 10vw;
+    }
+
+    .logoCreditos {
+      background-color: white;
+      border: 2px solid rgb(234, 234, 234);
+
+      img {
+        height: 80px;
+        width: auto;
+        margin: 0;
+      }
     }
   }
 
@@ -484,12 +518,56 @@ import Plantilla from '@/plantillas/Principal.astro';
       margin-left: 8vw;
       margin-right: 10vw;
     }
+
+    .textoIntro {
+      max-width: 900px;
+      margin-left: 5vw;
+    }
+    .textoCreditos {
+      max-width: 900px;
+    }
+    .textoReconocimiento {
+      max-width: 600px;
+      margin-left: 8vw;
+    }
+
+    li {
+      margin-left: 10vw;
+    }
+
+    .filaLogos {
+      display: flex;
+      justify-content: center;
+      flex-wrap: unset;
+    }
+    .logoCreditos {
+      background-color: white;
+      border: 2px solid rgb(234, 234, 234);
+
+      img {
+        height: 95px;
+        width: auto;
+        margin: 0;
+      }
+    }
   }
   @media screen and (min-width: $corte4) {
     .logoNinezYa {
       display: block;
       margin-left: 12vw;
       margin-right: 10vw;
+    }
+
+    .logoEnFlujo {
+      max-width: 700px;
+      margin-left: 14vw;
+    }
+
+    .logoImagina {
+      display: block;
+      margin-left: 14vw;
+      max-width: 700px;
+      mix-blend-mode: multiply;
     }
   }
 </style>
