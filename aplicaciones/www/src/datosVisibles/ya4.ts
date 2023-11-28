@@ -30,6 +30,7 @@ export const ya4: DatosYa = {
       nombre: 'Tasa de mortalidad por Infección Respiratoria Aguda (IRA) en menores de 5 años',
       ruta: 'mortalidad-ira',
       archivo: 'ya4-2',
+      umbral: 8.9,
       hay_datos: true,
       explicacion: 'Indica el número de defunciones en menores de 5 años por enfermedad infección respiratoria aguda.',
       definicion:
@@ -67,7 +68,7 @@ export const ya4: DatosYa = {
       ruta: 'calidad-aire',
       archivo: 'ya4-4',
       hay_datos: true,
-      // umbral: 92.9,
+      umbral: 100,
       explicacion: '',
       definicion: '',
       metodologia: '',
