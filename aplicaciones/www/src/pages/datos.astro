@@ -41,11 +41,7 @@ import pesos from '@/datosVisibles/pesosArchivos.json';
                       <div class="indicador">
                         <p class="columna enlace">
                           {pesos[indicador.archivo] && (
-                            <a
-                              href={`${import.meta.env.BASE_URL}/estaticos/datos/${
-                                pesos[indicador.archivo].nombre
-                              }.xlsx`}
-                            >
+                            <a href={`${import.meta.env.BASE_URL}/datos/${pesos[indicador.archivo].nombre}.xlsx`}>
                               <span class="nombre">{indicador.nombre}</span>
                               <span class="peso">({pesos[indicador.archivo].peso})</span>
                               <img
