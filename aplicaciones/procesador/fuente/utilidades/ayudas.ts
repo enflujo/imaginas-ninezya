@@ -16,10 +16,10 @@ export const esNumero = (valor: string): boolean => !isNaN(parseInt(valor));
  * @param {object} json Objeto o Array que se quiere guardar en archivo JSON.
  * @param {string} nombre Nombre del archivo.
  */
-export const guardarJSON = (json: object, nombre: string): void => {
+export const guardarJSON = (json: object, nombre: string, ruta = '../datos/procesados', espacios = 0): void => {
   writeFileSync(
-    path.resolve(__dirname, `../datos/procesados/${nombre}.json`),
-    JSON.stringify(json, (_llave, valor) => (valor instanceof Set ? [...valor] : valor))
+    path.resolve(__dirname, `${ruta}/${nombre}.json`),
+    JSON.stringify(json, (_llave, valor) => (valor instanceof Set ? [...valor] : valor), espacios)
   );
 };
 
