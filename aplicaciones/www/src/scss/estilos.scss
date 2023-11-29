@@ -216,6 +216,16 @@ main {
 
 @media screen and (min-width: $corte3) {
   .contenido {
+    margin-left: 19vw;
+
+    &.sinMenu {
+      margin-left: 0;
+    }
+  }
+}
+
+@media screen and (min-width: $corte4) {
+  .contenido {
     margin-left: 23.5vw;
 
     &.sinMenu {
