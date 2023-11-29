@@ -218,6 +218,10 @@ main {
 }
 
 @media screen and (min-width: $corte2) {
+  #menu {
+    // font-size: 16px;
+  }
+
   .contenido {
     margin-left: 50px;
 
@@ -256,5 +260,9 @@ main {
 
   .contenido {
     margin-left: 440px;
+
+    &.sinMenu {
+      margin-left: 0;
+    }
   }
 }
