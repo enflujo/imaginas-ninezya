@@ -185,8 +185,8 @@ const { img, titulo, definicion, archivos, hayDatos } = Astro.props;
   #descripcionYa {
     position: fixed;
     top: $altoMenuSuperior;
-    width: 41vw;
-    height: calc(100vh - $altoMenuSuperior);
+    width: 90%;
+    height: calc(100% - $altoMenuSuperior);
     background-color: var(--moradoProfundo);
     color: var(--blancoMarfil);
     z-index: 8;
@@ -196,14 +196,14 @@ const { img, titulo, definicion, archivos, hayDatos } = Astro.props;
     opacity: 0.95;
 
     &.cerrado {
-      right: -50%;
+      right: -90%;
 
       #iconoYa {
         position: fixed;
         right: 0;
         background-color: var(--moradoProfundo);
-        width: 30px;
-        height: 30px;
+        width: 70px;
+        height: 70px;
         cursor: pointer;
       }
     }
@@ -211,8 +211,8 @@ const { img, titulo, definicion, archivos, hayDatos } = Astro.props;
 
   #iconoYa {
     background-repeat: no-repeat;
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     background-size: 200%;
     background-position: 100%;
     margin: 1em auto 0 auto;
@@ -221,15 +221,15 @@ const { img, titulo, definicion, archivos, hayDatos } = Astro.props;
   h2 {
     text-align: center;
     width: 100%;
-    font-size: 1.3em;
+    font-size: 3em;
     margin-top: 0;
   }
 
   h3 {
     // text-align: center;
-    font-size: 0.8em;
+    font-size: 1.3em;
     font-variation-settings:
-      'MONO' 0,
+      'MONO' 1,
       'CASL' 0,
       'wght' 433,
       'slnt' 0,
@@ -239,13 +239,14 @@ const { img, titulo, definicion, archivos, hayDatos } = Astro.props;
   .definicion {
     width: 80%;
     margin: 0 auto;
+    margin-bottom: 2em;
 
     p {
-      font-size: 0.8em;
+      font-size: 1.6em;
       font-variation-settings:
         'MONO' 0,
         'CASL' 0,
-        'wght' 433,
+        'wght' 233,
         'slnt' 0,
         'CRSV' 0;
     }
@@ -256,7 +257,7 @@ const { img, titulo, definicion, archivos, hayDatos } = Astro.props;
     display: inline-block;
     transition: transform 0.2s ease-out;
     padding: 0.5em;
-    font-size: 1.2em;
+    font-size: 2.5em;
     position: absolute;
     right: 15px;
 
@@ -268,6 +269,7 @@ const { img, titulo, definicion, archivos, hayDatos } = Astro.props;
   #contenedorLineasIndicadores {
     display: flex;
     flex-wrap: wrap;
+    margin-left: 4em;
   }
 
   .descContenedorIndicador {
@@ -281,6 +283,103 @@ const { img, titulo, definicion, archivos, hayDatos } = Astro.props;
 
     &:hover {
       opacity: 0.65;
+    }
+  }
+
+  /// ✂️ Cortes pantalla ///
+
+  @media screen and (min-width: $corte1) {
+    #descripcionYa {
+      &.cerrado {
+        #iconoYa {
+          width: 60px;
+          height: 60px;
+        }
+      }
+    }
+    h2 {
+      font-size: 2.5em;
+    }
+    h3 {
+      font-size: 1.2em;
+    }
+    .definicion {
+      p {
+        font-size: 1.55em;
+      }
+    }
+    .cerrarDescripcion {
+      font-size: 2.5em;
+    }
+
+    #contenedorLineasIndicadores {
+      margin-left: 4.5em;
+    }
+  }
+
+  @media screen and (min-width: $corte2) {
+    #descripcionYa {
+      width: 80%;
+      &.cerrado {
+        #iconoYa {
+          width: 40px;
+          height: 40px;
+        }
+      }
+    }
+    #iconoYa {
+      background-repeat: no-repeat;
+      width: 150px;
+      height: 150px;
+      background-size: 200%;
+      background-position: 100%;
+      margin: 1em auto 0 auto;
+    }
+    h2 {
+      font-size: 2em;
+    }
+    h3 {
+      font-size: 1em;
+    }
+    .definicion {
+      p {
+        font-size: 0.9em;
+      }
+    }
+    .cerrarDescripcion {
+      font-size: 1.8em;
+    }
+    #contenedorLineasIndicadores {
+      margin-left: 6vw;
+    }
+  }
+  @media screen and (min-width: $corte3) {
+    #descripcionYa {
+      width: 60%;
+      &.cerrado {
+        #iconoYa {
+          width: 45px;
+          height: 45px;
+        }
+      }
+    }
+    h2 {
+      font-size: 1.8em;
+    }
+
+    .definicion {
+      p {
+        font-size: 1em;
+      }
+    }
+
+    #contenedorLineasIndicadores {
+      margin-left: 5vw;
+    }
+  }
+  @media screen and (min-width: $corte4) {
+    .cerrarDescripcion {
+      font-size: 1.5em;
     }
   }
 </style>
