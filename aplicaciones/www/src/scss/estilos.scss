@@ -99,15 +99,16 @@ h2 {
 main {
   display: flex;
   margin-top: $altoMenuSuperior;
+  min-height: calc(100vh - $altoMenuSuperior);
+}
+
+.contenido {
+  margin-left: 50px;
 
   .columna {
     flex-basis: 50%;
     padding: 1em;
   }
-}
-
-.contenido {
-  margin-left: 18vw;
 
   &.sinMenu {
     margin-left: 0;
@@ -193,4 +194,75 @@ main {
     'wght' 800,
     'slnt' 0,
     'CRSV' 0;
+}
+
+#menu {
+  width: 90vw;
+  transform: translateX(-100%);
+
+  &::after {
+    content: '';
+    position: fixed;
+    width: 50px;
+    height: 100vh;
+    background-color: var(--moradoPandito);
+    top: 0;
+    right: -50px;
+  }
+
+  &.visible {
+    &::after {
+      width: 0;
+    }
+  }
+}
+
+@media screen and (min-width: $corte2) {
+  #menu {
+    // font-size: 16px;
+  }
+
+  .contenido {
+    margin-left: 50px;
+
+    &.sinMenu {
+      margin-left: 0;
+    }
+  }
+}
+
+@media screen and (min-width: $corte3) {
+  #menu {
+    font-size: 0.8em;
+    transform: translateX(0%);
+    overflow: auto;
+
+    &::after {
+      width: 0;
+    }
+  }
+
+  .contenido {
+    margin-left: 18vw;
+
+    &.sinMenu {
+      margin-left: 0;
+    }
+  }
+}
+
+@media screen and (min-width: $corte4) {
+  #menu {
+    font-size: 1em;
+    width: 440px;
+    transform: translateX(0%);
+  }
+
+  .contenido {
+    margin-left: 440px;
+
+    &.sinMenu {
+      margin-left: 0;
+    }
+  }
 }

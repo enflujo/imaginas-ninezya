@@ -10,6 +10,10 @@ const { ya, indicador } = Astro.params;
       datos.map((datosYa, i) => {
         return (
           <li class={`ya ${datosYa.imagen}${datosYa.ruta === ya ? ' abierto' : ''}`}>
+            <span
+              class={`iconoYa${datosYa.ruta === ya ? ' actual' : ''}`}
+              style={`background-image: url('${import.meta.env.BASE_URL}/iconos/${datosYa.imagen}.svg')`}
+            />
             <p class={`nombreYa${datosYa.ruta === ya ? ' ungido' : ''}`}>
               {i + 1}. {datosYa.nombre}
             </p>
@@ -35,30 +39,70 @@ const { ya, indicador } = Astro.params;
 </nav>
 
 <script>
+  const menu = document.getElementById('menu');
   const yas = document.querySelectorAll<HTMLElement>('.ya');
+  let enCelular = false;
 
   // Abrir sub menú de indicadores al hacer clic en un 'ya'
   yas.forEach((contenedorYa) => {
     const nombreYa = contenedorYa.querySelector<HTMLElement>('.nombreYa');
+    const icono = contenedorYa.querySelector<HTMLSpanElement>('.iconoYa');
 
     nombreYa.addEventListener('click', () => {
       contenedorYa.classList.toggle('abierto');
       nombreYa.classList.toggle('ungido');
     });
+
+    icono.addEventListener('click', () => {
+      if (enCelular) {
+        const yasAbierto = document.querySelectorAll<HTMLElement>('.abierto');
+        const nombresUngidos = document.querySelectorAll<HTMLElement>('.ungido');
+
+        yasAbierto.forEach((ya) => ya.classList.remove('abierto'));
+        nombresUngidos.forEach((nombre) => nombre.classList.remove('ungido'));
+        menu.classList.add('visible');
+        contenedorYa.classList.toggle('abierto');
+        nombreYa.classList.toggle('ungido');
+      }
+    });
+  });
+
+  const corte3 = window.matchMedia('(max-width: 1000px)');
+
+  revisarAncho(corte3);
+
+  corte3.addEventListener('change', () => {
+    revisarAncho(corte3);
+  });
+
+  function revisarAncho(corte: MediaQueryList) {
+    if (corte.matches) {
+      enCelular = true;
+    } else {
+      enCelular = false;
+    }
+  }
+
+  document.body.addEventListener('click', (evento) => {
+    if (!(menu === evento.target || menu.contains(evento.target as Node))) {
+      menu.classList.remove('visible');
+    }
   });
 </script>
 
 <style lang="scss">
   @import '@/scss/constantes';
+
   #menu {
-    width: 18vw;
     padding: 1em 3em 3em 1.5em;
     font-family: var(--fuente);
     color: var(--fucsiaEsmalte);
     background-color: var(--moradoPandito);
     height: calc(100vh - $altoMenuSuperior);
-    overflow: auto;
     position: fixed;
+    z-index: 99;
+    width: 50vw;
+
     font-variation-settings:
       'MONO' 0,
       'CASL' 0,
@@ -66,89 +110,30 @@ const { ya, indicador } = Astro.params;
       'slnt' 0,
       'CRSV' 1;
 
+    transition: transform 0.2s ease-out;
+
     .ya {
       color: var(--fucsiaEsmalte);
       cursor: pointer;
       position: relative;
       list-style: none;
+      height: 50px;
 
-      &:before {
-        content: '';
+      .iconoYa {
         background-repeat: no-repeat;
-        width: 1.2em;
-        height: 1.2em;
-        background-size: 35px;
+        background-size: cover;
+        width: 50px;
+        height: 50px;
         display: inline-block;
         position: absolute;
-      }
+        top: 0;
+        right: -97px;
+        z-index: 9;
+        background-position: 2px;
 
-      &.ya1 {
-        &:before {
-          background-image: url('/especiales/siya/iconos/ya1.svg');
-          top: 0.9em;
-        }
-      }
-
-      &.ya2 {
-        &:before {
-          background-image: url('/especiales/siya/iconos/ya2.svg');
-          top: 0.9em;
-        }
-      }
-
-      &.ya3 {
-        &:before {
-          background-image: url('/especiales/siya/iconos/ya3.svg');
-          top: 0.9em;
-        }
-      }
-
-      &.ya4 {
-        &:before {
-          background-image: url('/especiales/siya/iconos/ya4.svg');
-          top: 0.9em;
-        }
-      }
-
-      &.ya5 {
-        &:before {
-          background-image: url('/especiales/siya/iconos/ya5.svg');
-          top: 0.9em;
-        }
-      }
-
-      &.ya6 {
-        &:before {
-          background-image: url('/especiales/siya/iconos/ya6.svg');
-          top: 0.9em;
-        }
-      }
-
-      &.ya7 {
-        &:before {
-          background-image: url('/especiales/siya/iconos/ya7.svg');
-          top: 0.9em;
-        }
-      }
-
-      &.ya8 {
-        &:before {
-          background-image: url('/especiales/siya/iconos/ya8.svg');
-          top: 0.9em;
-        }
-      }
-
-      &.ya9 {
-        &:before {
-          background-image: url('/especiales/siya/iconos/ya9.svg');
-          top: 0.9em;
-        }
-      }
-
-      &.ya10 {
-        &:before {
-          background-image: url('/especiales/siya/iconos/ya10.svg');
-          top: 0.9em;
+        &.actual {
+          background-color: var(--moradoProfundo);
+          background-position-x: -48px;
         }
       }
 
@@ -156,63 +141,31 @@ const { ya, indicador } = Astro.params;
         .indicadores {
           display: block;
         }
+      }
+    }
 
-        &.ya1 {
-          &:before {
-            background-position-x: -17.5px;
-          }
-        }
-        &.ya2 {
-          &:before {
-            background-position-x: -17.5px;
-          }
-        }
+    &.visible {
+      transform: translateX(0px);
 
-        &.ya3 {
-          &:before {
-            background-position-x: -17.5px;
-          }
-        }
+      .ya {
+        height: auto;
 
-        &.ya4 {
-          &:before {
-            background-position-x: -17.5px;
-          }
-        }
+        .iconoYa {
+          width: 20px;
+          height: 20px;
+          background-size: 35px;
+          right: auto;
+          background-position: 0;
+          background-color: transparent;
+          margin-top: 0.9em;
 
-        &.ya5 {
-          &:before {
-            background-position-x: -17.5px;
+          &.actual {
+            background-color: transparent;
           }
         }
 
-        &.ya6 {
-          &:before {
-            background-position-x: -17.5px;
-          }
-        }
-
-        &.ya7 {
-          &:before {
-            background-position-x: -17.5px;
-          }
-        }
-
-        &.ya8 {
-          &:before {
-            background-position-x: -17.5px;
-          }
-        }
-
-        &.ya9 {
-          &:before {
-            background-position-x: -17.5px;
-          }
-        }
-        &.ya10 {
-          &:before {
-            background-position-x: -17.5px;
-          }
+        &.abierto .iconoYa {
+          background-position-x: -17.5px;
         }
       }
     }
@@ -299,6 +252,30 @@ const { ya, indicador } = Astro.params;
         border: 2px solid var(--fucsiaEsmalte);
         position: absolute;
         border-radius: 50%;
+      }
+    }
+  }
+  @media screen and (min-width: $corte3) {
+    #menu {
+      width: 18vw;
+      .ya {
+        height: auto;
+
+        .iconoYa {
+          width: 1.2em;
+          height: 1.2em;
+          margin-top: 0.9em;
+          // background-size: 35px;
+          right: auto;
+          // background-position: 0;
+          // background-size: auto;
+        }
+
+        &.abierto {
+          .iconoYa {
+            background-position-x: -17.5px;
+          }
+        }
       }
     }
   }

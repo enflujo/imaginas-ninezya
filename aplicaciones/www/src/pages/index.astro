@@ -77,22 +77,29 @@ const datosPagina: AboutPage = {
 
   h1 {
     font-size: 5em;
-    margin: 1em 0 0 0;
+    margin: 1em 0.1em 0 0;
     text-align: center;
   }
 
   h2 {
-    font-size: 2em;
-    width: 100%;
+    font-size: 1.5em;
+    margin: 1em 0 2em 15vw;
+    width: 70%;
     text-align: center;
-  }
-
-  h3 {
-    font-size: 1.3em;
     font-variation-settings:
       'MONO' 0,
       'CASL' 0,
-      'wght' 800,
+      'wght' 850,
+      'slnt' 0,
+      'CRSV' 0;
+  }
+
+  h3 {
+    font-size: 1.1em;
+    font-variation-settings:
+      'MONO' 0,
+      'CASL' 0,
+      'wght' 700,
       'slnt' 0,
       'CRSV' 0;
   }
@@ -118,7 +125,7 @@ const datosPagina: AboutPage = {
       'CRSV' 0;
 
     .texto {
-      padding: 0 8em 0 9em;
+      padding: 0 2.5em 0 3.5em;
       text-align: left;
       font-variation-settings:
         'MONO' 0,
@@ -130,14 +137,187 @@ const datosPagina: AboutPage = {
   }
 
   section {
-    width: 62%;
+    width: 100%;
   }
 
   img {
-    position: fixed;
-    top: 8em;
-    right: 10%;
-    width: 17%;
-    height: 70%;
+    margin: 5em 5vw 30vh 9vw;
+    height: 300px;
+  }
+
+  @media screen and (min-width: $corte1) {
+    img {
+      margin: 4em 0 -3em 12.5vw;
+      width: 70vw;
+      height: 444px;
+    }
+  }
+  @media screen and (min-width: $corte2) {
+    .inicio {
+      background-color: var(--moradoProfundo);
+      color: var(--blancoMarfil);
+      padding-bottom: 20vh;
+      line-height: 1.4;
+
+      .texto {
+        padding: 0 6em 0 7em;
+        text-align: left;
+        font-size: 0.9em;
+        font-variation-settings:
+          'MONO' 0,
+          'CASL' 0,
+          'wght' 433,
+          'slnt' 0,
+          'CRSV' 0;
+      }
+    }
+
+    section {
+      width: 100%;
+    }
+    h1 {
+      font-size: 5.5em;
+      margin: 1em 0.5vw 0 0;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 1.7em;
+      width: 100%;
+      margin: 1em 0.5vw 2em 0;
+      text-align: center;
+      font-variation-settings:
+        'MONO' 0,
+        'CASL' 0,
+        'wght' 850,
+        'slnt' 0,
+        'CRSV' 0;
+    }
+
+    h3 {
+      font-size: 1.2em;
+      font-variation-settings:
+        'MONO' 0,
+        'CASL' 0,
+        'wght' 800,
+        'slnt' 0,
+        'CRSV' 0;
+    }
+    h4 {
+      margin-top: 2em;
+    }
+    img {
+      margin: 7em 0 -3em 12.5vw;
+      width: 70vw;
+      height: 800px;
+    }
+  }
+
+  @media screen and (min-width: $corte3) {
+    .inicio {
+      background-color: var(--moradoProfundo);
+      color: var(--blancoMarfil);
+      padding-bottom: 20vh;
+      line-height: 1.4;
+
+      .texto {
+        padding: 0 2em 0 7em;
+        font-size: 0.9em;
+        text-align: left;
+        font-variation-settings:
+          'MONO' 0,
+          'CASL' 0,
+          'wght' 433,
+          'slnt' 0,
+          'CRSV' 0;
+      }
+    }
+    section {
+      width: 62%;
+    }
+    h1 {
+      font-size: 5em;
+      margin-left: 8vw;
+      text-align: center;
+    }
+    h2 {
+      font-size: 1.5em;
+      margin-left: 8vw;
+      width: 80%;
+      text-align: center;
+    }
+
+    h3 {
+      font-size: 1.15em;
+      font-variation-settings:
+        'MONO' 0,
+        'CASL' 0,
+        'wght' 800,
+        'slnt' 0,
+        'CRSV' 0;
+    }
+    img {
+      position: fixed;
+      top: 20vh;
+      right: 5%;
+      width: 22%;
+      height: 70%;
+      margin: 0;
+    }
+  }
+
+  @media screen and (min-width: $corte4) {
+    .inicio {
+      background-color: var(--moradoProfundo);
+      color: var(--blancoMarfil);
+      padding-bottom: 20vh;
+      line-height: 1.4;
+
+      .texto {
+        padding: 0 8em 0 13em;
+        font-size: 0.95em;
+        text-align: left;
+        font-variation-settings:
+          'MONO' 0,
+          'CASL' 0,
+          'wght' 433,
+          'slnt' 0,
+          'CRSV' 0;
+      }
+    }
+    h1 {
+      font-size: 5em;
+      margin-left: 3vw;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 1.5em;
+      margin-left: 6vw;
+      width: 80%;
+      text-align: center;
+    }
+
+    h3 {
+      font-size: 1.3em;
+      font-variation-settings:
+        'MONO' 0,
+        'CASL' 0,
+        'wght' 800,
+        'slnt' 0,
+        'CRSV' 0;
+    }
+    h4 {
+      margin-top: 2em;
+    }
+
+    img {
+      position: fixed;
+      top: 20vh;
+      right: 5%;
+      width: 28%;
+      height: 70%;
+      margin: 0;
+    }
   }
 </style>
