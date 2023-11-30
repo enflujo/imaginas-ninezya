@@ -10,9 +10,10 @@ interface Props {
   imagen?: { ruta: string; alt: string };
   conMenu: boolean;
   conDatos?: boolean;
+  apuntarA?: string;
 }
 
-const { titulo, descripcion, imagen, conMenu } = Astro.props;
+const { titulo, descripcion, imagen, conMenu, apuntarA } = Astro.props;
 const { pathname } = Astro.url;
 const urlBase = new URL(`${import.meta.env.BASE_URL}/`, Astro.site);
 const urlPagina = new URL(pathname, Astro.site);
@@ -60,6 +61,8 @@ const altImg = imagen ? imagen.alt : nombrePagina;
     <meta name="twitter:image" content={rutaImg} />
     <meta name="twitter:image:alt" content={altImg} />
     <slot name="cabeza" />
+
+    {apuntarA && <meta http-equiv="refresh" content={`0; url=${apuntarA}`} />}
   </head>
 
   <body>
