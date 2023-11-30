@@ -63,6 +63,17 @@ const altImg = imagen ? imagen.alt : nombrePagina;
     <slot name="cabeza" />
 
     {apuntarA && <meta http-equiv="refresh" content={`0; url=${apuntarA}`} />}
+
+    {
+      import.meta.env.PROD && (
+        <script
+          async
+          data-website-id="f5bcf124-031f-49e5-862b-8e3f011022ec"
+          src="https://analitica.enflujo.com/script.js"
+          data-domains="imagina.uniandes.edu.co"
+        />
+      )
+    }
   </head>
 
   <body>
