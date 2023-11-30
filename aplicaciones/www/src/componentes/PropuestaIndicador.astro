@@ -5,13 +5,13 @@ const datosYa = datos.find((instancia) => instancia.ruta === ya);
 const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta === indicador);
 ---
 
-<div id="contenedorInfoAdicional" data-hayDatos=`${datosIndicador.hay_datos}`>
-  <div id="fichaTecnica">
-    <h2 id="ya" class="tituloSeccion">{datosYa.nombre}</h2>
-    <p id="nombre">{datosIndicador.nombre}</p>
+<div class="contenedorInfoAdicional" data-hayDatos=`${datosIndicador.hay_datos}`>
+  <div class="fichaTecnica">
+    <h2 class="tituloSeccion tituloYa">{datosYa.nombre}</h2>
+    <p class="nombre">{datosIndicador.nombre}</p>
     <div class="seccion"><h4 class="titulo">Definición</h4><p class="texto">{datosIndicador.definicion}</p></div>
     <h3 class="tituloSeccion">Información técnica</h3>
-    <section id="inferior">
+    <section class="inferior">
       <div class="seccion"><h4 class="titulo">Unidad de medida</h4><p class="texto">{datosIndicador.unidad}</p></div>
       <div class="seccion">
         <h4 class="titulo">Metodología de cálculo</h4><p class="texto">{datosIndicador.metodologia}</p>
@@ -23,8 +23,8 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
     </section>
   </div>
 
-  <div id="contenedorSugerencias">
-    <div id="aviso">
+  <div class="contenedorSugerencias">
+    <div class="aviso">
       No hay información suficiente para reconstruir este indicador. Aquí hay algunas sugerencias de cómo podría
       trabajarse.
     </div>
@@ -42,7 +42,7 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
 </div>
 
 <style lang="scss">
-  #contenedorInfoAdicional {
+  .contenedorInfoAdicional {
     display: flex;
     position: absolute;
     justify-content: space-around;
@@ -50,7 +50,7 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
     background-color: var(--blancoMarfil);
     margin: 2em;
 
-    #fichaTecnica {
+    .fichaTecnica {
       width: 40vw;
       height: fit-content;
       min-width: 300px;
@@ -76,19 +76,19 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
         font-size: 1em;
       }
 
-      #ya {
+      .tituloYa {
         border-radius: 10px 10px 0 0;
         font-size: 1.1em;
       }
 
-      #nombre {
+      .nombre {
         border-bottom: solid 2px var(--azulViejo);
         font-size: 1em;
         margin: 0;
         padding: 0.3em;
       }
 
-      #inferior {
+      .inferior {
         display: flex;
         flex-direction: column;
       }
@@ -130,14 +130,14 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
       }
     }
 
-    #contenedorSugerencias {
+    .contenedorSugerencias {
       display: flex;
       width: 40%;
       font-size: 0.9em;
       flex-direction: column;
       justify-content: space-between;
 
-      #aviso {
+      .aviso {
         color: yellow;
         background-color: var(--uvaProfunda);
         padding: 3em;

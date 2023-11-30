@@ -61,10 +61,13 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
               <h3 id="nombreIndicador">{datosIndicador.nombre}</h3>
 
               <span id="abrirFicha">?</span>
+              <div id="contenedorInfoAdicional">
+              <FichaTecnica rutaYa={datosYa.ruta} rutaIndicador={datosIndicador.ruta} />
+            </div>
               <p id="descripcionIndicador">{datosIndicador.explicacion}</p>
             </div>
             <Buscador />
-            <FichaTecnica />
+            
             <SelectorNivel />
             <MenuAnios />
           </div>
@@ -160,11 +163,36 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
       comparativo.innerHTML = '';
     }
   });
+
+  /**
+   * Ficha Técnica
+   */
+
+  const abrirFicha = document.getElementById('abrirFicha');
+
+  // Cerrar ficha al hacer click afuera
+  document.body.addEventListener('click', (evento) => {
+    if (evento.target === abrirFicha) return;
+
+    if (!(infoAdicional === evento.target || infoAdicional.contains(evento.target as Node))) {
+      infoAdicional.classList.remove('abierta');
+    }
+  });
 </script>
 
 <style lang="scss">
   #secionSuperior {
     display: flex;
+  }
+
+  #contenedorInfoAdicional {
+    display: none;
+    position: absolute;
+    justify-content: space-around;
+    background-color: var(--blancoMarfil);
+    &.abierta {
+      display: flex;
+    }
   }
 
   #descripcionIndicador {

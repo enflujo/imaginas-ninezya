@@ -40,54 +40,57 @@ const { ya, indicador } = Astro.params;
 
 <script>
   const menu = document.getElementById('menu');
-  const yas = document.querySelectorAll<HTMLElement>('.ya');
-  let enCelular = false;
 
-  // Abrir sub menú de indicadores al hacer clic en un 'ya'
-  yas.forEach((contenedorYa) => {
-    const nombreYa = contenedorYa.querySelector<HTMLElement>('.nombreYa');
-    const icono = contenedorYa.querySelector<HTMLSpanElement>('.iconoYa');
+  if (menu) {
+    const yas = document.querySelectorAll<HTMLElement>('.ya');
+    let enCelular = false;
 
-    nombreYa.addEventListener('click', () => {
-      contenedorYa.classList.toggle('abierto');
-      nombreYa.classList.toggle('ungido');
-    });
+    // Abrir sub menú de indicadores al hacer clic en un 'ya'
+    yas.forEach((contenedorYa) => {
+      const nombreYa = contenedorYa.querySelector<HTMLElement>('.nombreYa');
+      const icono = contenedorYa.querySelector<HTMLSpanElement>('.iconoYa');
 
-    icono.addEventListener('click', () => {
-      if (enCelular) {
-        const yasAbierto = document.querySelectorAll<HTMLElement>('.abierto');
-        const nombresUngidos = document.querySelectorAll<HTMLElement>('.ungido');
-
-        yasAbierto.forEach((ya) => ya.classList.remove('abierto'));
-        nombresUngidos.forEach((nombre) => nombre.classList.remove('ungido'));
-        menu.classList.add('visible');
+      nombreYa.addEventListener('click', () => {
         contenedorYa.classList.toggle('abierto');
         nombreYa.classList.toggle('ungido');
+      });
+
+      icono.addEventListener('click', () => {
+        if (enCelular) {
+          const yasAbierto = document.querySelectorAll<HTMLElement>('.abierto');
+          const nombresUngidos = document.querySelectorAll<HTMLElement>('.ungido');
+
+          yasAbierto.forEach((ya) => ya.classList.remove('abierto'));
+          nombresUngidos.forEach((nombre) => nombre.classList.remove('ungido'));
+          menu.classList.add('visible');
+          contenedorYa.classList.toggle('abierto');
+          nombreYa.classList.toggle('ungido');
+        }
+      });
+    });
+
+    const corte3 = window.matchMedia('(max-width: 1000px)');
+
+    revisarAncho(corte3);
+
+    corte3.addEventListener('change', () => {
+      revisarAncho(corte3);
+    });
+
+    function revisarAncho(corte: MediaQueryList) {
+      if (corte.matches) {
+        enCelular = true;
+      } else {
+        enCelular = false;
+      }
+    }
+
+    document.body.addEventListener('click', (evento) => {
+      if (!(menu === evento.target || menu.contains(evento.target as Node))) {
+        menu.classList.remove('visible');
       }
     });
-  });
-
-  const corte3 = window.matchMedia('(max-width: 1000px)');
-
-  revisarAncho(corte3);
-
-  corte3.addEventListener('change', () => {
-    revisarAncho(corte3);
-  });
-
-  function revisarAncho(corte: MediaQueryList) {
-    if (corte.matches) {
-      enCelular = true;
-    } else {
-      enCelular = false;
-    }
   }
-
-  document.body.addEventListener('click', (evento) => {
-    if (!(menu === evento.target || menu.contains(evento.target as Node))) {
-      menu.classList.remove('visible');
-    }
-  });
 </script>
 
 <style lang="scss">
