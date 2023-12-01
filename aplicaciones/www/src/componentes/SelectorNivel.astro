@@ -23,9 +23,8 @@
     boton.addEventListener('click', () => {
       if (nivel.value === valorNivel) return;
       if (seleccionado) seleccionado.classList.remove('activo');
-
-      boton.classList.add('activo');
       seleccionado = boton;
+      boton.classList.add('activo');
       nivel.set(valorNivel);
     });
   });

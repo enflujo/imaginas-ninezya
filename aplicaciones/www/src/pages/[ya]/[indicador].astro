@@ -154,8 +154,6 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
           const mapita = document.createElement('enflujo-mapita') as MapaDetalle;
           mapita.className = 'mapita';
           mapita.id = `${codigo}`;
-          mapita.dataset.departamento = nombre;
-
           mapita.agregarTitulo(nombre);
 
           await mapita.crearMapa();

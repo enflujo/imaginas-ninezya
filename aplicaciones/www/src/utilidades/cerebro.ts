@@ -1,7 +1,7 @@
 import { atom, map } from 'nanostores';
 import type { FeatureCollection } from 'geojson';
-import type { DatosIndicador, DatosIndicadorNal, DatosPorAñoOrdenado, FuncionColor } from '@/tipos';
-import { escalaColores, pedirDatos } from './ayudas';
+import type { DatosIndicador, DatosIndicadorNal, DatosPorAñoOrdenado, FuncionColor, LugarSeleccionado } from '@/tipos';
+import { escalaColores, obtenerVariableCSS, pedirDatos } from './ayudas';
 import { colorNegativo, colorNeutro, colorPositivo } from './constantes';
 
 export const listaAños = atom<DatosPorAñoOrdenado>([]);
@@ -9,10 +9,9 @@ export const datosDep = map<DatosIndicador>(null);
 export const datosMun = map<DatosIndicador>(null);
 export const datosNal = map<DatosIndicadorNal>();
 export const nivel = atom<string>(null);
-export const deptoSeleccionado = atom<string | null>(null);
 export const añoSeleccionado = atom<string | null>(null);
 export const datosColombia = map<{ dep?: FeatureCollection; mun?: FeatureCollection }>({});
-export const lugaresSeleccionados = atom<{ nombre: string; codigo: string; color: string }[]>([]);
+export const lugaresSeleccionados = atom<LugarSeleccionado[]>([]);
 export let color: FuncionColor;
 export let valorMaxY = 0;
 export let valorMaxColor = 0;
@@ -149,3 +148,61 @@ const definirColor = (ascendente: boolean) => {
     return escalaColores(0, valorMaxColor, umbral, colorPositivo, colorNeutro, colorNegativo);
   }
 };
+
+export function actualizarUrl(valores: { nombre: string; valor: string }[]) {
+  const parametros = new URLSearchParams(window.location.search);
+  valores.forEach((obj) => {
+    parametros.set(obj.nombre, obj.valor);
+  });
+
+  window.history.pushState({}, '', decodeURIComponent(`${window.location.pathname}?${parametros}`));
+}
+
+function revisarNivel(parametros: URLSearchParams) {
+  const nivelDeseado = parametros.get('nivel');
+
+  if (nivelDeseado) {
+    if (nivel.value !== nivelDeseado) {
+      nivel.set(nivelDeseado);
+    }
+  }
+  // Si no hay valor, volver al estado inicial que es vista departamental.
+  else if (nivel.value !== 'dep') {
+    nivel.set('dep');
+  }
+}
+
+function revisarDepartamentos(parametros: URLSearchParams) {
+  const deps = parametros.get('deps');
+
+  if (deps) {
+    const codigos = deps.split(',');
+    const datosDeps = datosColombia.value.dep;
+
+    if (datosDeps) {
+      const lugares: LugarSeleccionado[] = [];
+
+      codigos.forEach((codigo, i) => {
+        const lugar = datosDeps.features.find((obj) => obj.properties.codigo === codigo);
+        const colorLugar = obtenerVariableCSS(`--color${i}`);
+
+        if (lugar) {
+          lugares.push({ nombre: lugar.properties.nombre, codigo, color: colorLugar });
+        }
+      });
+
+      lugaresSeleccionados.set(lugares);
+    } else {
+      console.error('no se han cargado los datos');
+    }
+  } else {
+    lugaresSeleccionados.set([]);
+  }
+}
+
+window.addEventListener('popstate', async () => {
+  const parametros = new URLSearchParams(window.location.search);
+
+  revisarNivel(parametros);
+  revisarDepartamentos(parametros);
+});

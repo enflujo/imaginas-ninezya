@@ -39,13 +39,13 @@ const { ancho, alto } = Astro.props;
   import {
     datosColombia,
     nivel,
-    deptoSeleccionado,
     añoSeleccionado,
     lugaresSeleccionados,
     datosMapaMunicipio,
     datosIndicadorDep,
     datosIndicadorMunicipio,
     color,
+    actualizarUrl,
   } from '@/utilidades/cerebro';
   import type { IMapearCoordenadas } from '@enflujo/alquimia/libreria/modulos/tipos';
 
@@ -238,9 +238,9 @@ const { ancho, alto } = Astro.props;
           let nombre = '';
           let codigo = '';
           let codigoMun = '';
+          const nivelActual = nivel.get();
 
-          if (nivel.get() === 'mun') {
-            deptoSeleccionado.set(lugar.properties.dep);
+          if (nivelActual === 'mun') {
             nombre = lugar.properties.dep;
             codigo = lugar.properties.codigo.substring(0, 2);
             codigoMun = lugar.properties.codigo;
@@ -264,7 +264,6 @@ const { ancho, alto } = Astro.props;
           } else {
             nombre = lugar.properties.nombre;
             codigo = lugar.properties.codigo;
-            deptoSeleccionado.set(nombre);
           }
 
           if (zona.classList.contains('seleccionada')) {
@@ -297,7 +296,12 @@ const { ancho, alto } = Astro.props;
             }
           }
 
-          lugaresSeleccionados.set(lugares); // Cambiar valores en el store, todos los que estén con listen() van a recibir estos nuevos valores.
+          lugaresSeleccionados.set(lugares);
+
+          actualizarUrl([
+            { nombre: 'nivel', valor: nivelActual },
+            { nombre: 'deps', valor: lugares.map((lugar) => lugar.codigo).join(',') },
+          ]);
         };
       }
     });

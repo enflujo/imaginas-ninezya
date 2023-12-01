@@ -10,7 +10,6 @@ import {
 import { crearLinea, escalaCoordenadas, extremosLugar } from '@enflujo/alquimia';
 import type { IMapearCoordenadas } from '@enflujo/alquimia/libreria/modulos/tipos';
 import type { Feature, Geometry } from 'geojson';
-import { deptoSeleccionado } from '@/utilidades/cerebro';
 
 export default class MapaDetalle extends HTMLElement {
   svg: SVGElement;
@@ -25,6 +24,7 @@ export default class MapaDetalle extends HTMLElement {
   alto: number;
   contenedor: HTMLDivElement;
   nivel: string;
+  nombreDepartamento: string;
 
   constructor() {
     super();
@@ -38,6 +38,7 @@ export default class MapaDetalle extends HTMLElement {
   }
 
   agregarTitulo(nombre: string) {
+    this.nombreDepartamento = nombre;
     const contenedor = document.createElement('div');
     const titulo = document.createElement('h2');
     const cerrar = document.createElement('span');
@@ -108,7 +109,7 @@ export default class MapaDetalle extends HTMLElement {
     this.appendChild(this.contenedor);
 
     const datosMunicipios = await datosMapaMunicipio();
-    this.municipios = datosMunicipios.features.filter((lugar) => lugar.properties.dep === deptoSeleccionado.value);
+    this.municipios = datosMunicipios.features.filter((lugar) => lugar.properties.dep === this.nombreDepartamento);
 
     this.extremosGeo = extremosLugar({
       type: 'FeatureCollection',
