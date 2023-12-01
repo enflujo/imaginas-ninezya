@@ -181,11 +181,19 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
 </script>
 
 <style lang="scss">
+  @import '@/scss/constantes';
+
+  #visualizaciones {
+    position: relative;
+  }
+
   #secionSuperior {
     display: flex;
   }
 
   #contenedorInfoAdicional {
+    width: 60%;
+    top: 8%;
     display: none;
     position: absolute;
     justify-content: space-around;
@@ -193,6 +201,7 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
     &.abierta {
       display: flex;
     }
+
   }
 
   #descripcionIndicador {
@@ -251,5 +260,22 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
       color: var(--azulViejo);
       cursor: pointer;
     }
+  }
+
+  /// ✂️ Cortes pantalla
+  @media screen and (min-width: $corte1) {
+  }
+  @media screen and (min-width: $corte2) {
+  }
+
+  @media screen and (min-width: $corte3) {
+  }
+
+  @media screen and (min-width: $corte4) {
+    #contenedorInfoAdicional {
+     /*  width: 60%;
+    top: 8%; */
+    
+  }
   }
 </style>

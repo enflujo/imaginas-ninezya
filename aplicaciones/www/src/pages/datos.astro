@@ -11,7 +11,7 @@ import pesos from '@/datosVisibles/pesosArchivos.json';
   conMenu={false}
   imagen={{ ruta: '___.webp', alt: '___' }}
 >
-  <section>
+  <section class="contenedorDatos">
     <h1 id="tituloPagina">Datos</h1>
 
     <div id="datos">
@@ -115,11 +115,19 @@ import pesos from '@/datosVisibles/pesosArchivos.json';
 </script>
 
 <style lang="scss">
+  @import '@/scss/constantes';
+
+  .contenedorDatos {
+    width: 70vw;
+  }
   .contenedorFicha {
     display: none;
     position: absolute;
     justify-content: space-around;
     background-color: var(--blancoMarfil);
+    top: 0;
+    left: 0;
+    min-width: 70vw;
     &.abierta {
       display: flex;
     }
@@ -137,7 +145,7 @@ import pesos from '@/datosVisibles/pesosArchivos.json';
   }
 
   #datos {
-    max-width: 40vw;
+    max-width: 70vw;
     font-size: 1em;
     font-family: var(--fuente);
     color: var(--azulViejo);
@@ -191,16 +199,15 @@ import pesos from '@/datosVisibles/pesosArchivos.json';
   }
 
   #indicadores {
-    width: 50vw;
+    width: 70vw;
     margin-top: 2em;
   }
 
   .indicador {
-    // display: flex;
-    width: 40vw;
+    width: 70vw;
     margin: 0.4em 0;
     border: 1px dotted;
-    justify-content: space-between;
+    position: relative;
   }
 
   .contenedorYa {
@@ -214,7 +221,7 @@ import pesos from '@/datosVisibles/pesosArchivos.json';
   .abrirFicha {
     display: block;
     position: relative;
-    left: 96%;
+    left: 95%;
     bottom: 10px;
     background-color: var(--blancoMarfil);
     border-radius: 50%;
@@ -226,5 +233,47 @@ import pesos from '@/datosVisibles/pesosArchivos.json';
     border: solid 1px var(--azulViejo);
     color: var(--azulViejo);
     cursor: pointer;
+  }
+
+  /// ✂️ Cortes pantalla
+  @media screen and (min-width: $corte1) {
+    .contenedorDatos {
+      width: 70vw;
+    }
+    .contenedorFicha {
+      top: 0;
+      left: 0%;
+      min-width: 70vw;
+    }
+    .indicador {
+      width: 70vw;
+    }
+  }
+  @media screen and (min-width: $corte2) {
+    .contenedorFicha {
+      min-width: 40vw;
+    }
+  }
+
+  @media screen and (min-width: $corte3) {
+  }
+
+  @media screen and (min-width: $corte4) {
+    .contenedorFicha {
+      left: 102%;
+      min-width: 40vw;
+    }
+
+    #datos {
+      max-width: 40vw;
+    }
+
+    #indicadores {
+      width: 50vw;
+    }
+
+    .indicador {
+      width: 40vw;
+    }
   }
 </style>
