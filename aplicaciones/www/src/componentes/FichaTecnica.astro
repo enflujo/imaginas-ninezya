@@ -45,8 +45,8 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
 <script></script>
 
 <style lang="scss">
+  @import '@/scss/constantes';
   .fichaTecnica {
-    width: 40vw;
     min-width: 300px;
     border: solid 2px var(--azulViejo);
     border-radius: 15px;
@@ -102,7 +102,7 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
         width: 0;
         font-size: 0.8em;
         text-align: left;
-        flex-basis: 20%;
+        flex-basis: 53%;
         margin: 0;
         padding: 0.8em;
         text-transform: uppercase;
@@ -122,6 +122,46 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
         flex-direction: column;
         justify-content: center;
       }
+    }
+  }
+
+  /// ✂️ Cortes pantalla
+  @media screen and (min-width: $corte1) {
+    .fichaTecnica {
+      min-width: 330px;
+      width: 70vw;
+      .seccion {
+        .titulo {
+          flex-basis: 50%;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: $corte2) {
+    .fichaTecnica {
+      .seccion {
+        .titulo {
+          flex-basis: 40%;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: $corte3) {
+    .fichaTecnica {
+      .seccion {
+        .titulo {
+          flex-basis: 28%;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: $corte4) {
+    .fichaTecnica {
+      width: 40vw;
+      max-width: 850px;
     }
   }
 </style>
