@@ -1,154 +1,127 @@
 ---
 import datos from '@/datosVisibles/indicadores';
 import { urlsAEnlacesHTML } from '@enflujo/alquimia';
-const { ya, indicador } = Astro.params;
-const datosYa = datos.find((instancia) => instancia.ruta === ya);
-const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta === indicador);
+
+interface Props {
+  rutaYa: string;
+  rutaIndicador: string;
+}
+
+const { rutaYa, rutaIndicador } = Astro.props;
+const datosYa = datos.find((instancia) => instancia.ruta === rutaYa);
+const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta === rutaIndicador);
 ---
 
-<div id="contenedorInfoAdicional" data-hayDatos=`${datosIndicador.hay_datos}`>
-  <div id="fichaTecnica">
-    <h2 id="ya" class="tituloSeccion">{datosYa.nombre}</h2>
-    <p id="nombre">{datosIndicador.nombre}</p>
-    <div class="seccion"><h4 class="titulo">Definición</h4><p class="texto">{datosIndicador.definicion}</p></div>
-    <h3 class="tituloSeccion">Información técnica</h3>
-    <section id="inferior">
-      <div class="seccion"><h4 class="titulo">Unidad de medida</h4><p class="texto">{datosIndicador.unidad}</p></div>
-      <div class="seccion">
-        <h4 class="titulo">Metodología de cálculo</h4><p class="texto">{datosIndicador.metodologia}</p>
-      </div>
-      <div class="seccion">
-        <h4 class="titulo">Fuente del numerador</h4><p class="texto">{datosIndicador.fuente_numerador}</p>
-      </div>
-      <div class="seccion">
-        <h4 class="titulo">Fuente del denominador</h4><p class="texto">{datosIndicador.fuente_denominador}</p>
-      </div>
-      <div class="seccion">
-        <h4 class="titulo">Nivel de desagregación</h4><p class="texto">{datosIndicador.desagregacion}</p>
-      </div>
-      <div class="seccion">
-        <h4 class="titulo">Contexto</h4><p class="texto" id="textoContexto" data-contexto=`${datosIndicador.contexto}`>
-          {datosIndicador.contexto}
-        </p>
-      </div>
-      <div class="seccion">
-        <h4 class="titulo">Cómo se interpreta</h4>
-        <p class="texto" id="textoInterpretacion" data-interpretacion=`${datosIndicador.interpretacion}`></p>
-      </div>
-    </section>
-  </div>
+<div class="fichaTecnica">
+  <h2 class="tituloSeccion tituloYa">{datosYa.nombre}</h2>
+  <p class="nombre">{datosIndicador.nombre}</p>
+  <div class="seccion"><h4 class="titulo">Definición</h4><p class="texto">{datosIndicador.definicion}</p></div>
+  <h3 class="tituloSeccion">Información técnica</h3>
+  <section class="inferior">
+    <div class="seccion"><h4 class="titulo">Unidad de medida</h4><p class="texto">{datosIndicador.unidad}</p></div>
+    <div class="seccion">
+      <h4 class="titulo">Metodología de cálculo</h4><p class="texto">{datosIndicador.metodologia}</p>
+    </div>
+    <div class="seccion">
+      <h4 class="titulo">Fuente del numerador</h4><p class="texto">{datosIndicador.fuente_numerador}</p>
+    </div>
+    <div class="seccion">
+      <h4 class="titulo">Fuente del denominador</h4><p class="texto">{datosIndicador.fuente_denominador}</p>
+    </div>
+    <div class="seccion">
+      <h4 class="titulo">Nivel de desagregación</h4><p class="texto">{datosIndicador.desagregacion}</p>
+    </div>
+    <div class="seccion">
+      <h4 class="titulo">Contexto</h4>
+      <p class="texto" id="textoContexto" set:html={urlsAEnlacesHTML(datosIndicador.contexto)} />
+    </div>
+    <div class="seccion">
+      <h4 class="titulo">Cómo se interpreta</h4>
+      <p class="texto" id="textoInterpretacion" set:html={urlsAEnlacesHTML(datosIndicador.interpretacion)} />
+    </div>
+  </section>
 </div>
 
-<script>
-  import { urlsAEnlacesHTML } from '@enflujo/alquimia';
-
-  const infoAdicional = document.getElementById('contenedorInfoAdicional');
-  const abrirFicha = document.getElementById('abrirFicha');
-  const textoContexto = document.getElementById('textoContexto');
-  const textoInterpretacion = document.getElementById('textoInterpretacion');
-
-  textoInterpretacion.innerHTML = `${urlsAEnlacesHTML(textoInterpretacion.dataset.interpretacion)}`;
-  textoContexto.innerHTML = `${urlsAEnlacesHTML(textoContexto.dataset.contexto)}`;
-
-  // Cerrar ficha al hacer click afuera
-  document.body.addEventListener('click', (evento) => {
-    if (evento.target === abrirFicha) return;
-
-    if (!(infoAdicional === evento.target || infoAdicional.contains(evento.target as Node))) {
-      infoAdicional.classList.remove('abierta');
-    }
-  });
-</script>
+<script></script>
 
 <style lang="scss">
-  #contenedorInfoAdicional {
-    display: none;
-    position: absolute;
-    justify-content: space-around;
+  .fichaTecnica {
+    width: 40vw;
+    min-width: 300px;
+    border: solid 2px var(--azulViejo);
+    border-radius: 15px;
+    color: var(--azulViejo);
     background-color: var(--blancoMarfil);
+    text-align: center;
+    z-index: 9;
+    font-variation-settings:
+      'MONO' 0,
+      'CASL' 0,
+      'wght' 700,
+      'slnt' 0,
+      'CRSV' 0;
 
-    #fichaTecnica {
-      width: 40vw;
-      min-width: 300px;
-      border: solid 2px var(--azulViejo);
-      border-radius: 15px;
-      color: var(--azulViejo);
-      background-color: var(--blancoMarfil);
-      text-align: center;
-      z-index: 9;
-      font-variation-settings:
-        'MONO' 0,
-        'CASL' 0,
-        'wght' 700,
-        'slnt' 0,
-        'CRSV' 0;
-
-      .tituloSeccion {
-        background-color: var(--azulViejo);
-        color: var(--blancoMarfil);
-        width: auto;
-        padding: 0.3em;
-        margin: 0;
-        font-size: 1em;
-      }
-
-      #ya {
-        border-radius: 10px 10px 0 0;
-        font-size: 1.1em;
-      }
-
-      #nombre {
-        border-bottom: solid 2px var(--azulViejo);
-        font-size: 1em;
-        margin: 0;
-        padding: 0.3em;
-      }
-
-      #inferior {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .seccion {
-        display: flex;
-        align-items: center;
-        margin: 0;
-        align-items: stretch;
-        border-bottom: solid 2px var(--azulViejo);
-
-        &:last-child {
-          border-bottom: none;
-        }
-
-        .titulo {
-          width: 0;
-          font-size: 0.8em;
-          text-align: left;
-          flex-basis: 20%;
-          margin: 0;
-          padding: 0.8em;
-          text-transform: uppercase;
-          border-right: solid 2px var(--azulViejo);
-        }
-
-        .texto {
-          font-size: 0.8em;
-          padding: 0.8em;
-          margin: 0;
-          text-align: left;
-          flex-basis: 80%;
-          display: flex;
-          min-height: 2.3em;
-          text-wrap: wrap;
-          overflow-wrap: anywhere;
-          flex-direction: column;
-          justify-content: center;
-        }
-      }
+    .tituloSeccion {
+      background-color: var(--azulViejo);
+      color: var(--blancoMarfil);
+      width: auto;
+      padding: 0.3em;
+      margin: 0;
+      font-size: 1em;
     }
 
-    &.abierta {
+    .tituloYa {
+      border-radius: 10px 10px 0 0;
+      font-size: 1.1em;
+    }
+
+    .nombre {
+      border-bottom: solid 2px var(--azulViejo);
+      font-size: 1em;
+      margin: 0;
+      padding: 0.3em;
+    }
+
+    .inferior {
       display: flex;
+      flex-direction: column;
+    }
+
+    .seccion {
+      display: flex;
+      align-items: center;
+      margin: 0;
+      align-items: stretch;
+      border-bottom: solid 2px var(--azulViejo);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .titulo {
+        width: 0;
+        font-size: 0.8em;
+        text-align: left;
+        flex-basis: 20%;
+        margin: 0;
+        padding: 0.8em;
+        text-transform: uppercase;
+        border-right: solid 2px var(--azulViejo);
+      }
+
+      .texto {
+        font-size: 0.8em;
+        padding: 0.8em;
+        margin: 0;
+        text-align: left;
+        flex-basis: 80%;
+        display: flex;
+        min-height: 2.3em;
+        text-wrap: wrap;
+        overflow-wrap: anywhere;
+        flex-direction: column;
+        justify-content: center;
+      }
     }
   }
 </style>

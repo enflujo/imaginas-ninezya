@@ -36,7 +36,7 @@ import pesos from '@/datosVisibles/pesosArchivos.json';
             (ya, i) =>
               ya.hay_datos && (
                 <div id={ya.ruta} class={`contenedorYa${i === 0 ? ' visible' : ''}`}>
-                  {ya.indicadores.map((indicador) => {
+                  {ya.indicadores.map((indicador, j) => {
                     return (
                       <div class="indicador">
                         <p class="columna enlace">
@@ -52,6 +52,12 @@ import pesos from '@/datosVisibles/pesosArchivos.json';
                             </a>
                           )}
                         </p>
+                        <span class="abrirFicha" data-ficha={`ya${i}i${j}`}>
+                          ?
+                        </span>
+                        <div id={`ya${i}i${j}`} class="contenedorFicha">
+                          <FichaTecnica rutaYa={ya.ruta} rutaIndicador={indicador.ruta} />
+                        </div>
                       </div>
                     );
                   })}
@@ -63,11 +69,29 @@ import pesos from '@/datosVisibles/pesosArchivos.json';
     </div>
   </section>
 </Plantilla>
-<!-- <FichaTecnica rutaYa={ya.ruta} rutaIndicador={indicador.ruta} /> -->
+
 <script>
   const selector = document.getElementById('selector') as HTMLFormElement;
   const opciones = document.getElementById('opciones') as HTMLSelectElement;
   const contenedor = document.getElementById('indicadores') as HTMLDivElement;
+  const botones = document.querySelectorAll<HTMLSpanElement>('.abrirFicha');
+  let fichaAbierta: HTMLDivElement;
+
+  botones.forEach((boton) => {
+    const idFicha = boton.dataset.ficha;
+    const ficha = document.getElementById(idFicha) as HTMLDivElement;
+
+    if (ficha) {
+      boton.addEventListener('click', () => {
+        if (fichaAbierta && fichaAbierta !== ficha) {
+          fichaAbierta.classList.remove('abierta');
+        }
+
+        ficha.classList.toggle('abierta');
+        fichaAbierta = ficha;
+      });
+    }
+  });
 
   selector.onchange = () => {
     if (opciones.value) {
@@ -77,14 +101,36 @@ import pesos from '@/datosVisibles/pesosArchivos.json';
       contenedorYa.classList.add('visible');
     }
   };
+
+  // Cerrar ficha al hacer click afuera
+  document.body.addEventListener('click', (evento) => {
+    if (!fichaAbierta) return;
+    const elemento = evento.target as HTMLElement;
+    if (elemento.classList.contains('abrirFicha')) return;
+
+    if (!(elemento.classList.contains('contenedorFicha') || fichaAbierta.contains(elemento))) {
+      fichaAbierta.classList.remove('abierta');
+    }
+  });
 </script>
 
 <style lang="scss">
+  .contenedorFicha {
+    display: none;
+    position: absolute;
+    justify-content: space-around;
+    background-color: var(--blancoMarfil);
+    &.abierta {
+      display: flex;
+    }
+  }
+
   section {
     width: 60vw;
     max-width: 1300px;
     margin: 0 auto 7em auto;
   }
+
   #tituloPagina {
     padding: 2em 0 1em 0;
     font-family: var(--fuente);
@@ -163,5 +209,22 @@ import pesos from '@/datosVisibles/pesosArchivos.json';
     &.visible {
       display: block;
     }
+  }
+
+  .abrirFicha {
+    display: block;
+    position: relative;
+    left: 96%;
+    bottom: 10px;
+    background-color: var(--blancoMarfil);
+    border-radius: 50%;
+    padding: 0.18em 0.2em;
+    width: 1.4em;
+    height: 1.4em;
+    text-align: center;
+    font-size: 0.8em;
+    border: solid 1px var(--azulViejo);
+    color: var(--azulViejo);
+    cursor: pointer;
   }
 </style>
