@@ -9,7 +9,6 @@ El **SIYA (Sistema de Indicadores de los YA)** tiene como objetivo central entre
 
 ![](aplicaciones/www/estaticos/imagenes/SEO_general.webp)
 
-
 ## Aplicaciones
 
 Este repositorio contiene dos aplicaciones que componen el proyecto:
@@ -19,13 +18,12 @@ Este repositorio contiene dos aplicaciones que componen el proyecto:
 
 ## Apropiación o desarrollo
 
-
 ### Instalación
 
 En su computador debe tener instalado:
 
-- [NodeJS](https://nodejs.org/en/download "Instrucciones para descargar NodeJS")
-- [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#debian-stable "Instrucciones para instalar Yarn")
+- [NodeJS](https://nodejs.org/en/download 'Instrucciones para descargar NodeJS')
+- [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#debian-stable 'Instrucciones para instalar Yarn')
 
 Primero instalar las dependencias con:
 
