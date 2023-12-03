@@ -120,9 +120,20 @@ const { alto } = Astro.props;
     grupo.setAttribute('style', `transform: translate(${x}px, 0px`);
   }
 
+  // Ayudaaa :)
+  function actualizarUmbral(grupo: SVGElement, alto: number) {
+    contenedorEjeY.removeChild(grupo);
+    // grupo.setAttribute('style', `transform: translate(0px, ${y}px)`);
+    grupo.setAttribute('height', `${alto}`);
+    console.log(alto);
+    //grupo.setAttribute('style', `transform: scaleY(${alto})`);
+    contenedorEjeY.appendChild(grupo);
+  }
+
   function escalar() {
     const marcasY = contenedorEjeY.querySelectorAll<SVGGElement>('.marcaEjeY');
     const marcasX = contenedorEjeX.querySelectorAll<SVGGElement>('.marcaEjeX');
+    const areaUmbral = contenedorEjeY.querySelector<SVGGElement>('.umbral');
 
     const dimsSvg = svg.getBoundingClientRect();
     const { x1, x2 } = proporciones.porcentaje;
@@ -146,6 +157,12 @@ const { alto } = Astro.props;
       marcasX.forEach((marca, i) => {
         actualizarMarcaX(marca, posicionX(+años[i].año) | 0);
       });
+    }
+
+    // Ayudaaa :)
+    if (areaUmbral) {
+      const alto = datosNal.value.ascendente ? posicionY(umbral) : posicionY(0) - posicionY(umbral);
+      actualizarUmbral(areaUmbral, alto);
     }
 
     lineas.forEach((linea) => {
