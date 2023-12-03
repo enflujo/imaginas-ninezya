@@ -121,13 +121,9 @@ const { alto } = Astro.props;
   }
 
   // Ayudaaa :)
-  function actualizarUmbral(grupo: SVGElement, alto: number) {
-    contenedorEjeY.removeChild(grupo);
-    // grupo.setAttribute('style', `transform: translate(0px, ${y}px)`);
+  function actualizarUmbral(grupo: SVGElement, alto: number, y: number) {
     grupo.setAttribute('height', `${alto}`);
-    console.log(alto);
-    //grupo.setAttribute('style', `transform: scaleY(${alto})`);
-    contenedorEjeY.appendChild(grupo);
+    grupo.setAttribute('y', `${y}`);
   }
 
   function escalar() {
@@ -162,7 +158,9 @@ const { alto } = Astro.props;
     // Ayudaaa :)
     if (areaUmbral) {
       const alto = datosNal.value.ascendente ? posicionY(umbral) : posicionY(0) - posicionY(umbral);
-      actualizarUmbral(areaUmbral, alto);
+      const y = datosNal.value.ascendente ? posicionY(valorMaxY) : posicionY(umbral);
+
+      actualizarUmbral(areaUmbral, alto, y);
     }
 
     lineas.forEach((linea) => {
