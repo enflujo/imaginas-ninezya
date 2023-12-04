@@ -106,10 +106,9 @@ main {
   margin-left: 50px;
   display: flex;
   flex-direction: column;
-  width: 100%;
 
   .columna {
-    flex-basis: 90%;
+    flex-basis: 50%;
     padding: 1em;
   }
 
@@ -223,10 +222,6 @@ main {
 @media screen and (min-width: $corte2) {
   .contenido {
     margin-left: 50px;
-
-    &.sinMenu {
-      margin-left: 0;
-    }
   }
 }
 
@@ -243,14 +238,6 @@ main {
 
   .contenido {
     margin-left: 19vw;
-
-    &.sinMenu {
-      margin-left: 0;
-    }
-    .columna {
-      flex-basis: 50%;
-      padding: 1em;
-    }
   }
 }
 
@@ -263,13 +250,5 @@ main {
   .contenido {
     flex-direction: row;
     margin-left: 440px;
-
-    &.sinMenu {
-      margin-left: 0;
-    }
-    .columna {
-      flex-basis: 50%;
-      padding: 1em;
-    }
   }
 }
