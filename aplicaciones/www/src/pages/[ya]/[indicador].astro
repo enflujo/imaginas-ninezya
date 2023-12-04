@@ -225,7 +225,7 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
     flex-wrap: wrap;
     font-size: 1em;
     min-width: 250px;
-    width: 15vw;
+    width: 20vw;
 
     #nombreYa {
       flex-basis: 100%;
@@ -264,6 +264,9 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
 
   /// ✂️ Cortes pantalla
   @media screen and (min-width: $corte1) {
+    #indicadorSeleccionado {
+    width: 20vw;
+    } 
   }
   @media screen and (min-width: $corte2) {
   }
@@ -275,7 +278,9 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
     #contenedorInfoAdicional {
      /*  width: 60%;
     top: 8%; */
-    
-  }
+    }
+    #indicadorSeleccionado {
+    width: 15vw;
+    } 
   }
 </style>
