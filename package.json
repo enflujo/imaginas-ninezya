@@ -11,7 +11,8 @@
     "lint": "prettier --check .",
     "lint:fix": "prettier --write --list-different .",
     "preview": "yarn workspace www preview",
-    "pesos": "yarn workspace procesador pesos"
+    "pesos": "yarn workspace procesador pesos",
+    "check": "yarn workspace www check"
   },
   "devDependencies": {
     "prettier": "^3.1.0"
