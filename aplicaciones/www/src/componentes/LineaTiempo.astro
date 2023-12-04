@@ -123,6 +123,7 @@ const { alto } = Astro.props;
   function escalar() {
     const marcasY = contenedorEjeY.querySelectorAll<SVGGElement>('.marcaEjeY');
     const marcasX = contenedorEjeX.querySelectorAll<SVGGElement>('.marcaEjeX');
+    const areaUmbral = contenedorEjeY.querySelector<SVGGElement>('.umbral');
 
     const dimsSvg = svg.getBoundingClientRect();
     const { x1, x2 } = proporciones.porcentaje;
@@ -131,7 +132,6 @@ const { alto } = Astro.props;
 
     dimsVis.altoVis = (dimsSvg.height - dimsVis.marcoAbajo) | 0;
     bordeEjeY.setAttribute('y2', `${dimsVis.altoVis}`);
-
     contenedorEjeX.setAttribute('style', `transform: translateY(${dimsVis.altoVis}px)`);
 
     if (marcasY) {
@@ -148,6 +148,15 @@ const { alto } = Astro.props;
       });
     }
 
+    if (areaUmbral) {
+      const alto = datosNal.value.ascendente
+        ? posicionY(umbral) - dimsVis.marcoAbajo + 5
+        : posicionY(0) - posicionY(umbral);
+      const y = datosNal.value.ascendente ? posicionY(valorMaxY) : posicionY(umbral);
+
+      areaUmbral.setAttribute('height', `${alto}px`);
+      areaUmbral.setAttribute('y', `${y}px`);
+    }
     lineas.forEach((linea) => {
       linea.actualizar(posicionX, posicionY);
     });
@@ -157,7 +166,9 @@ const { alto } = Astro.props;
     if (umbral) {
       const areaUmbral = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
 
-      const alto = datosNal.value.ascendente ? posicionY(umbral) : posicionY(0) - posicionY(umbral);
+      const alto = datosNal.value.ascendente
+        ? posicionY(umbral) - dimsVis.marcoAbajo + 5
+        : posicionY(0) - posicionY(umbral);
       const y = datosNal.value.ascendente ? posicionY(valorMaxY) : posicionY(umbral);
 
       areaUmbral.setAttribute('class', 'umbral');
