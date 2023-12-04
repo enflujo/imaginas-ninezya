@@ -120,6 +120,7 @@ import pesos from '@/datosVisibles/pesosArchivos.json';
   .contenedorDatos {
     width: 70vw;
   }
+
   .contenedorFicha {
     display: none;
     position: absolute;
@@ -127,7 +128,7 @@ import pesos from '@/datosVisibles/pesosArchivos.json';
     background-color: var(--blancoMarfil);
     top: 0;
     left: 0;
-    min-width: 70vw;
+    width: 93%;
     &.abierta {
       display: flex;
     }
@@ -199,12 +200,12 @@ import pesos from '@/datosVisibles/pesosArchivos.json';
   }
 
   #indicadores {
-    width: 70vw;
+    // width: 70vw;
     margin-top: 2em;
   }
 
   .indicador {
-    width: 70vw;
+    // width: 70vw;
     margin: 0.4em 0;
     border: 1px dotted;
     position: relative;
@@ -237,43 +238,26 @@ import pesos from '@/datosVisibles/pesosArchivos.json';
 
   /// ✂️ Cortes pantalla
   @media screen and (min-width: $corte1) {
-    .contenedorDatos {
-      width: 70vw;
-    }
-    .contenedorFicha {
-      top: 0;
-      left: 0%;
-      min-width: 70vw;
-    }
-    .indicador {
-      width: 70vw;
-    }
   }
   @media screen and (min-width: $corte2) {
-    .contenedorFicha {
-      min-width: 40vw;
-    }
   }
 
   @media screen and (min-width: $corte3) {
+    .contenedorFicha {
+      width: 70%;
+    }
   }
 
   @media screen and (min-width: $corte4) {
-    .contenedorFicha {
-      left: 102%;
-      min-width: 40vw;
-    }
-
-    #datos {
-      max-width: 40vw;
-    }
-
-    #indicadores {
+    .contenedorDatos {
       width: 50vw;
+      max-width: 1000px;
+      margin: 0 auto 7em auto;
     }
 
-    .indicador {
-      width: 40vw;
+    .contenedorFicha {
+      left: 100%;
+      justify-content: flex-start;
     }
   }
 </style>
