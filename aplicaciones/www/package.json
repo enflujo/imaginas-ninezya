@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "astro dev --host",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@enflujo/alquimia": "^2.0.0",
-    "astro": "^3.5.7",
+    "astro": "^3.6.4",
     "fuzzysort": "^2.0.4",
     "nanostores": "^0.9.5"
   },

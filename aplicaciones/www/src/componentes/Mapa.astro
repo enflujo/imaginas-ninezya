@@ -308,8 +308,11 @@ const { ancho, alto } = Astro.props;
 </script>
 
 <style lang="scss" is:global>
+  @import '@/scss/constantes';
+
   #contenedorMapa {
-    margin-top: 1em;
+    margin-top: 3em;
+    margin-left: 0em;
     stroke: var(--moradoProfundo);
     stroke-opacity: 0.5;
     stroke-width: 0.5px;
@@ -322,6 +325,16 @@ const { ancho, alto } = Astro.props;
       stroke-opacity: 1;
       stroke-width: 2px;
     }
+  }
+
+  /// ✂️ Cortes pantalla
+  @media screen and (min-width: $corte1) {
+    #contenedorMapa {
+      margin: 1em;
+    }
+  }
+
+  @media screen and (min-width: $corte3) {
   }
 </style>
 
