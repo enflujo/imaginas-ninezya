@@ -275,12 +275,17 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
   }
 
   @media screen and (min-width: $corte4) {
-    #contenedorInfoAdicional {
-     /*  width: 60%;
-    top: 8%; */
+    #descripcionIndicador {
+    margin-top: 1em;  
+    font-size: 1em;
     }
     #indicadorSeleccionado {
-    width: 15vw;
-    } 
+    align-items: stretch;
+    flex-direction: column;
+
+      #nombreYa {
+        width: 100%;
+      }
+    }
   }
 </style>

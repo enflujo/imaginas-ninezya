@@ -139,20 +139,13 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
   }
 
   @media screen and (min-width: $corte2) {
-    .fichaTecnica {
-      .seccion {
-        .titulo {
-          flex-basis: 40%;
-        }
-      }
-    }
   }
 
   @media screen and (min-width: $corte3) {
     .fichaTecnica {
       .seccion {
         .titulo {
-          flex-basis: 28%;
+          flex-basis: 45%;
         }
       }
     }
@@ -161,7 +154,13 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
   @media screen and (min-width: $corte4) {
     .fichaTecnica {
       width: 40vw;
-      max-width: 850px;
+      max-width: 750px;
+
+      .seccion {
+        .titulo {
+          flex-basis: 40%;
+        }
+      }
     }
   }
 </style>
