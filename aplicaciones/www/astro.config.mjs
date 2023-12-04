@@ -12,4 +12,7 @@ export default defineConfig({
   vite: {
     ssr: { noExternal: ['@enflujo/alquimia'] },
   },
+  server: {
+    port: 3000,
+  },
 });
