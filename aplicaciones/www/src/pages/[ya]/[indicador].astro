@@ -46,44 +46,50 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
     hayDatos={datosIndicador.hay_datos}
   />
   {
-    datosIndicador.hay_datos && (
-      <div
-        id="visualizaciones"
-        class="columna"
-        data-archivo={datosIndicador.archivo}
-        data-umbral={datosIndicador.umbral}
-        data-unidad={datosIndicador.unidad}
-      >
-        <div id="secionSuperior">
-          <div id="filtros">
-            <div id="indicadorSeleccionado">
-              <h2 id="nombreYa">{datosYa.nombre}</h2>
-              <h3 id="nombreIndicador">{datosIndicador.nombre}</h3>
+    datosIndicador.hay_datos ? (
+      <>
+        <div
+          id="visualizaciones"
+          class="columna"
+          data-archivo={datosIndicador.archivo}
+          data-umbral={datosIndicador.umbral}
+          data-unidad={datosIndicador.unidad}
+        >
+          <div id="secionSuperior">
+            <div id="filtros">
+              <div id="indicadorSeleccionado">
+                <h2 id="nombreYa">{datosYa.nombre}</h2>
+                <h3 id="nombreIndicador">{datosIndicador.nombre}</h3>
 
-              <span id="abrirFicha">?</span>
-              <div id="contenedorInfoAdicional">
-              <FichaTecnica rutaYa={datosYa.ruta} rutaIndicador={datosIndicador.ruta} />
-            </div>
+                <span id="abrirFicha">?</span>
+                <div id="contenedorInfoAdicional">
+                  <FichaTecnica rutaYa={datosYa.ruta} rutaIndicador={datosIndicador.ruta} />
+                </div>
+              </div>
+
               <p id="descripcionIndicador">{datosIndicador.explicacion}</p>
+              <Buscador />
+
+              <SelectorNivel />
+              <MenuAnios />
             </div>
-            <Buscador />
-            
-            <SelectorNivel />
-            <MenuAnios />
+            <div id="mapa">
+              <Mapa ancho={30} alto={45} />
+            </div>
           </div>
-          <div id="mapa"><Mapa ancho={30} alto={45} /></div>
+
+          <LineaTiempo alto={25} />
         </div>
 
-        <LineaTiempo alto={25} />
-      </div>
-
-      <div id="comparativo" class="columna"></div>
-      <div id="informacion"></div>
-    </div>
+        <div id="comparativo" class="columna" />
+        <div id="informacion" />
+      </>
+    ) : (
+      <PropuestaIndicador />
     )
   }
 
-  {!datosIndicador.hay_datos && <PropuestaIndicador />}
+  <!-- {!datosIndicador.hay_datos && } -->
 </Plantilla>
 
 <script>
@@ -149,9 +155,9 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
           mapita.className = 'mapita';
           mapita.id = `${codigo}`;
           mapita.dataset.departamento = nombre;
-          
+
           mapita.agregarTitulo(nombre);
-          
+
           await mapita.crearMapa();
           mapita.definirColor(color);
           mapita.escalar();
@@ -189,6 +195,11 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
 
   #secionSuperior {
     display: flex;
+    flex-direction: column;
+  }
+
+  #filtros {
+    // display: flex;
   }
 
   #contenedorInfoAdicional {
@@ -201,7 +212,6 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
     &.abierta {
       display: flex;
     }
-
   }
 
   #descripcionIndicador {
@@ -210,6 +220,7 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
     color: var(--azulViejo);
     font-size: 0.85em;
     margin-top: 0;
+    width: 60%;
     font-variation-settings:
       'MONO' 0,
       'CASL' 0,
@@ -225,7 +236,7 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
     flex-wrap: wrap;
     font-size: 1em;
     min-width: 250px;
-    width: 20vw;
+    width: 60%;
 
     #nombreYa {
       flex-basis: 100%;
@@ -264,11 +275,11 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
 
   /// ✂️ Cortes pantalla
   @media screen and (min-width: $corte1) {
-    #indicadorSeleccionado {
-    width: 20vw;
-    } 
   }
   @media screen and (min-width: $corte2) {
+    #secionSuperior {
+      flex-direction: row;
+    }
   }
 
   @media screen and (min-width: $corte3) {
@@ -276,12 +287,12 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
 
   @media screen and (min-width: $corte4) {
     #descripcionIndicador {
-    margin-top: 1em;  
-    font-size: 1em;
+      margin-top: 1em;
+      font-size: 1em;
     }
     #indicadorSeleccionado {
-    align-items: stretch;
-    flex-direction: column;
+      align-items: stretch;
+      flex-direction: column;
 
       #nombreYa {
         width: 100%;
