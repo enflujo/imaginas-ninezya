@@ -146,7 +146,7 @@ const { ancho, alto } = Astro.props;
       seleccionados.innerHTML = '';
       datosParaPintar = municipios;
 
-      crearMapa('municipios');
+      crearMapa();
       if (!añoSeleccionado.value) return;
       pintarMapa(añoSeleccionado.value);
     } else if (nuevoNivel === 'dep') {
@@ -160,7 +160,7 @@ const { ancho, alto } = Astro.props;
       colombia.innerHTML = '';
       seleccionados.innerHTML = '';
       datosParaPintar = departamentos;
-      crearMapa('departamentos');
+      crearMapa();
       if (!añoSeleccionado.value) return;
       pintarMapa(añoSeleccionado.value);
     }
@@ -202,7 +202,7 @@ const { ancho, alto } = Astro.props;
     });
   }
 
-  function crearMapa(clase: string) {
+  function crearMapa() {
     const lugaresActuales = lugaresSeleccionados.value;
 
     datosParaPintar.features.forEach((lugar) => {
@@ -211,7 +211,7 @@ const { ancho, alto } = Astro.props;
         const zona = document.createElementNS('http://www.w3.org/2000/svg', 'path');
         const estaSeleccionada = lugaresActuales.find((obj) => obj.codigo === lugar.properties.codigo);
 
-        zona.setAttribute('class', `${clase}${estaSeleccionada ? ' seleccionada' : ''}`);
+        zona.setAttribute('class', `lugar${estaSeleccionada ? ' seleccionada' : ''}`);
         zona.setAttribute('d', linea);
         zona.setAttribute('id', lugar.properties.codigo);
         zona.setAttribute('style', 'fill: url(#sinInfo)');
@@ -237,47 +237,47 @@ const { ancho, alto } = Astro.props;
         zona.onclick = () => {
           let nombre = '';
           let codigo = '';
-          let codigoMun = '';
+          // let codigoMun = '';
           const nivelActual = nivel.get();
-
+          console.log(lugar.properties);
           if (nivelActual === 'mun') {
             nombre = lugar.properties.dep;
             codigo = lugar.properties.codigo.substring(0, 2);
-            codigoMun = lugar.properties.codigo;
+            // codigoMun = lugar.properties.codigo;
 
-            // Si no existe la lista de municipios del departamento al que pertenece el municipio, la crea
-            if (!municipiosAgregados[codigo]) {
-              municipiosAgregados[codigo] = [];
-            }
+            // // Si no existe la lista de municipios del departamento al que pertenece el municipio, la crea
+            // if (!municipiosAgregados[codigo]) {
+            //   municipiosAgregados[codigo] = [];
+            // }
 
-            // Busca la posición del municipio en la lista del departamento
-            const posicionMun = municipiosAgregados[codigo].findIndex(
-              ({ codigo: codigoAgregado }) => codigoAgregado === codigoMun
-            );
+            // // Busca la posición del municipio en la lista del departamento
+            // const posicionMun = municipiosAgregados[codigo].findIndex(
+            //   ({ codigo: codigoAgregado }) => codigoAgregado === codigoMun
+            // );
 
-            // Agrega o quita el municipio a/de la lista del departamento
-            if (!municipiosAgregados[codigo].includes(lugar.properties.codigo)) {
-              municipiosAgregados[codigo].push(lugar.properties.codigo);
-            } else {
-              municipiosAgregados[codigo].splice(posicionMun, 1);
-            }
+            // // Agrega o quita el municipio a/de la lista del departamento
+            // if (!municipiosAgregados[codigo].includes(lugar.properties.codigo)) {
+            //   municipiosAgregados[codigo].push(lugar.properties.codigo);
+            // } else {
+            //   municipiosAgregados[codigo].splice(posicionMun, 1);
+            // }
           } else {
             nombre = lugar.properties.nombre;
             codigo = lugar.properties.codigo;
           }
 
-          if (zona.classList.contains('seleccionada')) {
-            zona.classList.remove('seleccionada');
-            seleccionados.removeChild(zona);
-            colombia.appendChild(zona);
-          } else {
-            zona.classList.add('seleccionada');
-            colombia.removeChild(zona);
-            seleccionados.appendChild(zona);
-          }
+          // if (zona.classList.contains('seleccionada')) {
+          //   zona.classList.remove('seleccionada');
+          //   seleccionados.removeChild(zona);
+          //   colombia.appendChild(zona);
+          // } else {
+          //   zona.classList.add('seleccionada');
+          //   colombia.removeChild(zona);
+          //   seleccionados.appendChild(zona);
+          // }
 
           const lugares = [...lugaresSeleccionados.get()]; // es necesario clonar el array acá para que al final de las operaciones que siguen a continuación, el store se encargue de hacer llamado a todos los que estén usando `listen()`.
-          const posicionLugar = lugares.findIndex(({ nombre: nombreAgregado }) => nombreAgregado === nombre);
+          const posicionLugar = lugares.findIndex((obj) => obj.nombre === nombre);
           const colorLugar = obtenerVariableCSS(`--color${iColor}`);
 
           zona.setAttribute('stroke', colorLugar);
@@ -305,6 +305,35 @@ const { ancho, alto } = Astro.props;
         };
       }
     });
+  }
+
+  lugaresSeleccionados.subscribe((lugares) => {
+    const elmentosSeleccionados = seleccionados.querySelectorAll<SVGPathElement>('.lugar');
+
+    if (elmentosSeleccionados.length) {
+      elmentosSeleccionados.forEach(quitarSeleccionZona);
+    }
+
+    if (lugares.length) {
+      lugares.forEach((lugar) => {
+        seleccionarZona(zonas[lugar.codigo].svg);
+      });
+    }
+  });
+
+  function quitarSeleccionZona(elemento: SVGPathElement) {
+    if (!elemento) return;
+    elemento.classList.remove('seleccionada');
+    seleccionados.removeChild(elemento);
+    colombia.appendChild(elemento);
+  }
+
+  function seleccionarZona(elemento: SVGPathElement) {
+    if (!elemento) return;
+    console.log(elemento);
+    elemento.classList.add('seleccionada');
+    colombia.removeChild(elemento);
+    seleccionados.appendChild(elemento);
   }
 
   definirPoporciones();

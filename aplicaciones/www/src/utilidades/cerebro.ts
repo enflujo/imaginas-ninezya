@@ -200,6 +200,10 @@ function revisarDepartamentos(parametros: URLSearchParams) {
   }
 }
 
+nivel.subscribe((nuevoNivel) => {
+  actualizarUrl([{ nombre: 'nivel', valor: nuevoNivel }]);
+});
+
 window.addEventListener('popstate', async () => {
   const parametros = new URLSearchParams(window.location.search);
 
