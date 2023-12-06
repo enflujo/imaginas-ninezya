@@ -9,7 +9,7 @@ const { alto } = Astro.props;
 ---
 
 <section id="lineaDeTiempo">
-  <header>
+  <header id="cabezote">
     <h3 id="nombreLugar">Colombia</h3>
   </header>
 
@@ -68,6 +68,7 @@ const { alto } = Astro.props;
   const nombreEjeY = svg.querySelector<SVGTextElement>('#nombreEjeY');
   const lineas: Linea[] = [];
   const visualizaciones = document.getElementById('visualizaciones');
+  const cabezote = document.getElementById('cabezote');
 
   const proporciones = { porcentaje: { x1: 2, x2: 95 }, pixeles: { x1: 0, x2: 0 } };
   const años = { primero: 0, ultimo: 0 };
@@ -170,6 +171,12 @@ const { alto } = Astro.props;
         ? posicionY(umbral) - dimsVis.marcoAbajo + 5
         : posicionY(0) - posicionY(umbral);
       const y = datosNal.value.ascendente ? posicionY(valorMaxY) : posicionY(umbral);
+      const infoUmbral = document.createElement('p');
+      infoUmbral.classList.add('anotacionUmbral');
+      infoUmbral.innerText = `Meta: ${umbral} ${
+        visualizaciones.dataset.unidad.toLocaleLowerCase() === 'porcentaje' ? '%' : ''
+      }`;
+      cabezote.appendChild(infoUmbral);
 
       areaUmbral.setAttribute('class', 'umbral');
       areaUmbral.setAttribute('x', `${dimsVis.marcoIz}px`);
@@ -415,6 +422,17 @@ const { alto } = Astro.props;
       color: #0042bf;
       margin-top: 2em;
       margin-left: 30px;
+    }
+
+    #cabezote {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .anotacionUmbral {
+      font-size: 0.7em;
+      border: 1px solid #4ca658;
+      padding: 0.8em;
     }
   }
 
