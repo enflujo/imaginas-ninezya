@@ -6,6 +6,9 @@ import {
   datosIndicadorMunicipio,
   color,
   lugaresSeleccionados,
+  nivel,
+  actualizarUrl,
+  revisarDepartamentos,
 } from '@/utilidades/cerebro';
 import { crearLinea, escalaCoordenadas, extremosLugar } from '@enflujo/alquimia';
 import type { IMapearCoordenadas } from '@enflujo/alquimia/libreria/modulos/tipos';
@@ -49,17 +52,31 @@ export default class MapaDetalle extends HTMLElement {
     cerrar.innerText = 'X';
 
     cerrar.onclick = () => {
+      const nivelActual = nivel.value;
       const lugares = lugaresSeleccionados.get();
       const posicion = lugares.findIndex((lugar) => lugar.nombre === nombre);
-      const { codigo } = lugares[posicion];
+      const { codigoDep } = lugares[posicion];
 
       lugares.splice(posicion, 1);
 
       lugaresSeleccionados.set([...lugares]);
-      const zona = document.getElementById(codigo);
-      document.getElementById('seleccionados').removeChild(zona);
-      document.getElementById('colombia').appendChild(zona);
-      zona.classList.remove('seleccionada');
+      const parametros = new URLSearchParams(window.location.search);
+
+      const params = [];
+
+      const codigosDeps = parametros.get('deps');
+      const nuevos = codigosDeps.split(',').filter((codigo) => codigo !== codigoDep);
+
+      params.push({ nombre: 'deps', valor: nuevos.join(',') });
+      if (nivelActual === 'mun') {
+        const codigosMuns = parametros.get('muns');
+        const nuevos = codigosMuns.split(',').filter((codigo) => codigo.substring(0, 2) !== codigoDep);
+
+        params.push({ nombre: 'muns', valor: nuevos.join(',') });
+      }
+
+      actualizarUrl(params);
+      revisarDepartamentos();
     };
 
     contenedor.appendChild(titulo);

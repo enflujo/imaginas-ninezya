@@ -94,7 +94,7 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
 
 <script>
   import MapaDetalle from '@/componentes/MapaDetalle';
-  import { añoSeleccionado, lugaresSeleccionados, cargarIndicador } from '@/utilidades/cerebro';
+  import { añoSeleccionado, lugaresSeleccionados, cargarIndicador, nivel } from '@/utilidades/cerebro';
   const comparativo = document.getElementById('comparativo') as HTMLDivElement;
   const botonFicha = document.getElementById('abrirFicha') as HTMLSpanElement;
   const infoAdicional = document.getElementById('contenedorInfoAdicional') as HTMLDivElement;
@@ -131,10 +131,12 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
 
   lugaresSeleccionados.subscribe(async (lista) => {
     const existentes = comparativo.querySelectorAll<MapaDetalle>('enflujo-mapita');
-
+    const nivelActual = nivel.value;
+    console.log(lista);
     if (lista.length) {
       for (const mapa of lista) {
-        const { nombre, codigo, color } = mapa;
+        const { nombre, codigoDep, color } = mapa;
+        const codigo = codigoDep;
         let existeLugarEnDOM = false;
 
         existentes.forEach((mapita) => {
@@ -143,7 +145,7 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
           }
 
           // Borrar si no está en la lista
-          if (!lista.find((lugar) => lugar.codigo === mapita.id)) {
+          if (!lista.find((lugar) => lugar.codigoDep === mapita.id)) {
             if (comparativo.contains(mapita)) {
               comparativo.removeChild(mapita);
             }

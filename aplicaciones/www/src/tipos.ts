@@ -75,4 +75,5 @@ export interface LugarSeleccionado {
   nombre: string;
   codigoDep: string;
   codigoMun?: string;
+  color: string;
 }

@@ -194,12 +194,17 @@ export function revisarDepartamentos(parametros?: URLSearchParams) {
     if (datosDeps) {
       const lugares: LugarSeleccionado[] = [];
 
-      codigos.forEach((codigo, i) => {
+      codigos.forEach((codigo) => {
         const lugarI = datosDeps.features.findIndex((obj) => obj.properties.codigo === codigo);
 
-        if (lugarI > 0) {
+        if (lugarI >= 0) {
           const lugar = datosDeps.features[lugarI];
-          lugares.push({ nombre: lugar.properties.nombre, codigoDep: codigo, codigoMun: null });
+
+          lugares.push({
+            nombre: lugar.properties.nombre,
+            codigoDep: codigo,
+            color: lugar.properties.color,
+          });
         }
       });
 
@@ -210,10 +215,6 @@ export function revisarDepartamentos(parametros?: URLSearchParams) {
   } else {
     lugaresSeleccionados.set([]);
   }
-}
-
-export function buscarColorDep(codigo: string) {
-  const lugarI = datosColombia.value.dep.features.findIndex((obj) => obj.properties.codigo === codigo);
 }
 
 nivel.subscribe((nuevoNivel) => {
@@ -230,5 +231,6 @@ window.addEventListener('popstate', async () => {
 
   revisarNivel(parametros);
   revisarDepartamentos(parametros);
+
   console.log('pop', lugaresSeleccionados.value);
 });

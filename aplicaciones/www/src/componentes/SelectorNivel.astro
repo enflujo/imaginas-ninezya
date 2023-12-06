@@ -8,7 +8,7 @@
 </div>
 
 <script>
-  import { nivel } from '@/utilidades/cerebro';
+  import { lugaresSeleccionados, nivel } from '@/utilidades/cerebro';
 
   const contenedor = document.getElementById('selectorNivel') as HTMLDivElement;
   const botonDep = contenedor.querySelector('.nivelDep');
@@ -21,6 +21,7 @@
     boton.addEventListener('click', () => {
       if (nivel.value === valorNivel) return;
       nivel.set(valorNivel);
+      // lugaresSeleccionados.set([]);
     });
   });
 
