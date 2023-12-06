@@ -6,23 +6,6 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
 ---
 
 <div class="contenedorInfoAdicional" data-hayDatos=`${datosIndicador.hay_datos}`>
-  <div class="fichaTecnica">
-    <h2 class="tituloSeccion tituloYa">{datosYa.nombre}</h2>
-    <p class="nombre">{datosIndicador.nombre}</p>
-    <div class="seccion"><h4 class="titulo">Definición</h4><p class="texto">{datosIndicador.definicion}</p></div>
-    <h3 class="tituloSeccion">Información técnica</h3>
-    <section class="inferior">
-      <div class="seccion"><h4 class="titulo">Unidad de medida</h4><p class="texto">{datosIndicador.unidad}</p></div>
-      <div class="seccion">
-        <h4 class="titulo">Metodología de cálculo</h4><p class="texto">{datosIndicador.metodologia}</p>
-      </div>
-      <div class="seccion">
-        <h4 class="titulo">Cómo se interpreta</h4>
-        <p class="texto">{datosIndicador.interpretacion}</p>
-      </div>
-    </section>
-  </div>
-
   <div class="contenedorSugerencias">
     <div class="aviso">
       No hay información suficiente para reconstruir este indicador. Aquí hay algunas sugerencias de cómo podría
@@ -39,21 +22,42 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
       </p>
     </div>
   </div>
+
+  <div class="fichaTecnica">
+    <h2 class="tituloSeccion tituloYa">{datosYa.nombre}</h2>
+    <p class="nombre">{datosIndicador.nombre}</p>
+    <div class="seccion"><h4 class="titulo">Definición</h4><p class="texto">{datosIndicador.definicion}</p></div>
+    <h3 class="tituloSeccion">Información técnica</h3>
+    <section class="inferior">
+      <div class="seccion"><h4 class="titulo">Unidad de medida</h4><p class="texto">{datosIndicador.unidad}</p></div>
+      <div class="seccion">
+        <h4 class="titulo">Metodología de cálculo</h4><p class="texto">{datosIndicador.metodologia}</p>
+      </div>
+      <div class="seccion">
+        <h4 class="titulo">Cómo se interpreta</h4>
+        <p class="texto">{datosIndicador.interpretacion}</p>
+      </div>
+    </section>
+  </div>
 </div>
 
 <style lang="scss">
+  @import '@/scss/constantes';
   .contenedorInfoAdicional {
     display: flex;
     position: absolute;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
     background-color: var(--blancoMarfil);
     margin: 2em;
+    height: 100vh;
 
     .fichaTecnica {
       width: 40vw;
       height: fit-content;
       min-width: 300px;
+      margin-top: 2em;
       border: solid 2px var(--azulViejo);
       border-radius: 15px;
       color: var(--azulViejo);
@@ -108,7 +112,7 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
           width: 0;
           font-size: 0.8em;
           text-align: left;
-          flex-basis: 20%;
+          flex-basis: 53%;
           margin: 0;
           padding: 0.8em;
           text-transform: uppercase;
@@ -132,10 +136,10 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
 
     .contenedorSugerencias {
       display: flex;
-      width: 40%;
       font-size: 0.9em;
       flex-direction: column;
       justify-content: space-between;
+      flex-wrap: wrap;
 
       .aviso {
         color: yellow;
@@ -146,6 +150,7 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
       }
 
       .sugerencia {
+        width: 100%;
         .titulo {
           background-color: var(--uvaProfunda);
           color: var(--blancoMarfil);
@@ -170,6 +175,59 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
       top: 10vh;
       left: 19vw;
       z-index: 9;
+    }
+  }
+
+  /// ✂️ Cortes pantalla
+  @media screen and (min-width: $corte1) {
+    .contenedorInfoAdicional {
+      .fichaTecnica {
+        min-width: 330px;
+
+        .seccion {
+          .titulo {
+            flex-basis: 50%;
+          }
+        }
+      }
+      .contenedorSugerencias {
+        display: flex;
+        width: 40vw;
+        min-width: 330px;
+      }
+    }
+  }
+
+  @media screen and (min-width: $corte2) {
+    .contenedorInfoAdicional {
+      flex-wrap: nowrap;
+      flex-direction: column;
+      .fichaTecnica {
+        width: 40vw;
+      }
+    }
+  }
+
+  @media screen and (min-width: $corte3) {
+    .contenedorInfoAdicional {
+      .fichaTecnica {
+        .seccion {
+          .titulo {
+            flex-basis: 45%;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: $corte4) {
+    .contenedorInfoAdicional {
+      .fichaTecnica {
+        max-width: 700px;
+      }
+      .contenedorSugerencias {
+        max-width: 700px;
+      }
     }
   }
 </style>
