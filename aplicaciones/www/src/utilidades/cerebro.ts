@@ -29,6 +29,12 @@ export async function datosMapaMunicipio() {
   }, 150);
 
   const respuesta = await pedirDatos<FeatureCollection>('https://enflujo.com/bodega/colombia/municipios.json');
+  respuesta.features.forEach((mun) => {
+    const departamento = datosColombia.value.dep.features.find((dep) => dep.properties.nombre === mun.properties.dep);
+    if (departamento) {
+      mun.properties.color = departamento.properties.color;
+    }
+  });
   datosColombia.setKey('mun', respuesta);
   cargando = false;
   cargador.classList.remove('visible');
@@ -78,6 +84,9 @@ export async function cargarDatos() {
 
   // Cargar datos departamentos
   const deps = await pedirDatos<FeatureCollection>('https://enflujo.com/bodega/colombia/departamentos.json');
+  deps.features.forEach((dep, i) => {
+    dep.properties.color = obtenerVariableCSS(`--color${i}`);
+  });
   datosColombia.setKey('dep', deps);
 
   try {
@@ -137,7 +146,7 @@ export function crearListaAños() {
 
 export async function cargarIndicador() {
   await cargarDatos();
-  nivel.set('dep');
+  revisarNivel();
   crearListaAños();
 }
 
@@ -151,6 +160,7 @@ const definirColor = (ascendente: boolean) => {
 
 export function actualizarUrl(valores: { nombre: string; valor: string }[]) {
   const parametros = new URLSearchParams(window.location.search);
+
   valores.forEach((obj) => {
     parametros.set(obj.nombre, obj.valor);
   });
@@ -158,8 +168,9 @@ export function actualizarUrl(valores: { nombre: string; valor: string }[]) {
   window.history.pushState({}, '', decodeURIComponent(`${window.location.pathname}?${parametros}`));
 }
 
-function revisarNivel(parametros: URLSearchParams) {
-  const nivelDeseado = parametros.get('nivel');
+function revisarNivel(parametros?: URLSearchParams) {
+  const params = parametros || new URLSearchParams(window.location.search);
+  const nivelDeseado = params.get('nivel');
 
   if (nivelDeseado) {
     if (nivel.value !== nivelDeseado) {
@@ -172,8 +183,9 @@ function revisarNivel(parametros: URLSearchParams) {
   }
 }
 
-function revisarDepartamentos(parametros: URLSearchParams) {
-  const deps = parametros.get('deps');
+export function revisarDepartamentos(parametros?: URLSearchParams) {
+  const params = parametros || new URLSearchParams(window.location.search);
+  const deps = params.get('deps');
 
   if (deps) {
     const codigos = deps.split(',');
@@ -183,11 +195,11 @@ function revisarDepartamentos(parametros: URLSearchParams) {
       const lugares: LugarSeleccionado[] = [];
 
       codigos.forEach((codigo, i) => {
-        const lugar = datosDeps.features.find((obj) => obj.properties.codigo === codigo);
-        const colorLugar = obtenerVariableCSS(`--color${i}`);
+        const lugarI = datosDeps.features.findIndex((obj) => obj.properties.codigo === codigo);
 
-        if (lugar) {
-          lugares.push({ nombre: lugar.properties.nombre, codigo, color: colorLugar });
+        if (lugarI > 0) {
+          const lugar = datosDeps.features[lugarI];
+          lugares.push({ nombre: lugar.properties.nombre, codigoDep: codigo, codigoMun: null });
         }
       });
 
@@ -200,8 +212,17 @@ function revisarDepartamentos(parametros: URLSearchParams) {
   }
 }
 
+export function buscarColorDep(codigo: string) {
+  const lugarI = datosColombia.value.dep.features.findIndex((obj) => obj.properties.codigo === codigo);
+}
+
 nivel.subscribe((nuevoNivel) => {
-  actualizarUrl([{ nombre: 'nivel', valor: nuevoNivel }]);
+  if (!nuevoNivel) return;
+  const parametros = new URLSearchParams(window.location.search);
+  const nivelActual = parametros.get('nivel');
+  if (nuevoNivel !== nivelActual) {
+    actualizarUrl([{ nombre: 'nivel', valor: nuevoNivel }]);
+  }
 });
 
 window.addEventListener('popstate', async () => {
@@ -209,4 +230,5 @@ window.addEventListener('popstate', async () => {
 
   revisarNivel(parametros);
   revisarDepartamentos(parametros);
+  console.log('pop', lugaresSeleccionados.value);
 });
