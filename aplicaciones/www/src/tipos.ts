@@ -70,3 +70,10 @@ export interface DatosYa extends IndicadoresDatosComunes {
   imagen: string;
   indicadores: IndicadoresDatos[];
 }
+
+export interface LugarSeleccionado {
+  nombre: string;
+  codigoDep: string;
+  codigoMun?: string;
+  color: string;
+}

@@ -3,31 +3,38 @@
 ---
 
 <div id="selectorNivel">
-  <button class="botonSelector activo" data-nivel="dep">Departamento</button>
-  <button class="botonSelector" data-nivel="mun">Municipio</button>
+  <button class="botonSelector nivelDep" data-nivel="dep">Departamento</button>
+  <button class="botonSelector nivelMun" data-nivel="mun">Municipio</button>
 </div>
 
 <script>
-  import { nivel } from '@/utilidades/cerebro';
+  import { lugaresSeleccionados, nivel } from '@/utilidades/cerebro';
 
+  const contenedor = document.getElementById('selectorNivel') as HTMLDivElement;
+  const botonDep = contenedor.querySelector('.nivelDep');
+  const botonMun = contenedor.querySelector('.nivelMun');
   const selectores = document.querySelectorAll<HTMLButtonElement>('.botonSelector');
-  let seleccionado: HTMLElement;
 
   selectores.forEach((boton) => {
     const valorNivel = boton.dataset.nivel;
 
-    if (boton.classList.contains('activo')) {
-      seleccionado = boton;
-    }
-
     boton.addEventListener('click', () => {
       if (nivel.value === valorNivel) return;
-      if (seleccionado) seleccionado.classList.remove('activo');
-
-      boton.classList.add('activo');
-      seleccionado = boton;
       nivel.set(valorNivel);
+      // lugaresSeleccionados.set([]);
     });
+  });
+
+  nivel.subscribe((nuevoNivel) => {
+    if (!nuevoNivel) return;
+
+    if (nuevoNivel === 'dep') {
+      botonMun.classList.remove('activo');
+      botonDep.classList.add('activo');
+    } else {
+      botonMun.classList.add('activo');
+      botonDep.classList.remove('activo');
+    }
   });
 </script>
 

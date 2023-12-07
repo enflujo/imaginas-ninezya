@@ -1,7 +1,7 @@
 import { atom, map } from 'nanostores';
 import type { FeatureCollection } from 'geojson';
-import type { DatosIndicador, DatosIndicadorNal, DatosPorAñoOrdenado, FuncionColor } from '@/tipos';
-import { escalaColores, pedirDatos } from './ayudas';
+import type { DatosIndicador, DatosIndicadorNal, DatosPorAñoOrdenado, FuncionColor, LugarSeleccionado } from '@/tipos';
+import { escalaColores, obtenerVariableCSS, pedirDatos } from './ayudas';
 import { colorNegativo, colorNeutro, colorPositivo } from './constantes';
 
 export const listaAños = atom<DatosPorAñoOrdenado>([]);
@@ -9,10 +9,9 @@ export const datosDep = map<DatosIndicador>(null);
 export const datosMun = map<DatosIndicador>(null);
 export const datosNal = map<DatosIndicadorNal>();
 export const nivel = atom<string>(null);
-export const deptoSeleccionado = atom<string | null>(null);
 export const añoSeleccionado = atom<string | null>(null);
 export const datosColombia = map<{ dep?: FeatureCollection; mun?: FeatureCollection }>({});
-export const lugaresSeleccionados = atom<{ nombre: string; codigo: string; color: string }[]>([]);
+export const lugaresSeleccionados = atom<LugarSeleccionado[]>([]);
 export let color: FuncionColor;
 export let valorMaxY = 0;
 export let valorMaxColor = 0;
@@ -30,6 +29,12 @@ export async function datosMapaMunicipio() {
   }, 150);
 
   const respuesta = await pedirDatos<FeatureCollection>('https://enflujo.com/bodega/colombia/municipios.json');
+  respuesta.features.forEach((mun) => {
+    const departamento = datosColombia.value.dep.features.find((dep) => dep.properties.nombre === mun.properties.dep);
+    if (departamento) {
+      mun.properties.color = departamento.properties.color;
+    }
+  });
   datosColombia.setKey('mun', respuesta);
   cargando = false;
   cargador.classList.remove('visible');
@@ -79,6 +84,9 @@ export async function cargarDatos() {
 
   // Cargar datos departamentos
   const deps = await pedirDatos<FeatureCollection>('https://enflujo.com/bodega/colombia/departamentos.json');
+  deps.features.forEach((dep, i) => {
+    dep.properties.color = obtenerVariableCSS(`--color${i}`);
+  });
   datosColombia.setKey('dep', deps);
 
   try {
@@ -138,7 +146,8 @@ export function crearListaAños() {
 
 export async function cargarIndicador() {
   await cargarDatos();
-  nivel.set('dep');
+  revisarNivel();
+  revisarDepartamentos();
   crearListaAños();
 }
 
@@ -149,3 +158,84 @@ const definirColor = (ascendente: boolean) => {
     return escalaColores(0, valorMaxColor, umbral, colorPositivo, colorNeutro, colorNegativo);
   }
 };
+
+export function actualizarUrl(valores: { nombre: string; valor: string }[]) {
+  const parametros = new URLSearchParams(window.location.search);
+
+  valores.forEach((obj) => {
+    if (obj.valor) {
+      parametros.set(obj.nombre, obj.valor);
+    } else {
+      parametros.delete(obj.nombre);
+    }
+  });
+
+  window.history.pushState({}, '', decodeURIComponent(`${window.location.pathname}?${parametros}`));
+}
+
+function revisarNivel(parametros?: URLSearchParams) {
+  const params = parametros || new URLSearchParams(window.location.search);
+  const nivelDeseado = params.get('nivel');
+
+  if (nivelDeseado) {
+    if (nivel.value !== nivelDeseado) {
+      nivel.set(nivelDeseado);
+    }
+  }
+  // Si no hay valor, volver al estado inicial que es vista departamental.
+  else if (nivel.value !== 'dep') {
+    nivel.set('dep');
+  }
+}
+
+export function revisarDepartamentos(parametros?: URLSearchParams) {
+  const params = parametros || new URLSearchParams(window.location.search);
+  const deps = params.get('deps');
+
+  if (deps) {
+    const codigos = deps.split(',');
+    const datosDeps = datosColombia.value.dep;
+
+    if (datosDeps) {
+      const lugares: LugarSeleccionado[] = [];
+
+      codigos.forEach((codigo) => {
+        const lugarI = datosDeps.features.findIndex((obj) => obj.properties.codigo === codigo);
+
+        if (lugarI >= 0) {
+          const lugar = datosDeps.features[lugarI];
+
+          lugares.push({
+            nombre: lugar.properties.nombre,
+            codigoDep: codigo,
+            color: lugar.properties.color,
+          });
+        }
+      });
+
+      lugaresSeleccionados.set(lugares);
+    } else {
+      console.error('no se han cargado los datos');
+    }
+  } else {
+    lugaresSeleccionados.set([]);
+  }
+}
+
+nivel.subscribe((nuevoNivel) => {
+  if (!nuevoNivel) return;
+  const parametros = new URLSearchParams(window.location.search);
+  const nivelActual = parametros.get('nivel');
+  if (nuevoNivel !== nivelActual) {
+    actualizarUrl([{ nombre: 'nivel', valor: nuevoNivel }]);
+  }
+});
+
+window.addEventListener('popstate', async () => {
+  const parametros = new URLSearchParams(window.location.search);
+
+  revisarNivel(parametros);
+  revisarDepartamentos(parametros);
+
+  console.log('pop', lugaresSeleccionados.value);
+});

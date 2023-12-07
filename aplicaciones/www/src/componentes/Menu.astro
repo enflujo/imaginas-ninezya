@@ -269,10 +269,12 @@ const { ya, indicador } = Astro.params;
           width: 1.2em;
           height: 1.2em;
           margin-top: 0.9em;
-          // background-size: 35px;
           right: auto;
-          // background-position: 0;
-          // background-size: auto;
+
+          &.actual {
+            background-color: transparent;
+            background-position-x: 0;
+          }
         }
 
         &.abierto {

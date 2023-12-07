@@ -282,7 +282,7 @@ const { alto } = Astro.props;
       const departamentoPorAño: DatosPorAñoOrdenado = [];
 
       for (const año in datos) {
-        const datosLugar = datos[año].find(([codigo]) => codigo === lugar.codigo);
+        const datosLugar = datos[año].find(([codigo]) => codigo === lugar.codigoDep);
         departamentoPorAño.push({ año, valor: datosLugar ? datosLugar[1] : null });
       }
 
