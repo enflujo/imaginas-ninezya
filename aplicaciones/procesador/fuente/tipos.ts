@@ -77,8 +77,22 @@ export type VariableValorSingular =
   | 'cobertura_bruta_transicion'
   | 'cobertura_bruta_media'
   | 'cobertura_bruta_primaria'
+  | 'reprobacion_transicion'
+  | 'repitencia_transicion'
+  | 'desercion_transicion'
+  | 'desercion_primaria'
+  | 'desercion_secundaria'
+  | 'desercion_media'
   | 'matematicas'
   | 'lectura'
+  | 'total'
+  | 'cobertura_bruta_secundaria'
+  | 'reprobación_primaria'
+  | 'reprobación_secundaria'
+  | 'reprobación_media'
+  | 'repitencia_primaria'
+  | 'repitencia_secundaria'
+  | 'repitencia_media'
   | 'tasa_desercion'
   | 'concentracion'
   | 'repitencia'
@@ -92,7 +106,8 @@ export type VariableValorSingular =
   | 'Alumnos_preescolar_O'
   | 'Alumnos_preescolar_N_O'
   | 'Alumnos_primaria_O'
-  | 'Alumnos_primaria_N_O';
+  | 'Alumnos_primaria_N_O'
+  | 'reclu';
 
 export type VariablesSingulares = {
   [llave in VariableValorSingular]: number;
