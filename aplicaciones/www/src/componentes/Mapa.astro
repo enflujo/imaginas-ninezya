@@ -64,9 +64,7 @@ const { ancho, alto } = Astro.props;
   let alto = 0;
   let coordenadasAncho = 0;
   let coordenadasAlto = 0;
-  let municipiosAgregados = {}; // Objeto para guardar las listas de municipios seleccionados de cada departamento en el nivel 'mun'
   let datosParaPintar: FeatureCollection; // Esto puede ser departamentos o municipios
-  let iColor = 0;
 
   mapa.onmouseenter = () => {
     informacion.classList.add('visible');
@@ -237,12 +235,39 @@ const { ancho, alto } = Astro.props;
 
         // Asignar nombre del departamento a la lista de lugares seleccionados
         zona.onclick = () => {
+          const nivelActual = nivel.value;
           const params = new URLSearchParams(window.location.search);
-          const codigosDeps = params.get('deps');
+          const deps = params.get('deps');
+          const codigoDep = nivelActual === 'dep' ? lugar.properties.codigo : lugar.properties.codigo.substring(0, 2);
+          const parametros: { nombre: string; valor: string }[] = [];
+          const codigosDep = deps ? deps.split(',') : [];
+          const posicionLugar = codigosDep.findIndex((codigo) => codigo === codigoDep);
 
-          if (codigosDeps) {
+          if (posicionLugar >= 0) {
+            codigosDep.splice(posicionLugar, 1);
+          } else {
+            codigosDep.push(codigoDep);
           }
-          // actualizarUrl(parametros);
+
+          parametros.push({ nombre: 'deps', valor: codigosDep.join(',') });
+
+          if (nivelActual === 'mun') {
+            const muns = params.get('mun');
+            const codigoMun = lugar.properties.codigo;
+
+            const codigosMun = muns ? muns.split(',') : [];
+            const posicionLugar = codigosMun.findIndex((codigo) => codigo === codigoMun);
+
+            if (posicionLugar >= 0) {
+              codigosMun.splice(posicionLugar, 1);
+            } else {
+              codigosMun.push(codigoMun);
+            }
+
+            parametros.push({ nombre: 'muns', valor: codigosMun.join(',') });
+          }
+
+          actualizarUrl(parametros);
           revisarDepartamentos();
         };
       }
@@ -356,91 +381,3 @@ const { ancho, alto } = Astro.props;
     }
   }
 </style>
-
-<!-- let nombre = '';
-          let codigoDep = '';
-          let codigoMun: string | null = null;
-          // let codigoMun = '';
-          const nivelActual = nivel.get();
-
-          if (nivelActual === 'mun') {
-            nombre = lugar.properties.dep;
-            codigoMun = lugar.properties.codigo;
-            codigoDep = codigoMun.substring(0, 2);
-
-            // Si no existe la lista de municipios del departamento al que pertenece el municipio, la crea
-            if (!municipiosAgregados[codigoDep]) {
-              municipiosAgregados[codigoDep] = [];
-            }
-
-            // Agrega o quita el municipio a/de la lista del departamento
-            if (!municipiosAgregados[codigoDep].includes(lugar.properties.codigo)) {
-              municipiosAgregados[codigoDep].push(codigoMun);
-            } else {
-              // Busca la posición del municipio en la lista del departamento
-              const posicionMun = municipiosAgregados[codigoDep].findIndex((obj) => obj.codigo === codigoMun);
-              municipiosAgregados[codigoDep].splice(posicionMun, 1);
-            }
-          } else {
-            nombre = lugar.properties.nombre;
-            codigoDep = lugar.properties.codigo;
-          }
-
-          // if (zona.classList.contains('seleccionada')) {
-          //   zona.classList.remove('seleccionada');
-          //   seleccionados.removeChild(zona);
-          //   colombia.appendChild(zona);
-          // } else {
-          //   zona.classList.add('seleccionada');
-          //   colombia.removeChild(zona);
-          //   seleccionados.appendChild(zona);
-          // }
-
-          /**
-           * Es necesario clonar el array acá para que al final de las operaciones que siguen a continuación,
-           * el store se encargue de hacer llamado a todos los que estén usando `listen()`.
-           */
-
-          const lugares = [...lugaresSeleccionados.get()];
-          const nuevosLugares: string[] = [];
-          const posicionLugar = lugares.findIndex((obj) => obj.codigoDep === codigoDep);
-          // console.log(lugaresSeleccionados.get());
-          // zona.setAttribute('stroke', colorLugar);
-
-          // if (posicionLugar < 0 && !lugares.includes({ nombre, codigoDep, codigoMun, color: lugar.properties.color })) {
-          if (posicionLugar < 0) {
-            nuevosLugares.push(codigoDep);
-            // lugares.push({ nombre, codigoDep, codigoMun, color: lugar.properties.color });
-          } else {
-            if (nivel.get() === 'mun') {
-              // Si la lista de municipios del departamento se vacía, borra el mapa del departamento
-              if (municipiosAgregados[codigoDep].length === 0) {
-                lugares.splice(posicionLugar, 1);
-              }
-            } else {
-              lugares.splice(posicionLugar, 1);
-            }
-          }
-          // console.log(lugares, municipiosAgregados[codigoDep].join(','));
-          //lugaresSeleccionados.set(lugares);
-
-          const parametros = [{ nombre: 'nivel', valor: nivelActual }];
-
-          if (nivelActual === 'dep') {
-            parametros.push({ nombre: 'deps', valor: nuevosLugares.join(',') });
-          } else {
-            const codigosDeps = [];
-            const codigosMuns = [];
-
-            for (const dep in municipiosAgregados) {
-              if (municipiosAgregados[dep].length) {
-                codigosDeps.push(dep);
-                codigosMuns.push(...municipiosAgregados[dep]);
-              }
-            }
-            parametros.push({ nombre: 'deps', valor: nuevosLugares.join(',') });
-            parametros.push({ nombre: 'muns', valor: codigosMuns.join(',') });
-          }
-
-          actualizarUrl(parametros);
-          revisarDepartamentos(); -->

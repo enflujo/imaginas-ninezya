@@ -147,6 +147,7 @@ export function crearListaAños() {
 export async function cargarIndicador() {
   await cargarDatos();
   revisarNivel();
+  revisarDepartamentos();
   crearListaAños();
 }
 
@@ -162,7 +163,11 @@ export function actualizarUrl(valores: { nombre: string; valor: string }[]) {
   const parametros = new URLSearchParams(window.location.search);
 
   valores.forEach((obj) => {
-    parametros.set(obj.nombre, obj.valor);
+    if (obj.valor) {
+      parametros.set(obj.nombre, obj.valor);
+    } else {
+      parametros.delete(obj.nombre);
+    }
   });
 
   window.history.pushState({}, '', decodeURIComponent(`${window.location.pathname}?${parametros}`));

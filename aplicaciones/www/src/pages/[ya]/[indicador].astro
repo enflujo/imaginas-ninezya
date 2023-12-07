@@ -131,8 +131,7 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
 
   lugaresSeleccionados.subscribe(async (lista) => {
     const existentes = comparativo.querySelectorAll<MapaDetalle>('enflujo-mapita');
-    const nivelActual = nivel.value;
-    console.log(lista);
+
     if (lista.length) {
       for (const mapa of lista) {
         const { nombre, codigoDep, color } = mapa;
