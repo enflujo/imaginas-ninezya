@@ -58,6 +58,8 @@ const { ancho, alto } = Astro.props;
   let mapearCoordenadas: IMapearCoordenadas;
   let extremosGeo: ExtremosCoordenadas;
   const proporciones = JSON.parse(mapa.dataset.proporciones);
+  const visualizaciones = document.getElementById('visualizaciones');
+  const unidad = visualizaciones.dataset.unidad.toLocaleLowerCase();
 
   let zonas = {};
   let ancho = 0;
@@ -225,10 +227,12 @@ const { ancho, alto } = Astro.props;
 
           if (nivel.get() === 'mun') {
             informacion.innerText = `${lugar.properties.nombre} (${lugar.properties.dep}): ${
-              valor ? valor + '%' : 'Sin datos'
+              !valor ? 'Sin datos' : unidad === 'porcentaje' ? `${valor}%` : `${valor}`
             }`;
           } else {
-            informacion.innerText = `${lugar.properties.nombre}: ${valor ? valor + '%' : 'Sin datos'}`;
+            informacion.innerText = `${lugar.properties.nombre}: ${
+              !valor ? 'Sin datos' : unidad === 'porcentaje' ? `${valor}%` : `${valor} ${unidad}`
+            }`;
             zona.classList.add('departamento');
           }
         };
