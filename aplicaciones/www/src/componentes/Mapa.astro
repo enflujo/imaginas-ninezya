@@ -50,284 +50,288 @@ const { ancho, alto } = Astro.props;
   } from '@/utilidades/cerebro';
   import type { IMapearCoordenadas } from '@enflujo/alquimia/libreria/modulos/tipos';
 
-  const mapa = document.querySelector('.mapa') as HTMLDivElement;
-  const colombia = document.getElementById('colombia') as HTMLElement & SVGGElement;
-  const seleccionados = document.getElementById('seleccionados') as HTMLElement & SVGGElement;
-  const informacion = document.getElementById('informacion');
+  const contenedorMapa = document.getElementById('contenedorMapa');
 
-  let mapearCoordenadas: IMapearCoordenadas;
-  let extremosGeo: ExtremosCoordenadas;
-  const proporciones = JSON.parse(mapa.dataset.proporciones);
-  const visualizaciones = document.getElementById('visualizaciones');
-  const unidad = visualizaciones.dataset.unidad.toLocaleLowerCase();
+  if (contenedorMapa) {
+    const mapa = document.querySelector('.mapa') as HTMLDivElement;
+    const colombia = document.getElementById('colombia') as HTMLElement & SVGGElement;
+    const seleccionados = document.getElementById('seleccionados') as HTMLElement & SVGGElement;
+    const informacion = document.getElementById('informacion');
 
-  let zonas = {};
-  let ancho = 0;
-  let alto = 0;
-  let coordenadasAncho = 0;
-  let coordenadasAlto = 0;
-  let datosParaPintar: FeatureCollection; // Esto puede ser departamentos o municipios
+    let mapearCoordenadas: IMapearCoordenadas;
+    let extremosGeo: ExtremosCoordenadas;
+    const proporciones = JSON.parse(mapa.dataset.proporciones);
+    const visualizaciones = document.getElementById('visualizaciones');
+    const unidad = visualizaciones.dataset.unidad.toLocaleLowerCase();
 
-  mapa.onmouseenter = () => {
-    informacion.classList.add('visible');
-  };
+    let zonas = {};
+    let ancho = 0;
+    let alto = 0;
+    let coordenadasAncho = 0;
+    let coordenadasAlto = 0;
+    let datosParaPintar: FeatureCollection; // Esto puede ser departamentos o municipios
 
-  mapa.onmouseleave = () => {
-    informacion.classList.remove('visible');
-  };
+    mapa.onmouseenter = () => {
+      informacion.classList.add('visible');
+    };
 
-  mapa.onmousemove = (evento) => {
-    const x = evento.clientX;
-    const y = evento.clientY - 30;
-    Object.assign(informacion.style, {
-      top: `${y}px`,
-      left: `${x}px`,
-    });
-  };
+    mapa.onmouseleave = () => {
+      informacion.classList.remove('visible');
+    };
 
-  function extremos() {
-    mapearCoordenadas = escalaCoordenadas(
-      extremosGeo.latitudMin,
-      extremosGeo.latitudMax,
-      extremosGeo.longitudMin,
-      extremosGeo.longitudMax
-    );
+    mapa.onmousemove = (evento) => {
+      const x = evento.clientX;
+      const y = evento.clientY - 30;
+      Object.assign(informacion.style, {
+        top: `${y}px`,
+        left: `${x}px`,
+      });
+    };
 
-    coordenadasAncho = extremosGeo.longitudMax - extremosGeo.longitudMin;
-    coordenadasAlto = extremosGeo.latitudMax - extremosGeo.latitudMin;
-  }
+    function extremos() {
+      mapearCoordenadas = escalaCoordenadas(
+        extremosGeo.latitudMin,
+        extremosGeo.latitudMax,
+        extremosGeo.longitudMin,
+        extremosGeo.longitudMax
+      );
 
-  /* Función para definir las proporciones iniciales del mapa. 
+      coordenadasAncho = extremosGeo.longitudMax - extremosGeo.longitudMin;
+      coordenadasAlto = extremosGeo.latitudMax - extremosGeo.latitudMin;
+    }
+
+    /* Función para definir las proporciones iniciales del mapa. 
   La saqué de escalar() para que no se hiciera más pequeño cada vez que se dibuja el mapa.*/
-  function definirPoporciones() {
-    if (proporciones.ancho && proporciones.ancho <= 100) {
-      ancho = calcularPorcentaje(window.innerWidth, proporciones.ancho);
-    }
-
-    if (proporciones.alto && proporciones.alto <= 100) {
-      alto = calcularPorcentaje(window.innerHeight, proporciones.alto);
-    }
-  }
-
-  function escalar() {
-    definirPoporciones();
-
-    // Revisa las proporciones del mapa para que no se deforme
-    if (coordenadasAncho > coordenadasAlto) {
-      alto = (ancho * (coordenadasAlto / coordenadasAncho)) | 0;
-    } else {
-      ancho = (alto * (coordenadasAncho / coordenadasAlto)) | 0;
-    }
-
-    mapa.setAttribute('width', `${ancho}`);
-    mapa.setAttribute('height', `${alto}`);
-
-    if (!datosParaPintar) return;
-
-    datosParaPintar.features.forEach((lugar) => {
-      if (lugar.geometry.type === 'Polygon' || lugar.geometry.type === 'MultiPolygon') {
-        const linea = crearLinea(lugar.geometry, mapearCoordenadas, ancho, alto);
-        const zona = zonas[lugar.properties.codigo];
-        zona.svg.setAttribute('d', linea);
+    function definirPoporciones() {
+      if (proporciones.ancho && proporciones.ancho <= 100) {
+        ancho = calcularPorcentaje(window.innerWidth, proporciones.ancho);
       }
-    });
-  }
 
-  nivel.subscribe(async (nuevoNivel) => {
-    if (!nuevoNivel) return;
-
-    if (nuevoNivel === 'mun') {
-      const municipios = await datosMapaMunicipio();
-      if (!municipios) return;
-      extremosGeo = extremosLugar(municipios);
-      extremos();
-      escalar();
-
-      colombia.innerHTML = '';
-      seleccionados.innerHTML = '';
-      datosParaPintar = municipios;
-
-      crearMapa();
-      if (!añoSeleccionado.value) return;
-      pintarMapa(añoSeleccionado.value);
-    } else if (nuevoNivel === 'dep') {
-      const departamentos = datosColombia.value['dep'];
-
-      if (!departamentos) return;
-      extremosGeo = extremosLugar(departamentos);
-      extremos();
-      escalar();
-
-      colombia.innerHTML = '';
-      seleccionados.innerHTML = '';
-      datosParaPintar = departamentos;
-      crearMapa();
-      if (!añoSeleccionado.value) return;
-      pintarMapa(añoSeleccionado.value);
-    }
-  });
-
-  añoSeleccionado.subscribe((año) => {
-    if (!año || !datosParaPintar) return;
-    pintarMapa(año);
-  });
-
-  async function pintarMapa(año: string) {
-    const nivelActual = nivel.value;
-
-    const datos =
-      nivelActual === 'dep'
-        ? ((await datosIndicadorDep(año)) as DatosAño)
-        : ((await datosIndicadorMunicipio(año)) as DatosAño);
-
-    if (!datos) return;
-
-    // Reiniciar todos sin datos antes de pintar de nuevo
-    for (const codigo in zonas) {
-      zonas[codigo].svg.setAttribute('style', 'fill: url(#sinInfo)');
+      if (proporciones.alto && proporciones.alto <= 100) {
+        alto = calcularPorcentaje(window.innerHeight, proporciones.alto);
+      }
     }
 
-    datos.forEach(([codigo, valor]) => {
-      const zona = zonas[codigo];
-      if (zona) {
-        if (valor) {
-          zona.svg.setAttribute('style', `fill: ${color(valor)}`);
-          zona.valor = +valor;
-        } else {
-          zona.svg.setAttribute('style', 'fill: url(#sinInfo)');
-          zona.valor = null;
-        }
+    function escalar() {
+      definirPoporciones();
+
+      // Revisa las proporciones del mapa para que no se deforme
+      if (coordenadasAncho > coordenadasAlto) {
+        alto = (ancho * (coordenadasAlto / coordenadasAncho)) | 0;
       } else {
-        console.log('No existe lugar con codigo', codigo);
+        ancho = (alto * (coordenadasAncho / coordenadasAlto)) | 0;
+      }
+
+      mapa.setAttribute('width', `${ancho}`);
+      mapa.setAttribute('height', `${alto}`);
+
+      if (!datosParaPintar) return;
+
+      datosParaPintar.features.forEach((lugar) => {
+        if (lugar.geometry.type === 'Polygon' || lugar.geometry.type === 'MultiPolygon') {
+          const linea = crearLinea(lugar.geometry, mapearCoordenadas, ancho, alto);
+          const zona = zonas[lugar.properties.codigo];
+          zona.svg.setAttribute('d', linea);
+        }
+      });
+    }
+
+    nivel.subscribe(async (nuevoNivel) => {
+      if (!nuevoNivel) return;
+
+      if (nuevoNivel === 'mun') {
+        const municipios = await datosMapaMunicipio();
+        if (!municipios) return;
+        extremosGeo = extremosLugar(municipios);
+        extremos();
+        escalar();
+
+        colombia.innerHTML = '';
+        seleccionados.innerHTML = '';
+        datosParaPintar = municipios;
+
+        crearMapa();
+        if (!añoSeleccionado.value) return;
+        pintarMapa(añoSeleccionado.value);
+      } else if (nuevoNivel === 'dep') {
+        const departamentos = datosColombia.value['dep'];
+
+        if (!departamentos) return;
+        extremosGeo = extremosLugar(departamentos);
+        extremos();
+        escalar();
+
+        colombia.innerHTML = '';
+        seleccionados.innerHTML = '';
+        datosParaPintar = departamentos;
+        crearMapa();
+        if (!añoSeleccionado.value) return;
+        pintarMapa(añoSeleccionado.value);
       }
     });
-  }
 
-  function crearMapa() {
-    const lugaresActuales = lugaresSeleccionados.value;
-    zonas = {};
-    datosParaPintar.features.forEach((lugar) => {
-      if (lugar.geometry.type === 'Polygon' || lugar.geometry.type === 'MultiPolygon') {
-        const linea = crearLinea(lugar.geometry, mapearCoordenadas, ancho, alto);
-        const zona = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        const estaSeleccionada = lugaresActuales.find((obj) => obj.codigoDep === lugar.properties.codigo);
+    añoSeleccionado.subscribe((año) => {
+      if (!año || !datosParaPintar) return;
+      pintarMapa(año);
+    });
 
-        zona.setAttribute('class', `lugar${estaSeleccionada ? ' seleccionada' : ''}`);
-        zona.setAttribute('d', linea);
-        zona.setAttribute('id', lugar.properties.codigo);
-        zona.setAttribute('style', 'fill: url(#sinInfo)');
-        zona.setAttribute('shape-rendering', 'geometricPrecision');
-        zona.setAttribute('data-color', lugar.properties.color);
+    async function pintarMapa(año: string) {
+      const nivelActual = nivel.value;
 
-        zonas[lugar.properties.codigo] = { svg: zona, valor: null };
-        colombia.appendChild(zona);
+      const datos =
+        nivelActual === 'dep'
+          ? ((await datosIndicadorDep(año)) as DatosAño)
+          : ((await datosIndicadorMunicipio(año)) as DatosAño);
 
-        zona.onmouseenter = () => {
-          const valor = zonas[lugar.properties.codigo].valor;
+      if (!datos) return;
 
-          if (nivel.get() === 'mun') {
-            informacion.innerText = `${lugar.properties.nombre} (${lugar.properties.dep}): ${
-              !valor ? 'Sin datos' : unidad === 'porcentaje' ? `${valor}%` : `${valor}`
-            }`;
+      // Reiniciar todos sin datos antes de pintar de nuevo
+      for (const codigo in zonas) {
+        zonas[codigo].svg.setAttribute('style', 'fill: url(#sinInfo)');
+      }
+
+      datos.forEach(([codigo, valor]) => {
+        const zona = zonas[codigo];
+        if (zona) {
+          if (valor) {
+            zona.svg.setAttribute('style', `fill: ${color(valor)}`);
+            zona.valor = +valor;
           } else {
-            informacion.innerText = `${lugar.properties.nombre}: ${
-              !valor ? 'Sin datos' : unidad === 'porcentaje' ? `${valor}%` : `${valor} ${unidad}`
-            }`;
-            zona.classList.add('departamento');
+            zona.svg.setAttribute('style', 'fill: url(#sinInfo)');
+            zona.valor = null;
           }
-        };
+        } else {
+          console.log('No existe lugar con codigo', codigo);
+        }
+      });
+    }
 
-        // Asignar nombre del departamento a la lista de lugares seleccionados
-        zona.onclick = () => {
-          const nivelActual = nivel.value;
-          const params = new URLSearchParams(window.location.search);
-          const deps = params.get('deps');
-          const codigoDep = nivelActual === 'dep' ? lugar.properties.codigo : lugar.properties.codigo.substring(0, 2);
-          const parametros: { nombre: string; valor: string }[] = [];
-          const codigosDep = deps ? deps.split(',') : [];
-          const posicionLugar = codigosDep.findIndex((codigo) => codigo === codigoDep);
+    function crearMapa() {
+      const lugaresActuales = lugaresSeleccionados.value;
+      zonas = {};
+      datosParaPintar.features.forEach((lugar) => {
+        if (lugar.geometry.type === 'Polygon' || lugar.geometry.type === 'MultiPolygon') {
+          const linea = crearLinea(lugar.geometry, mapearCoordenadas, ancho, alto);
+          const zona = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          const estaSeleccionada = lugaresActuales.find((obj) => obj.codigoDep === lugar.properties.codigo);
 
-          if (posicionLugar >= 0) {
-            codigosDep.splice(posicionLugar, 1);
-          } else {
-            codigosDep.push(codigoDep);
-          }
+          zona.setAttribute('class', `lugar${estaSeleccionada ? ' seleccionada' : ''}`);
+          zona.setAttribute('d', linea);
+          zona.setAttribute('id', lugar.properties.codigo);
+          zona.setAttribute('style', 'fill: url(#sinInfo)');
+          zona.setAttribute('shape-rendering', 'geometricPrecision');
+          zona.setAttribute('data-color', lugar.properties.color);
 
-          parametros.push({ nombre: 'deps', valor: codigosDep.join(',') });
+          zonas[lugar.properties.codigo] = { svg: zona, valor: null };
+          colombia.appendChild(zona);
 
-          if (nivelActual === 'mun') {
-            const muns = params.get('mun');
-            const codigoMun = lugar.properties.codigo;
+          zona.onmouseenter = () => {
+            const valor = zonas[lugar.properties.codigo].valor;
 
-            const codigosMun = muns ? muns.split(',') : [];
-            const posicionLugar = codigosMun.findIndex((codigo) => codigo === codigoMun);
+            if (nivel.get() === 'mun') {
+              informacion.innerText = `${lugar.properties.nombre} (${lugar.properties.dep}): ${
+                !valor ? 'Sin datos' : unidad === 'porcentaje' ? `${valor}%` : `${valor}`
+              }`;
+            } else {
+              informacion.innerText = `${lugar.properties.nombre}: ${
+                !valor ? 'Sin datos' : unidad === 'porcentaje' ? `${valor}%` : `${valor} ${unidad}`
+              }`;
+              zona.classList.add('departamento');
+            }
+          };
+
+          // Asignar nombre del departamento a la lista de lugares seleccionados
+          zona.onclick = () => {
+            const nivelActual = nivel.value;
+            const params = new URLSearchParams(window.location.search);
+            const deps = params.get('deps');
+            const codigoDep = nivelActual === 'dep' ? lugar.properties.codigo : lugar.properties.codigo.substring(0, 2);
+            const parametros: { nombre: string; valor: string }[] = [];
+            const codigosDep = deps ? deps.split(',') : [];
+            const posicionLugar = codigosDep.findIndex((codigo) => codigo === codigoDep);
 
             if (posicionLugar >= 0) {
-              codigosMun.splice(posicionLugar, 1);
+              codigosDep.splice(posicionLugar, 1);
             } else {
-              codigosMun.push(codigoMun);
+              codigosDep.push(codigoDep);
             }
 
-            parametros.push({ nombre: 'muns', valor: codigosMun.join(',') });
-          }
+            parametros.push({ nombre: 'deps', valor: codigosDep.join(',') });
 
-          actualizarUrl(parametros);
-          revisarDepartamentos();
-        };
+            if (nivelActual === 'mun') {
+              const muns = params.get('mun');
+              const codigoMun = lugar.properties.codigo;
+
+              const codigosMun = muns ? muns.split(',') : [];
+              const posicionLugar = codigosMun.findIndex((codigo) => codigo === codigoMun);
+
+              if (posicionLugar >= 0) {
+                codigosMun.splice(posicionLugar, 1);
+              } else {
+                codigosMun.push(codigoMun);
+              }
+
+              parametros.push({ nombre: 'muns', valor: codigosMun.join(',') });
+            }
+
+            actualizarUrl(parametros);
+            revisarDepartamentos();
+          };
+        }
+      });
+    }
+
+    lugaresSeleccionados.subscribe((lugares) => {
+      const elmentosSeleccionados = seleccionados.querySelectorAll<SVGPathElement>('.lugar');
+
+      if (elmentosSeleccionados.length) {
+        elmentosSeleccionados.forEach(quitarSeleccionZona);
+      }
+
+      const nivelActual = nivel.value;
+
+      if (nivelActual === 'dep') {
+        if (lugares.length) {
+          lugares.forEach((lugar) => {
+            // console.log(zonas, lugar, nivelActual === 'dep' ? lugar.codigoDep : lugar.codigoMun);
+            const zona = zonas[lugar.codigoDep].svg;
+
+            seleccionarZona(zona);
+          });
+        }
+      } else {
+        const params = new URLSearchParams(window.location.search);
+        const muns = params.get('muns');
+        if (muns) {
+          muns.split(',').forEach((codigo) => {
+            const zona = zonas[codigo];
+            if (zona) {
+              seleccionarZona(zona.svg);
+            }
+          });
+        }
       }
     });
-  }
 
-  lugaresSeleccionados.subscribe((lugares) => {
-    const elmentosSeleccionados = seleccionados.querySelectorAll<SVGPathElement>('.lugar');
-
-    if (elmentosSeleccionados.length) {
-      elmentosSeleccionados.forEach(quitarSeleccionZona);
+    function quitarSeleccionZona(elemento: SVGPathElement) {
+      if (!elemento) return;
+      elemento.classList.remove('seleccionada');
+      elemento.setAttribute('stroke', 'var(--moradoProfundo)');
+      seleccionados.removeChild(elemento);
+      colombia.appendChild(elemento);
     }
 
-    const nivelActual = nivel.value;
-
-    if (nivelActual === 'dep') {
-      if (lugares.length) {
-        lugares.forEach((lugar) => {
-          // console.log(zonas, lugar, nivelActual === 'dep' ? lugar.codigoDep : lugar.codigoMun);
-          const zona = zonas[lugar.codigoDep].svg;
-
-          seleccionarZona(zona);
-        });
-      }
-    } else {
-      const params = new URLSearchParams(window.location.search);
-      const muns = params.get('muns');
-      if (muns) {
-        muns.split(',').forEach((codigo) => {
-          const zona = zonas[codigo];
-          if (zona) {
-            seleccionarZona(zona.svg);
-          }
-        });
-      }
+    function seleccionarZona(elemento: SVGPathElement) {
+      if (!elemento) return;
+      elemento.classList.add('seleccionada');
+      elemento.setAttribute('stroke', elemento.dataset.color);
+      colombia.removeChild(elemento);
+      seleccionados.appendChild(elemento);
     }
-  });
 
-  function quitarSeleccionZona(elemento: SVGPathElement) {
-    if (!elemento) return;
-    elemento.classList.remove('seleccionada');
-    elemento.setAttribute('stroke', 'var(--moradoProfundo)');
-    seleccionados.removeChild(elemento);
-    colombia.appendChild(elemento);
+    definirPoporciones();
+    window.addEventListener('resize', escalar);
   }
-
-  function seleccionarZona(elemento: SVGPathElement) {
-    if (!elemento) return;
-    elemento.classList.add('seleccionada');
-    elemento.setAttribute('stroke', elemento.dataset.color);
-    colombia.removeChild(elemento);
-    seleccionados.appendChild(elemento);
-  }
-
-  definirPoporciones();
-  window.addEventListener('resize', escalar);
 </script>
 
 <style lang="scss" is:global>

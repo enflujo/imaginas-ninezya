@@ -7,56 +7,59 @@
   import { listaAños, añoSeleccionado } from '@/utilidades/cerebro';
 
   const menuAños = document.getElementById('menuAños') as HTMLElement;
-  const añoElegido = document.getElementById('añoElegido');
-  const añosOcultos = document.getElementById('añosOcultos');
-  let añoActivo: HTMLSpanElement;
 
-  listaAños.subscribe((lista) => {
-    if (!lista.length) return;
-    añosOcultos.innerHTML = '';
-    menuAños.style.display = 'flex';
+  if (menuAños) {
+    const añoElegido = document.getElementById('añoElegido');
+    const añosOcultos = document.getElementById('añosOcultos');
+    let añoActivo: HTMLSpanElement;
 
-    lista.forEach(({ año, valor }, i) => {
-      const boton = document.createElement('span');
-      boton.className = 'botonAño';
-      boton.innerText = año;
+    listaAños.subscribe((lista) => {
+      if (!lista.length) return;
+      añosOcultos.innerHTML = '';
+      menuAños.style.display = 'flex';
 
-      // Si no hay datos en ese año, le agrega la clase 'vacio'
-      if (!valor) {
-        boton.classList.add('vacio');
-      } else {
-        boton.onclick = () => {
-          if (añoActivo) {
-            añoActivo.classList.remove('activo');
+      lista.forEach(({ año, valor }, i) => {
+        const boton = document.createElement('span');
+        boton.className = 'botonAño';
+        boton.innerText = año;
+
+        // Si no hay datos en ese año, le agrega la clase 'vacio'
+        if (!valor) {
+          boton.classList.add('vacio');
+        } else {
+          boton.onclick = () => {
+            if (añoActivo) {
+              añoActivo.classList.remove('activo');
+            }
+
+            boton.classList.add('activo');
+            añoActivo = boton;
+            añoElegido.innerText = `${añoActivo.innerText} ▾`;
+            añoSeleccionado.set(añoActivo.innerText);
+          };
+
+          if (i === lista.length - 1) {
+            boton.click();
           }
-
-          boton.classList.add('activo');
-          añoActivo = boton;
-          añoElegido.innerText = `${añoActivo.innerText} ▾`;
-          añoSeleccionado.set(añoActivo.innerText);
-        };
-
-        if (i === lista.length - 1) {
-          boton.click();
         }
-      }
-      añosOcultos.appendChild(boton);
+        añosOcultos.appendChild(boton);
+      });
     });
-  });
 
-  // Mostrar menú de años
-  añoElegido.addEventListener('click', () => {
-    añosOcultos.classList.toggle('abierto');
-  });
+    // Mostrar menú de años
+    añoElegido.addEventListener('click', () => {
+      añosOcultos.classList.toggle('abierto');
+    });
 
-  // Cerrar menú de años al hacer click por fuera
-  document.body.addEventListener('click', (evento) => {
-    if (evento.target === añoElegido) return;
+    // Cerrar menú de años al hacer click por fuera
+    document.body.addEventListener('click', (evento) => {
+      if (evento.target === añoElegido) return;
 
-    if (!(menuAños === evento.target || menuAños.contains(evento.target as Node))) {
-      añosOcultos.classList.remove('abierto');
-    }
-  });
+      if (!(menuAños === evento.target || menuAños.contains(evento.target as Node))) {
+        añosOcultos.classList.remove('abierto');
+      }
+    });
+  }
 </script>
 
 <style lang="scss" is:global>

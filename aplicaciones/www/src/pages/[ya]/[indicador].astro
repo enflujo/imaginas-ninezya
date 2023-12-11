@@ -94,95 +94,101 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
 
 <script>
   import MapaDetalle from '@/componentes/MapaDetalle';
-  import { añoSeleccionado, lugaresSeleccionados, cargarIndicador, nivel } from '@/utilidades/cerebro';
-  const comparativo = document.getElementById('comparativo') as HTMLDivElement;
-  const botonFicha = document.getElementById('abrirFicha') as HTMLSpanElement;
-  const infoAdicional = document.getElementById('contenedorInfoAdicional') as HTMLDivElement;
+  import { añoSeleccionado, lugaresSeleccionados, cargarIndicador } from '@/utilidades/cerebro';
+  const visualizaciones = document.getElementById('visualizaciones');
 
-  botonFicha.addEventListener('click', () => {
-    infoAdicional.classList.toggle('abierta');
-  });
+  if (visualizaciones) {
+    const comparativo = document.getElementById('comparativo') as HTMLDivElement;
+    const botonFicha = document.getElementById('abrirFicha') as HTMLSpanElement;
+    const infoAdicional = document.getElementById('contenedorInfoAdicional') as HTMLDivElement;
 
-  async function inicio() {
-    await cargarIndicador();
-  }
-
-  inicio().catch(console.error);
-
-  añoSeleccionado.subscribe(async () => {
-    const existentes = comparativo.querySelectorAll<MapaDetalle>('enflujo-mapita');
-
-    if (existentes && existentes.length) {
-      existentes.forEach((mapita) => {
-        mapita.pintarMapa();
+    if (botonFicha) {
+      botonFicha.addEventListener('click', () => {
+        infoAdicional.classList.toggle('abierta');
       });
     }
-  });
 
-  window.addEventListener('resize', () => {
-    const existentes = comparativo.querySelectorAll<MapaDetalle>('enflujo-mapita');
-
-    if (existentes && existentes.length) {
-      existentes.forEach((mapita) => {
-        mapita.escalar();
-      });
+    async function inicio() {
+      await cargarIndicador();
     }
-  });
 
-  lugaresSeleccionados.subscribe(async (lista) => {
-    const existentes = comparativo.querySelectorAll<MapaDetalle>('enflujo-mapita');
+    inicio().catch(console.error);
 
-    if (lista.length) {
-      for (const mapa of lista) {
-        const { nombre, codigoDep, color } = mapa;
-        const codigo = codigoDep;
-        let existeLugarEnDOM = false;
+    añoSeleccionado.subscribe(async () => {
+      const existentes = comparativo.querySelectorAll<MapaDetalle>('enflujo-mapita');
 
+      if (existentes && existentes.length) {
         existentes.forEach((mapita) => {
-          if (mapita.id === `${codigo}`) {
-            existeLugarEnDOM = true;
-          }
-
-          // Borrar si no está en la lista
-          if (!lista.find((lugar) => lugar.codigoDep === mapita.id)) {
-            if (comparativo.contains(mapita)) {
-              comparativo.removeChild(mapita);
-            }
-          }
-        });
-
-        if (!existeLugarEnDOM) {
-          const mapita = document.createElement('enflujo-mapita') as MapaDetalle;
-          mapita.className = 'mapita';
-          mapita.id = `${codigo}`;
-          mapita.agregarTitulo(nombre);
-
-          await mapita.crearMapa();
-          mapita.definirColor(color);
-          mapita.escalar();
           mapita.pintarMapa();
-          comparativo.appendChild(mapita);
-        }
+        });
       }
-    } else {
-      comparativo.innerHTML = '';
-    }
-  });
+    });
 
-  /**
-   * Ficha Técnica
-   */
+    window.addEventListener('resize', () => {
+      const existentes = comparativo.querySelectorAll<MapaDetalle>('enflujo-mapita');
 
-  const abrirFicha = document.getElementById('abrirFicha');
+      if (existentes && existentes.length) {
+        existentes.forEach((mapita) => {
+          mapita.escalar();
+        });
+      }
+    });
 
-  // Cerrar ficha al hacer click afuera
-  document.body.addEventListener('click', (evento) => {
-    if (evento.target === abrirFicha) return;
+    lugaresSeleccionados.subscribe(async (lista) => {
+      const existentes = comparativo.querySelectorAll<MapaDetalle>('enflujo-mapita');
 
-    if (!(infoAdicional === evento.target || infoAdicional.contains(evento.target as Node))) {
-      infoAdicional.classList.remove('abierta');
-    }
-  });
+      if (lista.length) {
+        for (const mapa of lista) {
+          const { nombre, codigoDep, color } = mapa;
+          const codigo = codigoDep;
+          let existeLugarEnDOM = false;
+
+          existentes.forEach((mapita) => {
+            if (mapita.id === `${codigo}`) {
+              existeLugarEnDOM = true;
+            }
+
+            // Borrar si no está en la lista
+            if (!lista.find((lugar) => lugar.codigoDep === mapita.id)) {
+              if (comparativo.contains(mapita)) {
+                comparativo.removeChild(mapita);
+              }
+            }
+          });
+
+          if (!existeLugarEnDOM) {
+            const mapita = document.createElement('enflujo-mapita') as MapaDetalle;
+            mapita.className = 'mapita';
+            mapita.id = `${codigo}`;
+            mapita.agregarTitulo(nombre);
+
+            await mapita.crearMapa();
+            mapita.definirColor(color);
+            mapita.escalar();
+            mapita.pintarMapa();
+            comparativo.appendChild(mapita);
+          }
+        }
+      } else {
+        comparativo.innerHTML = '';
+      }
+    });
+
+    /**
+     * Ficha Técnica
+     */
+
+    const abrirFicha = document.getElementById('abrirFicha');
+
+    // Cerrar ficha al hacer click afuera
+    document.body.addEventListener('click', (evento) => {
+      if (evento.target === abrirFicha) return;
+
+      if (!(infoAdicional === evento.target || infoAdicional.contains(evento.target as Node))) {
+        infoAdicional.classList.remove('abierta');
+      }
+    });
+  }
 </script>
 
 <style lang="scss">
