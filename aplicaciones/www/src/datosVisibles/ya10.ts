@@ -27,8 +27,8 @@ export const ya10: DatosYa = {
       interpretacion: 'Por definir',
     },
     {
-      nombre: 'Delitos contra la libertad y la integridad sexual en el desarrollo del conflicto',
-      ruta: 'delitos-libertad-sexual',
+      nombre: 'Número de ataques armados a la población civil en el mismo periodo y lugar',
+      ruta: 'ataques-armados',
       archivo: 'ya10-3',
       hay_datos: true,
       explicacion_umbral: 'Por definir',
@@ -43,9 +43,9 @@ export const ya10: DatosYa = {
       interpretacion: 'Por definir',
     },
     {
-      nombre: 'Maltrato Físico (número de ataques a menores de edad por parte de un cuidador, familiar o padre)',
-      ruta: 'maltrato-fisico',
-      archivo: 'ya10-5',
+      nombre: 'Número de ocurrencias con artefactos explosivos (Minas antipersonales, munición sin explotar)',
+      ruta: 'artefactos-explosivos',
+      archivo: 'ya10-4',
       hay_datos: true,
       explicacion_umbral: 'Por definir',
       explicacion: 'Por definir',

@@ -9,8 +9,8 @@ import XLSX from 'xlsx';
 
 const archivoNum = 'Numerador_YA8_8.3';
 const archivoDen = 'denominador_final';
-const rutaNum = path.resolve(__dirname, `../datos/${archivoNum}.xlsx`);
-const rutaDen = path.resolve(__dirname, `../datos/${archivoDen}.xlsx`);
+const rutaNum = path.resolve(`./${archivoNum}.xlsx`);
+const rutaDen = path.resolve(`./${archivoDen}.xlsx`);
 interface Num {
   codmpio: string;
   anno: number;
@@ -41,7 +41,7 @@ interface FilaDen {
 
 async function procesar() {
   try {
-    const datosNum = await readFile(path.resolve(__dirname, '../datos/ya8_3_num.json'), 'utf-8');
+    const datosNum = await readFile('./datos/ya8_3_num.json', 'utf-8');
     procesarDen(JSON.parse(datosNum));
   } catch (error) {
     console.log('no hay datos de numerador, procesar...');
@@ -94,7 +94,6 @@ async function procesarDen(datosNum: Num[]) {
     barraActual.update(total, { terminado: true });
     barraActual.stop();
     // resolver();
-    guardarJSON(datosProcesados, 'ya8_3', '../datos/procesados');
     const tabla = XLSX.utils.json_to_sheet(datosProcesados);
     const archivo = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(archivo, tabla, 'Sheet1');
@@ -207,7 +206,7 @@ async function procesarNum() {
     barraActual.update(total, { terminado: true });
     barraActual.stop();
     // resolver();
-    guardarJSON(filasNum, 'ya8_3_num', '../datos');
+    guardarJSON(filasNum, 'ya8_3_num', './');
     console.log('Fin num');
   });
 }
