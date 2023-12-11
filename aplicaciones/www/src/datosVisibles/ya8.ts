@@ -13,6 +13,7 @@ export const ya8: DatosYa = {
       ruta: 'violencia-fisica',
       archivo: 'ya8-1',
       hay_datos: true,
+      explicacion_umbral: 'Por definir',
       explicacion:
         'Indica la proporción de jóvenes que declaran haber experimentado violencia física en los últimos 12 meses.',
       definicion: 'Proporción de jóvenes que declaran haber experimentado violencia física en los últimos 12 meses.',
@@ -32,6 +33,7 @@ export const ya8: DatosYa = {
       ruta: 'consumo-sustancias',
       archivo: 'ya8-2',
       hay_datos: true,
+      explicacion_umbral: 'Por definir',
       explicacion:
         'Indica el número de procesos realizados de reestablecimientos de hechos por consumo de sustancias psicoactivas.',
       definicion:
@@ -52,6 +54,7 @@ export const ya8: DatosYa = {
       ruta: 'menores-delito',
       archivo: 'ya8-3',
       hay_datos: true,
+      explicacion_umbral: 'Por definir',
       explicacion: 'Indica la proporción de delitos en los que participaron menores de edad.',
       definicion: 'Indica la proporción de delitos en los que participaron menores de edad.',
       metodologia:
@@ -70,6 +73,7 @@ export const ya8: DatosYa = {
       ruta: 'hostigamiento',
       archivo: 'ya2-8',
       hay_datos: true,
+      explicacion_umbral: 'Por definir',
       explicacion: 'Indica el número total de actos terroristas.',
       definicion:
         'Este indicar presenta un conteo del número de actos terroristas, hostigamientos, combates y enfrentamientos en un mismo periodo y territorio en particular.',
@@ -90,6 +94,7 @@ export const ya8: DatosYa = {
       ruta: 'explosivos',
       archivo: 'ya2-9',
       hay_datos: true,
+      explicacion_umbral: 'Por definir',
       explicacion: 'Indica el número total de ocurrencias con artefactos explosivos.',
       definicion:
         'Este indicar presenta un conteo del número de ocurrencias terroristas con artefactos explosivos en un mismo periodo y territorio en particular. * Contemplar Población Civil y personal de la Fuerza Pública',
