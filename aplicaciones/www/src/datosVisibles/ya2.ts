@@ -9,11 +9,105 @@ export const ya2: DatosYa = {
   hay_datos: true,
   indicadores: [
     {
-      nombre: 'Niños y niñas menores de 5 años por tipo de establecimiento al que asisten',
-      ruta: 'menores-establecimiento',
+      nombre: 'Cobertura bruta de transición',
+      ruta: 'cobertura-transicion',
+      archivo: 'ya2-1',
+      hay_datos: true,
+      umbral: 85.9,
+      explicacion_umbral: 'CONPES 3918. Línea base 85,9% año 2015. Meta 100% año 2030.',
+      explicacion:
+        'Indica la proporción de estudiantes que cursan preescolar y asisten a instituciones públicas oficiales.',
+      definicion:
+        'La tasa de cobertura bruta mide la relación porcentual entre el número total de estudiantes matriculados sobre el total de la población en edad teórica para cursar el nivel educativo.**** En algunos casos la demanda social es mayor a la población en edad teórica para cursar este nivel (5 años), explicada por estudiantes en extraedad, por lo que el indicador toma valores superiores al 100%.',
+      metodologia:
+        'Número total de estudiantes matriculados en transicion en edad teórica para cursar este grado (5 años) / Total de la población correspondiente a esa misma edad en el mismo periodo y territorio.',
+      unidad: 'Porcentaje',
+      fuente_numerador:
+        'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
+      fuente_denominador:
+        'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
+      desagregacion: 'Municipal',
+      contexto:
+        'Las tasas de cobertura permiten medir la capacidad del sistema educativo para atender la demanda. Por otro lado, la base del aprendizaje se establece principalmente en los primeros años de vida, antes de que los niños ingresen a la escuela primaria. Aquellos que enfrentan dificultades en estas etapas iniciales generalmente no logran alcanzar el nivel de sus compañeros, lo que perpetúa un ciclo de bajo rendimiento y elevadas tasas de deserción escolar, manteniendo desventajas preexistentes en las poblaciones más vulnerables.',
+      interpretacion:
+        'Un valor del 97% indica que 97 de cada 100 estudiantes en edad teórica para cursar transición asisten a un establecimiento educativo oficial o no oficial en un momento y territorio específicos. Más Información: https://www.dane.gov.co/files/investigaciones/boletines/educacion/formulario-C600-EDUC-2022.pdf',
+    },
+    {
+      nombre: 'Reprobación transición',
+      ruta: 'reprobacion-transicion',
+      archivo: 'ya2-2',
+      hay_datos: true,
+      explicacion_umbral: 'De acuerdo con el Plan Nacional de Desarrollo 2022 - 2026 no hay una meta para este indicador.',
+      explicacion:
+        'Indica el porcentaje de estudiantes que reprobaron transición.',
+      definicion:
+        'Tasa de reprobación de estudiantes del sector oficial en transición. Identifica el porcentaje de alumnos en este nivel educativo que reprueba de acuerdo con los planes y programas de estudio vigentes.',
+      metodologia:
+        'Número total de estudiantes que reprobaron transición / Total de estudiantes que se encuentran matriculados en transición en el mismo periodo y territorio.',
+      unidad: 'Porcentaje',
+      fuente_numerador:
+        'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
+      fuente_denominador:
+        'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
+      desagregacion: 'Municipal',
+      contexto:
+        'La Tasa de Reprobación constituye un indicador que refleja el porcentaje de estudiantes inscritos que no lograron superar los requisitos académicos establecidos en los programas educativos de cierto nivel, debiendo repetir el curso. Esta situación conlleva implicaciones tanto emocionales como sociales para los alumnos, pudiendo incluso llevar, en situaciones extremas, a la deserción educativa, a pesar de la opción de repetir el nivel. Además, la reprobación evidencia un bajo rendimiento escolar y puede indicar desigualdades en el proceso de aprendizaje, siendo la principal causa del fracaso educativo y un posible indicativo de la baja calidad educativa. En respuesta a esto, numerosas estrategias de políticas educativas se enfocan en mejorar la calidad de la educación, reducir la tasa de reprobación y eliminar el fracaso escolar, lo que tiene un impacto significativo en la calidad de las instituciones educativas.',
+      interpretacion:
+        'Un valor del 3% indica que 3 de cada 100 estudiantes no cumplieron con los requisitos académicos exigidos para aprobar transición en un momento y territorio específicos. Más Información: https://www.javeriana.edu.co/-/noticia-643-mil-estudiantes-perdieron-el-a%C3%B1o-escolar',
+    },
+    {
+      nombre: 'Repitencia transición',
+      ruta: 'repitencia-transicion',
+      archivo: 'ya2-3',
+      hay_datos: true,
+      explicacion_umbral: 'De acuerdo con el Plan Nacional de Desarrollo 2022 - 2026 no hay una meta para este indicador.',
+      explicacion:
+        'Indica el porcentaje de estudiantes que se encuentran repitiendo el mismo grado que cursaron el año anterior.',
+      definicion:
+        'Tasa de repitencia del sector oficial. Corresponde al porcentaje de alumnos matriculados en transición que se encuentran repitiendo el mismo grado cursado el año anterior.',
+      metodologia:
+        'Número total de estudiantes que se encuentran repitiendo transición / Total de estudiantes que se encuentran matriculados en transición en el mismo periodo y territorio.',
+      unidad: 'Porcentaje',
+      fuente_numerador:
+        'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
+      fuente_denominador:
+        'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
+      desagregacion: 'Municipal',
+      contexto:
+        'La repetición se define como la circunstancia en la cual un estudiante se ve forzado a pasar por el mismo grado educativo en más de una ocasión, siendo una decisión administrativa tomada por el profesor. La repetición se considera un indicador de eficacia escolar y evalúa la productividad de la inversión por alumno en términos estadísticos, considerando la capacidad del sistema educativo para hacer frente a una creciente demanda de población. En este contexto, tasas elevadas indican problemas serios relacionados con la repetición o la eficiencia interna del sistema educativo.Dado que la repetición continua puede llevar a situaciones de abandono, se espera que la reducción de esta práctica permita a los estudiantes completar su trayectoria educativa.',
+      interpretacion:
+        'Un valor del 5% indica que 5 de cada 100 estudiantes en edad teórica para cursar transición se encuentran repitiendo el mismo grado cursado el año anterior en un establecimiento educativo oficial  en un momento y territorio específicos. Más información:  https://www.javeriana.edu.co/pesquisa/repitencia-escolar-durante-pandemia/',
+    },
+    {
+      nombre: 'Deserción transición',
+      ruta: 'desercion-transicion',
       archivo: 'ya2-4',
       hay_datos: true,
-      explicacion: 'Indica la proporción de estudiantes que asisten a instituciones públicas oficiales.',
+      explicacion_umbral: 'De acuerdo con el Plan Nacional de Desarrollo 2022 - 2026 no hay una meta para este indicador.',
+      explicacion:
+        'Indica el porcentaje de estudiantes que se encontraban cursando transición y abandonaron el sistema educativo antes de finalizar el año lectivo.',
+      definicion:
+        'Tasa de desercion intra-anual. Porcentaje de estudiantes que abandonan el sistema educativo antes de finalizar el año lectivo de transición.',
+      metodologia:
+        'Número total de estudiantes matriculados en transición que abandonaron el sistema escolar antes de terminar el año lectivo / Total de estudiantes que se encuentran matriculados en transición en el mismo periodo y territorio.',
+      unidad: 'Porcentaje',
+      fuente_numerador:
+        'Ministerio de Educación Nacional - SIMAT.',
+      fuente_denominador:
+        'Ministerio de Educación Nacional - SIMAT.',
+      desagregacion: 'Municipal',
+      contexto:
+        'La Tasa de Deserción Intra-Anual es una medida porcentual del abandono estudiantil durante el transcurso del ciclo escolar. Por lo tanto se interpreta como la  interrupción o desvinculación de los estudiantes sin haber terminado el nivel para el cual se matricularon.',
+      interpretacion:
+        'Un valor del 2% indica que 2 de cada 100 estudiantes en edad teórica para cursar transición desertaron en el año lectivo en un momento y territorio específicos. Más Información: https://unitedwaycolombia.org/2023/10/19/desercion-escolar-en-colombia-un-desafio-que-se-agrava/',
+    },
+    {
+      nombre: 'Proporción de estudiantes en el sector oficial',
+      ruta: 'estudiantes-sector-oficial',
+      archivo: 'ya2-5',
+      hay_datos: true,
+      explicacion_umbral: 'De acuerdo con el Plan Nacional de Desarrollo 2022 - 2026 no hay una meta para este indicador.',
+      explicacion: 'Indica el porcentaje de estudiantes que se encontraban cursando transición y abandonaron el sistema educativo antes de finalizar el año lectivo.',
       definicion:
         'Proporción de estudiantes en el sector oficial, con respecto al total de estudiantes en el mismo periodo y lugar.',
       metodologia:
@@ -27,112 +121,7 @@ export const ya2: DatosYa = {
       contexto:
         'No hay un consenso sobre la proporción de estudiantes que deberían asistir a una institución educativa oficial o no oficial, ya que esto depende del contexto del sistema educativo y de la capacidad institucional de cada país.',
       interpretacion:
-        'Un valor de 97% indica que 97 de cada 100 estudiantes asisten a un establecimiento educativo oficial en un momento y territorio específicos. Más Información: https://www.dane.gov.co/files/investigaciones/boletines/educacion/formulario-C600-EDUC-2022.pdf',
-    },
-    {
-      nombre: 'Cobertura bruta Transición',
-      ruta: 'cobertura-transicion',
-      archivo: 'ya2-5',
-      hay_datos: true,
-      umbral: 85.9,
-      explicacion:
-        'Indica la proporción de estudiantes que cursan preescolar y asisten a instituciones públicas oficiales.',
-      definicion:
-        ' La tasa de cobertura bruta mide la relación porcentual entre el número total de estudiantes matriculados (independientemente de la edad que tengan) sobre el total de la población en edad teórica para cursar el nivel educativo, que para el caso de educación preescolar corresponde al rango entre 3 y 5 años de edad.',
-      metodologia:
-        'La tasa de cobertura bruta mide la relación porcentual entre el número total de estudiantes matriculados (independientemente de la edad que tengan) sobre el total de la población en edad teórica para cursar el nivel educativo, que para el caso de educación preescolar corresponde al rango entre 3 y 5 años de edad.',
-      unidad: 'Porcentaje',
-      fuente_numerador:
-        'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE.',
-      fuente_denominador:
-        'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE.',
-      desagregacion: 'Municipal',
-      contexto:
-        'Las tasas de cobertura permiten medir la capacidad del sistema educativo para atender la demanda. No existe un consenso sobre la proporción de estudiantes que asistirn a una institución educativa en particular, ya que esto se acota al contexto en términos de infraestructura y capacidad institucional con la que cuenta cada país.',
-      interpretacion:
-        'Un valor de 97% indica que 97 de cada 100 estudiantes que cursan en preescolar asisten a un establecimiento educativo oficial en un momento y territorio específicos. Más Información: https://www.dane.gov.co/files/investigaciones/boletines/educacion/formulario-C600-EDUC-2022.pdf',
-    },
-    {
-      nombre: 'Estudiantes preescolar por tipo de establecimiento',
-      ruta: 'preescolar',
-      archivo: 'ya2-6',
-      hay_datos: true,
-      explicacion:
-        'Indica la proporción de estudiantes que cursan preescolar y asisten a instituciones públicas oficiales.',
-      definicion:
-        ' La tasa de cobertura bruta mide la relación porcentual entre el número total de estudiantes matriculados (independientemente de la edad que tengan) sobre el total de la población en edad teórica para cursar el nivel educativo, que para el caso de educación preescolar corresponde al rango entre 3 y 5 años de edad.',
-      metodologia: 'Ministerio de Educación Nacional (MEN) - SIMAT.',
-      unidad: 'Porcentaje',
-      fuente_numerador:
-        'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE.',
-      fuente_denominador:
-        'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE.',
-      desagregacion: 'Municipal',
-      contexto:
-        'Las tasas de cobertura permiten medir la capacidad del sistema educativo para atender la demanda. No existe un consenso sobre la proporción de estudiantes que asistirn a una institución educativa en particular, ya que esto se acota al contexto en términos de infraestructura y capacidad institucional con la que cuenta cada país.',
-      interpretacion:
-        'Un valor de 97% indica que 97 de cada 100 estudiantes que cursan en preescolar asisten a un establecimiento educativo oficial en un momento y territorio específicos. Más Información: https://www.dane.gov.co/files/investigaciones/boletines/educacion/formulario-C600-EDUC-2022.pdf',
-    },
-    {
-      nombre: 'Estudiantes primaria por tipo de establecimiento',
-      ruta: 'primaria',
-      archivo: 'ya2-7',
-      hay_datos: true,
-      explicacion:
-        'Indica la proporción de estudiantes que cursan primaria y asisten a instituciones públicas oficiales.',
-      definicion:
-        'La tasa de cobertura bruta mide la relación porcentual entre el número total de estudiantes matriculados, sobre el total de la población en edad teórica para cursar el nivel educativo.',
-      metodologia:
-        'Número total de estudiantes matriculados que tienen entre 6 y 10 años de edad y asisten a instituciones oficiales / Total de la población entre 6 y 10 años de edad en el mismo periodo y territorio.',
-      unidad: 'Porcentaje',
-      fuente_numerador:
-        'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE.',
-      fuente_denominador:
-        'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE.',
-      desagregacion: 'Municipal',
-      contexto:
-        'Las tasas de cobertura permiten medir la capacidad del sistema educativo para atender la demanda. No hay un consenso sobre la proporción de estudiantes que deberían asistir a una institución educativa oficial o no oficial, ya que esto depende del contexto del sistema educativo y de la capacidad institucional de cada país.',
-      interpretacion:
-        'Un valor de 65% indica que 65 de cada 100 estudiantes que cursan primaria asisten a un establecimiento educativo oficial en un momento y territorio específicos. Más Información: https://www.dane.gov.co/files/investigaciones/boletines/educacion/formulario-C600-EDUC-2022.pdf',
-    },
-    {
-      nombre: 'Hostigamiento a la población civil',
-      ruta: 'hostigamiento',
-      archivo: 'ya2-8',
-      hay_datos: true,
-      explicacion: 'Indica el número total de actos terroristas.',
-      definicion:
-        'Este indicar presenta un conteo del número de actos terroristas, hostigamientos, combates y enfrentamientos en un mismo periodo y territorio en particular.',
-      metodologia:
-        'Total = Suma(Número de Actos Terroristas, Atentados, Combates, Enfrentamientos, Declaraciones de Hostigamientos).',
-      unidad: 'Conteo',
-      fuente_numerador:
-        'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE)  con base en el Registro Único de Víctimas.',
-      fuente_denominador: 'No aplica',
-      desagregacion: 'Municipal',
-      contexto:
-        'Sánchez et al., (2005) han estudiando los efectos del conflicto armado en el desarrollo social colombiano, los autores muestran como los actos terroristas están relacionados con un bajo desempeño en el aula y por consiguiente en el constructo de herramientas que alimentan la formación de capital humano.',
-      interpretacion:
-        'Un valor de 20 índica que en un mismo periodo y territorio en particular se presentaron 20 ataques armados a la población civil* El indicador no pondera un peso en particular en función de la categoría que integran el agregado de "Ataques Armados".',
-    },
-    {
-      nombre: 'Número de incidentes con artefactos explosivos',
-      ruta: 'explosivos',
-      archivo: 'ya2-9',
-      hay_datos: true,
-      explicacion: 'Indica el número total de ocurrencias con artefactos explosivos.',
-      definicion:
-        'Este indicar presenta un conteo del número de ocurrencias terroristas con artefactos explosivos en un mismo periodo y territorio en particular. * Contemplar Población Civil y personal de la Fuerza Pública',
-      metodologia: 'Total = Suma(Artefactos Explosivos, Munición, Minas Antipersonales).',
-      unidad: 'Conteo',
-      fuente_numerador:
-        'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE)  con base en el Registro Único de Víctimas.',
-      fuente_denominador: 'No aplica',
-      desagregacion: 'Municipal',
-      contexto:
-        'Arias et al., (214) han estudiando los efectos del conflicto armado en el desarrollo económico y social en Colombia, de acuerdo con los autores el conflicto armad ha tenido efectos devastadores en el sistema educativo del país. Las instituciones educativas, tanto oficiales como no oficiales, han enfrentado numerosos desafíos debido a la violencia y la inestabilidad asociadas con el conflicto. Muchas escuelas han sido afectadas directamente, ya sea por actos de violencia que las han dejado inoperables o por la desaparición de recursos esenciales. Además, el desplazamiento forzado de comunidades enteras ha tenido un impacto directo en la tasa de matricula y la asistencia escolar, ya que muchos niños y jóvenes se han visto obligados a abandonar sus hogares y, en consecuencia, sus estudios. Este entorno de conflicto también ha llevado a la pérdida de maestros capacitados, ya sea porque han sido desplazados o han abandonado sus roles por motivos de seguridad.',
-      interpretacion:
-        'Un valor de 15 índica que en un mismo periodo y territorio en particular se presentaron 15 ocurrencias con artefactos explosivos* El no pondera un peso en particular en función de la categoría que integran el agregado de "Artefactos Explosivos".',
+        'Un valor del 97% indica que 97 de cada 100 estudiantes asisten a un establecimiento educativo oficial en un momento y territorio específicos. Más Información: https://www.dane.gov.co/files/investigaciones/boletines/educacion/formulario-C600-EDUC-2022.pdf',
     },
   ],
 };

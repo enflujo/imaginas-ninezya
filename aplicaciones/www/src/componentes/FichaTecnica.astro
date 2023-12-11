@@ -35,6 +35,18 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
       <h4 class="titulo">Contexto</h4>
       <p class="texto" id="textoContexto" set:html={urlsAEnlacesHTML(datosIndicador.contexto)} />
     </div>
+    {
+      !datosIndicador.umbral ? (
+        ''
+      ) : (
+        <div class="seccion">
+          <>
+            <h4 class="titulo">Meta</h4>
+            <p class="texto">{datosIndicador.explicacion_umbral}</p>
+          </>
+        </div>
+      )
+    }
     <div class="seccion">
       <h4 class="titulo">Cómo se interpreta</h4>
       <p class="texto" id="textoInterpretacion" set:html={urlsAEnlacesHTML(datosIndicador.interpretacion)} />

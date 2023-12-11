@@ -62,6 +62,7 @@ export interface IndicadoresDatos extends IndicadoresDatosComunes {
   contexto?: string;
   interpretacion: string;
   umbral?: number;
+  explicacion_umbral?: string;
   responsable?: string;
   compete_a?: string;
 }

@@ -78,7 +78,7 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
             </div>
           </div>
 
-          <LineaTiempo alto={25} />
+          <LineaTiempo alto={25} meta={datosIndicador.explicacion_umbral} />
         </div>
 
         <div id="comparativo" class="columna" />
@@ -220,6 +220,7 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
     font-size: 0.85em;
     margin-top: 0;
     width: 60%;
+    min-width: 250px;
     font-variation-settings:
       'MONO' 0,
       'CASL' 0,
@@ -274,6 +275,9 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
 
   /// ✂️ Cortes pantalla
   @media screen and (min-width: $corte1) {
+    #descripcionIndicador {
+      min-width: 250px;
+    }
   }
   @media screen and (min-width: $corte2) {
     #secionSuperior {
