@@ -95,29 +95,29 @@ export const ya2: DatosYa = {
       interpretacion:
         'Un valor del 2% indica que 2 de cada 100 estudiantes en edad teórica para cursar transición desertaron en el año lectivo en un momento y territorio específicos. Más Información: https://unitedwaycolombia.org/2023/10/19/desercion-escolar-en-colombia-un-desafio-que-se-agrava/',
     },
-    {
-      nombre: 'Proporción de estudiantes en el sector oficial',
-      ruta: 'estudiantes-sector-oficial',
-      archivo: 'ya2-5',
-      hay_datos: true,
-      explicacion_umbral:
-        'De acuerdo con el Plan Nacional de Desarrollo 2022 - 2026 no hay una meta para este indicador.',
-      explicacion:
-        'Indica el porcentaje de estudiantes que se encontraban cursando transición y abandonaron el sistema educativo antes de finalizar el año lectivo.',
-      definicion:
-        'Proporción de estudiantes en el sector oficial, con respecto al total de estudiantes en el mismo periodo y lugar.',
-      metodologia:
-        'Se desconoce, metodología propia del Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE).',
-      unidad: 'Porcentaje',
-      fuente_numerador:
-        'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE',
-      fuente_denominador:
-        'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE',
-      desagregacion: 'Municipal',
-      contexto:
-        'No hay un consenso sobre la proporción de estudiantes que deberían asistir a una institución educativa oficial o no oficial, ya que esto depende del contexto del sistema educativo y de la capacidad institucional de cada país.',
-      interpretacion:
-        'Un valor del 97% indica que 97 de cada 100 estudiantes asisten a un establecimiento educativo oficial en un momento y territorio específicos. Más Información: https://www.dane.gov.co/files/investigaciones/boletines/educacion/formulario-C600-EDUC-2022.pdf',
-    },
+    // {
+    //   nombre: 'Proporción de estudiantes en el sector oficial',
+    //   ruta: 'estudiantes-sector-oficial',
+    //   archivo: 'ya2-5',
+    //   hay_datos: true,
+    //   explicacion_umbral:
+    //     'De acuerdo con el Plan Nacional de Desarrollo 2022 - 2026 no hay una meta para este indicador.',
+    //   explicacion:
+    //     'Indica el porcentaje de estudiantes que se encontraban cursando transición y abandonaron el sistema educativo antes de finalizar el año lectivo.',
+    //   definicion:
+    //     'Proporción de estudiantes en el sector oficial, con respecto al total de estudiantes en el mismo periodo y lugar.',
+    //   metodologia:
+    //     'Se desconoce, metodología propia del Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE).',
+    //   unidad: 'Porcentaje',
+    //   fuente_numerador:
+    //     'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE',
+    //   fuente_denominador:
+    //     'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE',
+    //   desagregacion: 'Municipal',
+    //   contexto:
+    //     'No hay un consenso sobre la proporción de estudiantes que deberían asistir a una institución educativa oficial o no oficial, ya que esto depende del contexto del sistema educativo y de la capacidad institucional de cada país.',
+    //   interpretacion:
+    //     'Un valor del 97% indica que 97 de cada 100 estudiantes asisten a un establecimiento educativo oficial en un momento y territorio específicos. Más Información: https://www.dane.gov.co/files/investigaciones/boletines/educacion/formulario-C600-EDUC-2022.pdf',
+    // },
   ],
 };

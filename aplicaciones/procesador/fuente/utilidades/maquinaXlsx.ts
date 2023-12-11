@@ -1,5 +1,5 @@
 import barraProceso from '@/modulos/barraProceso';
-import { SingleBar } from 'cli-progress';
+import type { SingleBar } from 'cli-progress';
 import path from 'path';
 import { getXlsxStream } from 'xlstream';
 

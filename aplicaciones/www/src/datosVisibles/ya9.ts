@@ -1,31 +1,29 @@
 import type { DatosYa } from '@/tipos';
 
 export const ya9: DatosYa = {
-  nombre: 'Cultura de paz, reconciliación y convivencia',
+  nombre:
+    'Adolescentes con justicia restaurativa y pedagógica (Sistema de Responsabilidad Penal para Adolescentes - SRPA)',
   imagen: 'ya9',
-  ruta: 'otros',
-  definicion:
-    'Es crucial que los 15.4 millones de menores en Colombia participen en la construcción de una cultura de paz tras el conflicto armado. Reconociendo sus experiencias y dándoles voz activa en el diseño de acciones para la reconciliación, la niñez desempeña un papel esencial. Los gobiernos locales, especialmente en los 170 municipios afectados por el conflicto, deben proporcionarles espacio, priorizando la restitución de derechos y el interés superior de la niñez según normativas nacionales e internacionales.',
+  ruta: 'justicia-restaurativa',
+  definicion: '',
   hay_datos: false,
   indicadores: [
-    // {
-    //   nombre: 'Delitos contra la libertad y la integridad sexual en el desarrollo del conflicto',
-    //   ruta: 'delito-sexual-conflicto',
-    //   archivo: 'ya10-1',
-    //   hay_datos: false,
-    //   explicacion_umbral: 'Por definir',
-    //   umbral: 0,
-    //   explicacion: 'Por definir',
-    //   definicion:
-    //     'Indica el número de menores de edad que fueron víctimas de un delito en contra de su libertad e integridad sexual.',
-    //   metodologia: 'Número de menores de edad que fueron reclutados por una estructural criminal.',
-    //   unidad: 'Conteo',
-    //   fuente_numerador: 'Panel CEDE - Registro Único de Víctimas',
-    //   fuente_denominador: 'Panel CEDE - Registro Único de Víctimas',
-    //   desagregacion: 'Municipal',
-    //   contexto: 'Por definir',
-    //   interpretacion: 'Por definir',
-    // },
+    {
+      nombre: '...',
+      ruta: 'slug',
+      hay_datos: false,
+      explicacion_umbral: '',
+      umbral: 0,
+      explicacion: '',
+      definicion: '',
+      metodologia: '',
+      unidad: '',
+      fuente_numerador: '',
+      fuente_denominador: '',
+      desagregacion: '',
+      contexto: '',
+      interpretacion: '',
+    },
     // {
     //   nombre: 'Delitos contra la libertad y la integridad sexual en el desarrollo del conflicto',
     //   ruta: 'delitos-libertad-sexual',
