@@ -4,14 +4,20 @@ interface Props {
   ancho?: number;
   alto?: number;
   meta: string;
+  umbral: number;
 }
 
-const { alto, meta } = Astro.props;
+const { alto, meta, umbral } = Astro.props;
 ---
 
 <section id="lineaDeTiempo">
   <header id="cabezote">
-    <h3 id="nombreLugar">Colombia</h3>
+    <ul class="leyendas">
+      <li class="colombia">Colombia</li>
+
+      {umbral && <li class="meta">Meta del indicador</li>}
+    </ul>
+
     <p class="anotacionUmbral" set:html={meta} />
   </header>
 
@@ -411,7 +417,7 @@ const { alto, meta } = Astro.props;
     }
 
     #descripcionMeta {
-      border: 2px solid #27f7ba;
+      border: 2px solid #4ca658;
       background-color: white;
       padding: 1em 1.5em;
       color: #0042bf;
@@ -422,6 +428,35 @@ const { alto, meta } = Astro.props;
     #cabezote {
       display: flex;
       justify-content: space-between;
+
+      ul {
+        list-style: none;
+
+        .colombia::before {
+          content: '\25C9';
+          font-weight: bold;
+          display: inline-block;
+          width: 1em;
+          font-size: 1.2em;
+          color: var(--fucsiaEsmalte);
+        }
+
+        .meta::before {
+          content: '\25C9';
+          font-weight: bold;
+          display: inline-block;
+          width: 1em;
+          font-size: 1.2em;
+          color: #4ca658;
+        }
+      }
+
+      #colorColombia {
+        display: block;
+        height: 20px;
+        width: 20px;
+        background-color: var(--fucsiaEsmalte);
+      }
     }
 
     .anotacionUmbral {
