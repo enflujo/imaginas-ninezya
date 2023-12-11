@@ -104,6 +104,13 @@ export const iniciarEtnias = () => {
   };
 };
 
+export const normalizar = (texto: string): string => {
+  return texto
+    .toLocaleLowerCase()
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '');
+};
+
 // export const calcularMinMax = (agregados: DatosPorAño) => {
 //   let min = Infinity;
 //   let max = 0;

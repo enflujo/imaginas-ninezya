@@ -5,11 +5,13 @@ import { guardarJSON } from './utilidades/ayudas';
 import DosVariables from '@/modulos/DosVariables';
 import { resolve } from 'path';
 import { readdir, rm } from 'fs/promises';
+import prerocesarIndicador83 from '@/indicadores/08-03';
 
 async function inicio() {
   // procesarLugares();
   await vaciarProcesados();
   await procesarDatos();
+  // await prerocesarIndicador83();
 }
 
 async function vaciarProcesados() {
@@ -115,16 +117,21 @@ async function procesarDatos() {
   const ya44 = new VariableSingular('concentracion', false, 'escala');
   await ya44.procesar('4.4: calidad aire', 'YA4_4.4', 'Sheet1', 'ya4-4');
 
-  // // // 8.1, 8.2, 8.3
+  const ya81 = new VariableSingular('tasa', false, 'tasa', 100000);
+  await ya81.procesar('8.1: violencia física', 'YA8_8.1', 'Sheet1', 'ya8-1');
+  const ya83 = new VariableSingular('delito', false, 'porcentaje');
+  await ya83.procesar('8.3: delitos participación menores', 'YA8_8.3', 'Sheet1', 'ya8-3');
+  const ya84 = new VariableSingular('tasa', false, 'tasa', 100000);
+  await ya84.procesar('8.4: delito', 'YA8_8.4', 'Sheet1', 'ya8-4');
 
-  // const ya101 = new VariableSingular('e_delito_sex', false, 'conteo');
-  // await ya101.procesar('10.1: delito sexual', 'YA10_10.1', 'Sheet1', 'ya10-1');
+  const ya101 = new VariableSingular('e_delito_sex', false, 'conteo', 1);
+  await ya101.procesar('10.1: delito sexual', 'YA10_10.1', 'Sheet1', 'ya10-1');
   const ya102 = new VariableSingular('reclu', false, 'conteo', 1);
   await ya102.procesar('10.2: vinculación estructuras criminales', 'YA10_10.2', 'Sheet1', 'ya10-2');
-  // const ya103 = new VariableSingular('o_acto_terror', false, 'conteo');
-  // await ya103.procesar('10.3: hostigamiento', 'YA10_10.3', 'Sheet1', 'ya10-3');
-  // const ya104 = new VariableSingular('o_minas_anti', false, 'conteo');
-  // await ya104.procesar('10.4: explosivos', 'YA10_10.4', 'Sheet1', 'ya10-4');
+  const ya103 = new VariableSingular('o_acto_terror', false, 'conteo', 1);
+  await ya103.procesar('10.3: ataques armados', 'YA10_10.3', 'Sheet1', 'ya10-3');
+  const ya104 = new VariableSingular('o_minas_anti', false, 'conteo', 1);
+  await ya104.procesar('10.4: explosivos', 'YA10_10.4', 'Sheet1', 'ya10-4');
 }
 
 inicio();

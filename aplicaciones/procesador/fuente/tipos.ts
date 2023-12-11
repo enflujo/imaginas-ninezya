@@ -107,7 +107,9 @@ export type VariableValorSingular =
   | 'Alumnos_preescolar_N_O'
   | 'Alumnos_primaria_O'
   | 'Alumnos_primaria_N_O'
-  | 'reclu';
+  | 'reclu'
+  | 'tasa'
+  | 'delito';
 
 export type VariablesSingulares = {
   [llave in VariableValorSingular]: number;

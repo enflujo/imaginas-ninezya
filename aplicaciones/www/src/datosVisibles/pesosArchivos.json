@@ -1,7 +1,23 @@
 {
+  "yaYA8_8-3": {
+    "peso": "3.77 MB",
+    "nombre": "Numerador_YA8_8.3"
+  },
+  "ya10-1": {
+    "peso": "543.82 kB",
+    "nombre": "YA10_10.1"
+  },
   "ya10-2": {
     "peso": "415.64 kB",
     "nombre": "YA10_10.2"
+  },
+  "ya10-3": {
+    "peso": "125.5 kB",
+    "nombre": "YA10_10.3"
+  },
+  "ya10-4": {
+    "peso": "489.55 kB",
+    "nombre": "YA10_10.4"
   },
   "ya1-1": {
     "peso": "162.64 kB",
@@ -118,5 +134,17 @@
   "ya4-4": {
     "peso": "25.56 kB",
     "nombre": "YA4_4.4"
+  },
+  "ya8-1": {
+    "peso": "1.03 MB",
+    "nombre": "YA8_8.1"
+  },
+  "ya8-3": {
+    "peso": "380.23 kB",
+    "nombre": "YA8_8.3"
+  },
+  "ya8-4": {
+    "peso": "143.34 kB",
+    "nombre": "YA8_8.4"
   }
 }
