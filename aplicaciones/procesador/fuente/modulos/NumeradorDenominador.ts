@@ -50,9 +50,7 @@ export default class {
       this.datosDepartamentos[año] = this.preDatosDepartamentos[año].map((d) => {
         const valor = redondearDecimal((d[1] / d[2]) * this.unidadMedida, 1, 2);
         this.revisarMinMax(valor);
-        if (d[0] === '05') {
-          console.log(año, valor, d[1], d[2]);
-        }
+
         return [d[0], valor];
       });
     }
@@ -90,10 +88,6 @@ export default class {
 
     const valorNum = numerador | 0;
     const valorDen = denominador | 0;
-
-    // if (!municipio.hasOwnProperty('error') && (municipio as Municipio)[3] === '17001') {
-    //   console.log('a', numeroFila, año, valorNum, valorDen);
-    // }
 
     if (!this.preDatosNacionales[año]) {
       this.preDatosNacionales[año] = [0, 0];
@@ -173,11 +167,6 @@ export default class {
     } else {
       this.preDatosMunicipios[año].push([(municipio as Municipio)[3], valorNum, valorDen]);
     }
-
-    // if (codMun === '17001') {
-    //   console.log('b', numeroFila, año, valorNum, valorDen);
-    //   console.log('---');
-    // }
   };
 
   procesarDepartamentos() {
@@ -204,14 +193,6 @@ export default class {
         } else {
           if (!this.datosDepartamentos[año]) {
             this.datosDepartamentos[año] = [];
-          }
-
-          if (this.preDatosDepartamentos[año]) {
-            const tieneDatosPre = this.preDatosDepartamentos[año].find((dep) => dep[0] === codDep);
-
-            if (tieneDatosPre) {
-              console.log(año, tieneDatosPre, deps[codDep]);
-            }
           }
 
           const suma = deps[codDep].reduce((valorAnterior, valorActual) => valorAnterior + valorActual, 0);

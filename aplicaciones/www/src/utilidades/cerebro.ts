@@ -108,6 +108,9 @@ export async function cargarDatos() {
       if (nombreArchivo === 'ya2-8') {
         valorMaxY = 50;
         valorMaxColor = 50;
+      } else if (nombreArchivo === 'ya10-2') {
+        valorMaxY = 50;
+        valorMaxColor = 5;
       } else {
         valorMaxY = nal.max > nal.unidadMedida ? Math.ceil(nal.max / 100) * 100 : nal.unidadMedida;
         valorMaxColor = 100;

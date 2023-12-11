@@ -30,7 +30,7 @@ export const departamentos: ObjetoDepartamentos = {
     ['81', 'Arauca', 6.569577215, -70.96732394],
     ['85', 'Casanare', 5.404064237, -71.60188073],
     ['86', 'Putumayo', 0.3673031, -75.51406183],
-    ['88', 'Archipiélago de San Andrés, Providiencia y Santa Catalina', 12.54311512, -81.71762382],
+    ['88', 'Archipiélago de San Andrés, Providencia y Santa Catalina', 12.54311512, -81.71762382],
     ['91', 'Amazonas', -1.54622768, -71.50212858],
     ['94', 'Guainía', 2.727842865, -68.81661272],
     ['95', 'Guaviare', 1.924531973, -72.12859569],

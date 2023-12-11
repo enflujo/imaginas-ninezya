@@ -1,10 +1,14 @@
 {
+  "yaYA8_8-3": {
+    "peso": "3.77 MB",
+    "nombre": "Numerador_YA8_8.3"
+  },
   "ya10-1": {
     "peso": "543.82 kB",
     "nombre": "YA10_10.1"
   },
   "ya10-2": {
-    "peso": "537.62 kB",
+    "peso": "415.64 kB",
     "nombre": "YA10_10.2"
   },
   "ya10-3": {
@@ -32,56 +36,88 @@
     "nombre": "YA1_1.5"
   },
   "ya1-7": {
-    "peso": "154.39 kB",
+    "peso": "154.37 kB",
     "nombre": "YA1_1.7"
   },
   "ya1-8": {
     "peso": "345.77 kB",
     "nombre": "YA1_1.8"
   },
+  "ya2-1": {
+    "peso": "258.85 kB",
+    "nombre": "YA2_2.1"
+  },
+  "ya2-2": {
+    "peso": "228.9 kB",
+    "nombre": "YA2_2.2"
+  },
+  "ya2-3": {
+    "peso": "233.51 kB",
+    "nombre": "YA2_2.3"
+  },
   "ya2-4": {
-    "peso": "252.78 kB",
+    "peso": "241.81 kB",
     "nombre": "YA2_2.4"
   },
-  "ya2-5": {
-    "peso": "245.31 kB",
-    "nombre": "YA2_2.5"
-  },
-  "ya2-6": {
-    "peso": "240.35 kB",
-    "nombre": "YA2_2.6"
-  },
-  "ya2-7": {
-    "peso": "235 kB",
-    "nombre": "YA2_2.7"
-  },
   "ya3-1": {
-    "peso": "256.69 kB",
+    "peso": "214.39 kB",
     "nombre": "YA3_3.1"
   },
+  "ya3-10": {
+    "peso": "1.67 MB",
+    "nombre": "YA3_3.10"
+  },
+  "ya3-11": {
+    "peso": "1.67 MB",
+    "nombre": "YA3_3.11"
+  },
+  "ya3-12": {
+    "peso": "1.66 MB",
+    "nombre": "YA3_3.12"
+  },
+  "ya3-13": {
+    "peso": "245.77 kB",
+    "nombre": "YA3_3.13"
+  },
+  "ya3-14": {
+    "peso": "248.84 kB",
+    "nombre": "YA3_3.14"
+  },
+  "ya3-15": {
+    "peso": "243.2 kB",
+    "nombre": "YA3_3.15"
+  },
   "ya3-2": {
-    "peso": "214.39 kB",
+    "peso": "213.92 kB",
     "nombre": "YA3_3.2"
   },
   "ya3-3": {
-    "peso": "219.32 kB",
+    "peso": "1.03 MB",
     "nombre": "YA3_3.3"
   },
   "ya3-4": {
-    "peso": "300.52 kB",
+    "peso": "1.69 MB",
     "nombre": "YA3_3.4"
   },
   "ya3-5": {
-    "peso": "128.76 kB",
+    "peso": "1.69 MB",
     "nombre": "YA3_3.5"
   },
   "ya3-6": {
-    "peso": "361.69 kB",
+    "peso": "1.68 MB",
     "nombre": "YA3_3.6"
   },
   "ya3-7": {
-    "peso": "252.78 kB",
+    "peso": "1.67 MB",
     "nombre": "YA3_3.7"
+  },
+  "ya3-8": {
+    "peso": "1.67 MB",
+    "nombre": "YA3_3.8"
+  },
+  "ya3-9": {
+    "peso": "1.67 MB",
+    "nombre": "YA3_3.9"
   },
   "ya4-1": {
     "peso": "2.82 MB",
@@ -96,7 +132,19 @@
     "nombre": "YA4_4.3"
   },
   "ya4-4": {
-    "peso": "90.54 kB",
+    "peso": "25.56 kB",
     "nombre": "YA4_4.4"
+  },
+  "ya8-1": {
+    "peso": "1.03 MB",
+    "nombre": "YA8_8.1"
+  },
+  "ya8-3": {
+    "peso": "380.23 kB",
+    "nombre": "YA8_8.3"
+  },
+  "ya8-4": {
+    "peso": "143.34 kB",
+    "nombre": "YA8_8.4"
   }
 }

@@ -23,7 +23,8 @@
     "cli-color": "^2.0.3",
     "cli-progress": "^3.12.0",
     "node-emoji": "^2.1.0",
-    "xlstream": "^2.5.3"
+    "xlstream": "^2.5.3",
+    "xlsx": "^0.18.5"
   },
   "nodemonConfig": {
     "ignore": [
