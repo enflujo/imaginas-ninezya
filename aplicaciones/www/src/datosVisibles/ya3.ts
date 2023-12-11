@@ -14,7 +14,8 @@ export const ya3: DatosYa = {
       archivo: 'ya3-1',
       hay_datos: true,
       umbral: 30.5,
-      explicacion_umbral: 'De acuerdo con el Plan Nacional de Desarrollo se estalece que al finalizar el cuatrenio los colegios oficiales deben alcanzar un puntaja de 30,5 en Matemáticas.',
+      explicacion_umbral:
+        'De acuerdo con el Plan Nacional de Desarrollo se estalece que al finalizar el cuatrenio los colegios oficiales deben alcanzar un puntaja de 30,5 en Matemáticas.',
       explicacion:
         'Indica, en promedio, en qué categoría se encuentra el desempeño en matemáticas de los estudiantes que presentaron el Saber 11 en un departamento o municipio específico.',
       definicion: 'Mide el desempeño en promedio en el área de Matemáticas en la Prueba Saber 11.',
@@ -35,8 +36,10 @@ export const ya3: DatosYa = {
       archivo: 'ya3-2',
       hay_datos: true,
       umbral: 46.5,
-      explicacion_umbral: 'De acuerdo con el Plan Nacional de Desarrollo se estalece que al finalizar el cuatrenio los colegios oficiales deben alcanzar un puntaja de 46,5 en Lectura.',
-      explicacion: 'Indica, en promedio, en qué categoría se encuentra el desempeño en lectura de los estudiantes que presentaron el Saber 11 en un departamento o municipio específico.',
+      explicacion_umbral:
+        'De acuerdo con el Plan Nacional de Desarrollo se estalece que al finalizar el cuatrenio los colegios oficiales deben alcanzar un puntaja de 46,5 en Lectura.',
+      explicacion:
+        'Indica, en promedio, en qué categoría se encuentra el desempeño en lectura de los estudiantes que presentaron el Saber 11 en un departamento o municipio específico.',
       definicion: 'Mide el desempeño en promedio en el área de Lectura en la Prueba Saber 11.',
       metodologia:
         'Número Total de Evaluados en Cada Nivel de Desempeño en Lectura / Total de Evaluados en Lectura * 100 ***Los resultados individuales de la prueba Saber 11 (por área del conocimiento) son normalizados con una media de 50 y desviación de 10, tal como lo realiza el ICFES.',
@@ -54,8 +57,10 @@ export const ya3: DatosYa = {
       ruta: 'saber11-total',
       archivo: 'ya3-3',
       hay_datos: true,
-      explicacion_umbral: 'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
-      explicacion: 'Indica, en promedio, en qué categoría se encuentran clasificados los colegios de un municipio o departamento.',
+      explicacion_umbral:
+        'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
+      explicacion:
+        'Indica, en promedio, en qué categoría se encuentran clasificados los colegios de un municipio o departamento.',
       definicion: 'Mide el desempeño en promedio en la Prueba Saber 11 en un municipio o departamento.',
       metodologia:
         'Número Total de Evaluados en Cada Nivel de Desempeño y Área / Total de Evaluados en cada una de las áreas * 100 ***Los resultados individuales de la prueba Saber 11 (por área del conocimiento) son normalizados con una media de 50 y desviación de 10, tal como lo realiza el ICFES.',
@@ -73,233 +78,261 @@ export const ya3: DatosYa = {
       ruta: 'cobertura-primaria',
       archivo: 'ya3-4',
       hay_datos: true,
-      explicacion_umbral: 'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
+      explicacion_umbral:
+        'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
       explicacion: 'Indica la cobertura bruta de estudiantes que cursan primaria.',
-      definicion: '" La tasa de cobertura bruta mide la relación porcentual entre el número total de estudiantes matriculados sobre el total de la población en edad teórica para cursar el nivel educativo.**** En algunos casos la demanda social es mayor a la población en edad teórica para cursar este nivel (6-10 años), explicada por estudiantes en extraedad, por lo que el indicador toma valores superiores al 100%.',
+      definicion:
+        '" La tasa de cobertura bruta mide la relación porcentual entre el número total de estudiantes matriculados sobre el total de la población en edad teórica para cursar el nivel educativo.**** En algunos casos la demanda social es mayor a la población en edad teórica para cursar este nivel (6-10 años), explicada por estudiantes en extraedad, por lo que el indicador toma valores superiores al 100%.',
       metodologia:
         'Número total de estudiantes matriculados en transicion en edad teórica para cursar este grado (6-10 años) / Total de la población correspondiente a esa misma edad en el mismo periodo y territorio.',
       unidad: 'Porcentaje',
-      fuente_numerador:
-        'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
-      fuente_denominador:
-        'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
+      fuente_numerador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
+      fuente_denominador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
       desagregacion: 'Municipal',
-      contexto: 'Las tasas de cobertura permiten medir la capacidad del sistema educativo para atender la demanda. Por otro lado, la base del aprendizaje se establece principalmente en los primeros años de vida, antes de que los niños ingresen a la escuela primaria. Aquellos que enfrentan dificultades en estas etapas iniciales generalmente no logran alcanzar el nivel de sus compañeros, lo que perpetúa un ciclo de bajo rendimiento y elevadas tasas de deserción escolar, manteniendo desventajas preexistentes en las poblaciones más vulnerables. Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
+      contexto:
+        'Las tasas de cobertura permiten medir la capacidad del sistema educativo para atender la demanda. Por otro lado, la base del aprendizaje se establece principalmente en los primeros años de vida, antes de que los niños ingresen a la escuela primaria. Aquellos que enfrentan dificultades en estas etapas iniciales generalmente no logran alcanzar el nivel de sus compañeros, lo que perpetúa un ciclo de bajo rendimiento y elevadas tasas de deserción escolar, manteniendo desventajas preexistentes en las poblaciones más vulnerables. Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
       interpretacion:
         'Un valor del 80% indica que 80 de cada 100 estudiantes en edad teórica para cursar primaria asisten a un establecimiento educativo oficial o no oficial en un momento y territorio específicos. Más Información: https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf',
     },
     {
-      nombre:
-        'Cobertura bruta secundaria',
+      nombre: 'Cobertura bruta secundaria',
       ruta: 'cobertura-secundaria',
       archivo: 'ya3-5',
       hay_datos: true,
-      explicacion_umbral: 'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
+      explicacion_umbral:
+        'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
       explicacion: 'Indica la cobertura bruta de estudiantes que cursan secundaria.',
-      definicion: 'La tasa de cobertura bruta mide la relación porcentual entre el número total de estudiantes matriculados sobre el total de la población en edad teórica para cursar el nivel educativo.**** En algunos casos la demanda social es mayor a la población en edad teórica para cursar este nivel (11-14 años), explicada por estudiantes en extraedad, por lo que el indicador toma valores superiores al 100%.',
-      metodologia: 'Número total de estudiantes matriculados en transicion en edad teórica para cursar este grado (11-14 años) / Total de la población correspondiente a esa misma edad en el mismo periodo y territorio.',
+      definicion:
+        'La tasa de cobertura bruta mide la relación porcentual entre el número total de estudiantes matriculados sobre el total de la población en edad teórica para cursar el nivel educativo.**** En algunos casos la demanda social es mayor a la población en edad teórica para cursar este nivel (11-14 años), explicada por estudiantes en extraedad, por lo que el indicador toma valores superiores al 100%.',
+      metodologia:
+        'Número total de estudiantes matriculados en transicion en edad teórica para cursar este grado (11-14 años) / Total de la población correspondiente a esa misma edad en el mismo periodo y territorio.',
       unidad: 'Porcentaje',
-      fuente_numerador:
-        'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
-      fuente_denominador:
-        'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
+      fuente_numerador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
+      fuente_denominador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
       desagregacion: 'Municipal',
-      contexto: 'Las tasas de cobertura permiten medir la capacidad del sistema educativo para atender la demanda. Por otro lado, la base del aprendizaje se establece principalmente en los primeros años de vida, antes de que los niños ingresen a la escuela primaria. Aquellos que enfrentan dificultades en estas etapas iniciales generalmente no logran alcanzar el nivel de sus compañeros, lo que perpetúa un ciclo de bajo rendimiento y elevadas tasas de deserción escolar, manteniendo desventajas preexistentes en las poblaciones más vulnerables. Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
-      interpretacion: 'Un valor del 75% indica que 75 de cada 100 estudiantes en edad teórica para cursar primaria asisten a un establecimiento educativo oficial o no oficial en un momento y territorio específicos. Más Información: https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf',
+      contexto:
+        'Las tasas de cobertura permiten medir la capacidad del sistema educativo para atender la demanda. Por otro lado, la base del aprendizaje se establece principalmente en los primeros años de vida, antes de que los niños ingresen a la escuela primaria. Aquellos que enfrentan dificultades en estas etapas iniciales generalmente no logran alcanzar el nivel de sus compañeros, lo que perpetúa un ciclo de bajo rendimiento y elevadas tasas de deserción escolar, manteniendo desventajas preexistentes en las poblaciones más vulnerables. Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
+      interpretacion:
+        'Un valor del 75% indica que 75 de cada 100 estudiantes en edad teórica para cursar primaria asisten a un establecimiento educativo oficial o no oficial en un momento y territorio específicos. Más Información: https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf',
     },
     {
-      nombre:
-        'Cobertura bruta media',
+      nombre: 'Cobertura bruta media',
       ruta: 'cobertura-media',
       archivo: 'ya3-6',
       hay_datos: true,
       umbral: 86.5,
       explicacion_umbral: 'Plan Sectorial 2018 - 2022.',
       explicacion: 'Indica la cobertura bruta de estudiantes que cursan educación media.',
-      definicion: 'La tasa de cobertura bruta mide la relación porcentual entre el número total de estudiantes matriculados sobre el total de la población en edad teórica para cursar el nivel educativo.**** En algunos casos la demanda social es mayor a la población en edad teórica para cursar este nivel (15-16 años), explicada por estudiantes en extraedad, por lo que el indicador toma valores superiores al 100%.',
-      metodologia: 'Número total de estudiantes matriculados en transicion en edad teórica para cursar este grado (15-16 años) / Total de la población correspondiente a esa misma edad en el mismo periodo y territorio.',
+      definicion:
+        'La tasa de cobertura bruta mide la relación porcentual entre el número total de estudiantes matriculados sobre el total de la población en edad teórica para cursar el nivel educativo.**** En algunos casos la demanda social es mayor a la población en edad teórica para cursar este nivel (15-16 años), explicada por estudiantes en extraedad, por lo que el indicador toma valores superiores al 100%.',
+      metodologia:
+        'Número total de estudiantes matriculados en transicion en edad teórica para cursar este grado (15-16 años) / Total de la población correspondiente a esa misma edad en el mismo periodo y territorio.',
       unidad: 'Porcentaje',
-      fuente_numerador:
-        'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
-      fuente_denominador:
-        'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
+      fuente_numerador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
+      fuente_denominador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
       desagregacion: 'Municipal',
-      contexto: 'Las tasas de cobertura permiten medir la capacidad del sistema educativo para atender la demanda. Por otro lado, la base del aprendizaje se establece principalmente en los primeros años de vida, antes de que los niños ingresen a la escuela primaria. Aquellos que enfrentan dificultades en estas etapas iniciales generalmente no logran alcanzar el nivel de sus compañeros, lo que perpetúa un ciclo de bajo rendimiento y elevadas tasas de deserción escolar, manteniendo desventajas preexistentes en las poblaciones más vulnerables. Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
-      interpretacion: 'Un valor del 67% indica que 67 de cada 100 estudiantes en edad teórica para cursar educación media  asisten a un establecimiento educativo oficial o no oficial en un momento y territorio específicos. Más Información: https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf',
+      contexto:
+        'Las tasas de cobertura permiten medir la capacidad del sistema educativo para atender la demanda. Por otro lado, la base del aprendizaje se establece principalmente en los primeros años de vida, antes de que los niños ingresen a la escuela primaria. Aquellos que enfrentan dificultades en estas etapas iniciales generalmente no logran alcanzar el nivel de sus compañeros, lo que perpetúa un ciclo de bajo rendimiento y elevadas tasas de deserción escolar, manteniendo desventajas preexistentes en las poblaciones más vulnerables. Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
+      interpretacion:
+        'Un valor del 67% indica que 67 de cada 100 estudiantes en edad teórica para cursar educación media  asisten a un establecimiento educativo oficial o no oficial en un momento y territorio específicos. Más Información: https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf',
     },
     {
-      nombre:
-        'Reprobación primaria',
+      nombre: 'Reprobación primaria',
       ruta: 'reprobacion-primaria',
       archivo: 'ya3-7',
       hay_datos: true,
-      explicacion_umbral: 'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
+      explicacion_umbral:
+        'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
       explicacion: 'Indica el porcentaje de estudiantes que reprobaron primaria.',
-      definicion: 'Tasa de reprobación de estudiantes del sector oficial en primaria. Identifica el porcentaje de alumnos en este nivel educativo que reprueba de acuerdo con los planes y programas de estudio vigentes.',
-      metodologia: 'Número total de estudiantes que reprobaron primaria / Total de estudiantes que se encuentran matriculados en primaria  en el mismo periodo y territorio.',
+      definicion:
+        'Tasa de reprobación de estudiantes del sector oficial en primaria. Identifica el porcentaje de alumnos en este nivel educativo que reprueba de acuerdo con los planes y programas de estudio vigentes.',
+      metodologia:
+        'Número total de estudiantes que reprobaron primaria / Total de estudiantes que se encuentran matriculados en primaria  en el mismo periodo y territorio.',
       unidad: 'Porcentaje',
-      fuente_numerador:
-        'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
-      fuente_denominador:
-        'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
+      fuente_numerador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
+      fuente_denominador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
       desagregacion: 'Municipal',
-      contexto: 'La Tasa de Reprobación constituye un indicador que refleja el porcentaje de estudiantes inscritos que no lograron superar los requisitos académicos establecidos en los programas educativos de cierto nivel, debiendo repetir el curso. Esta situación conlleva implicaciones tanto emocionales como sociales para los alumnos, pudiendo incluso llevar, en situaciones extremas, a la deserción educativa, a pesar de la opción de repetir el nivel. Además, la reprobación evidencia un bajo rendimiento escolar y puede indicar desigualdades en el proceso de aprendizaje, siendo la principal causa del fracaso educativo y un posible indicativo de la baja calidad educativa. En respuesta a esto, numerosas estrategias de políticas educativas se enfocan en mejorar la calidad de la educación, reducir la tasa de reprobación y eliminar el fracaso escolar, lo que tiene un impacto significativo en la calidad de las instituciones educativas. Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
-      interpretacion: 'Un valor del 3% indica que 3 de cada 100 estudiantes no cumplieron con los requisitos académicos exigidos para aprobar primaria  en un momento y territorio específicos. Más Información:  https://www.javeriana.edu.co/-/noticia-643-mil-estudiantes-perdieron-el-a%C3%B1o-escolar | Más Información: https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf',
+      contexto:
+        'La Tasa de Reprobación constituye un indicador que refleja el porcentaje de estudiantes inscritos que no lograron superar los requisitos académicos establecidos en los programas educativos de cierto nivel, debiendo repetir el curso. Esta situación conlleva implicaciones tanto emocionales como sociales para los alumnos, pudiendo incluso llevar, en situaciones extremas, a la deserción educativa, a pesar de la opción de repetir el nivel. Además, la reprobación evidencia un bajo rendimiento escolar y puede indicar desigualdades en el proceso de aprendizaje, siendo la principal causa del fracaso educativo y un posible indicativo de la baja calidad educativa. En respuesta a esto, numerosas estrategias de políticas educativas se enfocan en mejorar la calidad de la educación, reducir la tasa de reprobación y eliminar el fracaso escolar, lo que tiene un impacto significativo en la calidad de las instituciones educativas. Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
+      interpretacion:
+        'Un valor del 3% indica que 3 de cada 100 estudiantes no cumplieron con los requisitos académicos exigidos para aprobar primaria  en un momento y territorio específicos. Más Información:  https://www.javeriana.edu.co/-/noticia-643-mil-estudiantes-perdieron-el-a%C3%B1o-escolar | Más Información: https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf',
     },
     {
-      nombre:
-        'Reprobación secundaria',
+      nombre: 'Reprobación secundaria',
       ruta: 'reprobacion-secundaria',
       archivo: 'ya3-8',
       hay_datos: true,
-      explicacion_umbral: 'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
+      explicacion_umbral:
+        'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
       explicacion: 'Indica el porcentaje de estudiantes que reprobaron secundaria.',
-      definicion: 'Tasa de reprobación de estudiantes del sector oficial en secundaria. Identifica el porcentaje de alumnos en este nivel educativo que reprueba de acuerdo con los planes y programas de estudio vigentes.',
-      metodologia: 'Número total de estudiantes que reprobaron secundaria / Total de estudiantes que se encuentran matriculados en secundaria en el mismo periodo y territorio.',
+      definicion:
+        'Tasa de reprobación de estudiantes del sector oficial en secundaria. Identifica el porcentaje de alumnos en este nivel educativo que reprueba de acuerdo con los planes y programas de estudio vigentes.',
+      metodologia:
+        'Número total de estudiantes que reprobaron secundaria / Total de estudiantes que se encuentran matriculados en secundaria en el mismo periodo y territorio.',
       unidad: 'Porcentaje',
-      fuente_numerador:
-        'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
-      fuente_denominador:
-        'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
+      fuente_numerador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
+      fuente_denominador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
       desagregacion: 'Municipal',
-      contexto: 'La Tasa de Reprobación constituye un indicador que refleja el porcentaje de estudiantes inscritos que no lograron superar los requisitos académicos establecidos en los programas educativos de cierto nivel, debiendo repetir el curso. Esta situación conlleva implicaciones tanto emocionales como sociales para los alumnos, pudiendo incluso llevar, en situaciones extremas, a la deserción educativa, a pesar de la opción de repetir el nivel. Además, la reprobación evidencia un bajo rendimiento escolar y puede indicar desigualdades en el proceso de aprendizaje, siendo la principal causa del fracaso educativo y un posible indicativo de la baja calidad educativa. En respuesta a esto, numerosas estrategias de políticas educativas se enfocan en mejorar la calidad de la educación, reducir la tasa de reprobación y eliminar el fracaso escolar, lo que tiene un impacto significativo en la calidad de las instituciones educativas. Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
-      interpretacion: 'Un valor del 5% indica que 5 de cada 100 estudiantes no cumplieron con los requisitos académicos exigidos para aprobar secundaria en un momento y territorio específicos. Más Información:  https://www.javeriana.edu.co/-/noticia-643-mil-estudiantes-perdieron-el-a%C3%B1o-escolar | Más Información: https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf',
+      contexto:
+        'La Tasa de Reprobación constituye un indicador que refleja el porcentaje de estudiantes inscritos que no lograron superar los requisitos académicos establecidos en los programas educativos de cierto nivel, debiendo repetir el curso. Esta situación conlleva implicaciones tanto emocionales como sociales para los alumnos, pudiendo incluso llevar, en situaciones extremas, a la deserción educativa, a pesar de la opción de repetir el nivel. Además, la reprobación evidencia un bajo rendimiento escolar y puede indicar desigualdades en el proceso de aprendizaje, siendo la principal causa del fracaso educativo y un posible indicativo de la baja calidad educativa. En respuesta a esto, numerosas estrategias de políticas educativas se enfocan en mejorar la calidad de la educación, reducir la tasa de reprobación y eliminar el fracaso escolar, lo que tiene un impacto significativo en la calidad de las instituciones educativas. Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
+      interpretacion:
+        'Un valor del 5% indica que 5 de cada 100 estudiantes no cumplieron con los requisitos académicos exigidos para aprobar secundaria en un momento y territorio específicos. Más Información:  https://www.javeriana.edu.co/-/noticia-643-mil-estudiantes-perdieron-el-a%C3%B1o-escolar | Más Información: https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf',
     },
     {
-      nombre:
-        'Reprobación media',
+      nombre: 'Reprobación media',
       ruta: 'reprobacion-media',
       archivo: 'ya3-9',
       hay_datos: true,
-      explicacion_umbral: 'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
+      explicacion_umbral:
+        'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
       explicacion: 'Indica el porcentaje de estudiantes que reprobaron educación media.',
-      definicion: 'Tasa de reprobación de estudiantes del sector oficial en educación. Identifica el porcentaje de alumnos en este nivel educativo que reprueba de acuerdo con los planes y programas de estudio vigentes.',
-      metodologia: 'Número total de estudiantes que reprobaron educación media / Total de estudiantes que se encuentran matriculados en educación media en el mismo periodo y territorio.',
+      definicion:
+        'Tasa de reprobación de estudiantes del sector oficial en educación. Identifica el porcentaje de alumnos en este nivel educativo que reprueba de acuerdo con los planes y programas de estudio vigentes.',
+      metodologia:
+        'Número total de estudiantes que reprobaron educación media / Total de estudiantes que se encuentran matriculados en educación media en el mismo periodo y territorio.',
       unidad: 'Porcentaje',
-      fuente_numerador:
-        'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
-      fuente_denominador:
-        'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
+      fuente_numerador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
+      fuente_denominador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
       desagregacion: 'Municipal',
-      contexto: 'La Tasa de Reprobación constituye un indicador que refleja el porcentaje de estudiantes inscritos que no lograron superar los requisitos académicos establecidos en los programas educativos de cierto nivel, debiendo repetir el curso. Esta situación conlleva implicaciones tanto emocionales como sociales para los alumnos, pudiendo incluso llevar, en situaciones extremas, a la deserción educativa, a pesar de la opción de repetir el nivel. Además, la reprobación evidencia un bajo rendimiento escolar y puede indicar desigualdades en el proceso de aprendizaje, siendo la principal causa del fracaso educativo y un posible indicativo de la baja calidad educativa. En respuesta a esto, numerosas estrategias de políticas educativas se enfocan en mejorar la calidad de la educación, reducir la tasa de reprobación y eliminar el fracaso escolar, lo que tiene un impacto significativo en la calidad de las instituciones educativas. Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
-      interpretacion: 'Un valor del 6% indica que 6 de cada 100 estudiantes no cumplieron con los requisitos académicos exigidos para aprobar educación media  en un momento y territorio específicos. Más Información:Más Información: https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf |  https://www.javeriana.edu.co/-/noticia-643-mil-estudiantes-perdieron-el-a%C3%B1o-escolar',
+      contexto:
+        'La Tasa de Reprobación constituye un indicador que refleja el porcentaje de estudiantes inscritos que no lograron superar los requisitos académicos establecidos en los programas educativos de cierto nivel, debiendo repetir el curso. Esta situación conlleva implicaciones tanto emocionales como sociales para los alumnos, pudiendo incluso llevar, en situaciones extremas, a la deserción educativa, a pesar de la opción de repetir el nivel. Además, la reprobación evidencia un bajo rendimiento escolar y puede indicar desigualdades en el proceso de aprendizaje, siendo la principal causa del fracaso educativo y un posible indicativo de la baja calidad educativa. En respuesta a esto, numerosas estrategias de políticas educativas se enfocan en mejorar la calidad de la educación, reducir la tasa de reprobación y eliminar el fracaso escolar, lo que tiene un impacto significativo en la calidad de las instituciones educativas. Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
+      interpretacion:
+        'Un valor del 6% indica que 6 de cada 100 estudiantes no cumplieron con los requisitos académicos exigidos para aprobar educación media  en un momento y territorio específicos. Más Información:Más Información: https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf |  https://www.javeriana.edu.co/-/noticia-643-mil-estudiantes-perdieron-el-a%C3%B1o-escolar',
     },
     {
-      nombre:
-        'Repitencia primaria',
+      nombre: 'Repitencia primaria',
       ruta: 'repitencia-primaria',
       archivo: 'ya3-10',
       hay_datos: true,
-      explicacion_umbral: 'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
-      explicacion: 'Indica el porcentaje de estudiantes que se encuentran repitiendo alguno de los grados que corresponden a educación primaria.',
-      definicion: 'Tasa de repitencia del sector oficial. Corresponde al porcentaje de alumnos matriculados en primaria que se encuentran repitiendo el mismo grado cursado el año anterior.',
-      metodologia: 'Número total de estudiantes que se encuentran repitiendo primaria / Total de estudiantes que se encuentran matriculados en primaria en el mismo periodo y territorio.',
+      explicacion_umbral:
+        'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
+      explicacion:
+        'Indica el porcentaje de estudiantes que se encuentran repitiendo alguno de los grados que corresponden a educación primaria.',
+      definicion:
+        'Tasa de repitencia del sector oficial. Corresponde al porcentaje de alumnos matriculados en primaria que se encuentran repitiendo el mismo grado cursado el año anterior.',
+      metodologia:
+        'Número total de estudiantes que se encuentran repitiendo primaria / Total de estudiantes que se encuentran matriculados en primaria en el mismo periodo y territorio.',
       unidad: 'Porcentaje',
-      fuente_numerador:
-        'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
-      fuente_denominador:
-        'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
+      fuente_numerador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
+      fuente_denominador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
       desagregacion: 'Municipal',
-      contexto: 'La repetición se define como la circunstancia en la cual un estudiante se ve forzado a pasar por el mismo grado educativo en más de una ocasión, siendo una decisión administrativa tomada por el profesor. La repetición se considera un indicador de eficacia escolar y evalúa la productividad de la inversión por alumno en términos estadísticos, considerando la capacidad del sistema educativo para hacer frente a una creciente demanda de población. En este contexto, tasas elevadas indican problemas serios relacionados con la repetición o la eficiencia interna del sistema educativo.Dado que la repetición continua puede llevar a situaciones de abandono, se espera que la reducción de esta práctica permita a los estudiantes completar su trayectoria educativa. Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
-      interpretacion: 'Un valor del 5% indica que 5 de cada 100 estudiantes en edad teórica para cursar primaria se encuentran repitiendo el mismo grado cursado el año anterior en un establecimiento educativo oficial  en un momento y territorio específicos. Más Información: https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf | https://www.javeriana.edu.co/pesquisa/repitencia-escolar-durante-pandemia/',
+      contexto:
+        'La repetición se define como la circunstancia en la cual un estudiante se ve forzado a pasar por el mismo grado educativo en más de una ocasión, siendo una decisión administrativa tomada por el profesor. La repetición se considera un indicador de eficacia escolar y evalúa la productividad de la inversión por alumno en términos estadísticos, considerando la capacidad del sistema educativo para hacer frente a una creciente demanda de población. En este contexto, tasas elevadas indican problemas serios relacionados con la repetición o la eficiencia interna del sistema educativo.Dado que la repetición continua puede llevar a situaciones de abandono, se espera que la reducción de esta práctica permita a los estudiantes completar su trayectoria educativa. Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
+      interpretacion:
+        'Un valor del 5% indica que 5 de cada 100 estudiantes en edad teórica para cursar primaria se encuentran repitiendo el mismo grado cursado el año anterior en un establecimiento educativo oficial  en un momento y territorio específicos. Más Información: https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf | https://www.javeriana.edu.co/pesquisa/repitencia-escolar-durante-pandemia/',
     },
     {
-      nombre:
-        'Repitencia secundaria',
+      nombre: 'Repitencia secundaria',
       ruta: 'repitencia-secundaria',
       archivo: 'ya3-11',
       hay_datos: true,
-      explicacion_umbral: 'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
-      explicacion: 'Indica el porcentaje de estudiantes que se encuentran repitiendo alguno de los grados que corresponden a educación secundaria.',
-      definicion: 'Tasa de repitencia del sector oficial. Corresponde al porcentaje de alumnos matriculados en secundaria que se encuentran repitiendo el mismo grado cursado el año anterior.',
-      metodologia: 'Número total de estudiantes que se encuentran repitiendo secundaria/ Total de estudiantes que se encuentran matriculados en secundaria en el mismo periodo y territorio.',
+      explicacion_umbral:
+        'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
+      explicacion:
+        'Indica el porcentaje de estudiantes que se encuentran repitiendo alguno de los grados que corresponden a educación secundaria.',
+      definicion:
+        'Tasa de repitencia del sector oficial. Corresponde al porcentaje de alumnos matriculados en secundaria que se encuentran repitiendo el mismo grado cursado el año anterior.',
+      metodologia:
+        'Número total de estudiantes que se encuentran repitiendo secundaria/ Total de estudiantes que se encuentran matriculados en secundaria en el mismo periodo y territorio.',
       unidad: 'Porcentaje',
-      fuente_numerador:
-        'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
-      fuente_denominador:
-        'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
+      fuente_numerador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
+      fuente_denominador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
       desagregacion: 'Municipal',
-      contexto: 'La repetición se define como la circunstancia en la cual un estudiante se ve forzado a pasar por el mismo grado educativo en más de una ocasión, siendo una decisión administrativa tomada por el profesor. La repetición se considera un indicador de eficacia escolar y evalúa la productividad de la inversión por alumno en términos estadísticos, considerando la capacidad del sistema educativo para hacer frente a una creciente demanda de población. En este contexto, tasas elevadas indican problemas serios relacionados con la repetición o la eficiencia interna del sistema educativo.Dado que la repetición continua puede llevar a situaciones de abandono, se espera que la reducción de esta práctica permita a los estudiantes completar su trayectoria educativa. Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
-      interpretacion: 'Un valor del 5% indica que 5 de cada 100 estudiantes en edad teórica para cursar secundaria se encuentran repitiendo el mismo grado cursado el año anterior en un establecimiento educativo oficial  en un momento y territorio específicos. Más Información: Más Información: https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf |https://www.javeriana.edu.co/pesquisa/repitencia-escolar-durante-pandemia/',
+      contexto:
+        'La repetición se define como la circunstancia en la cual un estudiante se ve forzado a pasar por el mismo grado educativo en más de una ocasión, siendo una decisión administrativa tomada por el profesor. La repetición se considera un indicador de eficacia escolar y evalúa la productividad de la inversión por alumno en términos estadísticos, considerando la capacidad del sistema educativo para hacer frente a una creciente demanda de población. En este contexto, tasas elevadas indican problemas serios relacionados con la repetición o la eficiencia interna del sistema educativo.Dado que la repetición continua puede llevar a situaciones de abandono, se espera que la reducción de esta práctica permita a los estudiantes completar su trayectoria educativa. Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
+      interpretacion:
+        'Un valor del 5% indica que 5 de cada 100 estudiantes en edad teórica para cursar secundaria se encuentran repitiendo el mismo grado cursado el año anterior en un establecimiento educativo oficial  en un momento y territorio específicos. Más Información: Más Información: https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf |https://www.javeriana.edu.co/pesquisa/repitencia-escolar-durante-pandemia/',
     },
     {
-      nombre:
-        'Repitencia media',
+      nombre: 'Repitencia media',
       ruta: 'repitencia-media',
       archivo: 'ya3-12',
       hay_datos: true,
-      explicacion_umbral: 'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
-      explicacion: 'Indica el porcentaje de estudiantes que se encuentran repitiendo alguno de los grados que corresponden a educación media.',
-      definicion: 'Tasa de repitencia del sector oficial. Corresponde al porcentaje de alumnos matriculados en secundaria que se encuentran repitiendo el mismo grado cursado el año anterior.',
-      metodologia: 'Número total de estudiantes que se encuentran repitiendo educación media / Total de estudiantes que se encuentran matriculados en educación media en el mismo periodo y territorio.',
+      explicacion_umbral:
+        'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
+      explicacion:
+        'Indica el porcentaje de estudiantes que se encuentran repitiendo alguno de los grados que corresponden a educación media.',
+      definicion:
+        'Tasa de repitencia del sector oficial. Corresponde al porcentaje de alumnos matriculados en secundaria que se encuentran repitiendo el mismo grado cursado el año anterior.',
+      metodologia:
+        'Número total de estudiantes que se encuentran repitiendo educación media / Total de estudiantes que se encuentran matriculados en educación media en el mismo periodo y territorio.',
       unidad: 'Porcentaje',
-      fuente_numerador:
-        'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
-      fuente_denominador:
-        'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
+      fuente_numerador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
+      fuente_denominador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
       desagregacion: 'Municipal',
-      contexto: 'La repetición se define como la circunstancia en la cual un estudiante se ve forzado a pasar por el mismo grado educativo en más de una ocasión, siendo una decisión administrativa tomada por el profesor. La repetición se considera un indicador de eficacia escolar y evalúa la productividad de la inversión por alumno en términos estadísticos, considerando la capacidad del sistema educativo para hacer frente a una creciente demanda de población. En este contexto, tasas elevadas indican problemas serios relacionados con la repetición o la eficiencia interna del sistema educativo.Dado que la repetición continua puede llevar a situaciones de abandono, se espera que la reducción de esta práctica permita a los estudiantes completar su trayectoria educativa. Más Información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
-      interpretacion: 'Un valor del 5% indica que 5 de cada 100 estudiantes en edad teórica para cursar educación media se encuentran repitiendo el mismo grado cursado el año anterior en un establecimiento educativo oficial  en un momento y territorio específicos. Más Información:  Más Información: https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf | https://www.javeriana.edu.co/pesquisa/repitencia-escolar-durante-pandemia/',
+      contexto:
+        'La repetición se define como la circunstancia en la cual un estudiante se ve forzado a pasar por el mismo grado educativo en más de una ocasión, siendo una decisión administrativa tomada por el profesor. La repetición se considera un indicador de eficacia escolar y evalúa la productividad de la inversión por alumno en términos estadísticos, considerando la capacidad del sistema educativo para hacer frente a una creciente demanda de población. En este contexto, tasas elevadas indican problemas serios relacionados con la repetición o la eficiencia interna del sistema educativo.Dado que la repetición continua puede llevar a situaciones de abandono, se espera que la reducción de esta práctica permita a los estudiantes completar su trayectoria educativa. Más Información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
+      interpretacion:
+        'Un valor del 5% indica que 5 de cada 100 estudiantes en edad teórica para cursar educación media se encuentran repitiendo el mismo grado cursado el año anterior en un establecimiento educativo oficial  en un momento y territorio específicos. Más Información:  Más Información: https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf | https://www.javeriana.edu.co/pesquisa/repitencia-escolar-durante-pandemia/',
     },
     {
-      nombre:
-        'Deserción primaria intra-anual',
+      nombre: 'Deserción primaria intra-anual',
       ruta: 'desercion-primaria',
       archivo: 'ya3-13',
       hay_datos: true,
       umbral: 2.7,
-      explicacion_umbral: 'Según lo estipulado en el Plan Sectorial 2022-2026, la meta para el año 2026 consiste en disminuir la tasa de deserción escolar a un nivel inferior del 2,7%.',
-      explicacion: 'Indica el porcentaje de estudiantes que se encontraban cursando primaria y abandonaron el sistema educativo antes de finalizar el año lectivo.',
-      definicion: 'Tasa de desercion intra-anual. Porcentaje de estudiantes que abandonan el sistema educativo antes de finalizar el año lectivo de primaria.',
-      metodologia: 'Número total de estudiantes matriculados en primaria que abandonaron el sistema escolar antes de terminar el año lectivo / Total de estudiantes que se encuentran matriculados en transición en el mismo periodo y territorio.',
+      explicacion_umbral:
+        'Según lo estipulado en el Plan Sectorial 2022-2026, la meta para el año 2026 consiste en disminuir la tasa de deserción escolar a un nivel inferior del 2,7%.',
+      explicacion:
+        'Indica el porcentaje de estudiantes que se encontraban cursando primaria y abandonaron el sistema educativo antes de finalizar el año lectivo.',
+      definicion:
+        'Tasa de desercion intra-anual. Porcentaje de estudiantes que abandonan el sistema educativo antes de finalizar el año lectivo de primaria.',
+      metodologia:
+        'Número total de estudiantes matriculados en primaria que abandonaron el sistema escolar antes de terminar el año lectivo / Total de estudiantes que se encuentran matriculados en transición en el mismo periodo y territorio.',
       unidad: 'Porcentaje',
-      fuente_numerador:
-        'Ministerio de Educación Nacional - SIMAT.',
-      fuente_denominador:
-        'Ministerio de Educación Nacional - SIMAT.',
+      fuente_numerador: 'Ministerio de Educación Nacional - SIMAT.',
+      fuente_denominador: 'Ministerio de Educación Nacional - SIMAT.',
       desagregacion: 'Municipal',
-      contexto: 'La tasa de deserción intra-anual es una medida porcentual del abandono estudiantil durante el transcurso del ciclo escolar. Por lo tanto se interpreta como la  interrupción o desvinculación de los estudiantes sin haber terminado el nivel para el cual se matricularon. Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
-      interpretacion: 'Un valor del 2% indica que 2 de cada 100 estudiantes en edad teórica para cursar primaria desertaron en el año lectivo en un momento y territorio específicos. Más Información: https://unitedwaycolombia.org/2023/10/19/desercion-escolar-en-colombia-un-desafio-que-se-agrava/ | Más Información: https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf',
+      contexto:
+        'La tasa de deserción intra-anual es una medida porcentual del abandono estudiantil durante el transcurso del ciclo escolar. Por lo tanto se interpreta como la  interrupción o desvinculación de los estudiantes sin haber terminado el nivel para el cual se matricularon. Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
+      interpretacion:
+        'Un valor del 2% indica que 2 de cada 100 estudiantes en edad teórica para cursar primaria desertaron en el año lectivo en un momento y territorio específicos. Más Información: https://unitedwaycolombia.org/2023/10/19/desercion-escolar-en-colombia-un-desafio-que-se-agrava/ | Más Información: https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf',
     },
     {
-      nombre:
-        'Deserción secundaria intra-anual',
+      nombre: 'Deserción secundaria intra-anual',
       ruta: 'desercion-secundaria',
       archivo: 'ya3-14',
       hay_datos: true,
       umbral: 2.7,
-      explicacion_umbral: 'Según lo estipulado en el Plan Sectorial 2022-2026, la meta para el año 2026 consiste en disminuir la tasa de deserción escolar a un nivel inferior del 2,7%.',
-      explicacion: 'Indica el porcentaje de estudiantes que se encontraban cursando secundaria y abandonaron el sistema educativo antes de finalizar el año lectivo.',
-      definicion: 'Tasa de desercion intra-anual. Porcentaje de estudiantes que abandonan el sistema educativo antes de finalizar el año lectivo de secundaria.',
-      metodologia: 'Número total de estudiantes matriculados en secundaria que abandonaron el sistema escolar antes de terminar el año lectivo / Total de estudiantes que se encuentran matriculados en transición en el mismo periodo y territorio.',
+      explicacion_umbral:
+        'Según lo estipulado en el Plan Sectorial 2022-2026, la meta para el año 2026 consiste en disminuir la tasa de deserción escolar a un nivel inferior del 2,7%.',
+      explicacion:
+        'Indica el porcentaje de estudiantes que se encontraban cursando secundaria y abandonaron el sistema educativo antes de finalizar el año lectivo.',
+      definicion:
+        'Tasa de desercion intra-anual. Porcentaje de estudiantes que abandonan el sistema educativo antes de finalizar el año lectivo de secundaria.',
+      metodologia:
+        'Número total de estudiantes matriculados en secundaria que abandonaron el sistema escolar antes de terminar el año lectivo / Total de estudiantes que se encuentran matriculados en transición en el mismo periodo y territorio.',
       unidad: 'Porcentaje',
-      fuente_numerador:
-        'Ministerio de Educación Nacional - SIMAT.',
-      fuente_denominador:
-        'Ministerio de Educación Nacional - SIMAT.',
+      fuente_numerador: 'Ministerio de Educación Nacional - SIMAT.',
+      fuente_denominador: 'Ministerio de Educación Nacional - SIMAT.',
       desagregacion: 'Municipal',
-      contexto: 'La tasa de deserción intra-anual es una medida porcentual del abandono estudiantil durante el transcurso del ciclo escolar. Por lo tanto se interpreta como la  interrupción o desvinculación de los estudiantes sin haber terminado el nivel para el cual se matricularon. Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
-      interpretacion: 'Un valor del 2% indica que 2 de cada 100 estudiantes en edad teórica para cursar secundaria desertaron en el año lectivo en un momento y territorio específicos. Más Información: https://unitedwaycolombia.org/2023/10/19/desercion-escolar-en-colombia-un-desafio-que-se-agrava/ | Más Información: https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf',
+      contexto:
+        'La tasa de deserción intra-anual es una medida porcentual del abandono estudiantil durante el transcurso del ciclo escolar. Por lo tanto se interpreta como la  interrupción o desvinculación de los estudiantes sin haber terminado el nivel para el cual se matricularon. Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
+      interpretacion:
+        'Un valor del 2% indica que 2 de cada 100 estudiantes en edad teórica para cursar secundaria desertaron en el año lectivo en un momento y territorio específicos. Más Información: https://unitedwaycolombia.org/2023/10/19/desercion-escolar-en-colombia-un-desafio-que-se-agrava/ | Más Información: https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf',
     },
     {
-      nombre:
-        'Deserción media intra-anual',
+      nombre: 'Deserción media intra-anual',
       ruta: 'desercion-media',
       archivo: 'ya3-15',
       hay_datos: true,
       umbral: 2.7,
-      explicacion_umbral: 'Según lo estipulado en el Plan Sectorial 2022-2026, la meta para el año 2026 consiste en disminuir la tasa de deserción escolar a un nivel inferior del 2,7%.',
-      explicacion: 'Indica el porcentaje de estudiantes que se encontraban cursando educación media y abandonaron el sistema educativo antes de finalizar el año lectivo.',
-      definicion: 'Tasa de desercion intra-anual. Porcentaje de estudiantes que abandonan el sistema educativo antes de finalizar el año lectivo de educación media.',
-      metodologia: 'Número total de estudiantes matriculados en educación media que abandonaron el sistema escolar antes de terminar el año lectivo / Total de estudiantes que se encuentran matriculados en transición en el mismo periodo y territorio.',
+      explicacion_umbral:
+        'Según lo estipulado en el Plan Sectorial 2022-2026, la meta para el año 2026 consiste en disminuir la tasa de deserción escolar a un nivel inferior del 2,7%.',
+      explicacion:
+        'Indica el porcentaje de estudiantes que se encontraban cursando educación media y abandonaron el sistema educativo antes de finalizar el año lectivo.',
+      definicion:
+        'Tasa de desercion intra-anual. Porcentaje de estudiantes que abandonan el sistema educativo antes de finalizar el año lectivo de educación media.',
+      metodologia:
+        'Número total de estudiantes matriculados en educación media que abandonaron el sistema escolar antes de terminar el año lectivo / Total de estudiantes que se encuentran matriculados en transición en el mismo periodo y territorio.',
       unidad: 'Porcentaje',
-      fuente_numerador:
-        'Ministerio de Educación Nacional - SIMAT.',
-      fuente_denominador:
-        'Ministerio de Educación Nacional - SIMAT.',
+      fuente_numerador: 'Ministerio de Educación Nacional - SIMAT.',
+      fuente_denominador: 'Ministerio de Educación Nacional - SIMAT.',
       desagregacion: 'Municipal',
-      contexto: 'La tasa de deserción intra-anual es una medida porcentual del abandono estudiantil durante el transcurso del ciclo escolar. Por lo tanto se interpreta como la  interrupción o desvinculación de los estudiantes sin haber terminado el nivel para el cual se matricularon. Más Información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
-      interpretacion: 'Un valor del 2% indica que 2 de cada 100 estudiantes en edad teórica para cursar educación media desertaron en el año lectivo en un momento y territorio específicos. Más Información: https://unitedwaycolombia.org/2023/10/19/desercion-escolar-en-colombia-un-desafio-que-se-agrava/ | Más Información: https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf',
+      contexto:
+        'La tasa de deserción intra-anual es una medida porcentual del abandono estudiantil durante el transcurso del ciclo escolar. Por lo tanto se interpreta como la  interrupción o desvinculación de los estudiantes sin haber terminado el nivel para el cual se matricularon. Más Información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
+      interpretacion:
+        'Un valor del 2% indica que 2 de cada 100 estudiantes en edad teórica para cursar educación media desertaron en el año lectivo en un momento y territorio específicos. Más Información: https://unitedwaycolombia.org/2023/10/19/desercion-escolar-en-colombia-un-desafio-que-se-agrava/ | Más Información: https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf',
     },
   ],
 };

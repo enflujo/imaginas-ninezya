@@ -14,7 +14,8 @@ export const ya1: DatosYa = {
       archivo: 'ya1-1',
       hay_datos: true,
       umbral: 92.9,
-      explicacion_umbral: 'De acuerdo con los Objetivos de Desarrollo Sostenible, numeral 6 "Agua Limpia y Saneamiento", se propone alcanzar una cobertura universal para el año 20230. Asimismo, el El PND 2022-2026 trazó como meta alcanzar una cobertura universal al finalizar el periodo presidencial. Por otra parte, de acuerdo con el documento CONPES 3918 del 2015 se trazó como meta una cobertura del 92.9% para el año 2018.',
+      explicacion_umbral:
+        'De acuerdo con los Objetivos de Desarrollo Sostenible, numeral 6 "Agua Limpia y Saneamiento", se propone alcanzar una cobertura universal para el año 20230. Asimismo, el El PND 2022-2026 trazó como meta alcanzar una cobertura universal al finalizar el periodo presidencial. Por otra parte, de acuerdo con el documento CONPES 3918 del 2015 se trazó como meta una cobertura del 92.9% para el año 2018.',
       explicacion: 'Indica el acceso potencial a agua potable para el consumo humano.',
       definicion:
         'Conjunto de sistemas de riego que facilita el traslado constante de agua desde una ubicación naturalmente accesible hasta un punto de consumo. Sin embargo, es importante destacar que este indicador podría subestimar el verdadero acceso al agua potable en áreas rurales y no debe ser tomado como una medida precisa de dicho acceso.',
@@ -34,7 +35,8 @@ export const ya1: DatosYa = {
       archivo: 'ya1-2',
       hay_datos: true,
       umbral: 54.3,
-      explicacion_umbral: 'De acuerdo con el PND 2022-2026 se proponen acciones necesarias para aumentar el porcentaje de tratamiento de aguas residuales urbanas, pasando de 37,3% en el 2015, a 54,3% en 2022.',
+      explicacion_umbral:
+        'De acuerdo con el PND 2022-2026 se proponen acciones necesarias para aumentar el porcentaje de tratamiento de aguas residuales urbanas, pasando de 37,3% en el 2015, a 54,3% en 2022.',
       explicacion: 'Indica el acceso potencial que tiene un hogar a una conexión de alcantarillado.',
       definicion:
         'Indica el conjunto de conductos subterráneos conocidos como alcantarillas, los cuales se encargan de transportar el agua residual y pluvial. Las aguas residuales constituyen el agua consumida por la comunidad.',
@@ -54,9 +56,11 @@ export const ya1: DatosYa = {
       archivo: 'ya1-3',
       hay_datos: true,
       umbral: 15,
-      explicacion_umbral: 'De acuerdo con el Plan Decenal de Salud Pública, a 2021 se habrá disminuido la mortalidad nacional en la niñez a 15 x1000 nacidos vivos o menos. Según los Objetivos de Desarrollo Sostenible se preveer reducir la mortalidad infantil  a 15 por cada 1.000 nacidos vivos en el año 2030.',
+      explicacion_umbral:
+        'De acuerdo con el Plan Decenal de Salud Pública, a 2021 se habrá disminuido la mortalidad nacional en la niñez a 15 x1000 nacidos vivos o menos. Según los Objetivos de Desarrollo Sostenible se preveer reducir la mortalidad infantil  a 15 por cada 1.000 nacidos vivos en el año 2030.',
       explicacion: 'Indica el número de defunciones ocurridas en niños menores de 5 años por cada 1000 nacidos vivos.',
-      definicion: 'Indica el número de defunciones ocurridas en niños menores de 5 años por cada 1000 nacidos vivos en un periodo y territorio determinados.',
+      definicion:
+        'Indica el número de defunciones ocurridas en niños menores de 5 años por cada 1000 nacidos vivos en un periodo y territorio determinados.',
       metodologia:
         'Número de muertes de menores de 5 años en un periodo y territorio específicos / Número de nacidos vivos en el mismo periodo y territorio.',
       unidad: 'Por 1000 nacimientos',
@@ -74,7 +78,8 @@ export const ya1: DatosYa = {
       archivo: 'ya1-5',
       hay_datos: true,
       umbral: 95,
-      explicacion_umbral: 'De acuerdo con el Plan Decenal de Salud Pública, el 95% de las mujeres gestantes debe tener 4 o más controles prenatales. Según la meta de los Objetivos de Desarrollo Sostenible, para 2030 el 93% de las gestantes debe tener 4 o más controles prenatales.',
+      explicacion_umbral:
+        'De acuerdo con el Plan Decenal de Salud Pública, el 95% de las mujeres gestantes debe tener 4 o más controles prenatales. Según la meta de los Objetivos de Desarrollo Sostenible, para 2030 el 93% de las gestantes debe tener 4 o más controles prenatales.',
       explicacion: 'Indica el número de nacidos vivos con cuatro o más controles prenatales.',
       definicion: 'Proporción de nacidos vivos con 4 o más controles prenatales.',
       metodologia:
@@ -94,7 +99,8 @@ export const ya1: DatosYa = {
       archivo: 'ya1-7',
       hay_datos: true,
       umbral: 0.09,
-      explicacion_umbral: 'En el Plan Nacional de Desarrollo no hay una meta clara para esta problemática. De acuerdo con los Objetivos de Desarrollo Sostenible, numeral 2 "Hambre cero",  se pretende erradicar el hambre para el año 2030. La Encuesta Nacional de Situación Nutricional del año 2015 prevee que para el 2030  la morbilidad por desnutrición aguda sea de 0.9%.',
+      explicacion_umbral:
+        'En el Plan Nacional de Desarrollo no hay una meta clara para esta problemática. De acuerdo con los Objetivos de Desarrollo Sostenible, numeral 2 "Hambre cero",  se pretende erradicar el hambre para el año 2030. La Encuesta Nacional de Situación Nutricional del año 2015 prevee que para el 2030  la morbilidad por desnutrición aguda sea de 0.9%.',
       explicacion: 'Indica la proporción de niños menores de 5 años que padecen de desnutrición aguda.',
       definicion:
         'Proporción de niños menores de 5 años que padecen de desnutrición aguda en un momento y territorio determinados.',
@@ -115,7 +121,8 @@ export const ya1: DatosYa = {
       archivo: 'ya1-8',
       hay_datos: true,
       umbral: 2.6,
-      explicacion_umbral: 'De acuerdo al Plan Decenal de Salud Pública del año 2021 se busca reducir a 2.6% la prevalencia de desnutrición en niños y niñas menores de 5 años.',
+      explicacion_umbral:
+        'De acuerdo al Plan Decenal de Salud Pública del año 2021 se busca reducir a 2.6% la prevalencia de desnutrición en niños y niñas menores de 5 años.',
       explicacion: 'Indica la proporción de niños y niñas menores de 5 años que padecen de desnutrición aguda.',
       definicion:
         'Indica la proporción de nacidos vivos a término (37 semanas o más) que nacieron con peso inferior a 2499 gramos en un momento y territorio determinado, con respecto al total de nacidos vivos en el mismo periodo y lugar.',

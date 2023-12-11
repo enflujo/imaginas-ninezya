@@ -28,8 +28,7 @@ export const ya8: DatosYa = {
         'Un valor de 19% indica que 19 de cada 100 jóvenes han reportado el haber experimentado violencia física en un momento y territorio específicos.  Más Información: https://www.icbf.gov.co/system/files/boletin_violencias_nna_dic21.pdf.',
     },
     {
-      nombre:
-        'Reestablecimiento de Derechos por Consumo de Sustancias',
+      nombre: 'Reestablecimiento de Derechos por Consumo de Sustancias',
       ruta: 'consumo-sustancias',
       archivo: 'ya8-2',
       hay_datos: true,

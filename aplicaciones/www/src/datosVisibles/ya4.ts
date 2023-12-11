@@ -16,7 +16,7 @@ export const ya4: DatosYa = {
       explicacion_umbral: 'No existe una meta definida como tal.',
       explicacion: 'Indica el número de defunciones en menores de 5 años por endermedad diarreica aguda.',
       definicion:
-      'Indica el número de defunciones en niños menores de 5 años por enfermedad diarreica aguda con respecto a la población de niños menores de 5 años.',
+        'Indica el número de defunciones en niños menores de 5 años por enfermedad diarreica aguda con respecto a la población de niños menores de 5 años.',
       metodologia: 'Número de muertes por EDA en menores de 5 años / Número total de menores de 5 años.',
       unidad: 'Por 100.000 menores de 5 años',
       fuente_numerador: 'CUBO INDICADORES EEVV',
@@ -32,7 +32,8 @@ export const ya4: DatosYa = {
       ruta: 'mortalidad-ira',
       archivo: 'ya4-2',
       umbral: 8.9,
-      explicacion_umbral: 'Según las metas establecidas en el Plan Decenal de Salud Pública hasta el año 2021, se ha conseguido disminuir gradualmente la tasa de mortalidad causada por Infecciones Respiratorias Agudas, que incluyen la Neumonía. El objetivo es alcanzar una tasa de mortalidad por Neumonía inferior a 8,9 casos por cada 100.000 niños menores de cinco años.',
+      explicacion_umbral:
+        'Según las metas establecidas en el Plan Decenal de Salud Pública hasta el año 2021, se ha conseguido disminuir gradualmente la tasa de mortalidad causada por Infecciones Respiratorias Agudas, que incluyen la Neumonía. El objetivo es alcanzar una tasa de mortalidad por Neumonía inferior a 8,9 casos por cada 100.000 niños menores de cinco años.',
       hay_datos: true,
       explicacion: 'Indica el número de defunciones en menores de 5 años por enfermedad infección respiratoria aguda.',
       definicion:
@@ -53,7 +54,8 @@ export const ya4: DatosYa = {
       archivo: 'ya4-3',
       hay_datos: true,
       umbral: 92.9,
-      explicacion_umbral: 'De acuerdo con los Objetivos de Desarrollo Sostenible, numeral 6 "Agua Limpia y Saneamiento", se propone alcanzar una cobertura universal para el año 20230. Asimismo, el El PND 2022-2026 trazó como meta alcanzar una cobertura universal al finalizar el periodo presidencial. Por otra parte, de acuerdo con el documento CONPES 3918 del 2015 se trazó como meta una cobertura del 92.9% para el año 2018.',
+      explicacion_umbral:
+        'De acuerdo con los Objetivos de Desarrollo Sostenible, numeral 6 "Agua Limpia y Saneamiento", se propone alcanzar una cobertura universal para el año 20230. Asimismo, el El PND 2022-2026 trazó como meta alcanzar una cobertura universal al finalizar el periodo presidencial. Por otra parte, de acuerdo con el documento CONPES 3918 del 2015 se trazó como meta una cobertura del 92.9% para el año 2018.',
       explicacion: 'Indica el acceso potencial a agua potable para el consumo humano.',
       definicion:
         'Conjunto de sistemas de riego que facilita el traslado constante de agua desde una ubicación naturalmente accesible hasta un punto de consumo. Sin embargo, es importante destacar que este indicador podría subestimar el verdadero acceso al agua potable en áreas rurales y no debe ser tomado como una medida precisa de dicho acceso.',
@@ -73,16 +75,19 @@ export const ya4: DatosYa = {
       archivo: 'ya4-4',
       hay_datos: true,
       umbral: 92.9,
-      explicacion_umbral: 'De acuerdo con los Objetivos de Desarrollo Sostenible, numeral 6 "Agua Limpia y Saneamiento", propone que para el año 2030 exista una cobertura universal. No hay metas intermedias. El PND 2022-2026 habla de alcanzar cobertura universal al finalizar el periodo presidencial.  CONPES 3918 | 2015 cobertura del 91.8%. 2018 92.9% | 2030 cobertura 100%.',
+      explicacion_umbral:
+        'De acuerdo con los Objetivos de Desarrollo Sostenible, numeral 6 "Agua Limpia y Saneamiento", propone que para el año 2030 exista una cobertura universal. No hay metas intermedias. El PND 2022-2026 habla de alcanzar cobertura universal al finalizar el periodo presidencial.  CONPES 3918 | 2015 cobertura del 91.8%. 2018 92.9% | 2030 cobertura 100%.',
       explicacion: 'Indica el acceso potencial a agua potable para el consumo humano.',
-      definicion: 'Indica el grado de pureza o contaminación atmosférica y los efectos para la salud. Es un valor adimensional que se emplea para indexar la contaminación atmosférica en tiempo real dándola a conocer de forma sencilla y comprensible a la población general. Se basa en el conjunto de sistemas de irrigación que permite transportar agua en forma de flujo continuo desde un lugar en el que es accesible en la naturaleza hasta un punto de consumo. *Este indicador puede subestimar el acceso real de agua potable en el campo, además no puede ser considerada como una medida real de acceso.',
+      definicion:
+        'Indica el grado de pureza o contaminación atmosférica y los efectos para la salud. Es un valor adimensional que se emplea para indexar la contaminación atmosférica en tiempo real dándola a conocer de forma sencilla y comprensible a la población general. Se basa en el conjunto de sistemas de irrigación que permite transportar agua en forma de flujo continuo desde un lugar en el que es accesible en la naturaleza hasta un punto de consumo. *Este indicador puede subestimar el acceso real de agua potable en el campo, además no puede ser considerada como una medida real de acceso.',
       metodologia: 'Se desconoce, metodología propia del IDEAM.',
       unidad: 'Adimensional (IDEAM)',
       fuente_numerador: 'Sistema Único de Información de Servicios Públicos - SUI',
       fuente_denominador: 'Sistema Único de Información de Servicios Públicos - SUI',
       desagregacion: 'Municipal',
       contexto: '',
-      interpretacion: 'Un valor de 70% significa que existen 70 familias que cuentan con acceso real a agua potable por cada 100 familias en un territorio y momento específicos. Más información sobre la importancia del acceso a agua potable: https://www.un.org/sustainabledevelopment/es/water-and-sanitation/#:~:text=Alcanzar%20la%20cobertura%20universal%20para,y%20tres%20para%20la%20higiene.',
+      interpretacion:
+        'Un valor de 70% significa que existen 70 familias que cuentan con acceso real a agua potable por cada 100 familias en un territorio y momento específicos. Más información sobre la importancia del acceso a agua potable: https://www.un.org/sustainabledevelopment/es/water-and-sanitation/#:~:text=Alcanzar%20la%20cobertura%20universal%20para,y%20tres%20para%20la%20higiene.',
     },
   ],
 };
