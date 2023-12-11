@@ -106,7 +106,7 @@ export const ya1: DatosYa = {
         'Proporción de niños menores de 5 años que padecen de desnutrición aguda en un momento y territorio determinados.',
       metodologia:
         'Número de niños menores de 5 años que sufren de desnutrición aguda en un periodo y territorio específicos /  Número de nacidos vivos menores de 5 años en el mismo periodo y territorio.',
-      unidad: 'Porcentaje',
+      unidad: 'Tasa',
       fuente_numerador: 'SIVIGILA',
       fuente_denominador: 'CUBO INDICADORES EEVV',
       desagregacion: 'Municipal',
