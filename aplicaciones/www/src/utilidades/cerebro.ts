@@ -239,6 +239,4 @@ window.addEventListener('popstate', async () => {
 
   revisarNivel(parametros);
   revisarDepartamentos(parametros);
-
-  console.log('pop', lugaresSeleccionados.value);
 });
