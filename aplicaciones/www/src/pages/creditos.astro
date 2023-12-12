@@ -16,8 +16,8 @@ import Plantilla from '@/plantillas/Principal.astro';
       </div>
 
       <div>
-        <a class="logoNinezYa" href="https://ninezya.org/" target="_blank">
-          <img src={`${import.meta.env.BASE_URL}/imagenes/logoNinezYa.webp`} alt="Logo NiñezYA" /></a
+        <a href="https://ninezya.org/" target="_blank">
+          <img class="logoGrande" src={`${import.meta.env.BASE_URL}/imagenes/logoNinezYa.webp`} alt="Logo NiñezYA" /></a
         >
       </div>
 
@@ -210,7 +210,7 @@ import Plantilla from '@/plantillas/Principal.astro';
 
       <a href="https://imagina.uniandes.edu.co/" target="_blank">
         <img
-          class="logoImagina"
+          class="logoImagina logoGrande"
           src={`${import.meta.env.BASE_URL}/imagenes/Imagina.webp`}
           alt="Logo Centro IMAGINA"
         /></a
@@ -218,7 +218,7 @@ import Plantilla from '@/plantillas/Principal.astro';
 
       <a href="https://enflujo.com" target="_blank">
         <img
-          class="logoEnFlujo"
+          class="logoEnFlujo logoGrande"
           src={`${import.meta.env.BASE_URL}/imagenes/enflujo_andes.svg`}
           alt="Logo Laboratorio EnFlujo"
         /></a
@@ -344,7 +344,8 @@ import Plantilla from '@/plantillas/Principal.astro';
     margin: 0 auto;
   }
   #tituloPagina {
-    padding: 2em 0 1em 0;
+    // padding: 2em 0 1em 0;
+    margin-top: 2em;
     font-family: var(--fuente);
   }
 
@@ -353,6 +354,22 @@ import Plantilla from '@/plantillas/Principal.astro';
     flex-wrap: wrap;
     justify-content: center;
   }
+
+  .logoGrande {
+    display: block;
+    height: 180px;
+    width: auto;
+    margin: 2em auto 0 auto;
+    &.logoImagina {
+      height: 50px;
+      mix-blend-mode: multiply;
+    }
+
+    &.logoEnFlujo {
+      height: 35px;
+    }
+  }
+
   .logoCreditos {
     background-color: white;
     border: 2px solid rgb(234, 234, 234);
@@ -397,7 +414,7 @@ import Plantilla from '@/plantillas/Principal.astro';
 
     .textoReconocimiento {
       color: var(--uvaNinezYa);
-      font-size: 1.1em;
+      font-size: 1.3em;
       line-height: 1.3em;
       font-variation-settings:
         'MONO' 0,
@@ -413,21 +430,22 @@ import Plantilla from '@/plantillas/Principal.astro';
         margin-top: -0.5em;
       }
     }
-
-    h3 {
-      font-size: 1em;
-      color: var(--uvaNinezYa);
-      font-variation-settings:
-        'MONO' 0,
-        'CASL' 0,
-        'wght' 700,
-        'slnt' 0,
-        'CRSV' 0;
-    }
   }
 
   h1 {
-    font-size: 2.2em;
+    font-size: 2.4em;
+
+    color: var(--uvaNinezYa);
+    font-variation-settings:
+      'MONO' 0,
+      'CASL' 0,
+      'wght' 700,
+      'slnt' 0,
+      'CRSV' 0;
+  }
+
+  h3 {
+    font-size: 1em;
     color: var(--uvaNinezYa);
     font-variation-settings:
       'MONO' 0,
@@ -438,6 +456,7 @@ import Plantilla from '@/plantillas/Principal.astro';
   }
 
   li {
+    margin-left: 2em;
     font-variation-settings:
       'MONO' 1,
       'CASL' 0,
@@ -454,51 +473,25 @@ import Plantilla from '@/plantillas/Principal.astro';
   }
 
   .rol {
-    padding-top: 5em;
-    padding-bottom: 2em;
+    font-size: 1.5em;
+    padding: 3em 0 1em 0;
     color: var(--uvaNinezYa);
-    font-size: 1.2em;
     line-height: 1.2em;
   }
-
-  img {
-    max-width: 60vw;
-    display: block;
-    max-height: 420px;
-    margin-top: 3em;
-    margin-left: 2vw;
-  }
-  .logoEnFlujo {
-    display: block;
-    margin-left: 5vw;
-  }
-
-  .logoImagina {
-    display: block;
-    margin-left: 3vw;
-    mix-blend-mode: multiply;
-  }
-
-  .logoNinezYa {
-    display: block;
-    margin-left: 4vw;
-  }
-
-  @media screen and (min-width: $corte1) {
-    img {
-      height: 90px;
-    }
-  }
-
   @media screen and (min-width: $corte2) {
     #creditos {
       margin-left: 0px;
       margin-right: 0px;
     }
-    .logoNinezYa {
-      display: block;
-      margin-left: 4vw;
-      margin-right: 10vw;
+
+    .logoGrande {
+      &.logoImagina {
+        height: 100px;
+      }
+
+      &.logoEnFlujo {
+        height: 68px;
+      }
     }
 
     .logoCreditos {
@@ -514,26 +507,18 @@ import Plantilla from '@/plantillas/Principal.astro';
   }
 
   @media screen and (min-width: $corte3) {
-    .logoNinezYa {
-      display: block;
-      margin-left: 8vw;
-      margin-right: 10vw;
-    }
-
-    .textoIntro {
-      max-width: 900px;
-      margin-left: 5vw;
-    }
     .textoCreditos {
       max-width: 900px;
     }
-    .textoReconocimiento {
-      max-width: 600px;
-      margin-left: 8vw;
-    }
 
-    li {
-      margin-left: 10vw;
+    .logoGrande {
+      &.logoImagina {
+        height: 180px;
+      }
+
+      &.logoEnFlujo {
+        height: 126px;
+      }
     }
 
     .filaLogos {
@@ -550,25 +535,6 @@ import Plantilla from '@/plantillas/Principal.astro';
         width: auto;
         margin: 0;
       }
-    }
-  }
-  @media screen and (min-width: $corte4) {
-    .logoNinezYa {
-      display: block;
-      margin-left: 12vw;
-      margin-right: 10vw;
-    }
-
-    .logoEnFlujo {
-      max-width: 700px;
-      margin-left: 14vw;
-    }
-
-    .logoImagina {
-      display: block;
-      margin-left: 14vw;
-      max-width: 700px;
-      mix-blend-mode: multiply;
     }
   }
 </style>
