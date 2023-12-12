@@ -101,7 +101,7 @@ export async function cargarDatos() {
         valorMaxY = 200;
         valorMaxColor = 100;
       } else {
-        valorMaxY = Math.min(Math.ceil(nal.max / 100) * 100, 10000);
+        valorMaxY = Math.min(Math.ceil(nal.maxNal / 100) * 100, 10000);
         valorMaxColor = 10000;
       }
     } else {
@@ -112,7 +112,7 @@ export async function cargarDatos() {
         valorMaxY = 50;
         valorMaxColor = 5;
       } else {
-        valorMaxY = nal.max > nal.unidadMedida ? Math.ceil(nal.max / 100) * 100 : nal.unidadMedida;
+        valorMaxY = nal.maxNal > nal.unidadMedida ? Math.ceil(nal.maxNal / 100) * 100 : nal.unidadMedida;
         valorMaxColor = 100;
       }
     }

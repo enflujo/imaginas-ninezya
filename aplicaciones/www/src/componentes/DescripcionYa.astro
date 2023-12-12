@@ -96,9 +96,10 @@ const { img, titulo, definicion, archivos, hayDatos } = Astro.props;
         const dims = svg.getBoundingClientRect();
         return convertirEscala(valor, primerAño, ultimoAño, 0, dims.width);
       };
+
       const posY = (valor: number) => {
         const dims = svg.getBoundingClientRect();
-        return convertirEscala(valor, 0, respuesta.max, dims.height, 0);
+        return convertirEscala(valor, 0, respuesta.maxNal, dims.height, 0);
       };
 
       let datosLinea = '';

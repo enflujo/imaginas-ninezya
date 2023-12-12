@@ -38,8 +38,12 @@ export type DatosIndicadorNal = {
   estructura: TiposEstructura;
   unidadMedida: number;
   datos: DatosPorAño;
-  min: number;
-  max: number;
+  minNal: number;
+  maxNal: number;
+  minDep: number;
+  maxDep: number;
+  minMun: number;
+  maxMun: number;
 };
 export type FuncionColor = (valor: number) => string;
 

@@ -24,7 +24,18 @@ export default class {
   unidadMedida: number;
 
   constructor(ascendente: boolean, estructura: EstructurasMatematicas, unidadMedida: number) {
-    this.datosNacionales = { ascendente, estructura, unidadMedida, datos: {}, max: 0, min: Infinity };
+    this.datosNacionales = {
+      ascendente,
+      estructura,
+      unidadMedida,
+      datos: {},
+      maxNal: 0,
+      minNal: Infinity,
+      maxDep: 0,
+      minDep: Infinity,
+      maxMun: 0,
+      minMun: Infinity,
+    };
     this.errata = [];
     this.datosMunicipios = {};
     this.datosDepartamentos = {};
@@ -41,7 +52,7 @@ export default class {
       this.datosMunicipios[año] = this.preDatosMunicipios[año].map((d) => {
         const valor = redondearDecimal((d[1] / d[2]) * this.unidadMedida, 1, 2);
 
-        this.revisarMinMax(valor);
+        this.revisarMinMax(valor, 'maxMun', 'minMun');
         return [d[0], valor];
       });
     }
@@ -49,7 +60,7 @@ export default class {
     for (const año in this.preDatosDepartamentos) {
       this.datosDepartamentos[año] = this.preDatosDepartamentos[año].map((d) => {
         const valor = redondearDecimal((d[1] / d[2]) * this.unidadMedida, 1, 2);
-        this.revisarMinMax(valor);
+        this.revisarMinMax(valor, 'maxDep', 'minDep');
 
         return [d[0], valor];
       });
@@ -59,7 +70,7 @@ export default class {
     for (const año in this.preDatosNacionales) {
       const [num, den] = this.preDatosNacionales[año];
       const valor = redondearDecimal((num / den) * this.unidadMedida, 1, 2);
-      this.revisarMinMax(valor);
+      this.revisarMinMax(valor, 'maxNal', 'minNal');
       this.datosNacionales.datos[año] = valor;
     }
 
@@ -209,13 +220,13 @@ export default class {
     }
   }
 
-  revisarMinMax(valor: number) {
-    if (this.datosNacionales.max < valor) {
-      this.datosNacionales.max = valor;
+  revisarMinMax(valor: number, llaveMax: 'maxNal' | 'maxDep' | 'maxMun', llaveMin: 'minNal' | 'minDep' | 'minMun') {
+    if (this.datosNacionales[llaveMax] < valor) {
+      this.datosNacionales[llaveMax] = valor;
     }
 
-    if (this.datosNacionales.min > valor) {
-      this.datosNacionales.min = valor;
+    if (this.datosNacionales[llaveMin] > valor) {
+      this.datosNacionales[llaveMin] = valor;
     }
   }
 }
