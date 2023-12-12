@@ -226,6 +226,7 @@ const { alto, meta, umbral } = Astro.props;
 
     function crearEjeX() {
       const lista = listaAños.value;
+      const cortarAño = lista.length > 18;
       const lineaNacional = new Linea(
         contenedorLineas,
         'Colombia',
@@ -254,7 +255,7 @@ const { alto, meta, umbral } = Astro.props;
         texto.setAttribute('class', 'año textoEje');
         texto.setAttribute('x', '0');
         texto.setAttribute('y', '15');
-        texto.innerHTML = `${año}`;
+        texto.innerHTML = cortarAño ? `${año.slice(2, 4)}` : `${año}`;
 
         grupo.appendChild(marca);
         grupo.appendChild(texto);
