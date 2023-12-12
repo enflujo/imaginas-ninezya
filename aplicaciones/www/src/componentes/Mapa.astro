@@ -32,7 +32,7 @@ const { ancho, alto } = Astro.props;
 </div>
 
 <script>
-  import { calcularPorcentaje, obtenerVariableCSS } from '@/utilidades/ayudas';
+  import { calcularPorcentaje } from '@/utilidades/ayudas';
   import { crearLinea, escalaCoordenadas, extremosLugar } from '@enflujo/alquimia';
   import type { DatosAño, ExtremosCoordenadas } from '@/tipos';
   import type { FeatureCollection } from 'geojson';
@@ -47,6 +47,7 @@ const { ancho, alto } = Astro.props;
     color,
     actualizarUrl,
     revisarDepartamentos,
+    datosNal,
   } from '@/utilidades/cerebro';
   import type { IMapearCoordenadas } from '@enflujo/alquimia/libreria/modulos/tipos';
 
@@ -200,7 +201,9 @@ const { ancho, alto } = Astro.props;
 
     function crearMapa() {
       const lugaresActuales = lugaresSeleccionados.value;
+      const { estructura } = datosNal.value;
       zonas = {};
+
       datosParaPintar.features.forEach((lugar) => {
         if (lugar.geometry.type === 'Polygon' || lugar.geometry.type === 'MultiPolygon') {
           const linea = crearLinea(lugar.geometry, mapearCoordenadas, ancho, alto);
@@ -222,14 +225,22 @@ const { ancho, alto } = Astro.props;
 
             informacion.classList.add('visible');
 
+            let descripcion = '';
+
+            if (valor) {
+              if (estructura === 'porcentaje') {
+                descripcion = '%';
+              } else if (estructura === 'tasa') {
+                descripcion = ` ${unidad}`;
+              }
+            }
+
             if (nivel.get() === 'mun') {
               informacion.innerText = `${lugar.properties.nombre} (${lugar.properties.dep}): ${
-                !valor ? 'Sin datos' : unidad === 'porcentaje' ? `${valor}%` : `${valor}`
+                !valor ? 'Sin datos' : `${valor}${descripcion}`
               }`;
             } else {
-              informacion.innerText = `${lugar.properties.nombre}: ${
-                !valor ? 'Sin datos' : unidad === 'porcentaje' ? `${valor}%` : `${valor} ${unidad}`
-              }`;
+              informacion.innerText = `${lugar.properties.nombre}: ${!valor ? 'Sin datos' : `${valor}${descripcion}`}`;
               zona.classList.add('departamento');
             }
           };
@@ -291,7 +302,6 @@ const { ancho, alto } = Astro.props;
       if (nivelActual === 'dep') {
         if (lugares.length) {
           lugares.forEach((lugar) => {
-            // console.log(zonas, lugar, nivelActual === 'dep' ? lugar.codigoDep : lugar.codigoMun);
             const zona = zonas[lugar.codigoDep].svg;
 
             seleccionarZona(zona);
