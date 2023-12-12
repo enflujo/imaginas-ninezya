@@ -57,7 +57,7 @@ export const ya1: DatosYa = {
       hay_datos: true,
       umbral: 15,
       explicacion_umbral:
-        'De acuerdo con el Plan Decenal de Salud Pública, a 2021 se habrá disminuido la mortalidad nacional en la niñez a 15 x1000 nacidos vivos o menos. Según los Objetivos de Desarrollo Sostenible se preveer reducir la mortalidad infantil  a 15 por cada 1.000 nacidos vivos en el año 2030.',
+        'De acuerdo con el Plan Decenal de Salud Pública, a 2021 se habrá disminuido la mortalidad nacional en la niñez a 15 x1000 nacidos vivos o menos. Según los Objetivos de Desarrollo Sostenible se prevé reducir la mortalidad infantil a 15 por cada 1.000 nacidos vivos en el año 2030.',
       explicacion: 'Indica el número de defunciones ocurridas en niños menores de 5 años por cada 1000 nacidos vivos.',
       definicion:
         'Indica el número de defunciones ocurridas en niños menores de 5 años por cada 1000 nacidos vivos en un periodo y territorio determinados.',
@@ -100,7 +100,7 @@ export const ya1: DatosYa = {
       hay_datos: true,
       umbral: 0.09,
       explicacion_umbral:
-        'En el Plan Nacional de Desarrollo no hay una meta clara para esta problemática. De acuerdo con los Objetivos de Desarrollo Sostenible, numeral 2 "Hambre cero",  se pretende erradicar el hambre para el año 2030. La Encuesta Nacional de Situación Nutricional del año 2015 prevee que para el 2030  la morbilidad por desnutrición aguda sea de 0.9%.',
+        'En el Plan Nacional de Desarrollo no hay una meta clara para esta problemática. De acuerdo con los Objetivos de Desarrollo Sostenible, numeral 2 "Hambre cero",  se pretende erradicar el hambre para el año 2030. La Encuesta Nacional de Situación Nutricional del año 2015 prevé que para el 2030  la morbilidad por desnutrición aguda sea de 0.9%.',
       explicacion: 'Indica la proporción de niños menores de 5 años que padecen de desnutrición aguda.',
       definicion:
         'Indica el número de niños menores de 5 años por cada 100.000 que padecen de desnutrición aguda en un momento y territorio determinado.',
@@ -111,7 +111,7 @@ export const ya1: DatosYa = {
       fuente_denominador: 'CUBO INDICADORES EEVV',
       desagregacion: 'Municipal',
       contexto:
-        'Desde el 2015 alrededor de 690 millones de personas sufren de hambre a nivel mundial; si estas tendencias persisten podría superar los 840 millones para el 2030, impidiendo el cumplimiento del segundo objetivo de los ODS; Hambre cero. A esto se suma los conflictos armados y la pandemia del COVID-19 que aumentaron la prevalencia de hambre severa.       Por lo tanto se necesitan acciones urgentes para transformar el sistema agroalimentario global y así proporcionar alimentos y ayuda humanitaria a las poblaciones más vulnerables.',
+        'Desde el 2015 alrededor de 690 millones de personas sufren de hambre a nivel mundial; si estas tendencias persisten podría superar los 840 millones para el 2030, impidiendo el cumplimiento del segundo objetivo de los ODS; Hambre cero. A esto se suma los conflictos armados y la pandemia del COVID-19 que aumentaron la prevalencia de hambre severa. Por lo tanto se necesitan acciones urgentes para transformar el sistema agroalimentario global y así proporcionar alimentos y ayuda humanitaria a las poblaciones más vulnerables.',
       interpretacion:
         'Un valor del 15% indica que 15 de cada 100 nacidos vivos menores de 5 años sufren de desnutrición aguda en un momento y territorio específicos. Más información sobre desnutrición aguda: https://www.un.org/sustainabledevelopment/es/hunger/',
     },

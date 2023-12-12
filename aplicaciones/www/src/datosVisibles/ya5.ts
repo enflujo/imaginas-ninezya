@@ -35,11 +35,11 @@ export const ya5: DatosYa = {
       definicion:
         'Este indicador puede ser utilizado para evaluar la accesibilidad y la participación de los niños en programas educativos en la primera infancia. Una baja tasa de asistencia a instituciones educativas en este rango de edad puede indicar posibles desafíos en el acceso a la educación temprana, lo que podría afectar el desarrollo cognitivo, social y emocional de los niños. La información recopilada a través de este indicador puede ser valiosa para diseñar políticas y programas que busquen mejorar la participación de los niños en actividades educativas durante sus primeros años de vida.',
       metodologia:
-        'Número de niños y niñas de 2-5 años que no asisten a un establecimiento educativo, jardin infantil o preescolar * 100.000 niños',
+        'Número de niños y niñas de 2-5 años que no asisten a un establecimiento educativo, jardín infantil o preescolar * 100.000 niños',
       unidad: 'Tasa',
       desagregacion: 'Municipal',
       interpretacion:
-        'De acuerdo con el MEN, los objetivos explicitos en términos de asistencia escolar en el plan nacional de desarrollo es de tener una tasa de asistencia del 100%.',
+        'De acuerdo con el MEN, los objetivos explícitos en términos de asistencia escolar en el plan nacional de desarrollo es de tener una tasa de asistencia del 100%.',
       responsable:
         'Gran Encuesta Integrada de Hogares - GEIH del Departamento Administrativo Nacional de Estadísticas - DANE.',
       compete_a:
@@ -75,7 +75,7 @@ export const ya5: DatosYa = {
       unidad: 'Tasa',
       desagregacion: 'Municipal',
       interpretacion:
-        'Se debe formular la siguiente pregunta dentro de la Encuesta de Calidad de Vida - ECV del Departamento Administrativo Nacional de Estadísticas - DANE. ¿Con qué frecuencia realiza actitividades de lectura con el menor de 5 años que reside en su hogar | Opciones de respuesta: 1 Todos los días. 2 Al menos una vez a la semana pero no cada día. 3 Al menos una vez al mes, pero no cada semana. 4 Al menos una vez al mes, pero no todos los meses.',
+        'Se debe formular la siguiente pregunta dentro de la Encuesta de Calidad de Vida - ECV del Departamento Administrativo Nacional de Estadísticas - DANE: ¿Con qué frecuencia realiza actividades de lectura con el menor de 5 años que reside en su hogar? <br/>Opciones de respuesta: <br/>1. Todos los días. <br/>2. Al menos una vez a la semana pero no cada día. <br/>3. Al menos una vez al mes, pero no cada semana. <br/>4. Al menos una vez al mes, pero no todos los meses.',
       responsable: 'Encuesta de Calidad de Vida - ECV del Departamento Administrativo Nacional de Estadísticas - DANE.',
       compete_a:
         'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secretarías de Educación.',
@@ -88,11 +88,11 @@ export const ya5: DatosYa = {
       definicion:
         'La importancia de este indicador radica en reconocer la influencia y el papel positivo que los adultos, especialmente los cuidadores y educadores, pueden tener en el desarrollo de habilidades sociales, emocionales y cognitivas de los niños. Jugar con adultos responsables no solo proporciona oportunidades para la diversión y la recreación, sino que también puede contribuir al aprendizaje, la comunicación y la formación de vínculos afectivos.',
       metodologia:
-        'Número de niños y niñas de 2-5 años que con frecuencia juegan con un adulto responsable/ Número total de niños y niñas de 2-5 años * 100.000 niños',
+        'Número de niños y niñas de 2-5 años que con frecuencia juegan con un adulto responsable / Número total de niños y niñas de 2-5 años * 100.000 niños',
       unidad: 'Tasa',
       desagregacion: 'Municipal',
       interpretacion:
-        'Se debe formular la siguiente pregunta dentro de la Encuesta de Calidad de Vida - ECV del Departamento Administrativo Nacional de Estadísticas - DANE. ¿Con qué frecuencia juega con el menor de 5 años que reside en su hogar| Opciones de respuesta: 1 Todos los días. 2 Al menos una vez a la semana pero no cada día. 3 Al menos una vez al mes, pero no cada semana 4 Al menos una vez al mes, pero no todos los meses.',
+        'Se debe formular la siguiente pregunta dentro de la Encuesta de Calidad de Vida - ECV del Departamento Administrativo Nacional de Estadísticas - DANE: ¿Con qué frecuencia juega con el menor de 5 años que reside en su hogar? <br/>Opciones de respuesta:<br/>1. Todos los días. <br/>2. Al menos una vez a la semana pero no cada día. <br/>3. Al menos una vez al mes, pero no cada semana. <br/>4. Al menos una vez al mes, pero no todos los meses.',
       responsable:
         'Encuesta de Calidad de Vida - ECV del Departamento Administrativo Nacional de Estadísticas - DANE. ',
       compete_a:

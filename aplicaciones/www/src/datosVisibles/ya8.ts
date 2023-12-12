@@ -27,7 +27,7 @@ export const ya8: DatosYa = {
       contexto:
         'Las diversas manifestaciones de violencia se erigen como una problemática de salud pública por múltiples razones: en primer lugar, a causa de las severas repercusiones en el bienestar físico y emocional de las víctimas, así como en sus familias y la sociedad en su conjunto, conllevando a la pérdida de años de vida saludable. En segundo término, su alcance se manifiesta en la extensa cantidad de población afectada, especialmente niñas, niños, adolescentes, jóvenes y mujeres. Esto pone de manifiesto que la violencia de género no es simplemente un tema psicológico confinado al ámbito privado, sino un problema social y de interés público que exige una acción coordinada por parte del Estado, respaldada por un marco normativo nacional integral. En tercer lugar, estas violencias son prevenibles, ya que sus raíces se hallan en aspectos culturales y sociales, no en factores biológicos o hereditarios. En consecuencia, abordar este fenómeno requiere un enfoque holístico que combine la sensibilización, la educación y la promoción de cambios estructurales para erradicar sus fundamentos culturales arraigados.',
       interpretacion:
-        'Un valor de 19  indica que 19 de cada 100,000 menores de edad han experimentado violencia física en un momento y territorio específicos. Más información: https://www.icbf.gov.co/system/files/boletin_violencias_nna_dic21.pdf.',
+        'Un valor de 19  indica que 19 de cada 100,000 menores de edad han experimentado violencia física en un momento y territorio específicos. <br/><br/>Más información: https://www.icbf.gov.co/system/files/boletin_violencias_nna_dic21.pdf.',
     },
     {
       nombre: 'Comisión de delitos en los que participaron menores de edad',
@@ -48,7 +48,7 @@ export const ya8: DatosYa = {
       contexto:
         'Las diversas manifestaciones de violencia se erigen como una problemática de salud pública por múltiples razones: en primer lugar, a causa de las severas repercusiones en el bienestar físico y emocional de las víctimas, así como en sus familias y la sociedad en su conjunto, conllevando a la pérdida de años de vida saludable. En segundo término, su alcance se manifiesta en la extensa cantidad de población afectada, especialmente niñas, niños, adolescentes, jóvenes y mujeres. Esto pone de manifiesto que la violencia de género no es simplemente un tema psicológico confinado al ámbito privado, sino un problema social y de interés público que exige una acción coordinada por parte del Estado, respaldada por un marco normativo nacional integral. En tercer lugar, estas violencias son prevenibles, ya que sus raíces se hallan en aspectos culturales y sociales, no en factores biológicos o hereditarios. En consecuencia, abordar este fenómeno requiere un enfoque holístico que combine la sensibilización, la educación y la promoción de cambios estructurales para erradicar sus fundamentos culturales arraigados.',
       interpretacion:
-        'Un valor de 10% indica que en 10 de cada 100 delitos participaron menores de edad. Más información: https://www.corteidh.or.cr/tablas/r25958.pdf.',
+        'Un valor de 10% indica que en 10 de cada 100 delitos participaron menores de edad. <br/><br/>Más información: https://www.corteidh.or.cr/tablas/r25958.pdf.',
     },
     {
       nombre: 'Homicidios a menores',
@@ -69,7 +69,7 @@ export const ya8: DatosYa = {
       contexto:
         'En niños, niñas y adolescentes, las causas del suicidio varían según la edad y se presentan principalmente en niños, representando el 58% de los casos, en comparación con las niñas, que constituyen el 42%, en un promedio de los últimos 8 años. Los factores que contribuyen al suicidio en la infancia están relacionados con presenciar eventos dolorosos (como el divorcio o la pérdida de un ser querido), problemas en las relaciones paterno-filiales, dificultades escolares, llamadas de atención de padres o maestros de carácter humillante, búsqueda de afecto y atención, deseos de reunirse con un ser querido fallecido, trastornos de personalidad y depresión (Cabra, O.I. et al., 2010). El suicidio en niños, niñas y adolescentes, considerado como una muerte violenta y un problema de salud pública, requiere una atención integral y acciones coordinadas desde diversos sectores estatales, sociales y familiares. En este contexto, es esencial implementar programas y estrategias orientadas a la prevención, basadas en el principio de corresponsabilidad.',
       interpretacion:
-        'Un valor de 5  indica que 5 de cada 100,000 menores de edad han sido asesinados  en un momento y territorio específicos.  Más Información: https://www.icbf.gov.co/system/files/boletin_violencias_nna_dic21.pdf.',
+        'Un valor de 5  indica que 5 de cada 100,000 menores de edad han sido asesinados  en un momento y territorio específicos. <br/><br/>Más Información: https://www.icbf.gov.co/system/files/boletin_violencias_nna_dic21.pdf.',
     },
   ],
 };

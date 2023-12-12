@@ -3,6 +3,7 @@ import datos from '@/datosVisibles/indicadores';
 const { ya, indicador } = Astro.params;
 const datosYa = datos.find((instancia) => instancia.ruta === ya);
 const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta === indicador);
+import { urlsAEnlacesHTML } from '@enflujo/alquimia';
 ---
 
 <div class="contenedorInfoAdicional" data-hayDatos=`${datosIndicador.hay_datos}`>
@@ -35,7 +36,15 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
       </div>
       <div class="seccion">
         <h4 class="titulo">Cómo se interpreta</h4>
-        <p class="texto">{datosIndicador.interpretacion}</p>
+        <p class="texto" set:html={urlsAEnlacesHTML(datosIndicador.interpretacion)} />
+      </div>
+      <div class="seccion">
+        <h4 class="titulo">Responsable de la medición</h4>
+        <p class="texto">{datosIndicador.responsable}</p>
+      </div>
+      <div class="seccion">
+        <h4 class="titulo">A quién le compete</h4>
+        <p class="texto">{datosIndicador.compete_a}</p>
       </div>
     </section>
   </div>
@@ -47,7 +56,7 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
     display: flex;
     position: absolute;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     background-color: var(--blancoMarfil);
     margin: 1em;
@@ -57,7 +66,7 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
       width: 40vw;
       height: fit-content;
       min-width: 300px;
-      margin-top: 2em;
+      margin-top: 4em;
       border: solid 2px var(--azulViejo);
       border-radius: 15px;
       color: var(--azulViejo);
@@ -126,10 +135,11 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
           text-align: left;
           flex-basis: 80%;
           display: flex;
-          align-items: center;
           min-height: 2.3em;
           text-wrap: wrap;
           overflow-wrap: anywhere;
+          flex-direction: column;
+          justify-content: center;
         }
       }
     }

@@ -97,6 +97,15 @@ h2 {
   color: var(--azulViejo);
 }
 
+i {
+  font-variation-settings:
+    'MONO' 0,
+    'CASL' 0,
+    'wght' 600,
+    'slnt' -15,
+    'CRSV' 0.5;
+}
+
 main {
   display: flex;
   margin-top: $altoMenuSuperior;

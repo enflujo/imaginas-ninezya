@@ -14,7 +14,7 @@ export const ya4: DatosYa = {
       archivo: 'ya4-1',
       hay_datos: true,
       explicacion_umbral: 'No existe una meta definida como tal.',
-      explicacion: 'Indica el número de defunciones en menores de 5 años por endermedad diarreica aguda.',
+      explicacion: 'Indica el número de defunciones en menores de 5 años por enfermedad diarreica aguda.',
       definicion:
         'Indica el número de defunciones en niños menores de 5 años por enfermedad diarreica aguda con respecto a la población de niños menores de 5 años.',
       metodologia: 'Número de muertes por EDA en menores de 5 años / Número total de menores de 5 años.',
@@ -46,7 +46,7 @@ export const ya4: DatosYa = {
       contexto:
         'Las infecciones respiratorias agudas son causa de muerte en niños y niñas menores de 5 años alrededor del mundo, especialmente en aquellas regiones apartadas y con limitado acceso a educación, saneamiento y servicios de salud de calidad. Las infecciones del tracto respiratorio (alto y bajo) son causadas por diferentes microorganismos, pudiendo causar desde resfriados comunes hasta neumonías que pueden comprometer la vida. Una adecuada nutrición, contar con el esquema de vacunación completo y conocer los signos de alarma de una infección respiratoria, son elementos básicos para evitar la mortalidad por esta causa, que en la mayoría de los casos es completamente prevenible.',
       interpretacion:
-        'Un valor de 3 indica que murieron 3 niños por infección respiratoria aguda por cada 100.000 niños menores de 5 años en un momento y territorio dados. Más información: https://www.minsalud.gov.co/CC/Campanas/plegable-ira.pdf',
+        'Un valor de 3 indica que murieron 3 niños por infección respiratoria aguda por cada 100.000 niños menores de 5 años en un momento y territorio dados. <br/><br/> Más información: https://www.minsalud.gov.co/CC/Campanas/plegable-ira.pdf',
     },
     {
       nombre: 'Cobertura de acueducto',
@@ -67,7 +67,7 @@ export const ya4: DatosYa = {
       contexto:
         'La pandemia del COVID-19 ha resaltado la  importancia del saneamiento, la higiene y el acceso a agua potable para prevenir y controlar enfermedades. La Organización Mundial de la Salud destaca que el lavado de manos es una medida altamente efectiva para reducir la propagación de patógenos. A esto se suma que Colombia aún carece de una cobertura universal de agua potable y saneamiento.',
       interpretacion:
-        'Un valor del 70% significa que existen 70 familias que cuentan con acceso real a agua potable por cada 100 familias en un territorio y momento específicos. Más información sobre la importancia del acceso a agua potable: https://www.un.org/sustainabledevelopment/es/water-and-sanitation/#:~:text=Alcanzar%20la%20cobertura%20universal%20para,y%20tres%20para%20la%20higiene.',
+        'Un valor del 70% significa que existen 70 familias que cuentan con acceso real a agua potable por cada 100 familias en un territorio y momento específicos. <br/><br/> Más información sobre la importancia del acceso a agua potable: https://www.un.org/sustainabledevelopment/es/water-and-sanitation/#:~:text=Alcanzar%20la%20cobertura%20universal%20para,y%20tres%20para%20la%20higiene.',
     },
     {
       nombre: 'Calidad del aire',
@@ -76,10 +76,10 @@ export const ya4: DatosYa = {
       hay_datos: true,
       umbral: 92.9,
       explicacion_umbral:
-        'De acuerdo con los Objetivos de Desarrollo Sostenible, numeral 6 "Agua Limpia y Saneamiento", propone que para el año 2030 exista una cobertura universal. No hay metas intermedias. El PND 2022-2026 habla de alcanzar cobertura universal al finalizar el periodo presidencial.  CONPES 3918 | 2015 cobertura del 91.8%. 2018 92.9% | 2030 cobertura 100%.',
+        'El numeral 6 de los Objetivos de Desarrollo Sostenible (<i>Agua Limpia y Saneamiento</i>) propone que para el año 2030 exista una cobertura universal. No hay metas intermedias. El PND 2022-2026 habla de alcanzar cobertura universal al finalizar el periodo presidencial. CONPES 3918 | 2015 cobertura del 91.8%. 2018 92.9% | 2030 cobertura 100%.',
       explicacion: 'Indica el acceso potencial a agua potable para el consumo humano.',
       definicion:
-        'Indica el grado de pureza o contaminación atmosférica y los efectos para la salud. Es un valor adimensional que se emplea para indexar la contaminación atmosférica en tiempo real dándola a conocer de forma sencilla y comprensible a la población general. Se basa en el conjunto de sistemas de irrigación que permite transportar agua en forma de flujo continuo desde un lugar en el que es accesible en la naturaleza hasta un punto de consumo. *Este indicador puede subestimar el acceso real de agua potable en el campo, además no puede ser considerada como una medida real de acceso.',
+        'Indica el grado de pureza o contaminación atmosférica y los efectos para la salud. Es un valor adimensional que se emplea para indexar la contaminación atmosférica en tiempo real dándola a conocer de forma sencilla y comprensible a la población general. Se basa en el conjunto de sistemas de irrigación que permite transportar agua en forma de flujo continuo desde un lugar en el que es accesible en la naturaleza hasta un punto de consumo. <br/><br/> *Este indicador puede subestimar el acceso real de agua potable en el campo, además no puede ser considerada como una medida real de acceso.',
       metodologia: 'Se desconoce, metodología propia del IDEAM.',
       unidad: 'Adimensional (IDEAM)',
       fuente_numerador: 'Sistema Único de Información de Servicios Públicos - SUI',

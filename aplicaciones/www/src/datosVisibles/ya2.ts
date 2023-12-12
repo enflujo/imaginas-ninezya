@@ -20,7 +20,7 @@ export const ya2: DatosYa = {
       definicion:
         'La tasa de cobertura bruta mide la relación porcentual entre el número total de estudiantes matriculados sobre el total de la población en edad teórica para cursar el nivel educativo.**** En algunos casos la demanda social es mayor a la población en edad teórica para cursar este nivel (5 años), explicada por estudiantes en extraedad, por lo que el indicador toma valores superiores al 100%.',
       metodologia:
-        'Número total de estudiantes matriculados en transicion en edad teórica para cursar este grado (5 años) / Total de la población correspondiente a esa misma edad en el mismo periodo y territorio.',
+        'Número total de estudiantes matriculados en transición en edad teórica para cursar este grado (5 años) / Total de la población correspondiente a esa misma edad en el mismo periodo y territorio.',
       unidad: 'Porcentaje',
       fuente_numerador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
       fuente_denominador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística.',
@@ -83,7 +83,7 @@ export const ya2: DatosYa = {
       explicacion:
         'Indica el porcentaje de estudiantes que se encontraban cursando transición y abandonaron el sistema educativo antes de finalizar el año lectivo.',
       definicion:
-        'Tasa de desercion intra-anual. Porcentaje de estudiantes que abandonan el sistema educativo antes de finalizar el año lectivo de transición.',
+        'Tasa de deserción intra-anual. Porcentaje de estudiantes que abandonan el sistema educativo antes de finalizar el año lectivo de transición.',
       metodologia:
         'Número total de estudiantes matriculados en transición que abandonaron el sistema escolar antes de terminar el año lectivo / Total de estudiantes que se encuentran matriculados en transición en el mismo periodo y territorio.',
       unidad: 'Porcentaje',
