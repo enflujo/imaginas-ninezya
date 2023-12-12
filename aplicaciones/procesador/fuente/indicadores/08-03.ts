@@ -7,10 +7,8 @@ import path from 'path';
 import { getXlsxStream } from 'xlstream';
 import XLSX from 'xlsx';
 
-const archivoNum = 'Numerador_YA8_8.3';
-const archivoDen = 'denominador_final';
-const rutaNum = path.resolve(`./${archivoNum}.xlsx`);
-const rutaDen = path.resolve(`./${archivoDen}.xlsx`);
+const rutaNum = path.resolve(__dirname, './Numerador_YA8_8.3.xlsx');
+const rutaDen = path.resolve(__dirname, './denominador_final.xlsx');
 interface Num {
   codmpio: string;
   anno: number;
@@ -41,7 +39,7 @@ interface FilaDen {
 
 async function procesar() {
   try {
-    const datosNum = await readFile('./datos/ya8_3_num.json', 'utf-8');
+    const datosNum = await readFile(path.resolve(__dirname, './ya8_3_num.json'), 'utf-8');
     procesarDen(JSON.parse(datosNum));
   } catch (error) {
     console.log('no hay datos de numerador, procesar...');
@@ -76,7 +74,6 @@ async function procesarDen(datosNum: Num[]) {
       });
     }
 
-    // Contador para saber en que fila de Excel estamos, útil para buscar errores directo en el Excel.
     numeroFila++;
     const datosFila = fila.formatted.obj as FilaDen;
 
@@ -93,7 +90,6 @@ async function procesarDen(datosNum: Num[]) {
   flujoDen.on('close', () => {
     barraActual.update(total, { terminado: true });
     barraActual.stop();
-    // resolver();
     const tabla = XLSX.utils.json_to_sheet(datosProcesados);
     const archivo = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(archivo, tabla, 'Sheet1');
@@ -125,7 +121,6 @@ async function procesarNum() {
       });
     }
 
-    // Contador para saber en que fila de Excel estamos, útil para buscar errores directo en el Excel.
     numeroFila++;
     const datosFila = fila.formatted.obj as FilaNum;
     if (datosFila.departamento_hecho === 'BOGOTÁ, D. C.') {
@@ -197,16 +192,13 @@ async function procesarNum() {
       console.error(numeroFila, datosFila.municipio_hecho, datosFila.departamento_hecho);
     }
 
-    // procesador(, numeroFila);
-
     barraActual.update(fila.processedSheetSize, { terminado: false });
   });
 
   flujoNum.on('close', () => {
     barraActual.update(total, { terminado: true });
     barraActual.stop();
-    // resolver();
-    guardarJSON(filasNum, 'ya8_3_num', './');
+    guardarJSON(filasNum, 'ya8_3_num', path.resolve(__dirname, './'));
     console.log('Fin num');
   });
 }
