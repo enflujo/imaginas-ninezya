@@ -80,7 +80,7 @@ async function procesarDen(datosNum: Num[]) {
     const num = datosNum.find((obj) => obj.codmpio === `${datosFila.codmpio}` && obj.anno === datosFila.anno);
 
     if (num) {
-      const valor = (num.valor / datosFila.menores) * 100;
+      const valor = (num.valor / datosFila.menores) * 100000;
       datosProcesados.push({ codmpio: num.codmpio, anno: num.anno, delito: redondearDecimal(valor, 1, 2) });
     }
 

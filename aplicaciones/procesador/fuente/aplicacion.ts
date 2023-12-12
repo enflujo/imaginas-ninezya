@@ -8,7 +8,7 @@ import prerocesarIndicador83 from '@/indicadores/08-03';
 
 async function inicio() {
   // procesarLugares();
-  // await prerocesarIndicador83();
+  await prerocesarIndicador83();
   await vaciarProcesados();
   await procesarDatos();
 }
