@@ -79,7 +79,7 @@ const { alto, meta, umbral } = Astro.props;
     const nombreEjeY = svg.querySelector<SVGTextElement>('#nombreEjeY');
     const lineas: Linea[] = [];
     const visualizaciones = document.getElementById('visualizaciones');
-
+    const informacion = document.getElementById('informacion') as HTMLDivElement;
     const proporciones = { porcentaje: { x1: 2, x2: 95 }, pixeles: { x1: 0, x2: 0 } };
     const años = { primero: 0, ultimo: 0 };
     let cantidadDivisiones = 5;
@@ -189,6 +189,30 @@ const { alto, meta, umbral } = Astro.props;
         areaUmbral.setAttribute('width', '100%');
         areaUmbral.setAttribute('height', `${alto}`);
         contenedorEjeY.appendChild(areaUmbral);
+
+        areaUmbral.onmouseenter = (evento) => {
+          const x = evento.pageX;
+          const y = evento.pageY;
+          informacion.innerText = `La meta es: ${umbral}`;
+          informacion.classList.add(...['visible', 'esUmbral']);
+          Object.assign(informacion.style, {
+            top: `${y}px`,
+            left: `${x}px`,
+          });
+        };
+
+        areaUmbral.onmousemove = (evento) => {
+          const x = evento.pageX;
+          const y = evento.pageY;
+          Object.assign(informacion.style, {
+            top: `${y}px`,
+            left: `${x}px`,
+          });
+        };
+
+        areaUmbral.onmouseleave = () => {
+          informacion.classList.remove(...['visible', 'esUmbral']);
+        };
       }
 
       for (let i = 0; i <= cantidadDivisiones; i++) {

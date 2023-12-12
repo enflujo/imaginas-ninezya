@@ -68,6 +68,7 @@
   // Fondos
   --moradoProfundo: #760287;
   --moradoPandito: #faf2fc;
+  --verdeUmbral: rgba(76, 166, 88, 0.9);
 }
 
 html {
@@ -143,6 +144,11 @@ main {
 
   &.visible {
     opacity: 1;
+  }
+
+  &.esUmbral {
+    background-color: var(--verdeUmbral);
+    color: var(--blancoMarfil);
   }
 }
 
