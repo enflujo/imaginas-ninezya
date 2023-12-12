@@ -13,66 +13,105 @@ export const ya10: DatosYa = {
       ruta: 'delito-sexual-conflicto',
       archivo: 'ya10-1',
       hay_datos: true,
-      explicacion_umbral: 'Por definir',
-      umbral: 0,
-      explicacion: 'Por definir',
+      explicacion_umbral:
+        'De acuerdo con el Plan Nacional de Desarrollo 2022 - 2026 no hay una meta para este indicador. Sin embargo el humbral debe ser cero.',
+      explicacion:
+        'Indica el número de menores de edad o mujeres que fueron víctimas de delitos en contra de su libertad e integridad sexual.',
       definicion:
-        'Indica el número de menores de edad que fueron víctimas de un delito en contra de su libertad e integridad sexual.',
-      metodologia: 'Número de menores de edad que fueron reclutados por una estructural criminal.',
-      unidad: 'Conteo',
+        'Indica el número de menores de edad  y mujeres que fueron víctimas de un delito en contra de su libertad e integridad sexual.',
+      metodologia: 'Número de menores de edad y mujeres que fueron víctimas',
+      unidad: 'x 100.000 menores',
       fuente_numerador: 'Panel CEDE - Registro Único de Víctimas',
       fuente_denominador: 'Panel CEDE - Registro Único de Víctimas',
       desagregacion: 'Municipal',
-      contexto: 'Por definir',
-      interpretacion: 'Por definir',
+      contexto:
+        'Arias et al., (214) han estudiando los efectos del conflicto armado en el desarrollo económico y social en Colombia, de acuerdo con los autores el conflicto armad ha tenido efectos devastadores en el sistema educativo del país. Las instituciones educativas, tanto oficiales como no oficiales, han enfrentado numerosos desafíos debido a la violencia y la inestabilidad asociadas con el conflicto. Muchas escuelas han sido afectadas directamente, ya sea por actos de violencia que las han dejado inoperables o por la desaparición de recursos esenciales. Además, el desplazamiento forzado de comunidades enteras ha tenido un impacto directo en la tasa de matricula y la asistencia escolar, ya que muchos niños y jóvenes se han visto obligados a abandonar sus hogares y, en consecuencia, sus estudios. Este entorno de conflicto también ha llevado a la pérdida de maestros capacitados, ya sea porque han sido desplazados o han abandonado sus roles por motivos de seguridad.',
+      interpretacion:
+        'Un valor de 10 indica que 10 menores fueron reclutados a una estructura criminal en un momento y territorio determinados.',
+    },
+    {
+      nombre: 'Reclutamiento de menores',
+      ruta: 'reclutamiento-menores',
+      archivo: 'ya10-2',
+      hay_datos: true,
+      explicacion_umbral:
+        'De acuerdo con el Plan Nacional de Desarrollo 2022 - 2026 no hay una meta para este indicador. Sin embargo el umbral debe ser cero.',
+      explicacion: 'Indica el número de menores de edad que fueron reclutados por una estructura criminal.',
+      definicion: 'Indica el número de menores de edad que fueron reclutados por una estructura criminal.',
+      metodologia: 'Número de menores de edad que fueron reclutados por una estructural criminal',
+      unidad: 'Conteo',
+      fuente_numerador:
+        'DANE: Integración de datos y estimación estadística de víctimas en el marco del conflicto armado ( CEV - JEP - HRDAG ).',
+      fuente_denominador:
+        'DANE: Integración de datos y estimación estadística de víctimas en el marco del conflicto armado ( CEV - JEP - HRDAG ).',
+      desagregacion: 'Municipal',
+      contexto:
+        'Arias et al., (214) han estudiando los efectos del conflicto armado en el desarrollo económico y social en Colombia, de acuerdo con los autores el conflicto armad ha tenido efectos devastadores en el sistema educativo del país. Las instituciones educativas, tanto oficiales como no oficiales, han enfrentado numerosos desafíos debido a la violencia y la inestabilidad asociadas con el conflicto. Muchas escuelas han sido afectadas directamente, ya sea por actos de violencia que las han dejado inoperables o por la desaparición de recursos esenciales. Además, el desplazamiento forzado de comunidades enteras ha tenido un impacto directo en la tasa de matricula y la asistencia escolar, ya que muchos niños y jóvenes se han visto obligados a abandonar sus hogares y, en consecuencia, sus estudios. Este entorno de conflicto también ha llevado a la pérdida de maestros capacitados, ya sea porque han sido desplazados o han abandonado sus roles por motivos de seguridad.',
+      interpretacion:
+        'Un valor de 5 indica que 5 menores de edad  fueron víctimas de reclutamiento en un momento y territorio determinados.',
     },
     {
       nombre: 'Número de ataques armados a la población civil en el mismo periodo y lugar',
       ruta: 'ataques-armados',
       archivo: 'ya10-3',
       hay_datos: true,
-      explicacion_umbral: 'Por definir',
-      explicacion: 'Por definir',
-      definicion: 'Por definir',
-      metodologia: 'Por definir',
-      unidad: 'Por definir',
-      fuente_numerador: 'Por definir',
-      fuente_denominador: 'Por definir',
+      explicacion_umbral:
+        'De acuerdo con el Plan Nacional de Desarrollo 2022 - 2026 no hay una meta para este indicador. Sin embargo el umbral debe ser cero.',
+      explicacion: 'Indica el número total de actos terroristas.',
+      definicion:
+        'Este indicar presenta un conteo del número de actos terroristas, hostigamientos, combates y enfrentamientos en un mismo periodo y territorio en particular.',
+      metodologia:
+        'Total = Suma (Número de Actos Terroritas, Atentados, Combates, Enfretamientos, Declaraciones de Hostigamientos)',
+      unidad: 'Conteo',
+      fuente_numerador:
+        'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE)  con base en el Registro Único de Víctimas.',
+      fuente_denominador: 'No aplica',
       desagregacion: 'Municipal',
-      contexto: 'Por definir',
-      interpretacion: 'Por definir',
+      contexto:
+        'Sánchez et al., (2005) han estudiando los efectos del conflicto armado en el desarrollo social colombiano, los autores muestran como los actos terroristas están relacionados con un bajo desempeño en el aula y por consiguiente interfiere en la construcción de herramientas que favorecen la formación de capital humano.',
+      interpretacion:
+        'Un valor de 20 indica que en un mismo periodo y territorio en particular se presentaron 20 ataques armados a la población civil. El indicador no pondera un peso en particular en función de la categoría que integran el agregado de "Ataques Armados".',
     },
     {
       nombre: 'Número de ocurrencias con artefactos explosivos (Minas antipersonales, munición sin explotar)',
       ruta: 'artefactos-explosivos',
       archivo: 'ya10-4',
       hay_datos: true,
-      explicacion_umbral: 'Por definir',
-      explicacion: 'Por definir',
-      definicion: 'Por definir',
-      metodologia: 'Por definir',
-      unidad: 'Por definir',
-      fuente_numerador: 'Por definir',
-      fuente_denominador: 'Por definir',
+      explicacion_umbral:
+        'De acuerdo con el Plan Nacional de Desarrollo 2022 - 2026 no hay una meta para este indicador. Sin embargo el umbral debe ser cero.',
+      explicacion: 'Indica el número total de ocurrencias con artefactos explosivos.',
+      definicion:
+        'Este indicar presenta un conteo del número de ocurrencias terroristas con artefactos explosivos en un mismo periodo y territorio en particular. * Contemplar Población Civil y personal de la Fuerza Pública.',
+      metodologia: 'Total = Suma (Artefactos Explosivos, Munición, Minas Antipersonales)',
+      unidad: 'Conteo',
+      fuente_numerador:
+        'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE)  con base en el Registro Único de Víctimas.',
+      fuente_denominador: 'No aplica',
       desagregacion: 'Municipal',
       contexto: 'Por definir',
-      interpretacion: 'Por definir',
+      interpretacion:
+        'Un valor de 15 índica que en un mismo periodo y territorio en particular se presentaron 15 ocurrencias con anterfactos explosivos* El no pondera un peso en particular en función de la categoría que integran el agregado de "Artefactos Explosivos".',
     },
     {
-      nombre: 'Reclutamiento',
-      ruta: 'reclutamiento',
-      archivo: 'ya10-2',
+      nombre: 'Número de menores de edad secuestrados',
+      ruta: 'menores-secuestrados',
+      archivo: 'ya10-5',
       hay_datos: true,
-      umbral: 1,
-      explicacion: 'Por definir',
-      definicion: 'Por definir',
-      metodologia: 'Por definir',
-      unidad: 'Por definir',
-      fuente_numerador: 'Por definir',
-      fuente_denominador: 'Por definir',
+      explicacion_umbral:
+        'De acuerdo con el Plan Nacional de Desarrollo 2022 - 2026 no hay una meta para este indicador. Sin embargo el umbral debe ser cero.',
+      explicacion: 'Indica el número de secuestros a menores de edad realizados por una estructura criminal.',
+      definicion: 'Este indicar presenta un conteo del número de secuestros realizados a menores de edad.',
+      metodologia: 'Número de menores de edad que fueron secuestrados por una estructura criminal',
+      unidad: 'Conteo',
+      fuente_numerador:
+        'DANE: Integración de datos y estimación estadística de víctimas en el marco del conflicto armado ( CEV - JEP - HRDAG ).',
+      fuente_denominador:
+        'DANE: Integración de datos y estimación estadística de víctimas en el marco del conflicto armado ( CEV - JEP - HRDAG ).',
       desagregacion: 'Municipal',
-      contexto: 'Por definir',
-      interpretacion: 'Por definir',
+      contexto:
+        'En el contexto del prolongado conflicto armado en Colombia, el secuestro ha sido una problemática destacada a lo largo de décadas. Durante el conflicto, diversas organizaciones guerrilleras, como las FARC y el ELN, han utilizado el secuestro como táctica para presionar al gobierno, financiar operaciones y ejercer control territorial. Este flagelo no ha discriminado a sus víctimas, afectando a civiles, líderes comunitarios, políticos y miembros de las fuerzas armadas. El secuestro con fines políticos también ha impactado a representantes electos, incluyendo alcaldes y concejales. Aunque las estadísticas de secuestro han mostrado disminuciones significativas en los últimos años, la magnitud del problema durante los momentos álgidos del conflicto dejó cicatrices profundas en la sociedad colombiana. La firma de acuerdos de paz, como el alcanzado con las FARC en 2016, ha contribuido a reducir ciertas formas de violencia, pero el país sigue enfrentando el desafío de abordar las secuelas de décadas de conflicto y avanzar hacia una paz duradera. Más información: https://centrodememoriahistorica.gov.co/wp-content/uploads/2020/01/Una-sociedad-secuestrada.pdf.',
+      interpretacion:
+        'Un valor de 5 indica que 5 menores de edad fueron víctimas de secuestro en un momento y territorio determinados.',
     },
   ],
 };

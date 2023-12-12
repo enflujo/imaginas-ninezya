@@ -15,7 +15,7 @@ export const ya1: DatosYa = {
       hay_datos: true,
       umbral: 92.9,
       explicacion_umbral:
-        'De acuerdo con los Objetivos de Desarrollo Sostenible, numeral 6 "Agua Limpia y Saneamiento", se propone alcanzar una cobertura universal para el año 20230. Asimismo, el El PND 2022-2026 trazó como meta alcanzar una cobertura universal al finalizar el periodo presidencial. Por otra parte, de acuerdo con el documento CONPES 3918 del 2015 se trazó como meta una cobertura del 92.9% para el año 2018.',
+        'El numeral 6 de los Objetivos de Desarrollo Sostenible ("Agua Limpia y Saneamiento") propone alcanzar una cobertura universal para el año 20230. Asimismo, el El PND 2022-2026 trazó como meta alcanzar una cobertura universal al finalizar el periodo presidencial. Por otra parte, en el documento CONPES 3918 de 2015 se trazó como meta una cobertura del 92.9% para el año 2018.',
       explicacion: 'Indica el acceso potencial a agua potable para el consumo humano.',
       definicion:
         'Conjunto de sistemas de riego que facilita el traslado constante de agua desde una ubicación naturalmente accesible hasta un punto de consumo. Sin embargo, es importante destacar que este indicador podría subestimar el verdadero acceso al agua potable en áreas rurales y no debe ser tomado como una medida precisa de dicho acceso.',
@@ -63,7 +63,7 @@ export const ya1: DatosYa = {
         'Indica el número de defunciones ocurridas en niños menores de 5 años por cada 1000 nacidos vivos en un periodo y territorio determinados.',
       metodologia:
         'Número de muertes de menores de 5 años en un periodo y territorio específicos / Número de nacidos vivos en el mismo periodo y territorio.',
-      unidad: 'Por 1000 nacimientos',
+      unidad: 'Por cada 1000 nacimientos',
       fuente_numerador: 'CUBO INDICADORES EEVV',
       fuente_denominador: 'CUBO INDICADORES EEVV',
       desagregacion: 'Municipal',
@@ -103,10 +103,10 @@ export const ya1: DatosYa = {
         'En el Plan Nacional de Desarrollo no hay una meta clara para esta problemática. De acuerdo con los Objetivos de Desarrollo Sostenible, numeral 2 "Hambre cero",  se pretende erradicar el hambre para el año 2030. La Encuesta Nacional de Situación Nutricional del año 2015 prevee que para el 2030  la morbilidad por desnutrición aguda sea de 0.9%.',
       explicacion: 'Indica la proporción de niños menores de 5 años que padecen de desnutrición aguda.',
       definicion:
-        'Proporción de niños menores de 5 años que padecen de desnutrición aguda en un momento y territorio determinados.',
+        'Indica el número de niños menores de 5 años por cada 100.000 que padecen de desnutrición aguda en un momento y territorio determinado.',
       metodologia:
         'Número de niños menores de 5 años que sufren de desnutrición aguda en un periodo y territorio específicos /  Número de nacidos vivos menores de 5 años en el mismo periodo y territorio.',
-      unidad: 'Porcentaje',
+      unidad: 'Por cada 100.000 nacidos vivos',
       fuente_numerador: 'SIVIGILA',
       fuente_denominador: 'CUBO INDICADORES EEVV',
       desagregacion: 'Municipal',

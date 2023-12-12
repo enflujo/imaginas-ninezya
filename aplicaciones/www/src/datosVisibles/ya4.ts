@@ -18,7 +18,7 @@ export const ya4: DatosYa = {
       definicion:
         'Indica el número de defunciones en niños menores de 5 años por enfermedad diarreica aguda con respecto a la población de niños menores de 5 años.',
       metodologia: 'Número de muertes por EDA en menores de 5 años / Número total de menores de 5 años.',
-      unidad: 'Por 100.000 menores de 5 años',
+      unidad: 'Por cada 100.000 menores de 5 años',
       fuente_numerador: 'CUBO INDICADORES EEVV',
       fuente_denominador: 'CUBO INDICADORES EEVV',
       desagregacion: 'Municipal',
@@ -39,7 +39,7 @@ export const ya4: DatosYa = {
       definicion:
         'Indica el número de defunciones en niños menores de 5 años por infecciones respiratorias agudas con respecto a la población de niños menores de 5 años en un momento y territorio determinado.',
       metodologia: 'Número de muertes por IRA en menores de 5 años / Número total de menores de 5 años.',
-      unidad: 'Por 100.000 menores de 5 años',
+      unidad: 'Por cada 100.000 menores de 5 años',
       fuente_numerador: 'CUBO INDICADORES EEVV',
       fuente_denominador: 'CUBO INDICADORES EEVV',
       desagregacion: 'Municipal',
