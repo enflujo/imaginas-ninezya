@@ -146,7 +146,7 @@ export default class MapaDetalle extends HTMLElement {
 
         formaMunicipio.onmousemove = (evento) => {
           const x = evento.pageX;
-          const y = evento.pageY - 30;
+          const y = evento.pageY;
           const valor = this.formas[lugar.properties.codigo].valor;
 
           informacion.innerText = `${lugar.properties.nombre}: ${valor ? valor + '%' : 'Sin datos'}`;

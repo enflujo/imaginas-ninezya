@@ -74,7 +74,7 @@ const { ancho, alto } = Astro.props;
 
     mapa.onmousemove = (evento) => {
       const x = evento.clientX;
-      const y = evento.clientY - 30;
+      const y = evento.clientY;
       Object.assign(informacion.style, {
         top: `${y}px`,
         left: `${x}px`,
