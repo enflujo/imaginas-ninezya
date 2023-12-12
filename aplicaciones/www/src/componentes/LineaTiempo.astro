@@ -15,7 +15,7 @@ const { alto, meta, umbral } = Astro.props;
     <ul class="leyendas">
       <li class="colombia">Colombia</li>
 
-      {umbral && <li class="meta">Meta del indicador</li>}
+      {umbral && <li class="meta">Meta deseada: {umbral}</li>}
     </ul>
 
     <p class="anotacionUmbral" set:html={meta} />
@@ -471,12 +471,13 @@ const { alto, meta, umbral } = Astro.props;
         }
 
         .meta::before {
-          content: '\25C9';
-          font-weight: bold;
+          content: '';
           display: inline-block;
-          width: 1em;
-          font-size: 1.2em;
-          color: #4ca658;
+          vertical-align: middle;
+          margin: 0 8px 0 1px;
+          width: 10px;
+          height: 8px;
+          background-color: #4ca658;
         }
       }
 
