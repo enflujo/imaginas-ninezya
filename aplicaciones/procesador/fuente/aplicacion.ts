@@ -116,6 +116,11 @@ async function procesarDatos() {
   const ya44 = new VariableSingular('concentracion', false, 'escala');
   await ya44.procesar('4.4: calidad aire', 'YA4_4.4', 'Sheet1', 'ya4-4');
 
+  const ya71 = new VariableSingular('GINI', false, 'coeficiente', 1.0);
+  await ya71.procesar('7.1: GINI', 'YA7_7.1', 'Sheet1', 'ya7-1');
+  const ya72 = new VariableSingular('pobreza', false, 'porcentaje');
+  await ya72.procesar('7.2: pobreza', 'YA7_7.2', 'Sheet1', 'ya7-2');
+
   const ya81 = new VariableSingular('tasa', false, 'tasa', 100000);
   await ya81.procesar('8.1: violencia física', 'YA8_8.1', 'Sheet1', 'ya8-1');
   const ya83 = new VariableSingular('delito', false, 'porcentaje');

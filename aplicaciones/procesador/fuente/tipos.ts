@@ -114,13 +114,15 @@ export type VariableValorSingular =
   | 'reclu'
   | 'tasa'
   | 'delito'
-  | 'secu';
+  | 'secu'
+  | 'GINI'
+  | 'pobreza';
 
 export type VariablesSingulares = {
   [llave in VariableValorSingular]: number;
 };
 
-export type EstructurasMatematicas = 'porcentaje' | 'tasa' | 'escala' | 'conteo';
+export type EstructurasMatematicas = 'porcentaje' | 'tasa' | 'escala' | 'conteo' | 'coeficiente';
 
 export type VariablesNumDen = {
   anno: string;
