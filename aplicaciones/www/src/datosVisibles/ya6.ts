@@ -9,60 +9,67 @@ export const ya6: DatosYa = {
   hay_datos: false,
   indicadores: [
     {
-      nombre: 'Número de mesas de participacion de niños, niñas y adolescentes conformadas y en operación ** Tomado  de Indicadores de participación de niños, niñas y adolescentes.',
+      nombre:
+        'Número de mesas de participacion de niños, niñas y adolescentes conformadas y en operación ** Tomado  de Indicadores de participación de niños, niñas y adolescentes.',
       ruta: 'mesas-participacion',
       archivo: 'ya6-1',
       hay_datos: false,
-      definicion: 'Se refiere a la cantidad de comités establecidos en cada municipio y departamento del país. Estos comités, según lo estipulado en el decreto 936 de 2013, tienen la responsabilidad de asegurar la participación sustancial de niños, niñas y adolescentes en la formulación y ejecución de políticas públicas orientadas hacia ellos. (**Tomado  de Indicadores de participación de niños, niñas y adolescentes. ISBN - 978-958-623-164-0).',
-      metodologia: 'Número de entidades territoriales (municipios y departamentos) con mesas de participación de niños, niñas y adolescentes conformadas.',
+      definicion:
+        'Se refiere a la cantidad de comités establecidos en cada municipio y departamento del país. Estos comités, según lo estipulado en el decreto 936 de 2013, tienen la responsabilidad de asegurar la participación sustancial de niños, niñas y adolescentes en la formulación y ejecución de políticas públicas orientadas hacia ellos. (**Tomado  de Indicadores de participación de niños, niñas y adolescentes. ISBN - 978-958-623-164-0).',
+      metodologia:
+        'Número de entidades territoriales (municipios y departamentos) con mesas de participación de niños, niñas y adolescentes conformadas.',
       unidad: 'Conteo',
       desagregacion: 'Municipal',
-      interpretacion: 'Este indicador busca evaluar la existencia y el cumplimiento de comités a nivel local y regional que estén comprometidos con asegurar que los niños, niñas y adolescentes tengan una voz activa y relevante en la elaboración y ejecución de políticas que afectan directamente sus vidas. La presencia de estos comités y su adhesión al decreto indicaría un enfoque institucional en la inclusión y participación de la juventud en el proceso de toma de decisiones. Más información: Ben-Arieh, A. & Gross-manos, D. (2009). Taxonomy for child well being indicators. https://www.icbf.gov.co/system/files/guia_6_indicadores_de_participacion_de_ninos_nina_y_adolescentes.pdf. The 3rd OECD World Forum on Statistics, Knowledge and Policy. Charting Prog- ress, Building Visions, Improving Life. Consultado en la página web: http://www.oecd.org/site/progresskorea/44120532.pdf.',
-      responsable:
-        'Instituto Colombiano de Bienestar Familiar (ICBF).',
+      interpretacion:
+        'Este indicador busca evaluar la existencia y el cumplimiento de comités a nivel local y regional que estén comprometidos con asegurar que los niños, niñas y adolescentes tengan una voz activa y relevante en la elaboración y ejecución de políticas que afectan directamente sus vidas. La presencia de estos comités y su adhesión al decreto indicaría un enfoque institucional en la inclusión y participación de la juventud en el proceso de toma de decisiones. Más información: Ben-Arieh, A. & Gross-manos, D. (2009). Taxonomy for child well being indicators. https://www.icbf.gov.co/system/files/guia_6_indicadores_de_participacion_de_ninos_nina_y_adolescentes.pdf. The 3rd OECD World Forum on Statistics, Knowledge and Policy. Charting Prog- ress, Building Visions, Improving Life. Consultado en la página web: http://www.oecd.org/site/progresskorea/44120532.pdf.',
+      responsable: 'Instituto Colombiano de Bienestar Familiar (ICBF).',
       compete_a:
         'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secretarías de Educación.',
     },
     {
-      nombre: 'Número total de encuentros o sesiones en las que niños, niñas y adolescentes participaron en la etapa de diseño del Plan de Desarrollo Territorial.',
+      nombre:
+        'Número total de encuentros o sesiones en las que niños, niñas y adolescentes participaron en la etapa de diseño del Plan de Desarrollo Territorial.',
       ruta: 'encuentros-pdt',
       archivo: 'ya6-2',
       hay_datos: false,
-      definicion: 'Es el número total de sesiones o encuentros en los que niños, niñas y adolescentes participan de forma activa en la etapa de diseño del Plan de Desarrollo Territorial. (** Tomado  de Indicadores de participación de niños, niñas y adolescentes. ISBN - 978-958-623-164-0).',
+      definicion:
+        'Es el número total de sesiones o encuentros en los que niños, niñas y adolescentes participan de forma activa en la etapa de diseño del Plan de Desarrollo Territorial. (** Tomado  de Indicadores de participación de niños, niñas y adolescentes. ISBN - 978-958-623-164-0).',
       metodologia:
         'Número de sesiones de participación significativa de niños, niñas y adolescentes en la etapa de diseño del Plan de Desarrollo Territorial.',
       unidad: 'Conteo',
       desagregacion: 'No aplica',
       interpretacion:
         'Este indicador se interpreta como la suma total de reuniones o sesiones en las cuales niños, niñas y adolescentes participaron activamente durante la fase de diseño del Plan de Desarrollo Territorial. En otras palabras, representa la cantidad completa de ocasiones en las que los jóvenes estuvieron involucrados en el proceso de planificación y diseño de estrategias para el desarrollo de una región o área geográfica específica. Una interpretación favorable de este indicador podría indicar un esfuerzo significativo por incluir a la población joven en la toma de decisiones y la formulación de políticas a nivel local. La participación activa de niños, niñas y adolescentes en el diseño del Plan de Desarrollo Territorial sugiere un enfoque inclusivo que valora sus perspectivas y contribuciones en la planificación del futuro de la sociedad. Más información: Ben-Arieh, A. & Frones, I. (2011). Taxonomy for child well being indicators: A frame- work for the analysis of the well-being of children. Childhood. 18: 460-476. https://www.icbf.gov.co/system/files/guia_6_indicadores_de_participacion_de_ninos_nina_y_adolescentes.pdf.',
-      responsable:
-        'SUIN - Juriscol MinJusticia',
+      responsable: 'SUIN - Juriscol MinJusticia',
       compete_a:
         'En situaciones donde los diálogos con niños, niñas y adolescentes son organizados y dirigidos al mismo tiempo por entidades nacionales y administraciones locales, se recomienda que los datos se registren exclusivamente por la entidad del ámbito nacional, departamental, distrital o municipal que sea el objetivo principal del diálogo. Por ejemplo, si se está monitoreando un programa a nivel departamental, la Gobernación debería encargarse del registro, incluso si la acción se lleva a cabo en colaboración con la administración municipal. Esto se hace con el propósito de evitar el registro duplicado de información sobre una misma actividad.',
     },
     {
-      nombre: 'Porcentaje de adolescentes de grado 11 que tienen percepción favorable hacia el gobierno escolar y la participación estudiantil',
+      nombre:
+        'Porcentaje de adolescentes de grado 11 que tienen percepción favorable hacia el gobierno escolar y la participación estudiantil',
       ruta: 'participacion-estudiantil',
       archivo: 'ya6-3',
       hay_datos: false,
-      definicion: 'Se refiere a la proporción de estudiantes de undécimo grado que se encuentran en el nivel de desempeño elevado y que expresan cierto grado de conformidad con declaraciones relacionadas con el gobierno escolar y la participación estudiantil. (** Tomado  de Indicadores de participación de niños, niñas y adolescentes. ISBN – 978-958-623-164-0).',
+      definicion:
+        'Se refiere a la proporción de estudiantes de undécimo grado que se encuentran en el nivel de desempeño elevado y que expresan cierto grado de conformidad con declaraciones relacionadas con el gobierno escolar y la participación estudiantil. (** Tomado  de Indicadores de participación de niños, niñas y adolescentes. ISBN – 978-958-623-164-0).',
       metodologia:
         'Estudiantes de undécimo grado que participaron en la prueba y que tienen una perspectiva favorable hacia el gobierno escolar y la participación estudiantil / Total de estudiantes de undécimo grado que respondieron la prueba en la sección relacionada con el gobierno escolar y la participación estudiantil * 100',
       unidad: 'Porcentaje',
       desagregacion: 'Municipal',
       interpretacion:
         'Este indicador se refiere a la proporción de estudiantes de undécimo grado que tienen una percepción positiva sobre el gobierno escolar y la participación estudiantil en comparación con el total de estudiantes de undécimo grado que respondieron la sección específica sobre gobierno escolar y participación estudiantil. Más información: Ben-Arieh, A. & Frones, I. (2011). Taxonomy for child well being indicators: A frame- work for the analysis of the well-being of children. Childhood. 18: 460-476. https://www.icbf.gov.co/system/files/guia_6_indicadores_de_participacion_de_ninos_nina_y_adolescentes.pdf. Para interpretar este indicador, se analiza la relación entre dos grupos de estudiantes: aquellos que expresan una percepción positiva sobre el gobierno escolar y la participación estudiantil, y el grupo total de estudiantes que cursan el undécimo grado y que respondieron a la sección correspondiente. La proporción indica qué parte de este grupo tiene una opinión favorable sobre la gestión escolar y la participación estudiantil en comparación con el total que participó en la evaluación. Un valor alto en esta proporción podría sugerir un nivel significativo de apoyo y aprobación hacia el gobierno escolar y la participación estudiantil entre los estudiantes de undécimo grado que participaron en la encuesta.',
-      responsable:
-        'Ministerio de Educación Nacional - ICFES' ,
+      responsable: 'Ministerio de Educación Nacional - ICFES',
       compete_a:
         'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secretarías de Educación.',
     },
     {
-      nombre: 'Número de niños, niñas y adolescentes que participan en cada entidad territorial (municipio - departamento) en el seguimiento a los Planes Territoriales de Salud - PTS',
+      nombre:
+        'Número de niños, niñas y adolescentes que participan en cada entidad territorial (municipio - departamento) en el seguimiento a los Planes Territoriales de Salud - PTS',
       ruta: 'seguimiento-pts',
       archivo: 'ya6-4',
       hay_datos: false,
-      definicion: 'Es el número de niños, niñas y adolescentes que participan de manera relevante en el seguimiento de los planes de salud a nivel territorial. (** Tomado  de Indicadores de participación de niños, niñas y adolescentes. ISBN – 978-958-623-164-0).',
+      definicion:
+        'Es el número de niños, niñas y adolescentes que participan de manera relevante en el seguimiento de los planes de salud a nivel territorial. (** Tomado  de Indicadores de participación de niños, niñas y adolescentes. ISBN – 978-958-623-164-0).',
       metodologia:
         'Número de niños, niñas y adolescentes que participan significativamente en la formulación de los planes territoriales de salud.',
       unidad: 'Conteo',
@@ -75,11 +82,13 @@ export const ya6: DatosYa = {
         'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secretarías de Educación.',
     },
     {
-      nombre: 'Número de niños, niñas y adolescentes que participan significativamente en la identificación de las prioridades de política pública a partir del análisis de la situación de salud con enfoque de derechos en su territorio.',
+      nombre:
+        'Número de niños, niñas y adolescentes que participan significativamente en la identificación de las prioridades de política pública a partir del análisis de la situación de salud con enfoque de derechos en su territorio.',
       ruta: 'politica-publica',
       archivo: 'ya6-5',
       hay_datos: false,
-      definicion: 'Es la cantidad de niños, niñas y adolescentes que participan de manera relevante en el análisis de la situación de salud en su área geográfica. (** Tomado  de Indicadores de participación de niños, niñas y adolescentes. ISBN – 978-958-623-164-0).',
+      definicion:
+        'Es la cantidad de niños, niñas y adolescentes que participan de manera relevante en el análisis de la situación de salud en su área geográfica. (** Tomado  de Indicadores de participación de niños, niñas y adolescentes. ISBN – 978-958-623-164-0).',
       metodologia:
         'Número total de niños, niñas y adolescentes que participan significativamente en los análisis de situación de salud con un enfoque basado en los derechos.',
       unidad: 'Conteo',

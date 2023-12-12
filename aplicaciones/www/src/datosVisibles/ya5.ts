@@ -13,7 +13,8 @@ export const ya5: DatosYa = {
       ruta: 'dificultad-funcional-2-5',
       archivo: 'ya5-1',
       hay_datos: false,
-      definicion: 'Este indicador podría formar parte de un conjunto de medidas utilizado para evaluar el bienestar infantil, la salud o el desarrollo infantil en una comunidad o contexto específico. La evaluación de la dificultad funcional en el juego puede abordar aspectos como la coordinación motora, las habilidades sociales, la creatividad y otras habilidades relacionadas con el juego que son importantes para el desarrollo infantil.',
+      definicion:
+        'Este indicador podría formar parte de un conjunto de medidas utilizado para evaluar el bienestar infantil, la salud o el desarrollo infantil en una comunidad o contexto específico. La evaluación de la dificultad funcional en el juego puede abordar aspectos como la coordinación motora, las habilidades sociales, la creatividad y otras habilidades relacionadas con el juego que son importantes para el desarrollo infantil.',
       metodologia:
         'Número de niños y niñas de 2-5 años con dificultad funcional en el dominio de juego / Número de niños y niñas de 2-5 años * 100.000 niños',
       unidad: 'Tasa',
@@ -69,7 +70,8 @@ export const ya5: DatosYa = {
       hay_datos: false,
       definicion:
         'Este indicador puede ser utilizado para medir el acceso y la participación de los niños en experiencias de lectura, lo cual es crucial para el desarrollo del lenguaje, la cognición y la alfabetización. La exposición temprana a libros y la práctica de la lectura pueden tener impactos significativos en el desarrollo del vocabulario y la comprensión del lenguaje.',
-      metodologia: 'Número de niños y niñas de 2-5 años que con frecuencia cuentan en su hogar con adulto que lee junto a el libros de cuentos o historias / Número total de niños y niñas de 2-5 años * 100.000 niños',
+      metodologia:
+        'Número de niños y niñas de 2-5 años que con frecuencia cuentan en su hogar con adulto que lee junto a el libros de cuentos o historias / Número total de niños y niñas de 2-5 años * 100.000 niños',
       unidad: 'Tasa',
       desagregacion: 'Municipal',
       interpretacion:
@@ -83,8 +85,10 @@ export const ya5: DatosYa = {
       ruta: 'juego-adulto-2-5',
       archivo: 'ya5-5',
       hay_datos: false,
-      definicion: 'La importancia de este indicador radica en reconocer la influencia y el papel positivo que los adultos, especialmente los cuidadores y educadores, pueden tener en el desarrollo de habilidades sociales, emocionales y cognitivas de los niños. Jugar con adultos responsables no solo proporciona oportunidades para la diversión y la recreación, sino que también puede contribuir al aprendizaje, la comunicación y la formación de vínculos afectivos.',
-      metodologia: 'Número de niños y niñas de 2-5 años que con frecuencia juegan con un adulto responsable/ Número total de niños y niñas de 2-5 años * 100.000 niños',
+      definicion:
+        'La importancia de este indicador radica en reconocer la influencia y el papel positivo que los adultos, especialmente los cuidadores y educadores, pueden tener en el desarrollo de habilidades sociales, emocionales y cognitivas de los niños. Jugar con adultos responsables no solo proporciona oportunidades para la diversión y la recreación, sino que también puede contribuir al aprendizaje, la comunicación y la formación de vínculos afectivos.',
+      metodologia:
+        'Número de niños y niñas de 2-5 años que con frecuencia juegan con un adulto responsable/ Número total de niños y niñas de 2-5 años * 100.000 niños',
       unidad: 'Tasa',
       desagregacion: 'Municipal',
       interpretacion:

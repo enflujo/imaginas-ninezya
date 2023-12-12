@@ -15,7 +15,7 @@ export const ya1: DatosYa = {
       hay_datos: true,
       umbral: 92.9,
       explicacion_umbral:
-        'De acuerdo con los Objetivos de Desarrollo Sostenible, numeral 6 "Agua Limpia y Saneamiento", se propone alcanzar una cobertura universal para el año 20230. Asimismo, el El PND 2022-2026 trazó como meta alcanzar una cobertura universal al finalizar el periodo presidencial. Por otra parte, de acuerdo con el documento CONPES 3918 del 2015 se trazó como meta una cobertura del 92.9% para el año 2018.',
+        'El numeral 6 de los Objetivos de Desarrollo Sostenible ("Agua Limpia y Saneamiento") propone alcanzar una cobertura universal para el año 20230. Asimismo, el El PND 2022-2026 trazó como meta alcanzar una cobertura universal al finalizar el periodo presidencial. Por otra parte, en el documento CONPES 3918 de 2015 se trazó como meta una cobertura del 92.9% para el año 2018.',
       explicacion: 'Indica el acceso potencial a agua potable para el consumo humano.',
       definicion:
         'Conjunto de sistemas de riego que facilita el traslado constante de agua desde una ubicación naturalmente accesible hasta un punto de consumo. Sin embargo, es importante destacar que este indicador podría subestimar el verdadero acceso al agua potable en áreas rurales y no debe ser tomado como una medida precisa de dicho acceso.',
