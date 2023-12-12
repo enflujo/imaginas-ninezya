@@ -51,6 +51,13 @@ const { ya, indicador } = Astro.params;
       const icono = contenedorYa.querySelector<HTMLSpanElement>('.iconoYa');
 
       nombreYa.addEventListener('click', () => {
+        const actualmenteAbierto = menu.querySelector('.abierto');
+
+        if (actualmenteAbierto && actualmenteAbierto !== contenedorYa) {
+          actualmenteAbierto.classList.remove('abierto');
+          actualmenteAbierto.querySelector('.nombreYa').classList.remove('ungido');
+        }
+
         contenedorYa.classList.toggle('abierto');
         nombreYa.classList.toggle('ungido');
       });
