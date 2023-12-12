@@ -63,7 +63,7 @@ export const ya1: DatosYa = {
         'Indica el número de defunciones ocurridas en niños menores de 5 años por cada 1000 nacidos vivos en un periodo y territorio determinados.',
       metodologia:
         'Número de muertes de menores de 5 años en un periodo y territorio específicos / Número de nacidos vivos en el mismo periodo y territorio.',
-      unidad: 'Por 1000 nacimientos',
+      unidad: 'Por cada 1000 nacimientos',
       fuente_numerador: 'CUBO INDICADORES EEVV',
       fuente_denominador: 'CUBO INDICADORES EEVV',
       desagregacion: 'Municipal',
@@ -103,10 +103,10 @@ export const ya1: DatosYa = {
         'En el Plan Nacional de Desarrollo no hay una meta clara para esta problemática. De acuerdo con los Objetivos de Desarrollo Sostenible, numeral 2 "Hambre cero",  se pretende erradicar el hambre para el año 2030. La Encuesta Nacional de Situación Nutricional del año 2015 prevee que para el 2030  la morbilidad por desnutrición aguda sea de 0.9%.',
       explicacion: 'Indica la proporción de niños menores de 5 años que padecen de desnutrición aguda.',
       definicion:
-        'Proporción de niños menores de 5 años que padecen de desnutrición aguda en un momento y territorio determinados.',
+        'Indica el número de niños menores de 5 años por cada 100.000 que padecen de desnutrición aguda en un momento y territorio determinado.',
       metodologia:
         'Número de niños menores de 5 años que sufren de desnutrición aguda en un periodo y territorio específicos /  Número de nacidos vivos menores de 5 años en el mismo periodo y territorio.',
-      unidad: 'Por 100.000 nacidos vivos',
+      unidad: 'Por cada 100.000 nacidos vivos',
       fuente_numerador: 'SIVIGILA',
       fuente_denominador: 'CUBO INDICADORES EEVV',
       desagregacion: 'Municipal',

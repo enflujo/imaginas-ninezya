@@ -21,7 +21,7 @@ export const ya3: DatosYa = {
       definicion: 'Mide el desempeño en promedio en el área de Matemáticas en la Prueba Saber 11.',
       metodologia:
         'Número Total de Evaluados en Cada Nivel de Desempeño en Matemáticas / Total de Evaluados en Matemáticas * 100 ***Los resultados individuales de la prueba Saber 11 (por área del conocimiento) son normalizados con una media de 50 y desviación de 10, tal como lo realiza el ICFES.',
-      unidad: 'Pendiente',
+      unidad: 'Promedio',
       fuente_numerador: 'DataIcfes',
       fuente_denominador: 'DataIcfes',
       desagregacion: 'Municipal',
@@ -43,7 +43,7 @@ export const ya3: DatosYa = {
       definicion: 'Mide el desempeño en promedio en el área de Lectura en la Prueba Saber 11.',
       metodologia:
         'Número Total de Evaluados en Cada Nivel de Desempeño en Lectura / Total de Evaluados en Lectura * 100 ***Los resultados individuales de la prueba Saber 11 (por área del conocimiento) son normalizados con una media de 50 y desviación de 10, tal como lo realiza el ICFES.',
-      unidad: 'Pendiente',
+      unidad: 'Promedio',
       fuente_numerador: 'DataIcfes',
       fuente_denominador: 'DataIcfes',
       desagregacion: 'Municipal',
@@ -82,7 +82,7 @@ export const ya3: DatosYa = {
         'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
       explicacion: 'Indica la cobertura bruta de estudiantes que cursan primaria.',
       definicion:
-        '" La tasa de cobertura bruta mide la relación porcentual entre el número total de estudiantes matriculados sobre el total de la población en edad teórica para cursar el nivel educativo.**** En algunos casos la demanda social es mayor a la población en edad teórica para cursar este nivel (6-10 años), explicada por estudiantes en extraedad, por lo que el indicador toma valores superiores al 100%.',
+        'La tasa de cobertura bruta mide la relación porcentual entre el número total de estudiantes matriculados sobre el total de la población en edad teórica para cursar el nivel educativo.**** En algunos casos la demanda social es mayor a la población en edad teórica para cursar este nivel (6-10 años), explicada por estudiantes en extraedad, por lo que el indicador toma valores superiores al 100%.',
       metodologia:
         'Número total de estudiantes matriculados en transicion en edad teórica para cursar este grado (6-10 años) / Total de la población correspondiente a esa misma edad en el mismo periodo y territorio.',
       unidad: 'Porcentaje',
