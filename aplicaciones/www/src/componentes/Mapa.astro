@@ -71,14 +71,6 @@ const { ancho, alto } = Astro.props;
     let coordenadasAlto = 0;
     let datosParaPintar: FeatureCollection; // Esto puede ser departamentos o municipios
 
-    mapa.onmouseenter = () => {
-      informacion.classList.add('visible');
-    };
-
-    mapa.onmouseleave = () => {
-      informacion.classList.remove('visible');
-    };
-
     mapa.onmousemove = (evento) => {
       const x = evento.clientX;
       const y = evento.clientY - 30;
@@ -228,6 +220,8 @@ const { ancho, alto } = Astro.props;
           zona.onmouseenter = () => {
             const valor = zonas[lugar.properties.codigo].valor;
 
+            informacion.classList.add('visible');
+
             if (nivel.get() === 'mun') {
               informacion.innerText = `${lugar.properties.nombre} (${lugar.properties.dep}): ${
                 !valor ? 'Sin datos' : unidad === 'porcentaje' ? `${valor}%` : `${valor}`
@@ -238,6 +232,10 @@ const { ancho, alto } = Astro.props;
               }`;
               zona.classList.add('departamento');
             }
+          };
+
+          zona.onmouseleave = () => {
+            informacion.classList.remove('visible');
           };
 
           // Asignar nombre del departamento a la lista de lugares seleccionados

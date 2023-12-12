@@ -157,6 +157,14 @@ export default class MapaDetalle extends HTMLElement {
           });
         };
 
+        formaMunicipio.onmouseenter = () => {
+          informacion.classList.add('visible');
+        };
+
+        formaMunicipio.onmouseleave = () => {
+          informacion.classList.remove('visible');
+        };
+
         this.formas[lugar.properties.codigo] = { svg: formaMunicipio, valor: null };
         this.formaDep.appendChild(formaMunicipio);
       }
