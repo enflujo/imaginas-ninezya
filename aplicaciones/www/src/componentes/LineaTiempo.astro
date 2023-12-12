@@ -34,6 +34,8 @@ const { alto, meta, umbral } = Astro.props;
       </linearGradient>
     </defs>
 
+    <rect id="marcaAñoActual"></rect>
+
     <g id="ejeY">
       <line
         id="bordeEjeY"
@@ -62,6 +64,7 @@ const { alto, meta, umbral } = Astro.props;
     datosIndicadorDep,
     valorMaxY,
     umbral,
+    añoSeleccionado,
   } from '@/utilidades/cerebro';
   import { colorPositivo, dimsLineaTiempo as dimsVis } from '@/utilidades/constantes';
   import { convertirEscala } from '@enflujo/alquimia';
@@ -77,14 +80,13 @@ const { alto, meta, umbral } = Astro.props;
     const contenedorEjeY = document.querySelector<SVGGElement>('#ejeY');
     const bordeEjeY = document.querySelector<SVGLineElement>('#bordeEjeY');
     const nombreEjeY = svg.querySelector<SVGTextElement>('#nombreEjeY');
+    const marcaAñoActual = svg.querySelector<SVGRectElement>('#marcaAñoActual');
     const lineas: Linea[] = [];
     const visualizaciones = document.getElementById('visualizaciones');
     const informacion = document.getElementById('informacion') as HTMLDivElement;
     const proporciones = { porcentaje: { x1: 2, x2: 95 }, pixeles: { x1: 0, x2: 0 } };
     const años = { primero: 0, ultimo: 0 };
     let cantidadDivisiones = 5;
-
-    escalar();
 
     const posicionX = (valor: number) =>
       convertirEscala(
@@ -98,6 +100,7 @@ const { alto, meta, umbral } = Astro.props;
     const posicionY = (valor: number) => convertirEscala(valor, valorMaxY, 0, dimsVis.margenArriba, dimsVis.altoVis);
     let estructura: string;
 
+    escalar();
     window.addEventListener('resize', escalar);
 
     datosNal.subscribe((datosNacionales) => {
@@ -144,6 +147,14 @@ const { alto, meta, umbral } = Astro.props;
       dimsVis.altoVis = (dimsSvg.height - dimsVis.marcoAbajo) | 0;
       bordeEjeY.setAttribute('y2', `${dimsVis.altoVis}`);
       contenedorEjeX.setAttribute('style', `transform: translateY(${dimsVis.altoVis}px)`);
+
+      marcaAñoActual.setAttribute('y', `${dimsVis.margenArriba}`);
+      marcaAñoActual.setAttribute('width', '10');
+      marcaAñoActual.setAttribute('height', `${dimsVis.altoVis - dimsVis.marcoAbajo + 7}`);
+
+      if (añoSeleccionado.value) {
+        marcaAñoActual.setAttribute('x', `${posicionX(+añoSeleccionado.value) - 5}`);
+      }
 
       if (marcasY) {
         marcasY.forEach((marca, i) => {
@@ -284,6 +295,10 @@ const { alto, meta, umbral } = Astro.props;
         grupo.appendChild(marca);
         grupo.appendChild(texto);
         contenedorEjeX.appendChild(grupo);
+
+        texto.onclick = () => {
+          añoSeleccionado.set(año);
+        };
       });
     }
 
@@ -326,6 +341,11 @@ const { alto, meta, umbral } = Astro.props;
         }
       });
     });
+
+    añoSeleccionado.subscribe((añoActual) => {
+      if (!añoActual) return;
+      marcaAñoActual.setAttribute('x', `${posicionX(+añoActual) - 5}`);
+    });
   }
 </script>
 
@@ -346,6 +366,10 @@ const { alto, meta, umbral } = Astro.props;
       font-size: 25px;
       font-weight: 700;
       letter-spacing: -0.4px;
+    }
+
+    #marcaAñoActual {
+      fill: #f3e356;
     }
 
     #detalle {

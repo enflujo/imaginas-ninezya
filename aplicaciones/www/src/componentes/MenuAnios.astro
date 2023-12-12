@@ -20,7 +20,7 @@
 
       lista.forEach(({ año, valor }, i) => {
         const boton = document.createElement('span');
-        boton.className = 'botonAño';
+        boton.className = `botonAño boton${año}`;
         boton.innerText = año;
 
         // Si no hay datos en ese año, le agrega la clase 'vacio'
@@ -28,14 +28,7 @@
           boton.classList.add('vacio');
         } else {
           boton.onclick = () => {
-            if (añoActivo) {
-              añoActivo.classList.remove('activo');
-            }
-
-            boton.classList.add('activo');
-            añoActivo = boton;
-            añoElegido.innerText = `${añoActivo.innerText} ▾`;
-            añoSeleccionado.set(añoActivo.innerText);
+            añoSeleccionado.set(año);
           };
 
           if (i === lista.length - 1) {
@@ -58,6 +51,19 @@
       if (!(menuAños === evento.target || menuAños.contains(evento.target as Node))) {
         añosOcultos.classList.remove('abierto');
       }
+    });
+
+    añoSeleccionado.subscribe((año) => {
+      if (!año) return;
+
+      if (añoActivo) {
+        añoActivo.classList.remove('activo');
+      }
+
+      const botonAño = añosOcultos.querySelector<HTMLSpanElement>(`.boton${año}`);
+      añoActivo = botonAño;
+      añoElegido.innerText = `${año} ▾`;
+      botonAño.classList.add('activo');
     });
   }
 </script>
