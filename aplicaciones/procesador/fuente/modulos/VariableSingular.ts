@@ -95,7 +95,7 @@ export default class {
     }
 
     if (valor) {
-      this.datosMunicipios[año].push([(municipio as Municipio)[3], valor]);
+      this.datosMunicipios[año].push([(municipio as Municipio)[3], redondearDecimal(valor, 1, 2)]);
     }
   };
 
