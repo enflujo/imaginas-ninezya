@@ -2,16 +2,15 @@ import NumeradorDenominador from './modulos/NumeradorDenominador';
 import VariableSingular from './modulos/VariableSingular';
 import { departamentos, municipios } from './utilidades/lugaresColombia';
 import { guardarJSON } from './utilidades/ayudas';
-import DosVariables from '@/modulos/DosVariables';
 import { resolve } from 'path';
 import { readdir, rm } from 'fs/promises';
 import prerocesarIndicador83 from '@/indicadores/08-03';
 
 async function inicio() {
   // procesarLugares();
+  await prerocesarIndicador83();
   await vaciarProcesados();
   await procesarDatos();
-  // await prerocesarIndicador83();
 }
 
 async function vaciarProcesados() {
@@ -132,6 +131,8 @@ async function procesarDatos() {
   await ya103.procesar('10.3: ataques armados', 'YA10_10.3', 'Sheet1', 'ya10-3');
   const ya104 = new VariableSingular('o_minas_anti', false, 'conteo', 1);
   await ya104.procesar('10.4: explosivos', 'YA10_10.4', 'Sheet1', 'ya10-4');
+  const ya105 = new VariableSingular('secu', false, 'conteo', 1);
+  await ya105.procesar('10.5: secuestro', 'YA10_10.5', 'Sheet1', 'ya10-5');
 }
 
 inicio();
