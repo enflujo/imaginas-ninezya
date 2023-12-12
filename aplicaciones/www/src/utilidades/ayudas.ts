@@ -1,7 +1,5 @@
-//import { escalaColores } from '@enflujo/alquimia';
-
-/// PRUEBA ///
-
+import type { IMapearCoordenadas } from '@/tipos';
+import type { MultiPolygon, Polygon, Position } from 'geojson';
 /**
  * Convierte un valor de una escala a otra.
  *
@@ -113,3 +111,61 @@ export async function pedirDatos<Respuesta>(url: string, config: RequestInit = {
 export function obtenerVariableCSS(nombre: string) {
   return window.getComputedStyle(document.documentElement).getPropertyValue(nombre);
 }
+
+/**
+ * Averigua si cada `grupo` de coordenadas es un polígono o un multipolígono y a la
+ * variable `res` (respuesta), que contiene los datos de los SVG, le agrega la
+ * ubicación de cada punto y sus líneas conectoras.
+ *
+ * `M` = _moveTo_ (Inicio del _path_. `M{punto.x} {punto.y}`)
+ *
+ * `L` = _lineTo_ (Punto de una línea. `L{punto.x} {punto.y}`)
+ *
+ * `Z` = _closePath_ (Fin del _path_. `Z`)
+ * @param geometria Array de coordenadas
+ * @param mapearCoordenadas Función para mapear de latitud, longitud a pixeles.
+ * @param ancho Ancho en pixeles del contenedor.
+ * @param alto Alto en pixeles del contenedor.
+ * @returns res contiene los datos de los elementos SVG<path>
+ */
+export const crearLinea = (
+  geometria: Polygon | MultiPolygon,
+  mapearCoordenadas: IMapearCoordenadas,
+  ancho: number,
+  alto: number
+): string => {
+  let res = '';
+
+  geometria.coordinates.forEach((grupo: Position[] | Position[][]): void => {
+    grupo.forEach((posicion, i) => {
+      const cabeza = i === 0 ? 'M' : 'L';
+
+      if (typeof posicion[0] === 'object') {
+        (posicion as Position[]).forEach((puntoMulti: Position, j: number): void => {
+          if (j === 0) {
+            res += crearSeccionSvg(puntoMulti, 'M', mapearCoordenadas, ancho, alto);
+          } else {
+            res += crearSeccionSvg(puntoMulti, 'L', mapearCoordenadas, ancho, alto);
+          }
+        });
+      } else {
+        res += crearSeccionSvg(posicion as Position, cabeza, mapearCoordenadas, ancho, alto);
+      }
+
+      res += i === grupo.length - 1 ? 'Z' : '';
+    });
+  });
+
+  return res;
+};
+
+const crearSeccionSvg = (
+  punto: Position,
+  cabeza: string,
+  mapearCoordenadas: IMapearCoordenadas,
+  ancho: number,
+  alto: number
+) => {
+  const coordenadas = mapearCoordenadas(punto, ancho, alto);
+  return `${cabeza}${coordenadas.x | 0} ${coordenadas.y | 0} `;
+};

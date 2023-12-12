@@ -32,8 +32,8 @@ const { ancho, alto } = Astro.props;
 </div>
 
 <script>
-  import { calcularPorcentaje } from '@/utilidades/ayudas';
-  import { crearLinea, escalaCoordenadas, extremosLugar } from '@enflujo/alquimia';
+  import { calcularPorcentaje, crearLinea } from '@/utilidades/ayudas';
+  import { escalaCoordenadas, extremosLugar } from '@enflujo/alquimia';
   import type { DatosAño, ExtremosCoordenadas } from '@/tipos';
   import type { FeatureCollection } from 'geojson';
   import {
@@ -122,7 +122,8 @@ const { ancho, alto } = Astro.props;
 
       datosParaPintar.features.forEach((lugar) => {
         if (lugar.geometry.type === 'Polygon' || lugar.geometry.type === 'MultiPolygon') {
-          const linea = crearLinea(lugar.geometry, mapearCoordenadas, ancho, alto);
+          const escalaDims = lugar.properties.codigo === '88' ? 12 : 1;
+          const linea = crearLinea(lugar.geometry, mapearCoordenadas, ancho * escalaDims, alto * escalaDims);
           const zona = zonas[lugar.properties.codigo];
           zona.svg.setAttribute('d', linea);
         }
@@ -206,7 +207,9 @@ const { ancho, alto } = Astro.props;
 
       datosParaPintar.features.forEach((lugar) => {
         if (lugar.geometry.type === 'Polygon' || lugar.geometry.type === 'MultiPolygon') {
-          const linea = crearLinea(lugar.geometry, mapearCoordenadas, ancho, alto);
+          const escalaDims = lugar.properties.codigo === '88' ? 12 : 1;
+          const linea = crearLinea(lugar.geometry, mapearCoordenadas, ancho * escalaDims, alto * escalaDims);
+
           const zona = document.createElementNS('http://www.w3.org/2000/svg', 'path');
           const estaSeleccionada = lugaresActuales.find((obj) => obj.codigoDep === lugar.properties.codigo);
 

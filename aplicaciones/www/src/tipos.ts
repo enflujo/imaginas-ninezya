@@ -1,3 +1,5 @@
+import type { Position } from 'geojson';
+
 export interface GeometriaMapa {
   type: 'Feature';
   geometry: {
@@ -81,4 +83,15 @@ export interface LugarSeleccionado {
   codigoDep: string;
   codigoMun?: string;
   color: string;
+}
+
+export type Punto = {
+  // Coordenada X
+  x: number;
+  // Coordenada Y
+  y: number;
+};
+
+export interface IMapearCoordenadas {
+  (coordenadas: Position, ancho: number, alto: number): Punto;
 }

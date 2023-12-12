@@ -1,5 +1,5 @@
 import { atom, map } from 'nanostores';
-import type { FeatureCollection } from 'geojson';
+import type { FeatureCollection, Polygon, MultiPolygon, Position } from 'geojson';
 import type { DatosIndicador, DatosIndicadorNal, DatosPorAñoOrdenado, FuncionColor, LugarSeleccionado } from '@/tipos';
 import { escalaColores, obtenerVariableCSS, pedirDatos } from './ayudas';
 import { colorNegativo, colorNeutro, colorPositivo } from './constantes';
@@ -83,9 +83,29 @@ export async function cargarDatos() {
   }, 150);
 
   // Cargar datos departamentos
-  const deps = await pedirDatos<FeatureCollection>('https://enflujo.com/bodega/colombia/departamentos.json');
+  const deps = await pedirDatos<FeatureCollection<Polygon | MultiPolygon>>(
+    'https://enflujo.com/bodega/colombia/departamentos.json'
+  );
   deps.features.forEach((dep, i) => {
     dep.properties.color = obtenerVariableCSS(`--color${i}`);
+    if (dep.properties.codigo === '88') {
+      (dep.geometry.coordinates as Position[][][]).forEach((area, i) => {
+        area.forEach((zona) => {
+          zona.forEach((punto) => {
+            if (i === 0) {
+              punto[0] = punto[0] + 0.3;
+              punto[1] = punto[1] + 0.8;
+            } else if (i === 1) {
+              punto[0] = punto[0] - 0.0;
+              punto[1] = punto[1] + 0.1;
+            } else {
+              punto[0] = punto[0] + 0.04;
+              punto[1] = punto[1] + 0.1;
+            }
+          });
+        });
+      });
+    }
   });
   datosColombia.setKey('dep', deps);
 
