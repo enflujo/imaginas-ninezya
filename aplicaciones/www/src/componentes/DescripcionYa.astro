@@ -87,7 +87,7 @@ const { img, titulo, definicion, archivos, hayDatos } = Astro.props;
       const años = Object.keys(respuesta.datos);
       const primerAño = +años[0];
       const ultimoAño = +años[años.length - 1];
-
+      const max = umbral ? Math.max(respuesta.maxNal, +umbral) : respuesta.maxNal;
       for (const año in respuesta.datos) {
         ordenados.push({ año, valor: respuesta.datos[año] });
       }
@@ -99,7 +99,7 @@ const { img, titulo, definicion, archivos, hayDatos } = Astro.props;
 
       const posY = (valor: number) => {
         const dims = svg.getBoundingClientRect();
-        return convertirEscala(valor, 0, respuesta.maxNal, dims.height, 0);
+        return convertirEscala(valor, 0, max, dims.height, 0);
       };
 
       let datosLinea = '';
