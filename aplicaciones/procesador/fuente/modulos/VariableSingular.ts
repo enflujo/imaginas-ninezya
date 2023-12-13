@@ -19,6 +19,7 @@ export default class {
   datosMunicipios: RespuestaPorcentaje;
   errata: { fila: number; error: string }[];
   nombreVariableValor: VariableValorSingular;
+  estructura: EstructurasMatematicas;
 
   constructor(
     nombreVariable: VariableValorSingular,
@@ -42,6 +43,7 @@ export default class {
     this.datosMunicipios = {};
     this.datosDepartamentos = {};
     this.nombreVariableValor = nombreVariable;
+    this.estructura = estructura;
   }
 
   async procesar(nombreReferencia: string, nombreArchivo: string, hoja: string, nombreParaArchivo: string) {
@@ -138,9 +140,14 @@ export default class {
               this.datosDepartamentos[año] = [];
             }
             const suma = deps[codDep].reduce((valorAnterior, valorActual) => valorAnterior + valorActual, 0);
-            const porcentaje = redondearDecimal(suma / deps[codDep].length, 1, 2);
-            this.revisarMinMax(porcentaje, 'maxDep', 'minDep');
-            this.datosDepartamentos[año].push([(departamento as Departamento)[0], porcentaje]);
+            if (this.estructura === 'conteo') {
+              this.revisarMinMax(suma, 'maxDep', 'minDep');
+              this.datosDepartamentos[año].push([(departamento as Departamento)[0], suma]);
+            } else {
+              const porcentaje = redondearDecimal(suma / deps[codDep].length, 1, 2);
+              this.revisarMinMax(porcentaje, 'maxDep', 'minDep');
+              this.datosDepartamentos[año].push([(departamento as Departamento)[0], porcentaje]);
+            }
           }
         }
       }
@@ -156,9 +163,15 @@ export default class {
         // No hay datos nacionales, sacarlos a partir de los datos departamentales.
         const datosAño = this.datosDepartamentos[año];
         const suma = datosAño.reduce((depAnterior, valorActual) => ['', depAnterior[1] + valorActual[1]], ['', 0]);
-        const porcentaje = redondearDecimal(suma[1] / datosAño.length, 1, 2);
-        this.revisarMinMax(porcentaje, 'maxNal', 'minNal');
-        this.datosNacionales.datos[año] = porcentaje;
+
+        if (this.estructura === 'conteo') {
+          this.revisarMinMax(suma[1], 'maxNal', 'minNal');
+          this.datosNacionales.datos[año] = suma[1];
+        } else {
+          const porcentaje = redondearDecimal(suma[1] / datosAño.length, 1, 2);
+          this.revisarMinMax(porcentaje, 'maxNal', 'minNal');
+          this.datosNacionales.datos[año] = porcentaje;
+        }
       }
     }
   }

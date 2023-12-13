@@ -123,7 +123,7 @@ async function procesarDatos() {
 
   const ya81 = new VariableSingular('tasa', false, 'tasa', 100000);
   await ya81.procesar('8.1: violencia física', 'YA8_8.1', 'Sheet1', 'ya8-1');
-  const ya83 = new VariableSingular('delito', false, 'porcentaje', 100000);
+  const ya83 = new VariableSingular('delito', false, 'tasa', 100000);
   await ya83.procesar('8.3: delitos participación menores', 'YA8_8.3', 'Sheet1', 'ya8-3');
   const ya84 = new VariableSingular('tasa', false, 'tasa', 100000);
   await ya84.procesar('8.4: delito', 'YA8_8.4', 'Sheet1', 'ya8-4');
