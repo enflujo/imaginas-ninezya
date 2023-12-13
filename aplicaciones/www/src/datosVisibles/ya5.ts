@@ -20,7 +20,7 @@ export const ya5: DatosYa = {
       unidad: 'Tasa',
       desagregacion: 'Municipal',
       interpretacion:
-        'La dificultad funcional para niños de 2 a 5 años se establece a partir de una encuesta dirigida a padres y cuidadores, dentro de las opciones de respuesta a la pregunta podemos identificar dos "Mucha dificultad" o "No puede realizar la actividad" (UNICEF, Argentina 2020).',
+        'La dificultad funcional para niños de 2 a 5 años se establece a partir de una encuesta dirigida a padres y cuidadores. Dentro de las opciones de respuesta a la pregunta podemos identificar dos: "Mucha dificultad" o "No puede realizar la actividad" (UNICEF, Argentina 2020).',
       responsable:
         'Gran Encuesta Integrada de Hogares - GEIH del Departamento Administrativo Nacional de Estadísticas - DANE.',
       compete_a:
@@ -39,14 +39,14 @@ export const ya5: DatosYa = {
       unidad: 'Tasa',
       desagregacion: 'Municipal',
       interpretacion:
-        'De acuerdo con el MEN, los objetivos explícitos en términos de asistencia escolar en el plan nacional de desarrollo es de tener una tasa de asistencia del 100%.',
+        'De acuerdo con el MEN, los objetivos explícitos en términos de asistencia escolar en el Plan Nacional de Desarrollo es tener una tasa de asistencia del 100%.',
       responsable:
         'Gran Encuesta Integrada de Hogares - GEIH del Departamento Administrativo Nacional de Estadísticas - DANE.',
       compete_a:
         'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secretarías de Educación.',
     },
     {
-      nombre: 'Niños y niñas de 2-5 años que con frecuencia patean, muerden o golpean a otros niños/as o adultos.',
+      nombre: 'Niños y niñas de 2-5 años que con frecuencia patean, muerden o golpean a otros niños/as o adultos',
       ruta: 'agresion-2-5',
       archivo: 'ya5-3',
       hay_datos: false,
@@ -54,10 +54,10 @@ export const ya5: DatosYa = {
         'Este indicador puede ser utilizado para evaluar la prevalencia de comportamientos agresivos en niños pequeños y proporciona información sobre la dinámica social y emocional en entornos como guarderías, jardines infantiles, preescolares u otros lugares donde los niños interactúan regularmente. La presencia frecuente de estos comportamientos podría indicar posibles desafíos en el desarrollo de habilidades sociales y emocionales en la primera infancia.',
       metodologia:
         'Número de niños y niñas de 2-5 años que con frecuencia patean, muerden o golpean a otros niños/as o adultos / Número total de niños y niñas de 2-5 años * 100.000 niños',
-      unidad: 'Por cada 100.000 niños',
+      unidad: 'Tasa',
       desagregacion: 'Municipal',
       interpretacion:
-        'Se debe formular la siguiente pregunta dentro de la encuesta de la Gran Encuesta Integrada de Hogares - GEIH del Departamento Administrativo Nacional de Estadísticas - DANE. En comparación con los niños/as de la misma edad, ¿con qué frecuencia patea, muerde o golpea (nombre) a otros niños/as o adultos? | Opciones de Respuesta como más o mucho más son indicador de este tipo conducta.',
+        'Se debe formular la siguiente pregunta dentro de la encuesta de la Gran Encuesta Integrada de Hogares - GEIH del Departamento Administrativo Nacional de Estadísticas - DANE: <br/><br/>En comparación con los niños/as de la misma edad, ¿con qué frecuencia patea, muerde o golpea a otros niños/as o adultos? <br/><br/>Opciones de respuesta: <br/>1. Todos los días. <br/>2. Al menos una vez a la semana pero no cada día. <br/>3. Al menos una vez al mes, pero no cada semana. <br/>4. Al menos una vez al mes, pero no todos los meses.',
       responsable:
         'Gran Encuesta Integrada de Hogares - GEIH del Departamento Administrativo Nacional de Estadísticas - DANE.',
       compete_a:
@@ -75,7 +75,7 @@ export const ya5: DatosYa = {
       unidad: 'Tasa',
       desagregacion: 'Municipal',
       interpretacion:
-        'Se debe formular la siguiente pregunta dentro de la Encuesta de Calidad de Vida - ECV del Departamento Administrativo Nacional de Estadísticas - DANE: ¿Con qué frecuencia realiza actividades de lectura con el menor de 5 años que reside en su hogar? <br/>Opciones de respuesta: <br/>1. Todos los días. <br/>2. Al menos una vez a la semana pero no cada día. <br/>3. Al menos una vez al mes, pero no cada semana. <br/>4. Al menos una vez al mes, pero no todos los meses.',
+        'Se debe formular la siguiente pregunta dentro de la Encuesta de Calidad de Vida - ECV del Departamento Administrativo Nacional de Estadísticas - DANE: <br/><br/>¿Con qué frecuencia realiza actividades de lectura con el menor de 5 años que reside en su hogar? <br/><br/>Opciones de respuesta: <br/>1. Todos los días. <br/>2. Al menos una vez a la semana pero no cada día. <br/>3. Al menos una vez al mes, pero no cada semana. <br/>4. Al menos una vez al mes, pero no todos los meses.',
       responsable: 'Encuesta de Calidad de Vida - ECV del Departamento Administrativo Nacional de Estadísticas - DANE.',
       compete_a:
         'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secretarías de Educación.',
@@ -86,13 +86,13 @@ export const ya5: DatosYa = {
       archivo: 'ya5-5',
       hay_datos: false,
       definicion:
-        'La importancia de este indicador radica en reconocer la influencia y el papel positivo que los adultos, especialmente los cuidadores y educadores, pueden tener en el desarrollo de habilidades sociales, emocionales y cognitivas de los niños. Jugar con adultos responsables no solo proporciona oportunidades para la diversión y la recreación, sino que también puede contribuir al aprendizaje, la comunicación y la formación de vínculos afectivos.',
+        'La importancia de este indicador radica en reconocer la influencia y el papel positivo que los adultos, especialmente los cuidadores y educadores, pueden tener en el desarrollo de habilidades sociales, emocionales y cognitivas de los niños. <br/><br/>Jugar con adultos responsables no solo proporciona oportunidades para la diversión y la recreación, sino que también puede contribuir al aprendizaje, la comunicación y la formación de vínculos afectivos.',
       metodologia:
         'Número de niños y niñas de 2-5 años que con frecuencia juegan con un adulto responsable / Número total de niños y niñas de 2-5 años * 100.000 niños',
       unidad: 'Tasa',
       desagregacion: 'Municipal',
       interpretacion:
-        'Se debe formular la siguiente pregunta dentro de la Encuesta de Calidad de Vida - ECV del Departamento Administrativo Nacional de Estadísticas - DANE: ¿Con qué frecuencia juega con el menor de 5 años que reside en su hogar? <br/>Opciones de respuesta:<br/>1. Todos los días. <br/>2. Al menos una vez a la semana pero no cada día. <br/>3. Al menos una vez al mes, pero no cada semana. <br/>4. Al menos una vez al mes, pero no todos los meses.',
+        'Se debe formular la siguiente pregunta dentro de la Encuesta de Calidad de Vida - ECV del Departamento Administrativo Nacional de Estadísticas - DANE: <br/><br/>¿Con qué frecuencia juega con el menor de 5 años que reside en su hogar? <br/><br/>Opciones de respuesta:<br/>1. Todos los días. <br/>2. Al menos una vez a la semana pero no cada día. <br/>3. Al menos una vez al mes, pero no cada semana. <br/>4. Al menos una vez al mes, pero no todos los meses.',
       responsable:
         'Encuesta de Calidad de Vida - ECV del Departamento Administrativo Nacional de Estadísticas - DANE. ',
       compete_a:

@@ -15,12 +15,17 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
 <div class="fichaTecnica">
   <h2 class="tituloSeccion tituloYa">{datosYa.nombre}</h2>
   <p class="nombre">{datosIndicador.nombre}</p>
-  <div class="seccion"><h4 class="titulo">Definición</h4><p class="texto">{datosIndicador.definicion}</p></div>
+  <div class="seccion">
+    <h4 class="titulo">Definición</h4><p class="texto" set:html={urlsAEnlacesHTML(datosIndicador.definicion)} />
+  </div>
   <h3 class="tituloSeccion">Información técnica</h3>
   <section class="inferior">
     <div class="seccion"><h4 class="titulo">Unidad de medida</h4><p class="texto">{datosIndicador.unidad}</p></div>
     <div class="seccion">
-      <h4 class="titulo">Metodología de cálculo</h4><p class="texto">{datosIndicador.metodologia}</p>
+      <h4 class="titulo">Metodología de cálculo</h4><p
+        class="texto"
+        set:html={urlsAEnlacesHTML(datosIndicador.metodologia)}
+      />
     </div>
     <div class="seccion">
       <h4 class="titulo">Fuente del numerador</h4><p class="texto">{datosIndicador.fuente_numerador}</p>
@@ -42,7 +47,7 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
         <div class="seccion">
           <>
             <h4 class="titulo">Meta</h4>
-            <p class="texto">{datosIndicador.explicacion_umbral}</p>
+            <p class="texto" set:html={urlsAEnlacesHTML(datosIndicador.explicacion_umbral)} />
           </>
         </div>
       )
