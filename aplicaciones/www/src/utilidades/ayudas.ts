@@ -174,12 +174,10 @@ export function definirMedidasMax(datosNal: DatosIndicadorNal, nombreArchivo: st
   if (datosNal.unidadMedida > 100) {
     if (nombreArchivo === 'ya1-7') {
       return { y: 15000, color: 15000 };
-    } else if (nombreArchivo === 'ya4-2') {
-      return { y: 200, color: 100 };
     } else {
       return {
-        y: Math.min(Math.ceil(datosNal.maxNal / 100) * 100, 10000),
-        color: Math.ceil(datosNal.minNal / 10) * 10,
+        y: Math.min(Math.ceil(datosNal.maxDep / 100) * 100, 10000),
+        color: Math.ceil(datosNal.maxNal / 10) * 10,
       };
     }
   } else {
