@@ -63,7 +63,7 @@ export const ya3: DatosYa = {
         'Indica, en promedio, en qué categoría se encuentran clasificados los colegios de un municipio o departamento.',
       definicion: 'Mide el desempeño en promedio en la Prueba Saber 11 en un municipio o departamento.',
       metodologia:
-        'Número Total de Evaluados en Cada Nivel de Desempeño y Área / Total de Evaluados en cada una de las áreas * 100 ***Los resultados individuales de la prueba Saber 11 (por área del conocimiento) son normalizados con una media de 50 y desviación de 10, tal como lo realiza el ICFES.',
+        'Número Total de Evaluados en Cada Nivel de Desempeño y Área / Total de Evaluados en cada una de las áreas * 100',
       unidad: 'Promedio',
       fuente_numerador: 'DataIcfes',
       fuente_denominador: 'DataIcfes',
@@ -71,7 +71,7 @@ export const ya3: DatosYa = {
       contexto:
         'En Colombia la valoración de la preparación académica de los estudiantes que completan la educación básica y media se realiza a través del examen de estado Saber 11. <br/><br/>Este examen es obligatorio para el acceso a la educación superior, evalúa las competencias de los estudiantes de undécimo grado y bachilleres. Las Instituciones de Educación Superior requieren que los aspirantes hayan presentado el examen como parte de los requisitos de admisión, independientemente del puntaje obtenido.',
       interpretacion:
-        'A+: Puntaje > 77 <br/>A:  72 < Puntaje ≤ 77 <br/>B: 67 < Puntaje ≤  72 <br/>C: 62 < Puntaje ≤ 67 <br/>D: 0 ≤ Puntaje ≤  62  <br/><br/>Los resultados individuales de la prueba Saber 11 (total) son normalizados con una media de 50 y desviación de 10, tal como lo realiza el ICFES. A partir de los puntajes normalizados se calcula el puntaje total de la prueba, puesto a que las áreas evaluadas cambian entre años.',
+        'A+: Puntaje > 77 <br/>A: Puntaje > 72 y ≤ 77 <br/>B: Puntaje > 67 y ≤ 72 <br/>C: Puntaje > 62 y ≤ 67 <br/>D: Puntaje 0 ≥ y ≤ 62 <br/><br/>Los resultados individuales de la prueba Saber 11 (total) son normalizados con una media de 50 y desviación de 10, tal como lo realiza el ICFES. A partir de los puntajes normalizados se calcula el puntaje total de la prueba, puesto a que las áreas evaluadas cambian entre años.',
     },
     {
       nombre: 'Cobertura bruta primaria',
