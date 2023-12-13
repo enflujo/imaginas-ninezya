@@ -1,4 +1,4 @@
-import type { IMapearCoordenadas } from '@/tipos';
+import type { DatosIndicadorNal, IMapearCoordenadas } from '@/tipos';
 import type { MultiPolygon, Polygon, Position } from 'geojson';
 /**
  * Convierte un valor de una escala a otra.
@@ -169,3 +169,34 @@ const crearSeccionSvg = (
   const coordenadas = mapearCoordenadas(punto, ancho, alto);
   return `${cabeza}${coordenadas.x | 0} ${coordenadas.y | 0} `;
 };
+
+export function definirMedidasMax(datosNal: DatosIndicadorNal, nombreArchivo: string) {
+  if (datosNal.unidadMedida > 100) {
+    if (nombreArchivo === 'ya1-7') {
+      return { y: 15000, color: 15000 };
+    } else if (nombreArchivo === 'ya4-2') {
+      return { y: 200, color: 100 };
+    } else {
+      return {
+        y: Math.min(Math.ceil(datosNal.maxNal / 100) * 100, 10000),
+        color: Math.ceil(datosNal.minNal / 10) * 10,
+      };
+    }
+  } else {
+    if (datosNal.estructura === 'conteo') {
+      return {
+        y: datosNal.maxNal > datosNal.unidadMedida ? Math.ceil(datosNal.maxNal / 100) * 100 : datosNal.unidadMedida,
+        color: 5,
+      };
+    } else if (nombreArchivo === 'ya2-8') {
+      return { y: 50, color: 50 };
+    } else if (nombreArchivo === 'ya7-1') {
+      return { y: 1, color: 0.6 };
+    } else {
+      return {
+        y: datosNal.maxNal > datosNal.unidadMedida ? Math.ceil(datosNal.maxNal / 100) * 100 : datosNal.unidadMedida,
+        color: Math.ceil(datosNal.maxNal / 10) * 10,
+      };
+    }
+  }
+}

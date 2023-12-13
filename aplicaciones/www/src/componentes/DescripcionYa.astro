@@ -40,7 +40,7 @@ const { img, titulo, definicion, archivos, hayDatos } = Astro.props;
 
 <script>
   import type { DatosIndicadorNal, DatosPorAñoOrdenado } from '@/tipos';
-  import { pedirDatos } from '@/utilidades/ayudas';
+  import { definirMedidasMax, pedirDatos } from '@/utilidades/ayudas';
   import { lugaresSeleccionados } from '@/utilidades/cerebro';
   import { colorPositivo } from '@/utilidades/constantes';
   import { convertirEscala } from '@enflujo/alquimia';
@@ -87,8 +87,7 @@ const { img, titulo, definicion, archivos, hayDatos } = Astro.props;
       const años = Object.keys(respuesta.datos);
       const primerAño = +años[0];
       const ultimoAño = +años[años.length - 1];
-      const max =
-        respuesta.maxNal > respuesta.unidadMedida ? Math.ceil(respuesta.maxNal / 100) * 100 : respuesta.unidadMedida;
+      const maximos = definirMedidasMax(respuesta, nombreArchivo);
 
       for (const año in respuesta.datos) {
         ordenados.push({ año, valor: respuesta.datos[año] });
@@ -101,7 +100,7 @@ const { img, titulo, definicion, archivos, hayDatos } = Astro.props;
 
       const posY = (valor: number) => {
         const dims = svg.getBoundingClientRect();
-        return convertirEscala(valor, 0, max, dims.height, 0);
+        return convertirEscala(valor, 0, maximos.y, dims.height, 0);
       };
 
       let datosLinea = '';

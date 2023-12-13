@@ -1,7 +1,7 @@
 import { atom, map } from 'nanostores';
 import type { FeatureCollection, Polygon, MultiPolygon, Position } from 'geojson';
 import type { DatosIndicador, DatosIndicadorNal, DatosPorAñoOrdenado, FuncionColor, LugarSeleccionado } from '@/tipos';
-import { escalaColores, obtenerVariableCSS, pedirDatos } from './ayudas';
+import { definirMedidasMax, escalaColores, obtenerVariableCSS, pedirDatos } from './ayudas';
 import { colorNegativo, colorNeutro, colorPositivo } from './constantes';
 
 export const listaAños = atom<DatosPorAñoOrdenado>([]);
@@ -113,35 +113,10 @@ export async function cargarDatos() {
     // Cargar datos indicador nacionales para linea de tiempo
     const nal = await pedirDatos<DatosIndicadorNal>(`https://enflujo.com/bodega/ninezya/${nombreArchivo}-nal.json`);
 
-    if (nal.unidadMedida > 100) {
-      if (nombreArchivo === 'ya1-7') {
-        valorMaxY = 15000;
-        valorMaxColor = 15000;
-      } else if (nombreArchivo === 'ya4-2') {
-        valorMaxY = 200;
-        valorMaxColor = 100;
-      } else {
-        valorMaxY = Math.min(Math.ceil(nal.maxNal / 100) * 100, 10000);
-        valorMaxColor = Math.ceil(nal.minNal / 10) * 10;
-      }
-    } else {
-      if (nal.estructura === 'conteo') {
-        valorMaxY = nal.maxNal > nal.unidadMedida ? Math.ceil(nal.maxNal / 100) * 100 : nal.unidadMedida;
-        valorMaxColor = 5;
-      } else if (nombreArchivo === 'ya2-8') {
-        valorMaxY = 50;
-        valorMaxColor = 50;
-      } else if (nombreArchivo === 'ya7-1') {
-        valorMaxY = 1;
-        valorMaxColor = 0.6;
-      } else {
-        valorMaxY = nal.maxNal > nal.unidadMedida ? Math.ceil(nal.maxNal / 100) * 100 : nal.unidadMedida;
-        valorMaxColor = Math.ceil(nal.maxNal / 10) * 10;
-      }
-    }
-
+    const maximos = definirMedidasMax(nal, nombreArchivo);
+    valorMaxY = maximos.y;
+    valorMaxColor = maximos.color;
     color = definirColor(nal.ascendente);
-
     datosNal.set(nal);
   } catch (error) {
     cargando = false;
