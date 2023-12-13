@@ -32,7 +32,7 @@ export default class Linea {
 
     const informacion = document.getElementById('informacion');
 
-    datos.forEach(({ valor }) => {
+    datos.forEach(({ valor, año }) => {
       if (valor) {
         const punto = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
         punto.setAttribute('class', 'punto');
@@ -44,7 +44,9 @@ export default class Linea {
         punto.onmouseenter = (evento) => {
           const x = evento.pageX;
           const y = evento.pageY;
-          informacion.innerText = `${nombre}: ${valor}${unidad.toLocaleLowerCase() === 'porcentaje' ? '%' : ''}`;
+          informacion.innerText = `${nombre} en ${año}: ${valor}${
+            unidad.toLocaleLowerCase() === 'porcentaje' ? '%' : ''
+          }`;
           informacion.classList.add('visible');
 
           Object.assign(informacion.style, {

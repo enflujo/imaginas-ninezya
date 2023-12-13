@@ -122,15 +122,21 @@ export async function cargarDatos() {
         valorMaxColor = 100;
       } else {
         valorMaxY = Math.min(Math.ceil(nal.maxNal / 100) * 100, 10000);
-        valorMaxColor = 10000;
+        valorMaxColor = Math.ceil(nal.minNal / 10) * 10;
       }
     } else {
-      if (nombreArchivo === 'ya2-8') {
+      if (nal.estructura === 'conteo') {
+        valorMaxY = nal.maxNal > nal.unidadMedida ? Math.ceil(nal.maxNal / 100) * 100 : nal.unidadMedida;
+        valorMaxColor = 5;
+      } else if (nombreArchivo === 'ya2-8') {
         valorMaxY = 50;
         valorMaxColor = 50;
+      } else if (nombreArchivo === 'ya7-1') {
+        valorMaxY = 1;
+        valorMaxColor = 0.6;
       } else {
         valorMaxY = nal.maxNal > nal.unidadMedida ? Math.ceil(nal.maxNal / 100) * 100 : nal.unidadMedida;
-        valorMaxColor = 100;
+        valorMaxColor = Math.ceil(nal.maxNal / 10) * 10;
       }
     }
 

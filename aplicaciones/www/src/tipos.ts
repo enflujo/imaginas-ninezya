@@ -30,7 +30,7 @@ export interface ExtremosCoordenadas {
   longitudMax: number;
 }
 
-export type TiposEstructura = 'porcentaje';
+export type TiposEstructura = 'porcentaje' | 'tasa' | 'escala' | 'conteo' | 'coeficiente';
 export type DatosAño = [codigo: string, valor: number][];
 export type DatosIndicador = { [año: string]: DatosAño };
 export type DatosPorAño = { [año: string]: number };

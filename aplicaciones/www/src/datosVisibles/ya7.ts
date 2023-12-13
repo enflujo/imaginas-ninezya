@@ -9,7 +9,7 @@ export const ya7: DatosYa = {
   hay_datos: false,
   indicadores: [
     {
-      nombre: 'GINI',
+      nombre: 'Desigualdad Salarial en las familias (Coeficiente Gini)',
       ruta: 'gini',
       archivo: 'ya7-1',
       hay_datos: true,

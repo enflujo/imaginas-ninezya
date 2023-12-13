@@ -21,13 +21,10 @@ const { ancho, alto } = Astro.props;
     <g id="colombia"></g>
     <g id="seleccionados"></g>
   </svg>
-  <div
-    id="leyendaMapa"
-    style={`background: linear-gradient(90deg, ${colorNegativo} 0%, ${colorNeutro} 50%, ${colorPositivo} 100%);`}
-  >
-    <span class="marcaLeyenda alerta">Alerta</span>
-    <span class="marcaLeyenda umbral">Meta</span>
-    <span class="marcaLeyenda positivo">Positivo</span>
+  <div id="leyendaMapa">
+    <span class="marcaLeyenda alerta"></span>
+    <span class="marcaLeyenda umbral"></span>
+    <span class="marcaLeyenda positivo"></span>
   </div>
 </div>
 
@@ -48,8 +45,10 @@ const { ancho, alto } = Astro.props;
     actualizarUrl,
     revisarDepartamentos,
     datosNal,
+    umbral,
   } from '@/utilidades/cerebro';
   import type { IMapearCoordenadas } from '@enflujo/alquimia/libreria/modulos/tipos';
+  import { colorNegativo, colorNeutro, colorPositivo } from '@/utilidades/constantes';
 
   const contenedorMapa = document.getElementById('contenedorMapa');
 
@@ -58,6 +57,7 @@ const { ancho, alto } = Astro.props;
     const colombia = document.getElementById('colombia') as HTMLElement & SVGGElement;
     const seleccionados = document.getElementById('seleccionados') as HTMLElement & SVGGElement;
     const informacion = document.getElementById('informacion');
+    const leyendaMapa = document.getElementById('leyendaMapa');
 
     let mapearCoordenadas: IMapearCoordenadas;
     let extremosGeo: ExtremosCoordenadas;
@@ -202,8 +202,22 @@ const { ancho, alto } = Astro.props;
 
     function crearMapa() {
       const lugaresActuales = lugaresSeleccionados.value;
-      const { estructura } = datosNal.value;
+      const { estructura, ascendente } = datosNal.value;
       zonas = {};
+
+      if (!umbral) {
+        leyendaMapa.style.background = `linear-gradient(90deg, ${
+          ascendente ? colorPositivo : colorNegativo
+        } 0%, ${colorNeutro} 100%)`;
+        leyendaMapa.querySelector<HTMLSpanElement>('.alerta').innerText = ascendente ? 'Positivo' : 'Alerta';
+        leyendaMapa.querySelector<HTMLSpanElement>('.umbral').classList.add('invisible');
+        leyendaMapa.querySelector<HTMLSpanElement>('.positivo').innerText = '0';
+      } else {
+        leyendaMapa.style.background = `linear-gradient(90deg, ${colorNegativo} 0%, ${colorNeutro} 50%, ${colorPositivo} 100%)`;
+        leyendaMapa.querySelector<HTMLSpanElement>('.alerta').innerText = 'Alerta';
+        leyendaMapa.querySelector<HTMLSpanElement>('.umbral').innerText = 'Meta';
+        leyendaMapa.querySelector<HTMLSpanElement>('.positivo').innerText = 'Positivo';
+      }
 
       datosParaPintar.features.forEach((lugar) => {
         if (lugar.geometry.type === 'Polygon' || lugar.geometry.type === 'MultiPolygon') {
