@@ -3,30 +3,34 @@ import datos from '@/datosVisibles/indicadores';
 const { ya, indicador } = Astro.params;
 const datosYa = datos.find((instancia) => instancia.ruta === ya);
 const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta === indicador);
+import { urlsAEnlacesHTML } from '@enflujo/alquimia';
 ---
 
 <div class="contenedorInfoAdicional" data-hayDatos=`${datosIndicador.hay_datos}`>
   <div class="contenedorSugerencias">
     <div class="aviso">
-      No hay información suficiente para reconstruir este indicador. Aquí hay algunas sugerencias de cómo podría
+      No hay información suficiente para reconstruir este indicador. Proponemos algunas sugerencias de cómo podría
       trabajarse.
     </div>
     <div class="sugerencia">
       <h4 class="titulo">Responsables de medición</h4><p class="texto">
-        Ej. DANE (Departamento Administrativo Nacional de Estadística)
+        {datosIndicador.responsable}
       </p>
     </div>
     <div class="sugerencia">
-      <h4 class="titulo">A quién le compete</h4><p class="texto">
-        Ej. ICBF (Instituto Colombiano de Bienestar Familiar)
-      </p>
+      <h4 class="titulo">A quién le compete</h4><p
+        class="texto"
+        set:html={urlsAEnlacesHTML(datosIndicador.compete_a)}
+      />
     </div>
   </div>
 
   <div class="fichaTecnica">
     <h2 class="tituloSeccion tituloYa">{datosYa.nombre}</h2>
     <p class="nombre">{datosIndicador.nombre}</p>
-    <div class="seccion"><h4 class="titulo">Definición</h4><p class="texto">{datosIndicador.definicion}</p></div>
+    <div class="seccion">
+      <h4 class="titulo">Definición</h4><p class="texto" set:html={urlsAEnlacesHTML(datosIndicador.definicion)} />
+    </div>
     <h3 class="tituloSeccion">Información técnica</h3>
     <section class="inferior">
       <div class="seccion"><h4 class="titulo">Unidad de medida</h4><p class="texto">{datosIndicador.unidad}</p></div>
@@ -35,7 +39,7 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
       </div>
       <div class="seccion">
         <h4 class="titulo">Cómo se interpreta</h4>
-        <p class="texto">{datosIndicador.interpretacion}</p>
+        <p class="texto" set:html={urlsAEnlacesHTML(datosIndicador.interpretacion)} />
       </div>
     </section>
   </div>
@@ -47,17 +51,18 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
     display: flex;
     position: absolute;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     background-color: var(--blancoMarfil);
     margin: 1em;
-    height: 100vh;
+    height: fit-content;
 
     .fichaTecnica {
       width: 40vw;
       height: fit-content;
       min-width: 300px;
-      margin-top: 2em;
+      margin-top: 3em;
+      margin-bottom: 1em;
       border: solid 2px var(--azulViejo);
       border-radius: 15px;
       color: var(--azulViejo);
@@ -126,10 +131,11 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
           text-align: left;
           flex-basis: 80%;
           display: flex;
-          align-items: center;
           min-height: 2.3em;
           text-wrap: wrap;
           overflow-wrap: anywhere;
+          flex-direction: column;
+          justify-content: center;
         }
       }
     }
