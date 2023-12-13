@@ -38,7 +38,7 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
     </div>
     <div class="seccion">
       <h4 class="titulo">Contexto</h4>
-      <p class="texto" id="textoContexto" set:html={urlsAEnlacesHTML(datosIndicador.contexto)} />
+      <p class="texto" set:html={urlsAEnlacesHTML(datosIndicador.contexto)} />
     </div>
     {
       !datosIndicador.umbral ? (
@@ -54,7 +54,7 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
     }
     <div class="seccion">
       <h4 class="titulo">Cómo se interpreta</h4>
-      <p class="texto" id="textoInterpretacion" set:html={urlsAEnlacesHTML(datosIndicador.interpretacion)} />
+      <p class="texto" set:html={urlsAEnlacesHTML(datosIndicador.interpretacion)} />
     </div>
   </section>
 </div>
