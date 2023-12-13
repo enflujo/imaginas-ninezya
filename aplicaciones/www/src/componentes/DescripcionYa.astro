@@ -87,7 +87,9 @@ const { img, titulo, definicion, archivos, hayDatos } = Astro.props;
       const años = Object.keys(respuesta.datos);
       const primerAño = +años[0];
       const ultimoAño = +años[años.length - 1];
-      const max = umbral ? Math.max(respuesta.maxNal, +umbral) : respuesta.maxNal;
+      const max =
+        respuesta.maxNal > respuesta.unidadMedida ? Math.ceil(respuesta.maxNal / 100) * 100 : respuesta.unidadMedida;
+
       for (const año in respuesta.datos) {
         ordenados.push({ año, valor: respuesta.datos[año] });
       }
