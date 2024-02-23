@@ -210,6 +210,7 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
   #contenedorInfoAdicional {
     width: 60%;
     top: 8%;
+    left: 15%;
     display: none;
     position: absolute;
     justify-content: space-around;
@@ -288,6 +289,10 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
   @media screen and (min-width: $corte2) {
     #secionSuperior {
       flex-direction: row;
+    }
+
+    #contenedorInfoAdicional {
+      left: 0%;
     }
   }
 
