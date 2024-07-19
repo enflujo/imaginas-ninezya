@@ -349,6 +349,7 @@ const { ancho, alto } = Astro.props;
     function seleccionarZona(elemento: SVGPathElement) {
       if (!elemento) return;
       elemento.classList.add('seleccionada');
+      // color del borde del lugar seleccionado
       elemento.setAttribute('stroke', elemento.dataset.color);
       colombia.removeChild(elemento);
       seleccionados.appendChild(elemento);
