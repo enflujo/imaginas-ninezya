@@ -44,6 +44,8 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
     img={datosYa.imagen}
     archivos={archivosYa}
     hayDatos={datosIndicador.hay_datos}
+    descripcionAbierta={false}
+    anchoCompleto={false}
   />
   {
     datosIndicador.hay_datos ? (
@@ -196,6 +198,7 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
 
   #visualizaciones {
     position: relative;
+    width: 90%;
   }
 
   #secionSuperior {

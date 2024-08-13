@@ -5,12 +5,18 @@ interface Props {
   img: string;
   archivos: { titulo: string; archivo: string; umbral?: number; ruta: string }[];
   hayDatos: boolean;
+  descripcionAbierta: boolean;
+  anchoCompleto: boolean;
 }
-const { img, titulo, definicion, archivos, hayDatos } = Astro.props;
+const { img, titulo, definicion, archivos, hayDatos, descripcionAbierta, anchoCompleto } = Astro.props;
 ---
 
-<div id="descripcionYa">
-  <div class="cerrarDescripcion">X</div>
+<div
+  id="descripcionYa"
+  class=`${descripcionAbierta ? '' : 'cerrado'} ${anchoCompleto ? 'anchoCompleto' : ''}`
+  data-anchoCompleto=`${anchoCompleto}`
+>
+  {!anchoCompleto && <div class="cerrarDescripcion">X</div>}
   <div class="seccionSuperior">
     <div id="iconoYa" style={`background-image:url(${import.meta.env.BASE_URL}/iconos/${img}.svg)`}></div>
   </div>
@@ -42,7 +48,6 @@ const { img, titulo, definicion, archivos, hayDatos } = Astro.props;
 <script>
   import type { DatosIndicadorNal, DatosPorAñoOrdenado } from '@/tipos';
   import { definirMedidasMax, pedirDatos } from '@/utilidades/ayudas';
-  import { lugaresSeleccionados } from '@/utilidades/cerebro';
   import { colorPositivo } from '@/utilidades/constantes';
   import { convertirEscala } from '@enflujo/alquimia';
 
@@ -50,7 +55,6 @@ const { img, titulo, definicion, archivos, hayDatos } = Astro.props;
   const cerrar = document.querySelector<HTMLDivElement>('.cerrarDescripcion') as HTMLDivElement;
   const icono = document.getElementById('iconoYa') as HTMLDivElement;
   const contenedores = document.querySelectorAll<HTMLDivElement>('.descContenedorIndicador');
-  let cerradoAlMenosUna = false;
 
   if (contenedores) {
     for await (const elemento of contenedores) {
@@ -65,9 +69,11 @@ const { img, titulo, definicion, archivos, hayDatos } = Astro.props;
     }
   }
 
-  cerrar.onclick = () => {
-    contenedor.classList.add('cerrado');
-  };
+  if (cerrar) {
+    cerrar.onclick = () => {
+      contenedor.classList.add('cerrado');
+    };
+  }
 
   icono.onclick = () => {
     if (contenedor.classList.contains('cerrado')) {
@@ -149,15 +155,6 @@ const { img, titulo, definicion, archivos, hayDatos } = Astro.props;
       linea.setAttribute('d', datosLinea);
     }
   }
-
-  lugaresSeleccionados.subscribe((lugares) => {
-    if (lugares.length) {
-      cerradoAlMenosUna = true;
-      contenedor.classList.add('cerrado');
-    } else if (cerradoAlMenosUna) {
-      contenedor.classList.remove('cerrado');
-    }
-  });
 </script>
 
 <style lang="scss" is:global>
@@ -188,22 +185,22 @@ const { img, titulo, definicion, archivos, hayDatos } = Astro.props;
   #descripcionYa {
     position: fixed;
     top: $altoMenuSuperior;
-    width: 90%;
+    width: 87%;
     height: calc(100% - $altoMenuSuperior);
     background-color: var(--moradoPandito);
     color: var(--negroCasi);
-    z-index: 8;
     right: 0;
     transition: all 0.25s ease-in-out;
     overflow: auto;
     opacity: 0.95;
+    z-index: 8;
 
     h2 {
       color: var(--uvaNinezYa);
     }
 
     &.cerrado {
-      right: -90%;
+      right: -100%;
 
       #iconoYa {
         position: fixed;
@@ -213,6 +210,7 @@ const { img, titulo, definicion, archivos, hayDatos } = Astro.props;
         height: 40px;
         background-position-x: 100%; // usar el ícono claro
         cursor: pointer;
+        z-index: 12;
       }
     }
   }
@@ -266,7 +264,7 @@ const { img, titulo, definicion, archivos, hayDatos } = Astro.props;
     padding: 8px 15px;
     font-size: 2em;
     position: absolute;
-    right: 0.1em;
+    right: 11px;
     top: 0;
     color: var(--uvaNinezYa);
 
@@ -299,6 +297,9 @@ const { img, titulo, definicion, archivos, hayDatos } = Astro.props;
   /// ✂️ Cortes pantalla ///
 
   @media screen and (min-width: $corte1) {
+    #descripcionYa {
+      width: 93%;
+    }
     .cerrarDescripcion {
       font-size: 2.5em;
     }
@@ -306,7 +307,7 @@ const { img, titulo, definicion, archivos, hayDatos } = Astro.props;
 
   @media screen and (min-width: $corte2) {
     #descripcionYa {
-      width: 80%;
+      width: 95%;
       &.cerrado {
         #iconoYa {
           width: 40px;
@@ -339,6 +340,15 @@ const { img, titulo, definicion, archivos, hayDatos } = Astro.props;
           height: 35px;
         }
       }
+      &.anchoCompleto {
+        width: 81vw;
+      }
+      .descContenedorIndicador {
+        width: 30%;
+      }
+      #contenedorLineasIndicadores {
+        padding: 0 calc((100% - 600px) / 2);
+      }
     }
     h2 {
       font-size: 1.8em;
@@ -352,7 +362,18 @@ const { img, titulo, definicion, archivos, hayDatos } = Astro.props;
   }
   @media screen and (min-width: $corte4) {
     #descripcionYa {
-      width: 40%;
+      width: 50%;
+      &.anchoCompleto {
+        width: calc(100vw - 440px);
+      }
+
+      .definicion {
+        width: 25vw;
+        min-width: 500px;
+      }
+      #contenedorLineasIndicadores {
+        padding: 0 calc((100% - 600px) / 2);
+      }
     }
     .cerrarDescripcion {
       font-size: 1.5em;
