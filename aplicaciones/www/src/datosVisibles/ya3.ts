@@ -243,96 +243,96 @@ export const ya3: DatosYa = {
       interpretacion:
         'Un valor del 5% indica que 5 de cada 100 estudiantes en edad teórica para cursar secundaria se encuentran repitiendo el mismo grado cursado el año anterior en un establecimiento educativo oficial  en un momento y territorio específicos. <br/><br/>Más información: https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf <br/>https://www.javeriana.edu.co/pesquisa/repitencia-escolar-durante-pandemia/',
     },
-    {
-      nombre: 'Repitencia media',
-      ruta: 'repitencia-media',
-      archivo: 'ya3-12',
-      hay_datos: true,
-      explicacion_umbral:
-        'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
-      explicacion:
-        'Indica el porcentaje de estudiantes que se encuentran repitiendo alguno de los grados que corresponden a educación media.',
-      definicion:
-        'Tasa de repitencia del sector oficial. Corresponde al porcentaje de alumnos matriculados en secundaria que se encuentran repitiendo el mismo grado cursado el año anterior.',
-      metodologia:
-        'Número total de estudiantes que se encuentran repitiendo educación media / Total de estudiantes que se encuentran matriculados en educación media en el mismo periodo y territorio.',
-      unidad: 'Porcentaje',
-      fuente_numerador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística',
-      fuente_denominador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística',
-      desagregacion: 'Municipal',
-      contexto:
-        'La repetición se define como la circunstancia en la cual un estudiante se ve forzado a pasar por el mismo grado educativo en más de una ocasión, siendo una decisión administrativa tomada por el profesor. La repetición se considera un indicador de eficacia escolar y evalúa la productividad de la inversión por alumno en términos estadísticos, considerando la capacidad del sistema educativo para hacer frente a una creciente demanda de población. En este contexto, tasas elevadas indican problemas serios relacionados con la repetición o la eficiencia interna del sistema educativo. <br/><br/>Dado que la repetición continua puede llevar a situaciones de abandono, se espera que la reducción de esta práctica permita a los estudiantes completar su trayectoria educativa. <br/><br/>Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
-      interpretacion:
-        'Un valor del 5% indica que 5 de cada 100 estudiantes en edad teórica para cursar educación media se encuentran repitiendo el mismo grado cursado el año anterior en un establecimiento educativo oficial  en un momento y territorio específicos. <br/><br/>Más información: https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf  <br/>https://www.javeriana.edu.co/pesquisa/repitencia-escolar-durante-pandemia/',
-    },
-    {
-      nombre: 'Deserción primaria intra-anual',
-      ruta: 'desercion-primaria',
-      archivo: 'ya3-13',
-      hay_datos: true,
-      umbral: 2.7,
-      explicacion_umbral:
-        'Según lo estipulado en el Plan Sectorial 2022-2026, la meta para el año 2026 consiste en disminuir la tasa de deserción escolar a un nivel inferior del 2,7%.',
-      explicacion:
-        'Indica el porcentaje de estudiantes que se encontraban cursando primaria y abandonaron el sistema educativo antes de finalizar el año lectivo.',
-      definicion:
-        'Tasa de deserción intra-anual. Porcentaje de estudiantes que abandonan el sistema educativo antes de finalizar el año lectivo de primaria.',
-      metodologia:
-        'Número total de estudiantes matriculados en primaria que abandonaron el sistema escolar antes de terminar el año lectivo / Total de estudiantes que se encuentran matriculados en transición en el mismo periodo y territorio',
-      unidad: 'Porcentaje',
-      fuente_numerador: 'Ministerio de Educación Nacional - SIMAT',
-      fuente_denominador: 'Ministerio de Educación Nacional - SIMAT',
-      desagregacion: 'Municipal',
-      contexto:
-        'La tasa de deserción intra-anual es una medida porcentual del abandono estudiantil durante el transcurso del ciclo escolar. Por lo tanto se interpreta como la  interrupción o desvinculación de los estudiantes sin haber terminado el nivel para el cual se matricularon. <br/><br/>Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
-      interpretacion:
-        'Un valor del 2% indica que 2 de cada 100 estudiantes en edad teórica para cursar primaria desertaron en el año lectivo en un momento y territorio específicos. <br/><br/>Más información: https://unitedwaycolombia.org/2023/10/19/desercion-escolar-en-colombia-un-desafio-que-se-agrava/ <br/>https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf',
-    },
-    {
-      nombre: 'Deserción secundaria intra-anual',
-      ruta: 'desercion-secundaria',
-      archivo: 'ya3-14',
-      hay_datos: true,
-      umbral: 2.7,
-      explicacion_umbral:
-        'Según lo estipulado en el Plan Sectorial 2022-2026, la meta para el año 2026 consiste en disminuir la tasa de deserción escolar a un nivel inferior del 2,7%.',
-      explicacion:
-        'Indica el porcentaje de estudiantes que se encontraban cursando secundaria y abandonaron el sistema educativo antes de finalizar el año lectivo.',
-      definicion:
-        'Tasa de deserción intra-anual. Porcentaje de estudiantes que abandonan el sistema educativo antes de finalizar el año lectivo de secundaria.',
-      metodologia:
-        'Número total de estudiantes matriculados en secundaria que abandonaron el sistema escolar antes de terminar el año lectivo / Total de estudiantes que se encuentran matriculados en transición en el mismo periodo y territorio',
-      unidad: 'Porcentaje',
-      fuente_numerador: 'Ministerio de Educación Nacional - SIMAT',
-      fuente_denominador: 'Ministerio de Educación Nacional - SIMAT',
-      desagregacion: 'Municipal',
-      contexto:
-        'La tasa de deserción intra-anual es una medida porcentual del abandono estudiantil durante el transcurso del ciclo escolar. Por lo tanto se interpreta como la  interrupción o desvinculación de los estudiantes sin haber terminado el nivel para el cual se matricularon. <br/><br/>Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
-      interpretacion:
-        'Un valor del 2% indica que 2 de cada 100 estudiantes en edad teórica para cursar secundaria desertaron en el año lectivo en un momento y territorio específicos. <br/><br/>Más información: https://unitedwaycolombia.org/2023/10/19/desercion-escolar-en-colombia-un-desafio-que-se-agrava/ <br/>https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf',
-    },
-    {
-      nombre: 'Deserción media intra-anual',
-      ruta: 'desercion-media',
-      archivo: 'ya3-15',
-      hay_datos: true,
-      umbral: 2.7,
-      explicacion_umbral:
-        'Según lo estipulado en el Plan Sectorial 2022-2026, la meta para el año 2026 consiste en disminuir la tasa de deserción escolar a un nivel inferior del 2,7%.',
-      explicacion:
-        'Indica el porcentaje de estudiantes que se encontraban cursando educación media y abandonaron el sistema educativo antes de finalizar el año lectivo.',
-      definicion:
-        'Tasa de deserción intra-anual. Porcentaje de estudiantes que abandonan el sistema educativo antes de finalizar el año lectivo de educación media.',
-      metodologia:
-        'Número total de estudiantes matriculados en educación media que abandonaron el sistema escolar antes de terminar el año lectivo / Total de estudiantes que se encuentran matriculados en transición en el mismo periodo y territorio',
-      unidad: 'Porcentaje',
-      fuente_numerador: 'Ministerio de Educación Nacional - SIMAT',
-      fuente_denominador: 'Ministerio de Educación Nacional - SIMAT',
-      desagregacion: 'Municipal',
-      contexto:
-        'La tasa de deserción intra-anual es una medida porcentual del abandono estudiantil durante el transcurso del ciclo escolar. Por lo tanto se interpreta como la  interrupción o desvinculación de los estudiantes sin haber terminado el nivel para el cual se matricularon. <br/><br/>Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
-      interpretacion:
-        'Un valor del 2% indica que 2 de cada 100 estudiantes en edad teórica para cursar educación media desertaron en el año lectivo en un momento y territorio específicos. <br/><br/>Más información: https://unitedwaycolombia.org/2023/10/19/desercion-escolar-en-colombia-un-desafio-que-se-agrava/ <br/>https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf',
-    },
+    // {
+    //   nombre: 'Repitencia media',
+    //   ruta: 'repitencia-media',
+    //   archivo: 'ya3-12',
+    //   hay_datos: true,
+    //   explicacion_umbral:
+    //     'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
+    //   explicacion:
+    //     'Indica el porcentaje de estudiantes que se encuentran repitiendo alguno de los grados que corresponden a educación media.',
+    //   definicion:
+    //     'Tasa de repitencia del sector oficial. Corresponde al porcentaje de alumnos matriculados en secundaria que se encuentran repitiendo el mismo grado cursado el año anterior.',
+    //   metodologia:
+    //     'Número total de estudiantes que se encuentran repitiendo educación media / Total de estudiantes que se encuentran matriculados en educación media en el mismo periodo y territorio.',
+    //   unidad: 'Porcentaje',
+    //   fuente_numerador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística',
+    //   fuente_denominador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística',
+    //   desagregacion: 'Municipal',
+    //   contexto:
+    //     'La repetición se define como la circunstancia en la cual un estudiante se ve forzado a pasar por el mismo grado educativo en más de una ocasión, siendo una decisión administrativa tomada por el profesor. La repetición se considera un indicador de eficacia escolar y evalúa la productividad de la inversión por alumno en términos estadísticos, considerando la capacidad del sistema educativo para hacer frente a una creciente demanda de población. En este contexto, tasas elevadas indican problemas serios relacionados con la repetición o la eficiencia interna del sistema educativo. <br/><br/>Dado que la repetición continua puede llevar a situaciones de abandono, se espera que la reducción de esta práctica permita a los estudiantes completar su trayectoria educativa. <br/><br/>Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
+    //   interpretacion:
+    //     'Un valor del 5% indica que 5 de cada 100 estudiantes en edad teórica para cursar educación media se encuentran repitiendo el mismo grado cursado el año anterior en un establecimiento educativo oficial  en un momento y territorio específicos. <br/><br/>Más información: https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf  <br/>https://www.javeriana.edu.co/pesquisa/repitencia-escolar-durante-pandemia/',
+    // },
+    // {
+    //   nombre: 'Deserción primaria intra-anual',
+    //   ruta: 'desercion-primaria',
+    //   archivo: 'ya3-13',
+    //   hay_datos: true,
+    //   umbral: 2.7,
+    //   explicacion_umbral:
+    //     'Según lo estipulado en el Plan Sectorial 2022-2026, la meta para el año 2026 consiste en disminuir la tasa de deserción escolar a un nivel inferior del 2,7%.',
+    //   explicacion:
+    //     'Indica el porcentaje de estudiantes que se encontraban cursando primaria y abandonaron el sistema educativo antes de finalizar el año lectivo.',
+    //   definicion:
+    //     'Tasa de deserción intra-anual. Porcentaje de estudiantes que abandonan el sistema educativo antes de finalizar el año lectivo de primaria.',
+    //   metodologia:
+    //     'Número total de estudiantes matriculados en primaria que abandonaron el sistema escolar antes de terminar el año lectivo / Total de estudiantes que se encuentran matriculados en transición en el mismo periodo y territorio',
+    //   unidad: 'Porcentaje',
+    //   fuente_numerador: 'Ministerio de Educación Nacional - SIMAT',
+    //   fuente_denominador: 'Ministerio de Educación Nacional - SIMAT',
+    //   desagregacion: 'Municipal',
+    //   contexto:
+    //     'La tasa de deserción intra-anual es una medida porcentual del abandono estudiantil durante el transcurso del ciclo escolar. Por lo tanto se interpreta como la  interrupción o desvinculación de los estudiantes sin haber terminado el nivel para el cual se matricularon. <br/><br/>Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
+    //   interpretacion:
+    //     'Un valor del 2% indica que 2 de cada 100 estudiantes en edad teórica para cursar primaria desertaron en el año lectivo en un momento y territorio específicos. <br/><br/>Más información: https://unitedwaycolombia.org/2023/10/19/desercion-escolar-en-colombia-un-desafio-que-se-agrava/ <br/>https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf',
+    // },
+    // {
+    //   nombre: 'Deserción secundaria intra-anual',
+    //   ruta: 'desercion-secundaria',
+    //   archivo: 'ya3-14',
+    //   hay_datos: true,
+    //   umbral: 2.7,
+    //   explicacion_umbral:
+    //     'Según lo estipulado en el Plan Sectorial 2022-2026, la meta para el año 2026 consiste en disminuir la tasa de deserción escolar a un nivel inferior del 2,7%.',
+    //   explicacion:
+    //     'Indica el porcentaje de estudiantes que se encontraban cursando secundaria y abandonaron el sistema educativo antes de finalizar el año lectivo.',
+    //   definicion:
+    //     'Tasa de deserción intra-anual. Porcentaje de estudiantes que abandonan el sistema educativo antes de finalizar el año lectivo de secundaria.',
+    //   metodologia:
+    //     'Número total de estudiantes matriculados en secundaria que abandonaron el sistema escolar antes de terminar el año lectivo / Total de estudiantes que se encuentran matriculados en transición en el mismo periodo y territorio',
+    //   unidad: 'Porcentaje',
+    //   fuente_numerador: 'Ministerio de Educación Nacional - SIMAT',
+    //   fuente_denominador: 'Ministerio de Educación Nacional - SIMAT',
+    //   desagregacion: 'Municipal',
+    //   contexto:
+    //     'La tasa de deserción intra-anual es una medida porcentual del abandono estudiantil durante el transcurso del ciclo escolar. Por lo tanto se interpreta como la  interrupción o desvinculación de los estudiantes sin haber terminado el nivel para el cual se matricularon. <br/><br/>Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
+    //   interpretacion:
+    //     'Un valor del 2% indica que 2 de cada 100 estudiantes en edad teórica para cursar secundaria desertaron en el año lectivo en un momento y territorio específicos. <br/><br/>Más información: https://unitedwaycolombia.org/2023/10/19/desercion-escolar-en-colombia-un-desafio-que-se-agrava/ <br/>https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf',
+    // },
+    // {
+    //   nombre: 'Deserción media intra-anual',
+    //   ruta: 'desercion-media',
+    //   archivo: 'ya3-15',
+    //   hay_datos: true,
+    //   umbral: 2.7,
+    //   explicacion_umbral:
+    //     'Según lo estipulado en el Plan Sectorial 2022-2026, la meta para el año 2026 consiste en disminuir la tasa de deserción escolar a un nivel inferior del 2,7%.',
+    //   explicacion:
+    //     'Indica el porcentaje de estudiantes que se encontraban cursando educación media y abandonaron el sistema educativo antes de finalizar el año lectivo.',
+    //   definicion:
+    //     'Tasa de deserción intra-anual. Porcentaje de estudiantes que abandonan el sistema educativo antes de finalizar el año lectivo de educación media.',
+    //   metodologia:
+    //     'Número total de estudiantes matriculados en educación media que abandonaron el sistema escolar antes de terminar el año lectivo / Total de estudiantes que se encuentran matriculados en transición en el mismo periodo y territorio',
+    //   unidad: 'Porcentaje',
+    //   fuente_numerador: 'Ministerio de Educación Nacional - SIMAT',
+    //   fuente_denominador: 'Ministerio de Educación Nacional - SIMAT',
+    //   desagregacion: 'Municipal',
+    //   contexto:
+    //     'La tasa de deserción intra-anual es una medida porcentual del abandono estudiantil durante el transcurso del ciclo escolar. Por lo tanto se interpreta como la  interrupción o desvinculación de los estudiantes sin haber terminado el nivel para el cual se matricularon. <br/><br/>Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
+    //   interpretacion:
+    //     'Un valor del 2% indica que 2 de cada 100 estudiantes en edad teórica para cursar educación media desertaron en el año lectivo en un momento y territorio específicos. <br/><br/>Más información: https://unitedwaycolombia.org/2023/10/19/desercion-escolar-en-colombia-un-desafio-que-se-agrava/ <br/>https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf',
+    // },
   ],
 };
