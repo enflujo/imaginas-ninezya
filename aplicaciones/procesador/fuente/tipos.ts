@@ -81,9 +81,12 @@ export type VariableValorSingular =
   | 'bajo_peso'
   | 'tasa_EDA'
   | 'tasa_IRA'
-  | 'cobertura_bruta_transicion'
+  | 'neta_transicion'
   | 'cobertura_bruta_media'
-  | 'cobertura_bruta_primaria'
+  | 'neta_primaria'
+  | 'neta_media'
+  | 'reprobacion_primaria'
+  | 'reprobacion_media'
   | 'reprobacion_transicion'
   | 'repitencia_transicion'
   | 'desercion_transicion'
@@ -114,11 +117,15 @@ export type VariableValorSingular =
   | 'Alumnos_primaria_O'
   | 'Alumnos_primaria_N_O'
   | 'reclu'
-  | 'tasa'
+  | 'intrafamiliar'
   | 'delito'
   | 'secu'
-  | 'GINI'
-  | 'pobreza';
+  | 'gini'
+  | 'pobreza_monetaria'
+  | 'homicidios'
+  | 'sexual'
+  | 'interpersonal'
+  | 'tasa';
 
 export type VariablesSingulares = {
   [llave in VariableValorSingular]: number;
