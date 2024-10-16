@@ -2,7 +2,6 @@
   "name": "procesador",
   "version": "1.0.0",
   "description": "Procesador de datos para ¡Niñez Ya!",
-  "main": "index.js",
   "license": "MIT",
   "scripts": {
     "dev": " nodemon ./fuente/aplicacion.ts",
@@ -12,12 +11,10 @@
     "@types/cli-color": "^2.0.6",
     "@types/cli-progress": "^3.11.6",
     "@types/geojson": "^7946.0.14",
-    "@types/node": "^22.7.4",
+    "@types/node": "^22.7.5",
     "nodemon": "^3.1.7",
     "rimraf": "^6.0.1",
-    "ts-node": "^10.9.2",
-    "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.6.2"
+    "ts-node": "^10.9.2"
   },
   "dependencies": {
     "cli-color": "^2.0.4",
@@ -27,9 +24,13 @@
     "xlsx": "^0.18.5"
   },
   "nodemonConfig": {
+    "watch": [
+      "fuente"
+    ],
     "ignore": [
       "./datos/*"
     ],
-    "ext": "ts, js"
+    "ext": "ts",
+    "exec": "ts-node ./fuente/aplicacion.ts"
   }
 }

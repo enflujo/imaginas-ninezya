@@ -137,7 +137,7 @@ export const crearLinea = (
   let res = '';
 
   geometria.coordinates.forEach((grupo: Position[] | Position[][]): void => {
-    grupo.forEach((posicion, i) => {
+    grupo.forEach((posicion: Position | Position[], i: number) => {
       const cabeza = i === 0 ? 'M' : 'L';
 
       if (typeof posicion[0] === 'object') {
