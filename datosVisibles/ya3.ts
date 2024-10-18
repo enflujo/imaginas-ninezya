@@ -51,9 +51,26 @@ export const ya3: DatosYa = {
         'El indicador toma un valor máximo de 100 puntos, cuanto más cerca esté el puntaje de 0, peor será el desempeño en esa prueba del examen Saber 11°. <br/><br/>El ICFES ha definido cuatro niveles de desempeño para las pruebas de Lectura: 1,2,3, y 4. Donde: <br/><br/>1. Se limita a identificar las tareas demandadas. <br/>2. Está en capacidad de diferenciar los procedimientos posibles para realizar las tareas requeridas. <br/>3. Analiza procedimientos para desarrollar de la mejor manera la tarea solicitada. <br/>4. Está preparado para deducir y combinar procedimientos para realizar las tareas solicitadas. <br/><br/>Los Rangos son los siguientes: <br/>1: 0 - 35  <br/>2: 36 - 50 <br/>3: 51 -70 <br/>4: 71 - 100 <br/><br/> Más información: https://www.r4v.info/sites/default/files/2022-06/An%C3%A1lisis%20de%20brechas%20resultados%20escolares%20Pruebas%20Saber%2011%20-2020_compressed.pdf',
     },
     {
-      nombre: 'Puntaje Saber 11 - Total',
-      ruta: 'saber11-total',
+      nombre: 'Puntaje Saber 11 - Ciencias Sociales',
+      ruta: 'saber11-sociales',
       archivo: 'ya3-3',
+      hay_datos: true,
+      umbral: 46.5,
+      explicacion_umbral: '...',
+      explicacion: '...',
+      definicion: '...',
+      metodologia: '...',
+      unidad: '...',
+      fuente_numerador: '...',
+      fuente_denominador: '...',
+      desagregacion: 'Municipal',
+      contexto: '...',
+      interpretacion: '...',
+    },
+    {
+      nombre: 'Puntaje Saber 11 - Global',
+      ruta: 'saber11-global',
+      archivo: 'ya3-4',
       hay_datos: true,
       explicacion_umbral:
         'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
@@ -74,7 +91,7 @@ export const ya3: DatosYa = {
     {
       nombre: 'Cobertura bruta primaria',
       ruta: 'cobertura-primaria',
-      archivo: 'ya3-4',
+      archivo: 'ya3-5',
       hay_datos: true,
       explicacion_umbral:
         'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
@@ -95,7 +112,7 @@ export const ya3: DatosYa = {
     {
       nombre: 'Cobertura bruta media',
       ruta: 'cobertura-media',
-      archivo: 'ya3-5',
+      archivo: 'ya3-6',
       hay_datos: true,
       explicacion_umbral:
         'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
@@ -116,7 +133,7 @@ export const ya3: DatosYa = {
     {
       nombre: 'Reprobación primaria',
       ruta: 'reprobacion-primaria',
-      archivo: 'ya3-6',
+      archivo: 'ya3-7',
       hay_datos: true,
       umbral: 86.5,
       explicacion_umbral:
@@ -138,7 +155,7 @@ export const ya3: DatosYa = {
     {
       nombre: 'Reprobación media',
       ruta: 'reprobacion-media',
-      archivo: 'ya3-7',
+      archivo: 'ya3-8',
       hay_datos: true,
       explicacion_umbral:
         'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
@@ -159,7 +176,7 @@ export const ya3: DatosYa = {
     {
       nombre: 'Repitencia primaria',
       ruta: 'repitencia-primaria',
-      archivo: 'ya3-8',
+      archivo: 'ya3-9',
       hay_datos: true,
       explicacion_umbral:
         'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
@@ -181,7 +198,7 @@ export const ya3: DatosYa = {
     {
       nombre: 'Repitencia media',
       ruta: 'repitencia-media',
-      archivo: 'ya3-9',
+      archivo: 'ya3-10',
       hay_datos: true,
       explicacion_umbral:
         'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
@@ -203,7 +220,7 @@ export const ya3: DatosYa = {
     {
       nombre: 'Deserción primaria intra-anual',
       ruta: 'desercion-primaria',
-      archivo: 'ya3-10',
+      archivo: 'ya3-11',
       hay_datos: true,
       umbral: 2.7,
       explicacion_umbral:
@@ -226,7 +243,7 @@ export const ya3: DatosYa = {
     {
       nombre: 'Deserción media intra-anual',
       ruta: 'desercion-media',
-      archivo: 'ya3-11',
+      archivo: 'ya3-12',
       hay_datos: true,
       umbral: 2.7,
       explicacion_umbral:
