@@ -60,7 +60,7 @@ export const ya3: DatosYa = {
       explicacion: '...',
       definicion: '...',
       metodologia: '...',
-      unidad: '...',
+      unidad: 'Promedio',
       fuente_numerador: '...',
       fuente_denominador: '...',
       desagregacion: 'Municipal',
@@ -72,6 +72,7 @@ export const ya3: DatosYa = {
       ruta: 'saber11-global',
       archivo: 'ya3-4',
       hay_datos: true,
+      umbral: 0,
       explicacion_umbral:
         'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
       explicacion:
@@ -79,7 +80,7 @@ export const ya3: DatosYa = {
       definicion: 'Mide el desempeño en promedio en la Prueba Saber 11 en un municipio o departamento.',
       metodologia:
         '[(𝑃𝑢𝑛𝑡𝑎𝑗𝑒 𝑒𝑛 𝐿𝑒𝑐𝑡 𝐶𝑟í𝑡𝑖𝑐𝑎 ∗ 3) + (𝑃𝑢𝑛𝑡𝑎𝑗𝑒 𝑒𝑛 𝑀𝑎𝑡𝑒𝑚á𝑡𝑖𝑐𝑎𝑠 ∗ 3) + (𝑃𝑢𝑛𝑡𝑎𝑗𝑒 𝑒𝑛 𝑆𝑜𝑐 𝐶𝑖𝑢𝑑 ∗ 3) + (𝑃𝑢𝑛𝑡𝑎𝑗𝑒 𝑒𝑛 𝐶 𝑁𝑎𝑡 ∗ 3) + (𝑃𝑢𝑛𝑡𝑎𝑗𝑒 𝑒𝑛 𝐼𝑛𝑔𝑙é𝑠) ] /  13 *5',
-      unidad: 'Número',
+      unidad: 'Promedio',
       fuente_numerador: 'DataIcfes',
       fuente_denominador: 'DataIcfes',
       desagregacion: 'Municipal',

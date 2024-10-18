@@ -28,7 +28,7 @@ export interface DatosYa extends IndicadoresDatosComunes {
 }
 
 export type DatosPorAño = { [año: string]: number };
-export type TiposEstructura = 'porcentaje' | 'tasa' | 'escala' | 'conteo' | 'coeficiente';
+export type TiposEstructura = 'porcentaje' | 'tasa' | 'escala' | 'conteo' | 'coeficiente' | 'promedio';
 
 export type DatosIndicadorNal = {
   ascendente: boolean;

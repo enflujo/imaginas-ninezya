@@ -65,7 +65,7 @@ export type VariableValorSingular =
   | 'talcan'
   | 'tasa_mortalidad_menores_5'
   | 'controles_prenatales'
-  | 'desnutricion'
+  | 'tasa_desnutricion_menores_5'
   | 'bajo_peso'
   | 'tasa_EDA'
   | 'tasa_IRA'
@@ -123,8 +123,6 @@ export type VariableValorSingular =
 export type VariablesSingulares = {
   [llave in VariableValorSingular]: number;
 };
-
-export type EstructurasMatematicas = 'porcentaje' | 'tasa' | 'escala' | 'conteo' | 'coeficiente';
 
 export type VariablesNumDen = {
   anno: string;

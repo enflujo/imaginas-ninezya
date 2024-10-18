@@ -98,9 +98,9 @@ export const ya1: DatosYa = {
       ruta: 'desnutricion',
       archivo: 'ya1-5',
       hay_datos: true,
-      umbral: 0.09,
+      umbral: 0,
       explicacion_umbral:
-        'En el Plan Nacional de Desarrollo no hay una meta clara para esta problemática. De acuerdo con los Objetivos de Desarrollo Sostenible, numeral 2 "Hambre cero",  se pretende erradicar el hambre para el año 2030. La Encuesta Nacional de Situación Nutricional del año 2015 prevé que para el 2030  la morbilidad por desnutrición aguda sea de 0.9%.',
+        'De acuerdo con el Plan Decenal de Salud Pública, a 2031, el 100% de Niños y niñas tendrán adecuado estado nutricional de acuerdo a su edad.',
       explicacion: 'Indica la proporción de niños menores de 5 años que padecen de desnutrición aguda.',
       definicion:
         'Indica el número de niños menores de 5 años por cada 100.000 que padecen de desnutrición aguda en un momento y territorio determinado.',
@@ -144,7 +144,7 @@ export const ya1: DatosYa = {
       ruta: 'mortalidad-neonatal',
       archivo: 'ya1-7',
       hay_datos: true,
-      umbral: 0,
+      umbral: 6,
       explicacion_umbral:
         'De acuerdo a los Objetivos de Desarrollo Sostenible (ODS) se espera alcanzar una meta de 6 o menos muertes por cada 1,000 nacidos vivos para el 2030.',
       explicacion: 'Indica la proporción de nacidos vivos con bajo peso al nacer.',
@@ -152,7 +152,7 @@ export const ya1: DatosYa = {
         'La tasa de mortalidad neonatal indica el número de muertes de neonatos (niños menores de 28 días) por cada 1,000 nacidos vivos en un año determinado. Es un indicador de la salud materno-infantil y refleja las condiciones de atención durante el embarazo, el parto y el periodo neonatal. <br/><br/> Esta tasa se utiliza para evaluar la calidad de los servicios de salud, las intervenciones de salud pública y el nivel de desarrollo socioeconómico de un país o región. Un alto valor de esta tasa suele estar asociado con problemas como deficiencias en la atención prenatal, complicaciones durante el parto, infecciones neonatales y bajo peso al nacer, entre otros factores.',
       metodologia:
         '(Número de muertes de nacidos vivos que ocurren durante los primeros 28 días de vida / número de nacidos vivos) * 1.000 nacidos',
-      unidad: 'Tasa',
+      unidad: 'Tasa por cada 1,000 nacidos vivos',
       fuente_numerador: 'CUBO INDICADORES EEVV',
       fuente_denominador: 'CUBO INDICADORES EEVV',
       desagregacion: 'Municipal',
@@ -174,7 +174,7 @@ export const ya1: DatosYa = {
         'La Tasa de Mortalidad Infantil (TMI) es el número de defunciones de niños menores de 1 año por cada 1.000 nacidos vivos para un año dado, en un determinado país, territorio o área geográfica.',
       metodologia:
         'TMI=(No. total de defunciones en menores de un año durante un período dado / No. total de nacidos vivos durante el mismo período) x  1.000',
-      unidad: 'Tasa',
+      unidad: 'Tasa por cada 1,000 nacidos vivos',
       fuente_numerador: 'CUBO INDICADORES EEVV',
       fuente_denominador: 'CUBO INDICADORES EEVV',
       desagregacion: 'Municipal',
@@ -188,15 +188,15 @@ export const ya1: DatosYa = {
       ruta: 'mortalidad-desnutricion-5',
       archivo: 'ya1-9',
       hay_datos: true,
-      umbral: 0,
+      umbral: 5,
       explicacion_umbral:
-        'Plan Decenal de Salud: A 2031, disminuir la tasa de mortalidad asociada a desnutrición aguda en menores de 5 años a 5 muertes por cada 100 mil menores de 5 años. Linea Base:DANE 2020 6,72 x 100000 niños menores de 5 años',
+        'Plan Decenal de Salud: A 2031, disminuir la tasa de mortalidad asociada a desnutrición aguda en menores de 5 años a 5 muertes por cada 100 mil menores de 5 años. Linea Base:DANE 2020 6,72 x 100,000 niños menores de 5 años',
       explicacion: 'Indica la proporción de mortalidad por desnutrición en menores de 5 años.',
       definicion:
         'La Tasa de Mortalidad por Desnutrición en Niños Menores de 5 Años es el número de defunciones de niños menores de 5 años causadas por desnutrición, por cada 100,000 niños de esa edad, en un año específico. Este indicador permite evaluar el impacto de la desnutrición en la salud infantil y monitorear la efectividad de las políticas de salud pública orientadas a la prevención y tratamiento de la malnutrición en la población infantil.',
       metodologia:
         'TMI=(No. total de defunciones en menores de un año durante un período dado / No. total de nacidos vivos durante el mismo período) x  100.000',
-      unidad: 'Tasa',
+      unidad: 'Tasa por cada 100,000 nacidos vivos',
       fuente_numerador: 'CUBO INDICADORES EEVV',
       fuente_denominador: 'CUBO INDICADORES EEVV',
       desagregacion: 'Municipal',

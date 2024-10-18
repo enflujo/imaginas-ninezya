@@ -2,7 +2,6 @@ import { limpiarDepartamento, limpiarMunicipio } from '@/limpieza/lugar';
 import type {
   Departamento,
   Errata,
-  EstructurasMatematicas,
   Municipio,
   RespuestaNumDen,
   RespuestaNumDenNal,
@@ -11,7 +10,7 @@ import type {
 } from '@/tipos';
 import { guardarJSON, redondearDecimal } from '@/utilidades/ayudas';
 import maquinaXlsx from '@/utilidades/maquinaXlsx';
-import { DatosIndicadorNal } from '../../../../tipos/compartidos';
+import type { DatosIndicadorNal, TiposEstructura } from '../../../../tipos/compartidos';
 
 export default class {
   datosNacionales: DatosIndicadorNal;
@@ -23,7 +22,7 @@ export default class {
   errata: { fila: number; error: string }[];
   unidadMedida: number;
 
-  constructor(ascendente: boolean, estructura: EstructurasMatematicas, unidadMedida: number) {
+  constructor(ascendente: boolean, estructura: TiposEstructura, unidadMedida: number) {
     this.datosNacionales = {
       ascendente,
       estructura,

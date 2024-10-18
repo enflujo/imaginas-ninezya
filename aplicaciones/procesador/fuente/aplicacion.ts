@@ -41,7 +41,7 @@ async function procesarDatos() {
   await ya13.procesar('1.3: mortalidad menores', 'YA_1.3', 'Sheet 1', 'ya1-3');
   const ya14 = new VariableSingular('controles_prenatales', true, 'porcentaje');
   await ya14.procesar('1.4: controles prenatales', 'YA_1.4', 'Sheet 1', 'ya1-4');
-  const ya15 = new VariableSingular('desnutricion', false, 'tasa', 100000);
+  const ya15 = new VariableSingular('tasa_desnutricion_menores_5', false, 'tasa', 100000);
   await ya15.procesar('1.5: desnutrición', 'YA_1.5', 'Sheet 1', 'ya1-5');
   const ya16 = new VariableSingular('bajo_peso', false, 'porcentaje');
   await ya16.procesar('1.6: bajo peso', 'YA_1.6', 'Sheet 1', 'ya1-6');
@@ -65,13 +65,13 @@ async function procesarDatos() {
   await ya25.procesar('2.5: porcentaje marco integral', 'YA_2.5', 'Sheet 1', 'ya2-5');
 
   /** 3 */
-  const ya31 = new VariableSingular('matematicas', true, 'porcentaje');
+  const ya31 = new VariableSingular('matematicas', true, 'promedio');
   await ya31.procesar('3.1: saber 11 matemáticas', 'YA_3.1', 'Sheet 1', 'ya3-1');
-  const ya32 = new VariableSingular('lectura', true, 'porcentaje');
+  const ya32 = new VariableSingular('lectura', true, 'promedio');
   await ya32.procesar('3.2: saber 11 lectura', 'YA_3.2', 'Sheet 1', 'ya3-2');
-  const ya33 = new VariableSingular('sociales', true, 'porcentaje');
+  const ya33 = new VariableSingular('sociales', true, 'promedio');
   await ya33.procesar('3.3: saber 11 sociales', 'YA_3.3', 'Sheet 1', 'ya3-3');
-  const ya34 = new VariableSingular('global', true, 'porcentaje');
+  const ya34 = new VariableSingular('global', true, 'promedio');
   await ya34.procesar('3.4: saber 11 global', 'YA_3.4', 'Sheet 1', 'ya3-4');
   const ya35 = new VariableSingular('neta_primaria', true, 'porcentaje');
   await ya35.procesar('3.5: cobertura bruta primaria', 'YA_3.5', 'Sheet 1', 'ya3-5');

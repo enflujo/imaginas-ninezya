@@ -1,1 +1,1 @@
-{"ascendente":true,"estructura":"porcentaje","unidadMedida":100,"datos":{"2016":47.17,"2017":47.19,"2018":44.54,"2019":42.6,"2020":44.19,"2021":42.98,"2022":44.36,"2023":44.92},"datosMunicipio":true,"maxNal":47.19,"minNal":42.6,"maxDep":55.03,"minDep":34.99,"maxMun":62,"minMun":26}
+{"ascendente":true,"estructura":"promedio","unidadMedida":100,"datos":{"2016":47.17,"2017":47.19,"2018":44.54,"2019":42.6,"2020":44.19,"2021":42.98,"2022":44.36,"2023":44.92},"datosMunicipio":true,"maxNal":47.19,"minNal":42.6,"maxDep":55.03,"minDep":34.99,"maxMun":62,"minMun":26}

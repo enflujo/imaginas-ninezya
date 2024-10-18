@@ -2,7 +2,6 @@ import { limpiarDepartamento, limpiarMunicipio } from '../limpieza/lugar';
 import type {
   Departamento,
   Errata,
-  EstructurasMatematicas,
   Municipio,
   RespuestaPorcentaje,
   VariableValorSingular,
@@ -11,7 +10,7 @@ import type {
 import { esNumero, guardarJSON, redondearDecimal } from '../utilidades/ayudas';
 import maquinaXlsx from '../utilidades/maquinaXlsx';
 import { departamentos } from '../utilidades/lugaresColombia';
-import { DatosIndicadorNal } from '../../../../tipos/compartidos';
+import { DatosIndicadorNal, TiposEstructura } from '../../../../tipos/compartidos';
 
 export default class {
   datosNacionales: DatosIndicadorNal;
@@ -19,13 +18,13 @@ export default class {
   datosMunicipios: RespuestaPorcentaje;
   errata: { fila: number; error: string }[];
   nombreVariableValor: VariableValorSingular;
-  estructura: EstructurasMatematicas;
+  estructura: TiposEstructura;
   exportarMunicipios: boolean;
 
   constructor(
     nombreVariable: VariableValorSingular,
     ascendente: boolean,
-    estructura: EstructurasMatematicas,
+    estructura: TiposEstructura,
     unidadMedida = 100
   ) {
     this.datosNacionales = {

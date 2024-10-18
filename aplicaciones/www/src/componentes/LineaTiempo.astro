@@ -15,7 +15,7 @@ const { alto, meta, umbral } = Astro.props;
     <ul class="leyendas">
       <li class="colombia">Colombia</li>
 
-      {umbral && <li class="meta">Meta deseada: {umbral}</li>}
+      {!!umbral && <li class="meta">Meta deseada: {umbral}</li>}
     </ul>
 
     <p class="anotacionUmbral" set:html={meta} />

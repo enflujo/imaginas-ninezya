@@ -36,6 +36,7 @@ export const ya2: DatosYa = {
       ruta: 'reprobacion-transicion',
       archivo: 'ya2-2',
       hay_datos: true,
+      umbral: 2,
       explicacion_umbral:
         'De acuerdo con el documento CONPES 3918, la línea base era de 85,9% en el 2015, con una meta de alcanzar una cobertura universal al finalizar el 2030. ',
       explicacion: 'Indica el porcentaje de estudiantes que reprobaron transición.',
@@ -57,6 +58,7 @@ export const ya2: DatosYa = {
       ruta: 'repitencia-transicion',
       archivo: 'ya2-3',
       hay_datos: true,
+      umbral: 2,
       explicacion_umbral:
         'De acuerdo con el Plan Nacional de Desarrollo 2022 - 2026 no hay una meta para este indicador.',
       explicacion:
@@ -102,7 +104,7 @@ export const ya2: DatosYa = {
       ruta: 'marco-integral',
       archivo: 'ya2-5',
       hay_datos: true,
-      umbral: 80,
+      umbral: 100,
       explicacion_umbral: '...',
       explicacion: '...',
       definicion: '...',

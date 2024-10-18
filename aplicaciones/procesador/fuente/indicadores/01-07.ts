@@ -1,8 +1,8 @@
 import { extraerPartesLugar, limpiarDepartamento } from '@/limpieza/lugar';
-import type { Departamento, Errata, EstructurasMatematicas, Municipio, RespuestaPorcentaje } from '@/tipos';
+import type { Departamento, Errata, Municipio, RespuestaPorcentaje } from '@/tipos';
 import { guardarJSON, redondearDecimal } from '@/utilidades/ayudas';
 import maquinaXlsx from '@/utilidades/maquinaXlsx';
-import { DatosIndicadorNal } from '../../../../tipos/compartidos';
+import { DatosIndicadorNal, TiposEstructura } from '../../../../tipos/compartidos';
 
 type Variables = {
   codmpio_num: string;
@@ -35,7 +35,7 @@ export default class {
   datosNum: DatosLugar[];
   datosDen: DatosLugar[];
 
-  constructor(ascendente: boolean, estructura: EstructurasMatematicas) {
+  constructor(ascendente: boolean, estructura: TiposEstructura) {
     this.datosNacionales = {
       ascendente,
       estructura,
