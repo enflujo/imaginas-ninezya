@@ -56,13 +56,12 @@ const { alto, meta, umbral } = Astro.props;
 </section>
 
 <script>
-  import { obtenerVariableCSS, porcentajeAPixeles } from '@/utilidades/ayudas';
+  import { definirMedidasMax, obtenerVariableCSS, porcentajeAPixeles } from '@/utilidades/ayudas';
   import {
     listaAños,
     datosNal,
     lugaresSeleccionados,
     datosIndicadorDep,
-    valorMaxY,
     umbral,
     añoSeleccionado,
   } from '@/utilidades/cerebro';
@@ -72,6 +71,7 @@ const { alto, meta, umbral } = Astro.props;
   import type { DatosIndicador, DatosPorAñoOrdenado } from '@/tipos';
 
   const contenedorLinea = document.getElementById('lineaDeTiempo');
+  let ejeYCreado = false;
 
   if (contenedorLinea) {
     const svg = document.querySelector<SVGElement>('#grafica');
@@ -86,6 +86,8 @@ const { alto, meta, umbral } = Astro.props;
     const informacion = document.getElementById('informacion') as HTMLDivElement;
     const proporciones = { porcentaje: { x1: 2, x2: 95 }, pixeles: { x1: 0, x2: 0 } };
     const años = { primero: 0, ultimo: 0 };
+    const limites = { yMax: 0, yMin: 0, color: 0 };
+
     let cantidadDivisiones = 5;
 
     const posicionX = (valor: number) =>
@@ -97,10 +99,9 @@ const { alto, meta, umbral } = Astro.props;
         proporciones.pixeles.x2
       );
 
-    const posicionY = (valor: number) => convertirEscala(valor, valorMaxY, 0, dimsVis.margenArriba, dimsVis.altoVis);
+    const posicionY = (valor: number) => convertirEscala(valor, limites.yMax, 0, dimsVis.margenArriba, dimsVis.altoVis);
     let estructura: string;
 
-    escalar();
     window.addEventListener('resize', escalar);
 
     datosNal.subscribe((datosNacionales) => {
@@ -112,7 +113,6 @@ const { alto, meta, umbral } = Astro.props;
       }
 
       nombreEjeY.innerHTML = `${visualizaciones.dataset.unidad}`;
-      crearEjeY();
     });
 
     listaAños.subscribe((lista) => {
@@ -126,8 +126,35 @@ const { alto, meta, umbral } = Astro.props;
       crearEjeX();
     });
 
-    function actualizarMarcaY(grupo: SVGElement, y: number) {
+    function actualizarMarcaY(grupo: SVGElement, y: number, i: number) {
+      // console.log(grupo, y);
+      const textoEje = (limites.yMax / cantidadDivisiones) * i;
+      const texto = grupo.querySelector<SVGTextElement>('.textoEje');
       grupo.setAttribute('style', `transform: translate(${dimsVis.marcoIz - 5}px, ${y}px)`);
+      const formatoValor = (valor: number) => Intl.NumberFormat('en', { notation: 'compact' }).format(valor);
+
+      /**
+       * Los valores del eje y ya están definidos y no cambia el valor, entonces se dejan como están,
+       * de lo contrario se anima de 0 al valor
+       */
+
+      if (texto.innerHTML.length && texto.innerHTML === `${formatoValor(textoEje)}`) {
+        return;
+      }
+
+      texto.innerHTML = `${formatoValor(0)}`;
+      let valorActual = 0;
+      const paso = Math.ceil(textoEje / 20);
+
+      let reloj = setInterval(() => {
+        if (valorActual < textoEje) {
+          const nuevoValor = valorActual + paso;
+          valorActual = nuevoValor < textoEje ? nuevoValor : textoEje;
+          texto.innerHTML = `${formatoValor(valorActual)}`;
+        } else {
+          clearInterval(reloj);
+        }
+      }, 20);
     }
 
     function actualizarMarcaX(grupo: SVGElement, x: number) {
@@ -138,9 +165,30 @@ const { alto, meta, umbral } = Astro.props;
       const marcasY = contenedorEjeY.querySelectorAll<SVGGElement>('.marcaEjeY');
       const marcasX = contenedorEjeX.querySelectorAll<SVGGElement>('.marcaEjeX');
       const areaUmbral = contenedorEjeY.querySelector<SVGGElement>('.umbral');
-
       const dimsSvg = svg.getBoundingClientRect();
       const { x1, x2 } = proporciones.porcentaje;
+      const esNacional = !lugaresSeleccionados.value.length;
+      let valMax = datosNal.value.maxNal;
+
+      if (!esNacional) {
+        let maxEnLineas = 0;
+
+        lineas.forEach((linea) => {
+          linea.datos.forEach((obj) => {
+            if (maxEnLineas < obj.valor) {
+              maxEnLineas = obj.valor;
+            }
+          });
+        });
+
+        valMax = maxEnLineas;
+      }
+
+      const { yMax, yMin, color } = definirMedidasMax(valMax, datosNal.value, umbral);
+
+      limites.yMax = yMax;
+      limites.yMin = yMin;
+      limites.color = color;
       proporciones.pixeles.x1 = porcentajeAPixeles(x1, dimsSvg.width);
       proporciones.pixeles.x2 = porcentajeAPixeles(x2, dimsSvg.width);
 
@@ -158,7 +206,7 @@ const { alto, meta, umbral } = Astro.props;
 
       if (marcasY) {
         marcasY.forEach((marca, i) => {
-          actualizarMarcaY(marca, posicionY((valorMaxY / cantidadDivisiones) * i));
+          actualizarMarcaY(marca, posicionY((yMax / cantidadDivisiones) * i), i);
         });
       }
 
@@ -174,11 +222,12 @@ const { alto, meta, umbral } = Astro.props;
         const alto = datosNal.value.ascendente
           ? posicionY(umbral) - dimsVis.marcoAbajo + 5
           : posicionY(0) - posicionY(umbral);
-        const y = datosNal.value.ascendente ? posicionY(valorMaxY) : posicionY(umbral);
+        const y = datosNal.value.ascendente ? posicionY(yMax) : posicionY(umbral);
 
         areaUmbral.setAttribute('height', `${alto}px`);
         areaUmbral.setAttribute('y', `${y}px`);
       }
+
       lineas.forEach((linea) => {
         linea.actualizar(posicionX, posicionY);
       });
@@ -188,10 +237,11 @@ const { alto, meta, umbral } = Astro.props;
       if (umbral) {
         const areaUmbral = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
 
+        const techo = Math.min(umbral, limites.yMax);
         const alto = datosNal.value.ascendente
           ? posicionY(umbral) - dimsVis.marcoAbajo + 5
-          : posicionY(0) - posicionY(umbral);
-        const y = datosNal.value.ascendente ? posicionY(valorMaxY) : posicionY(umbral);
+          : posicionY(0) - posicionY(techo);
+        const y = datosNal.value.ascendente ? posicionY(limites.yMax) : posicionY(techo);
 
         areaUmbral.setAttribute('class', 'umbral');
         areaUmbral.setAttribute('x', `${dimsVis.marcoIz}px`);
@@ -231,11 +281,10 @@ const { alto, meta, umbral } = Astro.props;
         const marca = document.createElementNS('http://www.w3.org/2000/svg', 'line');
         const texto = document.createElementNS('http://www.w3.org/2000/svg', 'text');
         const referencia = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-        const textoEje = (valorMaxY / cantidadDivisiones) * i;
+        const textoEje = (limites.yMax / cantidadDivisiones) * i;
         const y = posicionY(textoEje);
 
         grupo.setAttribute('class', 'marcaEjeY');
-        actualizarMarcaY(grupo, y);
 
         marca.setAttribute('class', 'marcaMarco');
         marca.setAttribute('x1', '0');
@@ -246,7 +295,6 @@ const { alto, meta, umbral } = Astro.props;
         texto.setAttribute('class', 'textoEje textoEjeY');
         texto.setAttribute('x', '-20');
         texto.setAttribute('y', '3');
-        texto.innerHTML = `${Intl.NumberFormat('en', { notation: 'compact' }).format(textoEje)}`;
 
         referencia.setAttribute('class', i === 0 ? 'lineaMarco lineaBase' : 'lineaY');
         referencia.setAttribute('x1', '0');
@@ -256,7 +304,11 @@ const { alto, meta, umbral } = Astro.props;
         grupo.appendChild(texto);
         grupo.appendChild(referencia);
         contenedorEjeY.appendChild(grupo);
+
+        actualizarMarcaY(grupo, y, i);
       }
+
+      ejeYCreado = true;
     }
 
     function crearEjeX() {
@@ -303,19 +355,22 @@ const { alto, meta, umbral } = Astro.props;
     }
 
     lugaresSeleccionados.subscribe(async (lugares) => {
+      if (!datosNal.value.maxNal) return;
+
       if (!lugares.length) {
         lineas.forEach((linea) => {
           linea.eliminar();
         });
-
+        escalar();
+        if (!ejeYCreado) crearEjeY();
         return;
       }
 
-      lineas.forEach((linea) => {
+      lineas.forEach((linea, i) => {
         const estaEnLista = lugares.find((lugar) => lugar.nombre === linea.nombre);
-
         if (!estaEnLista) {
           linea.eliminar();
+          if (linea.nombre !== 'Colombia') lineas.splice(i, 1);
         }
       });
 
@@ -340,6 +395,9 @@ const { alto, meta, umbral } = Astro.props;
           lineas.push(linea);
         }
       });
+
+      escalar();
+      if (!ejeYCreado) crearEjeY();
     });
 
     añoSeleccionado.subscribe((añoActual) => {
@@ -454,6 +512,13 @@ const { alto, meta, umbral } = Astro.props;
         stroke-width: 2px;
         fill: none;
       }
+
+      .linea,
+      .punto,
+      .umbral {
+        transition: all 0.35s ease-in-out;
+      }
+
       .punto {
         stroke: rgb(0, 30, 74);
         stroke-width: 5px;

@@ -54,3 +54,11 @@ export type Punto = {
 export interface IMapearCoordenadas {
   (coordenadas: Position, ancho: number, alto: number): Punto;
 }
+
+export interface DatosIndicadoresListaDescripcion {
+  titulo: string;
+  archivo: string;
+  umbral?: number;
+  ruta: string;
+  tieneDatos: boolean;
+}

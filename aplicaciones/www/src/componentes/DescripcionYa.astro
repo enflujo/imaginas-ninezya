@@ -1,9 +1,11 @@
 ---
+import type { DatosIndicadoresListaDescripcion } from '@/tipos';
+
 interface Props {
   titulo: string;
   definicion: string;
   img: string;
-  archivos: { titulo: string; archivo: string; umbral?: number; ruta: string }[];
+  archivos: DatosIndicadoresListaDescripcion[];
   hayDatos: boolean;
   descripcionAbierta: boolean;
   anchoCompleto: boolean;
@@ -35,6 +37,7 @@ const { img, titulo, definicion, archivos, hayDatos, descripcionAbierta, anchoCo
             style="width: 45%"
             data-archivo={obj.archivo}
             data-umbral={obj.umbral}
+            data-condatos={obj.tieneDatos ? 'si' : 'no'}
           >
             <h3>{obj.titulo}</h3>
             {hayDatos && <svg class="visDescripcion" style="width:100%; height:100px" />}
@@ -61,11 +64,12 @@ const { img, titulo, definicion, archivos, hayDatos, descripcionAbierta, anchoCo
     for await (const elemento of contenedores) {
       const nombreArchivo = elemento.dataset.archivo;
       const umbral = elemento.dataset.umbral;
+      const tieneDatos = elemento.dataset.condatos === 'si';
 
       try {
-        await crearLinea(elemento, nombreArchivo, umbral);
+        await crearLinea(elemento, nombreArchivo, +umbral, tieneDatos);
       } catch (error) {
-        //
+        console.error(error);
       }
     }
   }
@@ -82,7 +86,9 @@ const { img, titulo, definicion, archivos, hayDatos, descripcionAbierta, anchoCo
     }
   };
 
-  async function crearLinea(elemento: HTMLDivElement, nombreArchivo: string, umbral?: string) {
+  async function crearLinea(elemento: HTMLDivElement, nombreArchivo: string, umbral?: number, tieneDatos?: boolean) {
+    if (!tieneDatos) return;
+
     const svg = elemento.querySelector('svg');
     if (!svg) return;
 
@@ -95,7 +101,7 @@ const { img, titulo, definicion, archivos, hayDatos, descripcionAbierta, anchoCo
       const años = Object.keys(respuesta.datos);
       const primerAño = +años[0];
       const ultimoAño = +años[años.length - 1];
-      const maximos = definirMedidasMax(respuesta, nombreArchivo);
+      const maximos = definirMedidasMax(respuesta.maxNal, respuesta, umbral);
 
       for (const año in respuesta.datos) {
         ordenados.push({ año, valor: respuesta.datos[año] });
@@ -108,7 +114,7 @@ const { img, titulo, definicion, archivos, hayDatos, descripcionAbierta, anchoCo
 
       const posY = (valor: number) => {
         const dims = svg.getBoundingClientRect();
-        return convertirEscala(valor, 0, maximos.y, dims.height, 0);
+        return convertirEscala(valor, 0, maximos.yMax, dims.height, 0);
       };
 
       let datosLinea = '';
@@ -122,9 +128,9 @@ const { img, titulo, definicion, archivos, hayDatos, descripcionAbierta, anchoCo
         area.setAttribute('x', '0');
         if (respuesta.ascendente) {
           area.setAttribute('y', '0');
-          area.setAttribute('height', `${posY(+umbral)}`);
+          area.setAttribute('height', `${posY(umbral)}`);
         } else {
-          const y = posY(+umbral);
+          const y = posY(umbral);
           area.setAttribute('y', `${y}`);
           area.setAttribute('height', `${posY(0) - y}`);
         }

@@ -15,7 +15,6 @@ export const datosColombia = map<{ dep?: FeatureCollection; mun?: FeatureCollect
 export const lugaresSeleccionados = atom<LugarSeleccionado[]>([]);
 export const sinMunicipios = atom<boolean>(false);
 export let color: FuncionColor;
-export let valorMaxY = 0;
 export let valorMaxColor = 0;
 export let umbral = 0;
 
@@ -115,9 +114,17 @@ export async function cargarDatos() {
     // Cargar datos indicador nacionales para linea de tiempo
     const nal = await pedirDatos<DatosIndicadorNal>(`${import.meta.env.BASE_URL}/datos/${nombreArchivo}-nal.json`);
 
-    const maximos = definirMedidasMax(nal, nombreArchivo);
-    valorMaxY = maximos.y;
-    valorMaxColor = maximos.color;
+    if (nal.unidadMedida > 100) {
+      valorMaxColor = Math.ceil(nal.maxNal / 10) * 10;
+    } else {
+      if (nal.estructura === 'conteo') {
+        valorMaxColor = 5;
+      } else if (nombreArchivo === 'ya7-1') {
+        valorMaxColor = 0.6;
+      } else {
+        valorMaxColor = Math.ceil(nal.maxNal / 10) * 10;
+      }
+    }
     color = definirColor(nal.ascendente);
     datosNal.set(nal);
 
