@@ -91,9 +91,9 @@ async function procesarDatos() {
   await ya312.procesar('3.12: deserción media', 'YA_3.12', 'Sheet 1', 'ya3-12');
 
   /** 4 */
-  const ya41 = new VariableSingular('tasa_EDA', false, 'porcentaje');
+  const ya41 = new VariableSingular('tasa_EDA', false, 'tasa');
   await ya41.procesar('4.1: mortalidad EDA', 'YA_4.1', 'Sheet 1', 'ya4-1');
-  const ya42 = new VariableSingular('tasa_IRA', false, 'porcentaje');
+  const ya42 = new VariableSingular('tasa_IRA', false, 'tasa');
   await ya42.procesar('4.2: mortalidad IRA', 'YA_4.2', 'Sheet 1', 'ya4-2');
   const ya43 = new VariableSingular('tacued', true, 'porcentaje');
   await ya43.procesar('4.3: acceso agua potable', 'YA_4.3', 'Export', 'ya4-3');
