@@ -94,8 +94,8 @@ export const ya3: DatosYa = {
       ruta: 'cobertura-primaria',
       archivo: 'ya3-5',
       hay_datos: true,
-      explicacion_umbral:
-        'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
+      umbral: 100,
+      explicacion_umbral: '...',
       explicacion: 'Indica la cobertura bruta de estudiantes que cursan primaria.',
       definicion:
         'La tasa de cobertura bruta mide la relación porcentual entre el número total de estudiantes matriculados sobre el total de la población en edad teórica para cursar el nivel educativo. <br/><br/>*** En algunos casos la demanda social es mayor a la población en edad teórica para cursar este nivel (6-10 años), explicada por estudiantes en extraedad, por lo que el indicador toma valores superiores al 100%.',
@@ -115,8 +115,8 @@ export const ya3: DatosYa = {
       ruta: 'cobertura-media',
       archivo: 'ya3-6',
       hay_datos: true,
-      explicacion_umbral:
-        'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
+      umbral: 100,
+      explicacion_umbral: '...',
       explicacion: 'Indica la cobertura bruta de estudiantes que cursan media.',
       definicion:
         'La tasa de cobertura bruta mide la relación porcentual entre el número total de estudiantes matriculados sobre el total de la población en edad teórica para cursar el nivel educativo. <br/><br/>*** En algunos casos la demanda social es mayor a la población en edad teórica para cursar este nivel (15-16 años), explicada por estudiantes en extraedad, por lo que el indicador toma valores superiores al 100%.',
