@@ -136,10 +136,9 @@ export const ya3: DatosYa = {
       ruta: 'reprobacion-primaria',
       archivo: 'ya3-7',
       hay_datos: true,
-      umbral: 86.5,
-      explicacion_umbral:
-        'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
-      explicacion: 'Indica la cobertura bruta de estudiantes que cursan educación media.',
+      umbral: 1.5,
+      explicacion_umbral: '...',
+      explicacion: '...',
       definicion:
         'Tasa de reprobación de estudiantes del sector oficial en primaria. Identifica el porcentaje de alumnos en este nivel educativo que reprueba de acuerdo con los planes y programas de estudio vigentes.',
       metodologia:
@@ -158,8 +157,8 @@ export const ya3: DatosYa = {
       ruta: 'reprobacion-media',
       archivo: 'ya3-8',
       hay_datos: true,
-      explicacion_umbral:
-        'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
+      umbral: 1.5,
+      explicacion_umbral: '...',
       explicacion: 'Indica el porcentaje de estudiantes que reprobaron educación media.',
       definicion:
         'Tasa de reprobación de estudiantes del sector oficial en educación. Identifica el porcentaje de alumnos en este nivel educativo que reprueba de acuerdo con los planes y programas de estudio vigentes.',
@@ -179,8 +178,8 @@ export const ya3: DatosYa = {
       ruta: 'repitencia-primaria',
       archivo: 'ya3-9',
       hay_datos: true,
-      explicacion_umbral:
-        'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
+      umbral: 1.5,
+      explicacion_umbral: '...',
       explicacion:
         'Indica el porcentaje de estudiantes que se encuentran repitiendo alguno de los grados que corresponden a educación primaria.',
       definicion:
@@ -201,8 +200,8 @@ export const ya3: DatosYa = {
       ruta: 'repitencia-media',
       archivo: 'ya3-10',
       hay_datos: true,
-      explicacion_umbral:
-        'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
+      umbral: 1.5,
+      explicacion_umbral: '...',
       explicacion:
         'Indica el porcentaje de estudiantes que se encuentran repitiendo alguno de los grados que corresponden a educación media.',
       definicion:
