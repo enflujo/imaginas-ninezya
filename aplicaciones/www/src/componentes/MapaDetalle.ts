@@ -9,7 +9,7 @@ import {
   nivel,
   actualizarUrl,
   revisarDepartamentos,
-  sinMunicipios,
+  datosNal,
 } from '@/utilidades/cerebro';
 import { crearLinea, escalaCoordenadas, extremosLugar } from '@enflujo/alquimia';
 import type { IMapearCoordenadas } from '@enflujo/alquimia/libreria/modulos/tipos';
@@ -27,7 +27,6 @@ export default class MapaDetalle extends HTMLElement {
   ancho: number;
   alto: number;
   contenedor: HTMLDivElement;
-  nivel: string;
   nombreDepartamento: string;
 
   constructor() {
@@ -137,6 +136,8 @@ export default class MapaDetalle extends HTMLElement {
 
     this.extremos();
 
+    const { estructura } = datosNal.value;
+
     this.municipios.forEach((lugar) => {
       if (lugar.geometry.type === 'Polygon' || lugar.geometry.type === 'MultiPolygon') {
         const formaMunicipio = document.createElementNS('http://www.w3.org/2000/svg', 'path');
@@ -149,7 +150,21 @@ export default class MapaDetalle extends HTMLElement {
           const y = evento.pageY;
           const valor = this.formas[lugar.properties.codigo].valor;
 
-          informacion.innerText = `${lugar.properties.nombre}: ${valor ? valor + '%' : 'Sin datos'}`;
+          informacion.classList.add('visible');
+
+          let descripcion = '';
+
+          if (valor) {
+            if (estructura === 'porcentaje') {
+              descripcion = '%';
+            } else if (estructura === 'tasa') {
+              // descripcion = ` ${unidad}`;
+            }
+          }
+
+          const textoInfo = !valor ? 'Sin datos' : `${valor}${descripcion}`;
+
+          informacion.innerText = `${lugar.properties.nombre}: ${textoInfo}`;
 
           Object.assign(informacion.style, {
             top: `${y}px`,

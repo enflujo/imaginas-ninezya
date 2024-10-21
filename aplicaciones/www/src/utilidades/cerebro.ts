@@ -1,7 +1,7 @@
 import { atom, map } from 'nanostores';
 import type { FeatureCollection, Polygon, MultiPolygon, Position } from 'geojson';
 import type { DatosIndicador, DatosPorAñoOrdenado, FuncionColor, LugarSeleccionado } from '@/tipos';
-import { definirMedidasMax, escalaColores, obtenerVariableCSS, pedirDatos } from './ayudas';
+import { escalaColores, obtenerVariableCSS, pedirDatos } from './ayudas';
 import { colorNegativo, colorNeutro, colorPositivo } from './constantes';
 import type { DatosIndicadorNal } from '@/tiposCompartidos/compartidos';
 
