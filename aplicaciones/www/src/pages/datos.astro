@@ -170,6 +170,16 @@ import { urlsAEnlacesHTML } from '@enflujo/alquimia';
   });
 </script>
 
+<style lang="scss" is:global>
+  .contenedorDatos {
+    .fichaTecnica {
+      border: none;
+      border-right: solid 2px var(--azulViejo);
+      border-radius: 15px 15px 0 15px;
+    }
+  }
+</style>
+
 <style lang="scss">
   @use 'sass:color';
   @import '@/scss/constantes';
@@ -183,15 +193,17 @@ import { urlsAEnlacesHTML } from '@enflujo/alquimia';
     display: none;
     position: fixed;
     background-color: var(--blancoMarfil);
-    top: 20px;
-    padding: 2em;
+    top: 40px;
     width: fit-content;
-    height: 100vh;
-    justify-content: flex-start;
     overflow: auto;
     z-index: 7;
+    max-height: 80vh;
+    border: solid 2px var(--azulViejo);
+    border-radius: 15px 15px 0 15px;
+
     &.abierta {
       display: flex;
+      justify-content: flex-start;
     }
   }
 
@@ -317,7 +329,6 @@ import { urlsAEnlacesHTML } from '@enflujo/alquimia';
       width: 65%;
       padding: 1em;
     }
-    // position: relative;
   }
 
   .contenedorYa {
@@ -392,19 +403,14 @@ import { urlsAEnlacesHTML } from '@enflujo/alquimia';
   @media screen and (min-width: $corte2) {
     .contenedorFicha {
       flex-direction: row;
-
-      top: 3vw;
+      top: 40px;
       left: 12vw;
     }
-    .fichaTecnica {
-      width: 50vw;
-    }
+
     .contenedorSugerenciasDatos {
       padding-right: 2em;
       flex-direction: row;
       margin-left: 2em;
-      height: 80vh;
-      overflow: auto;
     }
   }
 
@@ -435,20 +441,19 @@ import { urlsAEnlacesHTML } from '@enflujo/alquimia';
 
   @media screen and (min-width: $corte4) {
     .contenedorFicha {
+      top: 60px;
     }
+
     .contenedorDatos {
       width: 40vw;
       max-width: 1000px;
       margin: 0 auto 7em auto;
+      top: 50px;
     }
 
     .contenedorSugerenciasDatos {
       width: 50%;
       padding-right: 2em;
-    }
-
-    .contenedorFicha {
-      //justify-content: flex-start;
     }
   }
 </style>

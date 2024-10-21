@@ -101,6 +101,7 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
 
 <style lang="scss">
   @import '@/scss/constantes';
+
   .fichaTecnica {
     border: solid 2px var(--azulViejo);
     border-radius: 15px 0 0 15px;
@@ -109,6 +110,7 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
     text-align: center;
     position: relative;
     z-index: 9;
+    height: fit-content;
 
     font-variation-settings:
       'MONO' 0,
@@ -214,8 +216,6 @@ const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta ==
 
   @media screen and (min-width: $corte2) {
     .fichaTecnica {
-      height: 80vh;
-      overflow: auto;
       width: 50vw;
     }
   }
