@@ -158,7 +158,7 @@ export const ya3: DatosYa = {
       archivo: 'ya3-8',
       hay_datos: true,
       umbral: 1.5,
-      explicacion_umbral: '...',
+      explicacion_umbral: 'De acuerdo con la OCDE la reprobación media no debe ser superior a 1.5%.',
       explicacion: 'Indica el porcentaje de estudiantes que reprobaron educación media.',
       definicion:
         'Tasa de reprobación de estudiantes del sector oficial en educación. Identifica el porcentaje de alumnos en este nivel educativo que reprueba de acuerdo con los planes y programas de estudio vigentes.',
