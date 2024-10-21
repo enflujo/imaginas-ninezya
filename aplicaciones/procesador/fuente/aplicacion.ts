@@ -65,13 +65,13 @@ async function procesarDatos() {
   await ya25.procesar('2.5: porcentaje marco integral', 'YA_2.5', 'Sheet 1', 'ya2-5');
 
   /** 3 */
-  const ya31 = new VariableSingular('matematicas', true, 'promedio');
+  const ya31 = new VariableSingular('promedio_matematicas', true, 'promedio');
   await ya31.procesar('3.1: saber 11 matemáticas', 'YA_3.1', 'Sheet 1', 'ya3-1');
-  const ya32 = new VariableSingular('lectura', true, 'promedio');
+  const ya32 = new VariableSingular('promedio_lectura', true, 'promedio');
   await ya32.procesar('3.2: saber 11 lectura', 'YA_3.2', 'Sheet 1', 'ya3-2');
-  const ya33 = new VariableSingular('sociales', true, 'promedio');
+  const ya33 = new VariableSingular('promedio_sociales', true, 'promedio');
   await ya33.procesar('3.3: saber 11 sociales', 'YA_3.3', 'Sheet 1', 'ya3-3');
-  const ya34 = new VariableSingular('global', true, 'promedio');
+  const ya34 = new VariableSingular('promedio_puntaje_global', true, 'promedio');
   await ya34.procesar('3.4: saber 11 global', 'YA_3.4', 'Sheet 1', 'ya3-4');
   const ya35 = new VariableSingular('neta_primaria', true, 'porcentaje');
   await ya35.procesar('3.5: cobertura bruta primaria', 'YA_3.5', 'Sheet 1', 'ya3-5');
