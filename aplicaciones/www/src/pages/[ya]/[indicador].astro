@@ -10,6 +10,7 @@ import FichaTecnica from '@/componentes/FichaTecnica.astro';
 import Buscador from '@/componentes/Buscador.astro';
 import DescripcionYa from '@/componentes/DescripcionYa.astro';
 import PropuestaIndicador from '@/componentes/PropuestaIndicador.astro';
+import type { DatosIndicadoresListaDescripcion } from '@/tipos';
 
 export const getStaticPaths = (() => {
   return datos
@@ -25,20 +26,19 @@ const { ya, indicador } = Astro.params;
 const posYa = datos.findIndex((instancia) => instancia.ruta === ya);
 const datosYa = datos[posYa];
 const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta === indicador);
-const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: string }[] = datosYa.indicadores.map(
-  (indicador) => {
-    return {
-      titulo: indicador.nombre,
-      archivo: indicador.archivo,
-      umbral: indicador.umbral,
-      ruta: `${import.meta.env.BASE_URL}/${datosYa.ruta}/${indicador.ruta}`,
-    };
-  }
-);
+const archivosYa: DatosIndicadoresListaDescripcion[] = datosYa.indicadores.map((indicador) => {
+  return {
+    titulo: indicador.nombre,
+    archivo: indicador.archivo,
+    umbral: indicador.umbral,
+    ruta: `${import.meta.env.BASE_URL}/${datosYa.ruta}/${indicador.ruta}`,
+    tieneDatos: indicador.hay_datos,
+  };
+});
 ---
 
 <Plantilla titulo={datosIndicador.nombre} conMenu={true}>
-  <!-- <DescripcionYa
+  <DescripcionYa
     titulo={`${posYa + 1}. ${datosYa.nombre}`}
     definicion={datosYa.definicion}
     img={datosYa.imagen}
@@ -46,7 +46,7 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
     hayDatos={datosIndicador.hay_datos}
     descripcionAbierta={false}
     anchoCompleto={false}
-  /> -->
+  />
   {
     datosIndicador.hay_datos ? (
       <>
@@ -80,7 +80,13 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
             </div>
           </div>
 
-          <LineaTiempo alto={25} meta={datosIndicador.explicacion_umbral} umbral={datosIndicador.umbral} />
+          {datosIndicador.unidad === 'Categorias' ? (
+            <div>
+              <p>Categorias</p>
+            </div>
+          ) : (
+            <LineaTiempo alto={25} meta={datosIndicador.explicacion_umbral} umbral={datosIndicador.umbral} />
+          )}
         </div>
 
         <div id="comparativo" class="columna" />
