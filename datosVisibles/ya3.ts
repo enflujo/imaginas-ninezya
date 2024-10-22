@@ -136,9 +136,9 @@ export const ya3: DatosYa = {
       ruta: 'reprobacion-primaria',
       archivo: 'ya3-7',
       hay_datos: true,
-      umbral: 1.5,
-      explicacion_umbral: '...',
-      explicacion: '...',
+      umbral: 2,
+      explicacion_umbral: 'De acuerdo con la OCDE, aunque no se establece un valor objetivo específico para la tasa de reprobación, algunos países miembros han adoptado como meta reducir la repetición escolar a niveles por debajo del 5% o incluso al 2% anual en la educación primaria y secundaria. OECD (2023), Education at a Glance 2023: OECD Indicators, OECD Publishing, París.',
+      explicacion: 'Indica el porcentaje de estudiantes que reprobaron educación primaria.',
       definicion:
         'Tasa de reprobación de estudiantes del sector oficial en primaria. Identifica el porcentaje de alumnos en este nivel educativo que reprueba de acuerdo con los planes y programas de estudio vigentes.',
       metodologia:
@@ -157,8 +157,8 @@ export const ya3: DatosYa = {
       ruta: 'reprobacion-media',
       archivo: 'ya3-8',
       hay_datos: true,
-      umbral: 1.5,
-      explicacion_umbral: '...',
+      umbral: 2,
+      explicacion_umbral: 'De acuerdo con la OCDE, aunque no se establece un valor objetivo específico para la tasa de reprobación, algunos países miembros han adoptado como meta reducir la repetición escolar a niveles por debajo del 5% o incluso al 2% anual en la educación primaria y secundaria. OECD (2023), Education at a Glance 2023: OECD Indicators, OECD Publishing, París.',
       explicacion: 'Indica el porcentaje de estudiantes que reprobaron educación media.',
       definicion:
         'Tasa de reprobación de estudiantes del sector oficial en educación. Identifica el porcentaje de alumnos en este nivel educativo que reprueba de acuerdo con los planes y programas de estudio vigentes.',
@@ -178,8 +178,8 @@ export const ya3: DatosYa = {
       ruta: 'repitencia-primaria',
       archivo: 'ya3-9',
       hay_datos: true,
-      umbral: 1.5,
-      explicacion_umbral: 'De acuerdo con la OCDE, la tasa de repitencia no debe superar el 1,5%. OECD (2023), Education at a Glance 2023: OECD Indicators, OECD Publishing, Paris',
+      umbral: 2,
+      explicacion_umbral: 'De acuerdo con la OCDE, aunque no se establece un valor objetivo específico para la tasa de reprobación, algunos países miembros han adoptado como meta reducir la repetición escolar a niveles por debajo del 5% o incluso al 2% anual en la educación primaria y secundaria. OECD (2023), Education at a Glance 2023: OECD Indicators, OECD Publishing, París.',
       explicacion:
         'Indica el porcentaje de estudiantes que se encuentran repitiendo alguno de los grados que corresponden a educación primaria.',
       definicion:
@@ -200,8 +200,8 @@ export const ya3: DatosYa = {
       ruta: 'repitencia-media',
       archivo: 'ya3-10',
       hay_datos: true,
-      umbral: 1.5,
-      explicacion_umbral: '...',
+      umbral: 2,
+      explicacion_umbral: 'De acuerdo con la OCDE, aunque no se establece un valor objetivo específico para la tasa de reprobación, algunos países miembros han adoptado como meta reducir la repetición escolar a niveles por debajo del 5% o incluso al 2% anual en la educación primaria y secundaria. OECD (2023), Education at a Glance 2023: OECD Indicators, OECD Publishing, París.',
       explicacion:
         'Indica el porcentaje de estudiantes que se encuentran repitiendo alguno de los grados que corresponden a educación media.',
       definicion:
