@@ -158,7 +158,7 @@ export const ya3: DatosYa = {
       archivo: 'ya3-8',
       hay_datos: true,
       umbral: 1.5,
-      explicacion_umbral: 'De acuerdo con la OCDE la reprobación media no debe ser superior a 1.5%.',
+      explicacion_umbral: '...',
       explicacion: 'Indica el porcentaje de estudiantes que reprobaron educación media.',
       definicion:
         'Tasa de reprobación de estudiantes del sector oficial en educación. Identifica el porcentaje de alumnos en este nivel educativo que reprueba de acuerdo con los planes y programas de estudio vigentes.',
@@ -179,7 +179,7 @@ export const ya3: DatosYa = {
       archivo: 'ya3-9',
       hay_datos: true,
       umbral: 1.5,
-      explicacion_umbral: '...',
+      explicacion_umbral: 'De acuerdo con la OCDE, la tasa de repitencia no debe superar el 1,5%. OECD (2023), Education at a Glance 2023: OECD Indicators, OECD Publishing, Paris',
       explicacion:
         'Indica el porcentaje de estudiantes que se encuentran repitiendo alguno de los grados que corresponden a educación primaria.',
       definicion:
