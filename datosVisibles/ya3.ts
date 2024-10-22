@@ -95,7 +95,7 @@ export const ya3: DatosYa = {
       archivo: 'ya3-5',
       hay_datos: true,
       umbral: 100,
-      explicacion_umbral: '...',
+      explicacion_umbral: 'El Objetivo de Desarrollo Sostenible (ODS) 4.1 establece "asegurar que todos los niños y niñas completen una educación primaria y secundaria gratuita, equitativa y de calidad que conduzca a resultados de aprendizaje relevantes y efectivos" para el año 2030.',
       explicacion: 'Indica la cobertura bruta de estudiantes que cursan primaria.',
       definicion:
         'La tasa de cobertura bruta mide la relación porcentual entre el número total de estudiantes matriculados sobre el total de la población en edad teórica para cursar el nivel educativo. <br/><br/>*** En algunos casos la demanda social es mayor a la población en edad teórica para cursar este nivel (6-10 años), explicada por estudiantes en extraedad, por lo que el indicador toma valores superiores al 100%.',
