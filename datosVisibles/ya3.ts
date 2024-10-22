@@ -13,12 +13,12 @@ export const ya3: DatosYa = {
       ruta: 'saber11-matematicas',
       archivo: 'ya3-1',
       hay_datos: true,
-      umbral: 30.5,
+      umbral: 0,
       explicacion_umbral:
-        'De acuerdo con el Plan Nacional de Desarrollo se establece que, al finalizar el cuatrenio, los colegios oficiales deben alcanzar un puntaje de 30,5 en Matemáticas.',
+        'No hay un umbral establecido para este indicador en el Plan Nacional de Desarrollo 2022-2026 o el Plan Sectorial de Educación 2022-2026.',
       explicacion:
-        'Indica, en promedio, en qué categoría se encuentra el desempeño en matemáticas de los estudiantes que presentaron el Saber 11 en un departamento o municipio específico.',
-      definicion: 'Mide el desempeño en promedio en el área de Matemáticas en la Prueba Saber 11.',
+        'Este indicador mide el desempeño promedio de los estudiantes en la prueba de Matemáticas del examen Saber 11° en un territorio específico, como un municipio, departamento o región. Se calcula promediando los puntajes obtenidos por todos los evaluados en Matemáticas durante un periodo determinado en ese territorio. El resultado refleja la calidad general del rendimiento en Matemáticas, permitiendo identificar fortalezas y debilidades en el aprendizaje de los estudiantes de esa zona geográfica.',
+      definicion: 'Promedio aritmético de los puntajes obtenidos en las cinco áreas evaluadas en el examen Saber 11° (Matemáticas, Ciencias Naturales, Sociales y Ciudadanas, Lectura Crítica e Inglés) para todos los participantes en un periodo específico, con una escala de medición que va de 0 a 100 puntos.',
       metodologia: 'Promedio simple del puntaje promedio por prueba de cada evaluado en una aplicación de Saber 11°',
       unidad: 'Promedio',
       fuente_numerador: 'DataIcfes',
@@ -27,19 +27,19 @@ export const ya3: DatosYa = {
       contexto:
         'En Colombia la valoración de la preparación académica de los estudiantes que completan la educación básica y media se realiza a través del examen de estado Saber 11. <br/><br/>Este examen es obligatorio para el acceso a la educación superior, evalúa las competencias de los estudiantes de undécimo grado y bachilleres. Las Instituciones de Educación Superior requieren que los aspirantes hayan presentado el examen como parte de los requisitos de admisión, independientemente del puntaje obtenido.',
       interpretacion:
-        'Los resultados de las pruebas se expresan en una escala de 0 a 100 puntos. <br/><br/>El ICFES ha definido cuatro niveles de desempeño para las pruebas de Matemáticas: 1,2,3, y 4. Donde: <br/><br/>1. Se limita a identificar las tareas demandadas. <br/>2. Está en capacidad de diferenciar los procedimientos posibles para realizar las tareas requeridas. <br/>3. Analiza procedimientos para desarrollar de la mejor manera la tarea solicitada. <br/>4. Está preparado para deducir y combinar procedimientos para realizar las tareas solicitadas. <br/><br/>Los Rangos son los siguientes: <br/>1: 0 - 35  <br/>2: 36 - 50 <br/>3: 51 -70 <br/>4: 71 - 100 <br/><br/> Más información: https://www.r4v.info/sites/default/files/2022-06/An%C3%A1lisis%20de%20brechas%20resultados%20escolares%20Pruebas%20Saber%2011%20-2020_compressed.pdf',
+        'El indicador alcanza un máximo de 100 puntos; mientras más próximo sea el puntaje a 0, menor será el desempeño en esa prueba durante la aplicación del examen Saber 11°.',
     },
     {
       nombre: 'Puntaje Saber 11 - Lectura Crítica',
       ruta: 'saber11-lectura',
       archivo: 'ya3-2',
       hay_datos: true,
-      umbral: 46.5,
+      umbral: 0,
       explicacion_umbral:
-        'De acuerdo con el Plan Nacional de Desarrollo se establece que al finalizar el cuatrenio los colegios oficiales deben alcanzar un puntaje de 46,5 en Lectura.',
+        'No hay un umbral establecido para este indicador en el Plan Nacional de Desarrollo 2022-2026 o el Plan Sectorial de Educación 2022-2026.',
       explicacion:
-        'Indica, en promedio, en qué categoría se encuentra el desempeño en lectura de los estudiantes que presentaron el Saber 11 en un departamento o municipio específico.',
-      definicion: 'Mide el desempeño en promedio en el área de Lectura en la Prueba Saber 11.',
+        'Este indicador mide el desempeño promedio de los estudiantes en la prueba de Lectura Crítica del examen Saber 11° en un territorio específico, como un municipio, departamento o región. Se calcula promediando los puntajes obtenidos por todos los evaluados en Lectura Crítica durante un periodo determinado en ese territorio. El resultado refleja la calidad general del rendimiento en comprensión y análisis de textos, permitiendo identificar fortalezas y debilidades en estas habilidades entre los estudiantes de la zona geográfica.',
+      definicion: 'Promedio aritmético de los puntajes obtenidos en las cinco áreas evaluadas en el examen Saber 11° (Matemáticas, Ciencias Naturales, Sociales y Ciudadanas, Lectura Crítica e Inglés) para todos los participantes en un periodo específico, con una escala de medición que va de 0 a 100 puntos.',
       metodologia: 'Promedio simple del puntaje promedio por prueba de cada evaluado en una aplicación de Saber 11°',
       unidad: 'Promedio',
       fuente_numerador: 'DataIcfes',
@@ -48,24 +48,24 @@ export const ya3: DatosYa = {
       contexto:
         'En Colombia la valoración de la preparación académica de los estudiantes que completan la educación básica y media se realiza a través del examen de estado Saber 11. <br/><br/>Este examen es obligatorio para el acceso a la educación superior, evalúa las competencias de los estudiantes de undécimo grado y bachilleres. Las Instituciones de Educación Superior requieren que los aspirantes hayan presentado el examen como parte de los requisitos de admisión, independientemente del puntaje obtenido.',
       interpretacion:
-        'El indicador toma un valor máximo de 100 puntos, cuanto más cerca esté el puntaje de 0, peor será el desempeño en esa prueba del examen Saber 11°. <br/><br/>El ICFES ha definido cuatro niveles de desempeño para las pruebas de Lectura: 1,2,3, y 4. Donde: <br/><br/>1. Se limita a identificar las tareas demandadas. <br/>2. Está en capacidad de diferenciar los procedimientos posibles para realizar las tareas requeridas. <br/>3. Analiza procedimientos para desarrollar de la mejor manera la tarea solicitada. <br/>4. Está preparado para deducir y combinar procedimientos para realizar las tareas solicitadas. <br/><br/>Los Rangos son los siguientes: <br/>1: 0 - 35  <br/>2: 36 - 50 <br/>3: 51 -70 <br/>4: 71 - 100 <br/><br/> Más información: https://www.r4v.info/sites/default/files/2022-06/An%C3%A1lisis%20de%20brechas%20resultados%20escolares%20Pruebas%20Saber%2011%20-2020_compressed.pdf',
+        'El indicador alcanza un máximo de 100 puntos; mientras más próximo sea el puntaje a 0, menor será el desempeño en esa prueba durante la aplicación del examen Saber 11°.',
     },
     {
       nombre: 'Puntaje Saber 11 - Ciencias Sociales',
       ruta: 'saber11-sociales',
       archivo: 'ya3-3',
       hay_datos: true,
-      umbral: 46.5,
-      explicacion_umbral: '...',
-      explicacion: '...',
-      definicion: '...',
-      metodologia: '...',
+      umbral: 0,
+      explicacion_umbral: 'No hay un umbral establecido para este indicador en el Plan Nacional de Desarrollo 2022-2026 o el Plan Sectorial de Educación 2022-2026.',
+      explicacion: 'Este indicador mide el desempeño promedio de los estudiantes en la prueba de Ciencias Sociales y Ciudadanas del examen Saber 11° en un territorio específico, como un municipio, departamento o región. Se calcula promediando los puntajes obtenidos por todos los evaluados en Ciencias Sociales durante un periodo determinado en ese territorio. El resultado refleja la calidad general del rendimiento en conocimientos sobre historia, geografía, ciudadanía y cultura, permitiendo identificar fortalezas y debilidades en estas áreas entre los estudiantes de la zona geográfica.',
+      definicion: 'Promedio aritmético de los puntajes obtenidos en las cinco áreas evaluadas en el examen Saber 11° (Matemáticas, Ciencias Naturales, Sociales y Ciudadanas, Lectura Crítica e Inglés) para todos los participantes en un periodo específico, con una escala de medición que va de 0 a 100 puntos.',
+      metodologia: 'Promedio simple del puntaje promedio por prueba de cada evaluado en una aplicación de Saber 11°',
       unidad: 'Promedio',
-      fuente_numerador: '...',
-      fuente_denominador: '...',
+      fuente_numerador: 'DataIcfes',
+      fuente_denominador: 'DataIcfes',
       desagregacion: 'Municipal',
-      contexto: '...',
-      interpretacion: '...',
+      contexto: 'En Colombia la valoración de la preparación académica de los estudiantes que completan la educación básica y media se realiza a través del examen de estado Saber 11. <br/><br/>Este examen es obligatorio para el acceso a la educación superior, evalúa las competencias de los estudiantes de undécimo grado y bachilleres. Las Instituciones de Educación Superior requieren que los aspirantes hayan presentado el examen como parte de los requisitos de admisión, independientemente del puntaje obtenido.',
+      interpretacion: 'El indicador alcanza un máximo de 100 puntos; mientras más próximo sea el puntaje a 0, menor será el desempeño en esa prueba durante la aplicación del examen Saber 11°.',
     },
     {
       nombre: 'Puntaje Saber 11 - Global',
@@ -74,10 +74,10 @@ export const ya3: DatosYa = {
       hay_datos: true,
       umbral: 0,
       explicacion_umbral:
-        'De acuerdo con el Plan Nacional de Desarrollo 2022-2026 no hay una meta para este indicador.',
+        'No hay un umbral establecido para este indicador en el Plan Nacional de Desarrollo 2022-2026 o el Plan Sectorial de Educación 2022-2026.',
       explicacion:
-        'Indica, en promedio, en qué categoría se encuentran clasificados los colegios de un municipio o departamento.',
-      definicion: 'Mide el desempeño en promedio en la Prueba Saber 11 en un municipio o departamento.',
+        'El promedio global representa el desempeño general de los estudiantes en el examen Saber 11° durante un periodo específico. Este promedio se obtiene a partir de los puntajes globales de todos los evaluados, calculados mediante un promedio ponderado de las cinco áreas evaluadas: Lectura Crítica, Matemáticas, Ciencias Naturales, Sociales y Ciudadanas, e Inglés. La escala utilizada va de 0 a 500 puntos, y un puntaje más alto indica un mejor rendimiento en el examen.',
+      definicion: 'Promedio aritmético de los puntajes globales alcanzados por todos los estudiantes en un periodo específico de aplicación del examen. El puntaje global representa el resultado total del examen Saber 11° y se obtiene mediante un promedio ponderado de las cinco áreas evaluadas (Lectura Crítica, Matemáticas, Ciencias Naturales, Sociales y Ciudadanas, e Inglés), con una escala de medición que va de 0 a 500 puntos..',
       metodologia:
         '[(𝑃𝑢𝑛𝑡𝑎𝑗𝑒 𝑒𝑛 𝐿𝑒𝑐𝑡 𝐶𝑟í𝑡𝑖𝑐𝑎 ∗ 3) + (𝑃𝑢𝑛𝑡𝑎𝑗𝑒 𝑒𝑛 𝑀𝑎𝑡𝑒𝑚á𝑡𝑖𝑐𝑎𝑠 ∗ 3) + (𝑃𝑢𝑛𝑡𝑎𝑗𝑒 𝑒𝑛 𝑆𝑜𝑐 𝐶𝑖𝑢𝑑 ∗ 3) + (𝑃𝑢𝑛𝑡𝑎𝑗𝑒 𝑒𝑛 𝐶 𝑁𝑎𝑡 ∗ 3) + (𝑃𝑢𝑛𝑡𝑎𝑗𝑒 𝑒𝑛 𝐼𝑛𝑔𝑙é𝑠) ] /  13 *5',
       unidad: 'Promedio',
@@ -96,7 +96,7 @@ export const ya3: DatosYa = {
       hay_datos: true,
       umbral: 100,
       explicacion_umbral: 'El Objetivo de Desarrollo Sostenible (ODS) 4.1 establece "asegurar que todos los niños y niñas completen una educación primaria y secundaria gratuita, equitativa y de calidad que conduzca a resultados de aprendizaje relevantes y efectivos" para el año 2030.',
-      explicacion: 'Indica la cobertura bruta de estudiantes que cursan primaria.',
+      explicacion: 'Indica la cobertura bruta de estudiantes que cursan educación primaria.',
       definicion:
         'La tasa de cobertura bruta mide la relación porcentual entre el número total de estudiantes matriculados sobre el total de la población en edad teórica para cursar el nivel educativo. <br/><br/>*** En algunos casos la demanda social es mayor a la población en edad teórica para cursar este nivel (6-10 años), explicada por estudiantes en extraedad, por lo que el indicador toma valores superiores al 100%.',
       metodologia:
@@ -116,8 +116,8 @@ export const ya3: DatosYa = {
       archivo: 'ya3-6',
       hay_datos: true,
       umbral: 100,
-      explicacion_umbral: '...',
-      explicacion: 'Indica la cobertura bruta de estudiantes que cursan media.',
+      explicacion_umbral: 'El Objetivo de Desarrollo Sostenible (ODS) 4.1 establece "asegurar que todos los niños y niñas completen una educación primaria y secundaria gratuita, equitativa y de calidad que conduzca a resultados de aprendizaje relevantes y efectivos" para el año 2030.',
+      explicacion: 'Indica la cobertura bruta de estudiantes que cursan educación media.',
       definicion:
         'La tasa de cobertura bruta mide la relación porcentual entre el número total de estudiantes matriculados sobre el total de la población en edad teórica para cursar el nivel educativo. <br/><br/>*** En algunos casos la demanda social es mayor a la población en edad teórica para cursar este nivel (15-16 años), explicada por estudiantes en extraedad, por lo que el indicador toma valores superiores al 100%.',
       metodologia:
