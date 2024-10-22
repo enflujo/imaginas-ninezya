@@ -30,11 +30,16 @@ export interface DatosYa extends IndicadoresDatosComunes {
 export type DatosPorAño = { [año: string]: number };
 export type TiposEstructura = 'porcentaje' | 'tasa' | 'escala' | 'conteo' | 'coeficiente' | 'promedio';
 
+export type Categorias = {
+  [categoria: string]: number;
+};
+
 export type DatosIndicadorNal = {
   ascendente: boolean;
   estructura: TiposEstructura;
   unidadMedida: number;
   datos: DatosPorAño;
+  categorias?: { [año: string]: Categorias };
   datosMunicipio: boolean;
   minNal: number;
   maxNal: number;

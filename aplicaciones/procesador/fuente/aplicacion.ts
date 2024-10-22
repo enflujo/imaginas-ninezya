@@ -2,6 +2,7 @@ import VariableSingular from './modulos/VariableSingular';
 import { readdir, rm } from 'fs/promises';
 import { rutaEstaticosDatos, rutaEstaticosDescarga } from './utilidades/constantes';
 import calcularPesos from './datosDescarga';
+import JuegoCategorias from './modulos/JuegoCategorias';
 
 async function inicio() {
   await vaciarProcesados();
@@ -99,6 +100,10 @@ async function procesarDatos() {
   await ya43.procesar('4.3: acceso agua potable', 'YA_4.3', 'Export', 'ya4-3');
   const ya44 = new VariableSingular('concentracion', false, 'escala');
   await ya44.procesar('4.4: calidad aire', 'YA_4.4', 'Sheet1', 'ya4-4');
+
+  /** 5 */
+  const ya51 = new JuegoCategorias('porcentaje', true, 'porcentaje');
+  ya51.procesar('5.1 juego', 'YA_5.1', 'Sheet 1', 'ya5-1');
 
   /** 7 */
   const ya71 = new VariableSingular('gini', false, 'coeficiente', 1.0);
