@@ -98,5 +98,21 @@ export const ya5: DatosYa = {
       compete_a:
         'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secretarías de Educación.',
     },
+    {
+      nombre: '...',
+      ruta: 'juego',
+      archivo: 'ya5-1',
+      hay_datos: true,
+      explicacion_umbral: '...',
+      explicacion: '...',
+      definicion: '...',
+      metodologia: '...',
+      unidad: '...',
+      fuente_numerador: '...',
+      fuente_denominador: '...',
+      desagregacion: 'departamental',
+      contexto: '...',
+      interpretacion: '...',
+    },
   ],
 };

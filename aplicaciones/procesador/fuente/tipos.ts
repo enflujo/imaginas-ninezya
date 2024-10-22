@@ -49,6 +49,10 @@ export type RespuestaPorcentaje = {
   [año: string]: [lugar: string, porcentaje: number, variable2?: number][];
 };
 
+export type RespuestaCategorias = {
+  [año: string]: [lugar: string, valor: { [categoria: string]: number }][];
+};
+
 export type RespuestaNumDen = {
   [año: string]: [lugar: string, numerador: number, denominador: number][];
 };
@@ -118,7 +122,9 @@ export type VariableValorSingular =
   | 'tasa_mortalidad_neonatal'
   | 'tasa_mortalidad_menores_1_año'
   | 'tasa_mortalidad_desnutricion_5_años'
-  | 'porcentaje_marco_integral';
+  | 'porcentaje_marco_integral'
+  | 'porcentaje'
+  | 'P51';
 
 export type VariablesSingulares = {
   [llave in VariableValorSingular]: number;
