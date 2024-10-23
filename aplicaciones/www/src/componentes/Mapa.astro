@@ -28,7 +28,7 @@ const { ancho, alto } = Astro.props;
 </div>
 
 <script>
-  import { calcularPorcentaje, crearLinea } from '@/utilidades/ayudas';
+  import { calcularPorcentaje, crearLinea, esNumero } from '@/utilidades/ayudas';
   import { escalaCoordenadas, extremosLugar } from '@enflujo/alquimia';
   import type { DatosAño, ExtremosCoordenadas } from '@/tipos';
   import type { FeatureCollection } from 'geojson';
@@ -187,6 +187,7 @@ const { ancho, alto } = Astro.props;
       datos.forEach(([codigo, valor]) => {
         const zona = zonas[codigo];
         if (zona) {
+          console.log(valor);
           if (valor) {
             zona.svg.setAttribute('style', `fill: ${color(valor)}`);
             zona.valor = +valor;
@@ -254,11 +255,15 @@ const { ancho, alto } = Astro.props;
 
             const textoInfo = !valor ? 'Sin datos' : `${valor}${descripcion}`;
 
-            if (nivel.get() === 'mun') {
-              informacion.innerText = `${lugar.properties.nombre} (${lugar.properties.dep}): ${textoInfo}`;
+            if (datosNal.value.categorias) {
+              informacion.innerText = 'Un HTML';
             } else {
-              informacion.innerText = `${lugar.properties.nombre}: ${textoInfo}`;
-              zona.classList.add('departamento');
+              if (nivel.get() === 'mun') {
+                informacion.innerText = `${lugar.properties.nombre} (${lugar.properties.dep}): ${textoInfo}`;
+              } else {
+                informacion.innerText = `${lugar.properties.nombre}: ${textoInfo}`;
+                zona.classList.add('departamento');
+              }
             }
           };
 
