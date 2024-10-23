@@ -221,6 +221,43 @@ main {
   align-items: center;
 }
 
+.textoMarca {
+  font-size: 0.5em;
+  font-variation-settings:
+    'MONO' 0,
+    'CASL' 0,
+    'wght' 100,
+    'slnt' 0,
+    'CRSV' 0;
+  stroke: black;
+  cursor: pointer;
+}
+
+.poliReferencia {
+  stroke: #626060;
+  stroke-width: 0.5;
+}
+
+.marcaEscala {
+  font-size: 0.45em;
+  stroke: #626060;
+  font-variation-settings:
+    'MONO' 0,
+    'CASL' 0,
+    'wght' 100,
+    'slnt' 0,
+    'CRSV' 0;
+}
+
+.lineaMarca {
+  stroke: #626060;
+  stroke-width: 0.5;
+}
+
+.araña {
+  fill: rgba(76, 166, 88, 0.6);
+}
+
 .negrita {
   font-variation-settings:
     'MONO' 1,

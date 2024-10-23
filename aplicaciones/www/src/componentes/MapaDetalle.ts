@@ -1,4 +1,5 @@
 import type { DatosAño, ExtremosCoordenadas } from '@/tipos';
+import type { Categoria } from '@/tiposCompartidos/compartidos';
 import { calcularPorcentaje } from '@/utilidades/ayudas';
 import {
   añoSeleccionado,
@@ -28,6 +29,8 @@ export default class MapaDetalle extends HTMLElement {
   alto: number;
   contenedor: HTMLDivElement;
   nombreDepartamento: string;
+  tipo: 'categorias' | 'mapa';
+  categorias?: Categoria[];
 
   constructor() {
     super();
@@ -38,6 +41,7 @@ export default class MapaDetalle extends HTMLElement {
     this.formas = {};
     this.ancho = 0;
     this.alto = 0;
+    this.tipo = 'mapa';
   }
 
   agregarTitulo(nombre: string) {
@@ -126,6 +130,8 @@ export default class MapaDetalle extends HTMLElement {
 
     this.appendChild(this.contenedor);
 
+    if (this.tipo === 'categorias') return;
+
     const datosMunicipios = await datosMapaMunicipio();
     this.municipios = datosMunicipios.features.filter((lugar) => lugar.properties.dep === this.nombreDepartamento);
 
@@ -190,14 +196,15 @@ export default class MapaDetalle extends HTMLElement {
     const columna = document.getElementById('comparativo') as HTMLDivElement;
     const { width } = columna.getBoundingClientRect();
     const margen = 10;
-
     const dims = {
       ancho: calcularPorcentaje(width, 28),
       alto: calcularPorcentaje(window.innerHeight, 28),
     };
+    const coordenadasAlto = this.tipo === 'categorias' ? dims.alto : this.coordenadasAlto;
+    const coordenadasAncho = this.tipo === 'categorias' ? dims.ancho : this.coordenadasAncho;
 
-    let alto = dims.ancho * Math.min(this.coordenadasAlto / this.coordenadasAncho, dims.alto / dims.ancho);
-    let ancho = alto * (this.coordenadasAncho / this.coordenadasAlto);
+    let alto = dims.ancho * Math.min(coordenadasAlto / coordenadasAncho, dims.alto / dims.ancho);
+    let ancho = alto * (coordenadasAncho / coordenadasAlto);
 
     if (ancho >= dims.ancho) {
       ancho -= margen;
@@ -209,19 +216,27 @@ export default class MapaDetalle extends HTMLElement {
     }
 
     Object.assign(this.contenedor.style, { width: `${dims.ancho}px`, height: `${dims.alto}px` });
+
     this.svg.setAttribute('width', `${ancho}`);
     this.svg.setAttribute('height', `${alto}`);
 
-    if (!this.municipios.length) return;
+    /** Escalar elementos del mapa detalle */
+    if (this.municipios && this.municipios.length) {
+      this.municipios.forEach((lugar) => {
+        if (lugar.geometry.type === 'Polygon' || lugar.geometry.type === 'MultiPolygon') {
+          const linea = crearLinea(lugar.geometry, this.mapearCoordenadas, ancho, alto);
+          const forma = this.formas[lugar.properties.codigo];
+          forma.svg.setAttribute('d', linea);
+        }
+      });
+    }
 
-    this.municipios.forEach((lugar) => {
-      if (lugar.geometry.type === 'Polygon' || lugar.geometry.type === 'MultiPolygon') {
-        const linea = crearLinea(lugar.geometry, this.mapearCoordenadas, ancho, alto);
-        const forma = this.formas[lugar.properties.codigo];
-        forma.svg.setAttribute('d', linea);
-      }
-    });
+    if (this.categorias && this.categorias.length) {
+      this.escalarRadiales();
+    }
   }
+
+  escalarRadiales() {}
 
   async pintarMapa() {
     const año = añoSeleccionado.get();

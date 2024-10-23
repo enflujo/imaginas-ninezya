@@ -5,6 +5,8 @@ export interface IndicadoresDatosComunes {
   hay_datos: boolean;
 }
 
+export type Categoria = [nombreCorto: string, descripcion: string];
+
 export interface IndicadoresDatos extends IndicadoresDatosComunes {
   archivo?: string;
   explicacion?: string;
@@ -20,6 +22,7 @@ export interface IndicadoresDatos extends IndicadoresDatosComunes {
   explicacion_umbral?: string;
   responsable?: string;
   compete_a?: string;
+  categorias?: Categoria[];
 }
 
 export interface DatosYa extends IndicadoresDatosComunes {

@@ -56,6 +56,7 @@ const archivosYa: DatosIndicadoresListaDescripcion[] = datosYa.indicadores.map((
           data-archivo={datosIndicador.archivo}
           data-umbral={datosIndicador.umbral}
           data-unidad={datosIndicador.unidad}
+          data-categorias={JSON.stringify(datosIndicador.categorias)}
         >
           <div id="secionSuperior">
             <div id="filtros">
@@ -99,8 +100,9 @@ const archivosYa: DatosIndicadoresListaDescripcion[] = datosYa.indicadores.map((
 </Plantilla>
 
 <script>
+  import CategoriasRadiales from '@/componentes/CategoriasRadiales';
   import MapaDetalle from '@/componentes/MapaDetalle';
-  import { añoSeleccionado, lugaresSeleccionados, cargarIndicador } from '@/utilidades/cerebro';
+  import { añoSeleccionado, lugaresSeleccionados, cargarIndicador, datosNal } from '@/utilidades/cerebro';
   const visualizaciones = document.getElementById('visualizaciones');
 
   if (visualizaciones) {
@@ -123,7 +125,7 @@ const archivosYa: DatosIndicadoresListaDescripcion[] = datosYa.indicadores.map((
     inicio().catch(console.error);
 
     añoSeleccionado.subscribe(async () => {
-      const existentes = comparativo.querySelectorAll<MapaDetalle>('enflujo-mapita');
+      const existentes = comparativo.querySelectorAll<MapaDetalle>('.mapita');
 
       if (existentes && existentes.length) {
         existentes.forEach((mapita) => {
@@ -133,7 +135,7 @@ const archivosYa: DatosIndicadoresListaDescripcion[] = datosYa.indicadores.map((
     });
 
     window.addEventListener('resize', () => {
-      const existentes = comparativo.querySelectorAll<MapaDetalle>('enflujo-mapita');
+      const existentes = comparativo.querySelectorAll<MapaDetalle>('.mapita');
 
       if (existentes && existentes.length) {
         existentes.forEach((mapita) => {
@@ -143,7 +145,7 @@ const archivosYa: DatosIndicadoresListaDescripcion[] = datosYa.indicadores.map((
     });
 
     lugaresSeleccionados.subscribe(async (lista) => {
-      const existentes = comparativo.querySelectorAll<MapaDetalle>('enflujo-mapita');
+      const existentes = comparativo.querySelectorAll<MapaDetalle>('.mapita');
 
       if (lista.length) {
         for (const mapa of lista) {
@@ -165,7 +167,10 @@ const archivosYa: DatosIndicadoresListaDescripcion[] = datosYa.indicadores.map((
           });
 
           if (!existeLugarEnDOM) {
-            const mapita = document.createElement('enflujo-mapita') as MapaDetalle;
+            const mapita = datosNal.value.categorias
+              ? new CategoriasRadiales(JSON.parse(visualizaciones.dataset.categorias))
+              : new MapaDetalle();
+
             mapita.className = 'mapita';
             mapita.id = `${codigo}`;
             mapita.agregarTitulo(nombre);
