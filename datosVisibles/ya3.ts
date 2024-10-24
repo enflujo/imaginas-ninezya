@@ -17,7 +17,7 @@ export const ya3: DatosYa = {
       explicacion_umbral:
         'No hay un umbral establecido para este indicador en el Plan Nacional de Desarrollo 2022-2026 o el Plan Sectorial de Educación 2022-2026.',
       explicacion:
-        'Este indicador mide el desempeño promedio de los estudiantes en la prueba de Matemáticas del examen Saber 11° en un territorio específico, como un municipio, departamento o región. Se calcula promediando los puntajes obtenidos por todos los evaluados en Matemáticas durante un periodo determinado en ese territorio. El resultado refleja la calidad general del rendimiento en Matemáticas, permitiendo identificar fortalezas y debilidades en el aprendizaje de los estudiantes de esa zona geográfica.',
+        'Mide el desempeño promedio de los estudiantes en la prueba de Matemáticas del examen Saber 11°.',
       definicion: 'Promedio aritmético de los puntajes obtenidos en las cinco áreas evaluadas en el examen Saber 11° (Matemáticas, Ciencias Naturales, Sociales y Ciudadanas, Lectura Crítica e Inglés) para todos los participantes en un periodo específico, con una escala de medición que va de 0 a 100 puntos.',
       metodologia: 'Promedio simple del puntaje promedio por prueba de cada evaluado en una aplicación de Saber 11°',
       unidad: 'Promedio',
@@ -38,7 +38,7 @@ export const ya3: DatosYa = {
       explicacion_umbral:
         'No hay un umbral establecido para este indicador en el Plan Nacional de Desarrollo 2022-2026 o el Plan Sectorial de Educación 2022-2026.',
       explicacion:
-        'Este indicador mide el desempeño promedio de los estudiantes en la prueba de Lectura Crítica del examen Saber 11° en un territorio específico, como un municipio, departamento o región. Se calcula promediando los puntajes obtenidos por todos los evaluados en Lectura Crítica durante un periodo determinado en ese territorio. El resultado refleja la calidad general del rendimiento en comprensión y análisis de textos, permitiendo identificar fortalezas y debilidades en estas habilidades entre los estudiantes de la zona geográfica.',
+        'Mide el desempeño promedio de los estudiantes en la prueba de Lectura Crítica del examen Saber 11°.',
       definicion: 'Promedio aritmético de los puntajes obtenidos en las cinco áreas evaluadas en el examen Saber 11° (Matemáticas, Ciencias Naturales, Sociales y Ciudadanas, Lectura Crítica e Inglés) para todos los participantes en un periodo específico, con una escala de medición que va de 0 a 100 puntos.',
       metodologia: 'Promedio simple del puntaje promedio por prueba de cada evaluado en una aplicación de Saber 11°',
       unidad: 'Promedio',
@@ -57,7 +57,7 @@ export const ya3: DatosYa = {
       hay_datos: true,
       umbral: 0,
       explicacion_umbral: 'No hay un umbral establecido para este indicador en el Plan Nacional de Desarrollo 2022-2026 o el Plan Sectorial de Educación 2022-2026.',
-      explicacion: 'Este indicador mide el desempeño promedio de los estudiantes en la prueba de Ciencias Sociales y Ciudadanas del examen Saber 11° en un territorio específico, como un municipio, departamento o región. Se calcula promediando los puntajes obtenidos por todos los evaluados en Ciencias Sociales durante un periodo determinado en ese territorio. El resultado refleja la calidad general del rendimiento en conocimientos sobre historia, geografía, ciudadanía y cultura, permitiendo identificar fortalezas y debilidades en estas áreas entre los estudiantes de la zona geográfica.',
+      explicacion: 'Mide el desempeño promedio de los estudiantes en la prueba de Ciencias Sociales y Ciudadanas del examen Saber 11°.',
       definicion: 'Promedio aritmético de los puntajes obtenidos en las cinco áreas evaluadas en el examen Saber 11° (Matemáticas, Ciencias Naturales, Sociales y Ciudadanas, Lectura Crítica e Inglés) para todos los participantes en un periodo específico, con una escala de medición que va de 0 a 100 puntos.',
       metodologia: 'Promedio simple del puntaje promedio por prueba de cada evaluado en una aplicación de Saber 11°',
       unidad: 'Promedio',
@@ -76,7 +76,7 @@ export const ya3: DatosYa = {
       explicacion_umbral:
         'No hay un umbral establecido para este indicador en el Plan Nacional de Desarrollo 2022-2026 o el Plan Sectorial de Educación 2022-2026.',
       explicacion:
-        'El promedio global representa el desempeño general de los estudiantes en el examen Saber 11° durante un periodo específico. Este promedio se obtiene a partir de los puntajes globales de todos los evaluados, calculados mediante un promedio ponderado de las cinco áreas evaluadas: Lectura Crítica, Matemáticas, Ciencias Naturales, Sociales y Ciudadanas, e Inglés. La escala utilizada va de 0 a 500 puntos, y un puntaje más alto indica un mejor rendimiento en el examen.',
+        'Mide el desempeño general de los estudiantes en el examen Saber 11°.',
       definicion: 'Promedio aritmético de los puntajes globales alcanzados por todos los estudiantes en un periodo específico de aplicación del examen. El puntaje global representa el resultado total del examen Saber 11° y se obtiene mediante un promedio ponderado de las cinco áreas evaluadas (Lectura Crítica, Matemáticas, Ciencias Naturales, Sociales y Ciudadanas, e Inglés), con una escala de medición que va de 0 a 500 puntos..',
       metodologia:
         '[(𝑃𝑢𝑛𝑡𝑎𝑗𝑒 𝑒𝑛 𝐿𝑒𝑐𝑡 𝐶𝑟í𝑡𝑖𝑐𝑎 ∗ 3) + (𝑃𝑢𝑛𝑡𝑎𝑗𝑒 𝑒𝑛 𝑀𝑎𝑡𝑒𝑚á𝑡𝑖𝑐𝑎𝑠 ∗ 3) + (𝑃𝑢𝑛𝑡𝑎𝑗𝑒 𝑒𝑛 𝑆𝑜𝑐 𝐶𝑖𝑢𝑑 ∗ 3) + (𝑃𝑢𝑛𝑡𝑎𝑗𝑒 𝑒𝑛 𝐶 𝑁𝑎𝑡 ∗ 3) + (𝑃𝑢𝑛𝑡𝑎𝑗𝑒 𝑒𝑛 𝐼𝑛𝑔𝑙é𝑠) ] /  13 *5',
