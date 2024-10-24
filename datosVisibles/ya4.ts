@@ -13,36 +13,37 @@ export const ya4: DatosYa = {
       ruta: 'mortalidad-eda',
       archivo: 'ya4-1',
       hay_datos: true,
+      umbral: 2.96,
       explicacion_umbral:
-        'No existe una meta definida como tal.Según el Plan Decenal de Salud Pública, a 2021, se debe contar con el diseño, implementación y desarrollo progresivo de planes y programas territoriales de promoción y prevención de las enfermedades transmitidas por agua, suelo y alimentos.',
+        'De acuerdo con el Plan Decenal de Salud Pública 2022-2031, la tasa de mortalidad por Enfermedad Diarreica Aguda (EDA) en menores de 5 años, que en 2019 fue de 5,91 por cada 100.000 menores de 5 años, tiene como objetivo reducirse en al menos un 50% para el año 2031, alcanzando aproximadamente 2,96 por cada 100.000 menores de 5 años.',
       explicacion: 'Indica el número de defunciones en menores de 5 años por enfermedad diarreica aguda.',
       definicion:
-        'Indica el número de defunciones en niños menores de 5 años por enfermedad diarreica aguda con respecto a la población de niños menores de 5 años.',
-      metodologia: 'Número de muertes por EDA en menores de 5 años / Número total de menores de 5 años',
+        'La Tasa de Mortalidad por Enfermedad Diarreica Aguda en Menores de 5 años se refiere al número de fallecimientos de niños menores de cinco años cuya causa principal de muerte fue una enfermedad infecciosa intestinal. Este número se calcula en relación con la población total de niños de esa edad durante un año específico, expresado por cada 100.000 habitantes del mismo grupo etario, dentro de un país, territorio o área geográfica determinada.',
+      metodologia: 'No. total de muertes de niños menores de 5 años por ]Enfermedad Diarréica Aguda (EDA) durante un período dado / No. total de población menor de 5 años durante el mismo período) x  100.000',
       unidad: 'Por cada 100.000 menores de 5 años',
-      fuente_numerador: 'CUBO INDICADORES EEVV',
-      fuente_denominador: 'CUBO INDICADORES EEVV',
+      fuente_numerador: 'DANE - Defunciones No Fetales - Cuadro 5 - (Lista de causas agrupadas 6/67 CIE-10 de OPS)',
+      fuente_denominador: 'Proyecciones y retroproyecciones de población departamental para el periodo 1985-2017 y 2018-2050 con base en el CNPV 2018',
       desagregacion: 'Municipal',
       contexto:
         'La mortalidad por enfermedades diarreicas es la segunda causa de muerte a nivel mundial en los niños y niñas, y es una causa de mortalidad prevenible. Durante 2019 ocurrieron más de 319.000 defunciones en niños y niñas por esta causa en el mundo. <br/><br/>Las condiciones de vida, saneamiento básico y el acceso al agua potable son claves para evitar la propagación de estas enfermedades muchas veces transmitidas por el agua o alimentos contaminados. La desnutrición y la inmunosupresión también aumentan el riesgo de padecer enfermedades diarreicas. La lactancia materna exclusiva, el acceso al agua potable, adecuado lavado de manos, vacunación contra rotavirus son algunas de las formas de prevención.',
       interpretacion:
-        'Un valor de 11 indica que ocurrieron 11 muertes por diarrea por cada 100.000 niños menores de 5 años en un momento y territorio determinados. <br/><br/>Más información: https://www.who.int/es/news-room/fact-sheets/detail/diarrhoeal-disease',
+        'Un valor de 4 indica que ocurrieron 4 muertes por diarrea por cada 100.000 niños menores de 5 años en un momento y territorio determinados. <br/><br/>Más información: https://www.who.int/es/news-room/fact-sheets/detail/diarrhoeal-disease',
     },
     {
       nombre: 'Tasa de mortalidad por Infección Respiratoria Aguda (IRA) en menores de 5 años',
       ruta: 'mortalidad-ira',
       archivo: 'ya4-2',
-      umbral: 8.9,
-      explicacion_umbral:
-        'De acuerdo con el Plan Decenal de Salud Pública, a 2021, se logra la reducción progresiva de la mortalidad por Infección Respiratoria Aguda (incluida Neumonía), buscando llegar a una mortalidad por Neumonía de menos de 8,9 casos por cada 100.000 menores de cinco años.',
       hay_datos: true,
+      umbral: 6.7,
+      explicacion_umbral:
+        'De acuerdo con el Plan Decenal de Salud Pública 2022-2031, la tasa de mortalidad por Infecciones Respiratorias Agudas (IRA) en menores de 5 años, que en 2019 fue de 13,4 por cada 100.000 menores de 5 años, tiene como objetivo reducirse en al menos un 50% para el año 2031, alcanzando aproximadamente 6,7 por cada 100.000 menores de 5 años.',
       explicacion: 'Indica el número de defunciones en menores de 5 años por enfermedad infección respiratoria aguda.',
       definicion:
         'Indica el número de defunciones en niños menores de 5 años por infecciones respiratorias agudas con respecto a la población de niños menores de 5 años en un momento y territorio determinado.',
-      metodologia: 'Número de muertes por IRA en menores de 5 años / Número total de menores de 5 años',
+      metodologia: 'No. total de muertes de niños menores de 5 años por Infección Respiratoria Aguda (IRA) durante un período dado / No. total de población menor de 5 años durante el mismo período) x  100.000',
       unidad: 'Por cada 100.000 menores de 5 años',
-      fuente_numerador: 'CUBO INDICADORES EEVV',
-      fuente_denominador: 'CUBO INDICADORES EEVV',
+      fuente_numerador: 'DANE - Defunciones No Fetales - Cuadro 5 - (Lista de causas agrupadas 6/67 CIE-10 de OPS)',
+      fuente_denominador: 'Proyecciones y retroproyecciones de población departamental para el periodo 1985-2017 y 2018-2050 con base en el CNPV 2018',
       desagregacion: 'Municipal',
       contexto:
         'Las infecciones respiratorias agudas son causa de muerte en niños y niñas menores de 5 años alrededor del mundo, especialmente en aquellas regiones apartadas y con limitado acceso a educación, saneamiento y servicios de salud de calidad. <br/><br/>Las infecciones del tracto respiratorio (alto y bajo) son causadas por diferentes microorganismos, pudiendo causar desde resfriados comunes hasta neumonías que pueden comprometer la vida. <br/><br/>Una adecuada nutrición, contar con el esquema de vacunación completo y conocer los signos de alarma de una infección respiratoria, son elementos básicos para evitar la mortalidad por esta causa, que en la mayoría de los casos es completamente prevenible.',
