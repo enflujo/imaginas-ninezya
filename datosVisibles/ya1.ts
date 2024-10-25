@@ -147,7 +147,7 @@ export const ya1: DatosYa = {
       umbral: 6,
       explicacion_umbral:
         'De acuerdo a los Objetivos de Desarrollo Sostenible (ODS) se espera alcanzar una meta de 6 o menos muertes por cada 1,000 nacidos vivos para el 2030.',
-      explicacion: 'Indica la proporción de mortalidad en neonatos (menores de 28 días) por cualquier condición',
+      explicacion: 'Indica la proporción de mortalidad en neonatos (menores de 28 días) por cualquier condición.',
       definicion:
         'La tasa de mortalidad neonatal indica el número de muertes de neonatos (niños menores de 28 días) por cada 1,000 nacidos vivos en un año determinado. Es un indicador de la salud materno-infantil y refleja las condiciones de atención durante el embarazo, el parto y el periodo neonatal. <br/><br/> Esta tasa se utiliza para evaluar la calidad de los servicios de salud, las intervenciones de salud pública y el nivel de desarrollo socioeconómico de un país o región. Un alto valor de esta tasa suele estar asociado con problemas como deficiencias en la atención prenatal, complicaciones durante el parto, infecciones neonatales y bajo peso al nacer, entre otros factores.',
       metodologia:
