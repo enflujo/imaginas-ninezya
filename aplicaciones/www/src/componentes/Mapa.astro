@@ -76,9 +76,9 @@ const { ancho, alto } = Astro.props;
       const { top, height } = informacion.getBoundingClientRect();
       const x = evento.clientX;
       const y = evento.clientY;
-      console.log(top);
+
       Object.assign(informacion.style, {
-        top: `${top < 10 ? y + height + 10 : y}px`,
+        top: `${y < 145 ? y + height + 30 : y}px`,
         left: `${x}px`,
       });
     };
