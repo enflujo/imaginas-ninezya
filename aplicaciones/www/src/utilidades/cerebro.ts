@@ -17,6 +17,16 @@ export const sinMunicipios = atom<boolean>(false);
 export let color: FuncionColor;
 export let valorMaxColor = 0;
 export let umbral = 0;
+export const coloresCategorias = {
+  c1: [0, 157, 154], // verde azul //[105, 41, 196]; // Morado
+  c2: [25, 128, 56], // verde
+  c3: [159, 24, 83], // Magenta
+  c4: [178, 134, 0], // Mostaza
+  c5: [17, 146, 232], // Cyan
+  c6: [238, 83, 139], // rosa [0, 157, 154]; // aguamarina
+  c7: [250, 77, 86], // rojo
+  c8: [1, 39, 73], // azul oscuro casi negro
+};
 
 const cargador = document.getElementById('cargador');
 let nombreArchivo = '';
@@ -190,14 +200,7 @@ const definirColor = (ascendente: boolean) => {
 };
 
 const definirColorCategorias = () => {
-  const c1 = [0, 157, 154]; // verde azul //[105, 41, 196]; // Morado
-  const c2 = [25, 128, 56]; // verde
-  const c3 = [159, 24, 83]; // Magenta
-  const c4 = [178, 134, 0]; // Mostaza
-  const c5 = [17, 146, 232]; // Cyan
-  const c6 = [238, 83, 139]; // rosa [0, 157, 154]; // aguamarina
-  const c7 = [250, 77, 86]; // rojo
-  const c8 = [1, 39, 73]; // azul oscuro casi negro
+  const { c1, c2, c3, c4, c5, c6, c7, c8 } = coloresCategorias;
   const colores = [c1, c2, c3, c4, c5, c6, c7, c8];
 
   return (categorias: Categorias) => {
