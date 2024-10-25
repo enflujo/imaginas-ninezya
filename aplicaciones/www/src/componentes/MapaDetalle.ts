@@ -200,8 +200,8 @@ export default class MapaDetalle extends HTMLElement {
       ancho: calcularPorcentaje(width, 28),
       alto: calcularPorcentaje(window.innerHeight, 28),
     };
-    const coordenadasAlto = this.tipo === 'categorias' ? dims.alto : this.coordenadasAlto;
-    const coordenadasAncho = this.tipo === 'categorias' ? dims.ancho : this.coordenadasAncho;
+    const coordenadasAlto = this.tipo === 'categorias' ? Math.min(dims.ancho, dims.alto) : this.coordenadasAlto;
+    const coordenadasAncho = this.tipo === 'categorias' ? Math.min(dims.ancho, dims.alto) : this.coordenadasAncho;
 
     let alto = dims.ancho * Math.min(coordenadasAlto / coordenadasAncho, dims.alto / dims.ancho);
     let ancho = alto * (coordenadasAncho / coordenadasAlto);
