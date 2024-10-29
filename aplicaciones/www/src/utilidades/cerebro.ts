@@ -18,13 +18,13 @@ export let color: FuncionColor;
 export let valorMaxColor = 0;
 export let umbral = 0;
 export const coloresCategorias = {
-  c1: [0, 157, 154], // verde azul //[105, 41, 196]; // Morado
-  c2: [25, 128, 56], // verde
+  c1: [255, 128, 170], // Rosado
+  c2: [17, 146, 232], // Cyan //
   c3: [159, 24, 83], // Magenta
-  c4: [178, 134, 0], // Mostaza
-  c5: [17, 146, 232], // Cyan
-  c6: [238, 83, 139], // rosa [0, 157, 154]; // aguamarina
-  c7: [250, 77, 86], // rojo
+  c4: [253, 97, 19], // Naranja
+  c5: [105, 41, 196], // Morado
+  c6: [0, 157, 154], // Aguamarina
+  c7: [178, 134, 0], // Mostaza
   c8: [1, 39, 73], // azul oscuro casi negro
 };
 export const listaCategorias = atom<Categoria[]>([]);
