@@ -16,9 +16,9 @@ export const ya3: DatosYa = {
       umbral: 0,
       explicacion_umbral:
         'No hay un umbral establecido para este indicador en el Plan Nacional de Desarrollo 2022-2026 o el Plan Sectorial de Educación 2022-2026.',
-      explicacion:
-        'Mide el desempeño promedio de los estudiantes en la prueba de Matemáticas del examen Saber 11°.',
-      definicion: 'Promedio aritmético de los puntajes obtenidos en las cinco áreas evaluadas en el examen Saber 11° (Matemáticas, Ciencias Naturales, Sociales y Ciudadanas, Lectura Crítica e Inglés) para todos los participantes en un periodo específico, con una escala de medición que va de 0 a 100 puntos.',
+      explicacion: 'Mide el desempeño promedio de los estudiantes en la prueba de Matemáticas del examen Saber 11°.',
+      definicion:
+        'Promedio aritmético de los puntajes obtenidos en las cinco áreas evaluadas en el examen Saber 11° (Matemáticas, Ciencias Naturales, Sociales y Ciudadanas, Lectura Crítica e Inglés) para todos los participantes en un periodo específico, con una escala de medición que va de 0 a 100 puntos.',
       metodologia: 'Promedio simple del puntaje promedio por prueba de cada evaluado en una aplicación de Saber 11°',
       unidad: 'Promedio',
       fuente_numerador: 'DataIcfes',
@@ -39,7 +39,8 @@ export const ya3: DatosYa = {
         'No hay un umbral establecido para este indicador en el Plan Nacional de Desarrollo 2022-2026 o el Plan Sectorial de Educación 2022-2026.',
       explicacion:
         'Mide el desempeño promedio de los estudiantes en la prueba de Lectura Crítica del examen Saber 11°.',
-      definicion: 'Promedio aritmético de los puntajes obtenidos en las cinco áreas evaluadas en el examen Saber 11° (Matemáticas, Ciencias Naturales, Sociales y Ciudadanas, Lectura Crítica e Inglés) para todos los participantes en un periodo específico, con una escala de medición que va de 0 a 100 puntos.',
+      definicion:
+        'Promedio aritmético de los puntajes obtenidos en las cinco áreas evaluadas en el examen Saber 11° (Matemáticas, Ciencias Naturales, Sociales y Ciudadanas, Lectura Crítica e Inglés) para todos los participantes en un periodo específico, con una escala de medición que va de 0 a 100 puntos.',
       metodologia: 'Promedio simple del puntaje promedio por prueba de cada evaluado en una aplicación de Saber 11°',
       unidad: 'Promedio',
       fuente_numerador: 'DataIcfes',
@@ -56,16 +57,21 @@ export const ya3: DatosYa = {
       archivo: 'ya3-3',
       hay_datos: true,
       umbral: 0,
-      explicacion_umbral: 'No hay un umbral establecido para este indicador en el Plan Nacional de Desarrollo 2022-2026 o el Plan Sectorial de Educación 2022-2026.',
-      explicacion: 'Mide el desempeño promedio de los estudiantes en la prueba de Ciencias Sociales y Ciudadanas del examen Saber 11°.',
-      definicion: 'Promedio aritmético de los puntajes obtenidos en las cinco áreas evaluadas en el examen Saber 11° (Matemáticas, Ciencias Naturales, Sociales y Ciudadanas, Lectura Crítica e Inglés) para todos los participantes en un periodo específico, con una escala de medición que va de 0 a 100 puntos.',
+      explicacion_umbral:
+        'No hay un umbral establecido para este indicador en el Plan Nacional de Desarrollo 2022-2026 o el Plan Sectorial de Educación 2022-2026.',
+      explicacion:
+        'Mide el desempeño promedio de los estudiantes en la prueba de Ciencias Sociales y Ciudadanas del examen Saber 11°.',
+      definicion:
+        'Promedio aritmético de los puntajes obtenidos en las cinco áreas evaluadas en el examen Saber 11° (Matemáticas, Ciencias Naturales, Sociales y Ciudadanas, Lectura Crítica e Inglés) para todos los participantes en un periodo específico, con una escala de medición que va de 0 a 100 puntos.',
       metodologia: 'Promedio simple del puntaje promedio por prueba de cada evaluado en una aplicación de Saber 11°',
       unidad: 'Promedio',
       fuente_numerador: 'DataIcfes',
       fuente_denominador: 'DataIcfes',
       desagregacion: 'Municipal',
-      contexto: 'En Colombia la valoración de la preparación académica de los estudiantes que completan la educación básica y media se realiza a través del examen de estado Saber 11. <br/><br/>Este examen es obligatorio para el acceso a la educación superior, evalúa las competencias de los estudiantes de undécimo grado y bachilleres. Las Instituciones de Educación Superior requieren que los aspirantes hayan presentado el examen como parte de los requisitos de admisión, independientemente del puntaje obtenido.',
-      interpretacion: 'El indicador alcanza un máximo de 100 puntos; mientras más próximo sea el puntaje a 0, menor será el desempeño en esa prueba durante la aplicación del examen Saber 11°.',
+      contexto:
+        'En Colombia la valoración de la preparación académica de los estudiantes que completan la educación básica y media se realiza a través del examen de estado Saber 11. <br/><br/>Este examen es obligatorio para el acceso a la educación superior, evalúa las competencias de los estudiantes de undécimo grado y bachilleres. Las Instituciones de Educación Superior requieren que los aspirantes hayan presentado el examen como parte de los requisitos de admisión, independientemente del puntaje obtenido.',
+      interpretacion:
+        'El indicador alcanza un máximo de 100 puntos; mientras más próximo sea el puntaje a 0, menor será el desempeño en esa prueba durante la aplicación del examen Saber 11°.',
     },
     {
       nombre: 'Puntaje Saber 11 - Global',
@@ -75,9 +81,9 @@ export const ya3: DatosYa = {
       umbral: 0,
       explicacion_umbral:
         'No hay un umbral establecido para este indicador en el Plan Nacional de Desarrollo 2022-2026 o el Plan Sectorial de Educación 2022-2026.',
-      explicacion:
-        'Mide el desempeño general de los estudiantes en el examen Saber 11°.',
-      definicion: 'Promedio aritmético de los puntajes globales alcanzados por todos los estudiantes en un periodo específico de aplicación del examen. El puntaje global representa el resultado total del examen Saber 11° y se obtiene mediante un promedio ponderado de las cinco áreas evaluadas (Lectura Crítica, Matemáticas, Ciencias Naturales, Sociales y Ciudadanas, e Inglés), con una escala de medición que va de 0 a 500 puntos..',
+      explicacion: 'Mide el desempeño general de los estudiantes en el examen Saber 11°.',
+      definicion:
+        'Promedio aritmético de los puntajes globales alcanzados por todos los estudiantes en un periodo específico de aplicación del examen. El puntaje global representa el resultado total del examen Saber 11° y se obtiene mediante un promedio ponderado de las cinco áreas evaluadas (Lectura Crítica, Matemáticas, Ciencias Naturales, Sociales y Ciudadanas, e Inglés), con una escala de medición que va de 0 a 500 puntos..',
       metodologia:
         '[(𝑃𝑢𝑛𝑡𝑎𝑗𝑒 𝑒𝑛 𝐿𝑒𝑐𝑡 𝐶𝑟í𝑡𝑖𝑐𝑎 ∗ 3) + (𝑃𝑢𝑛𝑡𝑎𝑗𝑒 𝑒𝑛 𝑀𝑎𝑡𝑒𝑚á𝑡𝑖𝑐𝑎𝑠 ∗ 3) + (𝑃𝑢𝑛𝑡𝑎𝑗𝑒 𝑒𝑛 𝑆𝑜𝑐 𝐶𝑖𝑢𝑑 ∗ 3) + (𝑃𝑢𝑛𝑡𝑎𝑗𝑒 𝑒𝑛 𝐶 𝑁𝑎𝑡 ∗ 3) + (𝑃𝑢𝑛𝑡𝑎𝑗𝑒 𝑒𝑛 𝐼𝑛𝑔𝑙é𝑠) ] /  13 *5',
       unidad: 'Promedio',
@@ -95,7 +101,8 @@ export const ya3: DatosYa = {
       archivo: 'ya3-5',
       hay_datos: true,
       umbral: 100,
-      explicacion_umbral: 'El Objetivo de Desarrollo Sostenible (ODS) 4.1 establece "asegurar que todos los niños y niñas completen una educación primaria y secundaria gratuita, equitativa y de calidad que conduzca a resultados de aprendizaje relevantes y efectivos" para el año 2030.',
+      explicacion_umbral:
+        'El Objetivo de Desarrollo Sostenible (ODS) 4.1 establece "asegurar que todos los niños y niñas completen una educación primaria y secundaria gratuita, equitativa y de calidad que conduzca a resultados de aprendizaje relevantes y efectivos" para el año 2030.',
       explicacion: 'Indica la cobertura bruta de estudiantes que cursan educación primaria.',
       definicion:
         'La tasa de cobertura bruta mide la relación porcentual entre el número total de estudiantes matriculados sobre el total de la población en edad teórica para cursar el nivel educativo. <br/><br/>*** En algunos casos la demanda social es mayor a la población en edad teórica para cursar este nivel (6-10 años), explicada por estudiantes en extraedad, por lo que el indicador toma valores superiores al 100%.',
@@ -116,7 +123,8 @@ export const ya3: DatosYa = {
       archivo: 'ya3-6',
       hay_datos: true,
       umbral: 100,
-      explicacion_umbral: 'El Objetivo de Desarrollo Sostenible (ODS) 4.1 establece "asegurar que todos los niños y niñas completen una educación primaria y secundaria gratuita, equitativa y de calidad que conduzca a resultados de aprendizaje relevantes y efectivos" para el año 2030.',
+      explicacion_umbral:
+        'El Objetivo de Desarrollo Sostenible (ODS) 4.1 establece "asegurar que todos los niños y niñas completen una educación primaria y secundaria gratuita, equitativa y de calidad que conduzca a resultados de aprendizaje relevantes y efectivos" para el año 2030.',
       explicacion: 'Indica la cobertura bruta de estudiantes que cursan educación media.',
       definicion:
         'La tasa de cobertura bruta mide la relación porcentual entre el número total de estudiantes matriculados sobre el total de la población en edad teórica para cursar el nivel educativo. <br/><br/>*** En algunos casos la demanda social es mayor a la población en edad teórica para cursar este nivel (15-16 años), explicada por estudiantes en extraedad, por lo que el indicador toma valores superiores al 100%.',
@@ -137,7 +145,8 @@ export const ya3: DatosYa = {
       archivo: 'ya3-7',
       hay_datos: true,
       umbral: 2,
-      explicacion_umbral: 'De acuerdo con la OCDE, aunque no se establece un valor objetivo específico para la tasa de reprobación, algunos países miembros han adoptado como meta reducir la repetición escolar a niveles por debajo del 5% o incluso al 2% anual en la educación primaria y secundaria. OECD (2023), Education at a Glance 2023: OECD Indicators, OECD Publishing, París.',
+      explicacion_umbral:
+        'De acuerdo con la OCDE, aunque no se establece un valor objetivo específico para la tasa de reprobación, algunos países miembros han adoptado como meta reducir la repetición escolar a niveles por debajo del 5% o incluso al 2% anual en la educación primaria y secundaria. OECD (2023), Education at a Glance 2023: OECD Indicators, OECD Publishing, París.',
       explicacion: 'Indica el porcentaje de estudiantes que reprobaron educación primaria.',
       definicion:
         'Tasa de reprobación de estudiantes del sector oficial en primaria. Identifica el porcentaje de alumnos en este nivel educativo que reprueba de acuerdo con los planes y programas de estudio vigentes.',
@@ -158,7 +167,8 @@ export const ya3: DatosYa = {
       archivo: 'ya3-8',
       hay_datos: true,
       umbral: 2,
-      explicacion_umbral: 'De acuerdo con la OCDE, aunque no se establece un valor objetivo específico para la tasa de reprobación, algunos países miembros han adoptado como meta reducir la repetición escolar a niveles por debajo del 5% o incluso al 2% anual en la educación primaria y secundaria. OECD (2023), Education at a Glance 2023: OECD Indicators, OECD Publishing, París.',
+      explicacion_umbral:
+        'De acuerdo con la OCDE, aunque no se establece un valor objetivo específico para la tasa de reprobación, algunos países miembros han adoptado como meta reducir la repetición escolar a niveles por debajo del 5% o incluso al 2% anual en la educación primaria y secundaria. OECD (2023), Education at a Glance 2023: OECD Indicators, OECD Publishing, París.',
       explicacion: 'Indica el porcentaje de estudiantes que reprobaron educación media.',
       definicion:
         'Tasa de reprobación de estudiantes del sector oficial en educación. Identifica el porcentaje de alumnos en este nivel educativo que reprueba de acuerdo con los planes y programas de estudio vigentes.',
@@ -179,7 +189,8 @@ export const ya3: DatosYa = {
       archivo: 'ya3-9',
       hay_datos: true,
       umbral: 2,
-      explicacion_umbral: 'De acuerdo con la OCDE, aunque no se establece un valor objetivo específico para la tasa de reprobación, algunos países miembros han adoptado como meta reducir la repetición escolar a niveles por debajo del 5% o incluso al 2% anual en la educación primaria y secundaria. OECD (2023), Education at a Glance 2023: OECD Indicators, OECD Publishing, París.',
+      explicacion_umbral:
+        'De acuerdo con la OCDE, aunque no se establece un valor objetivo específico para la tasa de reprobación, algunos países miembros han adoptado como meta reducir la repetición escolar a niveles por debajo del 5% o incluso al 2% anual en la educación primaria y secundaria. OECD (2023), Education at a Glance 2023: OECD Indicators, OECD Publishing, París.',
       explicacion:
         'Indica el porcentaje de estudiantes que se encuentran repitiendo alguno de los grados que corresponden a educación primaria.',
       definicion:
@@ -201,7 +212,8 @@ export const ya3: DatosYa = {
       archivo: 'ya3-10',
       hay_datos: true,
       umbral: 2,
-      explicacion_umbral: 'De acuerdo con la OCDE, aunque no se establece un valor objetivo específico para la tasa de reprobación, algunos países miembros han adoptado como meta reducir la repetición escolar a niveles por debajo del 5% o incluso al 2% anual en la educación primaria y secundaria. OECD (2023), Education at a Glance 2023: OECD Indicators, OECD Publishing, París.',
+      explicacion_umbral:
+        'De acuerdo con la OCDE, aunque no se establece un valor objetivo específico para la tasa de reprobación, algunos países miembros han adoptado como meta reducir la repetición escolar a niveles por debajo del 5% o incluso al 2% anual en la educación primaria y secundaria. OECD (2023), Education at a Glance 2023: OECD Indicators, OECD Publishing, París.',
       explicacion:
         'Indica el porcentaje de estudiantes que se encuentran repitiendo alguno de los grados que corresponden a educación media.',
       definicion:
