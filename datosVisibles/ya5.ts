@@ -9,69 +9,73 @@ export const ya5: DatosYa = {
   hay_datos: false,
   indicadores: [
     {
-      nombre: 'Niños y niñas de 2-5 años con dificultad funcional en el dominio de juego',
-      ruta: 'dificultad-funcional-2-5',
+      nombre: 'Niños y niñas menores de 5 años por sitio o persona con quien permanecen la mayor parte del tiempo entre semana (%)',
+      ruta: 'tiempo-permanencia-semana',
       archivo: 'ya5-1',
-      hay_datos: false,
+      hay_datos: true,
+      explicacion_umbral:
+      'No existe un umbral definidio.',
+      explicacion: 'Indica como los niños y niñas menores de 5 años pasan su tiempo durante los días de semana.',
       definicion:
-        'Este indicador podría formar parte de un conjunto de medidas utilizado para evaluar el bienestar infantil, la salud o el desarrollo infantil en una comunidad o contexto específico. La evaluación de la dificultad funcional en el juego puede abordar aspectos como la coordinación motora, las habilidades sociales, la creatividad y otras habilidades relacionadas con el juego que son importantes para el desarrollo infantil.',
+        'Este indicador mide el lugar o con quién permanece la mayor parte del tiempo los niños y niñas durante los días de semana.',
       metodologia:
-        'Número de niños y niñas de 2-5 años con dificultad funcional en el dominio de juego / Número de niños y niñas de 2-5 años * 100.000 niños',
-      unidad: 'Tasa',
-      desagregacion: 'Municipal',
+        'Se calcula agrupando los datos por código de departamento (coddepto) y categoría de P51. Luego, se suma la frecuencia ponderada (FEX_C.x) para cada grupo. Posteriormente, se calcula el porcentaje dividiendo la frecuencia ponderada de cada categoría por la suma total de la frecuencia ponderada del municipio y multiplicando por 100. Finalmente, se asigna el año correspondiente (anno).',
+      unidad: 'Porcentaje',
+      fuente_numerador:
+        'Encuesta Nacional de Calidad de Vida - ENCV del Departamento Administrativo Nacional de Estadísticas - DANE',
+      fuente_denominador: 'Encuesta Nacional de Calidad de Vida - ENCV del Departamento Administrativo Nacional de Estadísticas - DANE',
+      desagregacion: 'Departamental',
+      contexto:
+      'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secretarías de Educación.',
       interpretacion:
-        'La dificultad funcional para niños de 2 a 5 años se establece a partir de una encuesta dirigida a padres y cuidadores. Dentro de las opciones de respuesta a la pregunta podemos identificar dos: "Mucha dificultad" o "No puede realizar la actividad" (UNICEF, Argentina 2020).',
-      responsable:
-        'Gran Encuesta Integrada de Hogares - GEIH del Departamento Administrativo Nacional de Estadísticas - DANE.',
-      compete_a:
-        'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secretarías de Educación.',
+        'Este indicador ayuda a identificar los principales entornos de los niños y niñas durante los días de semana, como el hogar, instituciones educativas, centros de cuidado infantil, entre otros. Un alto porcentaje de niños que permanecen en entornos educativos o de cuidado infantil puede indicar un buen acceso a servicios de apoyo, mientras que un alto porcentaje en el hogar puede resaltar la necesidad de fortalecer programas de apoyo familiar.',
     },
     {
       nombre:
-        'Niños y niñas de 2-5 años que no asisten a un establecimiento educativo, guardería, jardín infantil o preescolar',
+        'Número de ludotecas o bibliotecas por cada 1.000 niñas y niños ',
       ruta: 'asistencia-establecimiento-educativo-2-5',
-      archivo: 'ya5-2',
-      hay_datos: false,
-      definicion:
-        'Este indicador puede ser utilizado para evaluar la accesibilidad y la participación de los niños en programas educativos en la primera infancia. Una baja tasa de asistencia a instituciones educativas en este rango de edad puede indicar posibles desafíos en el acceso a la educación temprana, lo que podría afectar el desarrollo cognitivo, social y emocional de los niños. La información recopilada a través de este indicador puede ser valiosa para diseñar políticas y programas que busquen mejorar la participación de los niños en actividades educativas durante sus primeros años de vida.',
-      metodologia:
-        'Número de niños y niñas de 2-5 años que no asisten a un establecimiento educativo, jardín infantil o preescolar * 100.000 niños',
-      unidad: 'Tasa',
-      desagregacion: 'Municipal',
-      interpretacion:
-        'De acuerdo con el MEN, los objetivos explícitos en términos de asistencia escolar en el Plan Nacional de Desarrollo es tener una tasa de asistencia del 100%.',
-      responsable:
-        'Gran Encuesta Integrada de Hogares - GEIH del Departamento Administrativo Nacional de Estadísticas - DANE.',
-      compete_a:
-        'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secretarías de Educación.',
-    },
-    {
-      nombre: 'Niños y niñas de 2-5 años que con frecuencia patean, muerden o golpean a otros niños/as o adultos',
-      ruta: 'agresion-2-5',
       archivo: 'ya5-3',
       hay_datos: false,
       definicion:
-        'Este indicador puede ser utilizado para evaluar la prevalencia de comportamientos agresivos en niños pequeños y proporciona información sobre la dinámica social y emocional en entornos como guarderías, jardines infantiles, preescolares u otros lugares donde los niños interactúan regularmente. La presencia frecuente de estos comportamientos podría indicar posibles desafíos en el desarrollo de habilidades sociales y emocionales en la primera infancia.',
+        'Se refiere a la cantidad de centros de juego como ludotectas y otros espacios destinados al juego de niñas y niños de primera infancia, infancia y adolescencia de caracter público. El juego es un derecho  fundamental en el desarrollo integral de las niñas y los niños, que requiere de escenarios significativos de calidad y fácil acceso para todas las comunidades: rurales, indígenas, afros, rom, con discapacidad, entre otras.',
       metodologia:
-        'Número de niños y niñas de 2-5 años que con frecuencia patean, muerden o golpean a otros niños/as o adultos / Número total de niños y niñas de 2-5 años * 100.000 niños',
-      unidad: 'Tasa',
+        'No. de espacios de juego/ludecas / No. y niños de 0 a 17 años * 1.000 niñas/os',
+      unidad: 'Por cada 1.000 niñas y niñoos',
       desagregacion: 'Municipal',
       interpretacion:
-        'Se debe formular la siguiente pregunta dentro de la encuesta de la Gran Encuesta Integrada de Hogares - GEIH del Departamento Administrativo Nacional de Estadísticas - DANE: <br/><br/>En comparación con los niños/as de la misma edad, ¿con qué frecuencia patea, muerde o golpea a otros niños/as o adultos? <br/><br/>Opciones de respuesta: <br/>1. Todos los días. <br/>2. Al menos una vez a la semana pero no cada día. <br/>3. Al menos una vez al mes, pero no cada semana. <br/>4. Al menos una vez al mes, pero no todos los meses.',
+        'Este indicador cuantifica el número de ludotecas y escenarios destinados exclusivamente el juego espontáneo de niñas, niños y adolescentes.',
       responsable:
-        'Gran Encuesta Integrada de Hogares - GEIH del Departamento Administrativo Nacional de Estadísticas - DANE.',
+        'Departamento Nacional de Planeación (DNP)',
       compete_a:
         'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secretarías de Educación.',
     },
     {
-      nombre: 'Niños y niñas de 2-5 años que con frecuencia leen u observan libros de cuentos e historias',
+      nombre: 'Número de parques o espacios de juego por cada 1.000 niñas y niños',
+      ruta: 'agresion-2-5',
+      archivo: 'ya5-2',
+      hay_datos: false,
+      definicion:
+        'Se refiere a espacios públicos destinados para destinados y usados para el juego espontáneo y libre como parques y escenarios deportivos públicos existentes en los municipios del país. El Plan Nacional de Desarrollo (PND) 2022-2026 contempla una línea de política pública que impulse el juego y la ampliación de espacios de recreación y juego; así como la construcción de nuevos parques públicos y entornos para el desarrollo de habilidades, vocaciones y talentos de niñas y niños, conforme a la solicitud que ellas y ellos hicieron en los Diálogos Regionales Vinculantes. ',
+      metodologia:
+        'No. total de parques o espacios de juego / No. total de población menor de 18 años durante el mismo período x 1.000',
+      unidad: 'Por cada 1,000 niñas y niños',
+      desagregacion: 'Municipal',
+      interpretacion:
+        'Este indicador cuantifica el número de parques destinados y usados para el juego espontáneo y libre y escenarios públicos seguros  implementados en los diferentes mucipios de Colombia, destinados para que los habitantes puedan jugar en libertad, de acuerdo con el número de habitantes de cada municipio.',
+      responsable:
+        'Ministerio de Educación  y Ministerio del Deporte.',
+      compete_a:
+        'Ministerio de Educación, Ministerio del Deporte y Secretarías de Educación.',
+    },
+    {
+      nombre: 'Niños y niñas de 2-12 años que con frecuencia leen u observan libros de cuentos e historias',
       ruta: 'lectura-2-5',
-      archivo: 'ya5-4',
+      archivo: 'ya5-3',
       hay_datos: false,
       definicion:
         'Este indicador puede ser utilizado para medir el acceso y la participación de los niños en experiencias de lectura, lo cual es crucial para el desarrollo del lenguaje, la cognición y la alfabetización. La exposición temprana a libros y la práctica de la lectura pueden tener impactos significativos en el desarrollo del vocabulario y la comprensión del lenguaje.',
       metodologia:
-        'Número de niños y niñas de 2-5 años que con frecuencia cuentan en su hogar con adulto que lee junto a el libros de cuentos o historias / Número total de niños y niñas de 2-5 años * 100.000 niños',
+        'No. de niños y niñas de 2-12 años que con frecuencia cuentan en su hogar con adulto que lee junto a el libros de cuentos o historias / Número total de niños y niñas de 2-12 años * 100.000 niños',
       unidad: 'Tasa',
       desagregacion: 'Municipal',
       interpretacion:
@@ -81,14 +85,14 @@ export const ya5: DatosYa = {
         'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secretarías de Educación.',
     },
     {
-      nombre: 'Niños y niñas de 2-5 años que con frecuencia juegan con un adulto responsable',
+      nombre: 'Niños y niñas de 2-12 años que con frecuencia juegan con un adulto responsable',
       ruta: 'juego-adulto-2-5',
-      archivo: 'ya5-5',
+      archivo: 'ya5-6',
       hay_datos: false,
       definicion:
         'La importancia de este indicador radica en reconocer la influencia y el papel positivo que los adultos, especialmente los cuidadores y educadores, pueden tener en el desarrollo de habilidades sociales, emocionales y cognitivas de los niños. <br/><br/>Jugar con adultos responsables no solo proporciona oportunidades para la diversión y la recreación, sino que también puede contribuir al aprendizaje, la comunicación y la formación de vínculos afectivos.',
       metodologia:
-        'Número de niños y niñas de 2-5 años que con frecuencia juegan con un adulto responsable / Número total de niños y niñas de 2-5 años * 100.000 niños',
+        'Número de niños y niñas de 2-12 años que con frecuencia juegan con un adulto responsable / Número total de niños y niñas de 2-12 años * 100.000 niños',
       unidad: 'Tasa',
       desagregacion: 'Municipal',
       interpretacion:
@@ -116,3 +120,4 @@ export const ya5: DatosYa = {
     },
   ],
 };
+
