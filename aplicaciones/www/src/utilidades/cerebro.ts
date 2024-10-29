@@ -137,7 +137,6 @@ export async function cargarDatos() {
       }
     }
 
-    //console.log(nal.categorias);
     if (nal.categorias) {
       const datosCategorias = JSON.parse(datosArchivo.categorias) as Categoria[];
 

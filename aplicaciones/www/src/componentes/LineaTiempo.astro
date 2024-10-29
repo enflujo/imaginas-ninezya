@@ -130,7 +130,6 @@ const { alto, meta, umbral } = Astro.props;
     });
 
     function actualizarMarcaY(grupo: SVGElement, y: number, i: number) {
-      // console.log(grupo, y);
       const textoEje = (limites.yMax / cantidadDivisiones) * i;
       const texto = grupo.querySelector<SVGTextElement>('.textoEje');
       grupo.setAttribute('style', `transform: translate(${dimsVis.marcoIz - 5}px, ${y}px)`);
@@ -378,7 +377,6 @@ const { alto, meta, umbral } = Astro.props;
               datos[llave].push({ año, valor: valor ? valor : null });
             });
           });
-        console.log(años, años, dimsVis.marcoIz + proporciones.pixeles.x1, proporciones.pixeles.x2);
 
         Object.values(datos).forEach((datosLinea, i) => {
           const categoria = listaCategorias.value[i];
