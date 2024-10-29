@@ -100,21 +100,28 @@ export const ya2: DatosYa = {
         'Un valor del 2% indica que 2 de cada 100 estudiantes en edad teórica para cursar transición desertaron en el año lectivo en un momento y territorio específicos. <br/><br/>Más información: https://unitedwaycolombia.org/2023/10/19/desercion-escolar-en-colombia-un-desafio-que-se-agrava/',
     },
     {
-      nombre: 'Porcentaje de niños y niñas en servicios de educación inicial en el marco de la atención integral que cuentan con 6 o más atenciones priorizadas',
+      nombre:
+        'Porcentaje de niños y niñas en servicios de educación inicial en el marco de la atención integral que cuentan con 6 o más atenciones priorizadas',
       ruta: 'marco-integral',
       archivo: 'ya2-5',
       hay_datos: true,
       umbral: 95,
-      explicacion_umbral: 'De acuerdo con el ODS 4.2, la meta para el año 2030 es que al menos el 95% de los niños y niñas en servicios de educación inicial reciban 6 o más atenciones priorizadas en el marco de la atención integral, asegurando que estén listos para la educación primaria y desarrollen todo su potencial.',
-      explicacion: 'Mide el porcentaje de niños y niñas activos en el Sistema de Seguimiento al Desarrollo Integral de la Primera Infancia que reciben seis o más atenciones priorizadas.',
-      definicion: 'Porcentaje de niños y niñas en servicios de educación inicial que han recibido seis (6) o más atenciones priorizadas en el marco de la atención integral, en relación con el total de niños y niñas atendidos en el mismo periodo.',
-      metodologia: 'Número de niños y niñas que registran seis (6) o más atenciones cumplidas en el Sistema de Seguimiento al Desarrollo Integral de la Primera Infancia (nnap) dividido por el número total de niños y niñas identificados en el sistema, multiplicado por 100. Fórmula: (∑nnap / Total de niños y niñas) x 100.',
+      explicacion_umbral:
+        'De acuerdo con el ODS 4.2, la meta para el año 2030 es que al menos el 95% de los niños y niñas en servicios de educación inicial reciban 6 o más atenciones priorizadas en el marco de la atención integral, asegurando que estén listos para la educación primaria y desarrollen todo su potencial.',
+      explicacion:
+        'Mide el porcentaje de niños y niñas activos en el Sistema de Seguimiento al Desarrollo Integral de la Primera Infancia que reciben seis o más atenciones priorizadas.',
+      definicion:
+        'Porcentaje de niños y niñas en servicios de educación inicial que han recibido seis (6) o más atenciones priorizadas en el marco de la atención integral, en relación con el total de niños y niñas atendidos en el mismo periodo.',
+      metodologia:
+        'Número de niños y niñas que registran seis (6) o más atenciones cumplidas en el Sistema de Seguimiento al Desarrollo Integral de la Primera Infancia (nnap) dividido por el número total de niños y niñas identificados en el sistema, multiplicado por 100. Fórmula: (∑nnap / Total de niños y niñas) x 100.',
       unidad: 'Porcentaje',
       fuente_numerador: 'Ministerio de Educación Nacional (MEN) - Grupo de Análisis e Información Estadística',
       fuente_denominador: 'Ministerio de Educación Nacional (MEN) - Grupo de Análisis e Información Estadística',
       desagregacion: 'Municipal',
-      contexto: 'Este indicador es fundamental para evaluar el avance en la atención integral de la primera infancia en Colombia, asegurando que los niños y niñas reciban las atenciones necesarias en salud, nutrición, educación y bienestar para su desarrollo integral, en línea con la política "De Cero a Siempre".',
-      interpretacion: 'Un valor del 80% indica que 80 de cada 100 niños y niñas en servicios de educación inicial han recibido seis (6) o más atenciones priorizadas en un periodo y territorio específicos.',
+      contexto:
+        'Este indicador es fundamental para evaluar el avance en la atención integral de la primera infancia en Colombia, asegurando que los niños y niñas reciban las atenciones necesarias en salud, nutrición, educación y bienestar para su desarrollo integral, en línea con la política "De Cero a Siempre".',
+      interpretacion:
+        'Un valor del 80% indica que 80 de cada 100 niños y niñas en servicios de educación inicial han recibido seis (6) o más atenciones priorizadas en un periodo y territorio específicos.',
     },
   ],
 };

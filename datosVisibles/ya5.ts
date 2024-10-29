@@ -9,12 +9,12 @@ export const ya5: DatosYa = {
   hay_datos: false,
   indicadores: [
     {
-      nombre: 'Niños y niñas menores de 5 años por sitio o persona con quien permanecen la mayor parte del tiempo entre semana (%)',
+      nombre:
+        'Niños y niñas menores de 5 años por sitio o persona con quien permanecen la mayor parte del tiempo entre semana (%)',
       ruta: 'tiempo-permanencia-semana',
       archivo: 'ya5-1',
       hay_datos: true,
-      explicacion_umbral:
-      'No existe un umbral definidio.',
+      explicacion_umbral: 'No existe un umbral definidio.',
       explicacion: 'Indica como los niños y niñas menores de 5 años pasan su tiempo durante los días de semana.',
       definicion:
         'Este indicador mide el lugar o con quién permanece la mayor parte del tiempo los niños y niñas durante los días de semana.',
@@ -23,29 +23,27 @@ export const ya5: DatosYa = {
       unidad: 'Porcentaje',
       fuente_numerador:
         'Encuesta Nacional de Calidad de Vida - ENCV del Departamento Administrativo Nacional de Estadísticas - DANE',
-      fuente_denominador: 'Encuesta Nacional de Calidad de Vida - ENCV del Departamento Administrativo Nacional de Estadísticas - DANE',
+      fuente_denominador:
+        'Encuesta Nacional de Calidad de Vida - ENCV del Departamento Administrativo Nacional de Estadísticas - DANE',
       desagregacion: 'Departamental',
       contexto:
-      'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secretarías de Educación.',
+        'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secretarías de Educación.',
       interpretacion:
         'Este indicador ayuda a identificar los principales entornos de los niños y niñas durante los días de semana, como el hogar, instituciones educativas, centros de cuidado infantil, entre otros. Un alto porcentaje de niños que permanecen en entornos educativos o de cuidado infantil puede indicar un buen acceso a servicios de apoyo, mientras que un alto porcentaje en el hogar puede resaltar la necesidad de fortalecer programas de apoyo familiar.',
     },
     {
-      nombre:
-        'Número de ludotecas o bibliotecas por cada 1.000 niñas y niños ',
+      nombre: 'Número de ludotecas o bibliotecas por cada 1.000 niñas y niños ',
       ruta: 'asistencia-establecimiento-educativo-2-5',
       archivo: 'ya5-3',
       hay_datos: false,
       definicion:
         'Se refiere a la cantidad de centros de juego como ludotectas y otros espacios destinados al juego de niñas y niños de primera infancia, infancia y adolescencia de caracter público. El juego es un derecho  fundamental en el desarrollo integral de las niñas y los niños, que requiere de escenarios significativos de calidad y fácil acceso para todas las comunidades: rurales, indígenas, afros, rom, con discapacidad, entre otras.',
-      metodologia:
-        'No. de espacios de juego/ludecas / No. y niños de 0 a 17 años * 1.000 niñas/os',
+      metodologia: 'No. de espacios de juego/ludecas / No. y niños de 0 a 17 años * 1.000 niñas/os',
       unidad: 'Por cada 1.000 niñas y niñoos',
       desagregacion: 'Municipal',
       interpretacion:
         'Este indicador cuantifica el número de ludotecas y escenarios destinados exclusivamente el juego espontáneo de niñas, niños y adolescentes.',
-      responsable:
-        'Departamento Nacional de Planeación (DNP)',
+      responsable: 'Departamento Nacional de Planeación (DNP)',
       compete_a:
         'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secretarías de Educación.',
     },
@@ -62,10 +60,8 @@ export const ya5: DatosYa = {
       desagregacion: 'Municipal',
       interpretacion:
         'Este indicador cuantifica el número de parques destinados y usados para el juego espontáneo y libre y escenarios públicos seguros  implementados en los diferentes mucipios de Colombia, destinados para que los habitantes puedan jugar en libertad, de acuerdo con el número de habitantes de cada municipio.',
-      responsable:
-        'Ministerio de Educación  y Ministerio del Deporte.',
-      compete_a:
-        'Ministerio de Educación, Ministerio del Deporte y Secretarías de Educación.',
+      responsable: 'Ministerio de Educación  y Ministerio del Deporte.',
+      compete_a: 'Ministerio de Educación, Ministerio del Deporte y Secretarías de Educación.',
     },
     {
       nombre: 'Niños y niñas de 2-12 años que con frecuencia leen u observan libros de cuentos e historias',
@@ -120,4 +116,3 @@ export const ya5: DatosYa = {
     },
   ],
 };
-
