@@ -73,7 +73,8 @@ const archivosYa: DatosIndicadoresListaDescripcion[] = datosYa.indicadores.map((
               <p id="descripcionIndicador">{datosIndicador.explicacion}</p>
               <Buscador />
 
-              <SelectorNivel />
+              {datosIndicador.desagregacion === 'Municipal' && <SelectorNivel />}
+
               <MenuAnios />
             </div>
             <div id="mapa">
