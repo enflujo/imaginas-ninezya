@@ -1,12 +1,4 @@
-import {
-  actualizarUrl,
-  añoSeleccionado,
-  color,
-  datosIndicadorDep,
-  lugaresSeleccionados,
-  nivel,
-  revisarDepartamentos,
-} from '@/utilidades/cerebro';
+import { añoSeleccionado, color, datosIndicadorDep } from '@/utilidades/cerebro';
 import MapaDetalle from './MapaDetalle';
 import type { DatosAño } from '@/tipos';
 import type { Categoria } from '@/tiposCompartidos/compartidos';
@@ -103,7 +95,7 @@ export default class CategoriasRadiales extends MapaDetalle {
       this.crearReferenciaEscala(i);
     }
 
-    this.categorias.forEach((categoria, i) => {
+    this.categorias.forEach((categoria) => {
       this.crearMarca(categoria);
     });
 

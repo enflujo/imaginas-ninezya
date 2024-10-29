@@ -64,6 +64,8 @@ const { alto, meta, umbral } = Astro.props;
     datosIndicadorDep,
     umbral,
     añoSeleccionado,
+    listaCategorias,
+    coloresCategorias,
   } from '@/utilidades/cerebro';
   import { colorPositivo, dimsLineaTiempo as dimsVis } from '@/utilidades/constantes';
   import { convertirEscala } from '@enflujo/alquimia';
@@ -117,13 +119,14 @@ const { alto, meta, umbral } = Astro.props;
 
     listaAños.subscribe((lista) => {
       if (!lista.length) return;
-
       const { año: primerAño } = lista[0];
       const { año: ultimoAño } = lista[lista.length - 1];
       años.primero = +primerAño;
       años.ultimo = +ultimoAño;
 
       crearEjeX();
+
+      lineas.forEach((linea) => linea.actualizar(posicionX, posicionY));
     });
 
     function actualizarMarcaY(grupo: SVGElement, y: number, i: number) {
@@ -314,15 +317,18 @@ const { alto, meta, umbral } = Astro.props;
     function crearEjeX() {
       const lista = listaAños.value;
       const cortarAño = lista.length > 6;
-      const lineaNacional = new Linea(
-        contenedorLineas,
-        'Colombia',
-        lista,
-        obtenerVariableCSS('--fucsiaEsmalte'),
-        visualizaciones.dataset.unidad
-      );
-      lineaNacional.agregar().actualizar(posicionX, posicionY);
-      lineas.push(lineaNacional);
+
+      if (!datosNal.value.categorias) {
+        const lineaNacional = new Linea(
+          contenedorLineas,
+          'Colombia',
+          lista,
+          obtenerVariableCSS('--fucsiaEsmalte'),
+          visualizaciones.dataset.unidad
+        );
+        lineaNacional.agregar().actualizar(posicionX, posicionY);
+        lineas.push(lineaNacional);
+      }
 
       lista.forEach(({ año }) => {
         const grupo = document.createElementNS('http://www.w3.org/2000/svg', 'g');
@@ -355,7 +361,37 @@ const { alto, meta, umbral } = Astro.props;
     }
 
     lugaresSeleccionados.subscribe(async (lugares) => {
-      if (!datosNal.value.maxNal) return;
+      if (datosNal.value.categorias && listaCategorias.value) {
+        if (lineas.length) return;
+
+        const datos: { [llave: string]: DatosPorAñoOrdenado } = {};
+
+        Object.keys(datosNal.value.categorias)
+          .sort()
+          .forEach((año) => {
+            Object.values(datosNal.value.categorias[año]).forEach((valor, i) => {
+              const llave = `c${i + 1}`;
+              if (!datos[llave]) {
+                datos[llave] = [];
+              }
+
+              datos[llave].push({ año, valor: valor ? valor : null });
+            });
+          });
+        console.log(años, años, dimsVis.marcoIz + proporciones.pixeles.x1, proporciones.pixeles.x2);
+
+        Object.values(datos).forEach((datosLinea, i) => {
+          const categoria = listaCategorias.value[i];
+          const color = `rgb(${coloresCategorias[`c${i + 1}`].join(',')})`;
+          const linea = new Linea(contenedorLineas, categoria[0], datosLinea, color, estructura);
+          linea.agregar();
+          lineas.push(linea);
+        });
+
+        escalar();
+        if (!ejeYCreado) crearEjeY();
+        return;
+      }
 
       if (!lugares.length) {
         lineas.forEach((linea) => {

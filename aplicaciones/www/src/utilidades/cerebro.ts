@@ -3,7 +3,7 @@ import type { FeatureCollection, Polygon, MultiPolygon, Position } from 'geojson
 import type { DatosIndicador, DatosPorAñoOrdenado, FuncionColor, LugarSeleccionado } from '@/tipos';
 import { escalaColores, obtenerVariableCSS, pedirDatos } from './ayudas';
 import { colorNegativo, colorNeutro, colorPositivo } from './constantes';
-import type { Categorias, DatosIndicadorNal } from '@/tiposCompartidos/compartidos';
+import type { Categoria, Categorias, DatosIndicadorNal } from '@/tiposCompartidos/compartidos';
 
 export const listaAños = atom<DatosPorAñoOrdenado>([]);
 export const datosDep = map<DatosIndicador>(null);
@@ -27,6 +27,7 @@ export const coloresCategorias = {
   c7: [250, 77, 86], // rojo
   c8: [1, 39, 73], // azul oscuro casi negro
 };
+export const listaCategorias = atom<Categoria[]>([]);
 
 const cargador = document.getElementById('cargador');
 let nombreArchivo = '';
@@ -138,7 +139,29 @@ export async function cargarDatos() {
 
     //console.log(nal.categorias);
     if (nal.categorias) {
+      const datosCategorias = JSON.parse(datosArchivo.categorias) as Categoria[];
+
+      if (datosCategorias) {
+        listaCategorias.set(datosCategorias);
+      }
+
       color = definirColorCategorias();
+      const lineaNacionalC1: { [año: string]: number } = {};
+      let maxNal = 0;
+      let minNal = Infinity;
+      Object.keys(nal.categorias)
+        .sort()
+        .forEach((año) => {
+          Object.values(nal.categorias[año]).forEach((valor) => {
+            if (maxNal < valor) maxNal = valor;
+            if (minNal > valor) minNal = valor;
+          });
+          lineaNacionalC1[año] = nal.categorias[año].c1;
+        });
+
+      nal.maxNal = maxNal;
+      nal.minNal = minNal;
+      nal.datos = lineaNacionalC1;
     } else {
       color = definirColor(nal.ascendente);
     }

@@ -82,13 +82,7 @@ const archivosYa: DatosIndicadoresListaDescripcion[] = datosYa.indicadores.map((
             </div>
           </div>
 
-          {datosIndicador.unidad === 'Categorias' ? (
-            <div>
-              <p>Categorias</p>
-            </div>
-          ) : (
-            <LineaTiempo alto={25} meta={datosIndicador.explicacion_umbral} umbral={datosIndicador.umbral} />
-          )}
+          <LineaTiempo alto={25} meta={datosIndicador.explicacion_umbral} umbral={datosIndicador.umbral} />
         </div>
 
         <div id="comparativo" class="columna" />
