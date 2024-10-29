@@ -166,6 +166,7 @@ export default class CategoriasRadiales extends MapaDetalle {
     }
   }
 
+  // Pintar formitas en radar
   async pintarMapa(): Promise<void> {
     if (!this.categorias.length) return;
     const año = añoSeleccionado.get();
@@ -175,8 +176,8 @@ export default class CategoriasRadiales extends MapaDetalle {
     const ajusteAngulo = Math.PI / 2;
     const radio = (valor: number) => {
       return {
-        x: convertirEscala(valor, 0, 100, 0, this.centro.x),
-        y: convertirEscala(valor, 0, 100, 0, this.centro.y),
+        x: convertirEscala(valor, 0, 100, 2, this.centro.x),
+        y: convertirEscala(valor, 0, 100, 2, this.centro.y),
       };
     };
 

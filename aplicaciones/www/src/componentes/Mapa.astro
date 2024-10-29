@@ -25,6 +25,40 @@ const { ancho, alto } = Astro.props;
     <span class="marcaLeyenda umbral"></span>
     <span class="marcaLeyenda positivo"></span>
   </div>
+  <div id="leyendaCategorias">
+    <p class="infoCategoria">
+      <span class="referencia colegio"></span>
+      Colegio
+    </p>
+    <p class="infoCategoria">
+      <span class="referencia casa"></span>
+      Casa
+    </p>
+    <p class="infoCategoria">
+      <span class="referencia trabajo"></span>
+      Trabajo
+    </p>
+    <p class="infoCategoria">
+      <span class="referencia ninero"></span>
+      Niñero/a
+    </p>
+    <p class="infoCategoria">
+      <span class="referencia mayor"></span>
+      Mayor
+    </p>
+    <p class="infoCategoria">
+      <span class="referencia menor"></span>
+      Menor
+    </p>
+    <p class="infoCategoria">
+      <span class="referencia solo"></span>
+      Solo
+    </p>
+    <p class="infoCategoria">
+      <span class="referencia otro"></span>
+      Otro
+    </p>
+  </div>
 </div>
 
 <script>
@@ -58,6 +92,8 @@ const { ancho, alto } = Astro.props;
     const seleccionados = document.getElementById('seleccionados') as HTMLElement & SVGGElement;
     const informacion = document.getElementById('informacion');
     const leyendaMapa = document.getElementById('leyendaMapa');
+    const leyendaCategorias = document.getElementById('leyendaCategorias');
+    const leyendaColombia = document.getElementById('leyendaColombia');
 
     let mapearCoordenadas: IMapearCoordenadas;
     let extremosGeo: ExtremosCoordenadas;
@@ -214,12 +250,17 @@ const { ancho, alto } = Astro.props;
       zonas = {};
 
       if (!umbral) {
-        leyendaMapa.style.background = `linear-gradient(90deg, ${
-          ascendente ? colorPositivo : colorNegativo
-        } 0%, ${colorNeutro} 100%)`;
-        leyendaMapa.querySelector<HTMLSpanElement>('.alerta').innerText = ascendente ? 'Positivo' : 'Alerta';
-        leyendaMapa.querySelector<HTMLSpanElement>('.umbral').classList.add('invisible');
-        leyendaMapa.querySelector<HTMLSpanElement>('.positivo').innerText = '0';
+        if (datosNal.value.categorias) {
+          leyendaCategorias.style.display = 'grid';
+          leyendaColombia.classList.remove('colombia');
+        } else {
+          leyendaMapa.style.background = `linear-gradient(90deg, ${
+            ascendente ? colorPositivo : colorNegativo
+          } 0%, ${colorNeutro} 100%)`;
+          leyendaMapa.querySelector<HTMLSpanElement>('.alerta').innerText = ascendente ? 'Positivo' : 'Alerta';
+          leyendaMapa.querySelector<HTMLSpanElement>('.umbral').classList.add('invisible');
+          leyendaMapa.querySelector<HTMLSpanElement>('.positivo').innerText = '0';
+        }
       } else {
         leyendaMapa.style.background = `linear-gradient(90deg, ${colorNegativo} 0%, ${colorNeutro} 50%, ${colorPositivo} 100%)`;
         leyendaMapa.querySelector<HTMLSpanElement>('.alerta').innerText = 'Alerta';
@@ -474,6 +515,56 @@ const { ancho, alto } = Astro.props;
 </style>
 
 <style lang="scss">
+  #leyendaCategorias {
+    display: none;
+    font-size: 0.7em;
+    grid-template-columns: 70px 50px 70px;
+    grid-template-rows: 1em auto 1em;
+    column-gap: 0.8em;
+
+    p {
+      margin: 0;
+    }
+
+    .infoCategoria {
+      display: flex;
+      align-items: center;
+    }
+    .referencia {
+      display: block;
+      height: 0.9em;
+      width: 0.9em;
+      border-radius: 50%;
+      margin: 0.3em;
+
+      &.colegio {
+        background-color: var(--c1);
+      }
+
+      &.casa {
+        background-color: var(--c2);
+      }
+      &.trabajo {
+        background-color: var(--c3);
+      }
+      &.ninero {
+        background-color: var(--c4);
+      }
+      &.mayor {
+        background-color: var(--c5);
+      }
+      &.menor {
+        background-color: var(--c6);
+      }
+      &.solo {
+        background-color: var(--c7);
+      }
+      &.otro {
+        background-color: var(--c8);
+      }
+    }
+  }
+
   #leyendaMapa {
     width: 200px;
     height: 7px;
