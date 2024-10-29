@@ -14,7 +14,7 @@ export const ya9: DatosYa = {
       ruta: 'detencion-privativa',
       archivo: 'ya9-1',
       hay_datos: true,
-      umbral: ,
+      umbral: 0,
       explicacion_umbral: 'No se define un umbral fijo; la meta se orienta hacia la mejora continua en la reducción del uso de medidas privativas de la libertad, en línea con los principios de los Objetivos de Desarrollo Sostenible (ODS) 16, que busca "Paz, justicia e instituciones sólidas." Este objetivo promueve sociedades pacíficas e inclusivas, acceso a la justicia para todos y la construcción de instituciones eficaces y responsables.',
       explicacion: 'El indicador mide la proporción de adolescentes en el SRPA que son sometidos a medidas de privación de libertad, lo que refleja un enfoque más punitivo en el sistema penal juvenil.',
       definicion: 'La tasa se calcula como el número de adolescentes con medida privativa de libertad en el SRPA (numerador), dividido por el total de ingresos al sistema (denominador), multiplicado por 100.',
@@ -31,7 +31,7 @@ export const ya9: DatosYa = {
       ruta: 'detencion-no-privativa',
       archivo: 'ya9-2',
       hay_datos: true,
-      umbral: ,
+      umbral: 0,
       explicacion_umbral: 'No se define un umbral fijo; la meta se orienta hacia la mejora continua en la adopción de medidas alternativas a la privación de libertad, en línea con los principios de los Objetivos de Desarrollo Sostenible (ODS) 16, que busca "Paz, justicia e instituciones sólidas." Este objetivo promueve sociedades pacíficas e inclusivas, acceso a la justicia para todos y la construcción de instituciones eficaces y responsables.',
       explicacion: 'El indicador mide la proporción de adolescentes en el SRPA que no son sometidos a medidas de privación de libertad, lo que refleja un enfoque orientado a la rehabilitación y reintegración social de los jóvenes.',
       definicion: 'La tasa se calcula como el número de adolescentes con medida no privativa de libertad en el SRPA (numerador), dividido por el total de ingresos al sistema (denominador), multiplicado por 100.',
@@ -48,7 +48,7 @@ export const ya9: DatosYa = {
       ruta: 'trabajo-infantil',
       archivo: 'ya9-3',
       hay_datos: true,
-      umbral: ,
+      umbral: 0,
       definicion:
         'Este indicador se refiere al porcentaje de niñas, niños y adolescentes que han ingresado a procesos administrativos de restablecimiento de derechos debido a ser víctimas de trabajo infantil. Estos procesos buscan garantizar la protección y recuperación de las víctimas, proporcionándoles acceso a apoyo integral, rehabilitación y prevención de futuros riesgos. Más información: https://www.icbf.gov.co/bienestar/proteccion/responsabilidad-penal',
       metodologia: 'No. total de casos de niñas y adolescentes víctimas de trabajo infantil que ingresaron a proceso administrativo de restablecimiento de derechos / No. total de niñas, niños y adolescentes ingresaron a proceso administrativo de restablecimiento de derechos en un periodo y territorios específicos. x 100',
@@ -65,15 +65,15 @@ export const ya9: DatosYa = {
       ruta: 'violencia-sexual-explotacion-comercial',
       archivo: 'ya9-3',
       hay_datos: true,
-      umbral: ,
+      umbral: 0,
       definicion:
-        'Este indicador se refiere al porcentaje de niñas, niños y adolescentes que han ingresado a procesos administrativos de restablecimiento de derechos debido a ser víctimas de explotación secual comercial. Estos procesos buscan garantizar la protección y recuperación de las víctimas, proporcionándoles acceso a apoyo integral, rehabilitación y prevención de futuros riesgos. Más información: https://www.icbf.gov.co/bienestar/proteccion/responsabilidad-penal'
+        'Este indicador se refiere al porcentaje de niñas, niños y adolescentes que han ingresado a procesos administrativos de restablecimiento de derechos debido a ser víctimas de explotación secual comercial. Estos procesos buscan garantizar la protección y recuperación de las víctimas, proporcionándoles acceso a apoyo integral, rehabilitación y prevención de futuros riesgos. Más información: https://www.icbf.gov.co/bienestar/proteccion/responsabilidad-penal',
       metodologia: 'No. total de casos de niñas y adolescentes víctimas de explotación sexual comercial que ingresaron a proceso administrativo de restablecimiento de derechos / No. total de niñas, niños y adolescentes ingresaron a proceso administrativo de restablecimiento de derechos en un periodo y territorios específicos. x 100',
       unidad: 'Porcentaje',
       fuente_numerador: 'Instituto Colombiano de Bienestar Familiar (ICBF)',
       fuente_denominador: 'Instituto Colombiano de Bienestar Familiar (ICBF)',
       desagregacion: 'Departamental',
-      contexto: 'Este indicador refleja la atención institucional y respuesta a casos de violencia y explotación sexual contra niñas y adolescentes en procesos de protección de derechos en el país.'
+      contexto: 'Este indicador refleja la atención institucional y respuesta a casos de violencia y explotación sexual contra niñas y adolescentes en procesos de protección de derechos en el país.',
       interpretacion:
         'Un valor del 15% indica que 15 de cada 100 niñas, niños y adolescentes ingresaron al PARD por motivos de explotación sexual comercial en un momento y territorios específicos.',
 
