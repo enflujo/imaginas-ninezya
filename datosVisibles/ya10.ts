@@ -13,6 +13,7 @@ export const ya10: DatosYa = {
       ruta: 'delito-sexual-conflicto',
       archivo: 'ya10-1',
       hay_datos: true,
+      umbral: 0,
       explicacion_umbral:
         'De acuerdo con el Plan Nacional de Desarrollo 2022 - 2026 no hay una meta para este indicador. Sin embargo el umbral debe ser cero.',
       explicacion:
@@ -34,6 +35,7 @@ export const ya10: DatosYa = {
       ruta: 'reclutamiento-menores',
       archivo: 'ya10-2',
       hay_datos: true,
+      umbral: 0,
       explicacion_umbral:
         'De acuerdo con el Plan Nacional de Desarrollo 2022 - 2026 no hay una meta para este indicador. Sin embargo el umbral debe ser cero.',
       explicacion: 'Indica el número de menores de edad que fueron reclutados por una estructura criminal.',
@@ -55,6 +57,7 @@ export const ya10: DatosYa = {
       ruta: 'ataques-armados',
       archivo: 'ya10-3',
       hay_datos: true,
+      umbral: 0,
       explicacion_umbral:
         'De acuerdo con el Plan Nacional de Desarrollo 2022 - 2026 no hay una meta para este indicador. Sin embargo el umbral debe ser cero.',
       explicacion: 'Indica el número total de actos terroristas.',
@@ -78,6 +81,7 @@ export const ya10: DatosYa = {
       ruta: 'artefactos-explosivos',
       archivo: 'ya10-4',
       hay_datos: true,
+      umbral: 0,
       explicacion_umbral:
         'De acuerdo con el Plan Nacional de Desarrollo 2022 - 2026 no hay una meta para este indicador. Sin embargo el umbral debe ser cero.',
       explicacion: 'Indica el número total de ocurrencias con artefactos explosivos.',
@@ -100,6 +104,7 @@ export const ya10: DatosYa = {
       ruta: 'menores-secuestrados',
       archivo: 'ya10-5',
       hay_datos: true,
+      umbral: 0,
       explicacion_umbral:
         'De acuerdo con el Plan Nacional de Desarrollo 2022 - 2026 no hay una meta para este indicador. Sin embargo el umbral debe ser cero.',
       explicacion: 'Indica el número de secuestros a menores de edad realizados por una estructura criminal.',
