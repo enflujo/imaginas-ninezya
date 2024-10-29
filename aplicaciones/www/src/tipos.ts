@@ -1,3 +1,4 @@
+import type { Categorias } from '@/tiposCompartidos/compartidos';
 import type { Position } from 'geojson';
 
 export interface GeometriaMapa {
@@ -33,9 +34,9 @@ export interface ExtremosCoordenadas {
 export type DatosAño = [codigo: string, valor: number][];
 export type DatosIndicador = { [año: string]: DatosAño };
 
-export type DatosPorAñoOrdenado = { año: string; valor: number | null }[];
+export type DatosPorAñoOrdenado = { año: string; valor: number }[];
 
-export type FuncionColor = (valor: number) => string;
+export type FuncionColor = (valor: number | Categorias) => string;
 
 export interface LugarSeleccionado {
   nombre: string;

@@ -45,6 +45,7 @@ const { ancho, alto } = Astro.props;
     revisarDepartamentos,
     datosNal,
     umbral,
+    coloresCategorias,
   } from '@/utilidades/cerebro';
   import type { IMapearCoordenadas } from '@enflujo/alquimia/libreria/modulos/tipos';
   import { colorNegativo, colorNeutro, colorPositivo } from '@/utilidades/constantes';
@@ -72,10 +73,12 @@ const { ancho, alto } = Astro.props;
     let datosParaPintar: FeatureCollection; // Esto puede ser departamentos o municipios
 
     mapa.onmousemove = (evento) => {
+      const { top, height } = informacion.getBoundingClientRect();
       const x = evento.clientX;
       const y = evento.clientY;
+
       Object.assign(informacion.style, {
-        top: `${y}px`,
+        top: `${y < 145 ? y + height + 30 : y}px`,
         left: `${x}px`,
       });
     };
@@ -188,8 +191,13 @@ const { ancho, alto } = Astro.props;
         const zona = zonas[codigo];
         if (zona) {
           if (valor) {
-            zona.svg.setAttribute('style', `fill: ${color(valor)}`);
-            zona.valor = +valor;
+            if (datosNal.value.categorias) {
+              zona.svg.setAttribute('style', `fill: ${color(valor)}`);
+              zona.valor = valor;
+            } else {
+              zona.svg.setAttribute('style', `fill: ${color(valor)}`);
+              zona.valor = +valor;
+            }
           } else {
             zona.svg.setAttribute('style', 'fill: url(#sinInfo)');
             zona.valor = null;
@@ -242,23 +250,69 @@ const { ancho, alto } = Astro.props;
 
             informacion.classList.add('visible');
 
-            let descripcion = '';
-
-            if (valor) {
-              if (estructura === 'porcentaje') {
-                descripcion = '%';
-              } else if (estructura === 'tasa') {
-                descripcion = ` ${unidad}`;
+            // Cuando es por categorías
+            if (datosNal.value.categorias) {
+              if (valor) {
+                const colores = { c1: '', c2: '', c3: '', c4: '', c5: '', c6: '', c7: '', c8: '' };
+                for (const categoria in coloresCategorias) {
+                  colores[categoria] = `rgb(${coloresCategorias[categoria].join(',')})`;
+                }
+                informacion.classList.add('categorias');
+                informacion.innerHTML = `<p class="negrita">${lugar.properties.nombre}</p> 
+              <p class="infoCategoria">
+                <span class="valorMiniColombina">Colegio: ${valor.c1 || 0}%</span>
+                <span class="miniColombina" style="width:${valor.c1 || 0}%;background-color:${colores.c1}"></span>  
+              </p>
+              <p class="infoCategoria">
+                <span class="valorMiniColombina">Casa: ${valor.c2 || 0}%</span>
+                <span class="miniColombina" style="width:${valor.c2 || 0}%;background-color:${colores.c2}"></span>  
+              </p>
+              <p class="infoCategoria">
+                <span class="valorMiniColombina">Trabajo: ${valor.c3 || 0}%</span>
+                <span class="miniColombina" style="width:${valor.c3 || 0}%;background-color:${colores.c3}"></span>  
+              </p>
+              <p class="infoCategoria">
+                <span class="valorMiniColombina">Niñero/a: ${valor.c4 || 0}%</span>
+                <span class="miniColombina" style="width:${valor.c4 || 0}%;background-color:${colores.c4}"></span>  
+              </p>
+              <p class="infoCategoria">
+                <span class="valorMiniColombina">Mayor: ${valor.c5 || 0}%</span>
+                <span class="miniColombina" style="width:${valor.c5 || 0}%;background-color:${colores.c5}"></span>  
+              </p>
+              <p class="infoCategoria">
+                <span class="valorMiniColombina">Menor: ${valor.c6 || 0}%</span>
+                <span class="miniColombina" style="width:${valor.c6 || 0}%;background-color:${colores.c6}"></span>  
+              </p>
+              <p class="infoCategoria">
+                <span class="valorMiniColombina">Solo: ${valor.c7 || 0}%</span>
+                <span class="miniColombina" style="width:${valor.c7 || 0}%;background-color:${colores.c7}"></span>  
+              </p>
+              <p class="infoCategoria">
+                <span class="valorMiniColombina">Otro: ${valor.c8 || 0}%</span>
+                <span class="miniColombina" style="width:${valor.c8 || 0}%;background-color:${colores.c8}"></span>  
+              </p>`;
+              } else {
+                informacion.innerHTML = '';
               }
-            }
-
-            const textoInfo = !valor ? 'Sin datos' : `${valor}${descripcion}`;
-
-            if (nivel.get() === 'mun') {
-              informacion.innerText = `${lugar.properties.nombre} (${lugar.properties.dep}): ${textoInfo}`;
             } else {
-              informacion.innerText = `${lugar.properties.nombre}: ${textoInfo}`;
-              zona.classList.add('departamento');
+              // Cuando es por valor único, la mayoría de indicadores usan este
+              let descripcion = '';
+
+              if (valor) {
+                if (estructura === 'porcentaje') {
+                  descripcion = '%';
+                } else if (estructura === 'tasa') {
+                  descripcion = ` ${unidad}`;
+                }
+              }
+
+              const textoInfo = !valor ? 'Sin datos' : `${valor}${descripcion}`;
+              if (nivel.get() === 'mun') {
+                informacion.innerText = `${lugar.properties.nombre} (${lugar.properties.dep}): ${textoInfo}`;
+              } else {
+                informacion.innerText = `${lugar.properties.nombre}: ${textoInfo}`;
+                zona.classList.add('departamento');
+              }
             }
           };
 
@@ -375,6 +429,36 @@ const { ancho, alto } = Astro.props;
     .seleccionada {
       stroke-opacity: 1;
       stroke-width: 2px;
+    }
+  }
+
+  #informacion {
+    pointer-events: none;
+    p {
+      margin: 0;
+    }
+
+    .negrita {
+      font-weight: bold;
+    }
+
+    .infoCategoria {
+      font-size: 0.65em;
+      margin-top: 3px;
+      position: relative;
+    }
+
+    .valorMiniColombina {
+      z-index: 2;
+    }
+
+    .miniColombina {
+      display: block;
+      position: absolute;
+      top: 0;
+      height: 0.85em;
+      opacity: 0.3;
+      z-index: 1;
     }
   }
 
