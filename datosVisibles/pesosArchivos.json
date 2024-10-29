@@ -124,11 +124,11 @@
     "nombre": "ya3-9-repitencia-primaria.xlsx"
   },
   "ya4-1": {
-    "peso": "204.59 kB",
+    "peso": "214.73 kB",
     "nombre": "ya4-1-mortalidad-eda.xlsx"
   },
   "ya4-2": {
-    "peso": "280.74 kB",
+    "peso": "292.27 kB",
     "nombre": "ya4-2-mortalidad-ira.xlsx"
   },
   "ya4-3": {
@@ -141,7 +141,7 @@
   },
   "ya5-1": {
     "peso": "39.43 kB",
-    "nombre": "ya5-1-dificultad-funcional-2-5.xlsx"
+    "nombre": "ya5-1-tiempo-permanencia-semana.xlsx"
   },
   "ya7-1": {
     "peso": "13.82 kB",
@@ -161,26 +161,26 @@
   },
   "ya8-3": {
     "peso": "181.36 kB",
-    "nombre": "ya8-3-homicidios-menores.xlsx"
+    "nombre": "ya8-3-violencia-intrafamiliar.xlsx"
   },
   "ya8-4": {
     "peso": "229.76 kB",
-    "nombre": "ya8-4-....xlsx"
+    "nombre": "ya8-4-violencia-interpersonal.xlsx"
   },
   "ya9-1": {
     "peso": "13.9 kB",
-    "nombre": "ya9-1-detencion-no-privativa.xlsx"
+    "nombre": "ya9-1-detencion-privativa.xlsx"
   },
   "ya9-2": {
     "peso": "15.01 kB",
-    "nombre": "ya9-2-tiempo-internamiento.xlsx"
+    "nombre": "ya9-2-detencion-no-privativa.xlsx"
   },
   "ya9-3": {
-    "peso": "14.94 kB",
-    "nombre": "ya9-3-justicia-restaurativa.xlsx"
+    "peso": "17.89 kB",
+    "nombre": "ya9-3-trabajo-infantil.xlsx"
   },
   "ya9-4": {
-    "peso": "18.21 kB",
-    "nombre": "ya9-4-cae-acceso-educativo.xlsx"
+    "peso": "15.27 kB",
+    "nombre": "ya9-4-violencia-sexual-explotacion-comercial.xlsx"
   }
 }
