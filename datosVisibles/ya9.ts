@@ -5,8 +5,7 @@ export const ya9: DatosYa = {
     'Adolescentes con justicia restaurativa y pedagógica (Sistema de Responsabilidad Penal para Adolescentes - SRPA)',
   imagen: 'ya9',
   ruta: 'justicia-restaurativa',
-  definicion:
-    'Es crucial que los 15.4 millones de menores en Colombia participen en la construcción de una cultura de paz tras el conflicto armado. Reconociendo sus experiencias y dándoles voz activa en el diseño de acciones para la reconciliación, la niñez desempeña un papel esencial. Los gobiernos locales, especialmente en los 170 municipios afectados por el conflicto, deben proporcionarles espacio, priorizando la restitución de derechos y el interés superior de la niñez según normativas nacionales e internacionales. **Los indicadores de este YA nunca fueron proporcionados por el ICBF.',
+  definicion: '...',
   hay_datos: true,
   indicadores: [
     {
