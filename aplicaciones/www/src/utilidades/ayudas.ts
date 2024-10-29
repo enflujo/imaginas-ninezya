@@ -1,6 +1,8 @@
 import type { IMapearCoordenadas } from '@/tipos';
 import type { DatosIndicadorNal } from '@/tiposCompartidos/compartidos';
 import type { MultiPolygon, Polygon, Position } from 'geojson';
+
+export const esNumero = (valor: string): boolean => !isNaN(parseInt(valor));
 /**
  * Convierte un valor de una escala a otra.
  *
