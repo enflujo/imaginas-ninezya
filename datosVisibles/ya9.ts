@@ -64,10 +64,14 @@ export const ya9: DatosYa = {
       archivo: 'ya9-3',
       hay_datos: true,
       umbral: 0,
+      explicacion_umbral:
+        'No se define un umbral fijo; la meta se orienta hacia la mejora continua en la reducción del uso de medidas privativas de la libertad, en línea con los principios de los Objetivos de Desarrollo Sostenible (ODS) 16, que busca "Paz, justicia e instituciones sólidas."',
+      explicacion:
+        'Este indicador mide el porcentaje de niñas, niños y adolescentes de 5 a 17 años que ingresaron a un Proceso de Restablecimiento de Derechos debido a situaciones de trabajo infantil.',
       definicion:
         'Este indicador se refiere al porcentaje de niñas, niños y adolescentes que han ingresado a procesos administrativos de restablecimiento de derechos debido a ser víctimas de trabajo infantil. Estos procesos buscan garantizar la protección y recuperación de las víctimas, proporcionándoles acceso a apoyo integral, rehabilitación y prevención de futuros riesgos. Más información: https://www.icbf.gov.co/bienestar/proteccion/responsabilidad-penal',
       metodologia:
-        'No. total de casos de niñas y adolescentes víctimas de trabajo infantil que ingresaron a proceso administrativo de restablecimiento de derechos / No. total de niñas, niños y adolescentes ingresaron a proceso administrativo de restablecimiento de derechos en un periodo y territorios específicos. x 100',
+        'No. total de casos de niñas y adolescentes víctimas de trabajo infantil que ingresaron a proceso administrativo de restablecimiento de derechos / No. total de niñas, niños y adolescentes que ingresaron a proceso administrativo de restablecimiento de derechos en un periodo y territorios específicos. x 100',
       unidad: 'Porcentaje',
       fuente_numerador: 'Instituto Colombiano de Bienestar Familiar (ICBF)',
       fuente_denominador: 'Instituto Colombiano de Bienestar Familiar (ICBF)',
@@ -81,21 +85,25 @@ export const ya9: DatosYa = {
       nombre:
         'Porcentaje de niñas, niños y adolescentes (5-17 años) que ingresaron a Proceso de Restablecimiento de Derechos por Explotación Sexual Comercial',
       ruta: 'violencia-sexual-explotacion-comercial',
-      archivo: 'ya9-3',
+      archivo: 'ya9-4',
       hay_datos: true,
       umbral: 0,
+      explicacion_umbral:
+        'Este indicador mide el porcentaje de niñas, niños y adolescentes de 5 a 17 años que ingresaron a un Proceso de Restablecimiento de Derechos debido a situaciones de explotación sexual comercial.',
+      explicacion:
+        'Este indicador mide el porcentaje de niñas, niños y adolescentes de 5 a 17 años que ingresaron a un Proceso de Restablecimiento de Derechos debido a situaciones de explotación sexual comercial.',
       definicion:
-        'Este indicador se refiere al porcentaje de niñas, niños y adolescentes que han ingresado a procesos administrativos de restablecimiento de derechos debido a ser víctimas de explotación secual comercial. Estos procesos buscan garantizar la protección y recuperación de las víctimas, proporcionándoles acceso a apoyo integral, rehabilitación y prevención de futuros riesgos. Más información: https://www.icbf.gov.co/bienestar/proteccion/responsabilidad-penal',
+        'Este indicador se refiere al porcentaje de niñas, niños y adolescentes que han ingresado a procesos administrativos de restablecimiento de derechos debido a ser víctimas de explotación sexual comercial. Estos procesos buscan garantizar la protección y recuperación de las víctimas, proporcionándoles acceso a apoyo integral, rehabilitación y prevención de futuros riesgos. Más información: https://www.icbf.gov.co/bienestar/proteccion/responsabilidad-penal',
       metodologia:
-        'No. total de casos de niñas y adolescentes víctimas de explotación sexual comercial que ingresaron a proceso administrativo de restablecimiento de derechos / No. total de niñas, niños y adolescentes ingresaron a proceso administrativo de restablecimiento de derechos en un periodo y territorios específicos. x 100',
+        'No. total de casos de niñas y adolescentes víctimas de explotación sexual comercial que ingresaron a proceso administrativo de restablecimiento de derechos / No. total de niñas, niños y adolescentes que ingresaron a proceso administrativo de restablecimiento de derechos en un periodo y territorios específicos. x 100',
       unidad: 'Porcentaje',
       fuente_numerador: 'Instituto Colombiano de Bienestar Familiar (ICBF)',
       fuente_denominador: 'Instituto Colombiano de Bienestar Familiar (ICBF)',
       desagregacion: 'Departamental',
       contexto:
-        'Este indicador refleja la atención institucional y respuesta a casos de violencia y explotación sexual contra niñas y adolescentes en procesos de protección de derechos en el país.',
+        'Este indicador refleja la atención institucional y la respuesta a casos de violencia y explotación sexual comercial contra niñas, niños y adolescentes en procesos de protección de derechos en el país.',
       interpretacion:
-        'Un valor del 15% indica que 15 de cada 100 niñas, niños y adolescentes ingresaron al PARD por motivos de explotación sexual comercial en un momento y territorios específicos.',
+        'Un valor del 15% indica que 15 de cada 100 niñas, niños y adolescentes ingresan al PARD por motivos de explotación sexual comercial en un momento y territorios específicos.',
     },
   ],
 };
