@@ -62,7 +62,7 @@ export const ya1: DatosYa = {
       definicion:
         'Indica el número de defunciones ocurridas en niños menores de 5 años por cada 1000 nacidos vivos en un periodo y territorio determinados.',
       metodologia:
-        'Número de muertes de menores de 5 años en un periodo y territorio específicos / Número de nacidos vivos en el mismo periodo y territorio',
+        'No. total de muertes de menores de 5 años en un periodo y territorio específicos / No. total de nacidos vivos en el mismo periodo y territorio',
       unidad: 'Por cada 1000 nacimientos',
       fuente_numerador: 'CUBO INDICADORES EEVV',
       fuente_denominador: 'CUBO INDICADORES EEVV',
@@ -83,7 +83,7 @@ export const ya1: DatosYa = {
       explicacion: 'Indica el número de nacidos vivos con cuatro o más controles prenatales.',
       definicion: 'Proporción de nacidos vivos con 4 o más controles prenatales.',
       metodologia:
-        'Número de nacidos vivos cuyas gestantes asistieron a 4 o más controles prenatales / Total de nacidos vivos',
+        'No. total de nacidos vivos cuyas gestantes asistieron a 4 o más controles prenatales / No. Total de nacidos vivos',
       unidad: 'Porcentaje',
       fuente_numerador: 'CUBO INDICADORES EEVV',
       fuente_denominador: 'CUBO INDICADORES EEVV',
@@ -105,7 +105,7 @@ export const ya1: DatosYa = {
       definicion:
         'Indica el número de niños menores de 5 años por cada 100.000 que padecen de desnutrición aguda en un momento y territorio determinado.',
       metodologia:
-        'Número de niños menores de 5 años que sufren de desnutrición aguda en un periodo y territorio específicos /  Número de nacidos vivos menores de 5 años en el mismo periodo y territorio',
+        'No. total de niños menores de 5 años que sufren de desnutrición aguda en un periodo y territorio específicos / No. total de nacidos vivos menores de 5 años en el mismo periodo y territorio',
       unidad: 'Por cada 100.000 nacidos vivos',
       fuente_numerador: 'SIVIGILA',
       fuente_denominador: 'CUBO INDICADORES EEVV',
@@ -127,12 +127,12 @@ export const ya1: DatosYa = {
       definicion:
         'Indica la proporción de nacidos vivos a término (37 semanas o más) que nacieron con peso inferior a 2.499 gramos en un momento y territorio específicos, con respecto al total de nacidos vivos en el mismo periodo y lugar.',
       metodologia:
-        'Se desconoce, metodología propia del Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE)',
-      unidad: 'Porcentaje',
+        'No. de nacidos vivos con peso al nacer menor a 2,500 gramos / No. total de nacidos vivos en el mismo periodo y área geográfica específica x 100.',
+      unidad: 'Tasa',
       fuente_numerador:
-        'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE',
+        'Estadísticas vitales DANE- CUADRO 6 - Nacimientos por peso al nacer, según departamento y área de residencia de la madre - Total de NV con peso inferior a 2.500gr',
       fuente_denominador:
-        'Centro de Estudios sobre Desarrollo Económico de la Facultad de Economía de la Universidad de los Andes (CEDE) con base a la C600-DANE',
+        'Estadísticas vitales DANE- CUADRO 6 - Nacimientos por peso al nacer, según departamento y área de residencia de la madre - Total de Nacidos Vivos',
       desagregacion: 'Municipal',
       contexto:
         'El bajo peso al nacer constituye un grave problema de salud pública, reflejando condiciones subóptimas de salud materna y gestacional. Está estrechamente vinculado a un mayor riesgo de complicaciones neonatales, como una mayor tasa de mortalidad infantil y retrasos en el desarrollo neurocognitivo. Además, se asocia con la programación fetal adversa, lo que predispone al individuo a padecer enfermedades crónicas no transmisibles, como trastornos cardiovasculares y metabólicos, a lo largo de su ciclo de vida. Esta carga de morbilidad conlleva implicaciones epidemiológicas y económicas significativas, incrementando la demanda de servicios de salud y afectando el capital humano a largo plazo.',

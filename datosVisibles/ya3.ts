@@ -109,8 +109,8 @@ export const ya3: DatosYa = {
       metodologia:
         'Número total de estudiantes matriculados en transición en edad teórica para cursar este grado (6-10 años) / Total de la población correspondiente a esa misma edad en el mismo periodo y territorio',
       unidad: 'Porcentaje',
-      fuente_numerador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística',
-      fuente_denominador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística',
+      fuente_numerador: 'Ministerio de Educación Nacional (MEN) - Grupo de Análisis e Información Estadística',
+      fuente_denominador: 'Ministerio de Educación Nacional  (MEN) - Grupo de Análisis e Información Estadística',
       desagregacion: 'Municipal',
       contexto:
         'Las tasas de cobertura permiten medir la capacidad del sistema educativo para atender la demanda. Por otro lado, la base del aprendizaje se establece principalmente en los primeros años de vida, antes de que los niños ingresen a la escuela primaria. Aquellos que enfrentan dificultades en estas etapas iniciales generalmente no logran alcanzar el nivel de sus compañeros, lo que perpetúa un ciclo de bajo rendimiento y elevadas tasas de deserción escolar, manteniendo desventajas preexistentes en las poblaciones más vulnerables. <br/><br/> Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
@@ -131,8 +131,8 @@ export const ya3: DatosYa = {
       metodologia:
         'Número total de estudiantes matriculados en transición en edad teórica para cursar este grado (15-16 años) / Total de la población correspondiente a esa misma edad en el mismo periodo y territorio',
       unidad: 'Porcentaje',
-      fuente_numerador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística',
-      fuente_denominador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística',
+      fuente_numerador: 'Ministerio de Educación Nacional (MEN) - Grupo de Análisis e Información Estadística',
+      fuente_denominador: 'Ministerio de Educación Nacional (MEN) - Grupo de Análisis e Información Estadística',
       desagregacion: 'Municipal',
       contexto:
         'Las tasas de cobertura permiten medir la capacidad del sistema educativo para atender la demanda. Por otro lado, la base del aprendizaje se establece principalmente en los primeros años de vida, antes de que los niños ingresen a la escuela primaria. Aquellos que enfrentan dificultades en estas etapas iniciales generalmente no logran alcanzar el nivel de sus compañeros, lo que perpetúa un ciclo de bajo rendimiento y elevadas tasas de deserción escolar, manteniendo desventajas preexistentes en las poblaciones más vulnerables. <br/><br/> Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
@@ -153,8 +153,8 @@ export const ya3: DatosYa = {
       metodologia:
         'Número total de estudiantes que reprobaron primaria / Total de estudiantes que se encuentran matriculados en primaria en el mismo periodo y territorio',
       unidad: 'Porcentaje',
-      fuente_numerador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística',
-      fuente_denominador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística',
+      fuente_numerador: 'Ministerio de Educación Nacional (MEN) - Grupo de Análisis e Información Estadística',
+      fuente_denominador: 'Ministerio de Educación Nacional (MEN) - Grupo de Análisis e Información Estadística',
       desagregacion: 'Municipal',
       contexto:
         'La tasa de reprobación constituye un indicador que refleja el porcentaje de estudiantes inscritos que no lograron superar los requisitos académicos establecidos en los programas educativos de cierto nivel, debiendo repetir el curso. Esta situación conlleva implicaciones tanto emocionales como sociales para los alumnos, pudiendo incluso llevar, en situaciones extremas, a la deserción educativa, a pesar de la opción de repetir el nivel. Además, la reprobación evidencia un bajo rendimiento escolar y puede indicar desigualdades en el proceso de aprendizaje, siendo la principal causa del fracaso educativo y un posible indicativo de la baja calidad educativa.En respuesta a esto, numerosas estrategias de políticas educativas se enfocan en mejorar la calidad de la educación, reducir la tasa de reprobación y eliminar el fracaso escolar, lo que tiene un impacto significativo en la calidad de las instituciones educativas.<br/><br/>Más información:https://www.repository.fedesarrollo.org.co/handle/11445/190',
@@ -198,8 +198,8 @@ export const ya3: DatosYa = {
       metodologia:
         'Número total de estudiantes que se encuentran repitiendo primaria / Total de estudiantes que se encuentran matriculados en primaria en el mismo periodo y territorio.',
       unidad: 'Porcentaje',
-      fuente_numerador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística',
-      fuente_denominador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística',
+      fuente_numerador: 'Ministerio de Educación Nacional (MEN) - Grupo de Análisis e Información Estadística',
+      fuente_denominador: 'Ministerio de Educación Nacional (MEN) - Grupo de Análisis e Información Estadística',
       desagregacion: 'Municipal',
       contexto:
         'La repetición se define como la circunstancia en la cual un estudiante se ve forzado a pasar por el mismo grado educativo en más de una ocasión, siendo una decisión administrativa tomada por el profesor. La repetición se considera un indicador de eficacia escolar y evalúa la productividad de la inversión por alumno en términos estadísticos, considerando la capacidad del sistema educativo para hacer frente a una creciente demanda de población. En este contexto, tasas elevadas indican problemas serios relacionados con la repetición o la eficiencia interna del sistema educativo. <br/><br/>Dado que la repetición continua puede llevar a situaciones de abandono, se espera que la reducción de esta práctica permita a los estudiantes completar su trayectoria educativa. <br/><br/>Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',
@@ -221,8 +221,8 @@ export const ya3: DatosYa = {
       metodologia:
         'Número total de estudiantes que se encuentran repitiendo educación media / Total de estudiantes que se encuentran matriculados en educación media en el mismo periodo y territorio.',
       unidad: 'Porcentaje',
-      fuente_numerador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística',
-      fuente_denominador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística',
+      fuente_numerador: 'Ministerio de Educación Nacional (MEN) - Grupo de Análisis e Información Estadística',
+      fuente_denominador: 'Ministerio de Educación Nacional (MEN) - Grupo de Análisis e Información Estadística',
       desagregacion: 'Municipal',
       contexto:
         'La repetición se define como la circunstancia en la cual un estudiante se ve forzado a pasar por el mismo grado educativo en más de una ocasión, siendo una decisión administrativa tomada por el profesor. La repetición se considera un indicador de eficacia escolar y evalúa la productividad de la inversión por alumno en términos estadísticos, considerando la capacidad del sistema educativo para hacer frente a una creciente demanda de población. En este contexto, tasas elevadas indican problemas serios relacionados con la repetición o la eficiencia interna del sistema educativo. <br/><br/>Dado que la repetición continua puede llevar a situaciones de abandono, se espera que la reducción de esta práctica permita a los estudiantes completar su trayectoria educativa. <br/><br/>Más información: https://www.repository.fedesarrollo.org.co/handle/11445/190',

@@ -23,8 +23,8 @@ export const ya2: DatosYa = {
       metodologia:
         'Número total de estudiantes matriculados en transición en edad teórica para cursar este grado (5 años) / Total de la población correspondiente a esa misma edad en el mismo periodo y territorio',
       unidad: 'Porcentaje',
-      fuente_numerador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística',
-      fuente_denominador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística',
+      fuente_numerador: 'Ministerio de Educación Nacional (MEN) - Grupo de Análisis e Información Estadística',
+      fuente_denominador: 'Ministerio de Educación Nacional (MEN) - Grupo de Análisis e Información Estadística',
       desagregacion: 'Municipal',
       contexto:
         'La base del aprendizaje se establece en gran medida en los primeros años de vida, antes de que los niños ingresen a la escuela primaria. Aquellos que enfrentan dificultades en estas etapas iniciales suelen no alcanzar el mismo nivel que sus compañeros, perpetuando un ciclo de bajo rendimiento y elevadas tasas de deserción escolar, lo que mantiene desventajas preexistentes en las poblaciones más vulnerables. Por esto, es fundamental que los programas organizados por entidades distintas al Ministerio de Educación, siempre que estén orientados a fortalecer las competencias básicas y habilidades sociales de esta etapa, sean parte de la cobertura. Sin embargo, se excluyen los programas cuyo propósito principal sea el cuidado infantil o el entretenimiento sin un enfoque educativo acorde con los objetivos del grado de transición. <br><br>    Las tasas de cobertura en el grado de transición permiten medir la capacidad del sistema educativo para atender la demanda y garantizar que todos los niños tengan acceso a una formación inicial de calidad. Este grado, que abarca tanto instituciones públicas como privadas, incluye a todos los niños en edad de cursar transición, considerando también a aquellos con necesidades educativas especiales, y contempla tanto la educación presencial como a distancia. El objetivo principal es proporcionar una formación integral que facilite la adaptación al entorno escolar y siente las bases para el aprendizaje formal.  OECD (2023), Education at a Glance 2023: OECD Indicators, OECD Publishing, Paris, https://doi.org/10.1787/e13bef63-en',
@@ -45,8 +45,8 @@ export const ya2: DatosYa = {
       metodologia:
         'Número total de estudiantes que reprobaron transición / Total de estudiantes que se encuentran matriculados en transición en el mismo periodo y territorio',
       unidad: 'Porcentaje',
-      fuente_numerador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística',
-      fuente_denominador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística',
+      fuente_numerador: 'Ministerio de Educación Nacional (MEN) - Grupo de Análisis e Información Estadística',
+      fuente_denominador: 'Ministerio de Educación Nacional (MEN) - Grupo de Análisis e Información Estadística',
       desagregacion: 'Municipal',
       contexto:
         'La tasa de reprobación constituye un indicador que refleja el porcentaje de estudiantes inscritos que no lograron superar los requisitos académicos establecidos en los programas educativos de cierto nivel, debiendo repetir el curso. Esta situación conlleva implicaciones tanto emocionales como sociales para los alumnos, pudiendo incluso llevar, en situaciones extremas, a la deserción educativa, a pesar de la opción de repetir el nivel. <br/><br/>Además, la reprobación evidencia un bajo rendimiento escolar y puede indicar desigualdades en el proceso de aprendizaje, siendo la principal causa del fracaso educativo y un posible indicativo de la baja calidad educativa.<br/><br/>En respuesta a esto, numerosas estrategias de políticas educativas se enfocan en mejorar la calidad de la educación, reducir la tasa de reprobación y eliminar el fracaso escolar, lo que tiene un impacto significativo en la calidad de las instituciones educativas.',
@@ -68,8 +68,8 @@ export const ya2: DatosYa = {
       metodologia:
         'Número total de estudiantes que se encuentran repitiendo transición / Total de estudiantes que se encuentran matriculados en transición en el mismo periodo y territorio',
       unidad: 'Porcentaje',
-      fuente_numerador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística',
-      fuente_denominador: 'Ministerio de Educación Nacional - Grupo de Análisis e Información Estadística',
+      fuente_numerador: 'Ministerio de Educación Nacional (MEN) - Grupo de Análisis e Información Estadística',
+      fuente_denominador: 'Ministerio de Educación Nacional (MEN) - Grupo de Análisis e Información Estadística',
       desagregacion: 'Municipal',
       contexto:
         'La repetición de curso, es decir, la práctica de mantener a los estudiantes en el mismo grado para darles más tiempo de dominar los contenidos adecuados para su nivel, tiene como objetivo ayudar a los estudiantes con dificultades antes de que pasen al siguiente grado. Sin embargo, la efectividad de la repetición de curso es objeto de debate y puede depender del nivel educativo en cuestión. Las investigaciones indican que, por debajo del nivel de educación secundaria superior, la repetición de curso suele tener efectos negativos en los resultados de los estudiantes. Por ejemplo, los estudiantes que repiten un grado en su nivel educativo actual tienden a rendir peor académicamente, tener actitudes más negativas hacia la escuela a los 15 años y presentar una mayor probabilidad de abandonar la educación secundaria, incluso al considerar su contexto socioeconómico y sus características individuales OECD (2023), <br/><br/> Education at a Glance 2023: OECD Indicators, OECD Publishing, Paris, https://doi.org/10.1787/e13bef63-en',
@@ -110,11 +110,11 @@ export const ya2: DatosYa = {
       definicion: 'Porcentaje de niños y niñas en servicios de educación inicial que han recibido seis (6) o más atenciones priorizadas en el marco de la atención integral, en relación con el total de niños y niñas atendidos en el mismo periodo.',
       metodologia: 'Número de niños y niñas que registran seis (6) o más atenciones cumplidas en el Sistema de Seguimiento al Desarrollo Integral de la Primera Infancia (nnap) dividido por el número total de niños y niñas identificados en el sistema, multiplicado por 100. Fórmula: (∑nnap / Total de niños y niñas) x 100.',
       unidad: 'Porcentaje',
-      fuente_numerador: 'Ministerio de Educación Nacional',
-      fuente_denominador: 'Ministerio de Educación Nacional',
+      fuente_numerador: 'Ministerio de Educación Nacional (MEN) - Grupo de Análisis e Información Estadística',
+      fuente_denominador: 'Ministerio de Educación Nacional (MEN) - Grupo de Análisis e Información Estadística',
       desagregacion: 'Municipal',
       contexto: 'Este indicador es fundamental para evaluar el avance en la atención integral de la primera infancia en Colombia, asegurando que los niños y niñas reciban las atenciones necesarias en salud, nutrición, educación y bienestar para su desarrollo integral, en línea con la política "De Cero a Siempre".',
       interpretacion: 'Un valor del 80% indica que 80 de cada 100 niños y niñas en servicios de educación inicial han recibido seis (6) o más atenciones priorizadas en un periodo y territorio específicos.',
     },
-],
+  ],
 };
