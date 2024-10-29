@@ -4,8 +4,7 @@ export const ya5: DatosYa = {
   nombre: 'Juego',
   imagen: 'ya5',
   ruta: 'juego',
-  definicion:
-    'Es esencial reconocer que la niñez tiene el derecho de jugar, un derecho consagrado en normativas internacionales y nacionales. El juego no solo es una actividad recreativa; es crucial para el desarrollo integral de los niños, contribuyendo a habilidades socioemocionales y competencias ciudadanas. Para garantizar este derecho, se deben proporcionar espacios seguros y accesibles, independientemente de la condición social o económica de los niños, incluyendo comunidades rurales, indígenas, afrodescendientes, rom y personas con discapacidad. Aunque el juego está respaldado por diversas políticas y leyes, el desafío radica en materializar este reconocimiento en la realidad cotidiana.',
+  definicion: '...',
   hay_datos: false,
   indicadores: [
     {
