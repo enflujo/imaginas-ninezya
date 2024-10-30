@@ -23,7 +23,7 @@ export const ya7: DatosYa = {
       unidad: 'Coeficiente',
       fuente_numerador: 'Departamento Nacional de Planeación (DNP)- Terridata',
       fuente_denominador: 'Departamento Nacional de Planeación (DNP)- Terridata',
-      desagregacion: 'Municipal',
+      desagregacion: 'Departamental',
       contexto:
         'El Coeficiente de Gini, empleado con frecuencia para evaluar la desigualdad en la distribución de ingresos en un país, se expresa como la discrepancia entre la curva de Lorenz y la línea de equidistribución en términos gráficos. Este coeficiente varía de 0 a 1, reflejando diferentes niveles de desigualdad.<br/><br/>La curva de Lorenz, que representa visualmente la distribución de ingresos en una población, muestra en el eje vertical el porcentaje acumulado de ingresos y en el horizontal el porcentaje acumulado de hogares o personas correspondientes a dichos ingresos. En una distribución perfectamente equitativa, la curva seguiría una línea de 45 grados; en caso de desigualdad total, la curva se ubicaría sobre el eje X. <br/><br/>Interpretación del Coeficiente:Gini cercano a 0: sugiere una distribución de ingresos más equitativa, esto implica que los ingresos están repartidos de manera más uniforme entre los hogares. Gini cercano a 1: indica una mayor desigualdad, esto significa que hay una concentración significativa de ingresos en un segmento más pequeño de la población.',
       interpretacion:
@@ -43,7 +43,7 @@ export const ya7: DatosYa = {
       unidad: 'Porcentaje',
       fuente_numerador: 'Departamento Nacional de Planeación (DNP) - Terridata',
       fuente_denominador: 'Departamento Nacional de Planeación (DNP)- Terridata',
-      desagregacion: 'Municipal',
+      desagregacion: 'Departamental',
       contexto:
         'En el contexto de la pobreza monetaria en Colombia, se evidencia la persistencia de desafíos significativos en la distribución de recursos económicos. A pesar de avances económicos y sociales, una proporción considerable de la población colombiana enfrenta condiciones de vida precarias y limitaciones económicas. <br/><br/>La medición de la pobreza monetaria, que considera los ingresos y gastos de los hogares, proporciona un indicador clave para comprender la magnitud del problema. <br/><br/>Colombia ha implementado políticas y programas sociales para abordar la pobreza, pero factores como la desigualdad de ingresos, el acceso limitado a oportunidades educativas y laborales, así como las disparidades regionales, contribuyen a la persistencia de la pobreza. En este contexto, el gobierno y las organizaciones pertinentes continúan trabajando para desarrollar estrategias efectivas que no solo alivien la pobreza monetaria inmediata, sino que también aborden sus causas estructurales, buscando así construir un camino hacia una sociedad más equitativa y próspera. <br/><br/>Más Información: https://www.dane.gov.co/files/lineas-de-tiempo/pobreza-monetaria-ninez-adolescencia-en-colombia/index.html#:~:text=La%20l%C3%ADnea%20de%20pobreza%20monetaria,en%20situaci%C3%B3n%20de%20pobreza%20monetaria',
       interpretacion:
