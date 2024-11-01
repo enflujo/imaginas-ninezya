@@ -5,11 +5,11 @@ export const ya2: DatosYa = {
   imagen: 'ya2',
   ruta: 'educacion-inicial',
   definicion:
-    'Es esencial garantizar el desarrollo integral de los niños en la primera infancia, con un enfoque destacado en la educación inicial según la Política de Estado de Cero a Siempre en Colombia. A pesar de avances legislativos, la disparidad persiste, ya que, de más de 4 millones de niños menores de 6 años, solo 1.2 millones tienen acceso a la educación inicial dentro de la atención integral. Obstáculos como la falta de instituciones cercanas, cupos limitados y requisitos de ingreso no cumplidos, especialmente en zonas rurales como la Orinoquía y la Amazonía, plantean desafíos. Superar estas barreras y aumentar la cobertura, especialmente en entornos rurales, es esencial para cumplir con la Política de Estado de Cero a Siempre, incluyendo la implementación efectiva de la ruta integral de atenciones.',
+    'La educación inicial en Colombia es un componente crucial para el desarrollo integral de los niños en la primera infancia, enmarcado dentro de la Política de Estado de Cero a Siempre. Esta política busca garantizar que todos los niños menores de seis años reciban una atención integral que promueva su desarrollo físico, cognitivo, emocional y social. A pesar de los avances institucionales, persisten notables desigualdades en el acceso a la educación inicial. De la población infantil menor de seis años en el país, solo una fracción tiene acceso a programas de educación inicial dentro de un marco de atención integral. Esta situación es especialmente preocupante en zonas rurales como la Orinoquía y la Amazonía, donde la escasez de instituciones cercanas, los cupos limitados y los requisitos de ingreso no cumplidos representan obstáculos significativos. Superar estos obstáculos es crucial para ampliar la cobertura y garantizar que todos los niños, sin importar su ubicación geográfica, puedan beneficiarse de la educación inicial. Esto requiere no solo la expansión de la infraestructura educativa, sino también la implementación efectiva de la ruta integral de atenciones, asegurando así el cumplimiento de los objetivos de la Política de Estado de Cero a Siempre.',
   hay_datos: true,
   indicadores: [
     {
-      nombre: 'Cobertura bruta de transición',
+      nombre: 'Cobertura neta de transición',
       ruta: 'cobertura-transicion',
       archivo: 'ya2-1',
       hay_datos: true,
