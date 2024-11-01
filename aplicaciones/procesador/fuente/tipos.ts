@@ -124,7 +124,8 @@ export type VariableValorSingular =
   | 'tasa_mortalidad_desnutricion_5_años'
   | 'porcentaje_marco_integral'
   | 'porcentaje'
-  | 'P51';
+  | 'P51'
+  | 'educ_inicial_icbf';
 
 export type VariablesSingulares = {
   [llave in VariableValorSingular]: number;

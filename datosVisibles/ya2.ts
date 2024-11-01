@@ -123,5 +123,22 @@ export const ya2: DatosYa = {
       interpretacion:
         'Un valor del 80% indica que 80 de cada 100 niños y niñas en servicios de educación inicial han recibido seis (6) o más atenciones priorizadas en un periodo y territorio específicos.',
     },
+    {
+      nombre: 'Niñas y niños con educación inicial en el marco de la atención integral',
+      ruta: 'inicial-marco',
+      archivo: 'ya2-6',
+      hay_datos: true,
+      umbral: 0,
+      explicacion_umbral: '....',
+      explicacion: '...',
+      definicion: '...',
+      metodologia: '...',
+      unidad: 'Conteo',
+      fuente_numerador: '...',
+      fuente_denominador: '...',
+      desagregacion: 'Municipal',
+      contexto: '...',
+      interpretacion: '...',
+    },
   ],
 };
