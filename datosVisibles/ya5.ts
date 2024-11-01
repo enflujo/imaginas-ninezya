@@ -4,8 +4,7 @@ export const ya5: DatosYa = {
   nombre: 'Juego',
   imagen: 'ya5',
   ruta: 'juego',
-  definicion:
-    'Es esencial reconocer que la niñez tiene el derecho de jugar, un derecho consagrado en normativas internacionales y nacionales. El juego no solo es una actividad recreativa; es crucial para el desarrollo integral de los niños, contribuyendo a habilidades socioemocionales y competencias ciudadanas. Para garantizar este derecho, se deben proporcionar espacios seguros y accesibles, independientemente de la condición social o económica de los niños, incluyendo comunidades rurales, indígenas, afrodescendientes, rom y personas con discapacidad. Aunque el juego está respaldado por diversas políticas y leyes, el desafío radica en materializar este reconocimiento en la realidad cotidiana.',
+  definicion: '...',
   hay_datos: false,
   indicadores: [
     {
@@ -30,6 +29,16 @@ export const ya5: DatosYa = {
         'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secretarías de Educación.',
       interpretacion:
         'Este indicador ayuda a identificar los principales entornos de los niños y niñas durante los días de semana, como el hogar, instituciones educativas, centros de cuidado infantil, entre otros. Un alto porcentaje de niños que permanecen en entornos educativos o de cuidado infantil puede indicar un buen acceso a servicios de apoyo, mientras que un alto porcentaje en el hogar puede resaltar la necesidad de fortalecer programas de apoyo familiar.',
+      categorias: [
+        ['Colegio', 'Asiste a un hogar comunitario, jardín, centro de desarrollo infantil o colegio'],
+        ['Casa', 'Con su padre o madre en la casa'],
+        ['Trabajo', 'Con su padre o madre en el trabajo'],
+        ['Niñero/a', 'Con empleado/a o niñero/a en la casa'],
+        ['Mayor', 'Al cuidado de un/a pariente de 18 años o más'],
+        ['Menor', 'Al cuidado de un/a pariente menor de 18 años'],
+        ['Solo', 'En casa solo'],
+        ['Otro', 'Otro'],
+      ],
     },
     {
       nombre: 'Número de ludotecas o bibliotecas por cada 1.000 niñas y niños ',
@@ -97,32 +106,6 @@ export const ya5: DatosYa = {
         'Encuesta de Calidad de Vida - ECV del Departamento Administrativo Nacional de Estadísticas - DANE. ',
       compete_a:
         'Ministerio de Educación, Instituto Colombiano de Bienestar Familiar (ICBF) y Secretarías de Educación.',
-    },
-    {
-      nombre: '...',
-      ruta: 'juego',
-      archivo: 'ya5-1',
-      hay_datos: true,
-      explicacion_umbral: '...',
-      explicacion: '...',
-      definicion: '...',
-      metodologia: '...',
-      unidad: 'Categorias',
-      fuente_numerador: '...',
-      fuente_denominador: '...',
-      desagregacion: 'departamental',
-      contexto: '...',
-      interpretacion: '...',
-      categorias: [
-        ['Colegio', 'Asiste a un hogar comunitario, jardín, centro de desarrollo infantil o colegio'],
-        ['Casa', 'Con su padre o madre en la casa'],
-        ['Trabajo', 'Con su padre o madre en el trabajo'],
-        ['Niñero/a', 'Con empleado/a o niñero/a en la casa'],
-        ['Mayor', 'Al cuidado de un/a pariente de 18 años o más'],
-        ['Menor', 'Al cuidado de un/a pariente menor de 18 años'],
-        ['Solo', 'En casa solo'],
-        ['Otro', 'Otro'],
-      ],
     },
   ],
 };

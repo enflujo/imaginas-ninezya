@@ -64,6 +64,8 @@ async function procesarDatos() {
   await ya24.procesar('2.4: deserción transición', 'YA_2.4', 'Sheet 1', 'ya2-4');
   const ya25 = new VariableSingular('porcentaje_marco_integral', true, 'porcentaje');
   await ya25.procesar('2.5: porcentaje marco integral', 'YA_2.5', 'Sheet 1', 'ya2-5');
+  const ya26 = new VariableSingular('educ_inicial_icbf', true, 'conteo');
+  await ya26.procesar('2.6: educación inicial icbf', 'YA_2.6', 'Sheet 1', 'ya2-6');
 
   /** 3 */
   const ya31 = new VariableSingular('promedio_matematicas', true, 'promedio');
