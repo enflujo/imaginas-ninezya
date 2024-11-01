@@ -5,7 +5,7 @@ export const ya3: DatosYa = {
   imagen: 'ya3',
   ruta: 'educacion-basica-y-media',
   definicion:
-    'Es crucial garantizar una educación de calidad en Colombia, superando barreras de inequidad desde el preescolar hasta la media. La presencia en la escuela no garantiza plenamente el derecho a la educación, y las inequidades arraigadas relacionadas con factores geográficos, socioeconómicos, étnicos y de género deben abordarse con enfoques multidimensionales. Atender a la infraestructura escolar y la formación docente es esencial para establecer un sistema educativo que promueva la igualdad, la transformación y la inclusión en todas las etapas.',
+    'La educación básica y media en Colombia enfrenta un desafío crucial: garantizar una educación de calidad que supere las barreras de inequidad que persisten en todos los niveles del sistema. A pesar de que la asistencia escolar ha mejorado en términos de cobertura, este aspecto no se traduce necesariamente en el pleno ejercicio del derecho a la educación, ya que siguen existiendo profundas desigualdades relacionadas con factores geográficos, socioeconómicos, étnicos y de género. La Organización para la Cooperación y el Desarrollo Económicos (OCDE) subraya que las disparidades en el rendimiento académico entre estudiantes de distintos contextos socioeconómicos son alarmantemente significativas, lo que pone de manifiesto la urgencia de actuar. Para abordar estas desigualdades estructurales, es indispensable implementar enfoques multidimensionales que reflejen la diversidad de realidades enfrentadas por los estudiantes colombianos. Esto incluye no solo la mejora de la infraestructura escolar, sino también el fortalecimiento de la formación docente, con el fin de establecer un sistema educativo que promueva la igualdad, la transformación y la inclusión en todas las etapas. Solo a través de estas iniciativas se podrá construir una educación accesible, equitativa y de alta calidad, capaz de transformar vidas y comunidades en todo el país, y así contribuir al desarrollo sostenible y equitativo de la nación.',
   hay_datos: true,
   indicadores: [
     {
@@ -96,16 +96,16 @@ export const ya3: DatosYa = {
         'El indicador toma un valor máximo de 500 puntos, entre más cercano a 0 sea el puntaje, más bajo será el desempeño de esa aplicación del examen Saber 11°.',
     },
     {
-      nombre: 'Cobertura bruta primaria',
+      nombre: 'Cobertura neta primaria',
       ruta: 'cobertura-primaria',
       archivo: 'ya3-5',
       hay_datos: true,
       umbral: 100,
       explicacion_umbral:
         'El Objetivo de Desarrollo Sostenible (ODS) 4.1 establece "asegurar que todos los niños y niñas completen una educación primaria y secundaria gratuita, equitativa y de calidad que conduzca a resultados de aprendizaje relevantes y efectivos" para el año 2030.',
-      explicacion: 'Indica la cobertura bruta de estudiantes que cursan educación primaria.',
+      explicacion: 'Indica la cobertura neta de estudiantes que cursan educación primaria.',
       definicion:
-        'La tasa de cobertura bruta mide la relación porcentual entre el número total de estudiantes matriculados sobre el total de la población en edad teórica para cursar el nivel educativo. <br/><br/>*** En algunos casos la demanda social es mayor a la población en edad teórica para cursar este nivel (6-10 años), explicada por estudiantes en extraedad, por lo que el indicador toma valores superiores al 100%.',
+        'La tasa de cobertura neta mide la relación porcentual entre el número total de estudiantes matriculados sobre el total de la población en edad teórica para cursar el nivel educativo. <br/><br/>*** En algunos casos la demanda social es mayor a la población en edad teórica para cursar este nivel (6-10 años), explicada por estudiantes en extraedad, por lo que el indicador toma valores superiores al 100%.',
       metodologia:
         'Número total de estudiantes matriculados en transición en edad teórica para cursar este grado (6-10 años) / Total de la población correspondiente a esa misma edad en el mismo periodo y territorio',
       unidad: 'Porcentaje',
@@ -118,16 +118,16 @@ export const ya3: DatosYa = {
         'Un valor del 80% indica que 80 de cada 100 estudiantes en edad teórica para cursar primaria asisten a un establecimiento educativo oficial o no oficial en un momento y territorio específicos. <br/><br/>Más información: https://www.mineducacion.gov.co/1621/articles-329021_archivo_pdf_indicadores_educacion.pdf',
     },
     {
-      nombre: 'Cobertura bruta media',
+      nombre: 'Cobertura neta media',
       ruta: 'cobertura-media',
       archivo: 'ya3-6',
       hay_datos: true,
       umbral: 100,
       explicacion_umbral:
         'El Objetivo de Desarrollo Sostenible (ODS) 4.1 establece "asegurar que todos los niños y niñas completen una educación primaria y secundaria gratuita, equitativa y de calidad que conduzca a resultados de aprendizaje relevantes y efectivos" para el año 2030.',
-      explicacion: 'Indica la cobertura bruta de estudiantes que cursan educación media.',
+      explicacion: 'Indica la cobertura neta de estudiantes que cursan educación media.',
       definicion:
-        'La tasa de cobertura bruta mide la relación porcentual entre el número total de estudiantes matriculados sobre el total de la población en edad teórica para cursar el nivel educativo. <br/><br/>*** En algunos casos la demanda social es mayor a la población en edad teórica para cursar este nivel (15-16 años), explicada por estudiantes en extraedad, por lo que el indicador toma valores superiores al 100%.',
+        'La tasa de cobertura neta mide la relación porcentual entre el número total de estudiantes matriculados sobre el total de la población en edad teórica para cursar el nivel educativo. <br/><br/>*** En algunos casos la demanda social es mayor a la población en edad teórica para cursar este nivel (15-16 años), explicada por estudiantes en extraedad, por lo que el indicador toma valores superiores al 100%.',
       metodologia:
         'Número total de estudiantes matriculados en transición en edad teórica para cursar este grado (15-16 años) / Total de la población correspondiente a esa misma edad en el mismo periodo y territorio',
       unidad: 'Porcentaje',

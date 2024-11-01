@@ -15,7 +15,7 @@ export const ya7: DatosYa = {
       hay_datos: true,
       umbral: 0.48,
       explicacion_umbral:
-        'De acuerdo con los Objetivos de Desarrollo Sostenible y el CONPES 3918, Colombia reducirá la desigualdad, alcanzando un GINI de 0,480.',
+        'De acuerdo con los Objetivos de Desarrollo Sostenible y el CONPES 3918, Colombia reducirá la desigualdad, alcanzando un GINI de 0,480. Nota: Estos son los datos oficiales de pobreza monetaria y corresponden a una actualización del marco muestral realizada a partir del CNPV 2018, por lo cual, no son comparables con los datos de la serie marco 2005.',
       explicacion: 'Indica la desigualdad económica en un momento y territorio específico.',
       definicion:
         'El Coeficiente de Gini en Colombia es una medida estadística que evalúa el nivel de desigualdad en la distribución de ingresos entre los diferentes hogares de la población colombiana. <br/><br/>Este indicador es utilizado por autoridades gubernamentales, investigadores y analistas económicos para comprender y abordar los desafíos de desigualdad en la sociedad colombiana.',
@@ -35,7 +35,7 @@ export const ya7: DatosYa = {
       archivo: 'ya7-2',
       hay_datos: true,
       explicacion_umbral:
-        'De acuerdo con el Plan Nacional de Desarrollo 2022 - 2026 no hay una meta para este indicador.',
+        'De acuerdo con el Plan Nacional de Desarrollo 2022 - 2026 no hay una meta para este indicador. Nota: Estos son los datos oficiales de pobreza monetaria y corresponden a una actualización del marco muestral realizada a partir del CNPV 2018, por lo cual, no son comparables con los datos de la serie marco 2005.',
       explicacion: 'Indica la proporción de pobreza monetaria en un mismo momento y territorio específico.',
       definicion:
         'Se refiere a la condición en la que un hogar o individuo no cuenta con ingresos suficientes para cubrir sus necesidades básicas y satisfacer un nivel mínimo de vida digna.<br/><br/>Usualmente se mide mediante indicadores que evalúan los ingresos y gastos de los hogares en relación con ciertos umbrales de pobreza establecidos. En Colombia estos umbrales pueden incluir el costo de la canasta básica de alimentos y otros gastos esenciales. <br/><br/>La pobreza monetaria no solo aborda la falta de recursos financieros, sino también las limitaciones para acceder a servicios esenciales como educación, salud y vivienda. <br/><br/>Las mediciones de pobreza monetaria son fundamentales para entender el alcance de la privación económica en la población colombiana y se utilizan para orientar políticas públicas y programas destinados a reducir la pobreza y mejorar las condiciones de vida de aquellos que se encuentran en situación de vulnerabilidad económica.',
