@@ -4,7 +4,11 @@ export const ya5: DatosYa = {
   nombre: 'Juego',
   imagen: 'ya5',
   ruta: 'juego',
-  definicion: '...',
+  definicion: `El juego es un derecho fundamental en el desarrollo humano. Posibilita a las personas adquirir y desarrollar las competencias que requieren para su vida y para convivir con los demás. Con el juego los seres humanos aprenden a ser solidarios, empáticos, a dar sus opiniones y escuchar las opiniones de los demás. Aprenden los pilares de la democracia, como lo han evidenciado diferentes investigaciones, entre ellas la investigación longitudinal realizada por la Universidad Nacional durante cinco años en diversos territorios del país (2019). Esta concluyó que los niños y las niñas que pueden participar de espacios de juego, como una acción libre, creativa y placentera, desarrollan en un mayor nivel habilidades socioemocionales como la empatía, la autorregulación y la expresión de emociones.
+
+  Los niños y las niñas juegan independientemente de su condición social o económica y se les debe garantizar escenarios seguros y dignos para el ejercicio de este derecho. Las ludotecas, los parques y los ambientes lúdicos son escenarios significativos cuando están dispuestos con calidad y fácil acceso para las infancias en cada una de sus comunidades rurales, indígenas, afros, rom, con discapacidad, entre otras.
+
+  El juego, comprendido como derecho, cobra un nuevo lugar en la sociedad en clave de desarrollo integral de las niñas y los niños, lo cual fue reconocido por primera vez en el Foro Mundial de los Pueblos: la Asamblea General de las Naciones Unidas, el 20 de noviembre de 1959, mediante Resolución N°1386 de ese año proclamó la Declaración de los Derechos del Niño.`,
   hay_datos: false,
   indicadores: [
     {
@@ -47,7 +51,7 @@ export const ya5: DatosYa = {
       hay_datos: false,
       definicion:
         'Se refiere a la cantidad de centros de juego como ludotectas y otros espacios destinados al juego de niñas y niños de primera infancia, infancia y adolescencia de caracter público. El juego es un derecho  fundamental en el desarrollo integral de las niñas y los niños, que requiere de escenarios significativos de calidad y fácil acceso para todas las comunidades: rurales, indígenas, afros, rom, con discapacidad, entre otras.',
-      metodologia: 'No. de espacios de juego/ludecas / No. y niños de 0 a 17 años * 1.000 niñas/os',
+      metodologia: 'No. de espacios de juego / ludecas / No. y niños de 0 a 17 años * 1.000 niñas/os',
       unidad: 'Por cada 1.000 niñas y niñoos',
       desagregacion: 'Municipal',
       interpretacion:

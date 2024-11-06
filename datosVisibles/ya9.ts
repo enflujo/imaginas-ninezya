@@ -5,7 +5,11 @@ export const ya9: DatosYa = {
     'Adolescentes con justicia restaurativa y pedagógica (Sistema de Responsabilidad Penal para Adolescentes - SRPA)',
   imagen: 'ya9',
   ruta: 'justicia-restaurativa',
-  definicion: '...',
+  definicion: `El Código de la Infancia y la Adolescencia estableció que en Colombia el Sistema de Responsabilidad Penal para Adolescentes (SRPA) debe investigar y juzgar los delitos cometidos por personas entre los 14 y 18 años, al momento de cometer el hecho punible (Ley 1098, 2006, art 139).
+
+  El objetivo de este sistema es responder a la tendencia internacional y al llamado de la Convención sobre los Derecho del Niño (ONU, 1989), que conciben a niñas, niños y adolescentes como sujetos activos y no como objetos de amparo. El SRPA, por tanto, “se rige por el principio de la protección integral y su finalidad es la Justicia Restaurativa (JR), el interés superior del niño, la corresponsabilidad, el ejercicio efectivo de los derechos de los adolescentes, así como la perspectiva de diversidad” (NiñezYA 2018a, p. 88).
+
+  En otras palabras, con el SRPA Colombia honró los instrumentos internacionales que ha suscrito, sin embargo, está en mora de contar con un verdadero sistema que garantice la verdad, la justicia y la reparación del daño. Que se ocupe del restablecimiento efectivo de los derechos de los y las adolescentes, asumiendo que se trata de un ser humano en formación. Hoy el proceso y la sanción no tienen el carácter pedagógico, diferenciado y restaurativo que les asigna el artículo 140 de la Ley 1098 de 2006, como lo han señalado la Fundación Restrepo Barco y la Procuraduría (2007), la Procuraduría Delegada para la Defensa de los Derechos de la Infancia, la Adolescencia y la Familia (2012), la Defensoría del Pueblo (2015), la Fundación Tiempo de Juego (2023) y la Defensoría del Pueblo (2023).`,
   hay_datos: true,
   indicadores: [
     {
