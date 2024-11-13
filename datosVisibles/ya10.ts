@@ -4,8 +4,7 @@ export const ya10: DatosYa = {
   nombre: 'Cultura de paz, reconciliación y convivencia',
   imagen: 'ya10',
   ruta: 'paz-reconciliacion',
-  definicion:
-    'Es crucial que los 13.9 millones de menores en Colombia participen en la construcción de una cultura de paz tras el conflicto armado. Reconociendo sus experiencias y dándoles voz activa en el diseño de acciones para la reconciliación, la niñez desempeña un papel esencial. Los gobiernos locales, especialmente en los 170 municipios afectados por el conflicto, deben proporcionarles espacio, priorizando la restitución de derechos y el interés superior de la niñez según normativas nacionales e internacionales.',
+  definicion: `Es crucial que los menores en Colombia participen en la construcción de una cultura de paz tras el conflicto armado. Reconociendo sus experiencias y dándoles voz activa en el diseño de acciones para la reconciliación, la niñez desempeña un papel esencial. Los gobiernos locales, especialmente en los 170 municipios afectados por el conflicto, deben proporcionarles espacio, priorizando la restitución de derechos y el interés superior de la niñez según normativas nacionales e internacionales.`,
   hay_datos: true,
   indicadores: [
     {
