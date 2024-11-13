@@ -211,16 +211,22 @@ export const ya1: DatosYa = {
       archivo: 'ya1-10',
       hay_datos: true,
       umbral: 95,
-      explicacion_umbral: 'Base de datos global conjunta UNICEF/WHO sobre asistencia especializada en el parto (2024). Aunque no existe un umbral específico para este indicador, se considera que un valor superior al 95%, en comparación con el promedio regional, es un nivel óptimo de cobertura, en línea con los objetivos de desarrollo sostenible (ODS) establecidos por las Naciones Unidas.',
-      explicacion: 'Indica el porcentaj de partos atendidos por personal calificado en un territorio y momento específico.',
-      definicion: 'El porcentaje de nacimientos atendidos por personal especializado cualificado (como médicos, enfermeros o parteras) se refiere a la proporción de partos asistidos por profesionales de la salud. Según la definición actualizada, se trata de expertos en salud materna y neonatal (SMN) que están formados, capacitados y regulados conforme a las normativas nacionales e internacionales. Estos profesionales están calificados para: i) ofrecer y promover atención de calidad, basada en evidencia, derechos humanos, y adaptada a las sensibilidades socioculturales, con respeto y dignidad para las mujeres y los recién nacidos; ii) facilitar los procesos fisiológicos del parto para asegurar una experiencia limpia y positiva; y iii) detectar y manejar o derivar a mujeres y recién nacidos con complicaciones. Las parteras tradicionales, aunque hayan recibido formación breve, no se incluyen en esta categoría.',
-      metodologia: '(No. total de nacidos vivos cuyo parto fue atendido por médico o enfermera / No. total de nacidos vivos)*100 ',
+      explicacion_umbral:
+        'Base de datos global conjunta UNICEF/WHO sobre asistencia especializada en el parto (2024). Aunque no existe un umbral específico para este indicador, se considera que un valor superior al 95%, en comparación con el promedio regional, es un nivel óptimo de cobertura, en línea con los objetivos de desarrollo sostenible (ODS) establecidos por las Naciones Unidas.',
+      explicacion:
+        'Indica el porcentaj de partos atendidos por personal calificado en un territorio y momento específico.',
+      definicion:
+        'El porcentaje de nacimientos atendidos por personal especializado cualificado (como médicos, enfermeros o parteras) se refiere a la proporción de partos asistidos por profesionales de la salud. Según la definición actualizada, se trata de expertos en salud materna y neonatal (SMN) que están formados, capacitados y regulados conforme a las normativas nacionales e internacionales. Estos profesionales están calificados para: i) ofrecer y promover atención de calidad, basada en evidencia, derechos humanos, y adaptada a las sensibilidades socioculturales, con respeto y dignidad para las mujeres y los recién nacidos; ii) facilitar los procesos fisiológicos del parto para asegurar una experiencia limpia y positiva; y iii) detectar y manejar o derivar a mujeres y recién nacidos con complicaciones. Las parteras tradicionales, aunque hayan recibido formación breve, no se incluyen en esta categoría.',
+      metodologia:
+        '(No. total de nacidos vivos cuyo parto fue atendido por médico o enfermera / No. total de nacidos vivos)*100 ',
       unidad: 'Porcentaje',
       fuente_numerador: 'CUBO INDICADORES EEVV',
       fuente_denominador: 'CUBO INDICADORES EEVV',
       desagregacion: 'Municipal',
-      contexto: 'El acceso a personal especializado cualificado durante el parto es un indicador clave de la calidad de los servicios de salud materna y neonatal. Este personal, que incluye médicos, enfermeros y parteras profesionalmente entrenados, juega un papel fundamental en asegurar un entorno seguro y adecuado para el nacimiento, promoviendo prácticas basadas en evidencia y respetuosas de los derechos humanos y la dignidad de las madres y sus recién nacidos. Estos profesionales están capacitados según normas nacionales e internacionales para atender los procesos fisiológicos del parto, garantizando una experiencia limpia y positiva, así como para identificar y gestionar complicaciones que puedan surgir, remitiendo a los pacientes cuando es necesario. Esta medida excluye la asistencia de parteras tradicionales con formación breve, enfocándose en aquellos especialistas que cumplen con estándares específicos para proporcionar atención integral.',
-      interpretacion: 'Un valor de 90 significa que el 90% de los partos en un territorio y momento específico fueron atendidos por personal calificado.',
+      contexto:
+        'El acceso a personal especializado cualificado durante el parto es un indicador clave de la calidad de los servicios de salud materna y neonatal. Este personal, que incluye médicos, enfermeros y parteras profesionalmente entrenados, juega un papel fundamental en asegurar un entorno seguro y adecuado para el nacimiento, promoviendo prácticas basadas en evidencia y respetuosas de los derechos humanos y la dignidad de las madres y sus recién nacidos. Estos profesionales están capacitados según normas nacionales e internacionales para atender los procesos fisiológicos del parto, garantizando una experiencia limpia y positiva, así como para identificar y gestionar complicaciones que puedan surgir, remitiendo a los pacientes cuando es necesario. Esta medida excluye la asistencia de parteras tradicionales con formación breve, enfocándose en aquellos especialistas que cumplen con estándares específicos para proporcionar atención integral.',
+      interpretacion:
+        'Un valor de 90 significa que el 90% de los partos en un territorio y momento específico fueron atendidos por personal calificado.',
     },
   ],
 };

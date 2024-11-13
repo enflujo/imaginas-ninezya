@@ -146,19 +146,24 @@ export const ya2: DatosYa = {
     },
     {
       nombre: 'Número de estudiantes matriculados, según el tipo de institución',
-      ruta: 'inicial-marco',
+      ruta: 'matriculados-tipo',
       archivo: 'ya2-7',
       hay_datos: true,
-      explicacion_umbral: 'El umbral se establece para diferenciar en términos porcentuales la asistencia a centros educativos de carácter público y privado.',
-      explicacion: 'Este indicador muestra la distribución de estudiantes en el sistema educativo, permitiendo analizar la preferencia por instituciones públicas o privadas en función de los datos de matrícula.',
+      explicacion_umbral:
+        'El umbral se establece para diferenciar en términos porcentuales la asistencia a centros educativos de carácter público y privado.',
+      explicacion:
+        'Este indicador muestra la distribución de estudiantes en el sistema educativo, permitiendo analizar la preferencia por instituciones públicas o privadas en función de los datos de matrícula.',
       definicion: 'Porcentaje de estudiantes matriculados que asisten a instituciones de tipo público o privado.',
-      metodologia: 'Los datos se recopilan a través del Sistema Integrado de Matrícula (SIMAT) del Ministerio de Educación Nacional (MEN), y se consolidan anualmente para asegurar consistencia en los registros.',
+      metodologia:
+        'Los datos se recopilan a través del Sistema Integrado de Matrícula (SIMAT) del Ministerio de Educación Nacional (MEN), y se consolidan anualmente para asegurar consistencia en los registros.',
       unidad: 'Porcentaje',
       fuente_numerador: 'Ministerio de Educación Nacional (MEN) - SIMAT',
       fuente_denominador: 'Ministerio de Educación Nacional (MEN) - SIMAT',
       desagregacion: 'Municipal',
-      contexto: 'Los datos permiten evaluar la proporción de estudiantes en instituciones públicas frente a privadas a nivel municipal, proporcionando información sobre la cobertura y preferencias del sistema educativo.',
-      interpretacion: 'Un porcentaje elevado en instituciones públicas puede indicar mayor cobertura estatal, mientras que un porcentaje mayor en privadas sugiere preferencias hacia la educación privada o falta de cobertura pública.',
+      contexto:
+        'Los datos permiten evaluar la proporción de estudiantes en instituciones públicas frente a privadas a nivel municipal, proporcionando información sobre la cobertura y preferencias del sistema educativo.',
+      interpretacion:
+        'Un porcentaje elevado en instituciones públicas puede indicar mayor cobertura estatal, mientras que un porcentaje mayor en privadas sugiere preferencias hacia la educación privada o falta de cobertura pública.',
     },
   ],
 };
