@@ -52,6 +52,8 @@ async function procesarDatos() {
   await ya18.procesar('1.8: tasa mortalidad menores 1 año', 'YA_1.8', 'Sheet 1', 'ya1-8');
   const ya19 = new VariableSingular('tasa_mortalidad_desnutricion_5_años', false, 'tasa', 100000);
   await ya19.procesar('1.9: tasa mortalidad desnutrición', 'YA_1.9', 'Sheet 1', 'ya1-9');
+  const ya10 = new VariableSingular('porcentaje_nacidos_vivos_personal_calificado', true, 'porcentaje');
+  await ya10.procesar('1.10: partos', 'YA_1.10', 'Sheet 1', 'ya1-10');
 
   /** 2 */
   const ya21 = new VariableSingular('neta_transicion', true, 'porcentaje');

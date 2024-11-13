@@ -125,7 +125,8 @@ export type VariableValorSingular =
   | 'porcentaje_marco_integral'
   | 'porcentaje'
   | 'P51'
-  | 'educ_inicial_icbf';
+  | 'educ_inicial_icbf'
+  | 'porcentaje_nacidos_vivos_personal_calificado';
 
 export type VariablesSingulares = {
   [llave in VariableValorSingular]: number;

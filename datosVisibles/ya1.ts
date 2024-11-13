@@ -205,5 +205,22 @@ export const ya1: DatosYa = {
       interpretacion:
         'Un valor de 15 significa que existen 15 defunciones por cada 1000 nacidos vivos en un momento y territorios específicos.<br/><br/> Más Información: https://www.who.int/es/news-room/fact-sheets/detail/children-reducing-mortality',
     },
+    {
+      nombre: 'Porcentaje de partos atendidos por personal calificado',
+      ruta: 'partos-calificado',
+      archivo: 'ya1-10',
+      hay_datos: true,
+      umbral: 95,
+      explicacion_umbral: '...',
+      explicacion: '....',
+      definicion: '...',
+      metodologia: '...',
+      unidad: '...',
+      fuente_numerador: '...',
+      fuente_denominador: '...',
+      desagregacion: 'Municipal',
+      contexto: '...',
+      interpretacion: '...',
+    },
   ],
 };
