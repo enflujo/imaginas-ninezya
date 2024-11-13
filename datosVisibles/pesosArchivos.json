@@ -1,6 +1,6 @@
 {
   "ya10-1": {
-    "peso": "553.15 kB",
+    "peso": "542.91 kB",
     "nombre": "ya10-1-delito-sexual-conflicto.xlsx"
   },
   "ya10-2": {
@@ -23,12 +23,16 @@
     "peso": "287.7 kB",
     "nombre": "ya1-1-acueducto.xlsx"
   },
+  "ya1-10": {
+    "peso": "364.07 kB",
+    "nombre": "ya1-10-partos-calificado.xlsx"
+  },
   "ya1-2": {
     "peso": "179.05 kB",
     "nombre": "ya1-2-alcantarillado.xlsx"
   },
   "ya1-3": {
-    "peso": "573.4 kB",
+    "peso": "588.2 kB",
     "nombre": "ya1-3-mortalidad.xlsx"
   },
   "ya1-4": {
@@ -36,7 +40,7 @@
     "nombre": "ya1-4-control-prenatal.xlsx"
   },
   "ya1-5": {
-    "peso": "211.28 kB",
+    "peso": "203.58 kB",
     "nombre": "ya1-5-desnutricion.xlsx"
   },
   "ya1-6": {
@@ -52,7 +56,7 @@
     "nombre": "ya1-8-mortalidad-menores.xlsx"
   },
   "ya1-9": {
-    "peso": "203.6 kB",
+    "peso": "203.47 kB",
     "nombre": "ya1-9-mortalidad-desnutricion-5.xlsx"
   },
   "ya2-1": {
@@ -79,8 +83,12 @@
     "peso": "193.19 kB",
     "nombre": "ya2-6-inicial-marco.xlsx"
   },
+  "ya2-7": {
+    "peso": "174.27 kB",
+    "nombre": "ya2-7-inicial-marco.xlsx"
+  },
   "ya3-1": {
-    "peso": "97.97 kB",
+    "peso": "112.75 kB",
     "nombre": "ya3-1-saber11-matematicas.xlsx"
   },
   "ya3-10": {
@@ -96,15 +104,15 @@
     "nombre": "ya3-12-desercion-media.xlsx"
   },
   "ya3-2": {
-    "peso": "97.71 kB",
+    "peso": "112.51 kB",
     "nombre": "ya3-2-saber11-lectura.xlsx"
   },
   "ya3-3": {
-    "peso": "97.86 kB",
+    "peso": "112.57 kB",
     "nombre": "ya3-3-saber11-sociales.xlsx"
   },
   "ya3-4": {
-    "peso": "101.72 kB",
+    "peso": "115.35 kB",
     "nombre": "ya3-4-saber11-global.xlsx"
   },
   "ya3-5": {
@@ -156,27 +164,27 @@
     "nombre": "ya7-2-pobreza-monetaria.xlsx"
   },
   "ya8-1": {
-    "peso": "71.79 kB",
+    "peso": "85.31 kB",
     "nombre": "ya8-1-violencia-fisica.xlsx"
   },
   "ya8-2": {
-    "peso": "290.51 kB",
+    "peso": "343.76 kB",
     "nombre": "ya8-2-menores-delito.xlsx"
   },
   "ya8-3": {
-    "peso": "181.36 kB",
+    "peso": "214.9 kB",
     "nombre": "ya8-3-violencia-intrafamiliar.xlsx"
   },
   "ya8-4": {
-    "peso": "229.76 kB",
+    "peso": "225.9 kB",
     "nombre": "ya8-4-violencia-interpersonal.xlsx"
   },
   "ya9-1": {
-    "peso": "13.9 kB",
+    "peso": "17.11 kB",
     "nombre": "ya9-1-detencion-privativa.xlsx"
   },
   "ya9-2": {
-    "peso": "15.01 kB",
+    "peso": "17.83 kB",
     "nombre": "ya9-2-detencion-no-privativa.xlsx"
   },
   "ya9-3": {
