@@ -69,7 +69,7 @@ export const ya5: DatosYa = {
         'Se refiere a espacios públicos destinados para destinados y usados para el juego espontáneo y libre como parques y escenarios deportivos públicos existentes en los municipios del país. El Plan Nacional de Desarrollo (PND) 2022-2026 contempla una línea de política pública que impulse el juego y la ampliación de espacios de recreación y juego; así como la construcción de nuevos parques públicos y entornos para el desarrollo de habilidades, vocaciones y talentos de niñas y niños, conforme a la solicitud que ellas y ellos hicieron en los Diálogos Regionales Vinculantes. ',
       metodologia:
         'No. total de parques o espacios de juego / No. total de población menor de 18 años durante el mismo período x 1.000',
-      unidad: 'Por cada 1,000 niñas y niños',
+      unidad: 'Por cada 1.000 niñas y niños',
       desagregacion: 'Municipal',
       interpretacion:
         'Este indicador cuantifica el número de parques destinados y usados para el juego espontáneo y libre y escenarios públicos seguros  implementados en los diferentes mucipios de Colombia, destinados para que los habitantes puedan jugar en libertad, de acuerdo con el número de habitantes de cada municipio.',
