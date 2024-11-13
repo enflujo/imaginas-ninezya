@@ -9,7 +9,7 @@ export const ya7: DatosYa = {
   hay_datos: true,
   indicadores: [
     {
-      nombre: 'Fortalecimiento Familiar del cuidado y la crianza de la niñez',
+      nombre: 'Coeficiente de Gini (Desigualdad)',
       ruta: 'gini',
       archivo: 'ya7-1',
       hay_datos: true,
