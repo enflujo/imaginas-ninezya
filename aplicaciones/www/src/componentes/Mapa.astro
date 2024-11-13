@@ -14,6 +14,7 @@ const { ancho, alto } = Astro.props;
     <defs>
       <pattern id="sinInfo" patternUnits="userSpaceOnUse" width="3.5" height="3.5" patternTransform="rotate(45)">
         <line x1="0" y1="0" x2="0" y2="3.5" stroke="#46484A" stroke-width="1"></line>
+        <line x1="3.5" y1="3.5" x2="0" y2="3.5" stroke="#46484A" stroke-width="1"></line>
       </pattern>
     </defs>
 
@@ -109,7 +110,7 @@ const { ancho, alto } = Astro.props;
     let datosParaPintar: FeatureCollection; // Esto puede ser departamentos o municipios
 
     mapa.onmousemove = (evento) => {
-      const { top, height } = informacion.getBoundingClientRect();
+      const { height } = informacion.getBoundingClientRect();
       const x = evento.clientX;
       const y = evento.clientY;
 

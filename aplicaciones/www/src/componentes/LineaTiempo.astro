@@ -164,6 +164,7 @@ const { alto, meta, umbral } = Astro.props;
     }
 
     function escalar() {
+      if (!datosNal.value.maxNal) return;
       const marcasY = contenedorEjeY.querySelectorAll<SVGGElement>('.marcaEjeY');
       const marcasX = contenedorEjeX.querySelectorAll<SVGGElement>('.marcaEjeX');
       const areaUmbral = contenedorEjeY.querySelector<SVGGElement>('.umbral');
@@ -233,6 +234,8 @@ const { alto, meta, umbral } = Astro.props;
       lineas.forEach((linea) => {
         linea.actualizar(posicionX, posicionY);
       });
+
+      if (!ejeYCreado) crearEjeY();
     }
 
     function crearEjeY() {
@@ -387,7 +390,6 @@ const { alto, meta, umbral } = Astro.props;
         });
 
         escalar();
-        if (!ejeYCreado) crearEjeY();
         return;
       }
 
@@ -396,7 +398,6 @@ const { alto, meta, umbral } = Astro.props;
           linea.eliminar();
         });
         escalar();
-        if (!ejeYCreado) crearEjeY();
         return;
       }
 
@@ -431,7 +432,6 @@ const { alto, meta, umbral } = Astro.props;
       });
 
       escalar();
-      if (!ejeYCreado) crearEjeY();
     });
 
     añoSeleccionado.subscribe((añoActual) => {
