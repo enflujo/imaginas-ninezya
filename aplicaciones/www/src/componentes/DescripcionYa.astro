@@ -20,33 +20,33 @@ if (definicion) {
 ---
 
 <div
-  id='descripcionYa'
+  id="descripcionYa"
   class=`${descripcionAbierta ? '' : 'cerrado'} ${anchoCompleto ? 'anchoCompleto' : ''}`
   data-anchoCompleto=`${anchoCompleto}`
 >
-  {!anchoCompleto && <div class='cerrarDescripcion'>X</div>}
-  <div class='seccionSuperior'>
-    <div id='iconoYa' style={`background-image:url(${import.meta.env.BASE_URL}/iconos/${img}.svg)`}></div>
+  {!anchoCompleto && <div class="cerrarDescripcion">X</div>}
+  <div class="seccionSuperior">
+    <div id="iconoYa" style={`background-image:url(${import.meta.env.BASE_URL}/iconos/${img}.svg)`}></div>
   </div>
-  <section class='definicion'>
+  <section class="definicion">
     <h2>{titulo}</h2>
     <div set:html={definicionProcesada} />
   </section>
 
-  <div id='contenedorLineasIndicadores'>
+  <div id="contenedorLineasIndicadores">
     {
       archivos.map((obj) => {
         return (
           <a
             href={obj.ruta}
             class={`descContenedorIndicador${Astro.url.pathname === obj.ruta ? ' activo' : ''}`}
-            style='width: 45%'
+            style="width: 45%"
             data-archivo={obj.archivo}
             data-umbral={obj.umbral}
             data-condatos={obj.tieneDatos ? 'si' : 'no'}
           >
             <h3>{obj.titulo}</h3>
-            {hayDatos && <svg class='visDescripcion' style='width:100%; height:100px' />}
+            {hayDatos && <svg class="visDescripcion" style="width:100%; height:100px" />}
           </a>
         );
       })
@@ -170,7 +170,7 @@ if (definicion) {
   }
 </script>
 
-<style lang='scss' is:global>
+<style lang="scss" is:global>
   @import '@/scss/constantes';
 
   .lineaDesc {
@@ -192,7 +192,7 @@ if (definicion) {
   }
 </style>
 
-<style lang='scss'>
+<style lang="scss">
   @import '@/scss/constantes';
 
   #descripcionYa {
@@ -293,7 +293,8 @@ if (definicion) {
     justify-content: center;
   }
 
-  .descContenedorIndicador {
+  .descContenedorIndicador,
+  .descContenedorIndicador:link {
     padding: 1em;
     color: var(--blancoMarfil);
     text-decoration: none;
