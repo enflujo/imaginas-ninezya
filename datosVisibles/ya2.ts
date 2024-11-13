@@ -129,15 +129,36 @@ export const ya2: DatosYa = {
       archivo: 'ya2-6',
       hay_datos: true,
       explicacion_umbral: 'No se ha establecido un umbral específico para este indicador.',
-      explicacion: 'Este indicador mide el número total de niñas y niños que reciben educación inicial dentro del marco de atención integral.',
-      definicion: 'Cantidad de niños y niñas que participan en programas de educación inicial en el marco de la atención integral ofrecidos en el municipio.',
-      metodologia: 'Conteo del número de niñas y niños inscritos en programas de educación inicial, de acuerdo con los datos reportados por las entidades responsables.',
+      explicacion:
+        'Este indicador mide el número total de niñas y niños que reciben educación inicial dentro del marco de atención integral.',
+      definicion:
+        'Cantidad de niños y niñas que participan en programas de educación inicial en el marco de la atención integral ofrecidos en el municipio.',
+      metodologia:
+        'Conteo del número de niñas y niños inscritos en programas de educación inicial, de acuerdo con los datos reportados por las entidades responsables.',
       unidad: 'Conteo',
       fuente_numerador: 'Ministerio de Educación Nacional (MEN)',
       fuente_denominador: 'Ministerio de Educación Nacional (MEN)',
       desagregacion: 'Municipal',
-      contexto: 'La educación inicial es fundamental para el desarrollo cognitivo y social de los niños y niñas. Este indicador permite monitorear el acceso de la población infantil a programas de educación inicial en el marco de políticas de atención integral.',
-      interpretacion: 'Un valor alto en este indicador sugiere un mayor acceso de niñas y niños a la educación inicial en un municipio, reflejando el alcance de las políticas de atención integral implementadas por el MEN.'
+      contexto:
+        'La educación inicial es fundamental para el desarrollo cognitivo y social de los niños y niñas. Este indicador permite monitorear el acceso de la población infantil a programas de educación inicial en el marco de políticas de atención integral.',
+      interpretacion:
+        'Un valor alto en este indicador sugiere un mayor acceso de niñas y niños a la educación inicial en un municipio, reflejando el alcance de las políticas de atención integral implementadas por el MEN.',
+    },
+    {
+      nombre: 'Número de estudiantes matriculados y activos, según el tipo de institución',
+      ruta: 'inicial-marco',
+      archivo: 'ya2-7',
+      hay_datos: true,
+      explicacion_umbral: '...',
+      explicacion: '...',
+      definicion: '...',
+      metodologia: '...',
+      unidad: 'Porcentaje',
+      fuente_numerador: '...',
+      fuente_denominador: '...',
+      desagregacion: 'Municipal',
+      contexto: '...',
+      interpretacion: '...',
     },
   ],
 };
