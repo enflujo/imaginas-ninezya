@@ -45,11 +45,11 @@ const { ancho, alto } = Astro.props;
     </p>
     <p class="infoCategoria">
       <span class="referencia mayor"></span>
-      Mayor
+      Mayor de edad
     </p>
     <p class="infoCategoria">
       <span class="referencia menor"></span>
-      Menor
+      Menor de edad
     </p>
     <p class="infoCategoria">
       <span class="referencia solo"></span>
@@ -326,11 +326,11 @@ const { ancho, alto } = Astro.props;
                 <span class="miniColombina" style="width:${valor.c4 || 0}%;background-color:${colores.c4}"></span>  
               </p>
               <p class="infoCategoria">
-                <span class="valorMiniColombina">Mayor: ${valor.c5 || 0}%</span>
+                <span class="valorMiniColombina">Mayor de edad: ${valor.c5 || 0}%</span>
                 <span class="miniColombina" style="width:${valor.c5 || 0}%;background-color:${colores.c5}"></span>  
               </p>
               <p class="infoCategoria">
-                <span class="valorMiniColombina">Menor: ${valor.c6 || 0}%</span>
+                <span class="valorMiniColombina">Menor de edad: ${valor.c6 || 0}%</span>
                 <span class="miniColombina" style="width:${valor.c6 || 0}%;background-color:${colores.c6}"></span>  
               </p>
               <p class="infoCategoria">
@@ -475,7 +475,7 @@ const { ancho, alto } = Astro.props;
 </script>
 
 <style lang="scss" is:global>
-  @import '@/scss/constantes';
+  @use '@/scss/constantes' as *;
 
   #contenedorMapa {
     margin-top: 3em;
@@ -538,10 +538,10 @@ const { ancho, alto } = Astro.props;
 <style lang="scss">
   #leyendaCategorias {
     display: none;
-    font-size: 0.7em;
-    grid-template-columns: 70px 50px 70px;
+    font-size: 0.6em;
+    grid-template-columns: 80px 90px 80px;
     grid-template-rows: 1em auto 1em;
-    column-gap: 0.8em;
+    column-gap: 1em;
 
     p {
       margin: 0;
@@ -553,8 +553,8 @@ const { ancho, alto } = Astro.props;
     }
     .referencia {
       display: block;
-      height: 0.9em;
-      width: 0.9em;
+      height: 5px;
+      width: 5px;
       border-radius: 50%;
       margin: 0.3em;
 

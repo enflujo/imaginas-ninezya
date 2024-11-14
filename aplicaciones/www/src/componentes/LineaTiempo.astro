@@ -445,7 +445,7 @@ const { alto, meta, umbral } = Astro.props;
 </script>
 
 <style lang="scss" is:global>
-  @import '@/scss/constantes';
+  @use '@/scss/constantes' as *;
 
   #lineaDeTiempo {
     position: relative;

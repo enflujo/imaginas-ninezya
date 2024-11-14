@@ -172,7 +172,7 @@ if (definicion) {
 </script>
 
 <style lang="scss" is:global>
-  @import '@/scss/constantes';
+  @use '@/scss/constantes' as *;
 
   .lineaDesc {
     stroke-width: 2px;
@@ -194,7 +194,7 @@ if (definicion) {
 </style>
 
 <style lang="scss">
-  @import '@/scss/constantes';
+  @use '@/scss/constantes' as *;
 
   #descripcionYa {
     position: fixed;
