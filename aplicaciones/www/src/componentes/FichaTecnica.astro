@@ -12,95 +12,95 @@ const datosYa = datos.find((instancia) => instancia.ruta === rutaYa);
 const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta === rutaIndicador);
 ---
 
-<div class='fichaTecnica'>
-  <h2 class='tituloSeccion tituloYa'>{datosYa.nombre}</h2>
-  <div class='cerrarFicha'>x</div>
-  <p class='nombre'>{datosIndicador.nombre}</p>
+<div class="fichaTecnica">
+  <h2 class="tituloSeccion tituloYa">{datosYa.nombre}</h2>
+  <div class="cerrarFicha">x</div>
+  <p class="nombre">{datosIndicador.nombre}</p>
 
-  <div class='seccion'>
-    <h4 class='titulo'>Definición</h4>
-    <p class='texto' set:html={datosIndicador.definicion} />
+  <div class="seccion">
+    <h4 class="titulo">Definición</h4>
+    <p class="texto" set:html={datosIndicador.definicion} />
   </div>
 
-  <h3 class='tituloSeccion'>Información técnica</h3>
+  <h3 class="tituloSeccion">Información técnica</h3>
 
-  <section class='inferior'>
+  <section class="inferior">
     {
       datosIndicador.unidad && (
-        <div class='seccion'>
-          <h4 class='titulo'>Unidad de medida</h4>
-          <p class='texto'>{datosIndicador.unidad}</p>
+        <div class="seccion">
+          <h4 class="titulo">Unidad de medida</h4>
+          <p class="texto">{datosIndicador.unidad}</p>
         </div>
       )
     }
 
     {
       datosIndicador.metodologia && (
-        <div class='seccion'>
-          <h4 class='titulo'>Metodología de cálculo</h4>
-          <p class='texto' set:html={urlsAEnlacesHTML(datosIndicador.metodologia)} />
+        <div class="seccion">
+          <h4 class="titulo">Metodología de cálculo</h4>
+          <p class="texto" set:html={urlsAEnlacesHTML(datosIndicador.metodologia)} />
         </div>
       )
     }
 
     {
       datosIndicador.fuente_numerador && (
-        <div class='seccion'>
-          <h4 class='titulo'>Fuente del numerador</h4>
-          <p class='texto'>{datosIndicador.fuente_numerador}</p>
+        <div class="seccion">
+          <h4 class="titulo">Fuente del numerador</h4>
+          <p class="texto">{datosIndicador.fuente_numerador}</p>
         </div>
       )
     }
 
     {
       datosIndicador.fuente_denominador && (
-        <div class='seccion'>
-          <h4 class='titulo'>Fuente del denominador</h4>
-          <p class='texto'>{datosIndicador.fuente_denominador}</p>
+        <div class="seccion">
+          <h4 class="titulo">Fuente del denominador</h4>
+          <p class="texto">{datosIndicador.fuente_denominador}</p>
         </div>
       )
     }
 
     {
       datosIndicador.desagregacion && (
-        <div class='seccion'>
-          <h4 class='titulo'>Nivel de desagregación</h4>
-          <p class='texto'>{datosIndicador.desagregacion}</p>
+        <div class="seccion">
+          <h4 class="titulo">Nivel de desagregación</h4>
+          <p class="texto">{datosIndicador.desagregacion}</p>
         </div>
       )
     }
 
     {
       datosIndicador.contexto && (
-        <div class='seccion'>
-          <h4 class='titulo'>Contexto</h4>
-          <p class='texto' set:html={urlsAEnlacesHTML(datosIndicador.contexto)} />
+        <div class="seccion">
+          <h4 class="titulo">Contexto</h4>
+          <p class="texto" set:html={urlsAEnlacesHTML(datosIndicador.contexto)} />
         </div>
       )
     }
 
     {
       datosIndicador.explicacion_umbral && (
-        <div class='seccion'>
-          <h4 class='titulo'>Meta</h4>
-          <p class='texto' set:html={urlsAEnlacesHTML(datosIndicador.explicacion_umbral)} />
+        <div class="seccion">
+          <h4 class="titulo">Meta</h4>
+          <p class="texto" set:html={urlsAEnlacesHTML(datosIndicador.explicacion_umbral)} />
         </div>
       )
     }
 
     {
       datosIndicador.interpretacion && (
-        <div class='seccion'>
-          <h4 class='titulo'>Cómo se interpreta</h4>
-          <p class='texto' set:html={urlsAEnlacesHTML(datosIndicador.interpretacion)} />
+        <div class="seccion">
+          <h4 class="titulo">Cómo se interpreta</h4>
+          <p class="texto" set:html={urlsAEnlacesHTML(datosIndicador.interpretacion)} />
         </div>
       )
     }
   </section>
 </div>
 
-<style lang='scss'>
-  @import '@/scss/constantes';
+<style lang="scss">
+  @use '@/scss/constantes' as *;
 
   .fichaTecnica {
     border: solid 2px var(--azulViejo);

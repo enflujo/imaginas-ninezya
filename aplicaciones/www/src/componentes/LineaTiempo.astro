@@ -164,6 +164,7 @@ const { alto, meta, umbral } = Astro.props;
     }
 
     function escalar() {
+      if (!datosNal.value.maxNal) return;
       const marcasY = contenedorEjeY.querySelectorAll<SVGGElement>('.marcaEjeY');
       const marcasX = contenedorEjeX.querySelectorAll<SVGGElement>('.marcaEjeX');
       const areaUmbral = contenedorEjeY.querySelector<SVGGElement>('.umbral');
@@ -233,6 +234,8 @@ const { alto, meta, umbral } = Astro.props;
       lineas.forEach((linea) => {
         linea.actualizar(posicionX, posicionY);
       });
+
+      if (!ejeYCreado) crearEjeY();
     }
 
     function crearEjeY() {
@@ -321,7 +324,10 @@ const { alto, meta, umbral } = Astro.props;
         const lineaNacional = new Linea(
           contenedorLineas,
           'Colombia',
-          lista,
+          lista.map((obj) => {
+            obj.valor = obj.valor ? (Array.isArray(obj.valor) ? obj.valor[0] : obj.valor) : obj.valor;
+            return obj;
+          }),
           obtenerVariableCSS('--fucsiaEsmalte'),
           visualizaciones.dataset.unidad
         );
@@ -387,7 +393,6 @@ const { alto, meta, umbral } = Astro.props;
         });
 
         escalar();
-        if (!ejeYCreado) crearEjeY();
         return;
       }
 
@@ -396,7 +401,6 @@ const { alto, meta, umbral } = Astro.props;
           linea.eliminar();
         });
         escalar();
-        if (!ejeYCreado) crearEjeY();
         return;
       }
 
@@ -431,7 +435,6 @@ const { alto, meta, umbral } = Astro.props;
       });
 
       escalar();
-      if (!ejeYCreado) crearEjeY();
     });
 
     añoSeleccionado.subscribe((añoActual) => {
@@ -442,7 +445,7 @@ const { alto, meta, umbral } = Astro.props;
 </script>
 
 <style lang="scss" is:global>
-  @import '@/scss/constantes';
+  @use '@/scss/constantes' as *;
 
   #lineaDeTiempo {
     position: relative;

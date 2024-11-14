@@ -110,7 +110,8 @@ if (definicion) {
       const maximos = definirMedidasMax(respuesta.maxNal, respuesta, umbral);
 
       for (const año in respuesta.datos) {
-        ordenados.push({ año, valor: respuesta.datos[año] });
+        const valor = Array.isArray(respuesta.datos[año]) ? respuesta.datos[año][0] : respuesta.datos[año];
+        ordenados.push({ año, valor });
       }
 
       const posX = (valor: number) => {
@@ -171,7 +172,7 @@ if (definicion) {
 </script>
 
 <style lang="scss" is:global>
-  @import '@/scss/constantes';
+  @use '@/scss/constantes' as *;
 
   .lineaDesc {
     stroke-width: 2px;
@@ -193,7 +194,7 @@ if (definicion) {
 </style>
 
 <style lang="scss">
-  @import '@/scss/constantes';
+  @use '@/scss/constantes' as *;
 
   #descripcionYa {
     position: fixed;
@@ -382,7 +383,7 @@ if (definicion) {
       }
 
       .definicion {
-        width: 25vw;
+        max-width: 1400px;
         min-width: 500px;
       }
       #contenedorLineasIndicadores {

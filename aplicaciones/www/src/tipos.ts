@@ -31,7 +31,7 @@ export interface ExtremosCoordenadas {
   longitudMax: number;
 }
 
-export type DatosAño = [codigo: string, valor: number][];
+export type DatosAño = [codigo: string, valor: number, valor2?: number, valor3?: number][];
 export type DatosIndicador = { [año: string]: DatosAño };
 
 export type DatosPorAñoOrdenado = { año: string; valor: number }[];

@@ -49,6 +49,10 @@ export type RespuestaPorcentaje = {
   [año: string]: [lugar: string, porcentaje: number, variable2?: number][];
 };
 
+export type RespuestaPorcentaje2 = {
+  [año: string]: [lugar: string, total: number, noOficial: number, oficial: number][];
+};
+
 export type RespuestaCategorias = {
   [año: string]: [lugar: string, valor: { [categoria: string]: number }][];
 };
@@ -126,10 +130,19 @@ export type VariableValorSingular =
   | 'porcentaje'
   | 'P51'
   | 'educ_inicial_icbf'
-  | 'porcentaje_nacidos_vivos_personal_calificado';
+  | 'porcentaje_nacidos_vivos_personal_calificado'
+  | '#_estudiantes';
 
 export type VariablesSingulares = {
   [llave in VariableValorSingular]: number;
+};
+
+export type VariableDoble = {
+  '#_estudiantes': number;
+  sector: string;
+  codmpio: number;
+  anno: number;
+  coddepto?: number;
 };
 
 export type VariablesNumDen = {

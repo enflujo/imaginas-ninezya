@@ -9,18 +9,20 @@
     "preview": "astro preview",
     "astro": "astro",
     "revisar": "astro check",
-    "armar:dev": "astro build --sire https://enflujo.github.io --base /imagina-ninezya"
+    "armar:dev": "astro build --site https://enflujo.github.io --base /imagina-ninezya"
   },
   "dependencies": {
     "@enflujo/alquimia": "^2.0.0",
-    "astro": "^4.16.5",
+    "astro": "^4.16.12",
     "fuzzysort": "^3.1.0",
-    "marked": "^14.1.3",
+    "marked": "^15.0.0",
     "nanostores": "^0.11.3"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
-    "sass": "^1.79.5",
+    "@astrojs/sitemap": "^3.2.1",
+    "astro-robots-txt": "^1.0.0",
+    "sass": "^1.80.7",
     "schema-dts": "^1.1.2"
   }
 }

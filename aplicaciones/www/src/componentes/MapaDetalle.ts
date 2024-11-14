@@ -1,6 +1,6 @@
 import type { DatosAño, ExtremosCoordenadas } from '@/tipos';
 import type { Categoria } from '@/tiposCompartidos/compartidos';
-import { calcularPorcentaje } from '@/utilidades/ayudas';
+import { calcularPorcentaje, redondearDecimal } from '@/utilidades/ayudas';
 import {
   añoSeleccionado,
   datosMapaMunicipio,
@@ -24,7 +24,7 @@ export default class MapaDetalle extends HTMLElement {
   extremosGeo: ExtremosCoordenadas;
   coordenadasAncho: number;
   coordenadasAlto: number;
-  formas: { [codigo: string]: { svg: SVGPathElement; valor: number } };
+  formas: { [codigo: string]: { svg: SVGPathElement; valor: number; valores?: number[] } };
   ancho: number;
   alto: number;
   contenedor: HTMLDivElement;
@@ -168,9 +168,21 @@ export default class MapaDetalle extends HTMLElement {
             }
           }
 
-          const textoInfo = !valor ? 'Sin datos' : `${valor}${descripcion}`;
+          const valores = this.formas[lugar.properties.codigo].valores;
 
-          informacion.innerText = `${lugar.properties.nombre}: ${textoInfo}`;
+          if (valores) {
+            const porcentajeOficial = (valores[1] / valores[0]) * 100;
+            const porcentajeNoOficial = (valores[2] / valores[0]) * 100;
+
+            descripcion = `<p class="pOficial">Oficiales: ${redondearDecimal(porcentajeOficial)}%</p>
+            <p class="pOficial">No Oficiales: ${redondearDecimal(porcentajeNoOficial)}%</p>`;
+          }
+
+          const textoInfo = !valor
+            ? 'Sin datos'
+            : `${valores ? '#: ' : ''}${new Intl.NumberFormat('es-CO').format(valor)}${descripcion}`;
+
+          informacion.innerHTML = `${lugar.properties.nombre}: ${textoInfo}`;
 
           Object.assign(informacion.style, {
             top: `${y}px`,
@@ -243,7 +255,9 @@ export default class MapaDetalle extends HTMLElement {
     const datos = (await datosIndicadorMunicipio(año)) as DatosAño;
 
     if (datos && datos.length) {
-      datos.forEach(([codigoMun, valor]) => {
+      datos.forEach((dato) => {
+        const codigoMun = dato[0];
+        const valor = dato[1];
         const dep = codigoMun.substring(0, 2);
 
         if (dep === this.id) {
@@ -256,6 +270,10 @@ export default class MapaDetalle extends HTMLElement {
             } else {
               forma.svg.setAttribute('style', 'fill: url(#sinInfo)');
               forma.valor = null;
+            }
+
+            if (dato.length === 4) {
+              forma.valores = [dato[1], dato[2], dato[3]];
             }
           } else {
             console.log('No existe lugar con codigo', codigoMun);

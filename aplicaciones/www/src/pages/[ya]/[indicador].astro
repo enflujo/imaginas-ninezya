@@ -199,7 +199,7 @@ const archivosYa: DatosIndicadoresListaDescripcion[] = datosYa.indicadores.map((
 
     // Cerrar ficha con botón cerrar
     botonesCerrar.forEach((boton) => {
-      boton.addEventListener('click', (evento) => {
+      boton.addEventListener('click', () => {
         infoAdicional.classList.remove('abierta');
       });
     });
@@ -207,7 +207,7 @@ const archivosYa: DatosIndicadoresListaDescripcion[] = datosYa.indicadores.map((
 </script>
 
 <style lang="scss">
-  @import '@/scss/constantes';
+  @use '@/scss/constantes' as *;
 
   #visualizaciones {
     position: relative;
@@ -224,7 +224,6 @@ const archivosYa: DatosIndicadoresListaDescripcion[] = datosYa.indicadores.map((
   }
 
   #contenedorInfoAdicional {
-    width: 60%;
     top: 8%;
     left: 15%;
     display: none;
