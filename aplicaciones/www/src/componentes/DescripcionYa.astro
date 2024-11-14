@@ -110,7 +110,8 @@ if (definicion) {
       const maximos = definirMedidasMax(respuesta.maxNal, respuesta, umbral);
 
       for (const año in respuesta.datos) {
-        ordenados.push({ año, valor: respuesta.datos[año] });
+        const valor = Array.isArray(respuesta.datos[año]) ? respuesta.datos[año][0] : respuesta.datos[año];
+        ordenados.push({ año, valor });
       }
 
       const posX = (valor: number) => {

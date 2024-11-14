@@ -26,6 +26,8 @@ export const convertirEscala = (
   );
 };
 
+export const redondearDecimal = (num: number): number => +(Math.round(+(num + 'e+2')) + 'e-2');
+
 export const hexARGB = (valor: string): number[] | null => {
   valor = valor.includes('#') ? valor.trim().replace('#', '') : valor.trim();
 
@@ -175,7 +177,6 @@ const crearSeccionSvg = (
 
 export function definirMedidasMax(baseMax: number, datosNal: DatosIndicadorNal, umbral: number) {
   const maxNalRedondeado = Math.ceil(baseMax / 10) * 10;
-
   if (datosNal.unidadMedida === 1) {
     if (baseMax < 1) {
       return { yMax: 1, yMin: 0, color: 0.6 };

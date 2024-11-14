@@ -30,8 +30,15 @@ export interface DatosYa extends IndicadoresDatosComunes {
   indicadores: IndicadoresDatos[];
 }
 
-export type DatosPorAño = { [año: string]: number };
-export type TiposEstructura = 'porcentaje' | 'tasa' | 'escala' | 'conteo' | 'coeficiente' | 'promedio';
+export type DatosPorAño = { [año: string]: number | number[] };
+export type TiposEstructura =
+  | 'porcentaje'
+  | 'tasa'
+  | 'escala'
+  | 'conteo'
+  | 'coeficiente'
+  | 'promedio'
+  | 'porcentajeDos';
 
 export type Categorias = {
   [categoria: string]: number;

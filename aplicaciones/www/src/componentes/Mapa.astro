@@ -63,7 +63,7 @@ const { ancho, alto } = Astro.props;
 </div>
 
 <script>
-  import { calcularPorcentaje, crearLinea } from '@/utilidades/ayudas';
+  import { calcularPorcentaje, crearLinea, redondearDecimal } from '@/utilidades/ayudas';
   import { escalaCoordenadas, extremosLugar } from '@enflujo/alquimia';
   import type { DatosAño, ExtremosCoordenadas } from '@/tipos';
   import type { FeatureCollection } from 'geojson';
@@ -224,23 +224,32 @@ const { ancho, alto } = Astro.props;
         zonas[codigo].valor = null;
       }
 
-      datos.forEach(([codigo, valor]) => {
-        const zona = zonas[codigo];
+      datos.forEach((dato) => {
+        const zona = zonas[dato[0]];
+
         if (zona) {
-          if (valor) {
+          const valorTotal = dato[1];
+          let valor: number | number[] = valorTotal;
+
+          if (dato.length === 4) {
+            // Es 2.7 con varios valores
+            zona.valores = [dato[1], dato[2], dato[3]];
+          }
+
+          if (valorTotal) {
             if (datosNal.value.categorias) {
-              zona.svg.setAttribute('style', `fill: ${color(valor)}`);
-              zona.valor = valor;
+              zona.svg.setAttribute('style', `fill: ${color(valorTotal)}`);
+              zona.valor = valorTotal;
             } else {
-              zona.svg.setAttribute('style', `fill: ${color(valor)}`);
-              zona.valor = +valor;
+              zona.svg.setAttribute('style', `fill: ${color(valorTotal)}`);
+              zona.valor = +valorTotal;
             }
           } else {
             zona.svg.setAttribute('style', 'fill: url(#sinInfo)');
             zona.valor = null;
           }
         } else {
-          console.log('No existe lugar con codigo', codigo);
+          console.log('No existe lugar con codigo', dato[0]);
         }
       });
     }
@@ -289,7 +298,6 @@ const { ancho, alto } = Astro.props;
 
           zona.onmouseenter = () => {
             const valor = zonas[lugar.properties.codigo].valor;
-
             informacion.classList.add('visible');
 
             // Cuando es por categorías
@@ -348,11 +356,23 @@ const { ancho, alto } = Astro.props;
                 }
               }
 
-              const textoInfo = !valor ? 'Sin datos' : `${valor}${descripcion}`;
+              const valores = zonas[lugar.properties.codigo].valores;
+
+              if (valores) {
+                const porcentajeOficial = (valores[1] / valores[0]) * 100;
+                const porcentajeNoOficial = (valores[2] / valores[0]) * 100;
+
+                descripcion = `<p class="pOficial">Oficiales: ${redondearDecimal(porcentajeOficial)}%</p>
+                <p class="pOficial">No Oficiales: ${redondearDecimal(porcentajeNoOficial)}%</p>`;
+              }
+
+              const textoInfo = !valor
+                ? 'Sin datos'
+                : `${valores ? '#: ' : ''}${new Intl.NumberFormat('es-CO').format(valor)}${descripcion}`;
               if (nivel.get() === 'mun') {
-                informacion.innerText = `${lugar.properties.nombre} (${lugar.properties.dep}): ${textoInfo}`;
+                informacion.innerHTML = `${lugar.properties.nombre} (${lugar.properties.dep}): ${textoInfo}`;
               } else {
-                informacion.innerText = `${lugar.properties.nombre}: ${textoInfo}`;
+                informacion.innerHTML = `${lugar.properties.nombre}: ${textoInfo}`;
                 zona.classList.add('departamento');
               }
             }

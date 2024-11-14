@@ -3,6 +3,7 @@ import { readdir, rm } from 'fs/promises';
 import { rutaEstaticosDatos, rutaEstaticosDescarga } from './utilidades/constantes';
 import calcularPesos from './datosDescarga';
 import JuegoCategorias from './modulos/JuegoCategorias';
+import VariableDoble from './modulos/VariableDoble';
 
 async function inicio() {
   await vaciarProcesados();
@@ -68,6 +69,8 @@ async function procesarDatos() {
   await ya25.procesar('2.5: porcentaje marco integral', 'YA_2.5', 'Sheet 1', 'ya2-5');
   const ya26 = new VariableSingular('educ_inicial_icbf', true, 'conteo');
   await ya26.procesar('2.6: educación inicial icbf', 'YA_2.6', 'Sheet 1', 'ya2-6');
+  const ya27 = new VariableDoble('#_estudiantes', true, 'conteo', 1);
+  await ya27.procesar('2.7: matriculados', 'YA_2.7', 'Sheet1', 'ya2-7');
 
   /** 3 */
   const ya31 = new VariableSingular('promedio_matematicas', true, 'promedio');

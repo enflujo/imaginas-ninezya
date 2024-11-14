@@ -324,7 +324,10 @@ const { alto, meta, umbral } = Astro.props;
         const lineaNacional = new Linea(
           contenedorLineas,
           'Colombia',
-          lista,
+          lista.map((obj) => {
+            obj.valor = obj.valor ? (Array.isArray(obj.valor) ? obj.valor[0] : obj.valor) : obj.valor;
+            return obj;
+          }),
           obtenerVariableCSS('--fucsiaEsmalte'),
           visualizaciones.dataset.unidad
         );

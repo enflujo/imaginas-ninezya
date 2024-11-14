@@ -199,7 +199,7 @@ const archivosYa: DatosIndicadoresListaDescripcion[] = datosYa.indicadores.map((
 
     // Cerrar ficha con botón cerrar
     botonesCerrar.forEach((boton) => {
-      boton.addEventListener('click', (evento) => {
+      boton.addEventListener('click', () => {
         infoAdicional.classList.remove('abierta');
       });
     });

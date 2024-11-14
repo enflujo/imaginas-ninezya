@@ -156,7 +156,7 @@ export const ya2: DatosYa = {
       definicion: 'Porcentaje de estudiantes matriculados que asisten a instituciones de tipo público o privado.',
       metodologia:
         'Los datos se recopilan a través del Sistema Integrado de Matrícula (SIMAT) del Ministerio de Educación Nacional (MEN), y se consolidan anualmente para asegurar consistencia en los registros.',
-      unidad: 'Porcentaje',
+      unidad: 'Total de estudiantes matriculados',
       fuente_numerador: 'Ministerio de Educación Nacional (MEN) - SIMAT',
       fuente_denominador: 'Ministerio de Educación Nacional (MEN) - SIMAT',
       desagregacion: 'Municipal',
