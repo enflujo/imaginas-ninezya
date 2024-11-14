@@ -21,11 +21,14 @@ const { ancho, alto } = Astro.props;
     <g id="colombia"></g>
     <g id="seleccionados"></g>
   </svg>
+
   <div id="leyendaMapa">
     <span class="marcaLeyenda alerta"></span>
     <span class="marcaLeyenda umbral"></span>
     <span class="marcaLeyenda positivo"></span>
+    <span class="marcaLeyenda sinDatos">Sin Datos</span>
   </div>
+
   <div id="leyendaCategorias">
     <p class="infoCategoria">
       <span class="referencia colegio"></span>
@@ -597,6 +600,20 @@ const { ancho, alto } = Astro.props;
       font-size: 0.55em;
       position: absolute;
       top: -1.1em;
+
+      &.sinDatos {
+        top: 15px;
+
+        &::after {
+          content: '';
+          display: inline-block;
+          vertical-align: top;
+          width: 60px;
+          height: 9px;
+          margin-left: 5px;
+          background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogICAgPGRlZnM+CiAgICAgIDxwYXR0ZXJuIGlkPSJzaW5JbmZvIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB3aWR0aD0iMy41IiBoZWlnaHQ9IjMuNSIgcGF0dGVyblRyYW5zZm9ybT0icm90YXRlKDQ1KSI+CiAgICAgICAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjMuNSIgc3Ryb2tlPSIjNDY0ODRBIiBzdHJva2Utd2lkdGg9IjEiPjwvbGluZT4KICAgICAgICA8bGluZSB4MT0iMy41IiB5MT0iMy41IiB4Mj0iMCIgeTI9IjMuNSIgc3Ryb2tlPSIjNDY0ODRBIiBzdHJva2Utd2lkdGg9IjEiPjwvbGluZT4KICAgICAgPC9wYXR0ZXJuPgogICAgPC9kZWZzPgoKICAgIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjc2luSW5mbykiPjwvcmVjdD4KICA8L3N2Zz4=');
+        }
+      }
     }
 
     .umbral {
