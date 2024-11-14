@@ -46,10 +46,9 @@ import { urlsAEnlacesHTML } from '@enflujo/alquimia';
 </div>
 
 <style lang="scss">
-  @import '@/scss/constantes';
+  @use '@/scss/constantes' as *;
   .contenedorInfoAdicional {
     display: flex;
-    position: absolute;
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
@@ -148,11 +147,8 @@ import { urlsAEnlacesHTML } from '@enflujo/alquimia';
       flex-wrap: wrap;
 
       .aviso {
-        color: yellow;
-        background-color: var(--uvaProfunda);
-        padding: 3em;
-        border: solid 2px yellow;
-        border-radius: 10px;
+        font-size: 2em;
+        padding: 1.5em 0;
       }
 
       .sugerencia {

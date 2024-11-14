@@ -1,5 +1,8 @@
-import type { DatosIndicadorNal, IMapearCoordenadas } from '@/tipos';
+import type { IMapearCoordenadas } from '@/tipos';
+import type { DatosIndicadorNal } from '@/tiposCompartidos/compartidos';
 import type { MultiPolygon, Polygon, Position } from 'geojson';
+
+export const esNumero = (valor: string): boolean => !isNaN(parseInt(valor));
 /**
  * Convierte un valor de una escala a otra.
  *
@@ -22,6 +25,8 @@ export const convertirEscala = (
     escalaDestinoMin
   );
 };
+
+export const redondearDecimal = (num: number): number => +(Math.round(+(num + 'e+2')) + 'e-2');
 
 export const hexARGB = (valor: string): number[] | null => {
   valor = valor.includes('#') ? valor.trim().replace('#', '') : valor.trim();
@@ -137,7 +142,7 @@ export const crearLinea = (
   let res = '';
 
   geometria.coordinates.forEach((grupo: Position[] | Position[][]): void => {
-    grupo.forEach((posicion, i) => {
+    grupo.forEach((posicion: Position | Position[], i: number) => {
       const cabeza = i === 0 ? 'M' : 'L';
 
       if (typeof posicion[0] === 'object') {
@@ -170,31 +175,44 @@ const crearSeccionSvg = (
   return `${cabeza}${coordenadas.x | 0} ${coordenadas.y | 0} `;
 };
 
-export function definirMedidasMax(datosNal: DatosIndicadorNal, nombreArchivo: string) {
-  if (datosNal.unidadMedida > 100) {
-    if (nombreArchivo === 'ya1-7') {
-      return { y: 15000, color: 15000 };
+export function definirMedidasMax(baseMax: number, datosNal: DatosIndicadorNal, umbral: number) {
+  const maxNalRedondeado = Math.ceil(baseMax / 10) * 10;
+  if (datosNal.unidadMedida === 1) {
+    if (baseMax < 1) {
+      return { yMax: 1, yMin: 0, color: 0.6 };
     } else {
       return {
-        y: Math.min(Math.ceil(datosNal.maxDep / 100) * 100, 10000),
-        color: Math.ceil(datosNal.maxNal / 10) * 10,
-      };
-    }
-  } else {
-    if (datosNal.estructura === 'conteo') {
-      return {
-        y: datosNal.maxNal > datosNal.unidadMedida ? Math.ceil(datosNal.maxNal / 100) * 100 : datosNal.unidadMedida,
+        yMax: baseMax > datosNal.unidadMedida ? Math.ceil(baseMax / 100) * 100 : datosNal.unidadMedida,
+        yMin: 0,
         color: 5,
       };
-    } else if (nombreArchivo === 'ya2-8') {
-      return { y: 50, color: 50 };
-    } else if (nombreArchivo === 'ya7-1') {
-      return { y: 1, color: 0.6 };
-    } else {
-      return {
-        y: datosNal.maxNal > datosNal.unidadMedida ? Math.ceil(datosNal.maxNal / 100) * 100 : datosNal.unidadMedida,
-        color: Math.ceil(datosNal.maxNal / 10) * 10,
-      };
     }
+  }
+
+  /**
+   * Cuando los umbrales o la tendencia deseada es abajo. (umbral se pinta verde abajo en la línea de tiempo)
+   * Que sea visible el umbral y los valor lo más cerca posible.
+   */
+  if (!datosNal.ascendente && umbral) {
+    const umbralRedondeado = Math.ceil(umbral / 10) * 10;
+    const yMax = Math.max(umbralRedondeado, maxNalRedondeado);
+
+    return {
+      yMax,
+      yMin: 0,
+      color: maxNalRedondeado,
+    };
+  } else if (!datosNal.ascendente) {
+    return { yMax: maxNalRedondeado, yMin: 0, color: maxNalRedondeado };
+  }
+
+  /**
+   * Cuando los umbrales o la tendencia deseada es arriba. (umbral se pinta verde arriba en la línea de tiempo)
+   */
+  if (datosNal.ascendente && umbral) {
+    const umbralRedondeado = Math.ceil(umbral / 10) * 10;
+    return { yMax: Math.max(umbralRedondeado, maxNalRedondeado), yMin: 0, color: maxNalRedondeado };
+  } else if (datosNal.ascendente) {
+    return { yMax: maxNalRedondeado, yMin: 0, color: maxNalRedondeado };
   }
 }

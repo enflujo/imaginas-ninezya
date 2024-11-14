@@ -44,7 +44,7 @@ export default class Linea {
         punto.onmouseenter = (evento) => {
           const x = evento.pageX;
           const y = evento.pageY;
-          informacion.innerText = `${nombre} en ${año}: ${valor}${
+          informacion.innerText = `${nombre} en ${año}: ${new Intl.NumberFormat('de-DE').format(valor)}${
             unidad.toLocaleLowerCase() === 'porcentaje' ? '%' : ''
           }`;
           informacion.classList.add('visible');

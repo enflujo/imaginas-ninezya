@@ -1,5 +1,6 @@
 import type { DatosAño, ExtremosCoordenadas } from '@/tipos';
-import { calcularPorcentaje } from '@/utilidades/ayudas';
+import type { Categoria } from '@/tiposCompartidos/compartidos';
+import { calcularPorcentaje, redondearDecimal } from '@/utilidades/ayudas';
 import {
   añoSeleccionado,
   datosMapaMunicipio,
@@ -9,6 +10,7 @@ import {
   nivel,
   actualizarUrl,
   revisarDepartamentos,
+  datosNal,
 } from '@/utilidades/cerebro';
 import { crearLinea, escalaCoordenadas, extremosLugar } from '@enflujo/alquimia';
 import type { IMapearCoordenadas } from '@enflujo/alquimia/libreria/modulos/tipos';
@@ -22,12 +24,13 @@ export default class MapaDetalle extends HTMLElement {
   extremosGeo: ExtremosCoordenadas;
   coordenadasAncho: number;
   coordenadasAlto: number;
-  formas: { [codigo: string]: { svg: SVGPathElement; valor: number } };
+  formas: { [codigo: string]: { svg: SVGPathElement; valor: number; valores?: number[] } };
   ancho: number;
   alto: number;
   contenedor: HTMLDivElement;
-  nivel: string;
   nombreDepartamento: string;
+  tipo: 'categorias' | 'mapa';
+  categorias?: Categoria[];
 
   constructor() {
     super();
@@ -38,6 +41,7 @@ export default class MapaDetalle extends HTMLElement {
     this.formas = {};
     this.ancho = 0;
     this.alto = 0;
+    this.tipo = 'mapa';
   }
 
   agregarTitulo(nombre: string) {
@@ -93,6 +97,7 @@ export default class MapaDetalle extends HTMLElement {
   }
 
   async crearMapa() {
+    const informacion = document.getElementById('informacion');
     this.contenedor = document.createElement('div');
     this.svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
@@ -125,6 +130,8 @@ export default class MapaDetalle extends HTMLElement {
 
     this.appendChild(this.contenedor);
 
+    if (this.tipo === 'categorias') return;
+
     const datosMunicipios = await datosMapaMunicipio();
     this.municipios = datosMunicipios.features.filter((lugar) => lugar.properties.dep === this.nombreDepartamento);
 
@@ -135,7 +142,7 @@ export default class MapaDetalle extends HTMLElement {
 
     this.extremos();
 
-    const informacion = document.getElementById('informacion');
+    const { estructura } = datosNal.value;
 
     this.municipios.forEach((lugar) => {
       if (lugar.geometry.type === 'Polygon' || lugar.geometry.type === 'MultiPolygon') {
@@ -149,7 +156,33 @@ export default class MapaDetalle extends HTMLElement {
           const y = evento.pageY;
           const valor = this.formas[lugar.properties.codigo].valor;
 
-          informacion.innerText = `${lugar.properties.nombre}: ${valor ? valor + '%' : 'Sin datos'}`;
+          informacion.classList.add('visible');
+
+          let descripcion = '';
+
+          if (valor) {
+            if (estructura === 'porcentaje') {
+              descripcion = '%';
+            } else if (estructura === 'tasa') {
+              // descripcion = ` ${unidad}`;
+            }
+          }
+
+          const valores = this.formas[lugar.properties.codigo].valores;
+
+          if (valores) {
+            const porcentajeOficial = (valores[1] / valores[0]) * 100;
+            const porcentajeNoOficial = (valores[2] / valores[0]) * 100;
+
+            descripcion = `<p class="pOficial">Oficiales: ${redondearDecimal(porcentajeOficial)}%</p>
+            <p class="pOficial">No Oficiales: ${redondearDecimal(porcentajeNoOficial)}%</p>`;
+          }
+
+          const textoInfo = !valor
+            ? 'Sin datos'
+            : `${valores ? '#: ' : ''}${new Intl.NumberFormat('es-CO').format(valor)}${descripcion}`;
+
+          informacion.innerHTML = `${lugar.properties.nombre}: ${textoInfo}`;
 
           Object.assign(informacion.style, {
             top: `${y}px`,
@@ -175,14 +208,15 @@ export default class MapaDetalle extends HTMLElement {
     const columna = document.getElementById('comparativo') as HTMLDivElement;
     const { width } = columna.getBoundingClientRect();
     const margen = 10;
-
     const dims = {
       ancho: calcularPorcentaje(width, 28),
       alto: calcularPorcentaje(window.innerHeight, 28),
     };
+    const coordenadasAlto = this.tipo === 'categorias' ? Math.min(dims.ancho, dims.alto) : this.coordenadasAlto;
+    const coordenadasAncho = this.tipo === 'categorias' ? Math.min(dims.ancho, dims.alto) : this.coordenadasAncho;
 
-    let alto = dims.ancho * Math.min(this.coordenadasAlto / this.coordenadasAncho, dims.alto / dims.ancho);
-    let ancho = alto * (this.coordenadasAncho / this.coordenadasAlto);
+    let alto = dims.ancho * Math.min(coordenadasAlto / coordenadasAncho, dims.alto / dims.ancho);
+    let ancho = alto * (coordenadasAncho / coordenadasAlto);
 
     if (ancho >= dims.ancho) {
       ancho -= margen;
@@ -194,26 +228,36 @@ export default class MapaDetalle extends HTMLElement {
     }
 
     Object.assign(this.contenedor.style, { width: `${dims.ancho}px`, height: `${dims.alto}px` });
+
     this.svg.setAttribute('width', `${ancho}`);
     this.svg.setAttribute('height', `${alto}`);
 
-    if (!this.municipios.length) return;
+    /** Escalar elementos del mapa detalle */
+    if (this.municipios && this.municipios.length) {
+      this.municipios.forEach((lugar) => {
+        if (lugar.geometry.type === 'Polygon' || lugar.geometry.type === 'MultiPolygon') {
+          const linea = crearLinea(lugar.geometry, this.mapearCoordenadas, ancho, alto);
+          const forma = this.formas[lugar.properties.codigo];
+          forma.svg.setAttribute('d', linea);
+        }
+      });
+    }
 
-    this.municipios.forEach((lugar) => {
-      if (lugar.geometry.type === 'Polygon' || lugar.geometry.type === 'MultiPolygon') {
-        const linea = crearLinea(lugar.geometry, this.mapearCoordenadas, ancho, alto);
-        const forma = this.formas[lugar.properties.codigo];
-        forma.svg.setAttribute('d', linea);
-      }
-    });
+    if (this.categorias && this.categorias.length) {
+      this.escalarRadiales();
+    }
   }
+
+  escalarRadiales() {}
 
   async pintarMapa() {
     const año = añoSeleccionado.get();
     const datos = (await datosIndicadorMunicipio(año)) as DatosAño;
 
     if (datos && datos.length) {
-      datos.forEach(([codigoMun, valor]) => {
+      datos.forEach((dato) => {
+        const codigoMun = dato[0];
+        const valor = dato[1];
         const dep = codigoMun.substring(0, 2);
 
         if (dep === this.id) {
@@ -227,6 +271,10 @@ export default class MapaDetalle extends HTMLElement {
               forma.svg.setAttribute('style', 'fill: url(#sinInfo)');
               forma.valor = null;
             }
+
+            if (dato.length === 4) {
+              forma.valores = [dato[1], dato[2], dato[3]];
+            }
           } else {
             console.log('No existe lugar con codigo', codigoMun);
           }
@@ -236,6 +284,7 @@ export default class MapaDetalle extends HTMLElement {
   }
 
   definirColor(color: string) {
+    // color del borde del recuadro del mapa pequeño
     this.style.borderColor = color;
   }
 }

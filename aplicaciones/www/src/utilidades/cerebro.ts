@@ -1,8 +1,9 @@
 import { atom, map } from 'nanostores';
 import type { FeatureCollection, Polygon, MultiPolygon, Position } from 'geojson';
-import type { DatosIndicador, DatosIndicadorNal, DatosPorAñoOrdenado, FuncionColor, LugarSeleccionado } from '@/tipos';
-import { definirMedidasMax, escalaColores, obtenerVariableCSS, pedirDatos } from './ayudas';
+import type { DatosIndicador, DatosPorAñoOrdenado, FuncionColor, LugarSeleccionado } from '@/tipos';
+import { escalaColores, obtenerVariableCSS, pedirDatos } from './ayudas';
 import { colorNegativo, colorNeutro, colorPositivo } from './constantes';
+import type { Categoria, Categorias, DatosIndicadorNal } from '@/tiposCompartidos/compartidos';
 
 export const listaAños = atom<DatosPorAñoOrdenado>([]);
 export const datosDep = map<DatosIndicador>(null);
@@ -12,10 +13,21 @@ export const nivel = atom<string>(null);
 export const añoSeleccionado = atom<string | null>(null);
 export const datosColombia = map<{ dep?: FeatureCollection; mun?: FeatureCollection }>({});
 export const lugaresSeleccionados = atom<LugarSeleccionado[]>([]);
+export const sinMunicipios = atom<boolean>(false);
 export let color: FuncionColor;
-export let valorMaxY = 0;
 export let valorMaxColor = 0;
 export let umbral = 0;
+export const coloresCategorias = {
+  c1: [255, 128, 170], // Rosado
+  c2: [17, 146, 232], // Cyan //
+  c3: [159, 24, 83], // Magenta
+  c4: [253, 97, 19], // Naranja
+  c5: [105, 41, 196], // Morado
+  c6: [0, 157, 154], // Aguamarina
+  c7: [178, 134, 0], // Mostaza
+  c8: [1, 39, 73], // azul oscuro casi negro
+};
+export const listaCategorias = atom<Categoria[]>([]);
 
 const cargador = document.getElementById('cargador');
 let nombreArchivo = '';
@@ -49,7 +61,7 @@ export async function datosIndicadorMunicipio(año?: string) {
     if (cargando) cargador.classList.add('visible');
   }, 150);
 
-  const respuesta = await pedirDatos<DatosIndicador>(`https://enflujo.com/bodega/ninezya/${nombreArchivo}-mun.json`);
+  const respuesta = await pedirDatos<DatosIndicador>(`${import.meta.env.BASE_URL}/datos/${nombreArchivo}-mun.json`);
   datosMun.set(respuesta);
   cargando = false;
   cargador.classList.remove('visible');
@@ -64,7 +76,7 @@ export async function datosIndicadorDep(año?: string) {
     if (cargando) cargador.classList.add('visible');
   }, 150);
 
-  const respuesta = await pedirDatos<DatosIndicador>(`https://enflujo.com/bodega/ninezya/${nombreArchivo}-dep.json`);
+  const respuesta = await pedirDatos<DatosIndicador>(`${import.meta.env.BASE_URL}/datos/${nombreArchivo}-dep.json`);
   datosDep.set(respuesta);
   cargando = false;
   cargador.classList.remove('visible');
@@ -111,13 +123,54 @@ export async function cargarDatos() {
 
   try {
     // Cargar datos indicador nacionales para linea de tiempo
-    const nal = await pedirDatos<DatosIndicadorNal>(`https://enflujo.com/bodega/ninezya/${nombreArchivo}-nal.json`);
+    const nal = await pedirDatos<DatosIndicadorNal>(`${import.meta.env.BASE_URL}/datos/${nombreArchivo}-nal.json`);
 
-    const maximos = definirMedidasMax(nal, nombreArchivo);
-    valorMaxY = maximos.y;
-    valorMaxColor = maximos.color;
-    color = definirColor(nal.ascendente);
+    if (nal.unidadMedida > 100) {
+      valorMaxColor = Math.ceil(nal.maxNal / 10) * 10;
+    } else {
+      if (nal.estructura === 'conteo') {
+        valorMaxColor = 5;
+      } else if (nombreArchivo === 'ya7-1') {
+        valorMaxColor = 0.6;
+      } else {
+        valorMaxColor = Math.ceil(nal.maxNal / 10) * 10;
+      }
+    }
+
+    if (nal.categorias) {
+      const datosCategorias = JSON.parse(datosArchivo.categorias) as Categoria[];
+
+      if (datosCategorias) {
+        listaCategorias.set(datosCategorias);
+      }
+
+      color = definirColorCategorias();
+      const lineaNacionalC1: { [año: string]: number } = {};
+      let maxNal = 0;
+      let minNal = Infinity;
+      Object.keys(nal.categorias)
+        .sort()
+        .forEach((año) => {
+          Object.values(nal.categorias[año]).forEach((valor) => {
+            if (maxNal < valor) maxNal = valor;
+            if (minNal > valor) minNal = valor;
+          });
+          lineaNacionalC1[año] = nal.categorias[año].c1;
+        });
+
+      nal.maxNal = maxNal;
+      nal.minNal = minNal;
+      nal.datos = lineaNacionalC1;
+    } else {
+      color = definirColor(nal.ascendente);
+    }
+
     datosNal.set(nal);
+
+    // Quitar botón de municipios si este indicador no tiene datos municipales.
+    if (!nal.datosMunicipio) {
+      sinMunicipios.set(true);
+    }
   } catch (error) {
     cargando = false;
   }
@@ -127,18 +180,26 @@ export async function cargarDatos() {
 }
 
 export function crearListaAños() {
-  const { datos } = datosNal.value;
-  if (!datos) return;
+  const { datos, categorias } = datosNal.value;
+  let _datos = {};
 
-  const años = Object.keys(datos)
-    .filter((año) => datos[año])
+  if (datos && Object.keys(datos).length) {
+    _datos = datos;
+  } else if (categorias) {
+    _datos = categorias;
+  } else {
+    return;
+  }
+
+  const años = Object.keys(_datos)
+    .filter((año) => _datos[año])
     .sort();
   const min = +años[0];
   const max = +años[años.length - 1];
   const lista: DatosPorAñoOrdenado = [];
 
   for (let año = min; año <= max; año++) {
-    const valor = datos[año];
+    const valor = _datos[año];
     lista.push({ año: `${año}`, valor: valor ? valor : null });
   }
 
@@ -158,6 +219,33 @@ const definirColor = (ascendente: boolean) => {
   } else {
     return escalaColores(0, valorMaxColor, umbral, colorPositivo, colorNeutro, colorNegativo);
   }
+};
+
+const definirColorCategorias = () => {
+  const { c1, c2, c3, c4, c5, c6, c7, c8 } = coloresCategorias;
+  const colores = [c1, c2, c3, c4, c5, c6, c7, c8];
+
+  return (categorias: Categorias) => {
+    const valorC1 = categorias.c1 ? categorias.c1 / 100 : 0;
+    const valorC2 = categorias.c2 ? categorias.c2 / 100 : 0;
+    const valorC3 = categorias.c3 ? categorias.c3 / 100 : 0;
+    const valorC4 = categorias.c4 ? categorias.c4 / 100 : 0;
+    const valorC5 = categorias.c5 ? categorias.c5 / 100 : 0;
+    const valorC6 = categorias.c6 ? categorias.c6 / 100 : 0;
+    const valorC7 = categorias.c7 ? categorias.c7 / 100 : 0;
+    const valorC8 = categorias.c8 ? categorias.c8 / 100 : 0;
+    const pesos = [valorC1, valorC2, valorC3, valorC4, valorC5, valorC6, valorC7, valorC8];
+    const nuevoColor = [0, 0, 0];
+
+    colores.forEach(([r, g, b], i) => {
+      const peso = pesos[i];
+      nuevoColor[0] += r * peso;
+      nuevoColor[1] += g * peso;
+      nuevoColor[2] += b * peso;
+    });
+
+    return `rgba(${nuevoColor.join(',')},0.8)`;
+  };
 };
 
 export function actualizarUrl(valores: { nombre: string; valor: string }[]) {

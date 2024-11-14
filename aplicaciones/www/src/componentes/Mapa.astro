@@ -1,5 +1,4 @@
 ---
-import { colorNegativo, colorNeutro, colorPositivo } from '@/utilidades/constantes';
 interface Props {
   // Porcentaje que no debe superar a lo ancho (1-100)
   ancho?: number;
@@ -15,21 +14,59 @@ const { ancho, alto } = Astro.props;
     <defs>
       <pattern id="sinInfo" patternUnits="userSpaceOnUse" width="3.5" height="3.5" patternTransform="rotate(45)">
         <line x1="0" y1="0" x2="0" y2="3.5" stroke="#46484A" stroke-width="1"></line>
+        <line x1="3.5" y1="3.5" x2="0" y2="3.5" stroke="#46484A" stroke-width="1"></line>
       </pattern>
     </defs>
 
     <g id="colombia"></g>
     <g id="seleccionados"></g>
   </svg>
+
   <div id="leyendaMapa">
     <span class="marcaLeyenda alerta"></span>
     <span class="marcaLeyenda umbral"></span>
     <span class="marcaLeyenda positivo"></span>
+    <span class="marcaLeyenda sinDatos">Sin Datos</span>
+  </div>
+
+  <div id="leyendaCategorias">
+    <p class="infoCategoria">
+      <span class="referencia colegio"></span>
+      Colegio
+    </p>
+    <p class="infoCategoria">
+      <span class="referencia casa"></span>
+      Casa
+    </p>
+    <p class="infoCategoria">
+      <span class="referencia trabajo"></span>
+      Trabajo
+    </p>
+    <p class="infoCategoria">
+      <span class="referencia ninero"></span>
+      Niñero/a
+    </p>
+    <p class="infoCategoria">
+      <span class="referencia mayor"></span>
+      Mayor de edad
+    </p>
+    <p class="infoCategoria">
+      <span class="referencia menor"></span>
+      Menor de edad
+    </p>
+    <p class="infoCategoria">
+      <span class="referencia solo"></span>
+      Solo
+    </p>
+    <p class="infoCategoria">
+      <span class="referencia otro"></span>
+      Otro
+    </p>
   </div>
 </div>
 
 <script>
-  import { calcularPorcentaje, crearLinea } from '@/utilidades/ayudas';
+  import { calcularPorcentaje, crearLinea, redondearDecimal } from '@/utilidades/ayudas';
   import { escalaCoordenadas, extremosLugar } from '@enflujo/alquimia';
   import type { DatosAño, ExtremosCoordenadas } from '@/tipos';
   import type { FeatureCollection } from 'geojson';
@@ -46,6 +83,7 @@ const { ancho, alto } = Astro.props;
     revisarDepartamentos,
     datosNal,
     umbral,
+    coloresCategorias,
   } from '@/utilidades/cerebro';
   import type { IMapearCoordenadas } from '@enflujo/alquimia/libreria/modulos/tipos';
   import { colorNegativo, colorNeutro, colorPositivo } from '@/utilidades/constantes';
@@ -58,6 +96,8 @@ const { ancho, alto } = Astro.props;
     const seleccionados = document.getElementById('seleccionados') as HTMLElement & SVGGElement;
     const informacion = document.getElementById('informacion');
     const leyendaMapa = document.getElementById('leyendaMapa');
+    const leyendaCategorias = document.getElementById('leyendaCategorias');
+    const leyendaColombia = document.getElementById('leyendaColombia');
 
     let mapearCoordenadas: IMapearCoordenadas;
     let extremosGeo: ExtremosCoordenadas;
@@ -73,10 +113,12 @@ const { ancho, alto } = Astro.props;
     let datosParaPintar: FeatureCollection; // Esto puede ser departamentos o municipios
 
     mapa.onmousemove = (evento) => {
+      const { height } = informacion.getBoundingClientRect();
       const x = evento.clientX;
       const y = evento.clientY;
+
       Object.assign(informacion.style, {
-        top: `${y}px`,
+        top: `${y < 145 ? y + height + 30 : y}px`,
         left: `${x}px`,
       });
     };
@@ -182,20 +224,34 @@ const { ancho, alto } = Astro.props;
       // Reiniciar todos sin datos antes de pintar de nuevo
       for (const codigo in zonas) {
         zonas[codigo].svg.setAttribute('style', 'fill: url(#sinInfo)');
+        zonas[codigo].valor = null;
       }
 
-      datos.forEach(([codigo, valor]) => {
-        const zona = zonas[codigo];
+      datos.forEach((dato) => {
+        const zona = zonas[dato[0]];
+
         if (zona) {
-          if (valor) {
-            zona.svg.setAttribute('style', `fill: ${color(valor)}`);
-            zona.valor = +valor;
+          const valorTotal = dato[1];
+
+          if (dato.length === 4) {
+            // Es 2.7 con varios valores
+            zona.valores = [dato[1], dato[2], dato[3]];
+          }
+
+          if (valorTotal) {
+            if (datosNal.value.categorias) {
+              zona.svg.setAttribute('style', `fill: ${color(valorTotal)}`);
+              zona.valor = valorTotal;
+            } else {
+              zona.svg.setAttribute('style', `fill: ${color(valorTotal)}`);
+              zona.valor = +valorTotal;
+            }
           } else {
             zona.svg.setAttribute('style', 'fill: url(#sinInfo)');
             zona.valor = null;
           }
         } else {
-          console.log('No existe lugar con codigo', codigo);
+          console.log('No existe lugar con codigo', dato[0]);
         }
       });
     }
@@ -206,17 +262,25 @@ const { ancho, alto } = Astro.props;
       zonas = {};
 
       if (!umbral) {
-        leyendaMapa.style.background = `linear-gradient(90deg, ${
-          ascendente ? colorPositivo : colorNegativo
-        } 0%, ${colorNeutro} 100%)`;
-        leyendaMapa.querySelector<HTMLSpanElement>('.alerta').innerText = ascendente ? 'Positivo' : 'Alerta';
-        leyendaMapa.querySelector<HTMLSpanElement>('.umbral').classList.add('invisible');
-        leyendaMapa.querySelector<HTMLSpanElement>('.positivo').innerText = '0';
+        if (datosNal.value.categorias) {
+          leyendaCategorias.style.display = 'grid';
+          leyendaColombia.classList.remove('colombia');
+          leyendaMapa.classList.remove('visible');
+        } else {
+          leyendaMapa.style.background = `linear-gradient(90deg, ${
+            ascendente ? colorPositivo : colorNegativo
+          } 0%, ${colorNeutro} 100%)`;
+          leyendaMapa.querySelector<HTMLSpanElement>('.alerta').innerText = ascendente ? 'Positivo' : 'Alerta';
+          leyendaMapa.querySelector<HTMLSpanElement>('.umbral').classList.add('invisible');
+          leyendaMapa.querySelector<HTMLSpanElement>('.positivo').innerText = '0';
+          leyendaMapa.classList.add('visible');
+        }
       } else {
         leyendaMapa.style.background = `linear-gradient(90deg, ${colorNegativo} 0%, ${colorNeutro} 50%, ${colorPositivo} 100%)`;
         leyendaMapa.querySelector<HTMLSpanElement>('.alerta').innerText = 'Alerta';
         leyendaMapa.querySelector<HTMLSpanElement>('.umbral').innerText = 'Meta';
         leyendaMapa.querySelector<HTMLSpanElement>('.positivo').innerText = 'Positivo';
+        leyendaMapa.classList.add('visible');
       }
 
       datosParaPintar.features.forEach((lugar) => {
@@ -239,26 +303,83 @@ const { ancho, alto } = Astro.props;
 
           zona.onmouseenter = () => {
             const valor = zonas[lugar.properties.codigo].valor;
-
             informacion.classList.add('visible');
 
-            let descripcion = '';
-
-            if (valor) {
-              if (estructura === 'porcentaje') {
-                descripcion = '%';
-              } else if (estructura === 'tasa') {
-                descripcion = ` ${unidad}`;
+            // Cuando es por categorías
+            if (datosNal.value.categorias) {
+              if (valor) {
+                const colores = { c1: '', c2: '', c3: '', c4: '', c5: '', c6: '', c7: '', c8: '' };
+                for (const categoria in coloresCategorias) {
+                  colores[categoria] = `rgb(${coloresCategorias[categoria].join(',')})`;
+                }
+                informacion.classList.add('categorias');
+                informacion.innerHTML = `<p class="negrita">${lugar.properties.nombre}</p> 
+              <p class="infoCategoria">
+                <span class="valorMiniColombina">Colegio: ${valor.c1 || 0}%</span>
+                <span class="miniColombina" style="width:${valor.c1 || 0}%;background-color:${colores.c1}"></span>  
+              </p>
+              <p class="infoCategoria">
+                <span class="valorMiniColombina">Casa: ${valor.c2 || 0}%</span>
+                <span class="miniColombina" style="width:${valor.c2 || 0}%;background-color:${colores.c2}"></span>  
+              </p>
+              <p class="infoCategoria">
+                <span class="valorMiniColombina">Trabajo: ${valor.c3 || 0}%</span>
+                <span class="miniColombina" style="width:${valor.c3 || 0}%;background-color:${colores.c3}"></span>  
+              </p>
+              <p class="infoCategoria">
+                <span class="valorMiniColombina">Niñero/a: ${valor.c4 || 0}%</span>
+                <span class="miniColombina" style="width:${valor.c4 || 0}%;background-color:${colores.c4}"></span>  
+              </p>
+              <p class="infoCategoria">
+                <span class="valorMiniColombina">Mayor de edad: ${valor.c5 || 0}%</span>
+                <span class="miniColombina" style="width:${valor.c5 || 0}%;background-color:${colores.c5}"></span>  
+              </p>
+              <p class="infoCategoria">
+                <span class="valorMiniColombina">Menor de edad: ${valor.c6 || 0}%</span>
+                <span class="miniColombina" style="width:${valor.c6 || 0}%;background-color:${colores.c6}"></span>  
+              </p>
+              <p class="infoCategoria">
+                <span class="valorMiniColombina">Solo: ${valor.c7 || 0}%</span>
+                <span class="miniColombina" style="width:${valor.c7 || 0}%;background-color:${colores.c7}"></span>  
+              </p>
+              <p class="infoCategoria">
+                <span class="valorMiniColombina">Otro: ${valor.c8 || 0}%</span>
+                <span class="miniColombina" style="width:${valor.c8 || 0}%;background-color:${colores.c8}"></span>  
+              </p>`;
+              } else {
+                informacion.innerHTML = '';
               }
-            }
-
-            if (nivel.get() === 'mun') {
-              informacion.innerText = `${lugar.properties.nombre} (${lugar.properties.dep}): ${
-                !valor ? 'Sin datos' : `${valor}${descripcion}`
-              }`;
             } else {
-              informacion.innerText = `${lugar.properties.nombre}: ${!valor ? 'Sin datos' : `${valor}${descripcion}`}`;
-              zona.classList.add('departamento');
+              // Cuando es por valor único, la mayoría de indicadores usan este
+              let descripcion = '';
+
+              if (valor) {
+                if (estructura === 'porcentaje') {
+                  descripcion = '%';
+                } else if (estructura === 'tasa') {
+                  descripcion = ` ${unidad}`;
+                }
+              }
+
+              const valores = zonas[lugar.properties.codigo].valores;
+
+              if (valores) {
+                const porcentajeOficial = (valores[1] / valores[0]) * 100;
+                const porcentajeNoOficial = (valores[2] / valores[0]) * 100;
+
+                descripcion = `<p class="pOficial">Oficiales: ${redondearDecimal(porcentajeOficial)}%</p>
+                <p class="pOficial">No Oficiales: ${redondearDecimal(porcentajeNoOficial)}%</p>`;
+              }
+
+              const textoInfo = !valor
+                ? 'Sin datos'
+                : `${valores ? '#: ' : ''}${new Intl.NumberFormat('es-CO').format(valor)}${descripcion}`;
+              if (nivel.get() === 'mun') {
+                informacion.innerHTML = `${lugar.properties.nombre} (${lugar.properties.dep}): ${textoInfo}`;
+              } else {
+                informacion.innerHTML = `${lugar.properties.nombre}: ${textoInfo}`;
+                zona.classList.add('departamento');
+              }
             }
           };
 
@@ -287,7 +408,6 @@ const { ancho, alto } = Astro.props;
             if (nivelActual === 'mun') {
               const muns = params.get('mun');
               const codigoMun = lugar.properties.codigo;
-
               const codigosMun = muns ? muns.split(',') : [];
               const posicionLugar = codigosMun.findIndex((codigo) => codigo === codigoMun);
 
@@ -320,7 +440,6 @@ const { ancho, alto } = Astro.props;
         if (lugares.length) {
           lugares.forEach((lugar) => {
             const zona = zonas[lugar.codigoDep].svg;
-
             seleccionarZona(zona);
           });
         }
@@ -349,6 +468,7 @@ const { ancho, alto } = Astro.props;
     function seleccionarZona(elemento: SVGPathElement) {
       if (!elemento) return;
       elemento.classList.add('seleccionada');
+      // color del borde del lugar seleccionado
       elemento.setAttribute('stroke', elemento.dataset.color);
       colombia.removeChild(elemento);
       seleccionados.appendChild(elemento);
@@ -360,7 +480,7 @@ const { ancho, alto } = Astro.props;
 </script>
 
 <style lang="scss" is:global>
-  @import '@/scss/constantes';
+  @use '@/scss/constantes' as *;
 
   #contenedorMapa {
     margin-top: 3em;
@@ -379,6 +499,36 @@ const { ancho, alto } = Astro.props;
     }
   }
 
+  #informacion {
+    pointer-events: none;
+    p {
+      margin: 0;
+    }
+
+    .negrita {
+      font-weight: bold;
+    }
+
+    .infoCategoria {
+      font-size: 0.65em;
+      margin-top: 3px;
+      position: relative;
+    }
+
+    .valorMiniColombina {
+      z-index: 2;
+    }
+
+    .miniColombina {
+      display: block;
+      position: absolute;
+      top: 0;
+      height: 0.85em;
+      opacity: 0.3;
+      z-index: 1;
+    }
+  }
+
   /// ✂️ Cortes pantalla
   @media screen and (min-width: $corte1) {
     #contenedorMapa {
@@ -391,17 +541,86 @@ const { ancho, alto } = Astro.props;
 </style>
 
 <style lang="scss">
+  #leyendaCategorias {
+    display: none;
+    font-size: 0.6em;
+    grid-template-columns: 80px 90px 80px;
+    grid-template-rows: 1em auto 1em;
+    column-gap: 1em;
+
+    p {
+      margin: 0;
+    }
+
+    .infoCategoria {
+      display: flex;
+      align-items: center;
+      line-height: 0.8;
+      margin-bottom: 5px;
+    }
+    .referencia {
+      display: block;
+      height: 5px;
+      width: 5px;
+      border-radius: 50%;
+      margin: 0.3em;
+
+      &.colegio {
+        background-color: var(--c1);
+      }
+
+      &.casa {
+        background-color: var(--c2);
+      }
+      &.trabajo {
+        background-color: var(--c3);
+      }
+      &.ninero {
+        background-color: var(--c4);
+      }
+      &.mayor {
+        background-color: var(--c5);
+      }
+      &.menor {
+        background-color: var(--c6);
+      }
+      &.solo {
+        background-color: var(--c7);
+      }
+      &.otro {
+        background-color: var(--c8);
+      }
+    }
+  }
+
   #leyendaMapa {
     width: 200px;
     height: 7px;
     position: relative;
     margin: 1em auto 0 auto;
-    display: block;
+    display: none;
+    &.visible {
+      display: block;
+    }
 
     .marcaLeyenda {
       font-size: 0.55em;
       position: absolute;
       top: -1.1em;
+
+      &.sinDatos {
+        top: 15px;
+
+        &::after {
+          content: '';
+          display: inline-block;
+          vertical-align: top;
+          width: 60px;
+          height: 9px;
+          margin-left: 5px;
+          background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogICAgPGRlZnM+CiAgICAgIDxwYXR0ZXJuIGlkPSJzaW5JbmZvIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB3aWR0aD0iMy41IiBoZWlnaHQ9IjMuNSIgcGF0dGVyblRyYW5zZm9ybT0icm90YXRlKDQ1KSI+CiAgICAgICAgPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjMuNSIgc3Ryb2tlPSIjNDY0ODRBIiBzdHJva2Utd2lkdGg9IjEiPjwvbGluZT4KICAgICAgICA8bGluZSB4MT0iMy41IiB5MT0iMy41IiB4Mj0iMCIgeTI9IjMuNSIgc3Ryb2tlPSIjNDY0ODRBIiBzdHJva2Utd2lkdGg9IjEiPjwvbGluZT4KICAgICAgPC9wYXR0ZXJuPgogICAgPC9kZWZzPgoKICAgIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjc2luSW5mbykiPjwvcmVjdD4KICA8L3N2Zz4=');
+        }
+      }
     }
 
     .umbral {

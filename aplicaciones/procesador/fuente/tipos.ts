@@ -49,6 +49,14 @@ export type RespuestaPorcentaje = {
   [año: string]: [lugar: string, porcentaje: number, variable2?: number][];
 };
 
+export type RespuestaPorcentaje2 = {
+  [año: string]: [lugar: string, total: number, noOficial: number, oficial: number][];
+};
+
+export type RespuestaCategorias = {
+  [año: string]: [lugar: string, valor: { [categoria: string]: number }][];
+};
+
 export type RespuestaNumDen = {
   [año: string]: [lugar: string, numerador: number, denominador: number][];
 };
@@ -57,39 +65,34 @@ export type RespuestaNumDenNal = {
   [año: string]: [numerador: number, denominador: number];
 };
 
-export type RespuestaNacional = {
-  ascendente: boolean;
-  estructura: EstructurasMatematicas;
-  unidadMedida: number;
-  datos: { [año: string]: number | [variable1: number, variable2: number] };
-  maxNal: number;
-  minNal: number;
-  maxMun: number;
-  minMun: number;
-  maxDep: number;
-  minDep: number;
-};
-
 export type VariableValorSingular =
   | 'codmpio'
+  | 'coddepto'
   | 'anno'
   | 'tacued'
   | 'talcan'
-  | 'tasa_mortalidad_infantil'
+  | 'tasa_mortalidad_menores_5'
   | 'controles_prenatales'
+  | 'tasa_desnutricion_menores_5'
   | 'bajo_peso'
-  | 'cobertura_bruta_transicion'
+  | 'tasa_EDA'
+  | 'tasa_IRA'
+  | 'neta_transicion'
   | 'cobertura_bruta_media'
-  | 'cobertura_bruta_primaria'
+  | 'neta_primaria'
+  | 'neta_media'
+  | 'reprobacion_primaria'
+  | 'reprobacion_media'
   | 'reprobacion_transicion'
   | 'repitencia_transicion'
   | 'desercion_transicion'
   | 'desercion_primaria'
   | 'desercion_secundaria'
   | 'desercion_media'
-  | 'matematicas'
-  | 'lectura'
-  | 'total'
+  | 'promedio_matematicas'
+  | 'promedio_lectura'
+  | 'promedio_sociales'
+  | 'promedio_puntaje_global'
   | 'cobertura_bruta_secundaria'
   | 'reprobación_primaria'
   | 'reprobación_secundaria'
@@ -100,7 +103,6 @@ export type VariableValorSingular =
   | 'tasa_desercion'
   | 'concentracion'
   | 'repitencia'
-  | 'desnutricion'
   | 'o_acto_terror'
   | 'o_minas_anti'
   | 'e_delito_sex'
@@ -112,17 +114,36 @@ export type VariableValorSingular =
   | 'Alumnos_primaria_O'
   | 'Alumnos_primaria_N_O'
   | 'reclu'
-  | 'tasa'
+  | 'intrafamiliar'
   | 'delito'
   | 'secu'
-  | 'GINI'
-  | 'pobreza';
+  | 'gini'
+  | 'pobreza_monetaria'
+  | 'homicidios'
+  | 'sexual'
+  | 'interpersonal'
+  | 'tasa'
+  | 'tasa_mortalidad_neonatal'
+  | 'tasa_mortalidad_menores_1_año'
+  | 'tasa_mortalidad_desnutricion_5_años'
+  | 'porcentaje_marco_integral'
+  | 'porcentaje'
+  | 'P51'
+  | 'educ_inicial_icbf'
+  | 'porcentaje_nacidos_vivos_personal_calificado'
+  | '#_estudiantes';
 
 export type VariablesSingulares = {
   [llave in VariableValorSingular]: number;
 };
 
-export type EstructurasMatematicas = 'porcentaje' | 'tasa' | 'escala' | 'conteo' | 'coeficiente';
+export type VariableDoble = {
+  '#_estudiantes': number;
+  sector: string;
+  codmpio: number;
+  anno: number;
+  coddepto?: number;
+};
 
 export type VariablesNumDen = {
   anno: string;

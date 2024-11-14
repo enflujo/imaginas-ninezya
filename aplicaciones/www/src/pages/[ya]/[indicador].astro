@@ -10,6 +10,7 @@ import FichaTecnica from '@/componentes/FichaTecnica.astro';
 import Buscador from '@/componentes/Buscador.astro';
 import DescripcionYa from '@/componentes/DescripcionYa.astro';
 import PropuestaIndicador from '@/componentes/PropuestaIndicador.astro';
+import type { DatosIndicadoresListaDescripcion } from '@/tipos';
 
 export const getStaticPaths = (() => {
   return datos
@@ -25,16 +26,15 @@ const { ya, indicador } = Astro.params;
 const posYa = datos.findIndex((instancia) => instancia.ruta === ya);
 const datosYa = datos[posYa];
 const datosIndicador = datosYa.indicadores.find((instancia) => instancia.ruta === indicador);
-const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: string }[] = datosYa.indicadores.map(
-  (indicador) => {
-    return {
-      titulo: indicador.nombre,
-      archivo: indicador.archivo,
-      umbral: indicador.umbral,
-      ruta: `${import.meta.env.BASE_URL}/${datosYa.ruta}/${indicador.ruta}`,
-    };
-  }
-);
+const archivosYa: DatosIndicadoresListaDescripcion[] = datosYa.indicadores.map((indicador) => {
+  return {
+    titulo: indicador.nombre,
+    archivo: indicador.archivo,
+    umbral: indicador.umbral,
+    ruta: `${import.meta.env.BASE_URL}/${datosYa.ruta}/${indicador.ruta}`,
+    tieneDatos: indicador.hay_datos,
+  };
+});
 ---
 
 <Plantilla titulo={datosIndicador.nombre} conMenu={true}>
@@ -44,6 +44,8 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
     img={datosYa.imagen}
     archivos={archivosYa}
     hayDatos={datosIndicador.hay_datos}
+    descripcionAbierta={false}
+    anchoCompleto={false}
   />
   {
     datosIndicador.hay_datos ? (
@@ -54,6 +56,7 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
           data-archivo={datosIndicador.archivo}
           data-umbral={datosIndicador.umbral}
           data-unidad={datosIndicador.unidad}
+          data-categorias={JSON.stringify(datosIndicador.categorias)}
         >
           <div id="secionSuperior">
             <div id="filtros">
@@ -70,7 +73,8 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
               <p id="descripcionIndicador">{datosIndicador.explicacion}</p>
               <Buscador />
 
-              <SelectorNivel />
+              {datosIndicador.desagregacion === 'Municipal' && <SelectorNivel />}
+
               <MenuAnios />
             </div>
             <div id="mapa">
@@ -88,19 +92,19 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
       <PropuestaIndicador />
     )
   }
-
-  <!-- {!datosIndicador.hay_datos && } -->
 </Plantilla>
 
 <script>
+  import CategoriasRadiales from '@/componentes/CategoriasRadiales';
   import MapaDetalle from '@/componentes/MapaDetalle';
-  import { añoSeleccionado, lugaresSeleccionados, cargarIndicador } from '@/utilidades/cerebro';
+  import { añoSeleccionado, lugaresSeleccionados, cargarIndicador, datosNal } from '@/utilidades/cerebro';
   const visualizaciones = document.getElementById('visualizaciones');
 
   if (visualizaciones) {
     const comparativo = document.getElementById('comparativo') as HTMLDivElement;
     const botonFicha = document.getElementById('abrirFicha') as HTMLSpanElement;
     const infoAdicional = document.getElementById('contenedorInfoAdicional') as HTMLDivElement;
+    const botonesCerrar = document.querySelectorAll('.cerrarFicha');
 
     if (botonFicha) {
       botonFicha.addEventListener('click', () => {
@@ -109,13 +113,14 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
     }
 
     async function inicio() {
+      // Acá se cargan los datos nacionales y departamentales que son los necesarios para la vista inicial.
       await cargarIndicador();
     }
 
     inicio().catch(console.error);
 
     añoSeleccionado.subscribe(async () => {
-      const existentes = comparativo.querySelectorAll<MapaDetalle>('enflujo-mapita');
+      const existentes = comparativo.querySelectorAll<MapaDetalle>('.mapita');
 
       if (existentes && existentes.length) {
         existentes.forEach((mapita) => {
@@ -125,7 +130,7 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
     });
 
     window.addEventListener('resize', () => {
-      const existentes = comparativo.querySelectorAll<MapaDetalle>('enflujo-mapita');
+      const existentes = comparativo.querySelectorAll<MapaDetalle>('.mapita');
 
       if (existentes && existentes.length) {
         existentes.forEach((mapita) => {
@@ -135,7 +140,7 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
     });
 
     lugaresSeleccionados.subscribe(async (lista) => {
-      const existentes = comparativo.querySelectorAll<MapaDetalle>('enflujo-mapita');
+      const existentes = comparativo.querySelectorAll<MapaDetalle>('.mapita');
 
       if (lista.length) {
         for (const mapa of lista) {
@@ -157,7 +162,10 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
           });
 
           if (!existeLugarEnDOM) {
-            const mapita = document.createElement('enflujo-mapita') as MapaDetalle;
+            const mapita = datosNal.value.categorias
+              ? new CategoriasRadiales(JSON.parse(visualizaciones.dataset.categorias))
+              : new MapaDetalle();
+
             mapita.className = 'mapita';
             mapita.id = `${codigo}`;
             mapita.agregarTitulo(nombre);
@@ -188,14 +196,22 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
         infoAdicional.classList.remove('abierta');
       }
     });
+
+    // Cerrar ficha con botón cerrar
+    botonesCerrar.forEach((boton) => {
+      boton.addEventListener('click', () => {
+        infoAdicional.classList.remove('abierta');
+      });
+    });
   }
 </script>
 
 <style lang="scss">
-  @import '@/scss/constantes';
+  @use '@/scss/constantes' as *;
 
   #visualizaciones {
     position: relative;
+    width: 90%;
   }
 
   #secionSuperior {
@@ -208,7 +224,6 @@ const archivosYa: { titulo: string; archivo: string; umbral?: number; ruta: stri
   }
 
   #contenedorInfoAdicional {
-    width: 60%;
     top: 8%;
     left: 15%;
     display: none;

@@ -1,45 +1,56 @@
-@import './constantes';
-@import './normalizar';
+@use './constantes' as *;
+@use './normalizar';
 @import url('https://fonts.googleapis.com/css2?family=Recursive:slnt,wght,CASL,CRSV,MONO@-15..0,300..800,0..1,0..1,0..1&display=swap');
 
 :root {
   // Fuentes
   --fuente: 'Recursive', 'Courier New', monospace;
 
-  // Colores línea de tiempo
-  --color0: #1818ff;
-  --color1: #ff771a;
-  --color2: #ff00ff;
-  --color3: #10b5ae;
-  --color4: #b4b800;
-  --color5: #570a8f;
-  --color6: #e40074;
-  --color7: #762e00;
-  --color8: #ffceff;
-  --color9: #03ffff;
-  --color10: #ff0400;
-  --color11: #557eff;
-  --color12: #ffc720;
-  --color13: #ad9987;
-  --color14: #ffa8b1;
-  --color15: #ea6eff;
-  --color16: #007876;
-  --color17: #dffd00;
-  --color18: #7dffa2;
-  --color19: #7d57a2;
-  --color20: #ffb46d;
-  --color21: #1b1a1a;
-  --color22: #af6c00;
-  --color23: #4dcc23;
-  --color24: #24467d;
-  --color25: #e0ff21;
-  --color26: #8ca2ff;
-  --color27: #d35446;
-  --color28: #cdeab6;
-  --color29: #bf3dc5;
-  --color30: #59708c;
-  --color31: #cfb428;
+  // Colores línea de tiempo - Paleta de Colores Categóricos
+  --color0: #4b0082; // ANTIOQUIA - índigo
+  --color1: #0000ff; // ATLÁNTICO - azul puro
+  --color2: #8a2be2; // BOGOTA D.C. - azul violeta
+  --color3: #ff4500; // BOLIVAR - naranja rojizo
+  --color4: #2e8b57; // BOYACA - verde esmeralda
+  --color5: #ffd700; // CALDAS - dorado
+  --color6: #7b68ee; // CAQUETA - azul mediano
+  --color7: #ff6347; // CAUCA - rojo tomate
+  --color8: #4682b4; // CESAR - azul acero
+  --color9: #daa520; // CORDOBA - oro viejo
+  --color10: #5f9ea0; // CUNDINAMARCA - azul cadete
+  --color11: #8b4513; // CHOCO - marrón madera
+  --color12: #7fff00; // HUILA - verde chillón
+  --color13: #d2691e; // LA GUAJIRA - marron chocolate
+  --color14: #40e0d0; // MAGDALENA - turquesa
+  --color15: #ff1493; // META rosa intenso
+  --color16: #b22222; // NARIÑO - rojo fuego
+  --color17: #8fbc8f; // NORTE DE SANTANDER - verde oscuro pálido
+  --color18: #ff69b4; // QUINDIO - rosa fuerte
+  --color19: #008080; // RISARALDA - teal
+  --color20: #b8860b; // SANTANDER - dorado oscuro
+  --color21: #b0e0e6; // SUCRE - azul pálido
+  --color22: #ffa07a; // TOLIMA - salmón claro
+  --color23: #6a5acd; // VALLE DEL CAUCA - azul pizarra
+  --color24: #ff00ff; // ARAUCA magenta
+  --color25: #2f4f4f; // CASANARE - gris pizarra oscuro
+  --color26: #556b2f; // PUTUMAYO - verde oliva oscuro
+  --color27: #d3d3d3; // AMAZONAS - gris claro
+  --color28: #00008b; // GUANÍA - azul oscuro
+  --color29: #00ced1; // GUAVIARE - turquesa oscuro
+  --color30: #ff8c00; // VAUPES - naranja oscuro
+  --color31: #deb887; // VICHADA - marrón beige
 
+  // Colores categorías pasar tiempo
+  --c1: rgb(255, 128, 170);
+  --c2: rgb(17, 146, 232);
+  --c3: rgb(159, 24, 83);
+  --c4: rgb(253, 97, 19);
+  --c5: rgb(105, 41, 196);
+  --c6: rgb(0, 157, 154);
+  --c7: rgb(178, 134, 0);
+  --c8: rgb(1, 39, 73);
+
+  // azul oscuro casi negro
   // Colores NiñezYa Logo
   --aguaMarinaNinezYa: #a3ede3;
   --azulNinezYa: #32b6ff;
@@ -97,6 +108,16 @@ h2 {
   color: var(--azulViejo);
 }
 
+a,
+a:link {
+  text-decoration: none;
+  color: var(--color11);
+
+  &:hover {
+    color: var(--color22);
+  }
+}
+
 i {
   font-variation-settings:
     'MONO' 0,
@@ -116,6 +137,7 @@ main {
   margin-left: 50px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 
   .columna {
     flex-basis: 50%;
@@ -209,6 +231,43 @@ main {
   align-items: center;
 }
 
+.textoMarca {
+  font-size: 0.5em;
+  font-variation-settings:
+    'MONO' 0,
+    'CASL' 0,
+    'wght' 100,
+    'slnt' 0,
+    'CRSV' 0;
+  stroke: black;
+  cursor: pointer;
+}
+
+.poliReferencia {
+  stroke: #626060;
+  stroke-width: 0.5;
+}
+
+.marcaEscala {
+  font-size: 0.45em;
+  stroke: #626060;
+  font-variation-settings:
+    'MONO' 0,
+    'CASL' 0,
+    'wght' 100,
+    'slnt' 0,
+    'CRSV' 0;
+}
+
+.lineaMarca {
+  stroke: #626060;
+  stroke-width: 0.5;
+}
+
+.araña {
+  fill: rgba(76, 166, 88, 0.6);
+}
+
 .negrita {
   font-variation-settings:
     'MONO' 1,
@@ -274,4 +333,24 @@ main {
     flex-direction: row;
     margin-left: 440px;
   }
+}
+
+.iconoYa {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  vertical-align: middle;
+  z-index: 9;
+  background-position: 2px;
+
+  &.actual {
+    background-color: var(--uvaNinezYa);
+    background-position-x: -48px;
+  }
+}
+
+.pOficial {
+  font-size: 0.85em;
 }

@@ -1,3 +1,4 @@
+import type { Categorias } from '@/tiposCompartidos/compartidos';
 import type { Position } from 'geojson';
 
 export interface GeometriaMapa {
@@ -30,53 +31,12 @@ export interface ExtremosCoordenadas {
   longitudMax: number;
 }
 
-export type TiposEstructura = 'porcentaje' | 'tasa' | 'escala' | 'conteo' | 'coeficiente';
-export type DatosAño = [codigo: string, valor: number][];
+export type DatosAño = [codigo: string, valor: number, valor2?: number, valor3?: number][];
 export type DatosIndicador = { [año: string]: DatosAño };
-export type DatosPorAño = { [año: string]: number };
-export type DatosPorAñoOrdenado = { año: string; valor: number | null }[];
-export type DatosIndicadorNal = {
-  ascendente: boolean;
-  estructura: TiposEstructura;
-  unidadMedida: number;
-  datos: DatosPorAño;
-  minNal: number;
-  maxNal: number;
-  minDep: number;
-  maxDep: number;
-  minMun: number;
-  maxMun: number;
-};
-export type FuncionColor = (valor: number) => string;
 
-export interface IndicadoresDatosComunes {
-  nombre: string;
-  ruta: string;
-  definicion: string;
-  hay_datos: boolean;
-}
+export type DatosPorAñoOrdenado = { año: string; valor: number }[];
 
-export interface IndicadoresDatos extends IndicadoresDatosComunes {
-  archivo?: string;
-  explicacion?: string;
-  definicion: string;
-  metodologia: string;
-  unidad: string;
-  fuente_numerador?: string;
-  fuente_denominador?: string;
-  desagregacion: string;
-  contexto?: string;
-  interpretacion: string;
-  umbral?: number;
-  explicacion_umbral?: string;
-  responsable?: string;
-  compete_a?: string;
-}
-
-export interface DatosYa extends IndicadoresDatosComunes {
-  imagen: string;
-  indicadores: IndicadoresDatos[];
-}
+export type FuncionColor = (valor: number | Categorias) => string;
 
 export interface LugarSeleccionado {
   nombre: string;
@@ -94,4 +54,12 @@ export type Punto = {
 
 export interface IMapearCoordenadas {
   (coordenadas: Position, ancho: number, alto: number): Punto;
+}
+
+export interface DatosIndicadoresListaDescripcion {
+  titulo: string;
+  archivo: string;
+  umbral?: number;
+  ruta: string;
+  tieneDatos: boolean;
 }
