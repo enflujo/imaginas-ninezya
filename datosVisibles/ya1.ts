@@ -215,14 +215,10 @@ export const ya1: DatosYa = {
       archivo: 'ya1-10',
       hay_datos: true,
       umbral: 95,
-      explicacion_umbral:
-        'Base de datos global conjunta UNICEF/WHO sobre asistencia especializada en el parto (2024). Aunque no existe un umbral específico para este indicador, se considera que un valor superior al 95%, en comparación con el promedio regional, es un nivel óptimo de cobertura, en línea con los objetivos de desarrollo sostenible (ODS) establecidos por las Naciones Unidas.',
-      explicacion:
-        'Indica el porcentaj de partos atendidos por personal calificado en un territorio y momento específico.',
-      definicion:
-        'El porcentaje de nacimientos atendidos por personal especializado cualificado (como médicos, enfermeros o parteras) se refiere a la proporción de partos asistidos por profesionales de la salud. Según la definición actualizada, se trata de expertos en salud materna y neonatal (SMN) que están formados, capacitados y regulados conforme a las normativas nacionales e internacionales. Estos profesionales están calificados para: i) ofrecer y promover atención de calidad, basada en evidencia, derechos humanos, y adaptada a las sensibilidades socioculturales, con respeto y dignidad para las mujeres y los recién nacidos; ii) facilitar los procesos fisiológicos del parto para asegurar una experiencia limpia y positiva; y iii) detectar y manejar o derivar a mujeres y recién nacidos con complicaciones. Las parteras tradicionales, aunque hayan recibido formación breve, no se incluyen en esta categoría.',
-      metodologia:
-        '(No. total de nacidos vivos cuyo parto fue atendido por médico o enfermera / No. total de nacidos vivos)*100 ',
+      explicacion_umbral: 'No se ha definido un umbral específico para este indicador, pero una cobertura superior al 95%, en comparación con el promedio regional, es considerada óptima. Este indicador está alineado con el Objetivo de Desarrollo Sostenible 3 (ODS 3), que busca "garantizar una vida sana y promover el bienestar para todos en todas las edades". Dentro de este objetivo, la meta 3.1 se enfoca en reducir la mortalidad materna mediante el acceso a servicios de salud de calidad durante el embarazo y el parto.',
+      explicacion: 'Indica el porcentaje de partos atendidos por personal calificado en un territorio y momento específico.',
+      definicion: 'El porcentaje de nacimientos atendidos por personal especializado cualificado (como médicos, enfermeros o parteras) se refiere a la proporción de partos asistidos por profesionales de la salud. Según la definición actualizada, se trata de expertos en salud materna y neonatal (SMN) que están formados, capacitados y regulados conforme a las normativas nacionales e internacionales. Estos profesionales están calificados para: i) ofrecer y promover atención de calidad, basada en evidencia, derechos humanos, y adaptada a las sensibilidades socioculturales, con respeto y dignidad para las mujeres y los recién nacidos; ii) facilitar los procesos fisiológicos del parto para asegurar una experiencia limpia y positiva; y iii) detectar y manejar o derivar a mujeres y recién nacidos con complicaciones. Las parteras tradicionales, aunque hayan recibido formación breve, no se incluyen en esta categoría.',
+      metodologia: '(No. total de nacidos vivos cuyo parto fue atendido por médico o enfermera / No. total de nacidos vivos)*100 ',
       unidad: 'Porcentaje',
       fuente_numerador: 'CUBO INDICADORES EEVV',
       fuente_denominador: 'CUBO INDICADORES EEVV',

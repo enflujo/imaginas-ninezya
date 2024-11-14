@@ -4,7 +4,8 @@ export const ya10: DatosYa = {
   nombre: 'Cultura de paz, reconciliación y convivencia',
   imagen: 'ya10',
   ruta: 'paz-reconciliacion',
-  definicion: `Es crucial que los menores de edad en Colombia participen en la construcción de una cultura de paz, reconociendo sus experiencias y dándoles voz activa en el diseño de acciones para la reconciliación. Los gobiernos locales, especialmente en los 170 municipios afectados por el conflicto, deben proporcionarles espacio, priorizando la restitución de derechos y el interés superior de la niñez, según normativas nacionales e internacionales.`,
+  definicion: `Es crucial que los menores en Colombia participen en la construcción de una cultura de paz tras el conflicto armado. Reconociendo sus experiencias y dándoles voz activa en el diseño de acciones para la reconciliación, la niñez desempeña un papel esencial. Los gobiernos locales, especialmente en los 170 municipios afectados por el conflicto, deben proporcionarles espacio, priorizando la restitución de derechos y el interés superior de la niñez según normativas nacionales e internacionales.
+  Se utilizó la base de datos Integración de datos y estimación estadística de víctimas en el marco del conflicto armado, reconocida por su consenso en la identificación de víctimas. En el contexto del Acuerdo Final entre el Gobierno de Colombia y las FARC-EP, se creó la Comisión para el Esclarecimiento de la Verdad, la Convivencia y la No Repetición, como parte del Sistema Integral de Verdad, Justicia, Reparación y No Repetición (SIVJRNR), con el propósito de esclarecer las violaciones en el conflicto armado y ofrecer una explicación amplia de su complejidad a la sociedad.`,
   hay_datos: true,
   indicadores: [
     {
