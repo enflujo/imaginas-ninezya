@@ -266,6 +266,7 @@ const { ancho, alto } = Astro.props;
         if (datosNal.value.categorias) {
           leyendaCategorias.style.display = 'grid';
           leyendaColombia.classList.remove('colombia');
+          leyendaMapa.classList.remove('visible');
         } else {
           leyendaMapa.style.background = `linear-gradient(90deg, ${
             ascendente ? colorPositivo : colorNegativo
@@ -273,12 +274,14 @@ const { ancho, alto } = Astro.props;
           leyendaMapa.querySelector<HTMLSpanElement>('.alerta').innerText = ascendente ? 'Positivo' : 'Alerta';
           leyendaMapa.querySelector<HTMLSpanElement>('.umbral').classList.add('invisible');
           leyendaMapa.querySelector<HTMLSpanElement>('.positivo').innerText = '0';
+          leyendaMapa.classList.add('visible');
         }
       } else {
         leyendaMapa.style.background = `linear-gradient(90deg, ${colorNegativo} 0%, ${colorNeutro} 50%, ${colorPositivo} 100%)`;
         leyendaMapa.querySelector<HTMLSpanElement>('.alerta').innerText = 'Alerta';
         leyendaMapa.querySelector<HTMLSpanElement>('.umbral').innerText = 'Meta';
         leyendaMapa.querySelector<HTMLSpanElement>('.positivo').innerText = 'Positivo';
+        leyendaMapa.classList.add('visible');
       }
 
       datosParaPintar.features.forEach((lugar) => {
@@ -553,6 +556,8 @@ const { ancho, alto } = Astro.props;
     .infoCategoria {
       display: flex;
       align-items: center;
+      line-height: 0.8;
+      margin-bottom: 5px;
     }
     .referencia {
       display: block;
@@ -594,7 +599,10 @@ const { ancho, alto } = Astro.props;
     height: 7px;
     position: relative;
     margin: 1em auto 0 auto;
-    display: block;
+    display: none;
+    &.visible {
+      display: block;
+    }
 
     .marcaLeyenda {
       font-size: 0.55em;
