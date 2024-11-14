@@ -122,7 +122,7 @@ export default class CategoriasRadiales extends MapaDetalle {
 
     for (let i = 0; i < this.categorias.length; i++) {
       const angulo = pasoAngulo * i - ajusteAngulo;
-      const x1 = Math.cos(angulo) * this.centro.x;
+      const x1 = Math.cos(angulo) * (this.centro.x - 12);
       const y1 = Math.sin(angulo) * this.centro.y;
       const x2 = Math.cos(angulo) * this.centro.x;
       const y2 = Math.sin(angulo) * this.centro.y;
