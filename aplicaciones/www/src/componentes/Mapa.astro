@@ -489,13 +489,15 @@ const { ancho, alto } = Astro.props;
     stroke-opacity: 0.5;
     stroke-width: 0.5px;
 
-    .departamento {
+    .departamento,
+    .municipio {
       cursor: pointer;
     }
 
     .seleccionada {
       stroke-opacity: 1;
       stroke-width: 2px;
+      filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.4));
     }
   }
 

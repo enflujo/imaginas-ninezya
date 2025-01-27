@@ -40,7 +40,7 @@ export async function datosMapaMunicipio() {
     if (cargando) cargador.classList.add('visible');
   }, 150);
 
-  const respuesta = await pedirDatos<FeatureCollection>('https://enflujo.com/bodega/colombia/municipios.json');
+  const respuesta = await pedirDatos<FeatureCollection>(`${import.meta.env.BASE_URL}/datos-geo/municipios.json`);
   respuesta.features.forEach((mun) => {
     const departamento = datosColombia.value.dep.features.find((dep) => dep.properties.nombre === mun.properties.dep);
     if (departamento) {
@@ -96,8 +96,9 @@ export async function cargarDatos() {
 
   // Cargar datos departamentos
   const deps = await pedirDatos<FeatureCollection<Polygon | MultiPolygon>>(
-    'https://enflujo.com/bodega/colombia/departamentos.json'
+    `${import.meta.env.BASE_URL}/datos-geo/departamentos.json`
   );
+  console.log(deps);
   deps.features.forEach((dep, i) => {
     dep.properties.color = obtenerVariableCSS(`--color${i}`);
     if (dep.properties.codigo === '88') {
