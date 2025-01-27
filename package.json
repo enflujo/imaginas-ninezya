@@ -1,7 +1,7 @@
 {
   "name": "imagina-ninezya",
   "private": true,
-  "packageManager": "yarn@4.5.1",
+  "packageManager": "yarn@4.6.0",
   "workspaces": [
     "aplicaciones/*"
   ],
@@ -18,8 +18,8 @@
     "armar:dev": "yarn workspace www armar:dev"
   },
   "devDependencies": {
-    "prettier": "^3.3.3",
+    "prettier": "^3.4.2",
     "prettier-plugin-astro": "^0.14.1",
-    "typescript": "^5.6.3"
+    "typescript": "^5.7.3"
   }
 }
