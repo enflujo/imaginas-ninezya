@@ -11,6 +11,7 @@ import {
   actualizarUrl,
   revisarDepartamentos,
   datosNal,
+  municipiosSeleccionados,
 } from '@/utilidades/cerebro';
 import { crearLinea, escalaCoordenadas, extremosLugar } from '@enflujo/alquimia';
 import type { IMapearCoordenadas } from '@enflujo/alquimia/libreria/modulos/tipos';
@@ -72,6 +73,7 @@ export default class MapaDetalle extends HTMLElement {
       const nuevos = codigosDeps.split(',').filter((codigo) => codigo !== codigoDep);
 
       params.push({ nombre: 'deps', valor: nuevos.join(',') });
+
       if (nivelActual === 'mun') {
         const codigosMuns = parametros.get('muns');
         const nuevos = codigosMuns.split(',').filter((codigo) => codigo.substring(0, 2) !== codigoDep);
@@ -143,6 +145,25 @@ export default class MapaDetalle extends HTMLElement {
     this.extremos();
 
     const { estructura } = datosNal.value;
+    const seleccionadosMun = municipiosSeleccionados.get();
+
+    municipiosSeleccionados.subscribe((nuevos) => {
+      console.log(nuevos);
+
+      // for (const forma in this.formas) {
+      //   if (this.formas[forma].svg) {
+      //     this.formas[forma].svg.setAttribute('class', '');
+      //   }
+      // }
+
+      nuevos.forEach((lugar) => {
+        const forma = this.formas[lugar.codigoMun];
+
+        if (forma) {
+          forma.svg.setAttribute('class', 'seleccionada');
+        }
+      });
+    });
 
     this.municipios.forEach((lugar) => {
       if (lugar.geometry.type === 'Polygon' || lugar.geometry.type === 'MultiPolygon') {
@@ -150,6 +171,12 @@ export default class MapaDetalle extends HTMLElement {
         formaMunicipio.setAttribute('id', lugar.properties.codigo);
         formaMunicipio.setAttribute('style', 'fill: url(#sinInfo)');
         formaMunicipio.setAttribute('shape-rendering', 'geometricPrecision');
+        const seleccionado = seleccionadosMun.find((obj) => obj.codigoMun === lugar.properties.codigo);
+
+        if (seleccionado) {
+          formaMunicipio.setAttribute('class', `seleccionada`);
+          formaMunicipio.setAttribute('stroke', lugar.properties.color);
+        }
 
         formaMunicipio.onmousemove = (evento) => {
           const x = evento.pageX;
