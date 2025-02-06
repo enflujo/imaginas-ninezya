@@ -94,7 +94,7 @@ export const ya1: DatosYa = {
         'Un valor del 7.4% indica que 7,4 de cada 100 nacidos vivos tuvieron 4 o más controles prenatales en un momento y territorio específicos.',
     },
     {
-      nombre: 'Proporción de menores de 5 años con Desnutrición Aguda',
+      nombre: 'Prevalencia de desnutrición aguda en niños menores de cinco años',
       ruta: 'desnutricion',
       archivo: 'ya1-7',
       hay_datos: true,
@@ -103,10 +103,10 @@ export const ya1: DatosYa = {
         'En el Plan Nacional de Desarrollo no hay una meta clara para esta problemática. De acuerdo con los Objetivos de Desarrollo Sostenible, numeral 2 "Hambre cero",  se pretende erradicar el hambre para el año 2030. La Encuesta Nacional de Situación Nutricional del año 2015 prevé que para el 2030  la morbilidad por desnutrición aguda sea de 0.9%.',
       explicacion: 'Indica la proporción de niños menores de 5 años que padecen de desnutrición aguda.',
       definicion:
-        'Indica el número de niños menores de 5 años por cada 100.000 que padecen de desnutrición aguda en un momento y territorio determinado.',
+        'Proporción de menores de 5 años que padecen de desnutrición aguda en un momento y territorio determinado.',
       metodologia:
         'Número de niños menores de 5 años que sufren de desnutrición aguda en un periodo y territorio específicos /  Número de nacidos vivos menores de 5 años en el mismo periodo y territorio',
-      unidad: 'Por cada 100.000 nacidos vivos',
+      unidad: 'Porcentaje',
       fuente_numerador: 'SIVIGILA',
       fuente_denominador: 'CUBO INDICADORES EEVV',
       desagregacion: 'Municipal',
